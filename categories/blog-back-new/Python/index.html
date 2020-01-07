@@ -217,7 +217,7 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/12/27/blog_back_new/Python/python%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%951/"><i class="fas fa-angle-double-right"></i>Python常用方法</a>
+                <a class="has-link-black-ter" href="/2019/12/27/blog_back_new/Python/python%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%951/"><i class="fas fa-angle-double-right"></i>Python常用方法1</a>
             
         </h1>
         
@@ -225,7 +225,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-12-27T09:36:31.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-27</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T03:59:55.710Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T08:26:07.337Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
                 
                 
                 <div class="level-item">
@@ -238,7 +238,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    5 分钟 读完 (大约 685 个字)
+                    5 分钟 读完 (大约 787 个字)
                 </span>
                 
                 
@@ -246,42 +246,43 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="python-常用方法"><a href="#python-常用方法" class="headerlink" title="python 常用方法"></a>python 常用方法</h1><h2 id="保留小数"><a href="#保留小数" class="headerlink" title="保留小数"></a>保留小数</h2><p>使用字符串格式化</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="hljs-number">11.234</span></span><br><span class="line">print(<span class="hljs-string">"%.2f"</span>%a)</span><br></pre></td></tr></tbody></table></figure>
+            <html><head></head><body><h1><span id="python-常用方法">python 常用方法</span></h1><h2><span id="保留小数">保留小数</span></h2><p>使用字符串格式化</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">a = <span class="hljs-number">11.234</span></span><br><span class="line">print(<span class="hljs-string">"%.2f"</span>%a)</span><br></pre></td></tr></tbody></table></figure>
 <p>使用round内置函数</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="hljs-number">11.234</span></span><br><span class="line">a = round(a,<span class="hljs-number">2</span>)</span><br><span class="line">print(a)</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">a = <span class="hljs-number">11.234</span></span><br><span class="line">a = round(a,<span class="hljs-number">2</span>)</span><br><span class="line">print(a)</span><br></pre></td></tr></tbody></table></figure>
 <p>使用decimal模块</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> decimal <span class="hljs-keyword">import</span> Decimal</span><br><span class="line">a = <span class="hljs-number">12.345</span></span><br><span class="line">Decimal(a).quantize(Decimal(<span class="hljs-string">"0.00"</span>))</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> decimal <span class="hljs-keyword">import</span> Decimal</span><br><span class="line">a = <span class="hljs-number">12.345</span></span><br><span class="line">Decimal(a).quantize(Decimal(<span class="hljs-string">"0.00"</span>))</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="列表合并"><a href="#列表合并" class="headerlink" title="列表合并"></a>列表合并</h3><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 使用+号操作</span></span><br><span class="line">list1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]</span><br><span class="line">list2 = [<span class="hljs-string">"z"</span>,<span class="hljs-string">"xx"</span>,] </span><br><span class="line">list3 = list1+list2</span><br><span class="line"><span class="hljs-comment"># 使用extend</span></span><br><span class="line">list4.extend(list1)</span><br><span class="line"><span class="hljs-comment"># 使用切片</span></span><br><span class="line">list4[len(<span class="hljs-number">11</span>):len(<span class="hljs-number">11</span>)] = list5</span><br></pre></td></tr></tbody></table></figure>
+<h2><span id="列表">列表</span></h2><h3><span id="列表合并">列表合并</span></h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 使用+号操作</span></span><br><span class="line">list1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]</span><br><span class="line">list2 = [<span class="hljs-string">"z"</span>,<span class="hljs-string">"xx"</span>,] </span><br><span class="line">list3 = list1+list2</span><br><span class="line"><span class="hljs-comment"># 使用extend</span></span><br><span class="line">list4.extend(list1)</span><br><span class="line"><span class="hljs-comment"># 使用切片</span></span><br><span class="line">list4[len(<span class="hljs-number">11</span>):len(<span class="hljs-number">11</span>)] = list5</span><br></pre></td></tr></tbody></table></figure>
 
 
-<h2 id="os模块"><a href="#os模块" class="headerlink" title="os模块"></a>os模块</h2><h3 id="Python获取指定文件夹下的文件名"><a href="#Python获取指定文件夹下的文件名" class="headerlink" title="Python获取指定文件夹下的文件名"></a>Python获取指定文件夹下的文件名</h3><p><font color="red">模块os.walk可以遍历文件夹下的所有文件</font></p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">os.walk(top, topdown=Ture, οnerrοr=<span class="hljs-literal">None</span>, followlinks=<span class="hljs-literal">False</span>)</span><br><span class="line"><span class="hljs-comment"># return  (dirpath dirnames filenames)</span></span><br></pre></td></tr></tbody></table></figure>
+<h2><span id="os模块">os模块</span></h2><h3><span id="python获取指定文件夹下的文件名">Python获取指定文件夹下的文件名</span></h3><p><font color="red">模块os.walk可以遍历文件夹下的所有文件</font></p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">os.walk(top, topdown=Ture, οnerrοr=<span class="hljs-literal">None</span>, followlinks=<span class="hljs-literal">False</span>)</span><br><span class="line"><span class="hljs-comment"># return  (dirpath dirnames filenames)</span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>dirpath: string 代表目录的路径</li>
 <li>dirnames list 包含了当前dirpath路径下所有的子目录名字（不包含目录路径）</li>
-<li>filenames：list，包含了当前dirpath路径下所有的非目录子文件的名字（不包含目录路径）。<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">file_name</span><span class="hljs-params">(file_dir)</span>:</span> </span><br><span class="line">    <span class="hljs-keyword">for</span> root, dirs, files <span class="hljs-keyword">in</span> os.walk(file_dir):</span><br><span class="line">        print(root) <span class="hljs-comment">#当前目录路径</span></span><br><span class="line">        print(dirs) <span class="hljs-comment">#当前路径下所有子目录</span></span><br><span class="line">        print(files) <span class="hljs-comment">#当前路径下所有非目录子文件</span></span><br><span class="line">        <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> files:</span><br><span class="line">            <span class="hljs-comment"># os.path.splitext # 对文件名进行切割成数组</span></span><br><span class="line">            <span class="hljs-keyword">if</span> os.path.splitext(file)[<span class="hljs-number">1</span>] == <span class="hljs-string">".jpeg"</span>:</span><br><span class="line">              print(file)</span><br><span class="line">            <span class="hljs-keyword">else</span>:</span><br><span class="line">              <span class="hljs-keyword">pass</span></span><br></pre></td></tr></tbody></table></figure>
+<li>filenames：list，包含了当前dirpath路径下所有的非目录子文件的名字（不包含目录路径）。<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">file_name</span><span class="hljs-params">(file_dir)</span>:</span> </span><br><span class="line">    <span class="hljs-keyword">for</span> root, dirs, files <span class="hljs-keyword">in</span> os.walk(file_dir):</span><br><span class="line">        print(root) <span class="hljs-comment">#当前目录路径</span></span><br><span class="line">        print(dirs) <span class="hljs-comment">#当前路径下所有子目录</span></span><br><span class="line">        print(files) <span class="hljs-comment">#当前路径下所有非目录子文件</span></span><br><span class="line">        <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> files:</span><br><span class="line">            <span class="hljs-comment"># os.path.splitext # 对文件名进行切割成数组</span></span><br><span class="line">            <span class="hljs-keyword">if</span> os.path.splitext(file)[<span class="hljs-number">1</span>] == <span class="hljs-string">".jpeg"</span>:</span><br><span class="line">              print(file)</span><br><span class="line">            <span class="hljs-keyword">else</span>:</span><br><span class="line">              <span class="hljs-keyword">pass</span></span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ul>
 <p><font color="red">模块os.listdir()可以得到当前路径下的文件名，不包括子目录中的文件</font></p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"><span class="hljs-comment"># 遍历获取所有文件</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">listdir</span><span class="hljs-params">(path, list_name)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> os.listdir(path):</span><br><span class="line">        file_path = os.path.join(path, file)</span><br><span class="line">        <span class="hljs-comment"># os.path.isdir(file) #判断文件是否为文件夹</span></span><br><span class="line">        <span class="hljs-keyword">if</span> os.path.isdir(file_path):</span><br><span class="line">            listdir(file_path, list_name)</span><br><span class="line">        <span class="hljs-keyword">elif</span> os.path.splitext(file_path)[<span class="hljs-number">1</span>]==<span class="hljs-string">'.jpeg'</span>:</span><br><span class="line">            list_name.append(file_path)</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"><span class="hljs-comment"># 遍历获取所有文件</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">listdir</span><span class="hljs-params">(path, list_name)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> os.listdir(path):</span><br><span class="line">        file_path = os.path.join(path, file)</span><br><span class="line">        <span class="hljs-comment"># os.path.isdir(file) #判断文件是否为文件夹</span></span><br><span class="line">        <span class="hljs-keyword">if</span> os.path.isdir(file_path):</span><br><span class="line">            listdir(file_path, list_name)</span><br><span class="line">        <span class="hljs-keyword">elif</span> os.path.splitext(file_path)[<span class="hljs-number">1</span>]==<span class="hljs-string">'.jpeg'</span>:</span><br><span class="line">            list_name.append(file_path)</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="判断文件类型"><a href="#判断文件类型" class="headerlink" title="判断文件类型"></a>判断文件类型</h3><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">os.path.isdir(path) <span class="hljs-comment"># 是否为文件夹</span></span><br><span class="line">os.path.isfile(path) <span class="hljs-comment"># 是否为文件</span></span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="判断文件类型">判断文件类型</span></h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">os.path.isdir(path) <span class="hljs-comment"># 是否为文件夹</span></span><br><span class="line">os.path.isfile(path) <span class="hljs-comment"># 是否为文件</span></span><br></pre></td></tr></tbody></table></figure>
 
 
-<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>mode选项<br>r 读模式，只能读 文件不存在报错，<br>w 写模式，只能写 文件不存在则创建，<br>以上存在存在则清空在打开</p>
+<h2><span id="文件操作">文件操作</span></h2><p>mode选项<br>r 读模式，只能读 文件不存在报错，<br>w 写模式，只能写 文件不存在则创建，<br>以上存在存在则清空在打开</p>
 <p>rb 二进制读模式 只能读  文件不存在报错<br>wb 二进制写模式 只能写  文件不存在则创建，<br>以上存在则清空再打开<br>有二进制内容 写入则需要encode(“utf-8”)</p>
 <p>rb+ 二进制读模式 可读可写 文件不存在报错<br>wb+ 二进制写模式 可读可写 文件不存在则创建，<br>以上存在则清空再打开</p>
 <p>a 追加写模式，文件存在则追加写入<br>a+ 追加读写方式<br>以上存在则追加写入</p>
 <p>默认进入为文件末尾<br>f.seek(0) 设置读写位置为开头<br>f.truncate(0) 将文章字节阶段为0</p>
-<h3 id="文件头部写如文件"><a href="#文件头部写如文件" class="headerlink" title="文件头部写如文件"></a>文件头部写如文件</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">with open(path, <span class="hljs-string">"r+"</span>) as f:</span><br><span class="line">     old = f.read()</span><br><span class="line">     f.seek(0)</span><br><span class="line">     f.write(data)</span><br><span class="line">     f.write(old)</span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="文件头部写如文件">文件头部写如文件</span></h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">with open(path, <span class="hljs-string">"r+"</span>) as f:</span><br><span class="line">     old = f.read()</span><br><span class="line">     f.seek(0)</span><br><span class="line">     f.write(data)</span><br><span class="line">     f.write(old)</span><br></pre></td></tr></tbody></table></figure>
 <p>或者</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">with open(path,<span class="hljs-string">"a"</span>) as f:</span><br><span class="line">      f.seek(0)</span><br><span class="line">      old = f.read()</span><br><span class="line">      <span class="hljs-comment"># 全部删除</span></span><br><span class="line">      f.truncate(0)</span><br><span class="line">      f.write(<span class="hljs-string">"---"</span>)</span><br><span class="line">      f.write(<span class="hljs-string">"tags: xxx"</span>)</span><br><span class="line">      f.write(<span class="hljs-string">"---"</span>)</span><br><span class="line">      f.close()</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">with open(path,<span class="hljs-string">"a"</span>) as f:</span><br><span class="line">      f.seek(0)</span><br><span class="line">      old = f.read()</span><br><span class="line">      <span class="hljs-comment"># 全部删除</span></span><br><span class="line">      f.truncate(0)</span><br><span class="line">      f.write(<span class="hljs-string">"---"</span>)</span><br><span class="line">      f.write(<span class="hljs-string">"tags: xxx"</span>)</span><br><span class="line">      f.write(<span class="hljs-string">"---"</span>)</span><br><span class="line">      f.close()</span><br></pre></td></tr></tbody></table></figure>
 
 
-<h2 id="python应"><a href="#python应" class="headerlink" title="python应"></a>python应</h2></body></html>
+<h2><span id="python-math库">Python-math库</span></h2><p>向上取整 math.ceil<br>向下取整 math.floor<br>四舍五入 round</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">import math</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#向上取整</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil---"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil(2.3) => "</span>, math.ceil(2.3)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil(2.6) => "</span>, math.ceil(2.6)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">#向下取整</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"\nmath.floor---"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.floor(2.3) => "</span>, math.floor(2.3)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.floor(2.6) => "</span>, math.floor(2.6)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">#四舍五入</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"\nround---"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"round(2.3) => "</span>, round(2.3)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"round(2.6) => "</span>, round(2.6)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">#这三个的返回结果都是浮点型</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"\n\nNOTE:every result is type of float"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil(2) => "</span>, math.ceil(2)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.floor(2) => "</span>, math.floor(2)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"round(2) => "</span>, round(2)</span><br></pre></td></tr></tbody></table></figure></body></html>
         </div>
         
         
@@ -380,6 +381,17 @@
                     </span>
                     <span class="level-right">
                         <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://www.ttlsa.com/linux/haproxy-study-tutorial/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">运维生存时间</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.ttlsa.com</span>
                     </span>
                 </a>
             </li>
@@ -526,7 +538,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">9</span>
                 </span>
             </a>
         </li>
@@ -557,16 +569,73 @@
         
         <article class="media">
             
-            <a href="/2020/01/07/blog_back_new/git/inventory%E6%93%8D%E4%BD%9C/" class="media-left">
+            <a href="/2020/01/07/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+haproxy%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blog_back_new/git/inventory操作">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blog_back_new/linux/负载均衡/keepalive+haproxy负载均衡">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T03:59:55.717Z">2020-01-07</time></div>
-                    <a href="/2020/01/07/blog_back_new/git/inventory%E6%93%8D%E4%BD%9C/" class="has-link-black-ter is-size-6">blog_back_new/git/inventory操作</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T09:45:21.332Z">2020-01-07</time></div>
+                    <a href="/2020/01/07/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+haproxy%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="has-link-black-ter is-size-6">blog_back_new/linux/负载均衡/keepalive+haproxy负载均衡</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/07/blog_back_new/linux/linux%E7%BC%96%E7%A8%8B/shell%E8%84%9A%E6%9C%AC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="shell脚本">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T07:45:22.000Z">2020-01-07</time></div>
+                    <a href="/2020/01/07/blog_back_new/linux/linux%E7%BC%96%E7%A8%8B/shell%E8%84%9A%E6%9C%AC/" class="has-link-black-ter is-size-6">shell脚本</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/07/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/zabbix/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="zabbix 学习记录">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T07:39:04.000Z">2020-01-07</time></div>
+                    <a href="/2020/01/07/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/zabbix/" class="has-link-black-ter is-size-6">zabbix 学习记录</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/07/blog_back_new/checklist/inventory%E6%93%8D%E4%BD%9C/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="inventory操作">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T06:19:39.000Z">2020-01-07</time></div>
+                    <a href="/2020/01/07/blog_back_new/checklist/inventory%E6%93%8D%E4%BD%9C/" class="has-link-black-ter is-size-6">inventory操作</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/git/">git</a>
                     </p>
@@ -576,7 +645,7 @@
         
         <article class="media">
             
-            <a href="/2020/01/05/blog_back_new/linux/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="media-left">
+            <a href="/2020/01/05/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="keepalive+lvs 四层负载均衡">
                 </p>
@@ -585,66 +654,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-05T05:06:09.000Z">2020-01-05</time></div>
-                    <a href="/2020/01/05/blog_back_new/linux/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="has-link-black-ter is-size-6">keepalive+lvs 四层负载均衡</a>
+                    <a href="/2020/01/05/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="has-link-black-ter is-size-6">keepalive+lvs 四层负载均衡</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/05/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/iptables%E3%80%81firewall%E9%98%B2%E7%81%AB%E5%A2%99/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="iptables、firewall 防火墙">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-05T04:03:16.000Z">2020-01-05</time></div>
-                    <a href="/2020/01/05/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/iptables%E3%80%81firewall%E9%98%B2%E7%81%AB%E5%A2%99/" class="has-link-black-ter is-size-6">iptables、firewall 防火墙</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/05/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/netstat/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="netstat">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-05T03:51:48.000Z">2020-01-05</time></div>
-                    <a href="/2020/01/05/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/netstat/" class="has-link-black-ter is-size-6">netstat</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/04/blog_back_new/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E9%83%A8%E7%BD%B2%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="网络部署需求分析">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T02:22:09.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/blog_back_new/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E9%83%A8%E7%BD%B2%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/" class="has-link-black-ter is-size-6">网络部署需求分析</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/%E7%BD%91%E7%BB%9C/">网络</a>
                     </p>
                 </div>
             </div>
@@ -679,7 +691,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">9</span>
                 </span>
             </a>
         </li>
@@ -710,16 +722,73 @@
         
         <article class="media">
             
-            <a href="/2020/01/07/blog_back_new/git/inventory%E6%93%8D%E4%BD%9C/" class="media-left">
+            <a href="/2020/01/07/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+haproxy%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blog_back_new/git/inventory操作">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blog_back_new/linux/负载均衡/keepalive+haproxy负载均衡">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T03:59:55.717Z">2020-01-07</time></div>
-                    <a href="/2020/01/07/blog_back_new/git/inventory%E6%93%8D%E4%BD%9C/" class="has-link-black-ter is-size-6">blog_back_new/git/inventory操作</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T09:45:21.332Z">2020-01-07</time></div>
+                    <a href="/2020/01/07/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+haproxy%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="has-link-black-ter is-size-6">blog_back_new/linux/负载均衡/keepalive+haproxy负载均衡</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/07/blog_back_new/linux/linux%E7%BC%96%E7%A8%8B/shell%E8%84%9A%E6%9C%AC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="shell脚本">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T07:45:22.000Z">2020-01-07</time></div>
+                    <a href="/2020/01/07/blog_back_new/linux/linux%E7%BC%96%E7%A8%8B/shell%E8%84%9A%E6%9C%AC/" class="has-link-black-ter is-size-6">shell脚本</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/07/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/zabbix/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="zabbix 学习记录">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T07:39:04.000Z">2020-01-07</time></div>
+                    <a href="/2020/01/07/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/zabbix/" class="has-link-black-ter is-size-6">zabbix 学习记录</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/07/blog_back_new/checklist/inventory%E6%93%8D%E4%BD%9C/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="inventory操作">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T06:19:39.000Z">2020-01-07</time></div>
+                    <a href="/2020/01/07/blog_back_new/checklist/inventory%E6%93%8D%E4%BD%9C/" class="has-link-black-ter is-size-6">inventory操作</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/git/">git</a>
                     </p>
@@ -729,7 +798,7 @@
         
         <article class="media">
             
-            <a href="/2020/01/05/blog_back_new/linux/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="media-left">
+            <a href="/2020/01/05/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="keepalive+lvs 四层负载均衡">
                 </p>
@@ -738,66 +807,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-05T05:06:09.000Z">2020-01-05</time></div>
-                    <a href="/2020/01/05/blog_back_new/linux/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="has-link-black-ter is-size-6">keepalive+lvs 四层负载均衡</a>
+                    <a href="/2020/01/05/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="has-link-black-ter is-size-6">keepalive+lvs 四层负载均衡</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/05/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/iptables%E3%80%81firewall%E9%98%B2%E7%81%AB%E5%A2%99/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="iptables、firewall 防火墙">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-05T04:03:16.000Z">2020-01-05</time></div>
-                    <a href="/2020/01/05/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/iptables%E3%80%81firewall%E9%98%B2%E7%81%AB%E5%A2%99/" class="has-link-black-ter is-size-6">iptables、firewall 防火墙</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/05/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/netstat/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="netstat">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-05T03:51:48.000Z">2020-01-05</time></div>
-                    <a href="/2020/01/05/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/netstat/" class="has-link-black-ter is-size-6">netstat</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/04/blog_back_new/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E9%83%A8%E7%BD%B2%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="网络部署需求分析">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T02:22:09.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/blog_back_new/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E9%83%A8%E7%BD%B2%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/" class="has-link-black-ter is-size-6">网络部署需求分析</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/%E7%BD%91%E7%BB%9C/">网络</a>
                     </p>
                 </div>
             </div>
