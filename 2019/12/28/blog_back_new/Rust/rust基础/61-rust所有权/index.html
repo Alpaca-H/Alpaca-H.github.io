@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html  lang="en">
+<html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>Rust概念-所有权 - Hexo</title>
+<title>Rust概念-所有权 - Alpaca | blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
@@ -11,13 +11,12 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Rust概念-所有权">
 <meta property="og:url" content="http://blog.noback.top/2019/12/28/blog_back_new/Rust/rust%E5%9F%BA%E7%A1%80/61-rust%E6%89%80%E6%9C%89%E6%9D%83/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Alpaca | blog">
 <meta property="og:description" content="Rust概念-所有权变量类型可以看一下这两篇文章https:&#x2F;&#x2F;learning-rust.github.io&#x2F;docs&#x2F;a6.variable_bindings,constants_and_statics.htmlhttp:&#x2F;&#x2F;wiki.jikexueyuan.com&#x2F;project&#x2F;rust&#x2F;primitive-types.html 在rust中变量模式是不可变的，因此我们叫做变量绑定，为了使">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.noback.top/images/og_image.png">
 <meta property="article:published_time" content="2019-12-28T13:56:19.000Z">
 <meta property="article:modified_time" content="2020-01-07T03:59:55.711Z">
-<meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
 
@@ -117,16 +116,13 @@
                 <a class="navbar-item"
                 href="/tags/">Tags</a>
                 
-                <a class="navbar-item"
-                href="/about/">About</a>
-                
             </div>
             
             <div class="navbar-end">
                 
                     
                     
-                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
                         
                         <i class="fab fa-github"></i>
                         
@@ -134,12 +130,12 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
                     <i class="fas fa-list-ul"></i>
                 </a>
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -177,13 +173,13 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    10 minutes read (About 1550 words)
+                    10 分钟 读完 (大约 1550 个字)
                 </span>
                 
                 
                 <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
                     <i class="far fa-eye"></i>
-                    <span id="busuanzi_value_page_pv">0</span> visits
+                    <span id="busuanzi_value_page_pv">0</span>次访问
                 </span>
                 
             </div>
@@ -226,7 +222,7 @@
         
             <ul class="post-copyright">
             <li><strong>本文标题：</strong><a href="http://blog.noback.top/2019/12/28/blog_back_new/Rust/rust%E5%9F%BA%E7%A1%80/61-rust%E6%89%80%E6%9C%89%E6%9D%83/">Rust概念-所有权</a></li>
-            <li><strong>本文作者：</strong><a href="http://blog.noback.top">John Doe</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top"></a></li>
             <li><strong>本文链接：</strong><a href="http://blog.noback.top/2019/12/28/blog_back_new/Rust/rust%E5%9F%BA%E7%A1%80/61-rust%E6%89%80%E6%9C%89%E6%9D%83/">http://blog.noback.top/2019/12/28/blog_back_new/Rust/rust%E5%9F%BA%E7%A1%80/61-rust%E6%89%80%E6%9C%89%E6%9D%83/</a></li>
             <li><strong>发布时间：</strong>2019-12-28</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
@@ -268,7 +264,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
 <script>
     var disqus_config = function () {
@@ -299,81 +295,11 @@
 <div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
         
-<div class="card widget">
-    <div class="card-content">
-        <nav class="level" style="margin-bottom:1rem">
-            <div class="level-item has-text-centered">
-                <div>
-                    
-                        <img class="image is-96x96 has-mb-6" src="https://www.gravatar.com/avatar/e0f4032c0f2d1068ffffbaf93c0bef52?s=96" alt="Xinyu Liu">
-                    
-                    
-                    <p class="is-size-4 is-block">
-                        Xinyu Liu
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-block">
-                        Alpha Lxy
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
-                        <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>Beijing, China</span>
-                    </p>
-                    
-                </div>
-            </div>
-        </nav>
-        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
-            <div class="level-item has-text-centered is-marginless">
-                <a href="/archives/">
-                    <p class="heading">
-                        Posts
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        38
-                    </p>
-                </a>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <a href="/categories/">
-                    <p class="heading">
-                        Categories
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        13
-                    </p>
-                </a>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <a href="/tags/">
-                    <p class="heading">
-                        Tags
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        0
-                    </p>
-                </a>
-            </div>
-        </nav>
-        <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://www.github.com/AlphaLxy" target="_blank">
-                <i class="fab fa-github"></i>&nbsp;&nbsp;Follow</a>
-        </div>
-        
-        
-    </div>
-</div>
-
-    
-        
 <div class="card widget column-left is-sticky" id="toc">
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catalogue
+                目录
             </h3>
             <ul class="menu-list"><li>
         <a class="is-flex" href="#Rust概念-所有权">
@@ -447,13 +373,13 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2020 John Doe&nbsp;
+                &copy; 2020 Rust概念-所有权&nbsp;
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
                         href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
                 <br>
                 <span id="busuanzi_container_site_uv">
-                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                共<span id="busuanzi_value_site_uv">0</span>个访客
                 </span>
                 
                 </p>
@@ -488,7 +414,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("en");</script>
+<script>moment.locale("zh-CN");</script>
 
 
     
@@ -554,7 +480,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="回到顶端" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -590,7 +516,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -602,11 +528,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
             },
             CONTENT_URL: '/content.json',
         };
