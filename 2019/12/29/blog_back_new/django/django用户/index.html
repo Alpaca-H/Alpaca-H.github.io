@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8">
+<title>django 用户 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="django用户django为开发者提供了三种不同的用户形式，一种是自带的用户模型(User),另外两种是可以自定义的用户模型，分别是(AbstractUser)(AbstractBaseUser),他们的继承关系分别是 User 继承子AbstractUser 继承自AbstractBaseUser django自带的用户模型使用django自带的用户模型(快速实现)，该模型提供了一些开发过程中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="django 用户">
+<meta property="og:url" content="http://blog.noback.top/2019/12/29/blog_back_new/django/django%E7%94%A8%E6%88%B7/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="django用户django为开发者提供了三种不同的用户形式，一种是自带的用户模型(User),另外两种是可以自定义的用户模型，分别是(AbstractUser)(AbstractBaseUser),他们的继承关系分别是 User 继承子AbstractUser 继承自AbstractBaseUser django自带的用户模型使用django自带的用户模型(快速实现)，该模型提供了一些开发过程中">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
+<meta property="article:published_time" content="2019-12-29T12:47:21.000Z">
+<meta property="article:modified_time" content="2020-01-07T03:59:55.716Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/github-gist.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="django 用户" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>django 用户
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:47:21.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T03:59:55.716Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    9 minutes read (About 1304 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="django用户"><a href="#django用户" class="headerlink" title="django用户"></a>django用户</h1><p>django为开发者提供了三种不同的用户形式，一种是自带的用户模型(User),另外两种是可以自定义的用户模型，分别是(AbstractUser)(AbstractBaseUser),他们的继承关系分别是 User 继承子AbstractUser 继承自AbstractBaseUser</p>
+<h2 id="django自带的用户模型"><a href="#django自带的用户模型" class="headerlink" title="django自带的用户模型"></a>django自带的用户模型</h2><p>使用django自带的用户模型(快速实现)，该模型提供了一些开发过程中会经常使用到的参数，比如用户级别，名字，邮箱，密码等等。我们可以在$\color{red}{from django.contrib.auth.models import User}$中查看User的使用</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span><span class="hljs-params">(AbstractUser)</span>:</span></span><br><span class="line">    <span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">    Users within the Django authentication system are represented by this</span></span><br><span class="line"><span class="hljs-string">    model.</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">    Username and password are required. Other fields are optional.</span></span><br><span class="line"><span class="hljs-string">    """</span></span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Meta</span><span class="hljs-params">(AbstractUser.Meta)</span>:</span></span><br><span class="line">        swappable = <span class="hljs-string">'AUTH_USER_MODEL'</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="自定义User-Model"><a href="#自定义User-Model" class="headerlink" title="自定义User Model"></a>自定义User Model</h2><p>自定义Usermodel需要注意的是，$\color{red}{需要在setting.py中添加AUTH_USER_MODEL}$ ，由于django寻找用户的方式是在setting.py中寻找这个标示，所以在我们自定义的时候需要添加这个内容</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/setting.py</span></span><br><span class="line"><span class="hljs-keyword">from</span> app.model <span class="hljs-keyword">import</span> .</span><br><span class="line">AUTH_USER_MODEL=<span class="hljs-string">"app.modelname"</span></span><br></pre></td></tr></tbody></table></figure>
+<p>其他需要注意的地方，请看文章底部注意栏</p>
+<h3 id="方法一：扩展AbstractUser"><a href="#方法一：扩展AbstractUser" class="headerlink" title="方法一：扩展AbstractUser"></a>方法一：扩展AbstractUser</h3><p>如果你觉得django自带的用户不能满足你所需要的字段，需要额外添加字段的话，你可以使用AbstractUser</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/app/models.py</span></span><br><span class="line"><span class="hljs-keyword">from</span> django.contrib.auth.models <span class="hljs-keyword">import</span> AbstractUser</span><br><span class="line"><span class="hljs-keyword">from</span> django.db <span class="hljs-keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NewUser</span><span class="hljs-params">(AbstractUser)</span>:</span></span><br><span class="line">    new_field = models.CharField(max_length=<span class="hljs-number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># pro/setting.py</span></span><br><span class="line">AUTH_USER_MODEL=<span class="hljs-string">"app.modelname"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="方法二：扩展AbstractBaseUser"><a href="#方法二：扩展AbstractBaseUser" class="headerlink" title="方法二：扩展AbstractBaseUser"></a>方法二：扩展AbstractBaseUser</h2><p>AbstractBaseUser中只含有3个field: password, last_login和is_active. 如果你对django user model默认的first_name, last_name不满意, 或者只想保留默认的密码储存方式, 则可以选择这一方式</p>
+<p>自定义形式如AbstarctUser一样</p>
+<p>使用AbstractBaseUser时，虽然他提供了User最核心的实现，比如password，但是我们依旧需要添加一些必须定义的关键字段和方法</p>
+<p>USERNAME_FIELD，用户名称字段，必须设置，且 uniqe=True</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserProfile</span><span class="hljs-params">(AbstractBaseUser)</span>:</span></span><br><span class="line">    author = models.CharField(max_length=<span class="hljs-number">40</span>,unique=<span class="hljs-literal">True</span>)</span><br><span class="line"></span><br><span class="line">    USERNAME_FIELD = <span class="hljs-string">'author'</span></span><br></pre></td></tr></tbody></table></figure>
+<p>REQUIRED_FIELDS，当通过createsuperuser管理命令创建一个用户时，用于提示一个字段名称列表,不能包含USERNAME_FIELD以及password字段</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/models.py</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserProfile</span><span class="hljs-params">(AbstractBaseUser)</span></span></span><br><span class="line">    date_of_birth = models.DateField()</span><br><span class="line">    height = models.FloatField()</span><br><span class="line"></span><br><span class="line">    REQUIRED_FIELDS=[<span class="hljs-string">'date_of_birth'</span>,<span class="hljs-string">'height'</span>]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>is_active   必须定义。 一个布尔属性，标识用户是否是 “active” 的。AbstractBaseUser默认为 Ture</p>
+<p>get_full_name()<br>必须定义。 long格式的用户标识。</p>
+<p>get_short_name()<br>必须定义。 short格式的用户标识。</p>
+<p>可用方法<br>get_username()<br>返回 USERNAME_FIELD 的值。</p>
+<p>is_anonymous()<br>一直返回 False。用来区分 AnonymousUser。</p>
+<p>is_authenticated()<br>一直返回 Ture。用来告诉用户已被认证。</p>
+<p>set_password(raw_password)<br>设置密码。按照给定的原始字符串设置用户的密码，taking care of the password hashing。 不保存 AbstractBaseUser 对象。如果没有给定密码，密码就会被设置成不使用，同用set_unusable_password()。</p>
+<p>check_password(raw_password)<br>检查密码是否正确。 给定的密码正确返回 True。</p>
+<p>set_unusable_password()<br>设置user无密码。 不同于密码为空，如果使用 check_password()，则不会返回True。不保存AbstractBaseUser 对象。</p>
+<p>has_usable_password()<br>如果设置了set_unusable_password()，返回False。</p>
+<p>get_session_auth_hash()<br>返回密码字段的HMAC。 Used for Session invalidation on password change.</p>
+<h2 id="⚠️注意"><a href="#⚠️注意" class="headerlink" title="⚠️注意"></a>⚠️注意</h2><p>1.在创建任何迁移或者第一次运行 manager.py migrate 前设置 AUTH_USER_MODEL。设置AUTH_USER_MODEL对你的数据库结构有很大的影响。它改变了一些会使用到的表格，并且会影响到一些外键和多对多关系的构造。在你有表格被创建后更改此设置是不被 makemigrations 支持的，并且会导致你需要手动修改数据库结构，从旧用户表中导出数据，可能重新应用一些迁移。<br>2.由于Django的可交换模型的动态依赖特性的局限，你必须确保 AUTH_USER_MODEL 引用的模型在所属app中第一个迁移文件中被创建（通常命名为 0001_initial），否则你会碰到错误(The easiest way to construct a compliant custom User model is to inherit fromAbstractBaseUser. AbstractBaseUser provides the core implementation of a Usermodel, including hashed passwords and tokenized password resets. You must then provide some key implementation details:)</p>
+<h2 id="引用User"><a href="#引用User" class="headerlink" title="引用User"></a>引用User</h2><p>如果你选择了自定义用户类型，那么当你在view.py中尝试使用外键引用他的时候，你会出现错误，你应该使用$\color{red}{django.contrib.auth.get_user_model来引用模型}</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_user_model</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    <span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">    Return the User model that is active in this project.</span></span><br><span class="line"><span class="hljs-string">    """</span></span><br><span class="line">    <span class="hljs-keyword">try</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> django_apps.get_model(settings.AUTH_USER_MODEL, require_ready=<span class="hljs-literal">False</span>)</span><br><span class="line">    <span class="hljs-keyword">except</span> ValueError:</span><br><span class="line">        <span class="hljs-keyword">raise</span> ImproperlyConfigured(<span class="hljs-string">"AUTH_USER_MODEL must be of the form 'app_label.model_name'"</span>)</span><br><span class="line">    <span class="hljs-keyword">except</span> LookupError:</span><br><span class="line">        <span class="hljs-keyword">raise</span> ImproperlyConfigured(</span><br><span class="line">            <span class="hljs-string">"AUTH_USER_MODEL refers to model '%s' that has not been installed"</span> % settings.AUTH_USER_MODEL</span><br></pre></td></tr></tbody></table></figure>
+<p>同样的，他会根据setting中的AUTH_USER_MODEL来识别当前用户</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> django.contrib.auth <span class="hljs-keyword">import</span> get_user_model</span><br><span class="line"></span><br><span class="line">User = get_user_model</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>指定用户</strong></p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/app/models.py</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserProfile</span><span class="hljs-params">(models.Model)</span>:</span></span><br><span class="line">    author = models.ForeignKey(setting.AUTH_USER_MODEL)</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p><a href="https://www.cnblogs.com/huchong/p/9804635.html#_label0" target="_blank" rel="noopener">https://www.cnblogs.com/huchong/p/9804635.html#_label0</a><br><a href="https://blog.csdn.net/qq_37049050/article/details/79211059" target="_blank" rel="noopener">https://blog.csdn.net/qq_37049050/article/details/79211059</a></p>
+</body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/2019/12/29/blog_back_new/django/django%E7%94%A8%E6%88%B7/">django 用户</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top">John Doe</a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/2019/12/29/blog_back_new/django/django%E7%94%A8%E6%88%B7/">http://blog.noback.top/2019/12/29/blog_back_new/django/django%E7%94%A8%E6%88%B7/</a></li>
+            <li><strong>发布时间：</strong>2019-12-29</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/12/29/blog_back_new/django/drf%E6%A1%86%E6%9E%B6/drf%E6%A1%86%E6%9E%B6%E8%A7%A3%E6%9E%901/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">drf框架解析</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/12/29/blog_back_new/django/drf%E6%A1%86%E6%9E%B6/drf%E6%A1%86%E6%9E%B6/">
+                <span class="level-item">DRF框架</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/2019/12/29/blog_back_new/django/django%E7%94%A8%E6%88%B7/';
+        this.page.identifier = '2019/12/29/blog_back_new/django/django用户/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="https://www.gravatar.com/avatar/e0f4032c0f2d1068ffffbaf93c0bef52?s=96" alt="Xinyu Liu">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Xinyu Liu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Alpha Lxy
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Beijing, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        38
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        13
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/AlphaLxy" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;Follow</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#django用户">
+        <span class="has-mr-6">1</span>
+        <span>django用户</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#django自带的用户模型">
+        <span class="has-mr-6">1.1</span>
+        <span>django自带的用户模型</span>
+        </a></li><li>
+        <a class="is-flex" href="#自定义User-Model">
+        <span class="has-mr-6">1.2</span>
+        <span>自定义User Model</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#方法一：扩展AbstractUser">
+        <span class="has-mr-6">1.2.1</span>
+        <span>方法一：扩展AbstractUser</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#方法二：扩展AbstractBaseUser">
+        <span class="has-mr-6">1.3</span>
+        <span>方法二：扩展AbstractBaseUser</span>
+        </a></li><li>
+        <a class="is-flex" href="#⚠️注意">
+        <span class="has-mr-6">1.4</span>
+        <span>⚠️注意</span>
+        </a></li><li>
+        <a class="is-flex" href="#引用User">
+        <span class="has-mr-6">1.5</span>
+        <span>引用User</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="django 用户" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 John Doe&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

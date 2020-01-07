@@ -201,6 +201,760 @@
 
 
 
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/07/blog_back_new/git/inventory%E6%93%8D%E4%BD%9C/"><i class="fas fa-angle-double-right"></i>blog_back_new/git/inventory操作</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-07T03:59:55.717Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-07</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/git/">git</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    a minute read (About 113 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h2 id="拉取项目"><a href="#拉取项目" class="headerlink" title="拉取项目"></a>拉取项目</h2><p>git clone <a href="https://gitlab.s.upyun.com/infrastructure/inventory.gigit" target="_blank" rel="noopener">https://gitlab.s.upyun.com/infrastructure/inventory.gigit</a> clone <a href="https://gitlab.s.upyun.com/infrastructure/inventory.git" target="_blank" rel="noopener">https://gitlab.s.upyun.com/infrastructure/inventory.git</a></p>
+<h2 id="查看当前分支"><a href="#查看当前分支" class="headerlink" title="查看当前分支"></a>查看当前分支</h2><p>git branch</p>
+<h2 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h2><p>git checkout hzj</p>
+<h2 id="修改内容"><a href="#修改内容" class="headerlink" title="修改内容"></a>修改内容</h2><p>…</p>
+<h2 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h2><p>git commit -am “update”<br>git push </p>
+<p>到web端创建合并请求</p>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>首先切换到master，<br>拉取最新git pull<br>切换次分支 git checkout hzj<br>合并更新分支到hzj分支 git merge origin hzj</p>
+<p>发消息给有master权限的人，交由master来合并</p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/05/blog_back_new/linux/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"><i class="fas fa-angle-double-right"></i>keepalive+lvs 四层负载均衡</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-05T05:06:09.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-05</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T04:04:46.201Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    22 minutes read (About 3304 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h2 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h2><p>LB (Load Balancer 负载均衡)<br>HA (High Available 高可用)<br>Failover (失败切换)<br>Cluster (集群)<br>LVS (Linux Virtual Server Linux 虚拟服务器)<br>DS (Director Server)，指的是前端负载均衡器节点<br>RS (Real Server)，后端真实的工作服务器<br>VIP (Virtual IP)，虚拟的 IP 地址，向外部直接面向用户请求，作为用户请求的目标的 IP 地址<br>DIP (Director IP)，主要用于和内部主机通讯的 IP 地址<br>RIP (Real Server IP)，后端服务器的 IP 地址<br>CIP (Client IP)，访问客户端的 IP 地址</p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/01/05/blog_back_new/linux/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/05/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/iptables%E3%80%81firewall%E9%98%B2%E7%81%AB%E5%A2%99/"><i class="fas fa-angle-double-right"></i>iptables、firewall 防火墙</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-05T04:03:16.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-05</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T04:04:15.633Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    a few seconds read (About 99 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h2 id="iptables、firewall防火墙"><a href="#iptables、firewall防火墙" class="headerlink" title="iptables、firewall防火墙"></a>iptables、firewall防火墙</h2><h2 id="防火墙错误导致的原因"><a href="#防火墙错误导致的原因" class="headerlink" title="防火墙错误导致的原因"></a>防火墙错误导致的原因</h2><ol>
+<li>开通httpd后，当前机器下使用curl可访问，但外部机器访问ip+端口则无法访问<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="hljs-comment"># curl http://10.0.5.92:8888</span></span><br><span class="line">curl: (7) Failed connect to 10.0.5.92:8888; No route to host</span><br></pre></td></tr></tbody></table></figure>
+curl报如下错误：curl: (7) Failed connect to 172.16.225.43:7001; No route to host</li>
+</ol>
+<p>解决办法<br>—-> 在被访问机器下开放8888端口<br>—-> iptables -l INPUT -p tcp –dport 8888 -j ACCEPT</p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/05/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/netstat/"><i class="fas fa-angle-double-right"></i>netstat</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-05T03:51:48.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-05</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T04:04:22.217Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    2 minutes read (About 328 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h2 id="netstat工具"><a href="#netstat工具" class="headerlink" title="netstat工具"></a>netstat工具</h2><p>netstat是在内核中访问网络相关信息的程序。</p>
+<ol>
+<li>提供TCP连接、TCP和UDP监听、进程内存管理的状态。</li>
+<li>监控TCP/IP网络的非常有用的工具，显示路由表、实际网络连接以及每一个网络接口设备的状态信息。</li>
+<li>使用netstat可以让用户知道有哪些网络连接正在运作，使用时如果不带参数，netstat显示活动的TCP连接</li>
+</ol>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装</span></span><br><span class="line">yum install net-tools</span><br><span class="line"><span class="hljs-comment"># 使用</span></span><br><span class="line">netstat 选项：</span><br><span class="line">常用参数：</span><br><span class="line">-a:显示所有的socket，包括监听的以及未监听的。</span><br><span class="line">-n:不使用域名和服务名，而使用IP和端口号。</span><br><span class="line">-l:仅列出在listen状态的网络服务。</span><br><span class="line">-p:显示建立连接的程序名和PID。</span><br><span class="line">-e:显示以太网统计。</span><br><span class="line">-s:显示每个协议的统计。</span><br><span class="line">-t：显示TCP协议连接情况。</span><br><span class="line">-u:显示UDP协议连接情况。</span><br><span class="line">-c:每隔一个固定时间，执行netstat命令。</span><br><span class="line">-r：显示核心路由表。</span><br><span class="line">-i:显示所有的网络接口信息<></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 显示建立连接的程序名 PID IP 端口以及监听状态</span></span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># netstat -pan | grep 8888</span></span><br><span class="line">tcp6       0      0 :::8888                 :::*                    LISTEN      16711/httpd</span><br></pre></td></tr></tbody></table></figure>
+
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/04/blog_back_new/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E9%83%A8%E7%BD%B2%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/"><i class="fas fa-angle-double-right"></i>网络部署需求分析</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-04T02:22:09.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-04</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T04:02:08.615Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/%E7%BD%91%E7%BB%9C/">网络</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    12 minutes read (About 1751 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="网络部署需求分析"><a href="#网络部署需求分析" class="headerlink" title="网络部署需求分析"></a>网络部署需求分析</h1><p>后面需要根据tower给出的内容对网络环境，机器上架规划内容<br>由于tower中给出的大部分都是纸上信息，这里做几个例子进行一下总结</p>
+<p><font color="blue">凡是没有提到2层或者3层需求的，都按照3层需求来处理</font></p>
+<h2 id="自动生成汇聚端口配置"><a href="#自动生成汇聚端口配置" class="headerlink" title="自动生成汇聚端口配置"></a>自动生成汇聚端口配置</h2><figure class="highlight py hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"><span class="hljs-keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 指定端口类型  有些做过堆叠的交换机 MemberID是不同的</span></span><br><span class="line">port_type = <span class="hljs-string">"1"</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,<span class="hljs-number">16</span>):</span><br><span class="line">    print(<span class="hljs-string">"interface bridge-aggregation %s"</span>%i)</span><br><span class="line">    print(<span class="hljs-string">"interface GigabitEthernet%s/0/%s"</span>%(port_type,int(i*<span class="hljs-number">2</span><span class="hljs-number">-1</span>)))</span><br><span class="line">    print(<span class="hljs-string">"port link-aggregation group %s"</span>%i)</span><br><span class="line">    print(<span class="hljs-string">"interface GigabitEthernet%s/0/%s"</span>%(port_type,int(i*<span class="hljs-number">2</span>)))</span><br><span class="line">    print(<span class="hljs-string">"port link-aggregation group %s"</span>%i)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">## REANME.md</span></span><br><span class="line"><span class="hljs-comment">##交换机的配置需要批量配置管理端口</span></span><br><span class="line"><span class="hljs-comment">##用这个脚本生成就ok了</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="基础配置"><a href="#基础配置" class="headerlink" title="*****基础配置"></a>*****基础配置</h2><p>基础配置 二三层通用</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 用户配置</span></span><br><span class="line"><span class="hljs-built_in">local</span>-user admin class manage</span><br><span class="line"> service-type ssh</span><br><span class="line"> authorization-attribute user-role level-3</span><br><span class="line"> authorization-attribute user-role network-admin</span><br><span class="line"> authorization-attribute user-role network-operator</span><br><span class="line"><span class="hljs-comment">#</span></span><br><span class="line"><span class="hljs-built_in">local</span>-user root class manage</span><br><span class="line"> service-type ssh</span><br><span class="line"> authorization-attribute user-role level-3</span><br><span class="line"> authorization-attribute user-role network-admin</span><br><span class="line"> authorization-attribute user-role network-operator</span><br><span class="line"></span><br><span class="line">user-interface vty 0 4</span><br><span class="line">authentication-mode scheme       </span><br><span class="line"> user-role network-admin</span><br><span class="line">protocol inbound all</span><br><span class="line">quit</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 不显示版本信息</span></span><br><span class="line">undo copyright-info <span class="hljs-built_in">enable</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 公钥导入</span></span><br><span class="line">public-key peer pub</span><br><span class="line">  public-key-code begin	</span><br><span class="line">   30820122300D06092A864886F70D01010105000382010F003082010A0282010100D37D67EC</span><br><span class="line">   5A9466CD38895097E74386EBBEFA9EC59236DF5E96D7514B2903C21F09C6D47D74792B5E3D</span><br><span class="line">   C1F99DB4D43614AE3AD61DEFFAF35CED9B94DBD85DE174598C491FA043F8C700DA686BFFCA</span><br><span class="line">   227E4E7417A251CD7590673B4C1A227962F65CBA6017329479484EF8FE48A8E2FED636C846</span><br><span class="line">   5765801A0D62C821906FF8E7188DA69D716FD392E8C0D4D0618E9020670FFA24CF083E2EF7</span><br><span class="line">   690EABCA43AA4341D798A72B6FFB5A0A1BEF0F4B14B6B66E5F7126582BD11A11F4220EA3FF</span><br><span class="line">   C1A5DF36E86E76A8EF6A97949158F094CBAD09725069A090CBA36D95CB6A9531A5AB8B3ED5</span><br><span class="line">   8D6C63C8138320F0F1ECD7B25203A1B79FC82635B0F53475BC428B3B741F0203010001</span><br><span class="line">  public-key-code end</span><br><span class="line"> peer-public-key end</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public-key peer upyun</span><br><span class="line"> public-key-code begin</span><br><span class="line">   30820122300D06092A864886F70D01010105000382010F003082010A0282010100BEF4DB4E</span><br><span class="line">   5224F5FFE95AF67CC1753592979F6C1379E0A1FB8519C0E6E626B50F221957806B64384173</span><br><span class="line">   F2B370254381D583D3EC70D4211CC599CF6C1615754E985895D1E78E1E62788A9BC2E4D2EB</span><br><span class="line">   55A18FD20D2B692813114C650FE4FC883DB5467039264C2478332C2C967F3DAE83AFBDFAB3</span><br><span class="line">   D794F38DCB2E112184127A151741947DFBB00E8E66B9037131C54A27DE703B2E80A3D8D3C6</span><br><span class="line">   79CFC9E851D9C76610228790D7E2253D7E7735481D2EA61AA71D6DFD2EAC037203CE08943E</span><br><span class="line">   43DF88AC1ECCB77433358B5ABDF080616D6B6C40AEBEEEDD64D8B8718F091CAA0EA8D5A6A0</span><br><span class="line">   2B6106D931E45717C94DBC0F3FF6608CB609C4DA4860C8C48EE67CB304470203010001</span><br><span class="line"> public-key-code end</span><br><span class="line"> peer-public-key end</span><br><span class="line"><span class="hljs-comment"># 用户公钥认证</span></span><br><span class="line">ssh user admin service-type stelnet authentication-type publickey assign publickey pub</span><br><span class="line">ssh user root service-type stelnet authentication-type publickey assign publickey upyun</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># acl过滤</span></span><br><span class="line">acl number 2000</span><br><span class="line">description Login IP Control</span><br><span class="line">rule 1 permit <span class="hljs-built_in">source</span> 192.168.0.0 0.0.255.255</span><br><span class="line">rule 5 permit <span class="hljs-built_in">source</span> 115.238.93.82 0</span><br><span class="line">rule 10 permit <span class="hljs-built_in">source</span> 115.231.100.64 0.0.0.63</span><br><span class="line">rule 15 permit <span class="hljs-built_in">source</span> 121.52.226.192 0.0.0.63</span><br><span class="line">rule 20 permit <span class="hljs-built_in">source</span> 115.238.54.160 0.0.0.15</span><br><span class="line">rule 25 permit <span class="hljs-built_in">source</span> 124.160.114.192 0.0.0.15</span><br><span class="line">rule 30 permit <span class="hljs-built_in">source</span> 106.186.117.158 0.0.0.255</span><br><span class="line">rule 35 permit <span class="hljs-built_in">source</span> 157.119.232.0  0.0.0.31</span><br><span class="line">rule 40 permit <span class="hljs-built_in">source</span> 218.205.64.19 0.0.0.31</span><br><span class="line">rule 45 permit <span class="hljs-built_in">source</span> 112.17.251.0 0.0.0.31</span><br><span class="line">rule 50 permit <span class="hljs-built_in">source</span> 121.52.250.193 0.0.0.31</span><br><span class="line">rule 55 permit <span class="hljs-built_in">source</span> 183.131.0.65 0.0.0.31</span><br><span class="line">rule 60 permit <span class="hljs-built_in">source</span> 43.230.89.160 0.0.0.31</span><br><span class="line">rule 65 permit <span class="hljs-built_in">source</span> 111.1.32.0 0.0.0.127</span><br><span class="line">rule 70 permit <span class="hljs-built_in">source</span> 115.231.97.0 0.0.0.31</span><br><span class="line">rule 1000 deny <span class="hljs-built_in">source</span> any</span><br><span class="line"></span><br><span class="line">quit</span><br><span class="line">undo ip http <span class="hljs-built_in">enable</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># ssh过滤</span></span><br><span class="line">ssh server <span class="hljs-built_in">enable</span></span><br><span class="line">ssh server acl 2000</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 接口过滤</span></span><br><span class="line">user-interface vty 0 4</span><br><span class="line">acl 2000 inbound</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># snmp监控</span></span><br><span class="line">snmp-agent</span><br><span class="line">snmp-agent <span class="hljs-built_in">local</span>-engineid 800063A203</span><br><span class="line">snmp-agent community <span class="hljs-built_in">read</span> hgE6ofdZ3b</span><br><span class="line">snmp-agent sys-info version v2c v3 </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 机器时间同步</span></span><br><span class="line">ntp-service unicast-server 218.189.210.4 <span class="hljs-built_in">source</span> Vlan-interface 1</span><br><span class="line">ntp-service unicast-server 137.189.4.10 <span class="hljs-built_in">source</span> Vlan-interface 1</span><br><span class="line">clock timezone beijing add 8</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 路由追踪</span></span><br><span class="line">ip ttl-expires <span class="hljs-built_in">enable</span></span><br><span class="line">ip unreachables <span class="hljs-built_in">enable</span></span><br><span class="line">ipv6 unreachables <span class="hljs-built_in">enable</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="二层环路检测配置"><a href="#二层环路检测配置" class="headerlink" title="***二层环路检测配置"></a>***二层环路检测配置</h2><p>h3c 5130配置</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">loopback-detection global <span class="hljs-built_in">enable</span> vlan all</span><br><span class="line"><span class="hljs-comment"># 端口定时器</span></span><br><span class="line">shutdown-interval 120 </span><br><span class="line"><span class="hljs-comment"># 环路检测报文发送周期</span></span><br><span class="line">loopback-detection interval-time 5</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 接口内部配置</span></span><br><span class="line"><span class="hljs-comment"># 环路检测接口配置</span></span><br><span class="line">loopback-detection action shutdown</span><br><span class="line">loopback-detection <span class="hljs-built_in">enable</span> vlan all</span><br></pre></td></tr></tbody></table></figure>
+
+<p>h3c 5120配置</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">loopback-detection multi-port-mode <span class="hljs-built_in">enable</span></span><br><span class="line">loopback-detection <span class="hljs-built_in">enable</span></span><br><span class="line"><span class="hljs-comment"># 端口定时器</span></span><br><span class="line">shutdown-interval 120 </span><br><span class="line"><span class="hljs-comment"># 环路检测报文发送周期</span></span><br><span class="line">loopback-description interval-time 5</span><br><span class="line"><span class="hljs-comment"># 环路检测接口配置</span></span><br><span class="line">loopback-detection action shutdown</span><br><span class="line">loopback-detection <span class="hljs-built_in">enable</span> vlan all</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="走二层与走三层的关系"><a href="#走二层与走三层的关系" class="headerlink" title="走二层与走三层的关系"></a>走二层与走三层的关系</h2><p>交换机的二三层决定取决于OSI模型 ，二层走数据链路层 三层在二层基础上添加网络层<br>另外交换机是否走三层，应该取决于网络的规划</p>
+<p><font color="blue">首先是二层</font><br>交换机走二层，路由在核心交换机上，不转发多网段的数据(Vlan)<br>数据走数据链路层<br>以上说明二层交换机不能跨网段传输信息，在划分vlan的情况下，只能走同vlan下的数据</p>
+<p><font color="red">需要测试</font></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 在同vlan下，不通网段ip需要默认路由？</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 在同vlan下，同网段ip不需要默认路由？  </span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 静态路由的功能除了 规定流量转发还有什么？</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>静态路由指向核心交换机上的网关</p>
+<p><font color="blue">其次是三层交换机</font><br>三层交换机就是在二层交换机的基础上加了路由功能，交换机走三层，路由在当前三层交换机上<br>三层交换机能转发多网段的数据,路由器转发数据是基于IP地址进行转发的！！而二层交换机是基于MAC地址转发的！！<br>让基于MAC地址转发的交换机实现基于IP地址转发  ===> 三层交换机</p>
+<p>三层交换机可以转发多网段的数据，不局限于同vlan下的数据转发，</p>
+<p>静态路由指向网关</p>
+<p>虽然三层交换机有路由功能，但不能完全取代路由器，基础原理不同</p>
+<h3 id="二层架构于三层架构的区别"><a href="#二层架构于三层架构的区别" class="headerlink" title="二层架构于三层架构的区别"></a>二层架构于三层架构的区别</h3><p><a href="https://blog.51cto.com/fenggao/1582958" target="_blank" rel="noopener">https://blog.51cto.com/fenggao/1582958</a><br><a href="https://www.cnblogs.com/sunada2005/articles/2666902.html" target="_blank" rel="noopener">https://www.cnblogs.com/sunada2005/articles/2666902.html</a></p>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>比如你现在有两台交换机 A  B<br>A 作为核心交换机<br>B 作为核心机下面的机器</p>
+<p>要走二层的话，则同vlan走个静态就ok了</p>
+<p>要走三层的话，也就是说B下面有多个网段的机器 两台机器的vlan是不需要相同的，三层交换机会动态配置</p>
+<h2 id="福建厦门联通"><a href="#福建厦门联通" class="headerlink" title="福建厦门联通"></a>福建厦门联通</h2><p>CUN-FJ-XMN-S01<br><img src="http://img.noback.top/2020-01-02-11-23-28.png" alt="2020-01-02-11-23-28"><br>如图以上信息</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ip信息  36.248.208.224/27</span><br><span class="line">机器信息 15台1U服务器  1台5130交换机(52口)  2个万兆多模  30根网线 16根电源线</span><br><span class="line"></span><br><span class="line">--></span><br><span class="line">--></span><br><span class="line">--></span><br><span class="line">也就是说 15台服务器每台2根网线  5130交换机前面30个电口做汇聚</span><br><span class="line">interface bridge-aggregation 1</span><br><span class="line">interface GigabitEthernet1/0/1</span><br><span class="line">port link-aggregation group 1</span><br><span class="line">interface GigabitEthernet1/0/2</span><br><span class="line">port link-aggregation group 1</span><br><span class="line"><span class="hljs-comment"># 可以用脚本生成</span></span><br><span class="line">两个万兆多模，交换机上联接入一个，上联一个</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="走二层"><a href="#走二层" class="headerlink" title="****走二层"></a>****走二层</h2><h3 id="不走vlan1-指定vlan-2250"><a href="#不走vlan1-指定vlan-2250" class="headerlink" title="不走vlan1 指定vlan 2250"></a>不走vlan1 指定vlan 2250</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 配置vlan2250</span></span><br><span class="line">vlan 2250</span><br><span class="line">int vlan-interface 2250</span><br><span class="line">ip address 36.248.208.226 255.255.255.224</span><br><span class="line"><span class="hljs-comment"># 端口汇聚</span></span><br><span class="line">interface bridge-aggregation 1</span><br><span class="line">interface GigabitEthernet2/0/1</span><br><span class="line">port link-aggregation group 1</span><br><span class="line">interface GigabitEthernet2/0/2</span><br><span class="line">port link-aggregation group 1</span><br><span class="line">...</span><br><span class="line">int range Bridge-Aggregation 1 to Bridge-Aggregation 15</span><br><span class="line">port access vlan 2250</span><br><span class="line"><span class="hljs-comment"># 配置上联口</span></span><br><span class="line">interface ten1/0/49</span><br><span class="line">port link-type trunk <span class="hljs-comment"># 接入trunk模式，对应trunk模式</span></span><br><span class="line">undo port trunk permit vlan 1</span><br><span class="line">port trunk permit vlan 2250</span><br><span class="line"><span class="hljs-comment"># 关闭端口stp生成树功能</span></span><br><span class="line">int range g1/0/1 to g1/0/30 </span><br><span class="line">undo stp <span class="hljs-built_in">enable</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 二层环路检测配置</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="四川成都联通"><a href="#四川成都联通" class="headerlink" title="四川成都联通"></a>四川成都联通</h2><p>CMN-SC-CTU4-S01<br><img src="http://img.noback.top/2020-01-02-11-24-20.png" alt="2020-01-02-11-24-20"><br>ZA-16030782    1 2 口<br>ZA-16030781    3 4 口<br>ZA-16031259    5 6 口<br>ZA-16031257    7 8 口<br>ZA-16030285    9 10 口<br>ZA-15041213    11 12 口<br>ZA-15041819    13 14 口<br>ZA-15041852    15 16 口<br>ZA-15070367    17 18 口<br>ZA-19010018    19 20 口</p>
+<p>6300   47 48上联口</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 走三层</span></span><br><span class="line">10 台交换机 汇聚 走1-20口</span><br><span class="line"> 走47 48口 <span class="hljs-comment"># 这个需要问，图里没给</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="走三层"><a href="#走三层" class="headerlink" title="*****走三层"></a>*****走三层</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 基础配置 复制粘贴</span></span><br><span class="line"><span class="hljs-comment"># 配置vlan 200 201</span></span><br><span class="line">vlan 200</span><br><span class="line">int vlan-interface 200</span><br><span class="line">ip address 117.172.4.50 255.255.255.252</span><br><span class="line">vlan 201 </span><br><span class="line">int vlan-interface 201</span><br><span class="line">ip address 117.172.4.54 255.255.255.252</span><br><span class="line">vlan 1</span><br><span class="line">int vlan-interface 1</span><br><span class="line">ip address 117.172.22.129 255.255.255.224</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 配置静态路由</span></span><br><span class="line">ip route-static 0.0.0.0 0 117.172.4.49</span><br><span class="line">ip route-static 0.0.0.0 0 117.172.4.53</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 配置上联</span></span><br><span class="line">int ten 1/0/47</span><br><span class="line">port access vlan 200</span><br><span class="line">int ten 1/0/49</span><br><span class="line">port access vlan 201</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 二层环路检测配置</span></span><br></pre></td></tr></tbody></table></figure>
+
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/03/blog_back_new/linux/httpd%E6%9C%8D%E5%8A%A1/"><i class="fas fa-angle-double-right"></i>httpd服务</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-03T09:18:50.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-03</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T04:04:26.474Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    5 minutes read (About 741 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h2 id="apache-http-server"><a href="#apache-http-server" class="headerlink" title="apache http server"></a>apache http server</h2><p>Apache HTTP Server（简称Apache）是Apache软件基金会的一个开放源码的网页服务器，可以在大多数计算机操作系统中运行，由于其多平台和安全性被广泛使用，是最流行的Web服务器端软件之一。它快速、可靠并且可通过简单的API扩展，将Perl/Python等解释器编译到服务器中。</p>
+<p><font color="blue">  在Apache中，其配置文件目录为“/etc/httpd/conf/httpd.conf”，这里面包括设置网站资源的存放目录及一些相关的配置。</font></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装http</span></span><br><span class="line">yum install httpd </span><br><span class="line"><span class="hljs-comment"># 开启服务</span></span><br><span class="line">systemctl start httpd</span><br><span class="line"><span class="hljs-comment"># 检查httpd服务状态</span></span><br><span class="line">systemctl status httpd</span><br><span class="line"><span class="hljs-comment"># 查看端口状态 netstat -anutp | grep  80</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="目录介绍"><a href="#目录介绍" class="headerlink" title="目录介绍"></a>目录介绍</h3><p>配置文件目录为“/etc/httpd/conf/httpd.conf”</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost httpd]<span class="hljs-comment"># ls -1</span></span><br><span class="line">conf  <span class="hljs-comment"># 存放服务的主配置文件</span></span><br><span class="line">conf.d <span class="hljs-comment"># 存放apache的主页信息</span></span><br><span class="line">conf.modules.d</span><br><span class="line">logs</span><br><span class="line">modules</span><br><span class="line">run</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="配置信息"><a href="#配置信息" class="headerlink" title="配置信息"></a>配置信息</h3><p>配置文件目录为“/etc/httpd/conf/httpd.conf”</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost httpd]<span class="hljs-comment"># vi /etc/httpd/conf/httpd.conf</span></span><br><span class="line">ServerRoot <span class="hljs-string">"/etc/httpd"</span>  <span class="hljs-comment">#apache配置文件的根目录</span></span><br><span class="line">Timeout 60  <span class="hljs-comment">#超时时间，即连接服务端在60秒内没有任何操作，即自动断开</span></span><br><span class="line">Listen 80   <span class="hljs-comment">#监听的端口</span></span><br><span class="line">ServerAdmin root@localhost  <span class="hljs-comment">#设置管理员，e-mail 地址</span></span><br><span class="line">ServerName www.example.com:80  <span class="hljs-comment">#服务器主机名.</span></span><br><span class="line"></span><br><span class="line">DocumentRoot <span class="hljs-string">"/var/www/html"</span>   <span class="hljs-comment">#网站页面根目录,存放文档的地方</span></span><br><span class="line"><Directory <span class="hljs-string">"/var/www/html"</span>> </span><br><span class="line">Options Indexes FollowSymLinks <span class="hljs-comment">#O目录浏览 #Followsymlinks:可以用连接，要是想要禁止显示文件目录，可以直接在‘indexes’前加‘-’。</span></span><br><span class="line">    AllowOverride None</span><br><span class="line">    Order allow,deny <span class="hljs-comment">#目录与访问的控制</span></span><br><span class="line">    Allow from all </span><br><span class="line"></Directory></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 别名</span></span><br><span class="line">Alias /icons/ <span class="hljs-string">"/var/www/icons/"</span> <span class="hljs-comment">#别名和别名目录</span></span><br><span class="line"><Directory <span class="hljs-string">"/var/www/icons"</span>></span><br><span class="line">    Options Indexes MultiViews FollowSymLinks</span><br><span class="line">    AllowOverride None</span><br><span class="line">    Order allow,deny</span><br><span class="line">    Allow from all</span><br><span class="line"></Directory></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 默认页面</span></span><br><span class="line"></Directory> Options Indexes  <span class="hljs-comment">#当一个目录没有默认首页时，允许显示此目录列表</span></span><br><span class="line"><Directory /></span><br><span class="line">    Options FollowSymLinks</span><br><span class="line">    AllowOverride None</span><br><span class="line"></Directory></span><br><span class="line">--</span><br><span class="line">DirectoryIndex index.html index.html.var <span class="hljs-comment">#指定默认首页</span></span><br><span class="line">AddDefaultCharset UTF-8   <span class="hljs-comment">#设置服务器的默认编码为： UTF-8</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="python3构建http服务"><a href="#python3构建http服务" class="headerlink" title="python3构建http服务"></a>python3构建http服务</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m http.server</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="维护-amp-错误"><a href="#维护-amp-错误" class="headerlink" title="维护&错误"></a>维护&错误</h2><h3 id="http服务已开启，但是无法访问网站"><a href="#http服务已开启，但是无法访问网站" class="headerlink" title="http服务已开启，但是无法访问网站"></a>http服务已开启，但是无法访问网站</h3><ol>
+<li>在本地查看httpd服务<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:80</span><br></pre></td></tr></tbody></table></figure></li>
+<li>看端口，如果是在公司内部，查看是否有部分ip端口被封 比如80 8080 88 等等<br>如果是以上情况，修改httpd 配置文件中的监听端口，重启http服务即可</li>
+<li>永久关闭selinux ,需要重启<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/selinux/config</span><br><span class="line">SELINUX=disabled</span><br></pre></td></tr></tbody></table></figure></li>
+<li>临时关闭<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setenforce 0</span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<p>可能会出现的报错信息<br>(13)Permission denied: make_sock: could not bind to address [::]:88<br>—-> 关闭selinux即可</p>
+<h3 id="检测端口是否被开启"><a href="#检测端口是否被开启" class="headerlink" title="检测端口是否被开启"></a>检测端口是否被开启</h3><p>使用telnet登陆的方式测试服务器端口是否开放</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 未开放状态下的返回情况</span></span><br><span class="line">➜  ~ telnet 10.0.5.92 8888</span><br><span class="line">Trying 10.0.5.92...</span><br><span class="line">telnet: Unable to connect to remote host: Connection refused</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 开放状态下的返回情况</span></span><br><span class="line">➜  ~ telnet 10.0.5.91 8888</span><br><span class="line">Trying 10.0.5.91...</span><br><span class="line">Connected to 10.0.5.91.</span><br><span class="line">Escape character is <span class="hljs-string">'^]'</span>.</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h3><p>端口未被开放<br>———> iptables -I INPUT -p tcp –dport 8888 -j ACCEPT</p>
+<h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><p><a href="https://www.linuxidc.com/Linux/2017-05/143468.htm" target="_blank" rel="noopener">https://www.linuxidc.com/Linux/2017-05/143468.htm</a></p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/12/29/blog_back_new/ansible/ansible%E5%9F%BA%E7%A1%80/"><i class="fas fa-angle-double-right"></i>ansible基础</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:54:37.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T03:59:55.715Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/ansible/">ansible</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    22 minutes read (About 3288 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h2 id="主机清单-inventory"><a href="#主机清单-inventory" class="headerlink" title="主机清单 inventory"></a>主机清单 inventory</h2><p>ansible中添加主机清单的几种形式</p>
+<ol>
+<li><p>直接在命令行中指定ip,-k登陆时指定密码</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ansible 192.168.20.1 -m ping -k</span><br><span class="line">ansible 192.168.20.1,192.168.20.2 -m ping -k</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>在配置文件中指定  默认文件夹/etc/ansible/hosts</p>
+</li>
+</ol>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[name1]</span><br><span class="line">192.168.20.1</span><br><span class="line">[name2]</span><br><span class="line">192.168.20.2</span><br><span class="line">ansible name1 -m ping -k <span class="hljs-comment"># 指定分组</span></span><br><span class="line">ansible all -m ping -k <span class="hljs-comment"># 指定所有</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src="http://img.noback.top/blog/img/20190902/ansible2.png" alt><br>由于ansible是通过ssh访问被执行端主机的，因此没有ssh的权限是无法完成任务的，即使这里的命令是ping，但依旧要走ssh的流程<br>这里的ping并不是linux下的ping ,而是ansible工具下面的ping模块</p>
+<ol start="3">
+<li><p>不使用默认文件下，自定义文件夹</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"192.168.20.1"</span>  >> xx</span><br><span class="line">ansible -i xx all -m ping -k</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>在配置组里面中直接确认登陆用户</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"192.168.20.1 ansible_ssh_user=root ansible_ssh_pass=upyun123"</span></span><br><span class="line">ansible -i xx all -m ping</span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<hr>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><ol>
+<li>local_tmp是本地的执行指令</li>
+<li>remote_tmp是远程的执行指令<br>当用户使用ansible控制被控端执行指令的时候，他会先将内容放在local_tmp文件中，然后上传到被控端并生成remote_tmp上执行。执行完成之后会删除这两个tmp文件</li>
+<li>library = /usr/share/my_modules/ 库存放地址</li>
+<li>forks = 5 默认并发数</li>
+<li>sudo_user = root 默认sudo 用户</li>
+<li>ask_sudo_pass = True  每次执行ansible是否询问ssh密码</li>
+<li>ask_pass = True</li>
+<li>remote_port = 22</li>
+<li>host_key_checking = False 检查对应服务器的host_key —–>建议取消注释</li>
+<li>log_path=/var/log/ansible.log 日志文件 </li>
+</ol>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h4 id="ansible-doc-说明文档"><a href="#ansible-doc-说明文档" class="headerlink" title="ansible-doc 说明文档"></a>ansible-doc 说明文档</h4><p>ansible-doc [options] [module..]<br>-a 显示所有模块的文档 参数尽量放在单引号里面<br>-l –list 列出可用模块<br>-s –snippet xxx 显示xxx模块的playbook片段</p>
+<p>role扩展模块<br>ansible-galaxy专门有一个网站提供不同用户上传的”角色”<br>地址:<a href="https://galaxy.ansible.com/" target="_blank" rel="noopener">https://galaxy.ansible.com/</a></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 列出所有已安装的galaxy</span></span><br><span class="line">ansible-galaxy list</span><br><span class="line"><span class="hljs-comment"># 安装galaxy</span></span><br><span class="line">ansible-galaxy install xxx</span><br><span class="line"><span class="hljs-comment"># 删除galaxy</span></span><br><span class="line">ansible-galaxy remove xxx</span><br></pre></td></tr></tbody></table></figure>
+<p>role默认安装路径为/etc/ansible/roles/下</p>
+<h4 id="ansible"><a href="#ansible" class="headerlink" title="ansible"></a>ansible</h4><p>列出指定组别的host列表<br>ansible appsevr –list-hosts<br>列出所有列表的host<br>ansible all –list-hosts<br>ansible all –list<br>支持通配符匹配host<br>ansible *serv –list<br>多IP批量执行<br>ansible 192.168.0.1,192.168.0.2 -m ping<br>多组别批量执行(逻辑或关系,合并，A和B所有)<br>ansible websevr:appsevr -m ping<br>(逻辑与关系,区分,在A中,也在B中)<br>ansible “websevr:&appsevr” -m ping<br>(逻辑非,在A中不在B中,此处必须要用单引号)<br>ansible ‘websevr:!appsevr’ -m ping </p>
+<p>ansible <host-pattern> [-m module_name] [-a args]<br>–version 显示版本<br>-m module 指定模板,默认为command<br>-v 详细过程 -vv -vvv更详细<br>–list –list-hosts 显示主机列表，<br>-k –ask-pass 提示输入ssh连接密码，默认为key验证<br>-K –ask-become-pass 提示输入sudo时的口令<br>-C –check 检查，并不执行<br>-T –timeout=TIMEOUT 执行命令的超时时间,默认为10s<br>-u –user=REMOTE_USER 执行远程执行的用户<br>-b –become 代替旧版的sudo切换 (默认为ansible.cfg里面设置的用户,一般为root)<br>-a 指定参数</host-pattern></p>
+<h4 id="ansible-m命令模块"><a href="#ansible-m命令模块" class="headerlink" title="ansible -m命令模块"></a>ansible -m命令模块</h4><h5 id="command"><a href="#command" class="headerlink" title="command"></a>command</h5><p>在command中,我们可以创建文件，但是对于文件的操作,有一个专门的file模块</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 创建一个文件</span></span><br><span class="line">ansible -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'mkdir \data'</span></span><br><span class="line"><span class="hljs-comment"># 查看文件是否创建成功</span></span><br><span class="line">ansible -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'ls -al \data'</span></span><br><span class="line"><span class="hljs-comment"># 查看command帮助</span></span><br><span class="line">ansible-doc <span class="hljs-built_in">command</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h5><p>如果-a 后带的参数中出现 $ < > | ;  & 等字符，command是不支持的，需要用到shell 模块</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 输出主机名字</span></span><br><span class="line">ansible 192.168.1.3 -m shell -a <span class="hljs-string">'echo $HOSTNAME'</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="ansible命令执行流程"><a href="#ansible命令执行流程" class="headerlink" title="ansible命令执行流程"></a>ansible命令执行流程</h2><p>1.加载自己的配置文件 默认为/etc/ansible/ansible.cfg<br>2.加载自己对应的模块文件,如command<br>3.通过ansible将模块或命令生成对应的临时py文件,并将文件传输至远程服务器的对应执行用户$HOME/.ansible/tmp/ansible-tmp-数字/xxx.py文件<br>4.增加文件的执行权限<br>5.执行并返回结果<br>6.删除临时py文件,sleep 0退出<br>执行状态:<br>绿色 执行成功并且不需要做改变的操作<br>黄色 执行成功但是对目标主机做了修改<br>红色 执行失败<br>(颜色内容在/etc/ansible.cfg里面修改)</p>
+<p><strong>生成ssh</strong><br>ssh-keygen<br><strong>复制ssh密钥到其他主机</strong><br>ssh-copy-id 主机ip</p>
+<hr>
+<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>由于Ansible的模块过多，将近有1378个模块数量,但是每个模块的介绍以及使用方法都存放在/usr/bin/ansible-doc当中</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看当前ansible模块数量</span></span><br><span class="line">ansible-doc -l | wc -l</span><br><span class="line"><span class="hljs-comment"># ansible-doc的使用方法</span></span><br><span class="line">ansible-doc [options] [module..]</span><br><span class="line">-a 显示所有模块的文档 参数尽量放在单引号里面</span><br><span class="line">-l --list 列出可用模块</span><br><span class="line">-s --snippet xxx 显示xxx模块的playbook片段</span><br><span class="line"><span class="hljs-comment"># 使用-m指定模块，默认为command</span></span><br><span class="line">ansible -m <span class="hljs-built_in">command</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="command-1"><a href="#command-1" class="headerlink" title="command"></a>command</h3><p>在command中,我们可以创建文件，但是对于文件的操作,有一个专门的file模块</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 创建一个文件</span></span><br><span class="line">ansible -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'mkdir \data'</span></span><br><span class="line"><span class="hljs-comment"># 查看文件是否创建成功</span></span><br><span class="line">ansible -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'ls -al \data'</span></span><br><span class="line"><span class="hljs-comment"># 查看command帮助</span></span><br><span class="line">ansible-doc <span class="hljs-built_in">command</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="shell-1"><a href="#shell-1" class="headerlink" title="shell"></a>shell</h3><p>如果-a 后带的参数中出现 $ < > | ;  & 等字符，command是不支持的，需要用到shell 模块</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 输出主机名字</span></span><br><span class="line">ansible 192.168.1.3 -m shell -a <span class="hljs-string">'echo $HOSTNAME'</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="script"><a href="#script" class="headerlink" title="script"></a>script</h3><p>既然ansible可以对多台主机进行批量的操作，那往往我们会遇到一个场景，即需要我们在多台主机上执行一个脚本，这个场景下我们有两个方法:<br>1.将脚本文件复制到多台主机上后,调用ansible使用<br>2.使用script模块，仅在控制端存在脚本文件即可</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 方法一,先将文件发到对应控制端主机</span></span><br><span class="line">ansible 192.168.1.3 -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'/root/ansible_test.sh'</span></span><br><span class="line"><span class="hljs-comment"># 方法二</span></span><br><span class="line">root@DESKTOP-GT1K5L0:~<span class="hljs-comment"># ansible 192.168.1.3 -m script -a '/root/ansible_test.sh'</span></span><br><span class="line">192.168.1.3 | SUCCESS => {</span><br><span class="line">    <span class="hljs-string">"changed"</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">    <span class="hljs-string">"rc"</span>: 0,</span><br><span class="line">    <span class="hljs-string">"stderr"</span>: <span class="hljs-string">"Shared connection to 192.168.1.3 closed"</span>,</span><br><span class="line">    <span class="hljs-string">"stdout"</span>: <span class="hljs-string">"to do it,ansible"</span>,</span><br><span class="line">    <span class="hljs-string">"stdout_lines"</span>: [</span><br><span class="line">        <span class="hljs-string">"to do it,ansible"</span></span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="Copy"><a href="#Copy" class="headerlink" title="Copy"></a>Copy</h3><p>在上面我们提到了从控制端传输文件到被控端,既然是批量的操作,那么在ansible中同样存在一个copy的模块,可以用来传输文件<br>场景: 关闭多台主机的selinux<br>流程: 复制控制端selinux的配置文件，修改后发送到被控制端</p>
+<p>注意:这里的ho表示的是一个主机群 在/etc/ansible/hosts中已经添加了</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看控制端selinux状态</span></span><br><span class="line">getenforce</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查看被控端selinux状态</span></span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># ansible ho -m command -a 'getenforce'</span></span><br><span class="line">192.168.1.6 | SUCCESS | rc=0 >></span><br><span class="line">Enforcing</span><br><span class="line">192.168.1.7 | SUCCESS | rc=0 >></span><br><span class="line">Enforcing</span><br><span class="line">192.168.1.5 | SUCCESS | rc=0 >></span><br><span class="line">Enforcing</span><br><span class="line">192.168.1.4 | SUCCESS | rc=0 >></span><br><span class="line">Enforcing</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 复制selinux配置文件，并修改配置</span></span><br><span class="line">cp /etc/selinux/config  .</span><br><span class="line">SELINUX=disabled</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 复制配置文件到被控端指定路径,并做好备份</span></span><br><span class="line">ansible ho -m copy -a<span class="hljs-string">'src=/root/hzj/config dest=/etc/selinux/config backup=yes'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查看被控端是否生成备份文件</span></span><br><span class="line">ansible ho -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'ls /etc/selinux/'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 重启</span></span><br><span class="line">ansible ho -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'reboot'</span></span><br><span class="line"><span class="hljs-comment"># 查看被控端selinux是否修改完成</span></span><br><span class="line">ansible ho -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'getenforce'</span></span><br><span class="line">[root@localhost hzj]<span class="hljs-comment"># ansible ho -m command -a 'getenforce'</span></span><br><span class="line">192.168.1.7 | SUCCESS | rc=0 >></span><br><span class="line">Disabled</span><br><span class="line">192.168.1.4 | SUCCESS | rc=0 >></span><br><span class="line">Disabled</span><br><span class="line">192.168.1.5 | SUCCESS | rc=0 >></span><br><span class="line">Disabled</span><br><span class="line">192.168.1.6 | SUCCESS | rc=0 >></span><br><span class="line">Disabled</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h3><p>ansible支持从被控端抓取文件到控制端,抓取后的格式为\example.com\dest<br>src表示抓取路径<br>dest表示存放路径</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 复制所有主机的日志到控制端</span></span><br><span class="line">ansible ho -m fetch -a <span class="hljs-string">'src=/var/log/messages dest=/root/data'</span></span><br></pre></td></tr></tbody></table></figure>
+<p>但是fetch仅支持单个文件的抓取，当我们想要抓取多个日志文件时，可以先进行打包</p>
+<h3 id="file"><a href="#file" class="headerlink" title="file"></a>file</h3><p>设置文件的属性</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 创建文件</span></span><br><span class="line">ansible ho -m file -a <span class="hljs-string">'name=/data/f3 state=touch'</span></span><br><span class="line"><span class="hljs-comment"># 删除文件</span></span><br><span class="line">ansible ho -m file -a <span class="hljs-string">'name=/data/f3 state=absent'</span></span><br><span class="line"><span class="hljs-comment"># 创建文件夹</span></span><br><span class="line">ansible ho -m file -a <span class="hljs-string">'name=/data/f3 state=directory'</span></span><br><span class="line"><span class="hljs-comment"># 删除文件夹</span></span><br><span class="line">ansible ho -m file -a <span class="hljs-string">'name=/data/f3 state=absent'</span></span><br><span class="line"><span class="hljs-comment"># 创建软连接</span></span><br><span class="line">ansible ho -m file -a <span class="hljs-string">'src=/root/test name=/data/fq state=link'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 但是需要注意的是如果你创建了文件f3 当你创建文件夹f3的时候会出现错误</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="hostname"><a href="#hostname" class="headerlink" title="hostname"></a>hostname</h3><p>修改主机名</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ansible ho -m hostname -a <span class="hljs-string">'name=node'</span></span><br><span class="line"><span class="hljs-comment"># 重启后生效</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="cron"><a href="#cron" class="headerlink" title="cron"></a>cron</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 给每台主机添加任务,name为注释</span></span><br><span class="line">ansible ho -m cron -a <span class="hljs-string">'minute=* weekday=1,3,5,7 job="usr/bin/wall message"  name=test'</span></span><br><span class="line"><span class="hljs-comment"># 取消任务</span></span><br><span class="line">ansible ho -m cron -a <span class="hljs-string">'disabled=true job="usr/bin/wall message" name=test'</span></span><br><span class="line"><span class="hljs-comment"># 重新启用</span></span><br><span class="line">ansible ho -m cron -a <span class="hljs-string">'disabled=no job="usr/bin/wall message" name=test'</span></span><br><span class="line"><span class="hljs-comment"># 删除某条任务</span></span><br><span class="line">ansible ho -m corn -a <span class="hljs-string">'jon="usr/bin/wall message" state=absent'</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># name指定包  state指定状态</span></span><br><span class="line">ansible ho -m yum -a <span class="hljs-string">'name=httpd state=latest'</span> 安装</span><br><span class="line">ansible ho -m yum -a <span class="hljs-string">'name=httpd state=absent'</span> 删除</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 关闭服务  name指定服务名称  state指定状态</span></span><br><span class="line">ansible ho -m service -a <span class="hljs-string">'name=httpd state=stopped'</span></span><br><span class="line">ansible ho -m service -a <span class="hljs-string">'name=httpd state=started'</span></span><br><span class="line">ansible ho -m service -a<span class="hljs-string">'name=httpd state=reloaded'</span></span><br><span class="line">ansible ho -m service -a<span class="hljs-string">'name=httpd state=restarted'</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="User"><a href="#User" class="headerlink" title="User"></a>User</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ansible ho -m user -a <span class="hljs-string">'name=user comment="test user" uid=2048 home=/app/user group=root'</span></span><br><span class="line">ansible ho -m user -a <span class="hljs-string">'name=sysuser system=yes home=/app/syseser1'</span></span><br><span class="line">ansible ho -m user -a <span class="hljs-string">'name=user state=absent remove=yes'</span> 删除用户以及家目录等数据</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="playbook的编写"><a href="#playbook的编写" class="headerlink" title="playbook的编写"></a>playbook的编写</h2><p>随着工作的增加,单条ansible命令(adhoc)已经不能满足我们的需求.于是我们可以把多条ansible命令写入playbook中,让系统根据playbook中的顺序依次执行ansible。我们把它叫做剧本</p>
+<h3 id="Playbook的编写方式"><a href="#Playbook的编写方式" class="headerlink" title="Playbook的编写方式"></a>Playbook的编写方式</h3><p>Playbook的编写格式采用的是yaml语言<br>url: <a href="http://www.ruanyifeng.com/blog/2016/07/yaml.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/07/yaml.html</a><br>url2: <a href="https://www.jianshu.com/p/97222440cd08" target="_blank" rel="noopener">https://www.jianshu.com/p/97222440cd08</a><br>urs3: <a href="https://yaml.org/" target="_blank" rel="noopener">https://yaml.org/</a>  多种语言实现yaml</p>
+<p>简单的介绍一下yaml语言的使用</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. 在单一档案中,可以用连续的连字符(---)区分多个档案。另外，还有选择性的连续三个点号(...)用来表示档案结尾</span><br><span class="line">2. 次行开始正常写Playbook的内容，一般建议写明该playbook的功能</span><br><span class="line">3. 使用#号注释代码</span><br><span class="line">4. 缩进统一用tab</span><br><span class="line">5. 一个完整的代码块功能最少的元素需要包括name:task</span><br><span class="line">6. 一个name只能包括一个task</span><br><span class="line">7. yaml文件扩展名通常为yml或者yaml</span><br></pre></td></tr></tbody></table></figure>
+
+<p>playbook例子</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">- hosts: webservers</span><br><span class="line">  vars:</span><br><span class="line">    http_port: 80</span><br><span class="line">    max_clients: 200</span><br><span class="line">  remote_user: root</span><br><span class="line">  tasks:</span><br><span class="line">  - name: ensure apache is at the latest version</span><br><span class="line">    yum: pkg=httpd state=latest</span><br><span class="line">  - name: write the apache config file</span><br><span class="line">    template: src=/srv/httpd.j2 dest=/etc/httpd.conf</span><br><span class="line">    notify:</span><br><span class="line">    - restart apache</span><br><span class="line">  - name: ensure apache is running</span><br><span class="line">    service: name=httpd state=started</span><br><span class="line">  handlers:</span><br><span class="line">    - name: restart apache</span><br><span class="line">      service: name=httpd state=restarted</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>playbook核心元素</strong></p>
+<ul>
+<li>Hosts 执行的远程主机列表</li>
+<li>Tasks 任务集</li>
+<li>Varniables 内置变量或自定义变量在playbook中调用</li>
+<li>Templates 模板,可替换模板文件中的变量并实现一些简单逻辑的文件</li>
+<li>Handlers 和 notity 结合使用,由特定条件触发的操作，满足条件方才执行,否则不执行</li>
+<li>tags 标签  指定某条任务执行,用于选择运行playbook中的部分代码。ansible具有幂等性,因此会自动跳过没有变化的部分，即便如此，有些代码为测试其确实没有发生变化的时间<br>依然会很长。因此可以使用tags跳过一些代码片段。<br>ansible-playbook -t tagsname useradd.yml</li>
+</ul>
+<p>adhoc 和 playbook 对比</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># adhoc 改变主机名字</span></span><br><span class="line">ansible ho -m hostname -a <span class="hljs-string">'name=xxx'</span></span><br><span class="line"><span class="hljs-comment"># playboot 修改主机名字</span></span><br><span class="line">---</span><br><span class="line">- host: ho</span><br><span class="line">  remote_user: root</span><br><span class="line">  </span><br><span class="line">  tasks:</span><br><span class="line">  - name: hello</span><br><span class="line">    hostname: name=node</span><br></pre></td></tr></tbody></table></figure>
+<p>多条adhoc 和playbook对比</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># adhoc </span></span><br><span class="line">ansible ho -m file -a <span class="hljs-string">'name=/data/newfile state=touch'</span>  <span class="hljs-comment"># 创建文件</span></span><br><span class="line">ansible ho -m user -a <span class="hljs-string">'name=test2 system=yes shell=/sbin/nologin'</span> <span class="hljs-comment"># 创建用户</span></span><br><span class="line">ansible ho -m yum -a <span class="hljs-string">'name=httpd'</span> <span class="hljs-comment"># 安装httpd</span></span><br><span class="line">ansible ho -m copy -a <span class="hljs-string">'src=/var/www/html/index.html dest=/var/www/html'</span> <span class="hljs-comment"># 复制文件</span></span><br><span class="line">ansible ho -m service -a <span class="hljs-string">'name=httpd state=started enabled=yes'</span> <span class="hljs-comment"># 启动服务</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># playbook</span></span><br><span class="line">- hosts: ho</span><br><span class="line">  remote_user: root</span><br><span class="line">  </span><br><span class="line">  tasks:</span><br><span class="line">  - name: create file</span><br><span class="line">    file: name=/data/newfile state=touch</span><br><span class="line">  - name: create user</span><br><span class="line">    file: name=test2 system=yes shell=/sbin/nologin</span><br><span class="line">  - name: install httpd</span><br><span class="line">    yum: name=httpd</span><br><span class="line">  - name: copy file</span><br><span class="line">    copy: src=/var/www/html/index.html dest=/var/www/html</span><br><span class="line">  - name: start service</span><br><span class="line">    service: name=httpd state=started enabled=yes</span><br></pre></td></tr></tbody></table></figure>
+
+<p>shell脚本与playbook对比</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># shell脚本</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#!/bin/bash</span></span><br><span class="line"><span class="hljs-comment"># 安装Apache</span></span><br><span class="line">yum install --quiet -y httpd</span><br><span class="line"><span class="hljs-comment"># 复制配置文件</span></span><br><span class="line">cp /tmp/httpd.conf /etc/httpd/conf/httpd.conf</span><br><span class="line">cp /tmp/vhosts.conf /etc/httpd/conf.d/</span><br><span class="line"><span class="hljs-comment"># 启动Apache 并设置开机启动</span></span><br><span class="line">systemctl start httpd.service</span><br><span class="line">chkconfig httpd on</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># playbook</span></span><br><span class="line">---</span><br><span class="line">- host: all</span><br><span class="line">  tasks:</span><br><span class="line">   - name: <span class="hljs-string">"安装Apache"</span></span><br><span class="line">     yum: name=httpd</span><br><span class="line">   - name: <span class="hljs-string">"复制配置文件"</span></span><br><span class="line">     copy: src=/tmp/httpd.conf dest=/etc/httpd/conf/</span><br><span class="line">   - name: <span class="hljs-string">"复制文件"</span></span><br><span class="line">     copy: src=/tmp/vhosts.conf dest=/etc/httpd/conf.d/</span><br><span class="line">   - name: <span class="hljs-string">"启动Apache,并设置开机启动"</span></span><br><span class="line">     service: name=httpd state=started enabled=yes</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h3><p>play的主体部分是task list 。 task list 中的各任务按次序逐个在hosts中指定的所有主机上执行，即在所有主机上完成第一个任务后在开始第二个，在运行自上而下某一个playbook时，如果中途发生错误，所有已执行任务都将回滚，因此，在更正playbook后重新执行一次即可</p>
+<p><strong>忽略错误信息</strong></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">task:</span><br><span class="line">- name: copy file</span><br><span class="line">  copy: src=/root/file dest=/root/ || /bin/<span class="hljs-literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 或者</span></span><br><span class="line">task:</span><br><span class="line">- name: copy file</span><br><span class="line">  copy: src=/root/file dest=/root/</span><br><span class="line">  ignore_erros: True</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="playbook运行方式"><a href="#playbook运行方式" class="headerlink" title="playbook运行方式"></a>playbook运行方式</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ansible-playbook <xxx.yml> [options]</span><br><span class="line">--check 只检测可能会发生的改变，但不真正执行操作</span><br><span class="line">--list-hosts 列出运行任务的主机</span><br><span class="line">--<span class="hljs-built_in">limit</span> 主机列表 只针对主机列表中的主机执行</span><br><span class="line">-v 显示过程 -vv -vvv显示更详细</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Playbook剧本"><a href="#Playbook剧本" class="headerlink" title="Playbook剧本"></a>Playbook剧本</h3><p>ansible-playbook是ansible中的一个工具,存放在/usr/bin/ansible-playbook</p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><ul>
+<li><p>模块<br><a href="https://www.cnblogs.com/f-ck-need-u/p/7550603.html" target="_blank" rel="noopener">https://www.cnblogs.com/f-ck-need-u/p/7550603.html</a><br><a href="https://docs.ansible.com/ansible/2.6/modules/list_of_all_modules.html" target="_blank" rel="noopener">https://docs.ansible.com/ansible/2.6/modules/list_of_all_modules.html</a></p>
+</li>
+<li><p>ansible模块开发<br><a href="https://www.jianshu.com/p/f72b79b0d3f9" target="_blank" rel="noopener">https://www.jianshu.com/p/f72b79b0d3f9</a>  </p>
+</li>
+</ul>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/12/29/blog_back_new/ansible/ansible%E6%89%B9%E9%87%8F%E6%8E%A7%E5%88%B6%E4%BA%A4%E6%8D%A2%E6%9C%BA/"><i class="fas fa-angle-double-right"></i>ansible总结</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:54:12.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T03:59:55.716Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/ansible/">ansible</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    2 minutes read (About 233 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="登陆h3c交换机"><a href="#登陆h3c交换机" class="headerlink" title="登陆h3c交换机"></a>登陆h3c交换机</h1><p>h3c交换机的模块支持度极低，网上大多都是思科交换机的模块，很多要用到H3c的都是自己写的，感觉很坑</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h2><p>现在又一个问题就是命令行使用raw模块可以登陆交换机，并且输出执指令 返回结果，但是在ansible-playbook中不行</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"10.0.5.124"</span>  >> ./xx</span><br><span class="line">ansible -i xx all -m raw -a <span class="hljs-string">'system-view ;dis arp ;'</span></span><br></pre></td></tr></tbody></table></figure>
+<p>如上是可以的，但是如下的playbook则不行</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> first.yml << EOF</span><br><span class="line">  ---</span><br><span class="line">  - hosts: switch</span><br><span class="line"></span><br><span class="line">    tasks:</span><br><span class="line">    - name: add snmp</span><br><span class="line">      raw: <span class="hljs-string">"system-view ;"</span></span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">ansible-playbook first.yml</span><br></pre></td></tr></tbody></table></figure>
+
+<p>解决办法，既然playbook不行，那就切换成一条一条的命令行把</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> yy << EOF</span><br><span class="line">system-view ;</span><br><span class="line">display arp ;</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"10.0.5.124 ansible_ssh_user=admin ansible_ssh_pass=upyun123"</span> >> xx</span><br><span class="line"><span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> cmd;<span class="hljs-keyword">do</span> ansible -i xx -m raw -a <span class="hljs-string">"<span class="hljs-variable">$cmd</span>"</span> -u an -k ;<span class="hljs-keyword">done</span> < yy</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><p>python+yaml+jinja2 自动生成华三交换机配置<br><a href="https://www.jianshu.com/p/4937de3070aa" target="_blank" rel="noopener">https://www.jianshu.com/p/4937de3070aa</a></p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/12/29/blog_back_new/mysql/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%86%85%E5%AE%B9%E6%80%BB%E7%BB%93/"><i class="fas fa-angle-double-right"></i>数据库总结</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:52:59.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T03:59:55.718Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/mysql/">mysql</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    4 minutes read (About 604 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h2 id="登陆数据库"><a href="#登陆数据库" class="headerlink" title="登陆数据库"></a>登陆数据库</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh 10.0.6.55</span><br><span class="line">mysql -uroot -p</span><br><span class="line">>123456</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="mysql-基本操作语句"><a href="#mysql-基本操作语句" class="headerlink" title="mysql 基本操作语句"></a>mysql 基本操作语句</h2><p>数据库语句操作</p>
+<figure class="highlight sql hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">创建一个名为 tc 的数据库 <span class="hljs-keyword">create</span> <span class="hljs-keyword">database</span> tc;</span><br><span class="line">查看有哪些数据库 <span class="hljs-keyword">show</span> <span class="hljs-keyword">databases</span>; </span><br><span class="line">查看数据库的创建细节  <span class="hljs-keyword">show</span> <span class="hljs-keyword">create</span> <span class="hljs-keyword">database</span> tc;         </span><br><span class="line">创建一个使用gbk字符集的数据库 <span class="hljs-keyword">create</span> <span class="hljs-keyword">database</span> tc <span class="hljs-keyword">set</span> gck;</span><br><span class="line">修改字符集 <span class="hljs-keyword">alter</span> <span class="hljs-keyword">database</span> tc <span class="hljs-built_in">character</span> <span class="hljs-keyword">set</span> utf8;</span><br><span class="line">删除创建的某个数据库 <span class="hljs-keyword">drop</span> <span class="hljs-keyword">database</span> tc;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>表结构</p>
+<figure class="highlight sql hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">use</span> tc;  <span class="hljs-comment"># 切换数据库</span></span><br><span class="line"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> employee(_id <span class="hljs-built_in">int</span>,<span class="hljs-keyword">name</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">100</span>),gender <span class="hljs-built_in">varchar</span>(<span class="hljs-number">20</span>),birthday <span class="hljs-built_in">date</span>,entry_day <span class="hljs-built_in">date</span>,salary flot(<span class="hljs-number">8</span>,<span class="hljs-number">2</span>),<span class="hljs-keyword">resume</span> <span class="hljs-built_in">text</span>);  <span class="hljs-comment"># 创建员工信息表</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">show</span> <span class="hljs-keyword">tables</span>; <span class="hljs-comment"># 查看当前数据库中的所有表</span></span><br><span class="line"><span class="hljs-keyword">show</span> <span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> employee; <span class="hljs-comment"># 查看表的创建心结</span></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> employee <span class="hljs-keyword">add</span> image <span class="hljs-built_in">blob</span>; <span class="hljs-comment"># 在员工表上添加image列</span></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> employee <span class="hljs-keyword">modify</span> job <span class="hljs-built_in">varchar</span>(<span class="hljs-number">60</span>); <span class="hljs-comment"># 修改员工表中的job列，使其长度我饿60</span></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> employee <span class="hljs-keyword">drop</span> image; 删除image列</span><br><span class="line"><span class="hljs-keyword">rename</span> <span class="hljs-keyword">table</span> employee <span class="hljs-keyword">to</span> <span class="hljs-keyword">user</span>; 表名字修改为user</span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">user</span> <span class="hljs-built_in">character</span> <span class="hljs-keyword">set</span> gbk; 修改表的字符集为utf-8</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>查看表</p>
+<figure class="highlight sql hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 创建一个学生表</span></span><br><span class="line"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> student(<span class="hljs-keyword">id</span> <span class="hljs-built_in">int</span> primary <span class="hljs-keyword">key</span> auto_increment,<span class="hljs-keyword">name</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">unique</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> ,chinese <span class="hljs-built_in">float</span>,english <span class="hljs-built_in">float</span>,math <span class="hljs-built_in">float</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 往学生表中添加一些信息</span></span><br><span class="line"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student(<span class="hljs-keyword">name</span>,chinese,english,math) <span class="hljs-keyword">values</span> (<span class="hljs-string">'wangba'</span>,<span class="hljs-number">93</span>,<span class="hljs-number">22</span>,<span class="hljs-number">77</span>)</span><br><span class="line"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student (<span class="hljs-keyword">name</span>,chinese,english,math) <span class="hljs-keyword">values</span>(<span class="hljs-string">'lisi'</span>,<span class="hljs-number">80</span>,<span class="hljs-number">90</span>,<span class="hljs-number">29</span>);</span><br><span class="line"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student (<span class="hljs-keyword">name</span>,chinese,english,math) <span class="hljs-keyword">values</span>(<span class="hljs-string">'wangwu'</span>,<span class="hljs-number">55</span>,<span class="hljs-number">99</span>,<span class="hljs-number">98</span>);</span><br><span class="line"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student (<span class="hljs-keyword">name</span>,chinese,english,math) <span class="hljs-keyword">values</span>(<span class="hljs-string">'zhaoliu'</span>,<span class="hljs-number">99</span>,<span class="hljs-number">30</span>,<span class="hljs-number">57</span>);</span><br><span class="line"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student (<span class="hljs-keyword">name</span>,chinese,english,math) <span class="hljs-keyword">values</span>(<span class="hljs-string">'zhouqi'</span>,<span class="hljs-number">78</span>,<span class="hljs-number">22</span>,<span class="hljs-number">77</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#查询所有学生信息</span></span><br><span class="line"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">user</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查询学生员工的姓名和对应的英语成绩</span></span><br><span class="line"><span class="hljs-keyword">select</span> <span class="hljs-keyword">name</span>,english <span class="hljs-keyword">from</span> student</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 过滤表中的重复数据</span></span><br><span class="line"><span class="hljs-keyword">select</span> <span class="hljs-keyword">distinct</span> english <span class="hljs-keyword">from</span> student </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 在所有学生分数上加10分的特长分</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="数据库可视化-navicat"><a href="#数据库可视化-navicat" class="headerlink" title="数据库可视化 navicat"></a>数据库可视化 navicat</h2><h3 id="navicat连接远程服务器的几种方式"><a href="#navicat连接远程服务器的几种方式" class="headerlink" title="navicat连接远程服务器的几种方式"></a>navicat连接远程服务器的几种方式</h3><ol>
+<li><p>直接连接数据库</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Connection Name : hzj <span class="hljs-comment">#随便写  主要记录的上这条连接的别名</span></span><br><span class="line">Host 10.0.6.55   <span class="hljs-comment"># 远程服务器ip</span></span><br><span class="line">Port 3306 <span class="hljs-comment"># 端口</span></span><br><span class="line">User Name root <span class="hljs-comment">#  数据库账号</span></span><br><span class="line">Passwd <span class="hljs-comment">#数据库密码</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>先登陆ssh 之后在连接本地的数据库</p>
+</li>
+</ol>
+<p>先连接ssh</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host <span class="hljs-comment"># 远程</span></span><br><span class="line">Port 22</span><br><span class="line">User Name <span class="hljs-comment"># 连接数据库的用户名</span></span><br><span class="line">Authentication Method <span class="hljs-comment"># 验证方法</span></span><br><span class="line">Private key <span class="hljs-comment"># id_rsa</span></span><br><span class="line">Passphrase <span class="hljs-comment"># 验证短密 选择密钥后自动生成</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>再连接数据库</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Connection Name : hzj <span class="hljs-comment">#随便写  主要记录的上这条连接的别名</span></span><br><span class="line">Host localhost   <span class="hljs-comment"># 远程服务器ip</span></span><br><span class="line">Port 3306 <span class="hljs-comment"># 端口</span></span><br><span class="line">User Name root <span class="hljs-comment">#  数据库账号</span></span><br><span class="line">Passwd <span class="hljs-comment">#数据库密码</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>出现的错误</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2013 - Lost connection to MySQL server at <span class="hljs-string">'reading initial communication packet'</span>, system error: 0 <span class="hljs-string">"Internal error/check (Not system error)"</span></span><br></pre></td></tr></tbody></table></figure>
+<p>解决办法<br><a href="https://www.jb51.net/article/51480.htm" target="_blank" rel="noopener">https://www.jb51.net/article/51480.htm</a></p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/page/0/">Previous</a>
+        </div>
+        <div class="pagination-next">
+            <a class="is-flex-grow has-text-black-ter" href="/page/2/">Next</a>
+        </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link is-current" href="/">1</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/2/">2</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/3/">3</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/4/">4</a></li>
+            
+        </ul>
+    </nav>
+</div>
 </div>
                 
 
@@ -241,10 +995,10 @@
             <div class="level-item has-text-centered is-marginless">
                 <a href="/archives/">
                     <p class="heading">
-                        Post
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        1
+                        38
                     </p>
                 </a>
             </div>
@@ -254,7 +1008,7 @@
                         Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        13
                     </p>
                 </a>
             </div>
@@ -303,7 +1057,18 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">31</span>
                 </span>
             </a>
         </li>
@@ -343,6 +1108,82 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2020/01/07/blog_back_new/git/inventory%E6%93%8D%E4%BD%9C/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blog_back_new/git/inventory操作">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T03:59:55.717Z">2020-01-07</time></div>
+                    <a href="/2020/01/07/blog_back_new/git/inventory%E6%93%8D%E4%BD%9C/" class="has-link-black-ter is-size-6">blog_back_new/git/inventory操作</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/git/">git</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/05/blog_back_new/linux/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="keepalive+lvs 四层负载均衡">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-05T05:06:09.000Z">2020-01-05</time></div>
+                    <a href="/2020/01/05/blog_back_new/linux/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="has-link-black-ter is-size-6">keepalive+lvs 四层负载均衡</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/05/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/iptables%E3%80%81firewall%E9%98%B2%E7%81%AB%E5%A2%99/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="iptables、firewall 防火墙">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-05T04:03:16.000Z">2020-01-05</time></div>
+                    <a href="/2020/01/05/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/iptables%E3%80%81firewall%E9%98%B2%E7%81%AB%E5%A2%99/" class="has-link-black-ter is-size-6">iptables、firewall 防火墙</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/05/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/netstat/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="netstat">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-05T03:51:48.000Z">2020-01-05</time></div>
+                    <a href="/2020/01/05/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/netstat/" class="has-link-black-ter is-size-6">netstat</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -355,7 +1196,111 @@
                 Categories
             </h3>
             <ul class="menu-list">
-            
+            <li>
+        <a class="level is-marginless" href="/categories/blog-back-new/">
+            <span class="level-start">
+                <span class="level-item">blog_back_new</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">37</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/C%E8%AF%AD%E8%A8%80/">
+            <span class="level-start">
+                <span class="level-item">C语言</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/Python/">
+            <span class="level-start">
+                <span class="level-item">Python</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/Rust/">
+            <span class="level-start">
+                <span class="level-item">Rust</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/ansible/">
+            <span class="level-start">
+                <span class="level-item">ansible</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/django/">
+            <span class="level-start">
+                <span class="level-item">django</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/git/">
+            <span class="level-start">
+                <span class="level-item">git</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/linux/">
+            <span class="level-start">
+                <span class="level-item">linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/mysql/">
+            <span class="level-start">
+                <span class="level-item">mysql</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/%E6%89%A9%E5%B1%95/">
+            <span class="level-start">
+                <span class="level-item">扩展</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+            <span class="level-start">
+                <span class="level-item">数据结构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/%E7%BD%91%E7%BB%9C/">
+            <span class="level-start">
+                <span class="level-item">网络</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/%E8%AE%BE%E5%A4%87/">
+            <span class="level-start">
+                <span class="level-item">设备</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>
@@ -398,6 +1343,82 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2020/01/07/blog_back_new/git/inventory%E6%93%8D%E4%BD%9C/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blog_back_new/git/inventory操作">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T03:59:55.717Z">2020-01-07</time></div>
+                    <a href="/2020/01/07/blog_back_new/git/inventory%E6%93%8D%E4%BD%9C/" class="has-link-black-ter is-size-6">blog_back_new/git/inventory操作</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/git/">git</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/05/blog_back_new/linux/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="keepalive+lvs 四层负载均衡">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-05T05:06:09.000Z">2020-01-05</time></div>
+                    <a href="/2020/01/05/blog_back_new/linux/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="has-link-black-ter is-size-6">keepalive+lvs 四层负载均衡</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/05/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/iptables%E3%80%81firewall%E9%98%B2%E7%81%AB%E5%A2%99/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="iptables、firewall 防火墙">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-05T04:03:16.000Z">2020-01-05</time></div>
+                    <a href="/2020/01/05/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/iptables%E3%80%81firewall%E9%98%B2%E7%81%AB%E5%A2%99/" class="has-link-black-ter is-size-6">iptables、firewall 防火墙</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/05/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/netstat/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="netstat">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-05T03:51:48.000Z">2020-01-05</time></div>
+                    <a href="/2020/01/05/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/netstat/" class="has-link-black-ter is-size-6">netstat</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -410,7 +1431,111 @@
                 Categories
             </h3>
             <ul class="menu-list">
-            
+            <li>
+        <a class="level is-marginless" href="/categories/blog-back-new/">
+            <span class="level-start">
+                <span class="level-item">blog_back_new</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">37</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/C%E8%AF%AD%E8%A8%80/">
+            <span class="level-start">
+                <span class="level-item">C语言</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/Python/">
+            <span class="level-start">
+                <span class="level-item">Python</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/Rust/">
+            <span class="level-start">
+                <span class="level-item">Rust</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/ansible/">
+            <span class="level-start">
+                <span class="level-item">ansible</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/django/">
+            <span class="level-start">
+                <span class="level-item">django</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/git/">
+            <span class="level-start">
+                <span class="level-item">git</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/linux/">
+            <span class="level-start">
+                <span class="level-item">linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/mysql/">
+            <span class="level-start">
+                <span class="level-item">mysql</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/%E6%89%A9%E5%B1%95/">
+            <span class="level-start">
+                <span class="level-item">扩展</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+            <span class="level-start">
+                <span class="level-item">数据结构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/%E7%BD%91%E7%BB%9C/">
+            <span class="level-start">
+                <span class="level-item">网络</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/%E8%AE%BE%E5%A4%87/">
+            <span class="level-start">
+                <span class="level-item">设备</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>

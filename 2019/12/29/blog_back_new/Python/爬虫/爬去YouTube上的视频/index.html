@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8">
+<title>Python爬YouTube视频 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="youtube视频爬虫缘由最近想学习nginx，无奈没有好的视频，网上的教程也是零零散散的，慕课网 51CTO 淘宝上又买不到太好的教程，主要还是贵，买来要是讲的烂还不能退QAQ 于是，在YouTobe上搜索了一下nginx的教程，我的天哪！油管简直就是一块宝地，好多付费的视频上面都能找到，长期混迹B站找视频的我，决定赶紧下下来，生怕待会就没了，那么问题来了，如何批量下载这些视频呢？ 当然拉，能不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python爬YouTube视频">
+<meta property="og:url" content="http://blog.noback.top/2019/12/29/blog_back_new/Python/%E7%88%AC%E8%99%AB/%E7%88%AC%E5%8E%BBYouTube%E4%B8%8A%E7%9A%84%E8%A7%86%E9%A2%91/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="youtube视频爬虫缘由最近想学习nginx，无奈没有好的视频，网上的教程也是零零散散的，慕课网 51CTO 淘宝上又买不到太好的教程，主要还是贵，买来要是讲的烂还不能退QAQ 于是，在YouTobe上搜索了一下nginx的教程，我的天哪！油管简直就是一块宝地，好多付费的视频上面都能找到，长期混迹B站找视频的我，决定赶紧下下来，生怕待会就没了，那么问题来了，如何批量下载这些视频呢？ 当然拉，能不">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
+<meta property="article:published_time" content="2019-12-29T12:39:12.000Z">
+<meta property="article:modified_time" content="2020-01-07T03:59:55.710Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/github-gist.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="Python爬YouTube视频" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>Python爬YouTube视频
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:39:12.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T03:59:55.710Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/Python/">Python</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    7 minutes read (About 1019 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="youtube视频爬虫"><a href="#youtube视频爬虫" class="headerlink" title="youtube视频爬虫"></a>youtube视频爬虫</h1><h2 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h2><p>最近想学习nginx，无奈没有好的视频，网上的教程也是零零散散的，慕课网 51CTO 淘宝上又买不到太好的教程，主要还是贵，买来要是讲的烂还不能退QAQ</p>
+<p>于是，在YouTobe上搜索了一下nginx的教程，我的天哪！油管简直就是一块宝地，好多付费的视频上面都能找到，长期混迹B站找视频的我，决定赶紧下下来，生怕待会就没了，那么问题来了，如何批量下载这些视频呢？</p>
+<p><strong>当然拉，能不白嫖还不是不要白嫖，要是讲的好，赞助一下也很重要</strong></p>
+<h2 id="使用you-get"><a href="#使用you-get" class="headerlink" title="使用you-get"></a>使用you-get</h2><p>Github地址: <a href="https://github.com/soimort/you-get" target="_blank" rel="noopener">https://github.com/soimort/you-get</a><br>不得不说，光看他的star，又是一块宝藏QAQ</p>
+<h2 id="编写脚本"><a href="#编写脚本" class="headerlink" title="编写脚本"></a>编写脚本</h2><p>既然有了下载器，接下来就是使用脚本批量下载了。<br>you-get是根据油管的视频网页地址去下载视频的，那么我们需要记录这一组视频列表中的url地址。<br><a href="https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD" target="_blank" rel="noopener">https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD</a><br><a href="https://www.youtube.com/watch?v=wZAf-aE2KoI&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD" target="_blank" rel="noopener">https://www.youtube.com/watch?v=wZAf-aE2KoI&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD</a><br><a href="https://www.youtube.com/watch?v=ULcqKLwf6fE&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD" target="_blank" rel="noopener">https://www.youtube.com/watch?v=ULcqKLwf6fE&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD</a><br>如上是三个测试地址，很不幸的是他们之间存在规律，但唯一发生变化的v=uid 其中的id是一串随机字符，但当我们不断刷新当前页面时会发现，uid并没有改变，也就是说在他们的数据库中存在一个key-value的值，每一个视频对一个随机uid,并且当这相对的关系生成之后，随机uid不会再发生改变。</p>
+<h2 id="获取uid"><a href="#获取uid" class="headerlink" title="获取uid"></a>获取uid</h2><p>既然不会发生改变，那么我们就用爬虫来获取这些uid把<br><strong>注意</strong></p>
+<p><img src="http://img.noback.top/youtobe%E7%88%AC%E8%99%AB.png" alt><br>像这样的页面虽然在他的右侧出现了列表，但这样的情况在当我们使用爬虫+正则的时，会被下方的视频连接干扰，因此最好先进入播放列表后再爬取<br><img src="http://img.noback.top/190909youtobe%E7%88%AC%E8%99%AB2.png" alt><br>像当前页面这样，我们所获取出来的uid就相对于完整一些<br><img src="http://img.noback.top/190909youtobe%E7%88%AC%E8%99%AB2.png" alt></p>
+<h2 id="整理循环下载"><a href="#整理循环下载" class="headerlink" title="整理循环下载"></a>整理循环下载</h2><p>OK,有了uid再加上之前我们发现的不变的元素，那么一条条完整的视频链接就有了</p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="hljs-keyword">from</span> you_get <span class="hljs-keyword">import</span> common <span class="hljs-keyword">as</span> you_get</span><br><span class="line"><span class="hljs-keyword">import</span> sys</span><br><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"><span class="hljs-keyword">import</span> time</span><br><span class="line"><span class="hljs-keyword">import</span> requests</span><br><span class="line"><span class="hljs-keyword">import</span> re</span><br><span class="line"></span><br><span class="line">static_url = <span class="hljs-string">"https://www.youtube.com{0}list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD"</span></span><br><span class="line">file_path = <span class="hljs-string">"D:\\video\youtobe_nginx_mooc"</span></span><br><span class="line"><span class="hljs-comment"># file_path = "F:\\video\youtobe_nginx_mooc"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">resp = requests.get(<span class="hljs-string">"https://www.youtube.com/playlist?list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD"</span>)</span><br><span class="line">pattern = <span class="hljs-string">"\/watch\?v=[0-9a-zA-Z_-]{11}&"</span></span><br><span class="line">video_url_lists = re.findall(pattern,resp.text)</span><br><span class="line"><span class="hljs-comment"># 去重</span></span><br><span class="line">video_url_lists = list(set(video_url_lists))</span><br><span class="line">print(len(video_url_lists))</span><br><span class="line"><span class="hljs-keyword">for</span> list <span class="hljs-keyword">in</span> video_url_lists:</span><br><span class="line">    format_url = static_url.format(list)</span><br><span class="line">    print(format_url)</span><br><span class="line">    print(<span class="hljs-string">"start get video from YouTobe"</span>)</span><br><span class="line">    sys.argv = [<span class="hljs-string">'you-get'</span>,<span class="hljs-string">'-o'</span>,file_path,format_url]</span><br><span class="line">    you_get.main()</span><br><span class="line">    time.sleep(<span class="hljs-number">1</span>)</span><br><span class="line">print(<span class="hljs-string">"download finished"</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># print(type(resp)) ## 由于这是返回的类型是 <class 'requests.models.Response'></span></span><br><span class="line"><span class="hljs-comment"># 但是在正则表达式中，要求是为str类型，因此如果我们使用pattern = re.findall('index' resp)时候就会报错</span></span><br><span class="line"><span class="hljs-comment"># 报错内容为TypeError: expected string or bytes-like object</span></span><br><span class="line"><span class="hljs-comment"># 修改 pattern = re.findall('index=',str(resp))</span></span><br><span class="line"><span class="hljs-comment"># 或者使用pattern = re.findall('index=',resp.text)</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-string">""""</span></span><br><span class="line"><span class="hljs-string">https://www.bilibili.com/read/cv4360/</span></span><br><span class="line"><span class="hljs-string">https://www.jianshu.com/p/e323cf85bd3d</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=5i9Ce9vzGxE&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=R4p7xxd3BTo&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=4</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=0JwSFgWUUQE&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=fvxAQsRy8Kk&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=8</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=R4p7xxd3BTo&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=4</span></span><br><span class="line"><span class="hljs-string">"""</span></span><br></pre></td></tr></tbody></table></figure></body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/2019/12/29/blog_back_new/Python/%E7%88%AC%E8%99%AB/%E7%88%AC%E5%8E%BBYouTube%E4%B8%8A%E7%9A%84%E8%A7%86%E9%A2%91/">Python爬YouTube视频</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top">John Doe</a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/2019/12/29/blog_back_new/Python/%E7%88%AC%E8%99%AB/%E7%88%AC%E5%8E%BBYouTube%E4%B8%8A%E7%9A%84%E8%A7%86%E9%A2%91/">http://blog.noback.top/2019/12/29/blog_back_new/Python/%E7%88%AC%E8%99%AB/%E7%88%AC%E5%8E%BBYouTube%E4%B8%8A%E7%9A%84%E8%A7%86%E9%A2%91/</a></li>
+            <li><strong>发布时间：</strong>2019-12-29</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/12/29/blog_back_new/C%E8%AF%AD%E8%A8%80/01-c%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">C语言基础</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/12/29/blog_back_new/%E8%AE%BE%E5%A4%87/%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/%E5%8F%88%E6%8B%8D%E4%BA%91/">
+                <span class="level-item">又拍云</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/2019/12/29/blog_back_new/Python/%E7%88%AC%E8%99%AB/%E7%88%AC%E5%8E%BBYouTube%E4%B8%8A%E7%9A%84%E8%A7%86%E9%A2%91/';
+        this.page.identifier = '2019/12/29/blog_back_new/Python/爬虫/爬去YouTube上的视频/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="https://www.gravatar.com/avatar/e0f4032c0f2d1068ffffbaf93c0bef52?s=96" alt="Xinyu Liu">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Xinyu Liu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Alpha Lxy
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Beijing, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        38
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        13
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/AlphaLxy" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;Follow</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#youtube视频爬虫">
+        <span class="has-mr-6">1</span>
+        <span>youtube视频爬虫</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#缘由">
+        <span class="has-mr-6">1.1</span>
+        <span>缘由</span>
+        </a></li><li>
+        <a class="is-flex" href="#使用you-get">
+        <span class="has-mr-6">1.2</span>
+        <span>使用you-get</span>
+        </a></li><li>
+        <a class="is-flex" href="#编写脚本">
+        <span class="has-mr-6">1.3</span>
+        <span>编写脚本</span>
+        </a></li><li>
+        <a class="is-flex" href="#获取uid">
+        <span class="has-mr-6">1.4</span>
+        <span>获取uid</span>
+        </a></li><li>
+        <a class="is-flex" href="#整理循环下载">
+        <span class="has-mr-6">1.5</span>
+        <span>整理循环下载</span>
+        </a></li><li>
+        <a class="is-flex" href="#源码">
+        <span class="has-mr-6">1.6</span>
+        <span>源码</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Python爬YouTube视频" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 John Doe&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

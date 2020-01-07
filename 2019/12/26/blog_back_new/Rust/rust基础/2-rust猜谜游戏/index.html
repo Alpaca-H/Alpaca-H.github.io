@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8">
+<title>rust猜谜游戏 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="rust猜谜游戏走完了hello world的流程之后，来做一个猜数字的游戏 rust项目结构生成一个基本项目 12cargo new guessing_nametree . 12345➜  guessing_game git:(master) ✗ tree ..├── Cargo.toml└── src    └── main.rs  Cargo.toml文件12345678➜  guessin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rust猜谜游戏">
+<meta property="og:url" content="http://blog.noback.top/2019/12/26/blog_back_new/Rust/rust%E5%9F%BA%E7%A1%80/2-rust%E7%8C%9C%E8%B0%9C%E6%B8%B8%E6%88%8F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="rust猜谜游戏走完了hello world的流程之后，来做一个猜数字的游戏 rust项目结构生成一个基本项目 12cargo new guessing_nametree . 12345➜  guessing_game git:(master) ✗ tree ..├── Cargo.toml└── src    └── main.rs  Cargo.toml文件12345678➜  guessin">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
+<meta property="article:published_time" content="2019-12-26T04:27:09.000Z">
+<meta property="article:modified_time" content="2020-01-07T03:59:55.711Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/github-gist.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="rust猜谜游戏" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>rust猜谜游戏
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-26T04:27:09.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-26</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T03:59:55.711Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/Rust/">Rust</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    7 minutes read (About 1052 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="rust猜谜游戏"><a href="#rust猜谜游戏" class="headerlink" title="rust猜谜游戏"></a>rust猜谜游戏</h1><p>走完了hello world的流程之后，来做一个猜数字的游戏</p>
+<h2 id="rust项目结构"><a href="#rust项目结构" class="headerlink" title="rust项目结构"></a>rust项目结构</h2><p>生成一个基本项目</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cargo new guessing_name</span><br><span class="line">tree .</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  guessing_game git:(master) ✗ tree .</span><br><span class="line">.</span><br><span class="line">├── Cargo.toml</span><br><span class="line">└── src</span><br><span class="line">    └── main.rs</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Cargo-toml文件"><a href="#Cargo-toml文件" class="headerlink" title="Cargo.toml文件"></a>Cargo.toml文件</h3><figure class="highlight rust hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">➜  guessing_game git:(master) ✗ cat Cargo.toml</span><br><span class="line">[package]</span><br><span class="line">name = <span class="hljs-string">"guessing_game"</span></span><br><span class="line">version = <span class="hljs-string">"0.1.0"</span></span><br><span class="line">authors = [<span class="hljs-string">"alpaca <1097690268@qq.com>"</span>]</span><br><span class="line">edition = <span class="hljs-string">"2018"</span></span><br><span class="line"></span><br><span class="line"># See more keys and their definitions at https:<span class="hljs-comment">//doc.rust-lang.org/cargo/reference/manifest.html</span></span><br></pre></td></tr></tbody></table></figure>
+<p>这个里面存储了该项目的信息,</p>
+<ul>
+<li>name表示项目名字</li>
+<li>version 表示cargo 版本</li>
+<li>authors 表示作者信息</li>
+<li>edition 表示年份</li>
+</ul>
+<h3 id="main-rs文件"><a href="#main-rs文件" class="headerlink" title="main.rs文件"></a>main.rs文件</h3><p>这个文件就是你写的程序</p>
+<h3 id="运行该程序"><a href="#运行该程序" class="headerlink" title="运行该程序"></a>运行该程序</h3><p>运行该程序有两种方法  一种是先编译后执行</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rustc src/main.rs</span><br></pre></td></tr></tbody></table></figure>
+<p>另外一种是直接用cargo运行</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo run</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">➜  guseeing_game git:(master) ✗ tree .</span><br><span class="line">.</span><br><span class="line">├── Cargo.lock</span><br><span class="line">├── Cargo.toml</span><br><span class="line">├── src</span><br><span class="line">│   └── main.rs</span><br><span class="line">└── target</span><br><span class="line">    └── debug</span><br><span class="line">        ├── build</span><br><span class="line">        ├── deps</span><br><span class="line">        │   ├── guseeing_game-<span class="hljs-number">0</span>ed5a31a6f15733b</span><br><span class="line">        │   ├── guseeing_game-<span class="hljs-number">0</span>ed5a31a6f15733b.d</span><br><span class="line">        │   └── guseeing_game-<span class="hljs-number">0</span>ed5a31a6f15733b.dSYM</span><br><span class="line">        │       └── Contents</span><br><span class="line">        │           ├── Info.plist</span><br><span class="line">        │           └── Resources</span><br><span class="line">        │               └── DWARF</span><br><span class="line">        │                   └── guseeing_game-<span class="hljs-number">0</span>ed5a31a6f15733b</span><br><span class="line">        ├── examples</span><br><span class="line">        ├── guseeing_game</span><br><span class="line">        ├── guseeing_game.d</span><br><span class="line">        ├── guseeing_game.dSYM -> deps/guseeing_game-<span class="hljs-number">0</span>ed5a31a6f15733b.dSYM</span><br><span class="line">        └── incremental</span><br><span class="line">            └── guseeing_game-<span class="hljs-number">1</span>u6x8rdyd2mj5</span><br><span class="line">                ├── s-fiv8l6i4ic-<span class="hljs-number">1486</span>aks-<span class="hljs-number">139</span>msrfhaunjd</span><br><span class="line">                │   ├── <span class="hljs-number">1651</span>w9kfz3huxj9a.o</span><br><span class="line">                │   ├── <span class="hljs-number">24</span>om6g1u5n10ayrw.o</span><br><span class="line">                │   ├── <span class="hljs-number">2</span>hv2ystwqwaqr9uj.o</span><br><span class="line">                │   ├── <span class="hljs-number">3701</span>sophdbnzpjeb.o</span><br><span class="line">                │   ├── <span class="hljs-number">407</span>p5s5dk77zb92h.o</span><br><span class="line">                │   ├── <span class="hljs-number">4</span>eavspy520jyuwpr.o</span><br><span class="line">                │   ├── dep-graph.bin</span><br><span class="line">                │   ├── query-cache.bin</span><br><span class="line">                │   └── work-products.bin</span><br><span class="line">                └── s-fiv8l6i4ic-<span class="hljs-number">1486</span>aks.lock</span><br></pre></td></tr></tbody></table></figure>
+
+<p><font color="red">你会发现这两种运行的结果所创建的文件结构是不同的</font></p>
+<h2 id="获取屏幕内容并输出"><a href="#获取屏幕内容并输出" class="headerlink" title="获取屏幕内容并输出"></a>获取屏幕内容并输出</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">use std::io;</span><br><span class="line"></span><br><span class="line">fn <span class="hljs-function"><span class="hljs-title">main</span></span>() {</span><br><span class="line">    println!(<span class="hljs-string">"Guess the number!"</span>);</span><br><span class="line"></span><br><span class="line">    println!(<span class="hljs-string">"Please input your guess."</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">let</span> mut guess = String::new();</span><br><span class="line"></span><br><span class="line">    io::stdin().read_line(&mut guess)</span><br><span class="line">        .expect(<span class="hljs-string">"Failed to read line"</span>);</span><br><span class="line"></span><br><span class="line">    println!(<span class="hljs-string">"You guessed: {}"</span>, guess);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="包含语句和表达式的函数体"><a href="#包含语句和表达式的函数体" class="headerlink" title="包含语句和表达式的函数体"></a>包含语句和表达式的函数体</h3><p> 函数体有一系列的语句和一个可选的结尾的表达式构成<br> rust是基于表达式的语言<br> 用分号区分语句和表达式<br> <font color="red">语句是执行一些操作但不返回值的指令</font><br> <font color="red">表达式计算并产生一个值返回</font></p>
+<p> 用let关键字创建变量并绑定一个值是一个语句 比如let y = 6;<br> 于是当我们使用如下<br> </p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fn <span class="hljs-function"><span class="hljs-title">main</span></span>(){</span><br><span class="line">    <span class="hljs-built_in">let</span> x = (<span class="hljs-built_in">let</span> y =6);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><br> let y = 6 是一个语句并不会返回一个值来使得x绑定，所以会报错 <p></p>
+<p> let y = 6; 是一个表达式 ，返回6 函数调用是一个表达式<br> {} 是一个表达式</p>
+<h3 id="具有返回值的函数"><a href="#具有返回值的函数" class="headerlink" title="具有返回值的函数"></a>具有返回值的函数</h3><p> 函数可以向调用它的代码返回值。我们并不对返回值命名，但要在箭头（->）后声明它的类型<br> 函数的返回值等同于函数体最后一个表达式的值<br> 使用 return 关键字和指定值，可从函数中提前返回；但大部分函数隐式的返回最后的表达式。这是一个有返回值的函数的例子：<br> </p><figure class="highlight rust hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">five</span></span>() -> <span class="hljs-built_in">i32</span>{</span><br><span class="line">     <span class="hljs-number">5</span></span><br><span class="line"> } </span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>(){</span><br><span class="line">    <span class="hljs-keyword">let</span> x = five();</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"the value of x is {} "</span>,x )</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><br> 以上代码等同于，  {}是表达式 返回5给five()函数， let x = five();是语句，不返回值，于是let x = 5;<br> <figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fn <span class="hljs-function"><span class="hljs-title">main</span></span>(){</span><br><span class="line">    <span class="hljs-built_in">let</span> x =5 ;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<hr>
+ <figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fn plus_one (x: i32) -> i32{</span><br><span class="line">    x + 1</span><br><span class="line">} </span><br><span class="line"></span><br><span class="line">fn <span class="hljs-function"><span class="hljs-title">main</span></span>(){</span><br><span class="line">    <span class="hljs-built_in">let</span> x = plus_one(5)</span><br><span class="line">    println!(<span class="hljs-string">"the value of x is :{}"</span>,x);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p> rust中是用// 进行注释</p>
+<h2 id="控制-逻辑操作"><a href="#控制-逻辑操作" class="headerlink" title="控制  逻辑操作"></a>控制  逻辑操作</h2><p><font color="red">if语句</font> </p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> number = <span class="hljs-number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> number < <span class="hljs-number">5</span> {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"condition was true"</span>);</span><br><span class="line">    } <span class="hljs-keyword">else</span> {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"condition was false"</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> number!=<span class="hljs-number">0</span>{</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"nuf mber was something other than zero"</span>)</span><br><span class="line">    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> number != <span class="hljs-number">2</span>{</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"the number was something other than two"</span>)</span><br><span class="line">    } <span class="hljs-keyword">else</span> {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"the number go"</span>)</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="在let中使用if"><a href="#在let中使用if" class="headerlink" title="在let中使用if"></a>在let中使用if</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fn <span class="hljs-function"><span class="hljs-title">main</span></span>(){</span><br><span class="line">    <span class="hljs-built_in">let</span> </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><font color="red">loop语句</font></p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">loop</span> {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"again!"</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> counter = <span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> result = <span class="hljs-keyword">loop</span> {</span><br><span class="line">        counter += <span class="hljs-number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> counter == <span class="hljs-number">10</span> {</span><br><span class="line">            <span class="hljs-keyword">break</span> counter * <span class="hljs-number">2</span>;</span><br><span class="line">        }</span><br><span class="line">    };</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"The result is {}"</span>, result);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><font color="red">while条件循环</font></p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> number = <span class="hljs-number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span> number != <span class="hljs-number">0</span> {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}!"</span>, number);</span><br><span class="line"></span><br><span class="line">        number = number - <span class="hljs-number">1</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"LIFTOFF!!!"</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><font color="red">for 遍历循环</font></p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> a = [<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>, <span class="hljs-number">50</span>];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> element <span class="hljs-keyword">in</span> a.iter() {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"the value is: {}"</span>, element);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-comment">// .rev()反转 1..4 4取不到</span></span><br><span class="line">    <span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> (<span class="hljs-number">1</span>..<span class="hljs-number">4</span>).rev() {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}!"</span>, number);</span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"LIFTOFF!!!"</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/2019/12/26/blog_back_new/Rust/rust%E5%9F%BA%E7%A1%80/2-rust%E7%8C%9C%E8%B0%9C%E6%B8%B8%E6%88%8F/">rust猜谜游戏</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top">John Doe</a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/2019/12/26/blog_back_new/Rust/rust%E5%9F%BA%E7%A1%80/2-rust%E7%8C%9C%E8%B0%9C%E6%B8%B8%E6%88%8F/">http://blog.noback.top/2019/12/26/blog_back_new/Rust/rust%E5%9F%BA%E7%A1%80/2-rust%E7%8C%9C%E8%B0%9C%E6%B8%B8%E6%88%8F/</a></li>
+            <li><strong>发布时间：</strong>2019-12-26</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/12/27/blog_back_new/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">深拷贝与浅拷贝</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/12/26/blog_back_new/Rust/rust%E5%9F%BA%E7%A1%80/1-start/">
+                <span class="level-item">Rust基础</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/2019/12/26/blog_back_new/Rust/rust%E5%9F%BA%E7%A1%80/2-rust%E7%8C%9C%E8%B0%9C%E6%B8%B8%E6%88%8F/';
+        this.page.identifier = '2019/12/26/blog_back_new/Rust/rust基础/2-rust猜谜游戏/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="https://www.gravatar.com/avatar/e0f4032c0f2d1068ffffbaf93c0bef52?s=96" alt="Xinyu Liu">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Xinyu Liu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Alpha Lxy
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Beijing, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        38
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        13
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/AlphaLxy" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;Follow</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#rust猜谜游戏">
+        <span class="has-mr-6">1</span>
+        <span>rust猜谜游戏</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#rust项目结构">
+        <span class="has-mr-6">1.1</span>
+        <span>rust项目结构</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Cargo-toml文件">
+        <span class="has-mr-6">1.1.1</span>
+        <span>Cargo.toml文件</span>
+        </a></li><li>
+        <a class="is-flex" href="#main-rs文件">
+        <span class="has-mr-6">1.1.2</span>
+        <span>main.rs文件</span>
+        </a></li><li>
+        <a class="is-flex" href="#运行该程序">
+        <span class="has-mr-6">1.1.3</span>
+        <span>运行该程序</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#获取屏幕内容并输出">
+        <span class="has-mr-6">1.2</span>
+        <span>获取屏幕内容并输出</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#包含语句和表达式的函数体">
+        <span class="has-mr-6">1.2.1</span>
+        <span>包含语句和表达式的函数体</span>
+        </a></li><li>
+        <a class="is-flex" href="#具有返回值的函数">
+        <span class="has-mr-6">1.2.2</span>
+        <span>具有返回值的函数</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#注释">
+        <span class="has-mr-6">1.3</span>
+        <span>注释</span>
+        </a></li><li>
+        <a class="is-flex" href="#控制-逻辑操作">
+        <span class="has-mr-6">1.4</span>
+        <span>控制  逻辑操作</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#在let中使用if">
+        <span class="has-mr-6">1.4.1</span>
+        <span>在let中使用if</span>
+        </a></li></ul></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="rust猜谜游戏" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 John Doe&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
