@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Alpaca&#39;s blog | how to win">
+<meta property="og:url" content="http://blog.noback.top/page/5/index.html">
+<meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/datadog.svg" alt="Alpaca&#39;s blog | how to win" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/blog_back_new/django/django%E9%94%99%E8%AF%AF%E5%90%88%E9%9B%86/"><i class="fas fa-angle-double-right"></i>django错误合集</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:40:29.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T03:59:55.716Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    4 分钟 读完 (大约 648 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="错误类型总结"><a href="#错误类型总结" class="headerlink" title="错误类型总结"></a>错误类型总结</h1><p>由于mysql与django在配置过程中会存在很多的错误，这里总结一下</p>
+<h2 id="Mysql在Centos中权限不足的错误"><a href="#Mysql在Centos中权限不足的错误" class="headerlink" title="Mysql在Centos中权限不足的错误"></a>Mysql在Centos中权限不足的错误</h2><figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)</span><br></pre></td></tr></tbody></table></figure>
+<p>原因是/var/lib/mysql的访问权限不足</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.改变权限 chown -R mysql:mysql /var/lib/mysql   </span><br><span class="line">2. 启动服务器 /etc/init.d/mysql start (会自动生成mysql.sock文件)  </span><br><span class="line">3.重新启动mysql服务  /etc/init.d/mysql start</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="密码类型错误"><a href="#密码类型错误" class="headerlink" title="密码类型错误"></a>密码类型错误</h2><figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1045, "Access denied for user 'root'@'122.224.83.xxx</span><br></pre></td></tr></tbody></table></figure>
+<p>原因 密码错误，注意密码不能是字符串</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="django-setting-中的配置"><a href="#django-setting-中的配置" class="headerlink" title="django setting 中的配置"></a>django setting 中的配置</h2><figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">DATABASES = {</span><br><span class="line">    'default': {</span><br><span class="line"></span><br><span class="line">        'ENGINE': 'django.db.backends.mysql',</span><br><span class="line">        'NAME': 'itemids',  # 数据库名字</span><br><span class="line">        'USER': 'root',    # 数据库登录名</span><br><span class="line">        'PASSWORD': '12345x', # 数据库密码</span><br><span class="line">        'HOST': '106.14.195.xxx', 数据库IP</span><br><span class="line">        'POST': 3306, # 端口</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="引用pymysql"><a href="#引用pymysql" class="headerlink" title="引用pymysql"></a>引用pymysql</h2><p>由于MySQLdb只能使用在Python2中，在python3中已经停止了维护，所以这里我们引用pymyql的库</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pipenv install pymysql</span><br><span class="line"><span class="hljs-comment"># 在与setting.py同级别的__init__.py中使用</span></span><br><span class="line"><span class="hljs-keyword">import</span> pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="pymysql版本不符合"><a href="#pymysql版本不符合" class="headerlink" title="pymysql版本不符合"></a>pymysql版本不符合</h2><p>报错内容:django.core.exceptions.ImproperlyConfigured: mysqlclient 1.3.3 or newer is required; you have 0.7.11<br>修改Pipenv\Lib\site-packages\django\db\backends\mysql\base.py<br>注释下面内容<br>if version < (1, 3, 3):<br>    raise ImproperlyConfigured(“mysqlclient 1.3.3 or newer is required; you have %s” % Database.<strong>version</strong>)</p>
+<p>(在Centos中，pipenv install 所生成的包 会在pipenv shell 激活环境的时候出现)</p>
+<p>由于上面注释，还会出现的报错内容为<br>File “C:\Users\Administrator\PycharmProjects\untitled1\venv\lib\site-packages\django\db\backends\mysql\operations.py”, line 146, in last_executed_query<br>将operations.py中的decode改成encode</p>
+<h2 id="mysql不能插入中文"><a href="#mysql不能插入中文" class="headerlink" title="mysql不能插入中文"></a>mysql不能插入中文</h2><p>报错内容： django.db.utils.InternalError: (1366, “Incorrect string value: ‘\xE5\xAE\x9A\xE6\x97\xB6…’ for column ‘name’ at row 1”)<br>解决方法: <a href="https://blog.csdn.net/tzh476/article/details/52644271" target="_blank" rel="noopener">https://blog.csdn.net/tzh476/article/details/52644271</a><br>删除之前的库，创建一个新的数据库，使用utf8mb64   之前默认创建的都是latin1<br>不一样要删除之前的库，修改数据库的属性即可</p>
+<h2 id="mysql-长度的问题"><a href="#mysql-长度的问题" class="headerlink" title="mysql 长度的问题"></a>mysql 长度的问题</h2><p>django.db.utils.InternalError: (1071, ‘Specified key was too long; max key length is 767 bytes’)<br><a href="https://blog.csdn.net/ljfphp/article/details/80406907" target="_blank" rel="noopener">https://blog.csdn.net/ljfphp/article/details/80406907</a><br><a href="https://www.orcode.com/question/407126_k280b8.html" target="_blank" rel="noopener">https://www.orcode.com/question/407126_k280b8.html</a></p>
+<p>解决方法1: 升级Mysql5.6–>>Mysql5.7<br>centos7 下  对mysql的操作 <a href="https://blog.csdn.net/xufengzhu/article/details/81110982" target="_blank" rel="noopener">https://blog.csdn.net/xufengzhu/article/details/81110982</a><br><a href="https://blog.51cto.com/lisea/1941616" target="_blank" rel="noopener">https://blog.51cto.com/lisea/1941616</a></p>
+<p>解决方法2 : 先使用utf8格式</p>
+<h2 id="django-migrate的问题"><a href="#django-migrate的问题" class="headerlink" title="django migrate的问题"></a>django migrate的问题</h2><p>出现下面这个问题，基本上就是你的model设置错误了。有些字段类型需要固定的属性<br>如integerField字段需要default这个选项，添加完之后就Ok了</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Please select a fix:</span><br><span class="line"> 1) Provide a one-off default now (will be <span class="hljs-built_in">set</span> on all existing rows with a null value <span class="hljs-keyword">for</span> this column)</span><br><span class="line"> 2) Quit, and <span class="hljs-built_in">let</span> me add a default <span class="hljs-keyword">in</span> models.p</span><br></pre></td></tr></tbody></table></figure></body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/blog_back_new/C%E8%AF%AD%E8%A8%80/01-c%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/"><i class="fas fa-angle-double-right"></i>C语言基础</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:39:56.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T03:59:55.710Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/C%E8%AF%AD%E8%A8%80/">C语言</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    2 分钟 读完 (大约 334 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="C语言基础"><a href="#C语言基础" class="headerlink" title="C语言基础"></a>C语言基础</h1><p>对C语言基础只是的概括</p>
+<p>目标文件 可执行文件 库 源文件</p>
+<p>源文件指的是我们所编写的文件</p>
+<figure class="highlight c hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vi xx.c</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string"><stdio.h></span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>{</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"hello world"</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>以上xx.c就是我们的源文件</p>
+<p><strong>在unix中</strong><br>编译c语言 cc xx.c 会在当前文件夹生成一个a.out的可执行文件  运行即可</p>
+<p>整个流程就是用户输入代码生成源码文件 通过cc编译后生成可执行文件 运行输出内容<br>cc其实是一个命令，可以用man cc 查看  也可以用cc -v查看版本信息</p>
+<p><strong>在linux中</strong><br>使用gcc编译c文件 gcc xx.c</p>
+<h2 id="第一个c语言程序"><a href="#第一个c语言程序" class="headerlink" title="第一个c语言程序"></a>第一个c语言程序</h2><!-- vim-markdown-toc -->
+<figure class="highlight c hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta"># <span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string"><stdio.h></span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>{</span><br><span class="line">	<span class="hljs-keyword">int</span> nums;</span><br><span class="line">	nums = <span class="hljs-number">1</span>;</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"how many dogs do you have?\n"</span>);</span><br><span class="line">	getchar();</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">}</span><br><span class="line">include是预处理器指令  main是第一个被调用的函数 func a是构造块</span><br><span class="line">stdio.h 是c编译器软件包的标准部分</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><p>整数 int</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int nums=12;</span><br><span class="line"></span><br><span class="line">int nums;</span><br><span class="line">nums = 12; </span><br><span class="line"></span><br><span class="line">int nums = 12 , ages = 20;</span><br></pre></td></tr></tbody></table></figure>
+<p>大致的执行过程为 int nums 划分出一块内存空间名为nums<br>nums = 12 为nums赋值12的变量</p>
+<h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><p>zsh: command not found: a.out<br>mac下无法执行cc编译后的文件<br><font color="blue">因为没有确定工作路径 运行./a.out就可以了</font></p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/blog_back_new/Python/%E7%88%AC%E8%99%AB/%E7%88%AC%E5%8E%BBYouTube%E4%B8%8A%E7%9A%84%E8%A7%86%E9%A2%91/"><i class="fas fa-angle-double-right"></i>Python爬YouTube视频</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:39:12.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T03:59:55.710Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/Python/">Python</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    7 分钟 读完 (大约 1019 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="youtube视频爬虫"><a href="#youtube视频爬虫" class="headerlink" title="youtube视频爬虫"></a>youtube视频爬虫</h1><h2 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h2><p>最近想学习nginx，无奈没有好的视频，网上的教程也是零零散散的，慕课网 51CTO 淘宝上又买不到太好的教程，主要还是贵，买来要是讲的烂还不能退QAQ</p>
+<p>于是，在YouTobe上搜索了一下nginx的教程，我的天哪！油管简直就是一块宝地，好多付费的视频上面都能找到，长期混迹B站找视频的我，决定赶紧下下来，生怕待会就没了，那么问题来了，如何批量下载这些视频呢？</p>
+<p><strong>当然拉，能不白嫖还不是不要白嫖，要是讲的好，赞助一下也很重要</strong></p>
+<h2 id="使用you-get"><a href="#使用you-get" class="headerlink" title="使用you-get"></a>使用you-get</h2><p>Github地址: <a href="https://github.com/soimort/you-get" target="_blank" rel="noopener">https://github.com/soimort/you-get</a><br>不得不说，光看他的star，又是一块宝藏QAQ</p>
+<h2 id="编写脚本"><a href="#编写脚本" class="headerlink" title="编写脚本"></a>编写脚本</h2><p>既然有了下载器，接下来就是使用脚本批量下载了。<br>you-get是根据油管的视频网页地址去下载视频的，那么我们需要记录这一组视频列表中的url地址。<br><a href="https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD" target="_blank" rel="noopener">https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD</a><br><a href="https://www.youtube.com/watch?v=wZAf-aE2KoI&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD" target="_blank" rel="noopener">https://www.youtube.com/watch?v=wZAf-aE2KoI&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD</a><br><a href="https://www.youtube.com/watch?v=ULcqKLwf6fE&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD" target="_blank" rel="noopener">https://www.youtube.com/watch?v=ULcqKLwf6fE&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD</a><br>如上是三个测试地址，很不幸的是他们之间存在规律，但唯一发生变化的v=uid 其中的id是一串随机字符，但当我们不断刷新当前页面时会发现，uid并没有改变，也就是说在他们的数据库中存在一个key-value的值，每一个视频对一个随机uid,并且当这相对的关系生成之后，随机uid不会再发生改变。</p>
+<h2 id="获取uid"><a href="#获取uid" class="headerlink" title="获取uid"></a>获取uid</h2><p>既然不会发生改变，那么我们就用爬虫来获取这些uid把<br><strong>注意</strong></p>
+<p><img src="http://img.noback.top/youtobe%E7%88%AC%E8%99%AB.png" alt><br>像这样的页面虽然在他的右侧出现了列表，但这样的情况在当我们使用爬虫+正则的时，会被下方的视频连接干扰，因此最好先进入播放列表后再爬取<br><img src="http://img.noback.top/190909youtobe%E7%88%AC%E8%99%AB2.png" alt><br>像当前页面这样，我们所获取出来的uid就相对于完整一些<br><img src="http://img.noback.top/190909youtobe%E7%88%AC%E8%99%AB2.png" alt></p>
+<h2 id="整理循环下载"><a href="#整理循环下载" class="headerlink" title="整理循环下载"></a>整理循环下载</h2><p>OK,有了uid再加上之前我们发现的不变的元素，那么一条条完整的视频链接就有了</p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="hljs-keyword">from</span> you_get <span class="hljs-keyword">import</span> common <span class="hljs-keyword">as</span> you_get</span><br><span class="line"><span class="hljs-keyword">import</span> sys</span><br><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"><span class="hljs-keyword">import</span> time</span><br><span class="line"><span class="hljs-keyword">import</span> requests</span><br><span class="line"><span class="hljs-keyword">import</span> re</span><br><span class="line"></span><br><span class="line">static_url = <span class="hljs-string">"https://www.youtube.com{0}list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD"</span></span><br><span class="line">file_path = <span class="hljs-string">"D:\\video\youtobe_nginx_mooc"</span></span><br><span class="line"><span class="hljs-comment"># file_path = "F:\\video\youtobe_nginx_mooc"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">resp = requests.get(<span class="hljs-string">"https://www.youtube.com/playlist?list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD"</span>)</span><br><span class="line">pattern = <span class="hljs-string">"\/watch\?v=[0-9a-zA-Z_-]{11}&"</span></span><br><span class="line">video_url_lists = re.findall(pattern,resp.text)</span><br><span class="line"><span class="hljs-comment"># 去重</span></span><br><span class="line">video_url_lists = list(set(video_url_lists))</span><br><span class="line">print(len(video_url_lists))</span><br><span class="line"><span class="hljs-keyword">for</span> list <span class="hljs-keyword">in</span> video_url_lists:</span><br><span class="line">    format_url = static_url.format(list)</span><br><span class="line">    print(format_url)</span><br><span class="line">    print(<span class="hljs-string">"start get video from YouTobe"</span>)</span><br><span class="line">    sys.argv = [<span class="hljs-string">'you-get'</span>,<span class="hljs-string">'-o'</span>,file_path,format_url]</span><br><span class="line">    you_get.main()</span><br><span class="line">    time.sleep(<span class="hljs-number">1</span>)</span><br><span class="line">print(<span class="hljs-string">"download finished"</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># print(type(resp)) ## 由于这是返回的类型是 <class 'requests.models.Response'></span></span><br><span class="line"><span class="hljs-comment"># 但是在正则表达式中，要求是为str类型，因此如果我们使用pattern = re.findall('index' resp)时候就会报错</span></span><br><span class="line"><span class="hljs-comment"># 报错内容为TypeError: expected string or bytes-like object</span></span><br><span class="line"><span class="hljs-comment"># 修改 pattern = re.findall('index=',str(resp))</span></span><br><span class="line"><span class="hljs-comment"># 或者使用pattern = re.findall('index=',resp.text)</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-string">""""</span></span><br><span class="line"><span class="hljs-string">https://www.bilibili.com/read/cv4360/</span></span><br><span class="line"><span class="hljs-string">https://www.jianshu.com/p/e323cf85bd3d</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=5i9Ce9vzGxE&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=R4p7xxd3BTo&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=4</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=0JwSFgWUUQE&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=fvxAQsRy8Kk&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=8</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=R4p7xxd3BTo&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=4</span></span><br><span class="line"><span class="hljs-string">"""</span></span><br></pre></td></tr></tbody></table></figure></body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/blog_back_new/%E8%AE%BE%E5%A4%87/%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/%E5%8F%88%E6%8B%8D%E4%BA%91/"><i class="fas fa-angle-double-right"></i>又拍云</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T05:13:50.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T03:59:55.724Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/%E8%AE%BE%E5%A4%87/">设备</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    7 分钟 读完 (大约 1043 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="又拍云工作记录"><a href="#又拍云工作记录" class="headerlink" title="又拍云工作记录"></a>又拍云工作记录</h1><h2 id="交换机命名格式"><a href="#交换机命名格式" class="headerlink" title="交换机命名格式"></a>交换机命名格式</h2><p>三大运营商缩写 + 附近机场代码 + S01等</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">移动 CMN</span><br><span class="line">电信 CTN</span><br><span class="line">联通 CUN</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="交换机ipv6检测内容"><a href="#交换机ipv6检测内容" class="headerlink" title="交换机ipv6检测内容"></a>交换机ipv6检测内容</h2><p>原因 内网机器比如全是移动的，交换机配的移动的ip，下面配的也是移动的ip<br>这样ping的通，但是联通的服务器ip ping不同。也就是说是内网通，外网不同。<br>内网ping 网关肯定通</p>
+<p>检测：<br>用移动的交换机下面的服务器（出问题的交换机）  去mtr外网的ip，去看是哪里断掉的<br>而不是用外网的机器来mtr内网的ip，这样截止的地方会看不出来，因为不是内网的机器</p>
+<h2 id="ipv6配置"><a href="#ipv6配置" class="headerlink" title="ipv6配置"></a>ipv6配置</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#业务vlan</span></span><br><span class="line">interface Vlan-interface1</span><br><span class="line">ipv6 address +业务vlan ip</span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line"><span class="hljs-comment">#互联vlan</span></span><br><span class="line">interface Vlan-interface200</span><br><span class="line">ipv6 address  +互联本地ip</span><br><span class="line"><span class="hljs-comment">#默认路由</span></span><br><span class="line">ipv6 route-static :: 0 + 互联对端ip</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="配置案例"><a href="#配置案例" class="headerlink" title="配置案例"></a>配置案例</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">广东广州移动机房（自有机房NM）：2409:8C54:B000:0704::/64   互联地址 机房：FEC0::C/127， 我司 FEC0::D/127</span><br><span class="line"></span><br><span class="line">vlan 1 </span><br><span class="line">ip address 2409:8C54:B000:0704::/64 </span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line">vlan 20</span><br><span class="line">ipv6 address FEC0::D/127</span><br><span class="line">router-static</span><br><span class="line">ipv6 route-static :: 0 FEC0::C</span><br><span class="line"></span><br><span class="line">山东济南移动机房（自有节点NM）：2409:8C3C:0004:000C::/64，互联地址为：2409:8C3C:00FF:0004::000E/127、 我司 2409:8C3C:00FF:0004::0010/127</span><br><span class="line"></span><br><span class="line">vlan 1</span><br><span class="line">ip address 2409:8C3C:0004:000C::/64</span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line">vlan 20</span><br><span class="line">ipv6 address 2409:8C3C:00FF:0004::0010/127</span><br><span class="line">route-static</span><br><span class="line">ipv6 route-static :: 0 2409:8C3C:00FF:0004::000E</span><br><span class="line">vlan 1</span><br><span class="line">ipv6 address 240E:E9:B804:3:400::1/72</span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line">vlan 30 </span><br><span class="line">ipv6 address 240E:E9:B804:3:200::A3/127</span><br><span class="line">ipv6 address 240E:E9:B804:3:200::B3/127</span><br><span class="line">router-static</span><br><span class="line">ipv6 route-static :: 0 240E:E9:B804:3:200::A3</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="无法联网"><a href="#无法联网" class="headerlink" title="无法联网"></a>无法联网</h2><ol>
+<li><p>首先ping交换机ip  看是否通</p>
+</li>
+<li><p>串口线连接交换机  ping网关是否通不通  10.0.0.130</p>
+</li>
+<li><p>查看端口状态<br>dis int brief<br>聚合口是否起来 端口是否起来 pvid是否对应1000(统一是1000 除个别外可以在上联交换机上看10.0.0.130)</p>
+</li>
+<li><p>硬件问题<br>看模块是否发光  看跳线是否发光</p>
+</li>
+</ol>
+<h2 id="整理香港ntt点ip对应关系"><a href="#整理香港ntt点ip对应关系" class="headerlink" title="整理香港ntt点ip对应关系"></a>整理香港ntt点ip对应关系</h2><ol>
+<li>登陆netop服务器</li>
+<li>登陆香港ntt交换机</li>
+<li>查看vlan1 对应ip 其中157.xxx/27 <figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[NTT-CN-HKG-S01-Vlan-interface1]display this</span><br><span class="line"><span class="hljs-comment">#</span></span><br><span class="line">interface Vlan-interface1</span><br><span class="line"> ip address 157.119.232.1 255.255.255.224</span><br><span class="line"> ip address 10.81.0.254 255.255.255.0 sub</span><br><span class="line"> ip address 103.211.192.221 255.255.255.252 sub</span><br><span class="line"> ip address 103.251.128.1 255.255.255.224 sub</span><br><span class="line"> ip address 157.119.232.65 255.255.255.224 sub</span><br><span class="line"> ip address 192.168.1.1 255.255.255.0 sub</span><br><span class="line"> ip address 192.168.128.1 255.255.255.0 sub</span><br><span class="line"> ip address 192.168.232.1 255.255.255.224 sub</span><br><span class="line"> ipv6 address 2405:FD80:110::1/52</span><br><span class="line"><span class="hljs-comment">#</span></span><br><span class="line"><span class="hljs-built_in">return</span></span><br></pre></td></tr></tbody></table></figure>
+在netop服务器上用fping -g 157.119.231.1/27 来查看对应ip的状态</li>
+</ol>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">[root@NETOPS machines]<span class="hljs-comment"># fping -g 157.119.232.65/27</span></span><br><span class="line">157.119.232.65 is alive</span><br><span class="line">157.119.232.66 is alive</span><br><span class="line">157.119.232.67 is alive</span><br><span class="line">157.119.232.68 is alive</span><br><span class="line">157.119.232.69 is alive</span><br><span class="line">157.119.232.70 is alive</span><br><span class="line">157.119.232.71 is alive</span><br><span class="line">157.119.232.72 is alive</span><br><span class="line">157.119.232.73 is alive</span><br><span class="line">157.119.232.74 is alive</span><br><span class="line">157.119.232.75 is alive</span><br><span class="line">157.119.232.85 is alive</span><br><span class="line">157.119.232.87 is alive</span><br><span class="line">157.119.232.86 is alive</span><br><span class="line">157.119.232.88 is alive</span><br><span class="line">157.119.232.89 is alive</span><br><span class="line">157.119.232.90 is alive</span><br><span class="line">157.119.232.91 is alive</span><br><span class="line">157.119.232.76 is unreachable</span><br><span class="line">157.119.232.77 is unreachable</span><br><span class="line">157.119.232.78 is unreachable</span><br><span class="line">157.119.232.79 is unreachable</span><br><span class="line">157.119.232.80 is unreachable</span><br><span class="line">157.119.232.81 is unreachable</span><br><span class="line">157.119.232.82 is unreachable</span><br><span class="line">157.119.232.83 is unreachable</span><br><span class="line">157.119.232.84 is unreachable</span><br><span class="line">157.119.232.92 is unreachable</span><br><span class="line">157.119.232.93 is unreachable</span><br><span class="line">157.119.232.94 is unreachable</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># fping -g 157.119.232.1/27</span></span><br><span class="line">157.119.232.1 is alive</span><br><span class="line">157.119.232.2 is alive</span><br><span class="line">157.119.232.3 is alive</span><br><span class="line">157.119.232.4 is alive</span><br><span class="line">157.119.232.5 is alive</span><br><span class="line">157.119.232.6 is alive</span><br><span class="line">157.119.232.7 is alive</span><br><span class="line">157.119.232.8 is alive</span><br><span class="line">157.119.232.9 is alive</span><br><span class="line">157.119.232.10 is alive</span><br><span class="line">157.119.232.11 is alive</span><br><span class="line">157.119.232.12 is alive</span><br><span class="line">157.119.232.13 is alive</span><br><span class="line">157.119.232.14 is alive</span><br><span class="line">157.119.232.15 is alive</span><br><span class="line">157.119.232.16 is alive</span><br><span class="line">157.119.232.17 is alive</span><br><span class="line">157.119.232.19 is alive</span><br><span class="line">157.119.232.18 is alive</span><br><span class="line">157.119.232.20 is alive</span><br><span class="line">157.119.232.21 is alive</span><br><span class="line">157.119.232.22 is alive</span><br><span class="line">157.119.232.23 is alive</span><br><span class="line">157.119.232.24 is alive</span><br><span class="line">157.119.232.25 is alive</span><br><span class="line">157.119.232.26 is alive</span><br><span class="line">157.119.232.27 is alive</span><br><span class="line">157.119.232.28 is alive</span><br><span class="line">157.119.232.29 is alive</span><br><span class="line">157.119.232.30 is alive</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>查看inventory中对应关系</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.73 /root/mingtao/inventory/machines/*</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-upapp-01:157.119.232.73</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.30 /root/mingtao/inventory/machines/*</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-cdn-v406:<span class="hljs-comment"># NTT-CN-HKG-030 ansible_ssh_host=157.119.232.30</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-openstack:<span class="hljs-comment"># NTT-CN-HKG-030 ansible_ssh_host=157.119.232.30</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-openstack:OPK-HKG-M30 ansible_ssh_host=157.119.232.30</span><br><span class="line">/root/mingtao/inventory/machines/lists-upops:NTT-CN-HKG-030 ansible_ssh_host=157.119.232.30</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.29 /root/mingtao/inventory/machines/*</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-cdn-v406:<span class="hljs-comment"># NTT-CN-HKG-029 ansible_ssh_host=157.119.232.29</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-openstack:<span class="hljs-comment"># NTT-CN-HKG-029 ansible_ssh_host=157.119.232.29</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-upapp-01:157.119.232.29</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.20 /root/mingtao/inventory/machines/*</span></span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.24 /root/mingtao/inventory/machines/*</span></span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.21 /root/mingtao/inventory/machines/*</span></span><br></pre></td></tr></tbody></table></figure>
+<p>记录机器的对应名字</p>
+<h3 id="ntt机器对应脚本"><a href="#ntt机器对应脚本" class="headerlink" title="ntt机器对应脚本"></a>ntt机器对应脚本</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#!/usr/bin/bash</span></span><br><span class="line"><span class="hljs-comment"># add ip (active and unknown)</span></span><br><span class="line">fping -g 157.119.232.65/27 > ntt_machine</span><br><span class="line">fping -g 157.119.231.1/27 >> ntt_machine</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># filter active to tmp.txt</span></span><br><span class="line">awk <span class="hljs-string">'{if($3=="alive"){print $1}}'</span> > tmp.txt ntt_machine</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Calculate the total</span></span><br><span class="line">nums=`cat tmp.txt | wc -l`</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># reset result.txt to blank</span></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"result:"</span> > result.txt</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># filter ip</span></span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> `seq 1 <span class="hljs-variable">$nums</span>`</span><br><span class="line"><span class="hljs-keyword">do</span></span><br><span class="line">        ip=`awk <span class="hljs-string">"NR==<span class="hljs-variable">$i</span>"</span> tmp.txt`</span><br><span class="line">        link=`grep -w <span class="hljs-variable">$ip</span> mingtao/inventory/machines/machines/*`</span><br><span class="line">        link=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$link</span> | awk -F<span class="hljs-string">":"</span> <span class="hljs-string">'{print $2}'</span> `</span><br><span class="line">        link=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$link</span> | awk <span class="hljs-string">'{if($1=="#"){print $2}else{print $1}}'</span>`</span><br><span class="line">        <span class="hljs-built_in">echo</span>  <span class="hljs-variable">$ip</span>   ,<span class="hljs-string">"active"</span>   ,   <span class="hljs-variable">$link</span> >> result.txt</span><br><span class="line"><span class="hljs-keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># add unknown to tmp.txt</span></span><br><span class="line">awk <span class="hljs-string">'{if($3!="alive"){print $1,$3}}'</span> >> result.txt ntt_machine</span><br><span class="line">~</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="底层设备到网络配置"><a href="#底层设备到网络配置" class="headerlink" title="底层设备到网络配置"></a>底层设备到网络配置</h3><p><img src="http://img.noback.top/2019-12-31-11-26-32.png" alt="2019-12-31-11-26-32"><br>通过该tower截图来获取网络配置需求<br>15台1U服务器<br>1台5130交换机<br>2个万兆多模模块<br>30根网线<br>16根电源线</p>
+<p>1个万兆口</p>
+<p>1-30口汇聚<br>49口接上联 走trunk</p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/blog_back_new/%E8%AE%BE%E5%A4%87/%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/"><i class="fas fa-angle-double-right"></i>常见错误</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T05:13:35.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T03:59:55.724Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/%E8%AE%BE%E5%A4%87/">设备</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    4 分钟 读完 (大约 576 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="linux错误"><a href="#linux错误" class="headerlink" title="linux错误"></a>linux错误</h1><h2 id="yum不支持python3"><a href="#yum不支持python3" class="headerlink" title="yum不支持python3"></a>yum不支持python3</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@gogogo alpaca]<span class="hljs-comment"># yum</span></span><br><span class="line">  File <span class="hljs-string">"/bin/yum"</span>, line 30</span><br><span class="line">    except KeyboardInterrupt, e:</span><br><span class="line">                            ^</span><br><span class="line">SyntaxError: invalid syntax</span><br><span class="line">  File <span class="hljs-string">"/usr/libexec/urlgrabber-ext-down"</span>, line 28</span><br><span class="line">    except OSError, e:</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>解决办法</strong></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="hljs-string">'s:bin/python:bin/python2.7:'</span> /usr/bin/yum</span><br><span class="line">sed -i <span class="hljs-string">'s:bin/python:bin/python2.7:'</span> /usr/libexec/urlgrabber-ext-down</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="可以通外网，但是无法ping百度"><a href="#可以通外网，但是无法ping百度" class="headerlink" title="可以通外网，但是无法ping百度"></a>可以通外网，但是无法ping百度</h2><p>包括无法使用yum wget 等下载工具<br>或者报错 cannot find a valid baseurl for repo:base/7/x86_64 的解决方法</p>
+<p><strong>解决办法</strong><br>原因 - > DNS的问题</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> nameserver 114.114.114.114 > /etc/reslov.conf</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="linux中如何恢复到后台进程"><a href="#linux中如何恢复到后台进程" class="headerlink" title="linux中如何恢复到后台进程"></a>linux中如何恢复到后台进程</h2><p>linux 下我们如果想一个任务或者程序进行调度<br>bg 将一个后台暂停的命令，变成继续执行<br>fg 将后台的命令调至前台继续运行<br>jobs 查看当前在后台运行的命令<br>c-z 将前台命令放到后台运行 并且暂停<br>nohup command & 在后台不断运行command命令</p>
+<h2 id="ssh配置的问题"><a href="#ssh配置的问题" class="headerlink" title="ssh配置的问题"></a>ssh配置的问题</h2><p><font color="blue">这个问题主要是存在于交换机ssh登陆交换机的过程</font><br>ssh配置过程中，配置了密码登陆，但是出现下面的错误</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><ONI-KC-R01-CR1>ssh 10.0.0.166</span><br><span class="line">The server<span class="hljs-string">'s host key does not match the local cached key. Either the server administrator has changed the host key, or you connected to another server pretending to be this server. Please remove the local cached key, before logging in!</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>主要问题是一开始用ssh登陆交换机的时候，选择了保存key</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><ONI-KC-R01-CR1>ssh 10.0.0.166</span><br><span class="line">Username: tt</span><br><span class="line">Press CTRL+C to abort.</span><br><span class="line">Connecting to 10.0.0.166 port 22.</span><br><span class="line">The server is not authenticated. Continue? [Y/N]:y</span><br><span class="line">Do you want to save the server public key? [Y/N]:y</span><br></pre></td></tr></tbody></table></figure>
+<p>这样导致的问题就是在当前交换机上会保存一个登陆另一个交换机的key</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#</span><br><span class="line">public-key peer 10.0.0.166</span><br><span class="line"> public-key-code begin</span><br><span class="line">   30819F300D06092A864886F70D010101050003818D0030818902818100DF3E1240D158E197</span><br><span class="line">   CE0712173C8591883F88CC925B1C0CFC63C779E9F531C3B7E409BBB2CCED954C09A339BE78</span><br><span class="line">   46B1497E4771EDD7E88D2E380C50F37A6EC9254E6B27EC7AFFE6DCDFC1EA230D16C4DC9BB8</span><br><span class="line">   B831A2F0CB578B736566052E830A582836AA9BFFE0821CE7CB43F74077D38B20437479F260</span><br><span class="line">   A5D0550CA7D3D0747F0203010001</span><br><span class="line"> public-key-code end</span><br><span class="line"> peer-public-key end</span><br><span class="line">#</span><br></pre></td></tr></tbody></table></figure>
+<p>于是当你下次选择使用ssh+密码登陆交换机的时候就会发现错误</p>
+<p><font color="red">解决</font><br>删除当前交换机的key  并在下次登陆的时候选择</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><ONI-KC-R01-CR1>ssh 10.0.0.166</span><br><span class="line">Username: tt</span><br><span class="line">Press CTRL+C to abort.</span><br><span class="line">Connecting to 10.0.0.166 port 22.</span><br><span class="line">The server is not authenticated. Continue? [Y/N]:y</span><br><span class="line">Do you want to save the server public key? [Y/N]:n</span><br></pre></td></tr></tbody></table></figure>
+
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous">
+            <a class="is-flex-grow has-text-black-ter" href="/page/4/">上一页</a>
+        </div>
+        <div class="pagination-next">
+            <a class="is-flex-grow has-text-black-ter" href="/page/6/">下一页</a>
+        </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link has-text-black-ter" href="/">1</a></li>
+            
+            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/4/">4</a></li>
+            
+            <li><a class="pagination-link is-current" href="/page/5/">5</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/6/">6</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/7/">7</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/8/">8</a></li>
+            
+        </ul>
+    </nav>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        40
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        15
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://www.ttlsa.com/linux/haproxy-study-tutorial/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">运维生存时间</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.ttlsa.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/blog-back-new/">
+            <span class="level-start">
+                <span class="level-item">blog_back_new</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">37</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/C%E8%AF%AD%E8%A8%80/">
+            <span class="level-start">
+                <span class="level-item">C语言</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/Python/">
+            <span class="level-start">
+                <span class="level-item">Python</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/Rust/">
+            <span class="level-start">
+                <span class="level-item">Rust</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/ansible/">
+            <span class="level-start">
+                <span class="level-item">ansible</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/django/">
+            <span class="level-start">
+                <span class="level-item">django</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/git/">
+            <span class="level-start">
+                <span class="level-item">git</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/linux/">
+            <span class="level-start">
+                <span class="level-item">linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/mysql/">
+            <span class="level-start">
+                <span class="level-item">mysql</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/%E6%89%A9%E5%B1%95/">
+            <span class="level-start">
+                <span class="level-item">扩展</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+            <span class="level-start">
+                <span class="level-item">数据结构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/%E7%BD%91%E7%BB%9C/">
+            <span class="level-start">
+                <span class="level-item">网络</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/blog-back-new/%E8%AE%BE%E5%A4%87/">
+            <span class="level-start">
+                <span class="level-item">设备</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/linux/">
+            <span class="level-start">
+                <span class="level-item">linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">
+            <span class="level-start">
+                <span class="level-item">负载均衡</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget is-hidden-mobile">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">31</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+haproxy%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="keepalive+haproxy负载均衡">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T09:45:56.000Z">2020-01-07</time></div>
+                    <a href="/2020/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+haproxy%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="has-link-black-ter is-size-6">keepalive+haproxy负载均衡</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">负载均衡</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/blog_back_new/linux/linux%E7%BC%96%E7%A8%8B/shell%E8%84%9A%E6%9C%AC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="shell脚本">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T07:45:22.000Z">2020-01-07</time></div>
+                    <a href="/2020/blog_back_new/linux/linux%E7%BC%96%E7%A8%8B/shell%E8%84%9A%E6%9C%AC/" class="has-link-black-ter is-size-6">shell脚本</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/zabbix/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="zabbix 学习记录">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T07:39:04.000Z">2020-01-07</time></div>
+                    <a href="/2020/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/zabbix/" class="has-link-black-ter is-size-6">zabbix 学习记录</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/blog_back_new/checklist/inventory%E6%93%8D%E4%BD%9C/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="inventory操作">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T06:19:39.000Z">2020-01-07</time></div>
+                    <a href="/2020/blog_back_new/checklist/inventory%E6%93%8D%E4%BD%9C/" class="has-link-black-ter is-size-6">inventory操作</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/git/">git</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="keepalive+lvs 四层负载均衡">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-05T05:06:09.000Z">2020-01-05</time></div>
+                    <a href="/2020/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="has-link-black-ter is-size-6">keepalive+lvs 四层负载均衡</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget is-hidden-mobile">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">31</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+haproxy%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="keepalive+haproxy负载均衡">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T09:45:56.000Z">2020-01-07</time></div>
+                    <a href="/2020/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+haproxy%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="has-link-black-ter is-size-6">keepalive+haproxy负载均衡</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">负载均衡</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/blog_back_new/linux/linux%E7%BC%96%E7%A8%8B/shell%E8%84%9A%E6%9C%AC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="shell脚本">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T07:45:22.000Z">2020-01-07</time></div>
+                    <a href="/2020/blog_back_new/linux/linux%E7%BC%96%E7%A8%8B/shell%E8%84%9A%E6%9C%AC/" class="has-link-black-ter is-size-6">shell脚本</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/zabbix/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="zabbix 学习记录">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T07:39:04.000Z">2020-01-07</time></div>
+                    <a href="/2020/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/zabbix/" class="has-link-black-ter is-size-6">zabbix 学习记录</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/blog_back_new/checklist/inventory%E6%93%8D%E4%BD%9C/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="inventory操作">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T06:19:39.000Z">2020-01-07</time></div>
+                    <a href="/2020/blog_back_new/checklist/inventory%E6%93%8D%E4%BD%9C/" class="has-link-black-ter is-size-6">inventory操作</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/git/">git</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="keepalive+lvs 四层负载均衡">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-05T05:06:09.000Z">2020-01-05</time></div>
+                    <a href="/2020/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="has-link-black-ter is-size-6">keepalive+lvs 四层负载均衡</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/datadog.svg" alt="Alpaca&#39;s blog | how to win" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Alpaca&#39;s blog | how to win&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
