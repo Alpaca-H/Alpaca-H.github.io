@@ -7,16 +7,16 @@
 
 
 
-    <meta name="description" content="drf如何使用django-rest-framework 1.首先下载 1pip3 install django-rest-framework 2.应用在setting中添加 1234INSTALLED_APPS &#x3D; (    ...    &#39;rest_framework&#39;,) 3.在drf中使用登陆登出的功能 1234urlpatterns &#x3D; [    ...    url(r&#39;^api-au">
+    <meta name="description" content="drf如何使用django-rest-framework 1.首先下载 pip3 install django-rest-framework 2.应用在setting中添加 INSTALLED_APPS &#x3D; (    ...    &#39;rest_framework&#39;,) 3.在drf中使用登陆登出的功能 urlpatterns &#x3D; [    ...    url(r&#39;^api-auth&#x2F;&#39;, inc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="drf-note">
 <meta property="og:url" content="http://blog.noback.top/2019/blog_back_new/django/drf%E6%A1%86%E6%9E%B6/drf-note/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
-<meta property="og:description" content="drf如何使用django-rest-framework 1.首先下载 1pip3 install django-rest-framework 2.应用在setting中添加 1234INSTALLED_APPS &#x3D; (    ...    &#39;rest_framework&#39;,) 3.在drf中使用登陆登出的功能 1234urlpatterns &#x3D; [    ...    url(r&#39;^api-au">
+<meta property="og:description" content="drf如何使用django-rest-framework 1.首先下载 pip3 install django-rest-framework 2.应用在setting中添加 INSTALLED_APPS &#x3D; (    ...    &#39;rest_framework&#39;,) 3.在drf中使用登陆登出的功能 urlpatterns &#x3D; [    ...    url(r&#39;^api-auth&#x2F;&#39;, inc">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.noback.top/images/og_image.png">
 <meta property="article:published_time" content="2019-12-29T12:48:11.000Z">
-<meta property="article:modified_time" content="2020-01-07T03:59:55.717Z">
+<meta property="article:modified_time" content="2019-12-29T12:48:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
 
@@ -160,8 +160,6 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-12-29T12:48:11.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T03:59:55.717Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
-                
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
@@ -188,11 +186,11 @@
         <div class="content">
             <html><head></head><body><h2 id="drf"><a href="#drf" class="headerlink" title="drf"></a>drf</h2><p>如何使用django-rest-framework</p>
 <p>1.首先下载</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install django-rest-framework</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">pip3 install django-rest-framework</span><br></pre></td></tr></tbody></table></figure>
 <p>2.应用<br>在setting中添加</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="hljs-string">'rest_framework'</span>,</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">INSTALLED_APPS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="hljs-string">'rest_framework'</span>,</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
 <p>3.在drf中使用登陆登出的功能</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    ...</span><br><span class="line">    url(<span class="hljs-string">r'^api-auth/'</span>, include(<span class="hljs-string">'rest_framework.urls'</span>))</span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    ...</span><br><span class="line">    url(<span class="hljs-string">r'^api-auth/'</span>, include(<span class="hljs-string">'rest_framework.urls'</span>))</span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure>
 
 
 <hr>

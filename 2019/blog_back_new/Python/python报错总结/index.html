@@ -7,16 +7,16 @@
 
 
 
-    <meta name="description" content="Python报错总结Non-ASCIIpython出现SyntaxError: Non-ASCII character ‘\xe6’ in file 打印日期.py on line 1, but no encoding declared; 解决方法在文件头部添加如下两行注释码： 12#!&#x2F;usr&#x2F;bin&#x2F;python# -*- coding:  -*- 例如，可添加# -*- coding: ut">
+    <meta name="description" content="Python报错总结Non-ASCIIpython出现SyntaxError: Non-ASCII character ‘\xe6’ in file 打印日期.py on line 1, but no encoding declared; 解决方法在文件头部添加如下两行注释码： #!&#x2F;usr&#x2F;bin&#x2F;python# -*- coding:  -*- 例如，可添加# -*- coding: utf-">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python报错总结">
 <meta property="og:url" content="http://blog.noback.top/2019/blog_back_new/Python/python%E6%8A%A5%E9%94%99%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
-<meta property="og:description" content="Python报错总结Non-ASCIIpython出现SyntaxError: Non-ASCII character ‘\xe6’ in file 打印日期.py on line 1, but no encoding declared; 解决方法在文件头部添加如下两行注释码： 12#!&#x2F;usr&#x2F;bin&#x2F;python# -*- coding:  -*- 例如，可添加# -*- coding: ut">
+<meta property="og:description" content="Python报错总结Non-ASCIIpython出现SyntaxError: Non-ASCII character ‘\xe6’ in file 打印日期.py on line 1, but no encoding declared; 解决方法在文件头部添加如下两行注释码： #!&#x2F;usr&#x2F;bin&#x2F;python# -*- coding:  -*- 例如，可添加# -*- coding: utf-">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.noback.top/images/og_image.png">
 <meta property="article:published_time" content="2019-12-27T09:36:10.000Z">
-<meta property="article:modified_time" content="2020-01-07T03:59:55.710Z">
+<meta property="article:modified_time" content="2019-12-27T09:36:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
 
@@ -160,8 +160,6 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-12-27T09:36:10.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-27</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-07T03:59:55.710Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-07</time>
-                
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
@@ -188,7 +186,7 @@
         <div class="content">
             <html><head></head><body><h1 id="Python报错总结"><a href="#Python报错总结" class="headerlink" title="Python报错总结"></a>Python报错总结</h1><h2 id="Non-ASCII"><a href="#Non-ASCII" class="headerlink" title="Non-ASCII"></a>Non-ASCII</h2><p>python出现SyntaxError: Non-ASCII character ‘\xe6’ in file 打印日期.py on line 1, but no encoding declared;</p>
 <p><font color="red">解决方法</font><br>在文件头部添加如下两行注释码：</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/python</span></span><br><span class="line"><span class="hljs-comment"># -*- coding: <encoding name> -*- 例如，可添加# -*- coding: utf-8 -*-</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/python</span></span><br><span class="line"><span class="hljs-comment"># -*- coding: <encoding name> -*- 例如，可添加# -*- coding: utf-8 -*-</span></span><br></pre></td></tr></tbody></table></figure>
 </body></html>
         </div>
         
