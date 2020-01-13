@@ -2,21 +2,21 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>iptables、firewall 防火墙 - Alpaca&#39;s blog | how to win</title>
+<title>hexo博客优化 - Alpaca&#39;s blog | how to win</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="iptables、firewall防火墙Linux中有两种防火墙软件，ConterOS7.0以上使用的是firewall，ConterOS7.0以下使用的是iptables">
+    <meta name="description" content="handsome博客优化修改右侧栏sidebar.php 此处直接去除了 热门文字 、 最新评论 、 随机文字 这三个模块（他们在一个 Tab 里）         这里是我的个人小站：猫之三千岁，用以记录生活中的点点滴滴，我一直认为有一个安静的、温馨的小窝是一件很快乐的事情。最后欢迎您不经意间的光临~ 🐾  部分修改网站https:&#x2F;&#x2F;szyink.com&#x2F;archives&#x2F;229&#x2F; 如何获取">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iptables、firewall 防火墙">
-<meta property="og:url" content="http://blog.noback.top/60486/index.html">
+<meta property="og:title" content="hexo博客优化">
+<meta property="og:url" content="http://blog.noback.top/posts/83186147/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
-<meta property="og:description" content="iptables、firewall防火墙Linux中有两种防火墙软件，ConterOS7.0以上使用的是firewall，ConterOS7.0以下使用的是iptables">
+<meta property="og:description" content="handsome博客优化修改右侧栏sidebar.php 此处直接去除了 热门文字 、 最新评论 、 随机文字 这三个模块（他们在一个 Tab 里）         这里是我的个人小站：猫之三千岁，用以记录生活中的点点滴滴，我一直认为有一个安静的、温馨的小窝是一件很快乐的事情。最后欢迎您不经意间的光临~ 🐾  部分修改网站https:&#x2F;&#x2F;szyink.com&#x2F;archives&#x2F;229&#x2F; 如何获取">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.noback.top/images/og_image.png">
-<meta property="article:published_time" content="2020-01-05T04:03:16.000Z">
-<meta property="article:modified_time" content="2020-01-05T04:03:16.000Z">
+<meta property="article:published_time" content="2019-12-29T05:12:17.000Z">
+<meta property="article:modified_time" content="2019-12-29T05:12:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
 
@@ -96,7 +96,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="http://image.noback.top/datadog.svg" alt="iptables、firewall 防火墙" height="28">
+                <img src="http://image.noback.top/datadog.svg" alt="hexo博客优化" height="28">
             
             </a>
         </div>
@@ -152,18 +152,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>iptables、firewall 防火墙
+                <i class="fas fa-angle-double-right"></i>hexo博客优化
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-05T04:03:16.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-05</time>
+                <time class="level-item has-text-grey" datetime="2019-12-29T05:12:17.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/%E8%AE%BE%E5%A4%87/">设备</a>
                 </div>
                 
                 
@@ -171,7 +171,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    3 分钟 读完 (大约 384 个字)
+                    2 分钟 读完 (大约 320 个字)
                 </span>
                 
                 
@@ -184,28 +184,24 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h2 id="iptables、firewall防火墙"><a href="#iptables、firewall防火墙" class="headerlink" title="iptables、firewall防火墙"></a>iptables、firewall防火墙</h2><p>Linux中有两种防火墙软件，ConterOS7.0以上使用的是firewall，ConterOS7.0以下使用的是iptables</p>
-<a id="more"></a>
-<h3 id="firewall"><a href="#firewall" class="headerlink" title="firewall"></a>firewall</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 开启防火墙</span></span><br><span class="line">systemctl start firewalld</span><br><span class="line"><span class="hljs-comment"># 关闭防火墙</span></span><br><span class="line">systemctl stop firewalld</span><br><span class="line"><span class="hljs-comment"># 查看状态</span></span><br><span class="line">systemctl status firewalld</span><br><span class="line">firewall-cmd  --state</span><br><span class="line"><span class="hljs-comment"># 设置开机启动</span></span><br><span class="line">systemctl <span class="hljs-built_in">enable</span> firewalld</span><br><span class="line"><span class="hljs-comment"># 禁用开机启动</span></span><br><span class="line">systemctl disabled firewalld</span><br><span class="line"><span class="hljs-comment"># 重启防火墙</span></span><br><span class="line">firewall-cmd --reload</span><br><span class="line"><span class="hljs-comment"># 开放端口</span></span><br><span class="line">firewall-cmd --zone=public --add-port=8080/tcp --permanet</span><br><span class="line"><span class="hljs-comment"># 查看已经开放的端口</span></span><br><span class="line">firewall-cmd --list-ports </span><br><span class="line"><span class="hljs-comment"># 关闭端口</span></span><br><span class="line">firewall-cmd --zone=public --remove-port=8080/tcp --permanet\</span><br></pre></td></tr></tbody></table></figure>
+            <html><head></head><body><h1 id="handsome博客优化"><a href="#handsome博客优化" class="headerlink" title="handsome博客优化"></a>handsome博客优化</h1><h2 id="修改右侧栏"><a href="#修改右侧栏" class="headerlink" title="修改右侧栏"></a>修改右侧栏</h2><p>sidebar.php 此处直接去除了 热门文字 、 最新评论 、 随机文字 这三个模块（他们在一个 Tab 里）</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><section id=<span class="hljs-string">"tabs-4"</span> class=<span class="hljs-string">"widget widget_tabs wrapper-md clear"</span>></span><br><span class="line">    <h3 class=<span class="hljs-string">"widget-title m-t-none text-md"</span>><?php _me(<span class="hljs-string">"闲言碎语"</span>) ?></h3></span><br><span class="line">    <div style=<span class="hljs-string">"font-size: 13px"</span>>这里是我的个人小站：猫之三千岁，用以记录生活中的点点滴滴，我一直认为有一个安静的、温馨的小窝是一件很快乐的事情。最后欢迎您不经意间的光临~ 🐾</div></span><br><span class="line"></section></span><br></pre></td></tr></tbody></table></figure>
 
-<p><a href="https://juejin.im/post/5d538326f265da03ce39cf38" target="_blank" rel="noopener">https://juejin.im/post/5d538326f265da03ce39cf38</a></p>
-<h3 id="iptables"><a href="#iptables" class="headerlink" title="iptables"></a>iptables</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装iptables </span></span><br><span class="line">yum install  iptables</span><br><span class="line"><span class="hljs-comment"># 安装iptables-services</span></span><br><span class="line">yum install iptables-services</span><br><span class="line"><span class="hljs-comment"># 开启防火墙</span></span><br><span class="line">systemctl start iptables</span><br><span class="line"><span class="hljs-comment"># 关闭防火墙</span></span><br><span class="line">systemctl stop iptables.services</span><br><span class="line"><span class="hljs-comment"># 防火墙状态 、开机启动 、 禁用开机启动、</span></span><br><span class="line">status 、 <span class="hljs-built_in">enable</span> 、<span class="hljs-built_in">disable</span></span><br><span class="line"><span class="hljs-comment"># 查看filter表的几条链规则(INPUT链可以看出开放了哪些端口)：</span></span><br><span class="line">iptables -L -n</span><br><span class="line"><span class="hljs-comment"># 查看连标规则</span></span><br><span class="line">iptables -t nat -L -n </span><br><span class="line"><span class="hljs-comment"># 清除防火墙所有规则</span></span><br><span class="line">iptables -F</span><br><span class="line"><span class="hljs-comment"># 给INPUT链添加规则（开放8080端口）</span></span><br><span class="line">iptables -I INPUT -p tcp --dport 8080 -j ACCEPT</span><br><span class="line"><span class="hljs-comment"># 查找规则所在行</span></span><br><span class="line">iptables -L INPUT --line-numbers -n</span><br><span class="line"><span class="hljs-comment"># 根据行号删除过滤规则(关闭8080)</span></span><br><span class="line">iptables -D INPUT 1</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="部分修改网站"><a href="#部分修改网站" class="headerlink" title="部分修改网站"></a>部分修改网站</h2><p><a href="https://szyink.com/archives/229/" target="_blank" rel="noopener">https://szyink.com/archives/229/</a></p>
+<h2 id="如何获取自己的备案号"><a href="#如何获取自己的备案号" class="headerlink" title="如何获取自己的备案号"></a>如何获取自己的备案号</h2><p><a href="https://icp.chinaz.com/noback.top" target="_blank" rel="noopener">https://icp.chinaz.com/noback.top</a></p>
+<h2 id="改成CDN的内容"><a href="#改成CDN的内容" class="headerlink" title="改成CDN的内容"></a>改成CDN的内容</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">public static <span class="hljs-keyword">function</span> whenSwitchHeaderImgSrc(<span class="hljs-variable">$index</span> = 0, <span class="hljs-variable">$howToThumb</span>, <span class="hljs-variable">$attach</span>, <span class="hljs-variable">$content</span>, <span class="hljs-variable">$thumbField</span>)</span><br><span class="line">   {</span><br><span class="line">       <span class="hljs-variable">$options</span> = mget();</span><br><span class="line">       //<span class="hljs-variable">$randomNum</span> = unserialize(INDEX_IMAGE_ARRAY);</span><br><span class="line"></span><br><span class="line">       // 随机缩略图路径</span><br><span class="line">       // <span class="hljs-variable">$random</span> = <span class="hljs-string">"http://image.noback.top/"</span> . @<span class="hljs-variable">$randomNum</span>[<span class="hljs-variable">$index</span>] . <span class="hljs-string">'.jpg'</span>;//如果有文章置顶，这里可能会导致index not undefined</span><br><span class="line">       <span class="hljs-variable">$random</span> = <span class="hljs-string">'http://image.noback.top/'</span>.rand(1, 69).<span class="hljs-string">'.jpg'</span>;</span><br><span class="line">     	<span class="hljs-variable">$pattern</span> = <span class="hljs-string">'/\<img.*?src\=\"(.*?)\"[^>]*>/i'</span>;</span><br></pre></td></tr></tbody></table></figure>
 
-
-
-<h2 id="防火墙错误导致的原因"><a href="#防火墙错误导致的原因" class="headerlink" title="防火墙错误导致的原因"></a>防火墙错误导致的原因</h2><ol>
-<li>开通httpd后，当前机器下使用curl可访问，但外部机器访问ip+端口则无法访问<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@localhost ~]<span class="hljs-comment"># curl http://10.0.5.92:8888</span></span><br><span class="line">curl: (7) Failed connect to 10.0.5.92:8888; No route to host</span><br></pre></td></tr></tbody></table></figure>
-curl报如下错误：curl: (7) Failed connect to 172.16.225.43:7001; No route to host</li>
-</ol>
-<p>解决办法<br>—-> 在被访问机器下开放8888端口<br>—-> iptables -l INPUT -p tcp –dport 8888 -j ACCEPTt 8888 -j ACCEPT</p>
-</body></html>
+<p>突然又想了一个骚操作  只要把bing 4k壁纸上的<br><a href="https://bing.lylares.com/detail/cnjX2Vj0.html" target="_blank" rel="noopener">https://bing.lylares.com/detail/cnjX2Vj0.html</a></p>
+<p>后缀拿到 弄一个列表 随机一下  这样CDN流量钱都省了～</p>
+<h2 id="网站测速"><a href="#网站测速" class="headerlink" title="网站测速"></a>网站测速</h2><p><a href="https://developers.google.com/speed/pagespeed/insights/?hl=zh-cn&url=http%3A%2F%2Fnoback.top%2F" target="_blank" rel="noopener">https://developers.google.com/speed/pagespeed/insights/?hl=zh-cn&url=http%3A%2F%2Fnoback.top%2F</a></p>
+<h2 id="hexo博客优化"><a href="#hexo博客优化" class="headerlink" title="hexo博客优化"></a>hexo博客优化</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">end of the stream or a document separator is expected at line 8, column 1:</span><br><span class="line">报错内容 没有添加</span><br><span class="line">---</span><br><span class="line">title:</span><br><span class="line">tags:</span><br><span class="line">---</span><br><span class="line">等头部内容</span><br></pre></td></tr></tbody></table></figure></body></html>
         </div>
         
             <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="http://blog.noback.top/60486/">iptables、firewall 防火墙</a></li>
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/83186147/">hexo博客优化</a></li>
             <li><strong>本文作者：</strong><a href="http://blog.noback.top"></a></li>
-            <li><strong>本文链接：</strong><a href="http://blog.noback.top/60486/">http://blog.noback.top/60486/</a></li>
-            <li><strong>发布时间：</strong>2020-01-05</li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/83186147/">http://blog.noback.top/posts/83186147/</a></li>
+            <li><strong>发布时间：</strong>2019-12-29</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
@@ -224,16 +220,16 @@ curl报如下错误：curl: (7) Failed connect to 172.16.225.43:7001; No route t
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/undefined/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/c10f304f/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">keepalive+lvs 四层负载均衡</span>
+                <span class="level-item">常见错误</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/4421/">
-                <span class="level-item">netstat</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/cd35325c/">
+                <span class="level-item">软件配置</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -249,8 +245,8 @@ curl报如下错误：curl: (7) Failed connect to 172.16.225.43:7001; No route t
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'http://blog.noback.top/60486/';
-        this.page.identifier = '60486/';
+        this.page.url = 'http://blog.noback.top/posts/83186147/';
+        this.page.identifier = 'posts/83186147/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -340,22 +336,38 @@ curl报如下错误：curl: (7) Failed connect to 172.16.225.43:7001; No route t
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#iptables、firewall防火墙">
+        <a class="is-flex" href="#handsome博客优化">
         <span class="has-mr-6">1</span>
-        <span>iptables、firewall防火墙</span>
+        <span>handsome博客优化</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#firewall">
+        <a class="is-flex" href="#修改右侧栏">
         <span class="has-mr-6">1.1</span>
-        <span>firewall</span>
-        </a></li><li>
-        <a class="is-flex" href="#iptables">
-        <span class="has-mr-6">1.2</span>
-        <span>iptables</span>
+        <span>修改右侧栏</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">1.1.1</span>
+        <span>"widget-title m-t-none text-md">"闲言碎语") ?></span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#防火墙错误导致的原因">
-        <span class="has-mr-6">2</span>
-        <span>防火墙错误导致的原因</span>
-        </a></li></ul>
+        <a class="is-flex" href="#部分修改网站">
+        <span class="has-mr-6">1.2</span>
+        <span>部分修改网站</span>
+        </a></li><li>
+        <a class="is-flex" href="#如何获取自己的备案号">
+        <span class="has-mr-6">1.3</span>
+        <span>如何获取自己的备案号</span>
+        </a></li><li>
+        <a class="is-flex" href="#改成CDN的内容">
+        <span class="has-mr-6">1.4</span>
+        <span>改成CDN的内容</span>
+        </a></li><li>
+        <a class="is-flex" href="#网站测速">
+        <span class="has-mr-6">1.5</span>
+        <span>网站测速</span>
+        </a></li><li>
+        <a class="is-flex" href="#hexo博客优化">
+        <span class="has-mr-6">1.6</span>
+        <span>hexo博客优化</span>
+        </a></li></ul></li></ul>
         </div>
     </div>
 </div>
@@ -379,11 +391,11 @@ curl报如下错误：curl: (7) Failed connect to 172.16.225.43:7001; No route t
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="http://image.noback.top/datadog.svg" alt="iptables、firewall 防火墙" height="28">
+                    <img src="http://image.noback.top/datadog.svg" alt="hexo博客优化" height="28">
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2020 iptables、firewall 防火墙&nbsp;
+                &copy; 2020 hexo博客优化&nbsp;
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
                         href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 

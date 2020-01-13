@@ -2,21 +2,21 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>mac配置 - Alpaca&#39;s blog | how to win</title>
+<title>linux故障问题及解决方案 - Alpaca&#39;s blog | how to win</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="mac配置Mac OS 中如何优雅的创建定时任务mac 可以像linux一样使用crontab来使用定时任务.另外还有一个launchctl的工具 配置文件 xxx.plist                          Label        cn.rayjun..plist                    ProgramArguments                    &#x2F;">
+    <meta name="description" content="linux故障问题及解决方案linux系统使用过程中 会遇到很多的故障和报错，与之对应的是一些快速的解决方案这里记录一下">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mac配置">
-<meta property="og:url" content="http://blog.noback.top/undefined/index.html">
+<meta property="og:title" content="linux故障问题及解决方案">
+<meta property="og:url" content="http://blog.noback.top/posts/bc3af3e9/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
-<meta property="og:description" content="mac配置Mac OS 中如何优雅的创建定时任务mac 可以像linux一样使用crontab来使用定时任务.另外还有一个launchctl的工具 配置文件 xxx.plist                          Label        cn.rayjun..plist                    ProgramArguments                    &#x2F;">
+<meta property="og:description" content="linux故障问题及解决方案linux系统使用过程中 会遇到很多的故障和报错，与之对应的是一些快速的解决方案这里记录一下">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.noback.top/images/og_image.png">
-<meta property="article:published_time" content="2019-12-26T04:27:09.000Z">
-<meta property="article:modified_time" content="2019-12-26T04:27:09.000Z">
+<meta property="article:published_time" content="2020-01-09T04:23:01.000Z">
+<meta property="article:modified_time" content="2020-01-09T04:23:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
 
@@ -96,7 +96,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="http://image.noback.top/datadog.svg" alt="mac配置" height="28">
+                <img src="http://image.noback.top/datadog.svg" alt="linux故障问题及解决方案" height="28">
             
             </a>
         </div>
@@ -152,18 +152,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>mac配置
+                <i class="fas fa-angle-double-right"></i>linux故障问题及解决方案
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-26T04:27:09.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-26</time>
+                <time class="level-item has-text-grey" datetime="2020-01-09T04:23:01.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-09</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/%E8%AE%BE%E5%A4%87/">设备</a>
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">故障问题</a>
                 </div>
                 
                 
@@ -171,7 +171,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    6 分钟 读完 (大约 839 个字)
+                    3 分钟 读完 (大约 440 个字)
                 </span>
                 
                 
@@ -184,45 +184,46 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="mac配置"><a href="#mac配置" class="headerlink" title="mac配置"></a>mac配置</h1><h2 id="Mac-OS-中如何优雅的创建定时任务"><a href="#Mac-OS-中如何优雅的创建定时任务" class="headerlink" title="Mac OS 中如何优雅的创建定时任务"></a>Mac OS 中如何优雅的创建定时任务</h2><p>mac 可以像linux一样使用crontab来使用定时任务.另外还有一个launchctl的工具</p>
-<p><font color="red">配置文件 xxx.plist</font>  </p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span>?> <!DOCTYPE plist PUBLIC <span class="hljs-string">"-//Apple//DTD PLIST 1.0//EN"</span> <span class="hljs-string">"http://www.apple.com/DTDs/PropertyList-1.0.dtd"</span>> </span><br><span class="line"><plist version=<span class="hljs-string">"1.0"</span>></span><br><span class="line">    <dict></span><br><span class="line">        <!--Plist 名称，必须唯一--> </span><br><span class="line">        <key>Label</key></span><br><span class="line">        <string>cn.rayjun..plist</string> </span><br><span class="line">        <!-- 指定要运行的程序的名称，可以是一个程序或者是一段脚本 -->   </span><br><span class="line">        <key>ProgramArguments</key></span><br><span class="line">        <array></span><br><span class="line">            <string>/path/to/programer</string> </span><br><span class="line">        </array></span><br><span class="line">        <!-- 执行时间的指定 --> </span><br><span class="line">        <key>StartCalendarInterval</key> </span><br><span class="line">        <dict> </span><br><span class="line">            <!--在第几分钟会被执行 --></span><br><span class="line">            <key>Minute</key></span><br><span class="line">            <<span class="hljs-built_in">integer</span>>00</<span class="hljs-built_in">integer</span>></span><br><span class="line">            <!-- 在第几个小时会被执行--></span><br><span class="line">            <key>Hour</key> </span><br><span class="line">            <<span class="hljs-built_in">integer</span>>22</<span class="hljs-built_in">integer</span>> </span><br><span class="line">        </dict></span><br><span class="line">        <!-- 运行日志 --></span><br><span class="line">        <key>StandardOutPath</key></span><br><span class="line">        <string>/path/to/<span class="hljs-built_in">log</span>/x.log</string></span><br><span class="line">        <!-- 错误日志 --></span><br><span class="line">        <key>StandardErrorPath</key> </span><br><span class="line">        <string>/path/to/err/x.err</string></span><br><span class="line">    </dict> </span><br><span class="line"></plist></span><br></pre></td></tr></tbody></table></figure>
-<p>在 Plist 中，支持两种定时任务的设置：</p>
-<ul>
-<li>StartInterval：定义任务多长时间（单位，秒）执行一次</li>
-<li>StartCalendarInterval：这个配置类似在 crontab 中的配置，指定具体的执行日期、星期、每月、每日的各个时间点，具体参照上面的配置文件。月份和天数的配置类似。</li>
-</ul>
-<p><font color="red">存放点</font><br>在 Mac 系统中，可以将需要处理的事情都写在 plist 文件中，plist 是一个 xml 格式的文件。plist 文件根据不同的需要可以放在不同的目录底下。Mac OS X 中支持放 plist 的目录如下：</p>
-<ul>
-<li>/Library/LaunchDaemons: 系统启动后就会执行</li>
-<li>/Library/LaunchAgents: 当用户登录系统后才会执行</li>
-<li>~/Library/LaunchAgents: 用户自定义的 plist</li>
-<li>/System/Library/LaunchAgents: 由 Mac OS X 为用户定义的任务</li>
-<li>/System/Library/LaunchDaemons: 由 Mac OS X 定义的守护进程任务</li>
-</ul>
-<p><font color="red">命令行</font></p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">launchctl load xx.plist <span class="hljs-comment"># 启动程序</span></span><br><span class="line">launchctl unload xx.plist <span class="hljs-comment"># 停止程序</span></span><br></pre></td></tr></tbody></table></figure>
+            <html><head></head><body><h1 id="linux故障问题及解决方案"><a href="#linux故障问题及解决方案" class="headerlink" title="linux故障问题及解决方案"></a>linux故障问题及解决方案</h1><p>linux系统使用过程中 会遇到很多的故障和报错，与之对应的是一些快速的解决方案<br>这里记录一下</p>
+<a id="more"></a>
 
-<h2 id="解决讨厌的-DS-Store"><a href="#解决讨厌的-DS-Store" class="headerlink" title="解决讨厌的.DS_Store"></a>解决讨厌的.DS_Store</h2><p>.DS_Store (Desktop Services Store) 是一种由苹果公司的 Mac OS X 操作系统所创造的隐藏文件，目的在于存贮目录的自定义属性，例如文件们的图标位置或者是背景色的选择。相当于 Windows 下的 desktop.ini</p>
-<p><font color="red">为什么要解决？</font><br>如果不处理，每次拷贝给你同事的文件里都会包含有这个文件，或者上传网页的时候，应该把这个文件删除比较妥当，因为里面包含了一些你不一定希望别人看见的信息。（尤其是网站，通过 .DS_Store 可以知道这个目录里面所有文件的清单，很多时候这是一个不希望出现的问题。）</p>
-<figure class="highlight php hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-meta"><?php</span> <span class="hljs-comment">//例子</span></span><br><span class="line">　　$filepath = <span class="hljs-string">"images"</span>;</span><br><span class="line">　　$handle = opendir($filepath);</span><br><span class="line">　　<span class="hljs-keyword">while</span> (<span class="hljs-keyword">false</span> != ($file = readdir($handle))) {</span><br><span class="line">　　    <span class="hljs-keyword">if</span> ($file != <span class="hljs-string">"."</span> && $file != <span class="hljs-string">".."</span> && $file != <span class="hljs-string">".DS_Store"</span> && $file != <span class="hljs-string">"index.html"</span> && $file != <span class="hljs-string">"index.htm"</span> && $file != <span class="hljs-string">"index.php"</span>) {</span><br><span class="line">　　        <span class="hljs-keyword">if</span> ($output) $output .= <span class="hljs-string">"|"</span>;</span><br><span class="line">　　        $output .= <span class="hljs-string">"$file"</span>;</span><br><span class="line">　　    }</span><br><span class="line">　　}</span><br><span class="line">　　closedir($handle);</span><br><span class="line">　　<span class="hljs-keyword">echo</span> <span class="hljs-string">"&files=$output&"</span>; <span class="hljs-comment">//输出遍历此文件夹所有的内容</span></span><br><span class="line"><span class="hljs-meta">?></span></span><br></pre></td></tr></tbody></table></figure>
-
-<p><font color="red">解决</font></p>
+<h2 id="忘记root密码，无法登陆服务器"><a href="#忘记root密码，无法登陆服务器" class="headerlink" title="忘记root密码，无法登陆服务器"></a>忘记root密码，无法登陆服务器</h2><hr>
+<p><font color="blue">centos7 解决方案</font></p>
 <ul>
-<li>删除当前目录的.DS_Store<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">find . -name <span class="hljs-string">'*.DS_Store'</span> -<span class="hljs-built_in">type</span> f -delete</span><br></pre></td></tr></tbody></table></figure></li>
-<li>删除所有目录的.DS_Store<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">sudo find / -name <span class="hljs-string">".DS_Store"</span> -depth -<span class="hljs-built_in">exec</span> rm {} \;</span><br></pre></td></tr></tbody></table></figure></li>
-<li>禁止.DS_Store生成<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE</span><br></pre></td></tr></tbody></table></figure></li>
-<li>恢复.DS_Store生成<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">defaults delete com.apple.desktopservices DSDontWriteNetworkStores</span><br></pre></td></tr></tbody></table></figure>
-git上传忽略全局文件，并且在gitconfig中引入<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">touch ~/.gitigonre_global</span><br><span class="line"><span class="hljs-comment"># .gitignore_global</span></span><br><span class="line"><span class="hljs-comment">####################################</span></span><br><span class="line"><span class="hljs-comment">######## OS generated files ########</span></span><br><span class="line"><span class="hljs-comment">####################################</span></span><br><span class="line">.DS_Store</span><br><span class="line">.DS_Store?</span><br><span class="line">*.swp</span><br><span class="line">._*</span><br><span class="line">.Spotlight-V100</span><br><span class="line">.Trashes</span><br><span class="line">Icon?</span><br><span class="line">ehthumbs.db</span><br><span class="line">Thumbs.db</span><br><span class="line"><span class="hljs-comment">####################################</span></span><br><span class="line"><span class="hljs-comment">############# packages #############</span></span><br><span class="line"><span class="hljs-comment">####################################</span></span><br><span class="line">*.7z</span><br><span class="line">*.dmg</span><br><span class="line">*.gz</span><br><span class="line">*.iso</span><br><span class="line">*.jar</span><br><span class="line">*.rar</span><br><span class="line">*.tar</span><br><span class="line">*.zip </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#.gitconfig</span></span><br><span class="line">[filter <span class="hljs-string">"lfs"</span>]</span><br><span class="line">	required = <span class="hljs-literal">true</span></span><br><span class="line">	clean = git-lfs clean %f</span><br><span class="line">	smudge = git-lfs smudge %f</span><br><span class="line">[user]</span><br><span class="line">	name = bingozb</span><br><span class="line">	email = 454113692@qq.com</span><br><span class="line">[core]</span><br><span class="line">    excludesfile = /Users/bingo/.gitignore_global</span><br></pre></td></tr></tbody></table></figure></li>
+<li>重启服务器</li>
+<li>进入启动界面后选择e进入编辑引导</li>
+<li>修改内容,在尾部添加rd.break<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">linux16 /vmlinuz-3.10.0-123.el7.x86_64 root=UUID=449d53d1-84c2-40c0-b05e-d1900591d71b ro rd.lvm.lv=vg_kvm7usb/swap crashkernel=auto </span><br><span class="line">vconsole.keymap=us crashkernel=auto vconsole.font=latarcyrheb-sun16 rd.lvm.lv=vg_kvm7usb/root rhgb quiet LANG=en_US.UTF-8  rd.break</span><br></pre></td></tr></tbody></table></figure></li>
+<li>ctrl+x 以当前设定开机<br>开机后的互动式命令环境，並不是正常开机的系統，正常开机系統挂载在 /sysboo 且挂载成只读，必須重新挂载成可写入，才能修改密碼</li>
+<li>重新挂在 /sysroot 并改成可读可写<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">mount –o remount,rw /sysroot</span><br></pre></td></tr></tbody></table></figure></li>
+<li>chroot 工作目录到/sysroot<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">chroot /sysroot</span><br></pre></td></tr></tbody></table></figure></li>
+<li>设定新的root 密码<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">passwd root</span><br><span class="line">upyun1</span><br><span class="line">upyun1</span><br></pre></td></tr></tbody></table></figure>
+在此情況下，SELinux 並沒有启动，对所有文件的更改，可能会造成文档的context 不正确，为确保开机时重新设定SELinux context，必須在根目录下添加隐藏文件.autorelabel。</li>
+<li>避开selinux<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">touch /.autorelabel</span><br></pre></td></tr></tbody></table></figure></li>
+<li>重启<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></tbody></table></figure>
+
+</li>
 </ul>
+<p><font color="blue">centos7 解决方案二</font></p>
+<ul>
+<li>重启服务器</li>
+<li>按e编辑引导</li>
+<li>修改re 为 rw 添加 init=/bin/bash <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">linux16 /vmlinuz-3.10.0-123.el7.x86_64 root=UUID=449d53d1-84c2-40c0-b05e-d1900591d71b rw rd.lvm.lv=vg_kvm7usb/swap crashkernel=auto </span><br><span class="line">vconsole.keymap=us crashkernel=auto vconsole.font=latarcyrheb-sun16 rd.lvm.lv=vg_kvm7usb/root rhgb quiet LANG=en_US.UTF-8  init=/bin/bash</span><br></pre></td></tr></tbody></table></figure></li>
+<li>ctrl+x 以当前设定开机</li>
+<li>重置密码<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">passwd root</span><br><span class="line">upyun1</span><br><span class="line">upyun1</span><br></pre></td></tr></tbody></table></figure></li>
+<li>避开selinux<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">touch /.autorelabel</span><br></pre></td></tr></tbody></table></figure></li>
+<li>重启<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">exec</span> /sbin/init</span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+<hr>
 </body></html>
         </div>
         
             <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="http://blog.noback.top/undefined/">mac配置</a></li>
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/bc3af3e9/">linux故障问题及解决方案</a></li>
             <li><strong>本文作者：</strong><a href="http://blog.noback.top"></a></li>
-            <li><strong>本文链接：</strong><a href="http://blog.noback.top/undefined/">http://blog.noback.top/undefined/</a></li>
-            <li><strong>发布时间：</strong>2019-12-26</li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/bc3af3e9/">http://blog.noback.top/posts/bc3af3e9/</a></li>
+            <li><strong>发布时间：</strong>2020-01-09</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
@@ -241,12 +242,19 @@ git上传忽略全局文件，并且在gitconfig中引入<figure class="highligh
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/undefined/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/fe4ef317/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">rust猜谜游戏</span>
+                <span class="level-item">linux常用命令</span>
             </a>
         </div>
         
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/e47927c/">
+                <span class="level-item">vim快捷键</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
         
     </div>
 </div>
@@ -259,8 +267,8 @@ git上传忽略全局文件，并且在gitconfig中引入<figure class="highligh
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'http://blog.noback.top/undefined/';
-        this.page.identifier = 'undefined/';
+        this.page.url = 'http://blog.noback.top/posts/bc3af3e9/';
+        this.page.identifier = 'posts/bc3af3e9/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -350,17 +358,13 @@ git上传忽略全局文件，并且在gitconfig中引入<figure class="highligh
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#mac配置">
+        <a class="is-flex" href="#linux故障问题及解决方案">
         <span class="has-mr-6">1</span>
-        <span>mac配置</span>
+        <span>linux故障问题及解决方案</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#Mac-OS-中如何优雅的创建定时任务">
+        <a class="is-flex" href="#忘记root密码，无法登陆服务器">
         <span class="has-mr-6">1.1</span>
-        <span>Mac OS 中如何优雅的创建定时任务</span>
-        </a></li><li>
-        <a class="is-flex" href="#解决讨厌的-DS-Store">
-        <span class="has-mr-6">1.2</span>
-        <span>解决讨厌的.DS_Store</span>
+        <span>忘记root密码，无法登陆服务器</span>
         </a></li></ul></li></ul>
         </div>
     </div>
@@ -385,11 +389,11 @@ git上传忽略全局文件，并且在gitconfig中引入<figure class="highligh
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="http://image.noback.top/datadog.svg" alt="mac配置" height="28">
+                    <img src="http://image.noback.top/datadog.svg" alt="linux故障问题及解决方案" height="28">
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2020 mac配置&nbsp;
+                &copy; 2020 linux故障问题及解决方案&nbsp;
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
                         href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
