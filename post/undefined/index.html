@@ -2,21 +2,21 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>ansible总结 - Alpaca&#39;s blog | how to win</title>
+<title>mac配置 - Alpaca&#39;s blog | how to win</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="登陆h3c交换机h3c交换机的模块支持度极低，网上大多都是思科交换机的模块，很多要用到H3c的都是自己写的，感觉很坑 问题:现在又一个问题就是命令行使用raw模块可以登陆交换机，并且输出执指令 返回结果，但是在ansible-playbook中不行 echo &quot;10.0.5.124&quot;  &gt;&gt; .&#x2F;xxansible -i xx all -m raw -a &#39;system-view ;dis arp">
+    <meta name="description" content="mac配置Mac OS 中如何优雅的创建定时任务mac 可以像linux一样使用crontab来使用定时任务.另外还有一个launchctl的工具 配置文件 xxx.plist                          Label        cn.rayjun..plist                    ProgramArguments                    &#x2F;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ansible总结">
-<meta property="og:url" content="http://blog.noback.top/2019/blog_back_new/ansible/ansible%E6%89%B9%E9%87%8F%E6%8E%A7%E5%88%B6%E4%BA%A4%E6%8D%A2%E6%9C%BA/index.html">
+<meta property="og:title" content="mac配置">
+<meta property="og:url" content="http://blog.noback.top/post/undefined/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
-<meta property="og:description" content="登陆h3c交换机h3c交换机的模块支持度极低，网上大多都是思科交换机的模块，很多要用到H3c的都是自己写的，感觉很坑 问题:现在又一个问题就是命令行使用raw模块可以登陆交换机，并且输出执指令 返回结果，但是在ansible-playbook中不行 echo &quot;10.0.5.124&quot;  &gt;&gt; .&#x2F;xxansible -i xx all -m raw -a &#39;system-view ;dis arp">
+<meta property="og:description" content="mac配置Mac OS 中如何优雅的创建定时任务mac 可以像linux一样使用crontab来使用定时任务.另外还有一个launchctl的工具 配置文件 xxx.plist                          Label        cn.rayjun..plist                    ProgramArguments                    &#x2F;">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.noback.top/images/og_image.png">
-<meta property="article:published_time" content="2019-12-29T12:54:12.000Z">
-<meta property="article:modified_time" content="2019-12-29T12:54:12.000Z">
+<meta property="article:published_time" content="2019-12-26T04:27:09.000Z">
+<meta property="article:modified_time" content="2019-12-26T04:27:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
 
@@ -96,7 +96,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="http://image.noback.top/datadog.svg" alt="ansible总结" height="28">
+                <img src="http://image.noback.top/datadog.svg" alt="mac配置" height="28">
             
             </a>
         </div>
@@ -152,18 +152,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>ansible总结
+                <i class="fas fa-angle-double-right"></i>mac配置
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:54:12.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                <time class="level-item has-text-grey" datetime="2019-12-26T04:27:09.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-26</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/ansible/">ansible</a>
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/%E8%AE%BE%E5%A4%87/">设备</a>
                 </div>
                 
                 
@@ -171,7 +171,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    2 分钟 读完 (大约 233 个字)
+                    6 分钟 读完 (大约 839 个字)
                 </span>
                 
                 
@@ -184,26 +184,45 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="登陆h3c交换机"><a href="#登陆h3c交换机" class="headerlink" title="登陆h3c交换机"></a>登陆h3c交换机</h1><p>h3c交换机的模块支持度极低，网上大多都是思科交换机的模块，很多要用到H3c的都是自己写的，感觉很坑</p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h2><p>现在又一个问题就是命令行使用raw模块可以登陆交换机，并且输出执指令 返回结果，但是在ansible-playbook中不行</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"10.0.5.124"</span>  >> ./xx</span><br><span class="line">ansible -i xx all -m raw -a <span class="hljs-string">'system-view ;dis arp ;'</span></span><br></pre></td></tr></tbody></table></figure>
-<p>如上是可以的，但是如下的playbook则不行</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> first.yml << EOF</span><br><span class="line">  ---</span><br><span class="line">  - hosts: switch</span><br><span class="line"></span><br><span class="line">    tasks:</span><br><span class="line">    - name: add snmp</span><br><span class="line">      raw: <span class="hljs-string">"system-view ;"</span></span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">ansible-playbook first.yml</span><br></pre></td></tr></tbody></table></figure>
+            <html><head></head><body><h1 id="mac配置"><a href="#mac配置" class="headerlink" title="mac配置"></a>mac配置</h1><h2 id="Mac-OS-中如何优雅的创建定时任务"><a href="#Mac-OS-中如何优雅的创建定时任务" class="headerlink" title="Mac OS 中如何优雅的创建定时任务"></a>Mac OS 中如何优雅的创建定时任务</h2><p>mac 可以像linux一样使用crontab来使用定时任务.另外还有一个launchctl的工具</p>
+<p><font color="red">配置文件 xxx.plist</font>  </p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span>?> <!DOCTYPE plist PUBLIC <span class="hljs-string">"-//Apple//DTD PLIST 1.0//EN"</span> <span class="hljs-string">"http://www.apple.com/DTDs/PropertyList-1.0.dtd"</span>> </span><br><span class="line"><plist version=<span class="hljs-string">"1.0"</span>></span><br><span class="line">    <dict></span><br><span class="line">        <!--Plist 名称，必须唯一--> </span><br><span class="line">        <key>Label</key></span><br><span class="line">        <string>cn.rayjun..plist</string> </span><br><span class="line">        <!-- 指定要运行的程序的名称，可以是一个程序或者是一段脚本 -->   </span><br><span class="line">        <key>ProgramArguments</key></span><br><span class="line">        <array></span><br><span class="line">            <string>/path/to/programer</string> </span><br><span class="line">        </array></span><br><span class="line">        <!-- 执行时间的指定 --> </span><br><span class="line">        <key>StartCalendarInterval</key> </span><br><span class="line">        <dict> </span><br><span class="line">            <!--在第几分钟会被执行 --></span><br><span class="line">            <key>Minute</key></span><br><span class="line">            <<span class="hljs-built_in">integer</span>>00</<span class="hljs-built_in">integer</span>></span><br><span class="line">            <!-- 在第几个小时会被执行--></span><br><span class="line">            <key>Hour</key> </span><br><span class="line">            <<span class="hljs-built_in">integer</span>>22</<span class="hljs-built_in">integer</span>> </span><br><span class="line">        </dict></span><br><span class="line">        <!-- 运行日志 --></span><br><span class="line">        <key>StandardOutPath</key></span><br><span class="line">        <string>/path/to/<span class="hljs-built_in">log</span>/x.log</string></span><br><span class="line">        <!-- 错误日志 --></span><br><span class="line">        <key>StandardErrorPath</key> </span><br><span class="line">        <string>/path/to/err/x.err</string></span><br><span class="line">    </dict> </span><br><span class="line"></plist></span><br></pre></td></tr></tbody></table></figure>
+<p>在 Plist 中，支持两种定时任务的设置：</p>
+<ul>
+<li>StartInterval：定义任务多长时间（单位，秒）执行一次</li>
+<li>StartCalendarInterval：这个配置类似在 crontab 中的配置，指定具体的执行日期、星期、每月、每日的各个时间点，具体参照上面的配置文件。月份和天数的配置类似。</li>
+</ul>
+<p><font color="red">存放点</font><br>在 Mac 系统中，可以将需要处理的事情都写在 plist 文件中，plist 是一个 xml 格式的文件。plist 文件根据不同的需要可以放在不同的目录底下。Mac OS X 中支持放 plist 的目录如下：</p>
+<ul>
+<li>/Library/LaunchDaemons: 系统启动后就会执行</li>
+<li>/Library/LaunchAgents: 当用户登录系统后才会执行</li>
+<li>~/Library/LaunchAgents: 用户自定义的 plist</li>
+<li>/System/Library/LaunchAgents: 由 Mac OS X 为用户定义的任务</li>
+<li>/System/Library/LaunchDaemons: 由 Mac OS X 定义的守护进程任务</li>
+</ul>
+<p><font color="red">命令行</font></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">launchctl load xx.plist <span class="hljs-comment"># 启动程序</span></span><br><span class="line">launchctl unload xx.plist <span class="hljs-comment"># 停止程序</span></span><br></pre></td></tr></tbody></table></figure>
 
-<p>解决办法，既然playbook不行，那就切换成一条一条的命令行把</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> yy << EOF</span><br><span class="line">system-view ;</span><br><span class="line">display arp ;</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"10.0.5.124 ansible_ssh_user=admin ansible_ssh_pass=upyun123"</span> >> xx</span><br><span class="line"><span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> cmd;<span class="hljs-keyword">do</span> ansible -i xx -m raw -a <span class="hljs-string">"<span class="hljs-variable">$cmd</span>"</span> -u an -k ;<span class="hljs-keyword">done</span> < yy</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="解决讨厌的-DS-Store"><a href="#解决讨厌的-DS-Store" class="headerlink" title="解决讨厌的.DS_Store"></a>解决讨厌的.DS_Store</h2><p>.DS_Store (Desktop Services Store) 是一种由苹果公司的 Mac OS X 操作系统所创造的隐藏文件，目的在于存贮目录的自定义属性，例如文件们的图标位置或者是背景色的选择。相当于 Windows 下的 desktop.ini</p>
+<p><font color="red">为什么要解决？</font><br>如果不处理，每次拷贝给你同事的文件里都会包含有这个文件，或者上传网页的时候，应该把这个文件删除比较妥当，因为里面包含了一些你不一定希望别人看见的信息。（尤其是网站，通过 .DS_Store 可以知道这个目录里面所有文件的清单，很多时候这是一个不希望出现的问题。）</p>
+<figure class="highlight php hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-meta"><?php</span> <span class="hljs-comment">//例子</span></span><br><span class="line">　　$filepath = <span class="hljs-string">"images"</span>;</span><br><span class="line">　　$handle = opendir($filepath);</span><br><span class="line">　　<span class="hljs-keyword">while</span> (<span class="hljs-keyword">false</span> != ($file = readdir($handle))) {</span><br><span class="line">　　    <span class="hljs-keyword">if</span> ($file != <span class="hljs-string">"."</span> && $file != <span class="hljs-string">".."</span> && $file != <span class="hljs-string">".DS_Store"</span> && $file != <span class="hljs-string">"index.html"</span> && $file != <span class="hljs-string">"index.htm"</span> && $file != <span class="hljs-string">"index.php"</span>) {</span><br><span class="line">　　        <span class="hljs-keyword">if</span> ($output) $output .= <span class="hljs-string">"|"</span>;</span><br><span class="line">　　        $output .= <span class="hljs-string">"$file"</span>;</span><br><span class="line">　　    }</span><br><span class="line">　　}</span><br><span class="line">　　closedir($handle);</span><br><span class="line">　　<span class="hljs-keyword">echo</span> <span class="hljs-string">"&files=$output&"</span>; <span class="hljs-comment">//输出遍历此文件夹所有的内容</span></span><br><span class="line"><span class="hljs-meta">?></span></span><br></pre></td></tr></tbody></table></figure>
 
-
-
-<h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><p>python+yaml+jinja2 自动生成华三交换机配置<br><a href="https://www.jianshu.com/p/4937de3070aa" target="_blank" rel="noopener">https://www.jianshu.com/p/4937de3070aa</a></p>
+<p><font color="red">解决</font></p>
+<ul>
+<li>删除当前目录的.DS_Store<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">find . -name <span class="hljs-string">'*.DS_Store'</span> -<span class="hljs-built_in">type</span> f -delete</span><br></pre></td></tr></tbody></table></figure></li>
+<li>删除所有目录的.DS_Store<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">sudo find / -name <span class="hljs-string">".DS_Store"</span> -depth -<span class="hljs-built_in">exec</span> rm {} \;</span><br></pre></td></tr></tbody></table></figure></li>
+<li>禁止.DS_Store生成<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE</span><br></pre></td></tr></tbody></table></figure></li>
+<li>恢复.DS_Store生成<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">defaults delete com.apple.desktopservices DSDontWriteNetworkStores</span><br></pre></td></tr></tbody></table></figure>
+git上传忽略全局文件，并且在gitconfig中引入<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">touch ~/.gitigonre_global</span><br><span class="line"><span class="hljs-comment"># .gitignore_global</span></span><br><span class="line"><span class="hljs-comment">####################################</span></span><br><span class="line"><span class="hljs-comment">######## OS generated files ########</span></span><br><span class="line"><span class="hljs-comment">####################################</span></span><br><span class="line">.DS_Store</span><br><span class="line">.DS_Store?</span><br><span class="line">*.swp</span><br><span class="line">._*</span><br><span class="line">.Spotlight-V100</span><br><span class="line">.Trashes</span><br><span class="line">Icon?</span><br><span class="line">ehthumbs.db</span><br><span class="line">Thumbs.db</span><br><span class="line"><span class="hljs-comment">####################################</span></span><br><span class="line"><span class="hljs-comment">############# packages #############</span></span><br><span class="line"><span class="hljs-comment">####################################</span></span><br><span class="line">*.7z</span><br><span class="line">*.dmg</span><br><span class="line">*.gz</span><br><span class="line">*.iso</span><br><span class="line">*.jar</span><br><span class="line">*.rar</span><br><span class="line">*.tar</span><br><span class="line">*.zip </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#.gitconfig</span></span><br><span class="line">[filter <span class="hljs-string">"lfs"</span>]</span><br><span class="line">	required = <span class="hljs-literal">true</span></span><br><span class="line">	clean = git-lfs clean %f</span><br><span class="line">	smudge = git-lfs smudge %f</span><br><span class="line">[user]</span><br><span class="line">	name = bingozb</span><br><span class="line">	email = 454113692@qq.com</span><br><span class="line">[core]</span><br><span class="line">    excludesfile = /Users/bingo/.gitignore_global</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
 </body></html>
         </div>
         
             <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="http://blog.noback.top/2019/blog_back_new/ansible/ansible%E6%89%B9%E9%87%8F%E6%8E%A7%E5%88%B6%E4%BA%A4%E6%8D%A2%E6%9C%BA/">ansible总结</a></li>
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/post/undefined/">mac配置</a></li>
             <li><strong>本文作者：</strong><a href="http://blog.noback.top"></a></li>
-            <li><strong>本文链接：</strong><a href="http://blog.noback.top/2019/blog_back_new/ansible/ansible%E6%89%B9%E9%87%8F%E6%8E%A7%E5%88%B6%E4%BA%A4%E6%8D%A2%E6%9C%BA/">http://blog.noback.top/2019/blog_back_new/ansible/ansible%E6%89%B9%E9%87%8F%E6%8E%A7%E5%88%B6%E4%BA%A4%E6%8D%A2%E6%9C%BA/</a></li>
-            <li><strong>发布时间：</strong>2019-12-29</li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/post/undefined/">http://blog.noback.top/post/undefined/</a></li>
+            <li><strong>发布时间：</strong>2019-12-26</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
@@ -222,19 +241,12 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/blog_back_new/ansible/ansible%E5%9F%BA%E7%A1%80/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/post/undefined/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">ansible基础</span>
+                <span class="level-item">rust猜谜游戏</span>
             </a>
         </div>
         
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/blog_back_new/mysql/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%86%85%E5%AE%B9%E6%80%BB%E7%BB%93/">
-                <span class="level-item">数据库总结</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
         
     </div>
 </div>
@@ -247,8 +259,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'http://blog.noback.top/2019/blog_back_new/ansible/ansible%E6%89%B9%E9%87%8F%E6%8E%A7%E5%88%B6%E4%BA%A4%E6%8D%A2%E6%9C%BA/';
-        this.page.identifier = '/2019/blog_back_new/ansible/ansible批量控制交换机/';
+        this.page.url = 'http://blog.noback.top/post/undefined/';
+        this.page.identifier = 'post/undefined/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -338,17 +350,17 @@
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#登陆h3c交换机">
+        <a class="is-flex" href="#mac配置">
         <span class="has-mr-6">1</span>
-        <span>登陆h3c交换机</span>
+        <span>mac配置</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#问题">
+        <a class="is-flex" href="#Mac-OS-中如何优雅的创建定时任务">
         <span class="has-mr-6">1.1</span>
-        <span>问题:</span>
+        <span>Mac OS 中如何优雅的创建定时任务</span>
         </a></li><li>
-        <a class="is-flex" href="#other">
+        <a class="is-flex" href="#解决讨厌的-DS-Store">
         <span class="has-mr-6">1.2</span>
-        <span>other</span>
+        <span>解决讨厌的.DS_Store</span>
         </a></li></ul></li></ul>
         </div>
     </div>
@@ -373,11 +385,11 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="http://image.noback.top/datadog.svg" alt="ansible总结" height="28">
+                    <img src="http://image.noback.top/datadog.svg" alt="mac配置" height="28">
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2020 ansible总结&nbsp;
+                &copy; 2020 mac配置&nbsp;
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
                         href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
