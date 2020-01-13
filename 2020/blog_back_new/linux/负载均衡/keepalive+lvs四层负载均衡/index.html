@@ -163,7 +163,7 @@
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">负载均衡</a>
                 </div>
                 
                 
@@ -171,7 +171,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    31 分钟 读完 (大约 4646 个字)
+                    33 分钟 读完 (大约 4959 个字)
                 </span>
                 
                 
@@ -282,6 +282,17 @@
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">while</span> <span class="hljs-literal">true</span></span><br><span class="line"><span class="hljs-keyword">do</span></span><br><span class="line"><span class="hljs-keyword">if</span> [ `ip a show eth0 |grep 10.0.0.3|wc -l` -ne 0 ]</span><br><span class="line"><span class="hljs-keyword">then</span></span><br><span class="line">    <span class="hljs-built_in">echo</span> <span class="hljs-string">"keepalived is error!"</span></span><br><span class="line"><span class="hljs-keyword">else</span></span><br><span class="line">    <span class="hljs-built_in">echo</span> <span class="hljs-string">"keepalived is OK !"</span></span><br><span class="line"><span class="hljs-keyword">fi</span></span><br><span class="line"><span class="hljs-keyword">done</span></span><br></pre></td></tr></tbody></table></figure>
 
 
+<h3 id="自定义健康状态检测"><a href="#自定义健康状态检测" class="headerlink" title="自定义健康状态检测"></a>自定义健康状态检测</h3><p>keepalived可以通过设置vrrp_script自定义</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 自定义VRRP实例健康检查脚本 keepalived只能做到对自身问题和网络故障的监控，Script可以增加其他的监控来判定是否需要切换主备</span></span><br><span class="line">vrrp_script chk_sshd {</span><br><span class="line"> </span><br><span class="line">    script <span class="hljs-string">"killall -0 sshd"</span>    <span class="hljs-comment"># 示例为检查sshd服务是否运行中</span></span><br><span class="line"> </span><br><span class="line">    interval 2         <span class="hljs-comment"># 检查间隔时间</span></span><br><span class="line">    weight -4          <span class="hljs-comment"># 检查失败降低的权重</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="keepalived自动配置"><a href="#keepalived自动配置" class="headerlink" title="keepalived自动配置"></a>keepalived自动配置</h4><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-comment"># /keepalived.conf</span></span><br><span class="line">! Configuration File <span class="hljs-keyword">for</span> keepalived</span><br><span class="line"></span><br><span class="line">global_defs {</span><br><span class="line">router_id SLB-SAD</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">vrrp_script chk_upyun {</span><br><span class="line">  ¦ ¦ ¦ script <span class="hljs-string">"/etc/keepalived/bin/check_vip.sh"</span></span><br><span class="line">  ¦ ¦ ¦ interval 3</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">vrrp_instance upyun_lb {</span><br><span class="line">  ¦ state MASTER</span><br><span class="line">  ¦ interface eth3</span><br><span class="line">  ¦ virtual_router_id 20</span><br><span class="line">  ¦ priority 100</span><br><span class="line">  ¦ advert_int 1</span><br><span class="line">  ¦ notify_master /etc/keepalived/bin/change_master.sh</span><br><span class="line">  ¦ notify_backup /etc/keepalived/bin/change_backup.sh</span><br><span class="line">  ¦ authentication {</span><br><span class="line">  ¦ ¦ ¦ auth_type PASS</span><br><span class="line">  ¦ ¦ ¦ auth_pass upyun.com</span><br><span class="line">  ¦ }</span><br><span class="line">  ¦ track_script {</span><br><span class="line">  ¦ ¦ ¦ chk_upyun</span><br><span class="line">  ¦ }</span><br><span class="line">  ¦ virtual_ipaddress {</span><br><span class="line">  ¦ ¦ ¦ 192.168.147.20 label eth3:9</span><br><span class="line">  ¦ }</span><br><span class="line">} </span><br><span class="line"></span><br><span class="line">include /etc/keepalived/virserver.conf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># virserver.conf</span></span><br><span class="line">virtual_server 192.168.147.20 8600 {</span><br><span class="line">  ¦ delay_loop 2</span><br><span class="line">  ¦ lb_algo wrr</span><br><span class="line">  ¦ lb_kind DR</span><br><span class="line">  ¦ protocol UDP</span><br><span class="line">  ¦ <span class="hljs-comment">#persistence_timeout 5</span></span><br><span class="line">  ¦ real_server 192.168.13.250 8600 {</span><br><span class="line">  ¦ ¦ ¦ weight 1</span><br><span class="line">  ¦ ¦ ¦ connect_port 8600</span><br><span class="line">  ¦ ¦ ¦ connect_timeout 5</span><br><span class="line">  ¦ ¦ ¦ nb_get_retry 1</span><br><span class="line">  ¦ ¦ ¦ delay_before_retry 1</span><br><span class="line">  ¦ }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>状态检测脚本</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># check_backup </span></span><br><span class="line"><span class="hljs-comment"># 修改状态从master-> backup  权重 100 -> 80  注销 notify_backup 注销include </span></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"--- I am BACKUP #`date`"</span> >> /tmp/keepalived.log</span><br><span class="line">sed -r -i <span class="hljs-string">'/state/s^MASTER^BACKUP^g;/priority/s^100^80^g;/notify_backup/s@^@#@g;/include/s@^@#@g;'</span> /etc/keepalived/keepalived.conf</span><br><span class="line">systemctl restart keepalived</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># check_master</span></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"+++ I am MASTER #`date`"</span> >> /tmp/keepalived.log</span><br><span class="line">sed -r -i <span class="hljs-string">'/state/s^BACKUP^MASTER^g;/priority/s^80^100^g;/notify_backup/s@#@@g;'</span> /etc/keepalived/keepalived.conf</span><br><span class="line">ipvsadm --<span class="hljs-built_in">set</span> 100 15 15</span><br><span class="line">systemctl restart keepalived</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
 
 
 
@@ -356,9 +367,9 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/blog_back_new/checklist/inventory%E6%93%8D%E4%BD%9C/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/blog_back_new/checklist/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%B8%8B%E6%9E%B6%E6%B5%81%E7%A8%8B/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">inventory操作</span>
+                <span class="level-item">交换机下架流程</span>
             </a>
         </div>
         
@@ -429,7 +440,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        40
+                        48
                     </p>
                 </a>
             </div>
@@ -439,7 +450,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        15
+                        24
                     </p>
                 </a>
             </div>
@@ -503,7 +514,15 @@
         <a class="is-flex" href="#脑裂解决方法">
         <span class="has-mr-6">4.4</span>
         <span>脑裂解决方法</span>
-        </a></li></ul></li><li>
+        </a></li><li>
+        <a class="is-flex" href="#自定义健康状态检测">
+        <span class="has-mr-6">4.5</span>
+        <span>自定义健康状态检测</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#keepalived自动配置">
+        <span class="has-mr-6">4.5.1</span>
+        <span>keepalived自动配置</span>
+        </a></li></ul></li></ul></li><li>
         <a class="is-flex" href="#报错解决方案">
         <span class="has-mr-6">5</span>
         <span>报错解决方案</span>

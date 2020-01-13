@@ -7,10 +7,12 @@
 
 
 
-    <meta property="og:type" content="article">
+    <meta name="description" content="haproxy负载均衡">
+<meta property="og:type" content="article">
 <meta property="og:title" content="keepalive+haproxy负载均衡">
 <meta property="og:url" content="http://blog.noback.top/2020/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+haproxy%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
+<meta property="og:description" content="haproxy负载均衡">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.noback.top/images/og_image.png">
 <meta property="article:published_time" content="2020-01-07T09:45:56.000Z">
@@ -169,7 +171,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    几秒 读完 (大约 0 个字)
+                    25 分钟 读完 (大约 3705 个字)
                 </span>
                 
                 
@@ -182,7 +184,80 @@
         </div>
         
         <div class="content">
-            
+            <html><head></head><body><h2 id="haproxy负载均衡"><a href="#haproxy负载均衡" class="headerlink" title="haproxy负载均衡"></a>haproxy负载均衡</h2><a id="more"></a>
+
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># yum安装</span></span><br><span class="line">yum install haproxy -y <span class="hljs-comment"># centos7默认版本是1.5</span></span><br><span class="line"><span class="hljs-comment"># 查看包信息</span></span><br><span class="line">rpm -qi haproxy</span><br><span class="line"><span class="hljs-comment"># 查看包所创建的目录</span></span><br><span class="line">rpm -ql haproxy</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<p>—->主要目录<br>主程序：/usr/sbin/haproxy<br>配置文件：/etc/haproxy/haproxy.cfg<br>启动服务：systemctl start haproxy<br>停止服务：systemctl stop haproxy<br>开机启动：systemctl enable haproxy</p>
+<p>—->配置文件结构</p>
+<p>haproxy配置文件可分为全局配置（globalsettings）和 代理配置（proxies），而代理段配置包含defaults、frontend、backend、listen。</p>
+<p>global settings：#全局参数配置，主要用于定义haproxy进程管理安全及性能相关的参数<br>defaults < name >：#默认配置参数，下面的段继承该配置，名称是可选的,这配置默认配置参数可由下一个”defaults”所重新设定<br>frontend < name >：#前端配置，定义一系列监听的套接字，这些套接字可接受客户端请求并与之建立连接，可以监听多个端口。<br>backend < name >：#后端配置，定义后台服务器，前端代理服务器将会把客户端的请求调度至这些服务器，类似nginx中的upstream<br>listen < name >：#定义一组前端和后端的完整代理，可理解为frontend+backend，通常用于tcp流量代理</p>
+<p>—->配置参数可支持的时间单位</p>
+<ul>
+<li>us : 微秒. 1 microsecond = 1/1000000 s</li>
+<li>ms : 毫秒. 1 millisecond = 1/1000 s</li>
+<li>s  : 秒  1s = 1000ms</li>
+<li>m  : 分 1m = 60s = 60000ms</li>
+<li>h  : 小时   1h = 60m = 3600s = 3600000ms</li>
+<li>d  : 天    1d = 24h = 1440m = 86400s = 86400000ms</li>
+</ul>
+<hr>
+<p>haproxy配置文件</p>
+<hr>
+<p><strong>全局配置参数(global)</strong></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">chroot: <span class="hljs-comment">#修改haproxy的工作目录至指定的目录，并在放弃权限之前执行chroot（）操作，可以提升haproxy的安全级别，不过需要注意的是确保指定的目录为空目录且任何用户均不能有写权限;</span></span><br><span class="line">daemon: <span class="hljs-comment">#让haproxy以守护进程的方式工作于后台，其等同于"-D"选项的功能，当然，也可以在命令行中以"-db"选项将其禁用;</span></span><br><span class="line">gid: <span class="hljs-comment">#以指定的GID运行haproxy，建议使用专用于运行haproxy的GID，以避免因权限带来的风险;</span></span><br><span class="line">group: <span class="hljs-comment">#同gid，不过这里为指定的组名;</span></span><br><span class="line">uid: <span class="hljs-comment">#已指定的UID身份运行haproxy进程;</span></span><br><span class="line">user: <span class="hljs-comment">#同uid，但这里使用的为用户名;</span></span><br><span class="line"><span class="hljs-built_in">log</span>: <span class="hljs-comment">#定义全局的syslog服务器，最多可以定义两个;</span></span><br><span class="line">nbproc: <span class="hljs-comment">#指定启动的haproxy进程个数，只能用于守护进程模式的haproxy；默认为止启动一个进程，鉴于调试困难等多方面的原因，一般只在但进程仅能打开少数文件描述符的场中才使用多进程模式;</span></span><br><span class="line">pidfile: <span class="hljs-comment">#pid文件的存放位置;</span></span><br><span class="line"><span class="hljs-built_in">ulimit</span>-n:  <span class="hljs-comment">#设定每个进程所能够打开的最大文件描述符，默认情况下其会自动进行计算，因此不建议修改此选项;</span></span><br><span class="line">node: <span class="hljs-comment">#定义当前节点的名称，用于HA场景中多haproxy进程共享同一个IP地址时;</span></span><br><span class="line">description: <span class="hljs-comment">#当前实例的描述信息;</span></span><br><span class="line">maxconn: <span class="hljs-comment">#设定每个haproxy进程所接受的最大并发连接数，其等同于命令行选项"-n"，"ulimit-n"自动计算的结果正式参照从参数设定的;</span></span><br><span class="line">maxpipes: <span class="hljs-comment">#haproxy使用pipe完成基于内核的tcp报文重组，此选项用于设定每进程所允许使用的最大pipe个数，每个pipe会打开两个文件描述符，因此，"ulimit -n"自动计算的结果会根据需要调大此值，默认为maxcoon/4;</span></span><br><span class="line">noepoll: <span class="hljs-comment">#在linux系统上禁用epoll机制;</span></span><br><span class="line">nokqueue: <span class="hljs-comment">#在BSE系统上禁用kqueue机制;</span></span><br><span class="line">nopoll: <span class="hljs-comment">#禁用poll机制;</span></span><br><span class="line">nosepoll: <span class="hljs-comment">#在linux系统上禁用启发式epoll机制;</span></span><br><span class="line">nosplice: <span class="hljs-comment">#禁止在linux套接字上使用tcp重组，这会导致更多的recv/send调用，不过，在linux2.6.25-28系列的内核上，tcp重组功能有bug存在;</span></span><br><span class="line">spread-checks<0..50,<span class="hljs-keyword">in</span> percent>: <span class="hljs-comment">#在haprorxy后端有着众多服务器的场景中，在紧缺是时间间隔后统一对中服务器进行健康状况检查可能会带来意外问题，此选项用于将检查的时间间隔长度上增加或减少一定的随机时长，为当前检查检测时间的%;</span></span><br><span class="line">maxconnrate：<span class="hljs-comment">#设置每个进程每秒种所能建立的最大连接数量，速率，一个连接里可以有多个会话，也可以没有会话</span></span><br><span class="line">maxsessrate：<span class="hljs-comment">#设置每个进程每秒种所能建立的最大会话数量</span></span><br><span class="line">maxsslconn：<span class="hljs-comment">#每进程支持SSL 的最大连接数量</span></span><br><span class="line">tune.bufsize: <span class="hljs-comment">#设定buffer的大小，同样的内存条件下，较小的值可以让haproxy有能力接受更多的并发连接，较大的值了可以让某些应用程序使用较大的cookie信息，强烈建议使用默认值;</span></span><br><span class="line">tune.chksize: <span class="hljs-comment">#设定检查缓冲区的大小，单位为字节，更大的值有助于在较大的页面中完成基于字符串或模式的文本查找，但也会占用更多的系统资源，不建议修改;</span></span><br><span class="line">tune.maxaccept: <span class="hljs-comment">#设定haproxy进程内核调度运行时一次性可以接受的连接的个数，较大的值可以带来较大的吞吐量。</span></span><br><span class="line">tune.maxpollevents: <span class="hljs-comment">#设定一次系统调用可以处理的事件最大数，默认值取决于OS,其至小于200时可介于带宽，但会略微增大网络延迟，但大于200时会降低延迟，但会稍稍增加网络带宽的占用;</span></span><br><span class="line">tune.maxrewrite: <span class="hljs-comment">#设定在首部重写或追加而预留的缓存空间，建议使用1024左右的大小，在需要更大的空间时，haproxy会自动增加其值;</span></span><br><span class="line">tune.rcvbuf.client: <span class="hljs-comment">#设定内核套接字中客户端接收缓存区的大小，单位为字节，强烈推荐使用默认值;</span></span><br><span class="line">tune.rcvbuf.server: <span class="hljs-comment">#设定内核套接字中服务器接收缓存区的大小，单位为字节，强烈推荐使用默认值;</span></span><br><span class="line">tune.sndbuf.client: <span class="hljs-comment">#设定内核套接字中客户端发送缓存区的大小，单位为字节，强烈推荐使用默认值;</span></span><br><span class="line">tune.sndbuf.server: <span class="hljs-comment">#设定内核套接字中服务器端发送缓存区的大小，单位为字节，强烈推荐使用默认值;</span></span><br><span class="line">debug: <span class="hljs-comment">#调试模式，输出启动信息到标准输出;</span></span><br><span class="line">quiet: <span class="hljs-comment">#安装模式，启动时无输出;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>global默认配置</strong></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 全局配置</span></span><br><span class="line">global</span><br><span class="line">    <span class="hljs-built_in">log</span> 127.0.0.1 local0         <span class="hljs-comment"># 设置日志</span></span><br><span class="line">    <span class="hljs-built_in">log</span> 127.0.0.1 local1 notice</span><br><span class="line">    maxconn 4000                 <span class="hljs-comment"># 最大连接数</span></span><br><span class="line">    chroot /usr/<span class="hljs-built_in">local</span>/haproxy    <span class="hljs-comment"># 安装目录</span></span><br><span class="line">    user haproxy</span><br><span class="line">    group haproxy</span><br><span class="line">    daemon                       <span class="hljs-comment"># 守护进程运行</span></span><br><span class="line">    <span class="hljs-comment">#nbproc 1                    # 进程数量，只能用于守护进程模式的haproxy；默认启动一个进程，一般只在单进程仅能打开少数文件描述符的场景中才使用多进程模式；</span></span><br><span class="line">    pidfile /var/run/haproxy.pid <span class="hljs-comment"># pid文件的存放位置</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<p><strong>defaults默认配置</strong></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">defaults</span><br><span class="line">　　mode http   <span class="hljs-comment">#默认负载均衡模式为http</span></span><br><span class="line">　　<span class="hljs-built_in">log</span> global    <span class="hljs-comment">#日志定义</span></span><br><span class="line">　　option httplog   <span class="hljs-comment">#启用日志记录HTTP请求，默认不记录http log</span></span><br><span class="line">　　option dontlognull   <span class="hljs-comment">#不记录空日志</span></span><br><span class="line">　　option httpclose   <span class="hljs-comment"># 每次请求完毕后主动关闭http通道</span></span><br><span class="line">　　option forwardfor  except 127.0.0.0/8 <span class="hljs-comment">#插入x-forward标记，反向代理时候可以通过该字段获取客户端真实IP</span></span><br><span class="line">   balance roundrobin <span class="hljs-comment"># 负载均衡算法,轮询</span></span><br><span class="line">　　retries 3   <span class="hljs-comment"># 定义连接后端服务器的失败重连次数</span></span><br><span class="line">　　timeout http-request 10s：<span class="hljs-comment">#在客户端建立连接但不请求数据时，关闭客户端连接</span></span><br><span class="line">   timeout queue 1m : <span class="hljs-comment">#服务器的maxconn时，连接在队列中保持挂起状态而设置的超时时间，想客户端返回503错误</span></span><br><span class="line">   timeout connect 10s： <span class="hljs-comment">#定义haproxy将客户端请求转发至后端服务器所等待的超时时长</span></span><br><span class="line">   timeout client 1m：<span class="hljs-comment">#客户端非活动状态的超时时长</span></span><br><span class="line">   timeout server 1m：<span class="hljs-comment">#客户端与服务器端建立连接后，等待服务器端的超时时长</span></span><br><span class="line">   timeout http-keep-alive 10s: <span class="hljs-comment">#定义保持连接的超时时长</span></span><br><span class="line">   timeout check           10s: <span class="hljs-comment">#健康状态监测时的超时时间，过短会误判，过长资源消耗</span></span><br><span class="line">   maxconn                 3000: <span class="hljs-comment">#每个server最大的连接数 </span></span><br><span class="line"></span><br><span class="line">   <span class="hljs-comment"># 超时参数</span></span><br><span class="line">   timeout http request ：<span class="hljs-comment">#在客户端建立连接但不请求数据时，关闭客户端连接</span></span><br><span class="line">   timeout queue ：<span class="hljs-comment">#等待最大时长</span></span><br><span class="line">   timeout connect： <span class="hljs-comment">#定义haproxy将客户端请求转发至后端服务器所等待的超时时长</span></span><br><span class="line">   timeout client：<span class="hljs-comment">#客户端非活动状态的超时时长</span></span><br><span class="line">   timeout server：<span class="hljs-comment">#客户端与服务器端建立连接后，等待服务器端的超时时长，</span></span><br><span class="line">   timeout http-keep-alive ：<span class="hljs-comment">#定义保持连接的超时时长</span></span><br><span class="line">   timeout check：<span class="hljs-comment">#健康状态监测时的超时时间，过短会误判，过长资源消耗</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>listen默认配置</strong></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 监听页面配置</span></span><br><span class="line">listen admin_stats  </span><br><span class="line">    <span class="hljs-built_in">bind</span> 0.0.0.0:50000           <span class="hljs-comment"># 监听IP和端口，为了安全可以设置本机的局域网IP及端口；</span></span><br><span class="line">    mode http</span><br><span class="line">    option httplog               <span class="hljs-comment"># 采用http日志格式  </span></span><br><span class="line">    stats refresh 30s            <span class="hljs-comment"># 统计页面自动刷新时间 </span></span><br><span class="line">    stats <span class="hljs-built_in">enable</span>                 <span class="hljs-comment"># 启用状态统计报告</span></span><br><span class="line">    stats uri /stats    <span class="hljs-comment"># 状态管理页面，通过 ip+port/stats来访问  如10.0.5.92:9999/stats</span></span><br><span class="line"></span><br><span class="line">    stats realm <span class="hljs-string">"LOGIN"</span>  <span class="hljs-comment"># 密码框上显示的文本</span></span><br><span class="line">    stats auth admin:psadmin     <span class="hljs-comment"># 统计页面用户名和密码设置  </span></span><br><span class="line">    stats hide-version          <span class="hljs-comment"># 隐藏统计页面上HAProxy的版本信息</span></span><br><span class="line">    <span class="hljs-comment">#errorfile 403 /usr/local/haproxy/examples/errorfiles/   #设置haproxy 错误页面 </span></span><br><span class="line">    stats admin_stats <span class="hljs-keyword">if</span> TRUE <span class="hljs-comment">#如果认证通过就做管理功能，可以管理后端的服务器</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>前端配置</strong></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">frontend http_main</span><br><span class="line">    <span class="hljs-built_in">bind</span> 0.0.0.0:80              <span class="hljs-comment"># http请求的端口，会被转发到设置的ip及端口</span></span><br><span class="line">    <span class="hljs-comment"># bind :80 # 监听本机所有ip80端口</span></span><br><span class="line">    <span class="hljs-comment"># bind *:80</span></span><br><span class="line">    <span class="hljs-comment"># bind 192.168.12.1:8080,10.1.0.12:8090</span></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment"># 转发规则</span></span><br><span class="line">    <span class="hljs-comment">#acl url_yuming   path_beg www.yuming.com</span></span><br><span class="line">    <span class="hljs-comment">#use_backend server_yuming if url_yuming</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># 默认跳转项，当上面都没有匹配上，就转到backend的http_default上；</span></span><br><span class="line">    default_backend http_default</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># 提升失败的时候的用户体验</span></span><br><span class="line">    <span class="hljs-comment">#errorfile 502 /usr/local/haproxy/examples/errorfiles/502.http</span></span><br><span class="line">    <span class="hljs-comment">#errorfile 503 /usr/local/haproxy/examples/errorfiles/503.http</span></span><br><span class="line">    <span class="hljs-comment">#errorfile 504 /usr/local/haproxy/examples/errorfiles/504.http</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<p><strong>后端配置</strong></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">backend http_default</span><br><span class="line">    <span class="hljs-comment"># 额外的一些设置，按需使用</span></span><br><span class="line">    option forwardfor</span><br><span class="line">    option forwardfor header Client-IP</span><br><span class="line">    option http-server-close</span><br><span class="line">    option httpclose</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># 负载均衡方式</span></span><br><span class="line">    <span class="hljs-comment">#source 根据请求源IP</span></span><br><span class="line">    <span class="hljs-comment">#static-rr 根据权重</span></span><br><span class="line">    <span class="hljs-comment">#leastconn 最少连接先处理;在有着较长时间会话的场景中推荐使用此算法，如LDAP、SQL等，其并不太适用于较短会话的应用层协议，如HTTP；此算法是动态的，</span></span><br><span class="line">    <span class="hljs-comment">#uri 根据请求的uri</span></span><br><span class="line">    <span class="hljs-comment">#url_param 根据请求的url参数</span></span><br><span class="line">    <span class="hljs-comment">#rdp-cookie 据据cookie(name)来锁定并哈希每一次请求</span></span><br><span class="line">    <span class="hljs-comment">#hdr(name) 根据HTTP请求头来锁定每一次HTTP请求</span></span><br><span class="line">    <span class="hljs-comment">#roundrobin 轮询方式</span></span><br><span class="line">    balance roundrobin           <span class="hljs-comment"># 负载均衡的方式,轮询方式</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># 设置健康检查页面</span></span><br><span class="line">    <span class="hljs-comment">#option httpchk GET /index.html</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">#传递客户端真实IP</span></span><br><span class="line">    option forwardfor header X-Forwarded-For</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># 需要转发的ip及端口</span></span><br><span class="line">    <span class="hljs-comment"># inter 2000 健康检查时间间隔2秒</span></span><br><span class="line">    <span class="hljs-comment"># rise 3 检测多少次才认为是正常的</span></span><br><span class="line">    <span class="hljs-comment"># fall 3 失败多少次才认为是不可用的</span></span><br><span class="line">    <span class="hljs-comment"># weight 30 权重</span></span><br><span class="line">    server node1 192.168.1.101:8080 check inter 2000 rise 3 fall 3 weight 30</span><br><span class="line">    server node2 192.168.1.101:8081 check inter 2000 rise 3 fall 3 weight 30</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p><strong>常用参数</strong><br>bind 用于监听</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">bind</span> [<address>]:<port_range> [,...] [param*] </span><br><span class="line"><span class="hljs-comment"># 仅在frontend和listen区域使用</span></span><br><span class="line"><span class="hljs-built_in">bind</span> 0.0.0.0:80              <span class="hljs-comment"># http请求的端口，会被转发到设置的ip及端口</span></span><br><span class="line">    <span class="hljs-comment"># bind :80 # 监听本机所有ip80端口</span></span><br><span class="line">    <span class="hljs-comment"># bind *:80</span></span><br><span class="line">    <span class="hljs-comment"># bind 192.168.12.1:8080,10.1.0.12:8090</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="单台haproxy-两台RS服务器"><a href="#单台haproxy-两台RS服务器" class="headerlink" title="单台haproxy+两台RS服务器"></a>单台haproxy+两台RS服务器</h2><p>配置<br>haproxy 服务器 10.0.5.93<br>RS 服务器1  10.0.5.90<br>RS 服务器2  10.0.5.91</p>
+<p>初始化准备<br>如果对防火墙没有太大的要求，可以直接关闭防护墙 所有机器都关闭</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 关闭防火墙</span></span><br><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl status firewalld</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 安装haproxy</span></span><br><span class="line">yum install haproxy -y</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 配置</span></span><br><span class="line">vi /etc/haproxy/haproxy.cfg</span><br></pre></td></tr></tbody></table></figure>
+
+<p>haproxy服务器 DS</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 基础配置</span></span><br><span class="line">global</span><br><span class="line">    <span class="hljs-built_in">log</span>         127.0.0.1 local0</span><br><span class="line">    chroot      /var/lib/haproxy</span><br><span class="line">    pidfile     /var/run/haproxy.pid</span><br><span class="line">    maxconn     4000</span><br><span class="line">    user        haproxy</span><br><span class="line">    group       haproxy</span><br><span class="line">    daemon</span><br><span class="line"></span><br><span class="line">    stats socket /var/lib/haproxy/stats</span><br><span class="line"></span><br><span class="line">defaults</span><br><span class="line">    mode                    http</span><br><span class="line">    <span class="hljs-built_in">log</span>                     global</span><br><span class="line">    option                  httplog</span><br><span class="line">    option                  dontlognull</span><br><span class="line">    option http-server-close</span><br><span class="line">    option forwardfor       except 127.0.0.0/8</span><br><span class="line">    option                  redispatch</span><br><span class="line">    retries                 3</span><br><span class="line">    balance roundrobin                      </span><br><span class="line">    timeout http-request    10s</span><br><span class="line">    timeout queue           1m</span><br><span class="line">    timeout connect         10s</span><br><span class="line">    timeout client          1m</span><br><span class="line">    timeout server          1m</span><br><span class="line">    timeout http-keep-alive 10s</span><br><span class="line">    timeout check           10s</span><br><span class="line">    maxconn                 3000 </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 开启监听端口</span></span><br><span class="line">listen Status                   <span class="hljs-comment"># 名字随便用</span></span><br><span class="line">  <span class="hljs-built_in">bind</span> 10.0.5.93:9999           <span class="hljs-comment"># 绑定监听端口</span></span><br><span class="line">  mode http                     </span><br><span class="line">  stats <span class="hljs-built_in">enable</span></span><br><span class="line">  stats uri /stats</span><br><span class="line">  stats realm <span class="hljs-string">"LOGIN"</span></span><br><span class="line">  stats refresh 6s</span><br><span class="line">  stats auth upyun:upyun123</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 端口转发</span></span><br><span class="line">listen web_server               <span class="hljs-comment"># 名字随便用</span></span><br><span class="line">  mode tcp                  <span class="hljs-comment">#采用7层模式</span></span><br><span class="line">  <span class="hljs-built_in">bind</span> *:7777                   <span class="hljs-comment"># 转发端口 请求7777 -> RS:8888 上面  因此这里的*:7777 可做vip -> keepalive</span></span><br><span class="line">  balance roundrobin         <span class="hljs-comment">#负载均衡算法，这里是轮换 # 轮询算法</span></span><br><span class="line">  <span class="hljs-comment">#option httpchk GET /test.test #健康检测   # 健康检测</span></span><br><span class="line">  server web1 10.0.5.91:8888 weight 3 check inter 500 fall 3</span><br><span class="line">  server web2 10.0.5.90:8888 weight 2 check inter 500 fall 3</span><br></pre></td></tr></tbody></table></figure>
+
+<p>查看haproxy  监听端状态<br><img src="http://img.noback.top/2020-01-10-15-46-07.png" alt="2020-01-10-15-46-07"><br>不断请求10.0.5.93:7777 会发现ip会在90 与91 之间不断改变，因为我们采用了轮询的机制，相应的图中web total也会不断增加</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">while</span> 1; <span class="hljs-keyword">do</span> curl http://10.0.5.93:7777/|grep <span class="hljs-string">"< h2 >.*< /h2 >"</span> ;sleep 1; <span class="hljs-keyword">done</span></span><br></pre></td></tr></tbody></table></figure>
+<p>over</p>
+<h2 id="keepalive-haproxy"><a href="#keepalive-haproxy" class="headerlink" title="keepalive+haproxy"></a>keepalive+haproxy</h2><p>就是在上面的单台haproxy机器上  添加一台haproxy机器，同时利用keepalived的特性，使用vip在两台haproxy机器上漂移，无论vip漂移到哪个地方，都有对应的haproxy机器去对下面的两台RS机器进行负载均衡</p>
+<p>keepalive 提高 haproxy的稳定性<br>haproxy 提高 RS的稳定性</p>
+<p>配置<br>DS1   keepalive + haproxy  10.0.5.93<br>DS2   keepalive + haproxy  10.0.5.92</p>
+<p>RS1   10.0.5.91<br>RS2   10.0.5.90 </p>
+<p>VIP   10.0.5.96<br>监控端口  10.0.5.96:9999/stats<br>VIP端口 10.0.5.96:8888 —- >  10.0.5.91:8888</p>
+<p>DS1 keepalive配置</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 声明一下身份和vip就醒了</span></span><br><span class="line">! Configuration File <span class="hljs-keyword">for</span> keepalived</span><br><span class="line"></span><br><span class="line">global_defs {</span><br><span class="line">   router_id LVS_DEVEL</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">vrrp_instance VI_1 {</span><br><span class="line">    state MASTER</span><br><span class="line">    interface eno1</span><br><span class="line">    virtual_router_id 51</span><br><span class="line">    priority 1000</span><br><span class="line">    advert_int 1</span><br><span class="line">    authentication {</span><br><span class="line">        auth_type PASS</span><br><span class="line">        auth_pass 1111</span><br><span class="line">    }</span><br><span class="line">    virtual_ipaddress {</span><br><span class="line">        10.0.5.96/20</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>DS2 keepalived配置</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">! Configuration File <span class="hljs-keyword">for</span> keepalived</span><br><span class="line"></span><br><span class="line">global_defs {</span><br><span class="line">   router_id LVS_DEVEL</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">vrrp_instance VI_1 {</span><br><span class="line">    state BACKUP</span><br><span class="line">    interface eno1</span><br><span class="line">    virtual_router_id 51</span><br><span class="line">    priority 10</span><br><span class="line">    advert_int 1</span><br><span class="line">    authentication {</span><br><span class="line">        auth_type PASS</span><br><span class="line">        auth_pass 1111</span><br><span class="line">    }</span><br><span class="line">    virtual_ipaddress {</span><br><span class="line">        10.0.5.96/20</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>这时候你可以先测试一下keepalived是否成功，两边开起来，然后关掉DS-master机器，如果VIP漂移到DS-BACKUP上面则表示成功</p>
+<p>DS1 haproxy配置   与  DS2 haproxy相同</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">global</span><br><span class="line">    <span class="hljs-built_in">log</span>         127.0.0.1 local0</span><br><span class="line">    chroot      /var/lib/haproxy</span><br><span class="line">    pidfile     /var/run/haproxy.pid</span><br><span class="line">    maxconn     4000</span><br><span class="line">    user        haproxy</span><br><span class="line">    group       haproxy</span><br><span class="line">    daemon</span><br><span class="line"></span><br><span class="line">    stats socket /var/lib/haproxy/stats</span><br><span class="line"></span><br><span class="line">defaults</span><br><span class="line">    mode                    http</span><br><span class="line">    <span class="hljs-built_in">log</span>                     global</span><br><span class="line">    option                  httplog</span><br><span class="line">    option                  dontlognull</span><br><span class="line">    option http-server-close</span><br><span class="line">    option forwardfor       except 127.0.0.0/8</span><br><span class="line">    option                  redispatch</span><br><span class="line">    retries                 3</span><br><span class="line">    balance roundrobin</span><br><span class="line">    timeout http-request    10s</span><br><span class="line">    timeout queue           1m</span><br><span class="line">    timeout connect         10s</span><br><span class="line">    timeout client          1m</span><br><span class="line">    timeout server          1m</span><br><span class="line">    timeout http-keep-alive 10s</span><br><span class="line">    timeout check           10s</span><br><span class="line">    maxconn                 3000</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 监听端口</span></span><br><span class="line">listen Status</span><br><span class="line">  <span class="hljs-built_in">bind</span> 10.0.5.96:9999</span><br><span class="line">  mode http</span><br><span class="line">  stats <span class="hljs-built_in">enable</span></span><br><span class="line">  stats uri /stats</span><br><span class="line">  stats realm <span class="hljs-string">"LOGIN"</span></span><br><span class="line">  stats refresh 6s</span><br><span class="line">  stats auth upyun:upyun123</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 这个80端口有什么用</span></span><br><span class="line">listen web_server</span><br><span class="line">  mode tcp                  <span class="hljs-comment">#采用7层模式</span></span><br><span class="line">  <span class="hljs-built_in">bind</span> *:7777</span><br><span class="line">  balance roundrobin         <span class="hljs-comment">#负载均衡算法，这里是轮换</span></span><br><span class="line">  <span class="hljs-comment">#option httpchk GET /test.test #健康检测</span></span><br><span class="line">  server web1 10.0.5.91:8888 weight 3 check inter 500 fall 3</span><br><span class="line">  server web2 10.0.5.90:8888 weight 2 check inter 500 fall 3</span><br></pre></td></tr></tbody></table></figure>
+
+<p>RS机器将VIP写入回源地址</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ifconfig enp4s0:0 10.0.5.96 broadcast 10.0.5.96 netmask 255.255.240.0 up</span><br></pre></td></tr></tbody></table></figure>
+
+<p>另外，当我切断master-keepalived的是否，会有一定时间的延迟<br><img src="http://img.noback.top/2020-01-10-17-44-01.png" alt="2020-01-10-17-44-01"></p>
+</body></html>
         </div>
         
             <ul class="post-copyright">
@@ -206,6 +281,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/blog_back_new/%E7%BD%91%E7%BB%9C/%E9%83%A8%E7%BD%B2/ipv6%E9%85%8D%E7%BD%AE/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">ipv6部署</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -274,7 +356,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        40
+                        48
                     </p>
                 </a>
             </div>
@@ -284,7 +366,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        15
+                        24
                     </p>
                 </a>
             </div>
@@ -316,7 +398,19 @@
             <h3 class="menu-label">
                 目录
             </h3>
-            
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#haproxy负载均衡">
+        <span class="has-mr-6">1</span>
+        <span>haproxy负载均衡</span>
+        </a></li><li>
+        <a class="is-flex" href="#单台haproxy-两台RS服务器">
+        <span class="has-mr-6">2</span>
+        <span>单台haproxy+两台RS服务器</span>
+        </a></li><li>
+        <a class="is-flex" href="#keepalive-haproxy">
+        <span class="has-mr-6">3</span>
+        <span>keepalive+haproxy</span>
+        </a></li></ul>
         </div>
     </div>
 </div>

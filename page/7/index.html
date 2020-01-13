@@ -145,18 +145,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/blog_back_new/%E6%89%A9%E5%B1%95/%E9%A2%9D%E5%A4%96%E7%9F%A5%E8%AF%86/"><i class="fas fa-angle-double-right"></i>额外知识</a>
+                <a class="has-link-black-ter" href="/2019/blog_back_new/Python/%E7%88%AC%E8%99%AB/%E7%88%AC%E5%8E%BBYouTube%E4%B8%8A%E7%9A%84%E8%A7%86%E9%A2%91/"><i class="fas fa-angle-double-right"></i>Python爬YouTube视频</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T05:06:26.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:39:12.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/%E6%89%A9%E5%B1%95/">扩展</a>
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/Python/">Python</a>
                 </div>
                 
                 
@@ -164,7 +164,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    几秒 读完 (大约 72 个字)
+                    7 分钟 读完 (大约 1019 个字)
                 </span>
                 
                 
@@ -172,12 +172,15 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="额外知识"><a href="#额外知识" class="headerlink" title="额外知识"></a>额外知识</h1><h2 id="盲打练习"><a href="#盲打练习" class="headerlink" title="盲打练习"></a>盲打练习</h2><p><a href="https://www.typingclub.com/sportal/program-3/116.play" target="_blank" rel="noopener">https://www.typingclub.com/sportal/program-3/116.play</a><br><a href="https://pqrs.org/osx/karabiner/" target="_blank" rel="noopener">https://pqrs.org/osx/karabiner/</a><br><a href="https://vim-adventures.com/" target="_blank" rel="noopener">https://vim-adventures.com/</a></p>
-<h2 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h2><p><a href="https://baike.baidu.com/item/%E6%80%BB%E7%BA%BF" target="_blank" rel="noopener">https://baike.baidu.com/item/%E6%80%BB%E7%BA%BF</a></p>
-<h2 id="oss与cdn的区别"><a href="#oss与cdn的区别" class="headerlink" title="oss与cdn的区别"></a>oss与cdn的区别</h2><p>xxx</p>
-<h2 id="webapi框架"><a href="#webapi框架" class="headerlink" title="webapi框架"></a>webapi框架</h2><h3 id="哪个是最快的web框架"><a href="#哪个是最快的web框架" class="headerlink" title="哪个是最快的web框架"></a>哪个是最快的web框架</h3><p><a href="https://github.com/the-benchmarker/web-frameworks" target="_blank" rel="noopener">https://github.com/the-benchmarker/web-frameworks</a></p>
-<h3 id="python高性能web框架"><a href="#python高性能web框架" class="headerlink" title="python高性能web框架"></a>python高性能web框架</h3><p><a href="https://falconframework.org/" target="_blank" rel="noopener">https://falconframework.org/</a></p>
-</body></html>
+            <html><head></head><body><h1 id="youtube视频爬虫"><a href="#youtube视频爬虫" class="headerlink" title="youtube视频爬虫"></a>youtube视频爬虫</h1><h2 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h2><p>最近想学习nginx，无奈没有好的视频，网上的教程也是零零散散的，慕课网 51CTO 淘宝上又买不到太好的教程，主要还是贵，买来要是讲的烂还不能退QAQ</p>
+<p>于是，在YouTobe上搜索了一下nginx的教程，我的天哪！油管简直就是一块宝地，好多付费的视频上面都能找到，长期混迹B站找视频的我，决定赶紧下下来，生怕待会就没了，那么问题来了，如何批量下载这些视频呢？</p>
+<p><strong>当然拉，能不白嫖还不是不要白嫖，要是讲的好，赞助一下也很重要</strong></p>
+<h2 id="使用you-get"><a href="#使用you-get" class="headerlink" title="使用you-get"></a>使用you-get</h2><p>Github地址: <a href="https://github.com/soimort/you-get" target="_blank" rel="noopener">https://github.com/soimort/you-get</a><br>不得不说，光看他的star，又是一块宝藏QAQ</p>
+<h2 id="编写脚本"><a href="#编写脚本" class="headerlink" title="编写脚本"></a>编写脚本</h2><p>既然有了下载器，接下来就是使用脚本批量下载了。<br>you-get是根据油管的视频网页地址去下载视频的，那么我们需要记录这一组视频列表中的url地址。<br><a href="https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD" target="_blank" rel="noopener">https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD</a><br><a href="https://www.youtube.com/watch?v=wZAf-aE2KoI&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD" target="_blank" rel="noopener">https://www.youtube.com/watch?v=wZAf-aE2KoI&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD</a><br><a href="https://www.youtube.com/watch?v=ULcqKLwf6fE&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD" target="_blank" rel="noopener">https://www.youtube.com/watch?v=ULcqKLwf6fE&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD</a><br>如上是三个测试地址，很不幸的是他们之间存在规律，但唯一发生变化的v=uid 其中的id是一串随机字符，但当我们不断刷新当前页面时会发现，uid并没有改变，也就是说在他们的数据库中存在一个key-value的值，每一个视频对一个随机uid,并且当这相对的关系生成之后，随机uid不会再发生改变。</p>
+<h2 id="获取uid"><a href="#获取uid" class="headerlink" title="获取uid"></a>获取uid</h2><p>既然不会发生改变，那么我们就用爬虫来获取这些uid把<br><strong>注意</strong></p>
+<p><img src="http://img.noback.top/youtobe%E7%88%AC%E8%99%AB.png" alt><br>像这样的页面虽然在他的右侧出现了列表，但这样的情况在当我们使用爬虫+正则的时，会被下方的视频连接干扰，因此最好先进入播放列表后再爬取<br><img src="http://img.noback.top/190909youtobe%E7%88%AC%E8%99%AB2.png" alt><br>像当前页面这样，我们所获取出来的uid就相对于完整一些<br><img src="http://img.noback.top/190909youtobe%E7%88%AC%E8%99%AB2.png" alt></p>
+<h2 id="整理循环下载"><a href="#整理循环下载" class="headerlink" title="整理循环下载"></a>整理循环下载</h2><p>OK,有了uid再加上之前我们发现的不变的元素，那么一条条完整的视频链接就有了</p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="hljs-keyword">from</span> you_get <span class="hljs-keyword">import</span> common <span class="hljs-keyword">as</span> you_get</span><br><span class="line"><span class="hljs-keyword">import</span> sys</span><br><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"><span class="hljs-keyword">import</span> time</span><br><span class="line"><span class="hljs-keyword">import</span> requests</span><br><span class="line"><span class="hljs-keyword">import</span> re</span><br><span class="line"></span><br><span class="line">static_url = <span class="hljs-string">"https://www.youtube.com{0}list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD"</span></span><br><span class="line">file_path = <span class="hljs-string">"D:\\video\youtobe_nginx_mooc"</span></span><br><span class="line"><span class="hljs-comment"># file_path = "F:\\video\youtobe_nginx_mooc"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">resp = requests.get(<span class="hljs-string">"https://www.youtube.com/playlist?list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD"</span>)</span><br><span class="line">pattern = <span class="hljs-string">"\/watch\?v=[0-9a-zA-Z_-]{11}&"</span></span><br><span class="line">video_url_lists = re.findall(pattern,resp.text)</span><br><span class="line"><span class="hljs-comment"># 去重</span></span><br><span class="line">video_url_lists = list(set(video_url_lists))</span><br><span class="line">print(len(video_url_lists))</span><br><span class="line"><span class="hljs-keyword">for</span> list <span class="hljs-keyword">in</span> video_url_lists:</span><br><span class="line">    format_url = static_url.format(list)</span><br><span class="line">    print(format_url)</span><br><span class="line">    print(<span class="hljs-string">"start get video from YouTobe"</span>)</span><br><span class="line">    sys.argv = [<span class="hljs-string">'you-get'</span>,<span class="hljs-string">'-o'</span>,file_path,format_url]</span><br><span class="line">    you_get.main()</span><br><span class="line">    time.sleep(<span class="hljs-number">1</span>)</span><br><span class="line">print(<span class="hljs-string">"download finished"</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># print(type(resp)) ## 由于这是返回的类型是 <class 'requests.models.Response'></span></span><br><span class="line"><span class="hljs-comment"># 但是在正则表达式中，要求是为str类型，因此如果我们使用pattern = re.findall('index' resp)时候就会报错</span></span><br><span class="line"><span class="hljs-comment"># 报错内容为TypeError: expected string or bytes-like object</span></span><br><span class="line"><span class="hljs-comment"># 修改 pattern = re.findall('index=',str(resp))</span></span><br><span class="line"><span class="hljs-comment"># 或者使用pattern = re.findall('index=',resp.text)</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-string">""""</span></span><br><span class="line"><span class="hljs-string">https://www.bilibili.com/read/cv4360/</span></span><br><span class="line"><span class="hljs-string">https://www.jianshu.com/p/e323cf85bd3d</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=5i9Ce9vzGxE&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=R4p7xxd3BTo&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=4</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=0JwSFgWUUQE&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=fvxAQsRy8Kk&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=8</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=R4p7xxd3BTo&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=4</span></span><br><span class="line"><span class="hljs-string">"""</span></span><br></pre></td></tr></tbody></table></figure></body></html>
         </div>
         
         
@@ -199,18 +202,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/blog_back_new/Rust/rust%E5%9F%BA%E7%A1%80/rust%E7%BB%93%E6%9E%84%E4%BD%93/"><i class="fas fa-angle-double-right"></i>rust结构体</a>
+                <a class="has-link-black-ter" href="/2019/blog_back_new/%E8%AE%BE%E5%A4%87/%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/%E5%8F%88%E6%8B%8D%E4%BA%91/"><i class="fas fa-angle-double-right"></i>又拍云</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T03:17:50.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                <time class="level-item has-text-grey" datetime="2019-12-29T05:13:50.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/Rust/">Rust</a>
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/%E8%AE%BE%E5%A4%87/">设备</a>
                 </div>
                 
                 
@@ -218,7 +221,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    3 分钟 读完 (大约 414 个字)
+                    7 分钟 读完 (大约 1043 个字)
                 </span>
                 
                 
@@ -226,99 +229,42 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h2 id="定义实例化结构体"><a href="#定义实例化结构体" class="headerlink" title="定义实例化结构体"></a>定义实例化结构体</h2><p>定义结构体，需要使用 struct 关键字并为整个结构体提供一个名字。结构体的名字需要描述它所组合的数据的意义.在结构体中需要有相应的属性和属性对应的类型</p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 创建实例模版</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">User</span></span> {</span><br><span class="line">    username: <span class="hljs-built_in">String</span>,</span><br><span class="line">    email: <span class="hljs-built_in">String</span>,</span><br><span class="line">    sign_in_count: <span class="hljs-built_in">u64</span>,</span><br><span class="line">    active: <span class="hljs-built_in">bool</span>,</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 实例化不可变模型</span></span><br><span class="line"><span class="hljs-keyword">let</span> user1 = User {</span><br><span class="line">    email: <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"someone@example.com"</span>),</span><br><span class="line">    username: <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"someusername123"</span>),</span><br><span class="line">    active: <span class="hljs-literal">true</span>,</span><br><span class="line">    sign_in_count: <span class="hljs-number">1</span>,</span><br><span class="line">};</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment">// 实例化可变模型</span></span><br><span class="line"><span class="hljs-keyword">let</span>  <span class="hljs-keyword">mut</span> user2 = User {</span><br><span class="line">    email: <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"someone@example.com"</span>),</span><br><span class="line">    username: <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"someusername123"</span>),</span><br><span class="line">    active: <span class="hljs-literal">true</span>,</span><br><span class="line">    sign_in_count: <span class="hljs-number">1</span>,</span><br><span class="line">};</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 调用与修改</span></span><br><span class="line"><span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, user2.email)</span><br><span class="line">user2.email = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"other@example.com"</span>)</span><br></pre></td></tr></tbody></table></figure>
+            <html><head></head><body><h1 id="又拍云工作记录"><a href="#又拍云工作记录" class="headerlink" title="又拍云工作记录"></a>又拍云工作记录</h1><h2 id="交换机命名格式"><a href="#交换机命名格式" class="headerlink" title="交换机命名格式"></a>交换机命名格式</h2><p>三大运营商缩写 + 附近机场代码 + S01等</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">移动 CMN</span><br><span class="line">电信 CTN</span><br><span class="line">联通 CUN</span><br></pre></td></tr></tbody></table></figure>
 
+<h2 id="交换机ipv6检测内容"><a href="#交换机ipv6检测内容" class="headerlink" title="交换机ipv6检测内容"></a>交换机ipv6检测内容</h2><p>原因 内网机器比如全是移动的，交换机配的移动的ip，下面配的也是移动的ip<br>这样ping的通，但是联通的服务器ip ping不同。也就是说是内网通，外网不同。<br>内网ping 网关肯定通</p>
+<p>检测：<br>用移动的交换机下面的服务器（出问题的交换机）  去mtr外网的ip，去看是哪里断掉的<br>而不是用外网的机器来mtr内网的ip，这样截止的地方会看不出来，因为不是内网的机器</p>
+<h2 id="ipv6配置"><a href="#ipv6配置" class="headerlink" title="ipv6配置"></a>ipv6配置</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">#业务vlan</span></span><br><span class="line">interface Vlan-interface1</span><br><span class="line">ipv6 address +业务vlan ip</span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line"><span class="hljs-comment">#互联vlan</span></span><br><span class="line">interface Vlan-interface200</span><br><span class="line">ipv6 address  +互联本地ip</span><br><span class="line"><span class="hljs-comment">#默认路由</span></span><br><span class="line">ipv6 route-static :: 0 + 互联对端ip</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="使用函数来返回并创建实例化模型"><a href="#使用函数来返回并创建实例化模型" class="headerlink" title="使用函数来返回并创建实例化模型"></a>使用函数来返回并创建实例化模型</h3><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> user = return_struct(<span class="hljs-built_in">String</span>::from(<span class="hljs-string">"xx"</span>),<span class="hljs-number">2</span>);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,user.name);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">User</span></span> {</span><br><span class="line">    name: <span class="hljs-built_in">String</span>,</span><br><span class="line">    age: <span class="hljs-built_in">i32</span>,</span><br><span class="line">    active: <span class="hljs-built_in">bool</span>,</span><br><span class="line">    sigin_in_count: <span class="hljs-built_in">i32</span>,</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">return_struct</span></span>(name: <span class="hljs-built_in">String</span>,age: <span class="hljs-built_in">i32</span> ) -> User {</span><br><span class="line">    User {</span><br><span class="line">        <span class="hljs-comment">//同名字段</span></span><br><span class="line">        <span class="hljs-comment">//1. name: name,</span></span><br><span class="line">        <span class="hljs-comment">//2. name,</span></span><br><span class="line">        name,</span><br><span class="line">        age,</span><br><span class="line">        active: <span class="hljs-literal">true</span>,</span><br><span class="line">        sigin_in_count: <span class="hljs-number">1</span>,</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="实例更新"><a href="#实例更新" class="headerlink" title="实例更新"></a>实例更新</h3><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> user2 = User {</span><br><span class="line">    email: <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"another@example.com"</span>),</span><br><span class="line">    username: <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"anotherusername567"</span>),</span><br><span class="line">    ..user1</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="元组结构体"><a href="#元组结构体" class="headerlink" title="元组结构体"></a>元组结构体</h3><p>没有字段名 只有字段类型</p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Color</span></span>(<span class="hljs-built_in">i32</span>, <span class="hljs-built_in">i32</span>, <span class="hljs-built_in">i32</span>);</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Point</span></span>(<span class="hljs-built_in">i32</span>, <span class="hljs-built_in">i32</span>, <span class="hljs-built_in">i32</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> black = Color(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="line"><span class="hljs-keyword">let</span> origin = Point(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="配置案例"><a href="#配置案例" class="headerlink" title="配置案例"></a>配置案例</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line">广东广州移动机房（自有机房NM）：2409:8C54:B000:0704::/64   互联地址 机房：FEC0::C/127， 我司 FEC0::D/127</span><br><span class="line"></span><br><span class="line">vlan 1 </span><br><span class="line">ip address 2409:8C54:B000:0704::/64 </span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line">vlan 20</span><br><span class="line">ipv6 address FEC0::D/127</span><br><span class="line">router-static</span><br><span class="line">ipv6 route-static :: 0 FEC0::C</span><br><span class="line"></span><br><span class="line">山东济南移动机房（自有节点NM）：2409:8C3C:0004:000C::/64，互联地址为：2409:8C3C:00FF:0004::000E/127、 我司 2409:8C3C:00FF:0004::0010/127</span><br><span class="line"></span><br><span class="line">vlan 1</span><br><span class="line">ip address 2409:8C3C:0004:000C::/64</span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line">vlan 20</span><br><span class="line">ipv6 address 2409:8C3C:00FF:0004::0010/127</span><br><span class="line">route-static</span><br><span class="line">ipv6 route-static :: 0 2409:8C3C:00FF:0004::000E</span><br><span class="line">vlan 1</span><br><span class="line">ipv6 address 240E:E9:B804:3:400::1/72</span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line">vlan 30 </span><br><span class="line">ipv6 address 240E:E9:B804:3:200::A3/127</span><br><span class="line">ipv6 address 240E:E9:B804:3:200::B3/127</span><br><span class="line">router-static</span><br><span class="line">ipv6 route-static :: 0 240E:E9:B804:3:200::A3</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="方法语法"><a href="#方法语法" class="headerlink" title="方法语法"></a>方法语法</h3><p>方法语法同函数类似，但是方法实在结构体的上下文中被定义的，并且他们的第一个参数是self，它代表了调用该方法的结构体实例</p>
-<p>我们将某个实例能做的所有事情一起放在impl(implementation)中</p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Rectangle</span></span>{</span><br><span class="line">        width: <span class="hljs-built_in">u32</span>,</span><br><span class="line">        height: <span class="hljs-built_in">u32</span>,</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment">// 必须同名</span></span><br><span class="line"><span class="hljs-keyword">impl</span> Rectangle{</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">area</span></span>(&<span class="hljs-keyword">self</span>) -> <span class="hljs-built_in">u32</span>{</span><br><span class="line">        <span class="hljs-keyword">self</span>.width * <span class="hljs-keyword">self</span>.height</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> rect1 = Rectangle{width: <span class="hljs-number">30</span>,height: <span class="hljs-number">50</span>};</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(</span><br><span class="line">        <span class="hljs-string">"the area is {}"</span>,rect1.area()</span><br><span class="line">    );</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>其中self表示调用该方法的结构体实例</p>
-</body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/blog_back_new/Rust/rust%E5%9F%BA%E7%A1%80/61-rust%E6%89%80%E6%9C%89%E6%9D%83/"><i class="fas fa-angle-double-right"></i>Rust概念-所有权</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-28T13:56:19.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-28</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/Rust/">Rust</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    10 分钟 读完 (大约 1550 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h2 id="Rust概念-所有权"><a href="#Rust概念-所有权" class="headerlink" title="Rust概念-所有权"></a>Rust概念-所有权</h2><h3 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h3><p>可以看一下这两篇文章<br><a href="https://learning-rust.github.io/docs/a6.variable_bindings,constants_and_statics.html" target="_blank" rel="noopener">https://learning-rust.github.io/docs/a6.variable_bindings,constants_and_statics.html</a><br><a href="http://wiki.jikexueyuan.com/project/rust/primitive-types.html" target="_blank" rel="noopener">http://wiki.jikexueyuan.com/project/rust/primitive-types.html</a></p>
-<p>在rust中变量模式是不可变的，因此我们叫做变量绑定，为了使他们可变，使用mut关键字即可<br>rust是一种静态类型的语言；它在编译时检查数据类型。并不需要在声明变量绑定时指定一个具体的数据类型。编译器会检查使用情况并为其设置更好的数据类型。<br>但是对于 <font color="red">常量和静态变量</font>，必须注释type。类型在冒号（:)之r</p>
-<h3 id="变量绑定"><a href="#变量绑定" class="headerlink" title="变量绑定"></a>变量绑定</h3><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 变量绑定</span></span><br><span class="line"><span class="hljs-keyword">let</span> a = <span class="hljs-literal">true</span>;</span><br><span class="line"><span class="hljs-keyword">let</span> b: <span class="hljs-built_in">bool</span> = <span class="hljs-literal">true</span>; </span><br><span class="line"><span class="hljs-comment">// 以上可以声明具体的数据类型，也可以不指定</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> (x,y) = (<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> z = <span class="hljs-number">5</span>;</span><br><span class="line">z = <span class="hljs-number">6</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 常数  必须指定</span></span><br><span class="line"><span class="hljs-keyword">const</span> N: <span class="hljs-built_in">i32</span> = <span class="hljs-number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 静态变量</span></span><br><span class="line"><span class="hljs-keyword">static</span> N: <span class="hljs-built_in">i32</span> = <span class="hljs-number">6</span>;</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="所有权"><a href="#所有权" class="headerlink" title="所有权"></a>所有权</h3><p>在rust中，一共分为两种数据类型</p>
-<ol>
-<li>基本数据类型： 如：bool（布尔），char（字符）,integer（整数）,floating（浮点）,arrays（数组），tuples(元组)，slice(切片),字符串（str），函数指针(functions)</li>
-<li>非基本数据类型 也就是引用类型</li>
+<h2 id="无法联网"><a href="#无法联网" class="headerlink" title="无法联网"></a>无法联网</h2><ol>
+<li><p>首先ping交换机ip  看是否通</p>
+</li>
+<li><p>串口线连接交换机  ping网关是否通不通  10.0.0.130</p>
+</li>
+<li><p>查看端口状态<br>dis int brief<br>聚合口是否起来 端口是否起来 pvid是否对应1000(统一是1000 除个别外可以在上联交换机上看10.0.0.130)</p>
+</li>
+<li><p>硬件问题<br>看模块是否发光  看跳线是否发光</p>
+</li>
 </ol>
-<p>在rust中，对于所有权一共有两种动作状态  移动和copy</p>
-<ul>
-<li>复制<br>当将a赋值给b的时候，首先rust会对原来a的元数据进行复制，并将复制的数据赋值给b，并把a的所有权状态 设置为“已复制（ copied ）”状态。</li>
-<li>移动<br>当将a赋值给b的时候，rust会把原来对a的原数据的所有权移动给b，并把a的所有权状态 设置为“已移动（ moved ）”状态。<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> x = <span class="hljs-number">5</span>;</span><br><span class="line"><span class="hljs-keyword">let</span> y = x;</span><br><span class="line"><span class="hljs-comment">// 基本数据类型 只发生了copied</span></span><br><span class="line"><span class="hljs-keyword">let</span> x = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello world"</span>);</span><br><span class="line"><span class="hljs-keyword">let</span> y = x;</span><br><span class="line"><span class="hljs-comment">// 引用数据类型，发生了moved</span></span><br></pre></td></tr></tbody></table></figure>
-<img src="http://img.noback.top/2019-12-28-23-30-18.png" alt="2019-12-28-23-30-18"><br>引用类型在存储到堆中时，会指定三个部分 分别时指针，长度和容量，并且指针指向堆上存放内存的内存地址<br>长度表示 String 的内容当前使用了多少字节的内存。容量是 String 从操作系统总共获取了多少字节的内存。长度与容量的区别是很重要的，</li>
-</ul>
-<h3 id="复制行为"><a href="#复制行为" class="headerlink" title="复制行为"></a>复制行为</h3><p><img src="http://img.noback.top/2019-12-28-23-32-47.png" alt="2019-12-28-23-32-47"><br>复制行为中，拷贝了一整份内容，包括指针长度和容量，于是他们共用同一个内存，而不是分别指向相等的两个内存<br><font color="red">二次释放错误</font><br>当变量离开作用域的使用,Rust自动调用drop函数并清理变量的堆内存，于是当出现复制行为的时候，他们执行的内存地址是相同的，当s1离开后，s2执行的内存地址无。当s1离开后，s2执行的内存地址无，这个叫做二次释放的错误，也是之前提到过的内存安全性 bug 之一。两次释放（相同）内存会导致内存污染，它可能会导致潜在的安全漏洞。<br><font color="blue">但是我在代码中试了一下，没有报错。。。</font></p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">     <span class="hljs-keyword">let</span> x = <span class="hljs-number">1</span>;</span><br><span class="line">     <span class="hljs-keyword">let</span> y = x;</span><br><span class="line">     <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Hello, world!{}"</span>,y);</span><br><span class="line">     <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,x)</span><br><span class="line">} </span><br><span class="line"><span class="hljs-comment">// input</span></span><br><span class="line">Hello, world!<span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-number">1</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="整理香港ntt点ip对应关系"><a href="#整理香港ntt点ip对应关系" class="headerlink" title="整理香港ntt点ip对应关系"></a>整理香港ntt点ip对应关系</h2><ol>
+<li>登陆netop服务器</li>
+<li>登陆香港ntt交换机</li>
+<li>查看vlan1 对应ip 其中157.xxx/27 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[NTT-CN-HKG-S01-Vlan-interface1]display this</span><br><span class="line"><span class="hljs-comment">#</span></span><br><span class="line">interface Vlan-interface1</span><br><span class="line"> ip address 157.119.232.1 255.255.255.224</span><br><span class="line"> ip address 10.81.0.254 255.255.255.0 sub</span><br><span class="line"> ip address 103.211.192.221 255.255.255.252 sub</span><br><span class="line"> ip address 103.251.128.1 255.255.255.224 sub</span><br><span class="line"> ip address 157.119.232.65 255.255.255.224 sub</span><br><span class="line"> ip address 192.168.1.1 255.255.255.0 sub</span><br><span class="line"> ip address 192.168.128.1 255.255.255.0 sub</span><br><span class="line"> ip address 192.168.232.1 255.255.255.224 sub</span><br><span class="line"> ipv6 address 2405:FD80:110::1/52</span><br><span class="line"><span class="hljs-comment">#</span></span><br><span class="line"><span class="hljs-built_in">return</span></span><br></pre></td></tr></tbody></table></figure>
+在netop服务器上用fping -g 157.119.231.1/27 来查看对应ip的状态</li>
+</ol>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@NETOPS machines]<span class="hljs-comment"># fping -g 157.119.232.65/27</span></span><br><span class="line">157.119.232.65 is alive</span><br><span class="line">157.119.232.66 is alive</span><br><span class="line">157.119.232.67 is alive</span><br><span class="line">157.119.232.68 is alive</span><br><span class="line">157.119.232.69 is alive</span><br><span class="line">157.119.232.70 is alive</span><br><span class="line">157.119.232.71 is alive</span><br><span class="line">157.119.232.72 is alive</span><br><span class="line">157.119.232.73 is alive</span><br><span class="line">157.119.232.74 is alive</span><br><span class="line">157.119.232.75 is alive</span><br><span class="line">157.119.232.85 is alive</span><br><span class="line">157.119.232.87 is alive</span><br><span class="line">157.119.232.86 is alive</span><br><span class="line">157.119.232.88 is alive</span><br><span class="line">157.119.232.89 is alive</span><br><span class="line">157.119.232.90 is alive</span><br><span class="line">157.119.232.91 is alive</span><br><span class="line">157.119.232.76 is unreachable</span><br><span class="line">157.119.232.77 is unreachable</span><br><span class="line">157.119.232.78 is unreachable</span><br><span class="line">157.119.232.79 is unreachable</span><br><span class="line">157.119.232.80 is unreachable</span><br><span class="line">157.119.232.81 is unreachable</span><br><span class="line">157.119.232.82 is unreachable</span><br><span class="line">157.119.232.83 is unreachable</span><br><span class="line">157.119.232.84 is unreachable</span><br><span class="line">157.119.232.92 is unreachable</span><br><span class="line">157.119.232.93 is unreachable</span><br><span class="line">157.119.232.94 is unreachable</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># fping -g 157.119.232.1/27</span></span><br><span class="line">157.119.232.1 is alive</span><br><span class="line">157.119.232.2 is alive</span><br><span class="line">157.119.232.3 is alive</span><br><span class="line">157.119.232.4 is alive</span><br><span class="line">157.119.232.5 is alive</span><br><span class="line">157.119.232.6 is alive</span><br><span class="line">157.119.232.7 is alive</span><br><span class="line">157.119.232.8 is alive</span><br><span class="line">157.119.232.9 is alive</span><br><span class="line">157.119.232.10 is alive</span><br><span class="line">157.119.232.11 is alive</span><br><span class="line">157.119.232.12 is alive</span><br><span class="line">157.119.232.13 is alive</span><br><span class="line">157.119.232.14 is alive</span><br><span class="line">157.119.232.15 is alive</span><br><span class="line">157.119.232.16 is alive</span><br><span class="line">157.119.232.17 is alive</span><br><span class="line">157.119.232.19 is alive</span><br><span class="line">157.119.232.18 is alive</span><br><span class="line">157.119.232.20 is alive</span><br><span class="line">157.119.232.21 is alive</span><br><span class="line">157.119.232.22 is alive</span><br><span class="line">157.119.232.23 is alive</span><br><span class="line">157.119.232.24 is alive</span><br><span class="line">157.119.232.25 is alive</span><br><span class="line">157.119.232.26 is alive</span><br><span class="line">157.119.232.27 is alive</span><br><span class="line">157.119.232.28 is alive</span><br><span class="line">157.119.232.29 is alive</span><br><span class="line">157.119.232.30 is alive</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="移动行为"><a href="#移动行为" class="headerlink" title="移动行为"></a>移动行为</h3><p><img src="http://img.noback.top/2019-12-28-23-43-58.png" alt="2019-12-28-23-43-58"><br>如果将原变量指针移向另外一个变量指针，原变量指针失效。当你再次调用s1变量时，由于指针的失去，没有指向存储数据的内存地址，报错无效引用</p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> x = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello"</span>); <span class="hljs-comment">// 这个是引用类型。数据在堆上面</span></span><br><span class="line">    <span class="hljs-keyword">let</span> y = x;</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Hello, world!{}"</span>,y);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,x)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// input</span></span><br><span class="line">error[E0382]: borrow of moved value: `x`</span><br><span class="line"> --> src/main.rs:<span class="hljs-number">5</span>:<span class="hljs-number">19</span></span><br><span class="line">  |</span><br><span class="line"><span class="hljs-number">2</span> |     <span class="hljs-keyword">let</span> x = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello"</span>);</span><br><span class="line">  |         - move occurs because `x` has type `std::string::String`, which does not implement the `Copy` trait</span><br><span class="line"><span class="hljs-number">3</span> |     <span class="hljs-keyword">let</span> y = x;</span><br><span class="line">  |             - value moved here</span><br><span class="line"><span class="hljs-number">4</span> |     <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Hello, world!{}"</span>,y);</span><br><span class="line"><span class="hljs-number">5</span> |     <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,x)</span><br><span class="line">  |                   ^ value borrowed here after <span class="hljs-keyword">move</span></span><br><span class="line"></span><br><span class="line">error: aborting due to previous error</span><br><span class="line"></span><br><span class="line">For more information about this error, <span class="hljs-keyword">try</span> `rustc --explain E0382`.</span><br><span class="line">error: could not compile `xx`.</span><br><span class="line"></span><br><span class="line">To learn more, run the command again with --verbose.</span><br><span class="line"><span class="hljs-comment">// 指针报错</span></span><br><span class="line">指针已经被<span class="hljs-keyword">move</span></span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="克隆行为"><a href="#克隆行为" class="headerlink" title="克隆行为"></a>克隆行为</h3><p>对于基础类型来说，变量的数据交互形式是复制<br>对于引用类型来说，变量的数据交互形式无法复制，只能移动。但是如果我们需要使用到复制堆上的数据，可以使用clone的通用函数</p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> x = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello"</span>); <span class="hljs-comment">// 这个是引用类型。数据在堆上面</span></span><br><span class="line">    <span class="hljs-keyword">let</span> y = x.clone();</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Hello, world!{}"</span>,y);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,x)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>查看inventory中对应关系</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.73 /root/mingtao/inventory/machines/*</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-upapp-01:157.119.232.73</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.30 /root/mingtao/inventory/machines/*</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-cdn-v406:<span class="hljs-comment"># NTT-CN-HKG-030 ansible_ssh_host=157.119.232.30</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-openstack:<span class="hljs-comment"># NTT-CN-HKG-030 ansible_ssh_host=157.119.232.30</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-openstack:OPK-HKG-M30 ansible_ssh_host=157.119.232.30</span><br><span class="line">/root/mingtao/inventory/machines/lists-upops:NTT-CN-HKG-030 ansible_ssh_host=157.119.232.30</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.29 /root/mingtao/inventory/machines/*</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-cdn-v406:<span class="hljs-comment"># NTT-CN-HKG-029 ansible_ssh_host=157.119.232.29</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-openstack:<span class="hljs-comment"># NTT-CN-HKG-029 ansible_ssh_host=157.119.232.29</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-upapp-01:157.119.232.29</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.20 /root/mingtao/inventory/machines/*</span></span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.24 /root/mingtao/inventory/machines/*</span></span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.21 /root/mingtao/inventory/machines/*</span></span><br></pre></td></tr></tbody></table></figure>
+<p>记录机器的对应名字</p>
+<h3 id="ntt机器对应脚本"><a href="#ntt机器对应脚本" class="headerlink" title="ntt机器对应脚本"></a>ntt机器对应脚本</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#!/usr/bin/bash</span></span><br><span class="line"><span class="hljs-comment"># add ip (active and unknown)</span></span><br><span class="line">fping -g 157.119.232.65/27 > ntt_machine</span><br><span class="line">fping -g 157.119.231.1/27 >> ntt_machine</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># filter active to tmp.txt</span></span><br><span class="line">awk <span class="hljs-string">'{if($3=="alive"){print $1}}'</span> > tmp.txt ntt_machine</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Calculate the total</span></span><br><span class="line">nums=`cat tmp.txt | wc -l`</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># reset result.txt to blank</span></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"result:"</span> > result.txt</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># filter ip</span></span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> `seq 1 <span class="hljs-variable">$nums</span>`</span><br><span class="line"><span class="hljs-keyword">do</span></span><br><span class="line">        ip=`awk <span class="hljs-string">"NR==<span class="hljs-variable">$i</span>"</span> tmp.txt`</span><br><span class="line">        link=`grep -w <span class="hljs-variable">$ip</span> mingtao/inventory/machines/machines/*`</span><br><span class="line">        link=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$link</span> | awk -F<span class="hljs-string">":"</span> <span class="hljs-string">'{print $2}'</span> `</span><br><span class="line">        link=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$link</span> | awk <span class="hljs-string">'{if($1=="#"){print $2}else{print $1}}'</span>`</span><br><span class="line">        <span class="hljs-built_in">echo</span>  <span class="hljs-variable">$ip</span>   ,<span class="hljs-string">"active"</span>   ,   <span class="hljs-variable">$link</span> >> result.txt</span><br><span class="line"><span class="hljs-keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># add unknown to tmp.txt</span></span><br><span class="line">awk <span class="hljs-string">'{if($3!="alive"){print $1,$3}}'</span> >> result.txt ntt_machine</span><br><span class="line">~</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="引用和借用"><a href="#引用和借用" class="headerlink" title="引用和借用"></a>引用和借用</h2><h3 id="不可变引用"><a href="#不可变引用" class="headerlink" title="不可变引用"></a>不可变引用</h3><p>跳过所有权，引用对象数据，这里就要用到rust中的引用关键字&<br>&关键字作用是创建了一条指向某一对象的引用，再由引用对象指向数据错在内存地址<br>当引用本身&s1离开作用域后，调用drop函数，指向s1对象的指针被丢弃<br>同时，rust的引用本身也是不可变的，</p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> s1 = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> len = calculate_length(&s1);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"The length of '{}' is {}."</span>, s1, len);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//参数类型需要引用类型</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">calculate_length</span></span>(s: &<span class="hljs-built_in">String</span>) -> <span class="hljs-built_in">usize</span> {</span><br><span class="line">    s.len()</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="http://img.noback.top/2019-12-29-09-38-03.png" alt="2019-12-29-09-38-03"><br>以上 &s1的过程称为引用，获取因果那个作为函数参数称为借用</p>
-<h3 id="可变引用"><a href="#可变引用" class="headerlink" title="可变引用"></a>可变引用</h3><p>可变引用同不可变类似，但要保证<br>被引用类型为可变类型<br>引用为可变<br>函数参数为可变引用</p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> s = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello"</span>);</span><br><span class="line">    change(&<span class="hljs-keyword">mut</span> s);</span><br><span class="line">}</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">change</span></span>(some_string: &<span class="hljs-keyword">mut</span> <span class="hljs-built_in">String</span>) {</span><br><span class="line">    some_string.push_str(<span class="hljs-string">", world"</span>);</span><br><span class="line">}</span><br><span class="line">``` </span><br><span class="line"><font color='blue'>在特定作用域中的特定数据有且只有一个可变引用。这些代码会失败;但可以有多个不可变引用,并且不可变引用和可变引用不能同时存在，可以在其中一个小时后再调用</font></span><br><span class="line">解决</span><br><span class="line">```rust</span><br><span class="line"><span class="hljs-keyword">let</span> mst s = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello"</span>)</span><br><span class="line">{</span><br><span class="line">  <span class="hljs-keyword">let</span> r1 = &<span class="hljs-keyword">mut</span> s;</span><br><span class="line">} </span><br><span class="line"><span class="hljs-keyword">let</span> r2 = &<span class="hljs-keyword">mut</span> s;</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="slice-切片"><a href="#slice-切片" class="headerlink" title="slice 切片"></a>slice 切片</h2><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> s = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello world"</span>) </span><br><span class="line"><span class="hljs-keyword">let</span> hello = &s[..<span class="hljs-number">5</span>];</span><br><span class="line"><span class="hljs-comment">// let hello = &s[0..5];</span></span><br><span class="line"><span class="hljs-keyword">let</span> world = &s[<span class="hljs-number">6</span>..<span class="hljs-number">11</span>];</span><br><span class="line"><span class="hljs-comment">// let world = &s[6..len];</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> helloworld = &s[..];</span><br><span class="line"><span class="hljs-keyword">let</span> helloworld = &s[<span class="hljs-number">0</span>..len];</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="底层设备到网络配置"><a href="#底层设备到网络配置" class="headerlink" title="底层设备到网络配置"></a>底层设备到网络配置</h3><p><img src="http://img.noback.top/2019-12-31-11-26-32.png" alt="2019-12-31-11-26-32"><br>通过该tower截图来获取网络配置需求<br>15台1U服务器<br>1台5130交换机<br>2个万兆多模模块<br>30根网线<br>16根电源线</p>
+<p>1个万兆口</p>
+<p>1-30口汇聚<br>49口接上联 走trunk</p>
 </body></html>
         </div>
         
@@ -341,18 +287,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/blog_back_new/Python/python%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%951/"><i class="fas fa-angle-double-right"></i>Python常用方法1</a>
+                <a class="has-link-black-ter" href="/2019/blog_back_new/%E8%AE%BE%E5%A4%87/%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/"><i class="fas fa-angle-double-right"></i>常见错误</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-27T09:36:31.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-27</time>
+                <time class="level-item has-text-grey" datetime="2019-12-29T05:13:35.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/Python/">Python</a>
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/%E8%AE%BE%E5%A4%87/">设备</a>
                 </div>
                 
                 
@@ -360,7 +306,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    5 分钟 读完 (大约 787 个字)
+                    4 分钟 读完 (大约 576 个字)
                 </span>
                 
                 
@@ -368,95 +314,177 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="python-常用方法"><a href="#python-常用方法" class="headerlink" title="python 常用方法"></a>python 常用方法</h1><h2 id="保留小数"><a href="#保留小数" class="headerlink" title="保留小数"></a>保留小数</h2><p>使用字符串格式化</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">a = <span class="hljs-number">11.234</span></span><br><span class="line">print(<span class="hljs-string">"%.2f"</span>%a)</span><br></pre></td></tr></tbody></table></figure>
-<p>使用round内置函数</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">a = <span class="hljs-number">11.234</span></span><br><span class="line">a = round(a,<span class="hljs-number">2</span>)</span><br><span class="line">print(a)</span><br></pre></td></tr></tbody></table></figure>
-<p>使用decimal模块</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> decimal <span class="hljs-keyword">import</span> Decimal</span><br><span class="line">a = <span class="hljs-number">12.345</span></span><br><span class="line">Decimal(a).quantize(Decimal(<span class="hljs-string">"0.00"</span>))</span><br></pre></td></tr></tbody></table></figure>
+            <html><head></head><body><h1 id="linux错误"><a href="#linux错误" class="headerlink" title="linux错误"></a>linux错误</h1><h2 id="yum不支持python3"><a href="#yum不支持python3" class="headerlink" title="yum不支持python3"></a>yum不支持python3</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@gogogo alpaca]<span class="hljs-comment"># yum</span></span><br><span class="line">  File <span class="hljs-string">"/bin/yum"</span>, line 30</span><br><span class="line">    except KeyboardInterrupt, e:</span><br><span class="line">                            ^</span><br><span class="line">SyntaxError: invalid syntax</span><br><span class="line">  File <span class="hljs-string">"/usr/libexec/urlgrabber-ext-down"</span>, line 28</span><br><span class="line">    except OSError, e:</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>解决办法</strong></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">sed -i <span class="hljs-string">'s:bin/python:bin/python2.7:'</span> /usr/bin/yum</span><br><span class="line">sed -i <span class="hljs-string">'s:bin/python:bin/python2.7:'</span> /usr/libexec/urlgrabber-ext-down</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="列表合并"><a href="#列表合并" class="headerlink" title="列表合并"></a>列表合并</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 使用+号操作</span></span><br><span class="line">list1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]</span><br><span class="line">list2 = [<span class="hljs-string">"z"</span>,<span class="hljs-string">"xx"</span>,] </span><br><span class="line">list3 = list1+list2</span><br><span class="line"><span class="hljs-comment"># 使用extend</span></span><br><span class="line">list4.extend(list1)</span><br><span class="line"><span class="hljs-comment"># 使用切片</span></span><br><span class="line">list4[len(<span class="hljs-number">11</span>):len(<span class="hljs-number">11</span>)] = list5</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="可以通外网，但是无法ping百度"><a href="#可以通外网，但是无法ping百度" class="headerlink" title="可以通外网，但是无法ping百度"></a>可以通外网，但是无法ping百度</h2><p>包括无法使用yum wget 等下载工具<br>或者报错 cannot find a valid baseurl for repo:base/7/x86_64 的解决方法</p>
+<p><strong>解决办法</strong><br>原因 - > DNS的问题</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> nameserver 114.114.114.114 > /etc/reslov.conf</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="linux中如何恢复到后台进程"><a href="#linux中如何恢复到后台进程" class="headerlink" title="linux中如何恢复到后台进程"></a>linux中如何恢复到后台进程</h2><p>linux 下我们如果想一个任务或者程序进行调度<br>bg 将一个后台暂停的命令，变成继续执行<br>fg 将后台的命令调至前台继续运行<br>jobs 查看当前在后台运行的命令<br>c-z 将前台命令放到后台运行 并且暂停<br>nohup command & 在后台不断运行command命令</p>
+<h2 id="ssh配置的问题"><a href="#ssh配置的问题" class="headerlink" title="ssh配置的问题"></a>ssh配置的问题</h2><p><font color="blue">这个问题主要是存在于交换机ssh登陆交换机的过程</font><br>ssh配置过程中，配置了密码登陆，但是出现下面的错误</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><ONI-KC-R01-CR1>ssh 10.0.0.166</span><br><span class="line">The server<span class="hljs-string">'s host key does not match the local cached key. Either the server administrator has changed the host key, or you connected to another server pretending to be this server. Please remove the local cached key, before logging in!</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>主要问题是一开始用ssh登陆交换机的时候，选择了保存key</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><ONI-KC-R01-CR1>ssh 10.0.0.166</span><br><span class="line">Username: tt</span><br><span class="line">Press CTRL+C to abort.</span><br><span class="line">Connecting to 10.0.0.166 port 22.</span><br><span class="line">The server is not authenticated. Continue? [Y/N]:y</span><br><span class="line">Do you want to save the server public key? [Y/N]:y</span><br></pre></td></tr></tbody></table></figure>
+<p>这样导致的问题就是在当前交换机上会保存一个登陆另一个交换机的key</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">#</span><br><span class="line">public-key peer 10.0.0.166</span><br><span class="line"> public-key-code begin</span><br><span class="line">   30819F300D06092A864886F70D010101050003818D0030818902818100DF3E1240D158E197</span><br><span class="line">   CE0712173C8591883F88CC925B1C0CFC63C779E9F531C3B7E409BBB2CCED954C09A339BE78</span><br><span class="line">   46B1497E4771EDD7E88D2E380C50F37A6EC9254E6B27EC7AFFE6DCDFC1EA230D16C4DC9BB8</span><br><span class="line">   B831A2F0CB578B736566052E830A582836AA9BFFE0821CE7CB43F74077D38B20437479F260</span><br><span class="line">   A5D0550CA7D3D0747F0203010001</span><br><span class="line"> public-key-code end</span><br><span class="line"> peer-public-key end</span><br><span class="line">#</span><br></pre></td></tr></tbody></table></figure>
+<p>于是当你下次选择使用ssh+密码登陆交换机的时候就会发现错误</p>
+<p><font color="red">解决</font><br>删除当前交换机的key  并在下次登陆的时候选择</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><ONI-KC-R01-CR1>ssh 10.0.0.166</span><br><span class="line">Username: tt</span><br><span class="line">Press CTRL+C to abort.</span><br><span class="line">Connecting to 10.0.0.166 port 22.</span><br><span class="line">The server is not authenticated. Continue? [Y/N]:y</span><br><span class="line">Do you want to save the server public key? [Y/N]:n</span><br></pre></td></tr></tbody></table></figure>
+
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
 
 
-<h2 id="os模块"><a href="#os模块" class="headerlink" title="os模块"></a>os模块</h2><h3 id="Python获取指定文件夹下的文件名"><a href="#Python获取指定文件夹下的文件名" class="headerlink" title="Python获取指定文件夹下的文件名"></a>Python获取指定文件夹下的文件名</h3><p><font color="red">模块os.walk可以遍历文件夹下的所有文件</font></p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">os.walk(top, topdown=Ture, οnerrοr=<span class="hljs-literal">None</span>, followlinks=<span class="hljs-literal">False</span>)</span><br><span class="line"><span class="hljs-comment"># return  (dirpath dirnames filenames)</span></span><br></pre></td></tr></tbody></table></figure>
-<ul>
-<li>dirpath: string 代表目录的路径</li>
-<li>dirnames list 包含了当前dirpath路径下所有的子目录名字（不包含目录路径）</li>
-<li>filenames：list，包含了当前dirpath路径下所有的非目录子文件的名字（不包含目录路径）。<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">file_name</span><span class="hljs-params">(file_dir)</span>:</span> </span><br><span class="line">    <span class="hljs-keyword">for</span> root, dirs, files <span class="hljs-keyword">in</span> os.walk(file_dir):</span><br><span class="line">        print(root) <span class="hljs-comment">#当前目录路径</span></span><br><span class="line">        print(dirs) <span class="hljs-comment">#当前路径下所有子目录</span></span><br><span class="line">        print(files) <span class="hljs-comment">#当前路径下所有非目录子文件</span></span><br><span class="line">        <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> files:</span><br><span class="line">            <span class="hljs-comment"># os.path.splitext # 对文件名进行切割成数组</span></span><br><span class="line">            <span class="hljs-keyword">if</span> os.path.splitext(file)[<span class="hljs-number">1</span>] == <span class="hljs-string">".jpeg"</span>:</span><br><span class="line">              print(file)</span><br><span class="line">            <span class="hljs-keyword">else</span>:</span><br><span class="line">              <span class="hljs-keyword">pass</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/blog_back_new/%E8%AE%BE%E5%A4%87/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE/hexo%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/"><i class="fas fa-angle-double-right"></i>hexo博客优化</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T05:12:17.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/%E8%AE%BE%E5%A4%87/">设备</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    2 分钟 读完 (大约 320 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="handsome博客优化"><a href="#handsome博客优化" class="headerlink" title="handsome博客优化"></a>handsome博客优化</h1><h2 id="修改右侧栏"><a href="#修改右侧栏" class="headerlink" title="修改右侧栏"></a>修改右侧栏</h2><p>sidebar.php 此处直接去除了 热门文字 、 最新评论 、 随机文字 这三个模块（他们在一个 Tab 里）</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><section id=<span class="hljs-string">"tabs-4"</span> class=<span class="hljs-string">"widget widget_tabs wrapper-md clear"</span>></span><br><span class="line">    <h3 class=<span class="hljs-string">"widget-title m-t-none text-md"</span>><?php _me(<span class="hljs-string">"闲言碎语"</span>) ?></h3></span><br><span class="line">    <div style=<span class="hljs-string">"font-size: 13px"</span>>这里是我的个人小站：猫之三千岁，用以记录生活中的点点滴滴，我一直认为有一个安静的、温馨的小窝是一件很快乐的事情。最后欢迎您不经意间的光临~ 🐾</div></span><br><span class="line"></section></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="部分修改网站"><a href="#部分修改网站" class="headerlink" title="部分修改网站"></a>部分修改网站</h2><p><a href="https://szyink.com/archives/229/" target="_blank" rel="noopener">https://szyink.com/archives/229/</a></p>
+<h2 id="如何获取自己的备案号"><a href="#如何获取自己的备案号" class="headerlink" title="如何获取自己的备案号"></a>如何获取自己的备案号</h2><p><a href="https://icp.chinaz.com/noback.top" target="_blank" rel="noopener">https://icp.chinaz.com/noback.top</a></p>
+<h2 id="改成CDN的内容"><a href="#改成CDN的内容" class="headerlink" title="改成CDN的内容"></a>改成CDN的内容</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">public static <span class="hljs-keyword">function</span> whenSwitchHeaderImgSrc(<span class="hljs-variable">$index</span> = 0, <span class="hljs-variable">$howToThumb</span>, <span class="hljs-variable">$attach</span>, <span class="hljs-variable">$content</span>, <span class="hljs-variable">$thumbField</span>)</span><br><span class="line">   {</span><br><span class="line">       <span class="hljs-variable">$options</span> = mget();</span><br><span class="line">       //<span class="hljs-variable">$randomNum</span> = unserialize(INDEX_IMAGE_ARRAY);</span><br><span class="line"></span><br><span class="line">       // 随机缩略图路径</span><br><span class="line">       // <span class="hljs-variable">$random</span> = <span class="hljs-string">"http://image.noback.top/"</span> . @<span class="hljs-variable">$randomNum</span>[<span class="hljs-variable">$index</span>] . <span class="hljs-string">'.jpg'</span>;//如果有文章置顶，这里可能会导致index not undefined</span><br><span class="line">       <span class="hljs-variable">$random</span> = <span class="hljs-string">'http://image.noback.top/'</span>.rand(1, 69).<span class="hljs-string">'.jpg'</span>;</span><br><span class="line">     	<span class="hljs-variable">$pattern</span> = <span class="hljs-string">'/\<img.*?src\=\"(.*?)\"[^>]*>/i'</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>突然又想了一个骚操作  只要把bing 4k壁纸上的<br><a href="https://bing.lylares.com/detail/cnjX2Vj0.html" target="_blank" rel="noopener">https://bing.lylares.com/detail/cnjX2Vj0.html</a></p>
+<p>后缀拿到 弄一个列表 随机一下  这样CDN流量钱都省了～</p>
+<h2 id="网站测速"><a href="#网站测速" class="headerlink" title="网站测速"></a>网站测速</h2><p><a href="https://developers.google.com/speed/pagespeed/insights/?hl=zh-cn&url=http%3A%2F%2Fnoback.top%2F" target="_blank" rel="noopener">https://developers.google.com/speed/pagespeed/insights/?hl=zh-cn&url=http%3A%2F%2Fnoback.top%2F</a></p>
+<h2 id="hexo博客优化"><a href="#hexo博客优化" class="headerlink" title="hexo博客优化"></a>hexo博客优化</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">end of the stream or a document separator is expected at line 8, column 1:</span><br><span class="line">报错内容 没有添加</span><br><span class="line">---</span><br><span class="line">title:</span><br><span class="line">tags:</span><br><span class="line">---</span><br><span class="line">等头部内容</span><br></pre></td></tr></tbody></table></figure></body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/blog_back_new/%E8%AE%BE%E5%A4%87/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE/"><i class="fas fa-angle-double-right"></i>软件配置</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T05:11:16.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/%E8%AE%BE%E5%A4%87/">设备</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    7 分钟 读完 (大约 1056 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="设备"><a href="#设备" class="headerlink" title="设备"></a>设备</h1><p>本文主要记录一些设备上的变动，包括快捷键的设置等等</p>
+<h2 id="vscode"><a href="#vscode" class="headerlink" title="vscode"></a>vscode</h2><h3 id="vscode设置代码块"><a href="#vscode设置代码块" class="headerlink" title="vscode设置代码块"></a>vscode设置代码块</h3><p>1.由于markdown不是什么编程语法，vscode不支持自动提示和补全,所以我们要现在用户设置中打开markdown的自动补全<br><font color="red">ctrl+shift+p</font>打开设置—> setting —-> 在其中添加</p>
+<figure class="highlight hljs"><table><tbody><tr><td class="code"><pre><span class="line">"[markdown]": {</span><br><span class="line">    "editor.wordWrap": "on",</span><br><span class="line">    "editor.quickSuggestions": true,</span><br><span class="line">},</span><br></pre></td></tr></tbody></table></figure>
+
+<p>2.添加补全代码块<br>ctrl+shift+p —> 输入markdown –> 打开markdown.json —> 添加内容</p>
+<figure class="highlight hljs"><table><tbody><tr><td class="code"><pre><span class="line">"Print to console": {</span><br><span class="line">		"prefix": "fcr",</span><br><span class="line">		"body": [</span><br><span class="line">			<span class="hljs-string">"<font color='red'>$1</font>"</span></span><br><span class="line">		],</span><br><span class="line">		"description": "change font-color to red sign import "</span><br><span class="line">	}</span><br></pre></td></tr></tbody></table></figure>
+<p>其中prefix 是指你代码块的简洁写法,在你输入的时候会出现代码块的提示<br>body是主体内容,也就是我们添加的代码块<br>description 是注释，你可以标注一下这代码块是用来干嘛的</p>
+<h3 id="vscode-绑定vim自定义快捷键"><a href="#vscode-绑定vim自定义快捷键" class="headerlink" title="vscode 绑定vim自定义快捷键"></a>vscode 绑定vim自定义快捷键</h3><p>在vscode中自定义vim快捷键<br>“vim.insertModeKeyBindings”: [<br>        {<br>            “before”: [“j”, “j”],<br>            “after”: [“<esc>“]<br>        }<br>]<br><a href="https://github.com/VSCodeVim/Vim/#key-remapping" target="_blank" rel="noopener">https://github.com/VSCodeVim/Vim/#key-remapping</a></esc></p>
+<h2 id="chrome"><a href="#chrome" class="headerlink" title="chrome"></a>chrome</h2><h3 id="清除特定网址的缓存"><a href="#清除特定网址的缓存" class="headerlink" title="清除特定网址的缓存"></a>清除特定网址的缓存</h3><p>打开开发者工具（F12），选择 Network——Disable cache 即可。需要清除某网站缓存时 F12 打开开发者工具就会自动清除这个网站的缓存，而不必清除所有网站的缓存了</p>
+<h2 id="ss"><a href="#ss" class="headerlink" title="ss"></a>ss</h2><h3 id="ss加强模式"><a href="#ss加强模式" class="headerlink" title="ss加强模式"></a>ss加强模式</h3><p><font color="red"> Mac电脑使用shadowsocks无法连接公司内网问题</font><br>最近换了mac但是发现无法连接mac电脑，主要原因是在mac电脑中ss无法对所有软件都支持端口转发,这时候需要用到一个软件 proxifier,在这个上面做全局的端口转发即可</p>
+<p><img src="http://img.noback.top/blog/imgproxifier%E8%BD%AF%E4%BB%B6.png" alt><br>看到socks5的监听端口为 1086</p>
+<ol>
+<li>添加代理<br><img src="http://img.noback.top/blog/img20191022152254.png" alt></li>
+<li>添加规则<br><img src="http://img.noback.top/blog/img20191022152521.png" alt></li>
+</ol>
+<h2 id="mac"><a href="#mac" class="headerlink" title="mac"></a>mac</h2><h3 id="mac连接交换机"><a href="#mac连接交换机" class="headerlink" title="mac连接交换机"></a>mac连接交换机</h3><p>由于在mac中没有像windows中xshell这样简单方便的串口连接工具，因此我们只能使用screen来连接交换机</p>
+<p>首先用串口线连接交换机，然后查看接入的串口设备，他们放在/dev下面 由于不同的串口线命名不同，但是他们应该都会带有usb字样</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ls /dev | grep -i tty.*usb</span><br><span class="line">screen /dev/tty.usbxxxxx  9600</span><br></pre></td></tr></tbody></table></figure>
+<p>这里9600为交换机的默认波特率，但你也可以在交换机更换波特率的内容</p>
+<h3 id="mac下使用ftp"><a href="#mac下使用ftp" class="headerlink" title="mac下使用ftp"></a>mac下使用ftp</h3><p>由于新的Mac系统去调了自带的telnet命令和ftp命令，所以第一步我们要安装ftp命令。<br>我的系统是10.13.6</p>
+<p>ftp的安装需要很多的软件依赖</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">brew install telnet</span><br><span class="line">brew install inetutils</span><br><span class="line">brew link --overwrite inetutils</span><br></pre></td></tr></tbody></table></figure>
+<p><font color="red">登陆-</font></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 方式一</span></span><br><span class="line">ftp ip</span><br><span class="line"><span class="hljs-comment"># 方式二</span></span><br><span class="line">ftp </span><br><span class="line">open ip</span><br></pre></td></tr></tbody></table></figure>
+<p><a href="https://www.jianshu.com/p/10c4e46c77f1" target="_blank" rel="noopener">https://www.jianshu.com/p/10c4e46c77f1</a><br>ftp使用方法<br><a href="https://blog.csdn.net/tianlesoftware/article/details/5818990" target="_blank" rel="noopener">https://blog.csdn.net/tianlesoftware/article/details/5818990</a></p>
+<h3 id="mac下改键记录"><a href="#mac下改键记录" class="headerlink" title="mac下改键记录"></a>mac下改键记录</h3><p>使用karabiner-element修改mac按键<br>修改内容为:<br>切换输入法 由之前的caps lock改成 shift<br>之前的caps 改成了 control</p>
+<ol>
+<li>下载karabiner-element</li>
+<li>在simple modifitions 中修改映射<br>from key caps_lock<br>to_key left_control</li>
+<li>修改shift和caps<br>由于karabiner-element不支持在窗口中修改，但可以指定json形式的配置文件<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">vi /Users/alpaca/.config/karabiner/karabiner.json</span><br><span class="line">                <span class="hljs-string">"rules"</span>: [</span><br><span class="line">                    {</span><br><span class="line">                        <span class="hljs-string">"manipulators"</span>: [</span><br><span class="line">                            {</span><br><span class="line">                                <span class="hljs-string">"description"</span>: <span class="hljs-string">"Change left_shift to control+space when used alone"</span>,</span><br><span class="line">                                <span class="hljs-string">"from"</span>: {</span><br><span class="line">                                    <span class="hljs-string">"key_code"</span>: <span class="hljs-string">"left_shift"</span>,</span><br><span class="line">                                    <span class="hljs-string">"modifiers"</span>: {</span><br><span class="line">                                        <span class="hljs-string">"optional"</span>: [</span><br><span class="line">                                            <span class="hljs-string">"any"</span></span><br><span class="line">                                        ]</span><br><span class="line">                                    }</span><br><span class="line">                                },</span><br><span class="line">                                <span class="hljs-string">"to"</span>: [</span><br><span class="line">                                    {</span><br><span class="line">                                        <span class="hljs-string">"key_code"</span>: <span class="hljs-string">"left_shift"</span></span><br><span class="line">                                    }</span><br><span class="line">                                ],</span><br><span class="line">                                <span class="hljs-string">"to_if_alone"</span>: [</span><br><span class="line">                                    {</span><br><span class="line">                                        <span class="hljs-string">"key_code"</span>: <span class="hljs-string">"spacebar"</span>,</span><br><span class="line">                                        <span class="hljs-string">"modifiers"</span>: [</span><br><span class="line">                                            <span class="hljs-string">"left_control"</span></span><br><span class="line">                                        ]</span><br><span class="line">                                    }</span><br><span class="line">                                ],</span><br><span class="line">                                <span class="hljs-string">"type"</span>: <span class="hljs-string">"basic"</span></span><br><span class="line">                            }</span><br><span class="line">                        ]</span><br><span class="line">                    }</span><br><span class="line">                ]</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
-</ul>
-<p><font color="red">模块os.listdir()可以得到当前路径下的文件名，不包括子目录中的文件</font></p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"><span class="hljs-comment"># 遍历获取所有文件</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">listdir</span><span class="hljs-params">(path, list_name)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> os.listdir(path):</span><br><span class="line">        file_path = os.path.join(path, file)</span><br><span class="line">        <span class="hljs-comment"># os.path.isdir(file) #判断文件是否为文件夹</span></span><br><span class="line">        <span class="hljs-keyword">if</span> os.path.isdir(file_path):</span><br><span class="line">            listdir(file_path, list_name)</span><br><span class="line">        <span class="hljs-keyword">elif</span> os.path.splitext(file_path)[<span class="hljs-number">1</span>]==<span class="hljs-string">'.jpeg'</span>:</span><br><span class="line">            list_name.append(file_path)</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="判断文件类型"><a href="#判断文件类型" class="headerlink" title="判断文件类型"></a>判断文件类型</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">os.path.isdir(path) <span class="hljs-comment"># 是否为文件夹</span></span><br><span class="line">os.path.isfile(path) <span class="hljs-comment"># 是否为文件</span></span><br></pre></td></tr></tbody></table></figure>
-
-
-<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>mode选项<br>r 读模式，只能读 文件不存在报错，<br>w 写模式，只能写 文件不存在则创建，<br>以上存在存在则清空在打开</p>
-<p>rb 二进制读模式 只能读  文件不存在报错<br>wb 二进制写模式 只能写  文件不存在则创建，<br>以上存在则清空再打开<br>有二进制内容 写入则需要encode(“utf-8”)</p>
-<p>rb+ 二进制读模式 可读可写 文件不存在报错<br>wb+ 二进制写模式 可读可写 文件不存在则创建，<br>以上存在则清空再打开</p>
-<p>a 追加写模式，文件存在则追加写入<br>a+ 追加读写方式<br>以上存在则追加写入</p>
-<p>默认进入为文件末尾<br>f.seek(0) 设置读写位置为开头<br>f.truncate(0) 将文章字节阶段为0</p>
-<h3 id="文件头部写如文件"><a href="#文件头部写如文件" class="headerlink" title="文件头部写如文件"></a>文件头部写如文件</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">with open(path, <span class="hljs-string">"r+"</span>) as f:</span><br><span class="line">     old = f.read()</span><br><span class="line">     f.seek(0)</span><br><span class="line">     f.write(data)</span><br><span class="line">     f.write(old)</span><br></pre></td></tr></tbody></table></figure>
-<p>或者</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">with open(path,<span class="hljs-string">"a"</span>) as f:</span><br><span class="line">      f.seek(0)</span><br><span class="line">      old = f.read()</span><br><span class="line">      <span class="hljs-comment"># 全部删除</span></span><br><span class="line">      f.truncate(0)</span><br><span class="line">      f.write(<span class="hljs-string">"---"</span>)</span><br><span class="line">      f.write(<span class="hljs-string">"tags: xxx"</span>)</span><br><span class="line">      f.write(<span class="hljs-string">"---"</span>)</span><br><span class="line">      f.close()</span><br></pre></td></tr></tbody></table></figure>
-
-
-<h2 id="Python-math库"><a href="#Python-math库" class="headerlink" title="Python-math库"></a>Python-math库</h2><p>向上取整 math.ceil<br>向下取整 math.floor<br>四舍五入 round</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">import math</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#向上取整</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil---"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil(2.3) => "</span>, math.ceil(2.3)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil(2.6) => "</span>, math.ceil(2.6)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">#向下取整</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"\nmath.floor---"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.floor(2.3) => "</span>, math.floor(2.3)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.floor(2.6) => "</span>, math.floor(2.6)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">#四舍五入</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"\nround---"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"round(2.3) => "</span>, round(2.3)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"round(2.6) => "</span>, round(2.6)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">#这三个的返回结果都是浮点型</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"\n\nNOTE:every result is type of float"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil(2) => "</span>, math.ceil(2)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.floor(2) => "</span>, math.floor(2)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"round(2) => "</span>, round(2)</span><br></pre></td></tr></tbody></table></figure></body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/blog_back_new/Python/python%E6%8A%A5%E9%94%99%E6%80%BB%E7%BB%93/"><i class="fas fa-angle-double-right"></i>Python报错总结</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-27T09:36:10.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-27</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/Python/">Python</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    几秒 读完 (大约 60 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="Python报错总结"><a href="#Python报错总结" class="headerlink" title="Python报错总结"></a>Python报错总结</h1><h2 id="Non-ASCII"><a href="#Non-ASCII" class="headerlink" title="Non-ASCII"></a>Non-ASCII</h2><p>python出现SyntaxError: Non-ASCII character ‘\xe6’ in file 打印日期.py on line 1, but no encoding declared;</p>
-<p><font color="red">解决方法</font><br>在文件头部添加如下两行注释码：</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/python</span></span><br><span class="line"><span class="hljs-comment"># -*- coding: <encoding name> -*- 例如，可添加# -*- coding: utf-8 -*-</span></span><br></pre></td></tr></tbody></table></figure>
-</body></html>
+</ol>
+<h3 id="mac-usr-bin-python-权限问题"><a href="#mac-usr-bin-python-权限问题" class="headerlink" title="mac /usr/bin/python 权限问题"></a>mac /usr/bin/python 权限问题</h3><p>operation not permitted<br>一般情况下我们在使用mac系统过程中下载一些文件、新建一些项目之后，这些文件都会默认是只读状态，这时我们只需要简单的一句权限设置命令就可以解决</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">sudo chmod -R 777 filename</span><br></pre></td></tr></tbody></table></figure>
+<p>/usr/bin下面的文件在mac中会出现一下的错误</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">operation not permitted</span><br></pre></td></tr></tbody></table></figure>
+<p>这是因为mac启用了SIP（System Integrity Protection），增加了rootless机制，导致即使在root权限下依然无法修改文件，在必要时候为了能够修改下面的文件，我们只能关闭该保护机制</p>
+<p>1) 重启 开机过程中按住command+R 进入保护模式<br>2) 打开终端 </p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">csrutil <span class="hljs-built_in">disable</span></span><br></pre></td></tr></tbody></table></figure>
+<p>3) 再次重启，就可以修改/usr/bin下的目录文件 </p>
+<p>4)恢复保护机制</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">csrutil <span class="hljs-built_in">enable</span></span><br></pre></td></tr></tbody></table></figure></body></html>
         </div>
         
         
@@ -495,6 +523,10 @@
             
             <li><a class="pagination-link has-text-black-ter" href="/page/8/">8</a></li>
             
+            <li><a class="pagination-link has-text-black-ter" href="/page/9/">9</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/10/">10</a></li>
+            
         </ul>
     </nav>
 </div>
@@ -528,7 +560,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        40
+                        48
                     </p>
                 </a>
             </div>
@@ -538,7 +570,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        15
+                        24
                     </p>
                 </a>
             </div>
@@ -619,25 +651,9 @@
                 <span class="level-item">blog_back_new</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">37</span>
+                <span class="level-item tag">30</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/blog-back-new/C%E8%AF%AD%E8%A8%80/">
-            <span class="level-start">
-                <span class="level-item">C语言</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/blog-back-new/Python/">
-            <span class="level-start">
-                <span class="level-item">Python</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/blog-back-new/Rust/">
             <span class="level-start">
                 <span class="level-item">Rust</span>
@@ -667,7 +683,7 @@
                 <span class="level-item">git</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/blog-back-new/linux/">
@@ -675,7 +691,7 @@
                 <span class="level-item">linux</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/blog-back-new/mysql/">
@@ -702,14 +718,6 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/blog-back-new/%E7%BD%91%E7%BB%9C/">
-            <span class="level-start">
-                <span class="level-item">网络</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/blog-back-new/%E8%AE%BE%E5%A4%87/">
             <span class="level-start">
                 <span class="level-item">设备</span>
@@ -718,20 +726,116 @@
                 <span class="level-item tag">6</span>
             </span>
         </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/checklist/">
+            <span class="level-start">
+                <span class="level-item">checklist</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/linux/">
             <span class="level-start">
                 <span class="level-item">linux</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">5</span>
             </span>
         </a><ul><li>
+        <a class="level is-marginless" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+            <span class="level-start">
+                <span class="level-item">常用命令</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">
+            <span class="level-start">
+                <span class="level-item">故障问题</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+            <span class="level-start">
+                <span class="level-item">文件系统</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">
             <span class="level-start">
                 <span class="level-item">负载均衡</span>
             </span>
             <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/">
+            <span class="level-start">
+                <span class="level-item">编程</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">
+            <span class="level-start">
+                <span class="level-item">C语言</span>
+            </span>
+            <span class="level-end">
                 <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/Python/">
+            <span class="level-start">
+                <span class="level-item">Python</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vim/">
+            <span class="level-start">
+                <span class="level-item">vim</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/">
+            <span class="level-start">
+                <span class="level-item">网络</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
+            <span class="level-start">
+                <span class="level-item">二层交换机</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
+            <span class="level-start">
+                <span class="level-item">交换机</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%83%A8%E7%BD%B2/">
+            <span class="level-start">
+                <span class="level-item">交换机部署</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -756,7 +860,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -787,18 +891,18 @@
         
         <article class="media">
             
-            <a href="/2020/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+haproxy%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="media-left">
+            <a href="/2020/blog_back_new/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="keepalive+haproxy负载均衡">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="二层交换机">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T09:45:56.000Z">2020-01-07</time></div>
-                    <a href="/2020/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+haproxy%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="has-link-black-ter is-size-6">keepalive+haproxy负载均衡</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-12T11:11:22.000Z">2020-01-12</time></div>
+                    <a href="/2020/blog_back_new/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/" class="has-link-black-ter is-size-6">二层交换机</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">负载均衡</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">二层交换机</a>
                     </p>
                 </div>
             </div>
@@ -806,18 +910,18 @@
         
         <article class="media">
             
-            <a href="/2020/blog_back_new/linux/linux%E7%BC%96%E7%A8%8B/shell%E8%84%9A%E6%9C%AC/" class="media-left">
+            <a href="/2020/blog_back_new/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8B/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="shell脚本">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="交换机状态检测">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T07:45:22.000Z">2020-01-07</time></div>
-                    <a href="/2020/blog_back_new/linux/linux%E7%BC%96%E7%A8%8B/shell%E8%84%9A%E6%9C%AC/" class="has-link-black-ter is-size-6">shell脚本</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T06:59:26.000Z">2020-01-10</time></div>
+                    <a href="/2020/blog_back_new/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8B/" class="has-link-black-ter is-size-6">交换机状态检测</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机</a>
                     </p>
                 </div>
             </div>
@@ -825,18 +929,18 @@
         
         <article class="media">
             
-            <a href="/2020/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/zabbix/" class="media-left">
+            <a href="/2020/blog_back_new/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="zabbix 学习记录">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux常用命令">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T07:39:04.000Z">2020-01-07</time></div>
-                    <a href="/2020/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/zabbix/" class="has-link-black-ter is-size-6">zabbix 学习记录</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T04:47:22.000Z">2020-01-09</time></div>
+                    <a href="/2020/blog_back_new/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="has-link-black-ter is-size-6">linux常用命令</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>
                     </p>
                 </div>
             </div>
@@ -844,18 +948,18 @@
         
         <article class="media">
             
-            <a href="/2020/blog_back_new/checklist/inventory%E6%93%8D%E4%BD%9C/" class="media-left">
+            <a href="/2020/blog_back_new/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E6%95%85%E9%9A%9C/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="inventory操作">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux故障问题及解决方案">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T06:19:39.000Z">2020-01-07</time></div>
-                    <a href="/2020/blog_back_new/checklist/inventory%E6%93%8D%E4%BD%9C/" class="has-link-black-ter is-size-6">inventory操作</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T04:23:01.000Z">2020-01-09</time></div>
+                    <a href="/2020/blog_back_new/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E6%95%85%E9%9A%9C/" class="has-link-black-ter is-size-6">linux故障问题及解决方案</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/git/">git</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">故障问题</a>
                     </p>
                 </div>
             </div>
@@ -863,18 +967,18 @@
         
         <article class="media">
             
-            <a href="/2020/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="media-left">
+            <a href="/2020/blog_back_new/vim/vim%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="keepalive+lvs 四层负载均衡">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vim快捷键">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-05T05:06:09.000Z">2020-01-05</time></div>
-                    <a href="/2020/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="has-link-black-ter is-size-6">keepalive+lvs 四层负载均衡</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T03:08:30.000Z">2020-01-09</time></div>
+                    <a href="/2020/blog_back_new/vim/vim%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="has-link-black-ter is-size-6">vim快捷键</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vim/">vim</a>
                     </p>
                 </div>
             </div>
@@ -909,7 +1013,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -940,18 +1044,18 @@
         
         <article class="media">
             
-            <a href="/2020/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+haproxy%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="media-left">
+            <a href="/2020/blog_back_new/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="keepalive+haproxy负载均衡">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="二层交换机">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T09:45:56.000Z">2020-01-07</time></div>
-                    <a href="/2020/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+haproxy%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="has-link-black-ter is-size-6">keepalive+haproxy负载均衡</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-12T11:11:22.000Z">2020-01-12</time></div>
+                    <a href="/2020/blog_back_new/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/" class="has-link-black-ter is-size-6">二层交换机</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">负载均衡</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">二层交换机</a>
                     </p>
                 </div>
             </div>
@@ -959,18 +1063,18 @@
         
         <article class="media">
             
-            <a href="/2020/blog_back_new/linux/linux%E7%BC%96%E7%A8%8B/shell%E8%84%9A%E6%9C%AC/" class="media-left">
+            <a href="/2020/blog_back_new/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8B/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="shell脚本">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="交换机状态检测">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T07:45:22.000Z">2020-01-07</time></div>
-                    <a href="/2020/blog_back_new/linux/linux%E7%BC%96%E7%A8%8B/shell%E8%84%9A%E6%9C%AC/" class="has-link-black-ter is-size-6">shell脚本</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T06:59:26.000Z">2020-01-10</time></div>
+                    <a href="/2020/blog_back_new/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8B/" class="has-link-black-ter is-size-6">交换机状态检测</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机</a>
                     </p>
                 </div>
             </div>
@@ -978,18 +1082,18 @@
         
         <article class="media">
             
-            <a href="/2020/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/zabbix/" class="media-left">
+            <a href="/2020/blog_back_new/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="zabbix 学习记录">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux常用命令">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T07:39:04.000Z">2020-01-07</time></div>
-                    <a href="/2020/blog_back_new/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/zabbix/" class="has-link-black-ter is-size-6">zabbix 学习记录</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T04:47:22.000Z">2020-01-09</time></div>
+                    <a href="/2020/blog_back_new/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="has-link-black-ter is-size-6">linux常用命令</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>
                     </p>
                 </div>
             </div>
@@ -997,18 +1101,18 @@
         
         <article class="media">
             
-            <a href="/2020/blog_back_new/checklist/inventory%E6%93%8D%E4%BD%9C/" class="media-left">
+            <a href="/2020/blog_back_new/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E6%95%85%E9%9A%9C/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="inventory操作">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux故障问题及解决方案">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T06:19:39.000Z">2020-01-07</time></div>
-                    <a href="/2020/blog_back_new/checklist/inventory%E6%93%8D%E4%BD%9C/" class="has-link-black-ter is-size-6">inventory操作</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T04:23:01.000Z">2020-01-09</time></div>
+                    <a href="/2020/blog_back_new/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E6%95%85%E9%9A%9C/" class="has-link-black-ter is-size-6">linux故障问题及解决方案</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/git/">git</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">故障问题</a>
                     </p>
                 </div>
             </div>
@@ -1016,18 +1120,18 @@
         
         <article class="media">
             
-            <a href="/2020/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="media-left">
+            <a href="/2020/blog_back_new/vim/vim%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="keepalive+lvs 四层负载均衡">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vim快捷键">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-05T05:06:09.000Z">2020-01-05</time></div>
-                    <a href="/2020/blog_back_new/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/keepalive+lvs%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="has-link-black-ter is-size-6">keepalive+lvs 四层负载均衡</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T03:08:30.000Z">2020-01-09</time></div>
+                    <a href="/2020/blog_back_new/vim/vim%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="has-link-black-ter is-size-6">vim快捷键</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a> / <a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vim/">vim</a>
                     </p>
                 </div>
             </div>
