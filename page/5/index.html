@@ -145,18 +145,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/9891ebc8/"><i class="fas fa-angle-double-right"></i>git基础</a>
+                <a class="has-link-black-ter" href="/posts/a33a1a7d/"><i class="fas fa-angle-double-right"></i>keepalive+lvs 四层负载均衡</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:50:50.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                <time class="level-item has-text-grey" datetime="2020-01-05T05:06:09.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-05</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/git/">git</a>
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">负载均衡</a>
                 </div>
                 
                 
@@ -164,7 +164,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    11 分钟 读完 (大约 1689 个字)
+                    33 分钟 读完 (大约 4959 个字)
                 </span>
                 
                 
@@ -172,72 +172,22 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><p>工作区(我们当前的文件夹)<br>暂存区(add 提交之后文件所存在的位置)<br>仓库(commit 之后将暂存区提交到的地方)</p>
-<p>首先是init初始化我们的工作区，这时候当前存在.git文件的就是我们的工作区，当前路径为我们的根目录<br>在工作区创建一个新的文件test.txt，<br>git add 之后文件上传到暂存区，我们可以用git status 会记录当前暂存区的操作<br>git diff可以比较工作区和暂存区的差异，当然这里是没有任何差异的，因为他们是同样的两份文件<br>修改test.txt 之后再去git diff 你会发现他们之间存在着差异，因为这个时候他们已经不是同样两份文件了<br>假如你再次 使用Git add . 再用git diff 时又没有差异了</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># ubuntu</span></span><br><span class="line">sudo apt-get install git</span><br><span class="line"><span class="hljs-comment"># centos </span></span><br><span class="line">yum install git -y</span><br><span class="line"><span class="hljs-comment"># mac </span></span><br><span class="line">brew install git</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="全局声明用户"><a href="#全局声明用户" class="headerlink" title="全局声明用户"></a>全局声明用户</h2><p>git config –global user.name “your name”<br>git config –global user.email “<a href="mailto:xxx@xxx.com">xxx@xxx.com</a>“</p>
-<h2 id="声明仓库-必须"><a href="#声明仓库-必须" class="headerlink" title="声明仓库  必须"></a>声明仓库  必须</h2><p>mkdir test<br>cd test<br>git init </p>
-<p>会生成一个.git的仓库管理文件,如果你使用了zsh的主题，你会发现多了一个master 这是你当前的分支，也仅仅只有这个分支</p>
-<p>git add . —> 将文件放到暂存区<br>git commit —> 将文件提交到当前分支 master</p>
-<p><strong>声明仓库内容  不一定</strong><br>既然是作为开源共享的项目或者说是线上多平台交互的私库，那一定需要一个专门解释这个仓库是做什么的文件—> README.md<br>git add README.md</p>
-<h2 id="提交并提供信息"><a href="#提交并提供信息" class="headerlink" title="提交并提供信息"></a>提交并提供信息</h2><p>将文件提交到仓库</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">git commit -m <span class="hljs-string">"your message"</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">git add xxx.txt</span><br><span class="line">git add . <span class="hljs-comment">#添加当前文件夹所有文件 </span></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">## 查看状态</span></span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line"><span class="hljs-comment"># 添加文件后的状态</span></span><br><span class="line"> alpaca@hzj  ~/hzj/tu   master ●  git add README.md</span><br><span class="line"> alpaca@hzj  ~/hzj/tu   master ✚  git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="hljs-string">"git reset HEAD <file>..."</span> to unstage)</span><br><span class="line"></span><br><span class="line">        modified:   README.md</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 提交 commit 后的状态</span></span><br><span class="line"> alpaca@hzj  ~/hzj/tu   master ✚  git commit -m <span class="hljs-string">"update some file"</span></span><br><span class="line">[master ff070f9] update some file</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br><span class="line"> alpaca@hzj  ~/hzj/tu   master </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 状态</span></span><br><span class="line">  alpaca@hzj  ~/hzj/tu   master  git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h2><p>当你每一次使用commit 将文件提交到当前分支的时候，记录下每一个步骤<br>查看使用</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看日志</span></span><br><span class="line">git <span class="hljs-built_in">log</span></span><br><span class="line"></span><br><span class="line">commit bb3c0e3a1e850af0c70d3ce3a22995eaae177e82 (HEAD -> master)</span><br><span class="line">Author: alpaca <1097690268@qq.com></span><br><span class="line">Date:   Thu Nov 21 11:46:24 2019 +0800</span><br><span class="line"></span><br><span class="line">    update</span><br><span class="line"></span><br><span class="line">commit ff070f92dee18935752e5a98b2310d275e1191b6</span><br><span class="line">Author: alpaca <1097690268@qq.com></span><br><span class="line">Date:   Thu Nov 21 11:42:58 2019 +0800</span><br><span class="line"></span><br><span class="line">    update some file</span><br><span class="line"></span><br><span class="line">commit 230660d585a95b90e3c6176ad21664c1b10f746a</span><br><span class="line">Author: alpaca <1097690268@qq.com></span><br><span class="line">Date:   Thu Nov 21 10:37:04 2019 +0800</span><br><span class="line"></span><br><span class="line">    update some markdown file</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 仅查看版本号</span></span><br><span class="line">git <span class="hljs-built_in">log</span> --pretty=oneline</span><br><span class="line"><span class="hljs-comment"># 指定版本号 如果你装了zsh 按tab就会出来commit_id</span></span><br><span class="line">git <span class="hljs-built_in">log</span> commit_id</span><br></pre></td></tr></tbody></table></figure>
-<p>由随机码(版本号) + 作者 + 日期 + commit_message 组成</p>
-<h2 id="回退操作"><a href="#回退操作" class="headerlink" title="回退操作"></a>回退操作</h2><p>版本回退，首先我们要知道一个事情 git log 只会记录下commit的过程，也就是上传到当前分支的过程，因此回退操作他并不会记录，但是他会重载之前的log状态，也就是当你一共提交了3次内容，你回退到了第三次提交前的版本。那么你的第三次提交log并不会被记录</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 回退add操作  checkout -- file  暂存区 --> 工作区</span></span><br><span class="line">git checkout -- file</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 回退connit操作上  仓库 ---> 暂存区</span></span><br><span class="line">git reset --hard commit_id </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查看回退日志</span></span><br><span class="line">git reflog</span><br></pre></td></tr></tbody></table></figure>
-
-
-<h2 id="提交远程仓库"><a href="#提交远程仓库" class="headerlink" title="提交远程仓库"></a>提交远程仓库</h2><p>之前的操作都是本地的，包括最后一步git commit 也只是提交到了本地的仓库。为了更好的保存内容，我们已经引入云仓库或者说托管我们的项目</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 添加远程仓库地址</span></span><br><span class="line">git remote add origin https://gitee.com/Alpaca-H/how-to-learn-git.git </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 提交当前分支到远程仓库</span></span><br><span class="line">git push  origin master</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 建议第一次使用push -u</span></span><br><span class="line"><span class="hljs-comment"># Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来 在以后的推送或者拉取时就可以简化命令。</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="从远程仓库下载"><a href="#从远程仓库下载" class="headerlink" title="从远程仓库下载"></a>从远程仓库下载</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">git <span class="hljs-built_in">clone</span> https://gitee.com/Alpaca-H/how-to-learn-git.git</span><br></pre></td></tr></tbody></table></figure>
-
-
-<p>第一次提交的存在的问题</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"> ! [rejected]        master -> master (fetch first)</span><br><span class="line">error: failed to push some refs to <span class="hljs-string">'https://gitee.com/Alpaca-H/how-to-learn-git.git'</span></span><br><span class="line">hint: Updates were rejected because the remote contains work that you <span class="hljs-keyword">do</span></span><br><span class="line">hint: not have locally. This is usually caused by another repository pushing</span><br><span class="line">hint: to the same ref. You may want to first integrate the remote changes</span><br><span class="line">hint: (e.g., <span class="hljs-string">'git pull ...'</span>) before pushing again.</span><br><span class="line">hint: See the <span class="hljs-string">'Note about fast-forwards'</span> <span class="hljs-keyword">in</span> <span class="hljs-string">'git push --help'</span> <span class="hljs-keyword">for</span> details.</span><br></pre></td></tr></tbody></table></figure>
-<p>如果你是在 码云上创建的项目，它本身就存在两个README文件，也就是说仓库中本身就存在文件了，这时候你删掉这两个也没用，(github上好像没这个问题)<br>我们需要同步远程仓库，也就是拉取下来并用–allow-unrelated-histories 合并</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">git pull origin master --allow-unrelated-histories   </span><br><span class="line">git commit -m <span class="hljs-string">"xxx"</span> <span class="hljs-comment">#重新提交</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="从远程仓库下载-–-指定分支"><a href="#从远程仓库下载-–-指定分支" class="headerlink" title="从远程仓库下载 – 指定分支"></a>从远程仓库下载 – 指定分支</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">git <span class="hljs-built_in">clone</span> -b hzj_branch https://gitee.com/Alpaca-H/how-to-learn-git.git</span><br></pre></td></tr></tbody></table></figure>
-
-
-<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 创建分支  </span></span><br><span class="line">git branch hzj</span><br><span class="line"><span class="hljs-comment"># 切换分支</span></span><br><span class="line">git checkout hzj</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 创建并切换分支</span></span><br><span class="line">git checkout -b hzj</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查看当前分支</span></span><br><span class="line">git branch</span><br></pre></td></tr></tbody></table></figure>
-
-<p>记住上面的只是分支管理，他只是在你的本地有了分支，在你没有push之前所有的一切都是本地操作</p>
-<h2 id="分支管理2"><a href="#分支管理2" class="headerlink" title="分支管理2"></a>分支管理2</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 切换到新的分支 </span></span><br><span class="line">git swicth -c dev</span><br><span class="line"><span class="hljs-comment"># 切换到已有分支</span></span><br><span class="line">git swicth dev</span><br></pre></td></tr></tbody></table></figure>
-
-
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 添加文件</span></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"我是hzj分支"</span> > README2.md</span><br><span class="line">git add README2.md</span><br><span class="line">git commit -m <span class="hljs-string">"update hzj"</span></span><br><span class="line">git push -u origin  hzj <span class="hljs-comment"># 提交到hzj的分支</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><p>进入master</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">git  merge hzj <span class="hljs-comment"># 合并在本地仓库的文件</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">git branch -d hzj</span><br></pre></td></tr></tbody></table></figure>
-
-
-<h2 id="分支同步主干"><a href="#分支同步主干" class="headerlink" title="分支同步主干"></a>分支同步主干</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 切换到master分支</span></span><br><span class="line">git checkout master </span><br><span class="line"><span class="hljs-comment"># 下拉master</span></span><br><span class="line">git pull origin master</span><br><span class="line"><span class="hljs-comment"># 切换分支</span></span><br><span class="line">git checkout hzj</span><br><span class="line"><span class="hljs-comment"># 同步分支</span></span><br><span class="line">git merge  master</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="主干同步分支-慎用"><a href="#主干同步分支-慎用" class="headerlink" title="主干同步分支(慎用)"></a>主干同步分支(慎用)</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 切换到主分支</span></span><br><span class="line">git checkout master</span><br><span class="line"><span class="hljs-comment"># 同步分支</span></span><br><span class="line">git merge hzj</span><br><span class="line"><span class="hljs-comment"># 提交</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="inventory操作"><a href="#inventory操作" class="headerlink" title="inventory操作"></a>inventory操作</h2><ol>
-<li>拉取项目<br>git clone <a href="https://gitlab.s.upyun.com/infrastructure/inventory.gigit" target="_blank" rel="noopener">https://gitlab.s.upyun.com/infrastructure/inventory.gigit</a> clone <a href="https://gitlab.s.upyun.com/infrastructure/inventory.git" target="_blank" rel="noopener">https://gitlab.s.upyun.com/infrastructure/inventory.git</a></li>
-<li>查看当前分支<br>git branch</li>
-<li>切换分支<br>git checkout hzj</li>
-<li>修改内容<br>…</li>
-<li>上传<br>git commit -am “update”<br>git push<br>到web端创建合并请求</li>
-<li>更新<br>首先切换到master，<br>拉取最新git pull<br>切换次分支 git checkout hzj<br>合并更新分支到hzj分支 git merge origin hzj</li>
-</ol>
-<p>发消息给有master权限的人，交由master来合并</p>
-</body></html>
+            <html><head></head><body><h2 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h2><p>LB (Load Balancer 负载均衡)<br>HA (High Available 高可用)<br>Failover (失败切换)<br>Cluster (集群)<br>LVS (Linux Virtual Server Linux 虚拟服务器)<br>DS (Director Server)，指的是前端负载均衡器节点<br>RS (Real Server)，后端真实的工作服务器<br>VIP (Virtual IP)，虚拟的 IP 地址，向外部直接面向用户请求，作为用户请求的目标的 IP 地址<br>DIP (Director IP)，主要用于和内部主机通讯的 IP 地址<br>RIP (Real Server IP)，后端服务器的 IP 地址<br>CIP (Client IP)，访问客户端的 IP 地址</p></body></html>
         </div>
         
         
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/a33a1a7d/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -256,18 +206,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/8d17cdf0/"><i class="fas fa-angle-double-right"></i>jwt</a>
+                <a class="has-link-black-ter" href="/posts/60486/"><i class="fas fa-angle-double-right"></i>iptables、firewall 防火墙</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:48:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                <time class="level-item has-text-grey" datetime="2020-01-05T04:03:16.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-05</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/django/">django</a>
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
                 </div>
                 
                 
@@ -275,7 +225,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    几秒 读完 (大约 85 个字)
+                    3 分钟 读完 (大约 384 个字)
                 </span>
                 
                 
@@ -283,16 +233,22 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="使用jwt-json-web-token"><a href="#使用jwt-json-web-token" class="headerlink" title="使用jwt  json web token"></a>使用jwt  json web token</h1><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">source</span> /bin/active</span><br><span class="line">pip install djangorestframework-jwt</span><br></pre></td></tr></tbody></table></figure>
-<p><a href="https://zhuanlan.zhihu.com/p/30524397" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/30524397</a><br><a href="https://jpadilla.github.io/django-rest-framework-jwt/#security" target="_blank" rel="noopener">https://jpadilla.github.io/django-rest-framework-jwt/#security</a></p>
-<h2 id="vue中使用token验证"><a href="#vue中使用token验证" class="headerlink" title="vue中使用token验证"></a>vue中使用token验证</h2><p><a href="https://blog.csdn.net/baiqiangdoudou/article/details/100174505" target="_blank" rel="noopener">https://blog.csdn.net/baiqiangdoudou/article/details/100174505</a></p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">curl -H <span class="hljs-string">"Authorization: JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTc0OTMwMjYyLCJlbWFpbCI6IjEwOTc2OTAyNjhAcXEuY29tIn0.cxzZhCOStN_w9OpVcq7rO-bcA_vWA172DtQaNdeGF3A"</span> http://localhost:8000/switch/</span><br></pre></td></tr></tbody></table></figure>
-
-<p><font color="red">为什么要用token 与其他的差别</font></p>
-</body></html>
+            <html><head></head><body><h2 id="iptables、firewall防火墙"><a href="#iptables、firewall防火墙" class="headerlink" title="iptables、firewall防火墙"></a>iptables、firewall防火墙</h2><p>Linux中有两种防火墙软件，ConterOS7.0以上使用的是firewall，ConterOS7.0以下使用的是iptables</p></body></html>
         </div>
         
         
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/60486/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -311,18 +267,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/437192d0/"><i class="fas fa-angle-double-right"></i>drf-note</a>
+                <a class="has-link-black-ter" href="/posts/4421/"><i class="fas fa-angle-double-right"></i>netstat</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:48:11.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                <time class="level-item has-text-grey" datetime="2020-01-05T03:51:48.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-05</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/django/">django</a>
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
                 </div>
                 
                 
@@ -330,7 +286,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    几秒 读完 (大约 102 个字)
+                    2 分钟 读完 (大约 328 个字)
                 </span>
                 
                 
@@ -338,85 +294,17 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h2 id="drf"><a href="#drf" class="headerlink" title="drf"></a>drf</h2><p>如何使用django-rest-framework</p>
-<p>1.首先下载</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">pip3 install django-rest-framework</span><br></pre></td></tr></tbody></table></figure>
-<p>2.应用<br>在setting中添加</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">INSTALLED_APPS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="hljs-string">'rest_framework'</span>,</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
-<p>3.在drf中使用登陆登出的功能</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    ...</span><br><span class="line">    url(<span class="hljs-string">r'^api-auth/'</span>, include(<span class="hljs-string">'rest_framework.urls'</span>))</span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure>
-
-
-<hr>
-<h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><p>创建model 与 django类似<br>创建serializer 序列化model数据，以json的形式展示  （serializer modelserialzier）<br>创建view  与django类似</p>
-<p>使用httpie查看</p>
-<p>pip install httpie<br>http <a href="http://localhost:8000/snippets/" target="_blank" rel="noopener">http://localhost:8000/snippets/</a></p>
-</body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/23293bb2/"><i class="fas fa-angle-double-right"></i>drf框架解析</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:47:38.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/django/">django</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    2 分钟 读完 (大约 340 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="drf框架解析1"><a href="#drf框架解析1" class="headerlink" title="drf框架解析1"></a>drf框架解析1</h1><p>在drf的view视图中，我们经常会用到viewset视图集的内容。<br>引用的方法有很多种</p>
+            <html><head></head><body><h2 id="netstat工具"><a href="#netstat工具" class="headerlink" title="netstat工具"></a>netstat工具</h2><p>netstat是在内核中访问网络相关信息的程序。</p>
 <ol>
-<li>直接引用 我们可以使用ModelViewSet</li>
-<li>根据不同的需求添加不同的mixins <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 列出列表</span></span><br><span class="line">class SwitchViewSet(viewsets.GenericViewSet,</span><br><span class="line">                    mixins.ListModelMixin):</span><br><span class="line">    serializer_class = SwitchSerializer</span><br><span class="line">    queryset = SwitchModel.objects.all()</span><br></pre></td></tr></tbody></table></figure>
-其中mixins有很多种</li>
+<li>提供TCP连接、TCP和UDP监听、进程内存管理的状态。</li>
+<li>监控TCP/IP网络的非常有用的工具，显示路由表、实际网络连接以及每一个网络接口设备的状态信息。</li>
+<li>使用netstat可以让用户知道有哪些网络连接正在运作，使用时如果不带参数，netstat显示活动的TCP连接</li>
 </ol>
-<ul>
-<li>ListModelMixin</li>
-<li>UpdateModelMixin</li>
-<li>CreateModelMixin</li>
-<li>RetrieveModelMixin</li>
-<li>DestroyModelMixin<br>这些mixins本身就已经提供了最基础的功能，如果我们需要添加附加的需求，可以重写这些方法<h2 id="mixins中的内容"><a href="#mixins中的内容" class="headerlink" title="mixins中的内容"></a>mixins中的内容</h2></li>
-</ul>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SwitchViewSet</span><span class="hljs-params">(viewsets.GenericViewSet,</span></span></span><br><span class="line"><span class="hljs-class"><span class="hljs-params">                    mixins.ListModelMixin)</span>:</span></span><br><span class="line">    <span class="hljs-comment"># 获取序列化工具</span></span><br><span class="line">    serializer_class = SwitchSerializer</span><br><span class="line">    <span class="hljs-comment"># 获取集合</span></span><br><span class="line">    queryset = SwitchModel.objects.all()</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="ListModelMixin"><a href="#ListModelMixin" class="headerlink" title="ListModelMixin"></a>ListModelMixin</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListModelMixin</span>:</span></span><br><span class="line">    <span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">    List a queryset.</span></span><br><span class="line"><span class="hljs-string">    """</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">list</span><span class="hljs-params">(self, request, *args, **kwargs)</span>:</span></span><br><span class="line">        queryset = self.filter_queryset(self.get_queryset())</span><br><span class="line"></span><br><span class="line">        page = self.paginate_queryset(queryset)</span><br><span class="line">        <span class="hljs-keyword">if</span> page <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:</span><br><span class="line">            serializer = self.get_serializer(page, many=<span class="hljs-literal">True</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> self.get_paginated_response(serializer.data)</span><br><span class="line"></span><br><span class="line">        serializer = self.get_serializer(queryset, many=<span class="hljs-literal">True</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> Response(serializer.data)</span><br></pre></td></tr></tbody></table></figure>
-<p>ListModelMixin 也就是get请求返回当前模型所有列表,filter_queryset达成过滤  get_queryset获取集合<br>第二段判断是否有做分类功能<br>第三段返回serializer</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">filter_queryset</span><span class="hljs-params">(self, queryset)</span>:</span></span><br><span class="line">       <span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">       Given a queryset, filter it with whichever filter backend is in use.</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">       You are unlikely to want to override this method, although you may need</span></span><br><span class="line"><span class="hljs-string">       to call it either from a list view, or from a custom `get_object`</span></span><br><span class="line"><span class="hljs-string">       method if you want to apply the configured filtering backend to the</span></span><br><span class="line"><span class="hljs-string">       default queryset.</span></span><br><span class="line"><span class="hljs-string">       """</span></span><br><span class="line">       <span class="hljs-keyword">for</span> backend <span class="hljs-keyword">in</span> list(self.filter_backends):</span><br><span class="line">           queryset = backend().filter_queryset(self.request, queryset, self)</span><br><span class="line">       <span class="hljs-keyword">return</span> queryset</span><br></pre></td></tr></tbody></table></figure></body></html>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装</span></span><br><span class="line">yum install net-tools</span><br><span class="line"><span class="hljs-comment"># 使用</span></span><br><span class="line">netstat 选项：</span><br><span class="line">常用参数：</span><br><span class="line">-a:显示所有的socket，包括监听的以及未监听的。</span><br><span class="line">-n:不使用域名和服务名，而使用IP和端口号。</span><br><span class="line">-l:仅列出在listen状态的网络服务。</span><br><span class="line">-p:显示建立连接的程序名和PID。</span><br><span class="line">-e:显示以太网统计。</span><br><span class="line">-s:显示每个协议的统计。</span><br><span class="line">-t：显示TCP协议连接情况。</span><br><span class="line">-u:显示UDP协议连接情况。</span><br><span class="line">-c:每隔一个固定时间，执行netstat命令。</span><br><span class="line">-r：显示核心路由表。</span><br><span class="line">-i:显示所有的网络接口信息<></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 显示建立连接的程序名 PID IP 端口以及监听状态</span></span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># netstat -pan | grep 8888</span></span><br><span class="line">tcp6       0      0 :::8888                 :::*                    LISTEN      16711/httpd</span><br></pre></td></tr></tbody></table></figure>
+
+</body></html>
         </div>
         
         
@@ -438,18 +326,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/f736b80/"><i class="fas fa-angle-double-right"></i>django 用户</a>
+                <a class="has-link-black-ter" href="/posts/291d4679/"><i class="fas fa-angle-double-right"></i>网络部署需求分析</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:47:21.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                <time class="level-item has-text-grey" datetime="2020-01-04T02:22:09.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-04</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/django/">django</a>
+                <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%83%A8%E7%BD%B2/">交换机部署</a>
                 </div>
                 
                 
@@ -457,7 +345,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    9 分钟 读完 (大约 1304 个字)
+                    12 分钟 读完 (大约 1846 个字)
                 </span>
                 
                 
@@ -465,44 +353,98 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="django用户"><a href="#django用户" class="headerlink" title="django用户"></a>django用户</h1><p>django为开发者提供了三种不同的用户形式，一种是自带的用户模型(User),另外两种是可以自定义的用户模型，分别是(AbstractUser)(AbstractBaseUser),他们的继承关系分别是 User 继承子AbstractUser 继承自AbstractBaseUser</p>
-<h2 id="django自带的用户模型"><a href="#django自带的用户模型" class="headerlink" title="django自带的用户模型"></a>django自带的用户模型</h2><p>使用django自带的用户模型(快速实现)，该模型提供了一些开发过程中会经常使用到的参数，比如用户级别，名字，邮箱，密码等等。我们可以在$\color{red}{from django.contrib.auth.models import User}$中查看User的使用</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span><span class="hljs-params">(AbstractUser)</span>:</span></span><br><span class="line">    <span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">    Users within the Django authentication system are represented by this</span></span><br><span class="line"><span class="hljs-string">    model.</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">    Username and password are required. Other fields are optional.</span></span><br><span class="line"><span class="hljs-string">    """</span></span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Meta</span><span class="hljs-params">(AbstractUser.Meta)</span>:</span></span><br><span class="line">        swappable = <span class="hljs-string">'AUTH_USER_MODEL'</span></span><br></pre></td></tr></tbody></table></figure>
-<h2 id="自定义User-Model"><a href="#自定义User-Model" class="headerlink" title="自定义User Model"></a>自定义User Model</h2><p>自定义Usermodel需要注意的是，$\color{red}{需要在setting.py中添加AUTH_USER_MODEL}$ ，由于django寻找用户的方式是在setting.py中寻找这个标示，所以在我们自定义的时候需要添加这个内容</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/setting.py</span></span><br><span class="line"><span class="hljs-keyword">from</span> app.model <span class="hljs-keyword">import</span> .</span><br><span class="line">AUTH_USER_MODEL=<span class="hljs-string">"app.modelname"</span></span><br></pre></td></tr></tbody></table></figure>
-<p>其他需要注意的地方，请看文章底部注意栏</p>
-<h3 id="方法一：扩展AbstractUser"><a href="#方法一：扩展AbstractUser" class="headerlink" title="方法一：扩展AbstractUser"></a>方法一：扩展AbstractUser</h3><p>如果你觉得django自带的用户不能满足你所需要的字段，需要额外添加字段的话，你可以使用AbstractUser</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/app/models.py</span></span><br><span class="line"><span class="hljs-keyword">from</span> django.contrib.auth.models <span class="hljs-keyword">import</span> AbstractUser</span><br><span class="line"><span class="hljs-keyword">from</span> django.db <span class="hljs-keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NewUser</span><span class="hljs-params">(AbstractUser)</span>:</span></span><br><span class="line">    new_field = models.CharField(max_length=<span class="hljs-number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># pro/setting.py</span></span><br><span class="line">AUTH_USER_MODEL=<span class="hljs-string">"app.modelname"</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="方法二：扩展AbstractBaseUser"><a href="#方法二：扩展AbstractBaseUser" class="headerlink" title="方法二：扩展AbstractBaseUser"></a>方法二：扩展AbstractBaseUser</h2><p>AbstractBaseUser中只含有3个field: password, last_login和is_active. 如果你对django user model默认的first_name, last_name不满意, 或者只想保留默认的密码储存方式, 则可以选择这一方式</p>
-<p>自定义形式如AbstarctUser一样</p>
-<p>使用AbstractBaseUser时，虽然他提供了User最核心的实现，比如password，但是我们依旧需要添加一些必须定义的关键字段和方法</p>
-<p>USERNAME_FIELD，用户名称字段，必须设置，且 uniqe=True</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserProfile</span><span class="hljs-params">(AbstractBaseUser)</span>:</span></span><br><span class="line">    author = models.CharField(max_length=<span class="hljs-number">40</span>,unique=<span class="hljs-literal">True</span>)</span><br><span class="line"></span><br><span class="line">    USERNAME_FIELD = <span class="hljs-string">'author'</span></span><br></pre></td></tr></tbody></table></figure>
-<p>REQUIRED_FIELDS，当通过createsuperuser管理命令创建一个用户时，用于提示一个字段名称列表,不能包含USERNAME_FIELD以及password字段</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/models.py</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserProfile</span><span class="hljs-params">(AbstractBaseUser)</span></span></span><br><span class="line">    date_of_birth = models.DateField()</span><br><span class="line">    height = models.FloatField()</span><br><span class="line"></span><br><span class="line">    REQUIRED_FIELDS=[<span class="hljs-string">'date_of_birth'</span>,<span class="hljs-string">'height'</span>]</span><br></pre></td></tr></tbody></table></figure>
-
-<p>is_active   必须定义。 一个布尔属性，标识用户是否是 “active” 的。AbstractBaseUser默认为 Ture</p>
-<p>get_full_name()<br>必须定义。 long格式的用户标识。</p>
-<p>get_short_name()<br>必须定义。 short格式的用户标识。</p>
-<p>可用方法<br>get_username()<br>返回 USERNAME_FIELD 的值。</p>
-<p>is_anonymous()<br>一直返回 False。用来区分 AnonymousUser。</p>
-<p>is_authenticated()<br>一直返回 Ture。用来告诉用户已被认证。</p>
-<p>set_password(raw_password)<br>设置密码。按照给定的原始字符串设置用户的密码，taking care of the password hashing。 不保存 AbstractBaseUser 对象。如果没有给定密码，密码就会被设置成不使用，同用set_unusable_password()。</p>
-<p>check_password(raw_password)<br>检查密码是否正确。 给定的密码正确返回 True。</p>
-<p>set_unusable_password()<br>设置user无密码。 不同于密码为空，如果使用 check_password()，则不会返回True。不保存AbstractBaseUser 对象。</p>
-<p>has_usable_password()<br>如果设置了set_unusable_password()，返回False。</p>
-<p>get_session_auth_hash()<br>返回密码字段的HMAC。 Used for Session invalidation on password change.</p>
-<h2 id="⚠️注意"><a href="#⚠️注意" class="headerlink" title="⚠️注意"></a>⚠️注意</h2><p>1.在创建任何迁移或者第一次运行 manager.py migrate 前设置 AUTH_USER_MODEL。设置AUTH_USER_MODEL对你的数据库结构有很大的影响。它改变了一些会使用到的表格，并且会影响到一些外键和多对多关系的构造。在你有表格被创建后更改此设置是不被 makemigrations 支持的，并且会导致你需要手动修改数据库结构，从旧用户表中导出数据，可能重新应用一些迁移。<br>2.由于Django的可交换模型的动态依赖特性的局限，你必须确保 AUTH_USER_MODEL 引用的模型在所属app中第一个迁移文件中被创建（通常命名为 0001_initial），否则你会碰到错误(The easiest way to construct a compliant custom User model is to inherit fromAbstractBaseUser. AbstractBaseUser provides the core implementation of a Usermodel, including hashed passwords and tokenized password resets. You must then provide some key implementation details:)</p>
-<h2 id="引用User"><a href="#引用User" class="headerlink" title="引用User"></a>引用User</h2><p>如果你选择了自定义用户类型，那么当你在view.py中尝试使用外键引用他的时候，你会出现错误，你应该使用$\color{red}{django.contrib.auth.get_user_model来引用模型}</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_user_model</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    <span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">    Return the User model that is active in this project.</span></span><br><span class="line"><span class="hljs-string">    """</span></span><br><span class="line">    <span class="hljs-keyword">try</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> django_apps.get_model(settings.AUTH_USER_MODEL, require_ready=<span class="hljs-literal">False</span>)</span><br><span class="line">    <span class="hljs-keyword">except</span> ValueError:</span><br><span class="line">        <span class="hljs-keyword">raise</span> ImproperlyConfigured(<span class="hljs-string">"AUTH_USER_MODEL must be of the form 'app_label.model_name'"</span>)</span><br><span class="line">    <span class="hljs-keyword">except</span> LookupError:</span><br><span class="line">        <span class="hljs-keyword">raise</span> ImproperlyConfigured(</span><br><span class="line">            <span class="hljs-string">"AUTH_USER_MODEL refers to model '%s' that has not been installed"</span> % settings.AUTH_USER_MODEL</span><br></pre></td></tr></tbody></table></figure>
-<p>同样的，他会根据setting中的AUTH_USER_MODEL来识别当前用户</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> django.contrib.auth <span class="hljs-keyword">import</span> get_user_model</span><br><span class="line"></span><br><span class="line">User = get_user_model</span><br></pre></td></tr></tbody></table></figure>
-<p><strong>指定用户</strong></p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/app/models.py</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserProfile</span><span class="hljs-params">(models.Model)</span>:</span></span><br><span class="line">    author = models.ForeignKey(setting.AUTH_USER_MODEL)</span><br></pre></td></tr></tbody></table></figure>
+            <html><head></head><body><h1 id="网络部署需求分析"><a href="#网络部署需求分析" class="headerlink" title="网络部署需求分析"></a>网络部署需求分析</h1><p>后面需要根据tower给出的内容对网络环境，机器上架规划内容<br>由于tower中给出的大部分都是纸上信息，这里做几个例子进行一下总结</p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/291d4679/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
 
 
-<p><a href="https://www.cnblogs.com/huchong/p/9804635.html#_label0" target="_blank" rel="noopener">https://www.cnblogs.com/huchong/p/9804635.html#_label0</a><br><a href="https://blog.csdn.net/qq_37049050/article/details/79211059" target="_blank" rel="noopener">https://blog.csdn.net/qq_37049050/article/details/79211059</a></p>
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/4982550/"><i class="fas fa-angle-double-right"></i>httpd服务</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-03T09:18:50.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-03</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/linux/">linux</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    5 分钟 读完 (大约 741 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h2 id="apache-http-server"><a href="#apache-http-server" class="headerlink" title="apache http server"></a>apache http server</h2><p>Apache HTTP Server（简称Apache）是Apache软件基金会的一个开放源码的网页服务器，可以在大多数计算机操作系统中运行，由于其多平台和安全性被广泛使用，是最流行的Web服务器端软件之一。它快速、可靠并且可通过简单的API扩展，将Perl/Python等解释器编译到服务器中。</p>
+<p><font color="blue">  在Apache中，其配置文件目录为“/etc/httpd/conf/httpd.conf”，这里面包括设置网站资源的存放目录及一些相关的配置。</font></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装http</span></span><br><span class="line">yum install httpd </span><br><span class="line"><span class="hljs-comment"># 开启服务</span></span><br><span class="line">systemctl start httpd</span><br><span class="line"><span class="hljs-comment"># 检查httpd服务状态</span></span><br><span class="line">systemctl status httpd</span><br><span class="line"><span class="hljs-comment"># 查看端口状态 netstat -anutp | grep  80</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="目录介绍"><a href="#目录介绍" class="headerlink" title="目录介绍"></a>目录介绍</h3><p>配置文件目录为“/etc/httpd/conf/httpd.conf”</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@localhost httpd]<span class="hljs-comment"># ls -1</span></span><br><span class="line">conf  <span class="hljs-comment"># 存放服务的主配置文件</span></span><br><span class="line">conf.d <span class="hljs-comment"># 存放apache的主页信息</span></span><br><span class="line">conf.modules.d</span><br><span class="line">logs</span><br><span class="line">modules</span><br><span class="line">run</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="配置信息"><a href="#配置信息" class="headerlink" title="配置信息"></a>配置信息</h3><p>配置文件目录为“/etc/httpd/conf/httpd.conf”</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@localhost httpd]<span class="hljs-comment"># vi /etc/httpd/conf/httpd.conf</span></span><br><span class="line">ServerRoot <span class="hljs-string">"/etc/httpd"</span>  <span class="hljs-comment">#apache配置文件的根目录</span></span><br><span class="line">Timeout 60  <span class="hljs-comment">#超时时间，即连接服务端在60秒内没有任何操作，即自动断开</span></span><br><span class="line">Listen 80   <span class="hljs-comment">#监听的端口</span></span><br><span class="line">ServerAdmin root@localhost  <span class="hljs-comment">#设置管理员，e-mail 地址</span></span><br><span class="line">ServerName www.example.com:80  <span class="hljs-comment">#服务器主机名.</span></span><br><span class="line"></span><br><span class="line">DocumentRoot <span class="hljs-string">"/var/www/html"</span>   <span class="hljs-comment">#网站页面根目录,存放文档的地方</span></span><br><span class="line"><Directory <span class="hljs-string">"/var/www/html"</span>> </span><br><span class="line">Options Indexes FollowSymLinks <span class="hljs-comment">#O目录浏览 #Followsymlinks:可以用连接，要是想要禁止显示文件目录，可以直接在‘indexes’前加‘-’。</span></span><br><span class="line">    AllowOverride None</span><br><span class="line">    Order allow,deny <span class="hljs-comment">#目录与访问的控制</span></span><br><span class="line">    Allow from all </span><br><span class="line"></Directory></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 别名</span></span><br><span class="line">Alias /icons/ <span class="hljs-string">"/var/www/icons/"</span> <span class="hljs-comment">#别名和别名目录</span></span><br><span class="line"><Directory <span class="hljs-string">"/var/www/icons"</span>></span><br><span class="line">    Options Indexes MultiViews FollowSymLinks</span><br><span class="line">    AllowOverride None</span><br><span class="line">    Order allow,deny</span><br><span class="line">    Allow from all</span><br><span class="line"></Directory></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 默认页面</span></span><br><span class="line"></Directory> Options Indexes  <span class="hljs-comment">#当一个目录没有默认首页时，允许显示此目录列表</span></span><br><span class="line"><Directory /></span><br><span class="line">    Options FollowSymLinks</span><br><span class="line">    AllowOverride None</span><br><span class="line"></Directory></span><br><span class="line">--</span><br><span class="line">DirectoryIndex index.html index.html.var <span class="hljs-comment">#指定默认首页</span></span><br><span class="line">AddDefaultCharset UTF-8   <span class="hljs-comment">#设置服务器的默认编码为： UTF-8</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="python3构建http服务"><a href="#python3构建http服务" class="headerlink" title="python3构建http服务"></a>python3构建http服务</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">python3 -m http.server</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="维护-amp-错误"><a href="#维护-amp-错误" class="headerlink" title="维护&错误"></a>维护&错误</h2><h3 id="http服务已开启，但是无法访问网站"><a href="#http服务已开启，但是无法访问网站" class="headerlink" title="http服务已开启，但是无法访问网站"></a>http服务已开启，但是无法访问网站</h3><ol>
+<li>在本地查看httpd服务<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">curl http://localhost:80</span><br></pre></td></tr></tbody></table></figure></li>
+<li>看端口，如果是在公司内部，查看是否有部分ip端口被封 比如80 8080 88 等等<br>如果是以上情况，修改httpd 配置文件中的监听端口，重启http服务即可</li>
+<li>永久关闭selinux ,需要重启<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">vi /etc/selinux/config</span><br><span class="line">SELINUX=disabled</span><br></pre></td></tr></tbody></table></figure></li>
+<li>临时关闭<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">setenforce 0</span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<p>可能会出现的报错信息<br>(13)Permission denied: make_sock: could not bind to address [::]:88<br>—-> 关闭selinux即可</p>
+<h3 id="检测端口是否被开启"><a href="#检测端口是否被开启" class="headerlink" title="检测端口是否被开启"></a>检测端口是否被开启</h3><p>使用telnet登陆的方式测试服务器端口是否开放</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 未开放状态下的返回情况</span></span><br><span class="line">➜  ~ telnet 10.0.5.92 8888</span><br><span class="line">Trying 10.0.5.92...</span><br><span class="line">telnet: Unable to connect to remote host: Connection refused</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 开放状态下的返回情况</span></span><br><span class="line">➜  ~ telnet 10.0.5.91 8888</span><br><span class="line">Trying 10.0.5.91...</span><br><span class="line">Connected to 10.0.5.91.</span><br><span class="line">Escape character is <span class="hljs-string">'^]'</span>.</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h3><p>端口未被开放<br>———> iptables -I INPUT -p tcp –dport 8888 -j ACCEPT</p>
+<h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><p><a href="https://www.linuxidc.com/Linux/2017-05/143468.htm" target="_blank" rel="noopener">https://www.linuxidc.com/Linux/2017-05/143468.htm</a></p>
 </body></html>
         </div>
         
@@ -544,7 +486,7 @@
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/10/">10</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/12/">12</a></li>
             
         </ul>
     </nav>
@@ -579,7 +521,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        48
+                        56
                     </p>
                 </a>
             </div>
@@ -589,7 +531,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        24
+                        28
                     </p>
                 </a>
             </div>
@@ -670,7 +612,7 @@
                 <span class="level-item">blog_back_new</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">30</span>
+                <span class="level-item tag">29</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/blog-back-new/Rust/">
@@ -694,7 +636,7 @@
                 <span class="level-item">django</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/blog-back-new/git/">
@@ -758,7 +700,7 @@
                 <span class="level-item">linux</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
@@ -766,7 +708,7 @@
                 <span class="level-item">常用命令</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">
@@ -785,6 +727,14 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/%E8%84%9A%E6%9C%AC/">
+            <span class="level-start">
+                <span class="level-item">脚本</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">
             <span class="level-start">
                 <span class="level-item">负载均衡</span>
@@ -798,7 +748,7 @@
                 <span class="level-item">编程</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">
@@ -817,6 +767,22 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/SwaggerUi/">
+            <span class="level-start">
+                <span class="level-item">SwaggerUi</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/django/">
+            <span class="level-start">
+                <span class="level-item">django</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vim/">
             <span class="level-start">
                 <span class="level-item">vim</span>
@@ -830,9 +796,17 @@
                 <span class="level-item">网络</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">5</span>
             </span>
         </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/extra/">
+            <span class="level-start">
+                <span class="level-item">extra</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
             <span class="level-start">
                 <span class="level-item">二层交换机</span>
@@ -879,7 +853,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">17</span>
+                    <span class="level-item tag">25</span>
                 </span>
             </a>
         </li>
@@ -910,18 +884,18 @@
         
         <article class="media">
             
-            <a href="/posts/9bb9b12b/" class="media-left">
+            <a href="/posts/705ac99d/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="二层交换机">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux脚本">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-12T11:11:22.000Z">2020-01-12</time></div>
-                    <a href="/posts/9bb9b12b/" class="has-link-black-ter is-size-6">二层交换机</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T02:46:04.000Z">2020-01-16</time></div>
+                    <a href="/posts/705ac99d/" class="has-link-black-ter is-size-6">linux脚本</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">二层交换机</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
                     </p>
                 </div>
             </div>
@@ -929,35 +903,16 @@
         
         <article class="media">
             
-            <a href="/posts/845aaf29/" class="media-left">
+            <a href="/posts/877ac6e6/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="交换机状态检测">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-mtr命令">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T06:59:26.000Z">2020-01-10</time></div>
-                    <a href="/posts/845aaf29/" class="has-link-black-ter is-size-6">交换机状态检测</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/fe4ef317/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux常用命令">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T04:47:22.000Z">2020-01-09</time></div>
-                    <a href="/posts/fe4ef317/" class="has-link-black-ter is-size-6">linux常用命令</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T07:15:47.000Z">2020-01-15</time></div>
+                    <a href="/posts/877ac6e6/" class="has-link-black-ter is-size-6">linux-mtr命令</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>
                     </p>
@@ -967,18 +922,18 @@
         
         <article class="media">
             
-            <a href="/posts/bc3af3e9/" class="media-left">
+            <a href="/posts/1d7a61af/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux故障问题及解决方案">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux初始化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T04:23:01.000Z">2020-01-09</time></div>
-                    <a href="/posts/bc3af3e9/" class="has-link-black-ter is-size-6">linux故障问题及解决方案</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T02:30:41.000Z">2020-01-15</time></div>
+                    <a href="/posts/1d7a61af/" class="has-link-black-ter is-size-6">linux初始化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">故障问题</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
                     </p>
                 </div>
             </div>
@@ -986,18 +941,37 @@
         
         <article class="media">
             
-            <a href="/posts/e47927c/" class="media-left">
+            <a href="/posts/67b35a0f/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vim快捷键">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blog_back_new/linux/net/记录">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T03:08:30.000Z">2020-01-09</time></div>
-                    <a href="/posts/e47927c/" class="has-link-black-ter is-size-6">vim快捷键</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T09:48:03.265Z">2020-01-14</time></div>
+                    <a href="/posts/67b35a0f/" class="has-link-black-ter is-size-6">blog_back_new/linux/net/记录</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vim/">vim</a>
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/933b28f1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-filter">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T03:43:43.000Z">2020-01-14</time></div>
+                    <a href="/posts/933b28f1/" class="has-link-black-ter is-size-6">drf-filter</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
                     </p>
                 </div>
             </div>
@@ -1032,7 +1006,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">17</span>
+                    <span class="level-item tag">25</span>
                 </span>
             </a>
         </li>
@@ -1063,18 +1037,18 @@
         
         <article class="media">
             
-            <a href="/posts/9bb9b12b/" class="media-left">
+            <a href="/posts/705ac99d/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="二层交换机">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux脚本">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-12T11:11:22.000Z">2020-01-12</time></div>
-                    <a href="/posts/9bb9b12b/" class="has-link-black-ter is-size-6">二层交换机</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T02:46:04.000Z">2020-01-16</time></div>
+                    <a href="/posts/705ac99d/" class="has-link-black-ter is-size-6">linux脚本</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">二层交换机</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
                     </p>
                 </div>
             </div>
@@ -1082,35 +1056,16 @@
         
         <article class="media">
             
-            <a href="/posts/845aaf29/" class="media-left">
+            <a href="/posts/877ac6e6/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="交换机状态检测">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-mtr命令">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T06:59:26.000Z">2020-01-10</time></div>
-                    <a href="/posts/845aaf29/" class="has-link-black-ter is-size-6">交换机状态检测</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/fe4ef317/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux常用命令">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T04:47:22.000Z">2020-01-09</time></div>
-                    <a href="/posts/fe4ef317/" class="has-link-black-ter is-size-6">linux常用命令</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T07:15:47.000Z">2020-01-15</time></div>
+                    <a href="/posts/877ac6e6/" class="has-link-black-ter is-size-6">linux-mtr命令</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>
                     </p>
@@ -1120,18 +1075,18 @@
         
         <article class="media">
             
-            <a href="/posts/bc3af3e9/" class="media-left">
+            <a href="/posts/1d7a61af/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux故障问题及解决方案">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux初始化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T04:23:01.000Z">2020-01-09</time></div>
-                    <a href="/posts/bc3af3e9/" class="has-link-black-ter is-size-6">linux故障问题及解决方案</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T02:30:41.000Z">2020-01-15</time></div>
+                    <a href="/posts/1d7a61af/" class="has-link-black-ter is-size-6">linux初始化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">故障问题</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
                     </p>
                 </div>
             </div>
@@ -1139,18 +1094,37 @@
         
         <article class="media">
             
-            <a href="/posts/e47927c/" class="media-left">
+            <a href="/posts/67b35a0f/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vim快捷键">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blog_back_new/linux/net/记录">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T03:08:30.000Z">2020-01-09</time></div>
-                    <a href="/posts/e47927c/" class="has-link-black-ter is-size-6">vim快捷键</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T09:48:03.265Z">2020-01-14</time></div>
+                    <a href="/posts/67b35a0f/" class="has-link-black-ter is-size-6">blog_back_new/linux/net/记录</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vim/">vim</a>
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/933b28f1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-filter">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T03:43:43.000Z">2020-01-14</time></div>
+                    <a href="/posts/933b28f1/" class="has-link-black-ter is-size-6">drf-filter</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
                     </p>
                 </div>
             </div>

@@ -779,61 +779,6 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/8d17cdf0/"><i class="fas fa-angle-double-right"></i>jwt</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:48:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/django/">django</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    几秒 读完 (大约 85 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="使用jwt-json-web-token"><a href="#使用jwt-json-web-token" class="headerlink" title="使用jwt  json web token"></a>使用jwt  json web token</h1><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">source</span> /bin/active</span><br><span class="line">pip install djangorestframework-jwt</span><br></pre></td></tr></tbody></table></figure>
-<p><a href="https://zhuanlan.zhihu.com/p/30524397" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/30524397</a><br><a href="https://jpadilla.github.io/django-rest-framework-jwt/#security" target="_blank" rel="noopener">https://jpadilla.github.io/django-rest-framework-jwt/#security</a></p>
-<h2 id="vue中使用token验证"><a href="#vue中使用token验证" class="headerlink" title="vue中使用token验证"></a>vue中使用token验证</h2><p><a href="https://blog.csdn.net/baiqiangdoudou/article/details/100174505" target="_blank" rel="noopener">https://blog.csdn.net/baiqiangdoudou/article/details/100174505</a></p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">curl -H <span class="hljs-string">"Authorization: JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTc0OTMwMjYyLCJlbWFpbCI6IjEwOTc2OTAyNjhAcXEuY29tIn0.cxzZhCOStN_w9OpVcq7rO-bcA_vWA172DtQaNdeGF3A"</span> http://localhost:8000/switch/</span><br></pre></td></tr></tbody></table></figure>
-
-<p><font color="red">为什么要用token 与其他的差别</font></p>
-</body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
                 <a class="has-link-black-ter" href="/posts/437192d0/"><i class="fas fa-angle-double-right"></i>drf-note</a>
             
         </h1>
@@ -956,6 +901,93 @@
 
 
 
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/f736b80/"><i class="fas fa-angle-double-right"></i>django 用户</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:47:21.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    9 分钟 读完 (大约 1304 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="django用户"><a href="#django用户" class="headerlink" title="django用户"></a>django用户</h1><p>django为开发者提供了三种不同的用户形式，一种是自带的用户模型(User),另外两种是可以自定义的用户模型，分别是(AbstractUser)(AbstractBaseUser),他们的继承关系分别是 User 继承子AbstractUser 继承自AbstractBaseUser</p>
+<h2 id="django自带的用户模型"><a href="#django自带的用户模型" class="headerlink" title="django自带的用户模型"></a>django自带的用户模型</h2><p>使用django自带的用户模型(快速实现)，该模型提供了一些开发过程中会经常使用到的参数，比如用户级别，名字，邮箱，密码等等。我们可以在$\color{red}{from django.contrib.auth.models import User}$中查看User的使用</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span><span class="hljs-params">(AbstractUser)</span>:</span></span><br><span class="line">    <span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">    Users within the Django authentication system are represented by this</span></span><br><span class="line"><span class="hljs-string">    model.</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">    Username and password are required. Other fields are optional.</span></span><br><span class="line"><span class="hljs-string">    """</span></span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Meta</span><span class="hljs-params">(AbstractUser.Meta)</span>:</span></span><br><span class="line">        swappable = <span class="hljs-string">'AUTH_USER_MODEL'</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="自定义User-Model"><a href="#自定义User-Model" class="headerlink" title="自定义User Model"></a>自定义User Model</h2><p>自定义Usermodel需要注意的是，$\color{red}{需要在setting.py中添加AUTH_USER_MODEL}$ ，由于django寻找用户的方式是在setting.py中寻找这个标示，所以在我们自定义的时候需要添加这个内容</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/setting.py</span></span><br><span class="line"><span class="hljs-keyword">from</span> app.model <span class="hljs-keyword">import</span> .</span><br><span class="line">AUTH_USER_MODEL=<span class="hljs-string">"app.modelname"</span></span><br></pre></td></tr></tbody></table></figure>
+<p>其他需要注意的地方，请看文章底部注意栏</p>
+<h3 id="方法一：扩展AbstractUser"><a href="#方法一：扩展AbstractUser" class="headerlink" title="方法一：扩展AbstractUser"></a>方法一：扩展AbstractUser</h3><p>如果你觉得django自带的用户不能满足你所需要的字段，需要额外添加字段的话，你可以使用AbstractUser</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/app/models.py</span></span><br><span class="line"><span class="hljs-keyword">from</span> django.contrib.auth.models <span class="hljs-keyword">import</span> AbstractUser</span><br><span class="line"><span class="hljs-keyword">from</span> django.db <span class="hljs-keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NewUser</span><span class="hljs-params">(AbstractUser)</span>:</span></span><br><span class="line">    new_field = models.CharField(max_length=<span class="hljs-number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># pro/setting.py</span></span><br><span class="line">AUTH_USER_MODEL=<span class="hljs-string">"app.modelname"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="方法二：扩展AbstractBaseUser"><a href="#方法二：扩展AbstractBaseUser" class="headerlink" title="方法二：扩展AbstractBaseUser"></a>方法二：扩展AbstractBaseUser</h2><p>AbstractBaseUser中只含有3个field: password, last_login和is_active. 如果你对django user model默认的first_name, last_name不满意, 或者只想保留默认的密码储存方式, 则可以选择这一方式</p>
+<p>自定义形式如AbstarctUser一样</p>
+<p>使用AbstractBaseUser时，虽然他提供了User最核心的实现，比如password，但是我们依旧需要添加一些必须定义的关键字段和方法</p>
+<p>USERNAME_FIELD，用户名称字段，必须设置，且 uniqe=True</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserProfile</span><span class="hljs-params">(AbstractBaseUser)</span>:</span></span><br><span class="line">    author = models.CharField(max_length=<span class="hljs-number">40</span>,unique=<span class="hljs-literal">True</span>)</span><br><span class="line"></span><br><span class="line">    USERNAME_FIELD = <span class="hljs-string">'author'</span></span><br></pre></td></tr></tbody></table></figure>
+<p>REQUIRED_FIELDS，当通过createsuperuser管理命令创建一个用户时，用于提示一个字段名称列表,不能包含USERNAME_FIELD以及password字段</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/models.py</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserProfile</span><span class="hljs-params">(AbstractBaseUser)</span></span></span><br><span class="line">    date_of_birth = models.DateField()</span><br><span class="line">    height = models.FloatField()</span><br><span class="line"></span><br><span class="line">    REQUIRED_FIELDS=[<span class="hljs-string">'date_of_birth'</span>,<span class="hljs-string">'height'</span>]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>is_active   必须定义。 一个布尔属性，标识用户是否是 “active” 的。AbstractBaseUser默认为 Ture</p>
+<p>get_full_name()<br>必须定义。 long格式的用户标识。</p>
+<p>get_short_name()<br>必须定义。 short格式的用户标识。</p>
+<p>可用方法<br>get_username()<br>返回 USERNAME_FIELD 的值。</p>
+<p>is_anonymous()<br>一直返回 False。用来区分 AnonymousUser。</p>
+<p>is_authenticated()<br>一直返回 Ture。用来告诉用户已被认证。</p>
+<p>set_password(raw_password)<br>设置密码。按照给定的原始字符串设置用户的密码，taking care of the password hashing。 不保存 AbstractBaseUser 对象。如果没有给定密码，密码就会被设置成不使用，同用set_unusable_password()。</p>
+<p>check_password(raw_password)<br>检查密码是否正确。 给定的密码正确返回 True。</p>
+<p>set_unusable_password()<br>设置user无密码。 不同于密码为空，如果使用 check_password()，则不会返回True。不保存AbstractBaseUser 对象。</p>
+<p>has_usable_password()<br>如果设置了set_unusable_password()，返回False。</p>
+<p>get_session_auth_hash()<br>返回密码字段的HMAC。 Used for Session invalidation on password change.</p>
+<h2 id="⚠️注意"><a href="#⚠️注意" class="headerlink" title="⚠️注意"></a>⚠️注意</h2><p>1.在创建任何迁移或者第一次运行 manager.py migrate 前设置 AUTH_USER_MODEL。设置AUTH_USER_MODEL对你的数据库结构有很大的影响。它改变了一些会使用到的表格，并且会影响到一些外键和多对多关系的构造。在你有表格被创建后更改此设置是不被 makemigrations 支持的，并且会导致你需要手动修改数据库结构，从旧用户表中导出数据，可能重新应用一些迁移。<br>2.由于Django的可交换模型的动态依赖特性的局限，你必须确保 AUTH_USER_MODEL 引用的模型在所属app中第一个迁移文件中被创建（通常命名为 0001_initial），否则你会碰到错误(The easiest way to construct a compliant custom User model is to inherit fromAbstractBaseUser. AbstractBaseUser provides the core implementation of a Usermodel, including hashed passwords and tokenized password resets. You must then provide some key implementation details:)</p>
+<h2 id="引用User"><a href="#引用User" class="headerlink" title="引用User"></a>引用User</h2><p>如果你选择了自定义用户类型，那么当你在view.py中尝试使用外键引用他的时候，你会出现错误，你应该使用$\color{red}{django.contrib.auth.get_user_model来引用模型}</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_user_model</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    <span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">    Return the User model that is active in this project.</span></span><br><span class="line"><span class="hljs-string">    """</span></span><br><span class="line">    <span class="hljs-keyword">try</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> django_apps.get_model(settings.AUTH_USER_MODEL, require_ready=<span class="hljs-literal">False</span>)</span><br><span class="line">    <span class="hljs-keyword">except</span> ValueError:</span><br><span class="line">        <span class="hljs-keyword">raise</span> ImproperlyConfigured(<span class="hljs-string">"AUTH_USER_MODEL must be of the form 'app_label.model_name'"</span>)</span><br><span class="line">    <span class="hljs-keyword">except</span> LookupError:</span><br><span class="line">        <span class="hljs-keyword">raise</span> ImproperlyConfigured(</span><br><span class="line">            <span class="hljs-string">"AUTH_USER_MODEL refers to model '%s' that has not been installed"</span> % settings.AUTH_USER_MODEL</span><br></pre></td></tr></tbody></table></figure>
+<p>同样的，他会根据setting中的AUTH_USER_MODEL来识别当前用户</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> django.contrib.auth <span class="hljs-keyword">import</span> get_user_model</span><br><span class="line"></span><br><span class="line">User = get_user_model</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>指定用户</strong></p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/app/models.py</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserProfile</span><span class="hljs-params">(models.Model)</span>:</span></span><br><span class="line">    author = models.ForeignKey(setting.AUTH_USER_MODEL)</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p><a href="https://www.cnblogs.com/huchong/p/9804635.html#_label0" target="_blank" rel="noopener">https://www.cnblogs.com/huchong/p/9804635.html#_label0</a><br><a href="https://blog.csdn.net/qq_37049050/article/details/79211059" target="_blank" rel="noopener">https://blog.csdn.net/qq_37049050/article/details/79211059</a></p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
 
     
 <div class="card card-transparent">
@@ -1007,7 +1039,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        48
+                        56
                     </p>
                 </a>
             </div>
@@ -1017,7 +1049,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        24
+                        28
                     </p>
                 </a>
             </div>
@@ -1098,7 +1130,7 @@
                 <span class="level-item">blog_back_new</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">30</span>
+                <span class="level-item tag">29</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/blog-back-new/Rust/">
@@ -1122,7 +1154,7 @@
                 <span class="level-item">django</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/blog-back-new/git/">
@@ -1186,7 +1218,7 @@
                 <span class="level-item">linux</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
@@ -1194,7 +1226,7 @@
                 <span class="level-item">常用命令</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">
@@ -1213,6 +1245,14 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/%E8%84%9A%E6%9C%AC/">
+            <span class="level-start">
+                <span class="level-item">脚本</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">
             <span class="level-start">
                 <span class="level-item">负载均衡</span>
@@ -1226,7 +1266,7 @@
                 <span class="level-item">编程</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">
@@ -1245,6 +1285,22 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/SwaggerUi/">
+            <span class="level-start">
+                <span class="level-item">SwaggerUi</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/django/">
+            <span class="level-start">
+                <span class="level-item">django</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vim/">
             <span class="level-start">
                 <span class="level-item">vim</span>
@@ -1258,9 +1314,17 @@
                 <span class="level-item">网络</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">5</span>
             </span>
         </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/extra/">
+            <span class="level-start">
+                <span class="level-item">extra</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
             <span class="level-start">
                 <span class="level-item">二层交换机</span>
@@ -1307,7 +1371,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">17</span>
+                    <span class="level-item tag">25</span>
                 </span>
             </a>
         </li>
@@ -1338,18 +1402,18 @@
         
         <article class="media">
             
-            <a href="/posts/9bb9b12b/" class="media-left">
+            <a href="/posts/705ac99d/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="二层交换机">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux脚本">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-12T11:11:22.000Z">2020-01-12</time></div>
-                    <a href="/posts/9bb9b12b/" class="has-link-black-ter is-size-6">二层交换机</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T02:46:04.000Z">2020-01-16</time></div>
+                    <a href="/posts/705ac99d/" class="has-link-black-ter is-size-6">linux脚本</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">二层交换机</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
                     </p>
                 </div>
             </div>
@@ -1357,35 +1421,16 @@
         
         <article class="media">
             
-            <a href="/posts/845aaf29/" class="media-left">
+            <a href="/posts/877ac6e6/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="交换机状态检测">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-mtr命令">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T06:59:26.000Z">2020-01-10</time></div>
-                    <a href="/posts/845aaf29/" class="has-link-black-ter is-size-6">交换机状态检测</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/fe4ef317/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux常用命令">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T04:47:22.000Z">2020-01-09</time></div>
-                    <a href="/posts/fe4ef317/" class="has-link-black-ter is-size-6">linux常用命令</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T07:15:47.000Z">2020-01-15</time></div>
+                    <a href="/posts/877ac6e6/" class="has-link-black-ter is-size-6">linux-mtr命令</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>
                     </p>
@@ -1395,18 +1440,18 @@
         
         <article class="media">
             
-            <a href="/posts/bc3af3e9/" class="media-left">
+            <a href="/posts/1d7a61af/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux故障问题及解决方案">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux初始化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T04:23:01.000Z">2020-01-09</time></div>
-                    <a href="/posts/bc3af3e9/" class="has-link-black-ter is-size-6">linux故障问题及解决方案</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T02:30:41.000Z">2020-01-15</time></div>
+                    <a href="/posts/1d7a61af/" class="has-link-black-ter is-size-6">linux初始化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">故障问题</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
                     </p>
                 </div>
             </div>
@@ -1414,18 +1459,37 @@
         
         <article class="media">
             
-            <a href="/posts/e47927c/" class="media-left">
+            <a href="/posts/67b35a0f/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vim快捷键">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blog_back_new/linux/net/记录">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T03:08:30.000Z">2020-01-09</time></div>
-                    <a href="/posts/e47927c/" class="has-link-black-ter is-size-6">vim快捷键</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T09:48:03.265Z">2020-01-14</time></div>
+                    <a href="/posts/67b35a0f/" class="has-link-black-ter is-size-6">blog_back_new/linux/net/记录</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vim/">vim</a>
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/933b28f1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-filter">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T03:43:43.000Z">2020-01-14</time></div>
+                    <a href="/posts/933b28f1/" class="has-link-black-ter is-size-6">drf-filter</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
                     </p>
                 </div>
             </div>
@@ -1460,7 +1524,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">17</span>
+                    <span class="level-item tag">25</span>
                 </span>
             </a>
         </li>
@@ -1491,18 +1555,18 @@
         
         <article class="media">
             
-            <a href="/posts/9bb9b12b/" class="media-left">
+            <a href="/posts/705ac99d/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="二层交换机">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux脚本">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-12T11:11:22.000Z">2020-01-12</time></div>
-                    <a href="/posts/9bb9b12b/" class="has-link-black-ter is-size-6">二层交换机</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T02:46:04.000Z">2020-01-16</time></div>
+                    <a href="/posts/705ac99d/" class="has-link-black-ter is-size-6">linux脚本</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">二层交换机</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
                     </p>
                 </div>
             </div>
@@ -1510,35 +1574,16 @@
         
         <article class="media">
             
-            <a href="/posts/845aaf29/" class="media-left">
+            <a href="/posts/877ac6e6/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="交换机状态检测">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-mtr命令">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T06:59:26.000Z">2020-01-10</time></div>
-                    <a href="/posts/845aaf29/" class="has-link-black-ter is-size-6">交换机状态检测</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/fe4ef317/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux常用命令">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T04:47:22.000Z">2020-01-09</time></div>
-                    <a href="/posts/fe4ef317/" class="has-link-black-ter is-size-6">linux常用命令</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T07:15:47.000Z">2020-01-15</time></div>
+                    <a href="/posts/877ac6e6/" class="has-link-black-ter is-size-6">linux-mtr命令</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>
                     </p>
@@ -1548,18 +1593,18 @@
         
         <article class="media">
             
-            <a href="/posts/bc3af3e9/" class="media-left">
+            <a href="/posts/1d7a61af/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux故障问题及解决方案">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux初始化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T04:23:01.000Z">2020-01-09</time></div>
-                    <a href="/posts/bc3af3e9/" class="has-link-black-ter is-size-6">linux故障问题及解决方案</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T02:30:41.000Z">2020-01-15</time></div>
+                    <a href="/posts/1d7a61af/" class="has-link-black-ter is-size-6">linux初始化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">故障问题</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
                     </p>
                 </div>
             </div>
@@ -1567,18 +1612,37 @@
         
         <article class="media">
             
-            <a href="/posts/e47927c/" class="media-left">
+            <a href="/posts/67b35a0f/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vim快捷键">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blog_back_new/linux/net/记录">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T03:08:30.000Z">2020-01-09</time></div>
-                    <a href="/posts/e47927c/" class="has-link-black-ter is-size-6">vim快捷键</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T09:48:03.265Z">2020-01-14</time></div>
+                    <a href="/posts/67b35a0f/" class="has-link-black-ter is-size-6">blog_back_new/linux/net/记录</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vim/">vim</a>
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/933b28f1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-filter">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T03:43:43.000Z">2020-01-14</time></div>
+                    <a href="/posts/933b28f1/" class="has-link-black-ter is-size-6">drf-filter</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
                     </p>
                 </div>
             </div>

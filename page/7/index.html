@@ -145,18 +145,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/b3a48f7b/"><i class="fas fa-angle-double-right"></i>Python爬YouTube视频</a>
+                <a class="has-link-black-ter" href="/posts/437192d0/"><i class="fas fa-angle-double-right"></i>drf-note</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:39:12.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:48:11.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/Python/">Python</a>
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/django/">django</a>
                 </div>
                 
                 
@@ -164,7 +164,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    7 分钟 读完 (大约 1019 个字)
+                    几秒 读完 (大约 102 个字)
                 </span>
                 
                 
@@ -172,99 +172,19 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="youtube视频爬虫"><a href="#youtube视频爬虫" class="headerlink" title="youtube视频爬虫"></a>youtube视频爬虫</h1><h2 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h2><p>最近想学习nginx，无奈没有好的视频，网上的教程也是零零散散的，慕课网 51CTO 淘宝上又买不到太好的教程，主要还是贵，买来要是讲的烂还不能退QAQ</p>
-<p>于是，在YouTobe上搜索了一下nginx的教程，我的天哪！油管简直就是一块宝地，好多付费的视频上面都能找到，长期混迹B站找视频的我，决定赶紧下下来，生怕待会就没了，那么问题来了，如何批量下载这些视频呢？</p>
-<p><strong>当然拉，能不白嫖还不是不要白嫖，要是讲的好，赞助一下也很重要</strong></p>
-<h2 id="使用you-get"><a href="#使用you-get" class="headerlink" title="使用you-get"></a>使用you-get</h2><p>Github地址: <a href="https://github.com/soimort/you-get" target="_blank" rel="noopener">https://github.com/soimort/you-get</a><br>不得不说，光看他的star，又是一块宝藏QAQ</p>
-<h2 id="编写脚本"><a href="#编写脚本" class="headerlink" title="编写脚本"></a>编写脚本</h2><p>既然有了下载器，接下来就是使用脚本批量下载了。<br>you-get是根据油管的视频网页地址去下载视频的，那么我们需要记录这一组视频列表中的url地址。<br><a href="https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD" target="_blank" rel="noopener">https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD</a><br><a href="https://www.youtube.com/watch?v=wZAf-aE2KoI&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD" target="_blank" rel="noopener">https://www.youtube.com/watch?v=wZAf-aE2KoI&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD</a><br><a href="https://www.youtube.com/watch?v=ULcqKLwf6fE&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD" target="_blank" rel="noopener">https://www.youtube.com/watch?v=ULcqKLwf6fE&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD</a><br>如上是三个测试地址，很不幸的是他们之间存在规律，但唯一发生变化的v=uid 其中的id是一串随机字符，但当我们不断刷新当前页面时会发现，uid并没有改变，也就是说在他们的数据库中存在一个key-value的值，每一个视频对一个随机uid,并且当这相对的关系生成之后，随机uid不会再发生改变。</p>
-<h2 id="获取uid"><a href="#获取uid" class="headerlink" title="获取uid"></a>获取uid</h2><p>既然不会发生改变，那么我们就用爬虫来获取这些uid把<br><strong>注意</strong></p>
-<p><img src="http://img.noback.top/youtobe%E7%88%AC%E8%99%AB.png" alt><br>像这样的页面虽然在他的右侧出现了列表，但这样的情况在当我们使用爬虫+正则的时，会被下方的视频连接干扰，因此最好先进入播放列表后再爬取<br><img src="http://img.noback.top/190909youtobe%E7%88%AC%E8%99%AB2.png" alt><br>像当前页面这样，我们所获取出来的uid就相对于完整一些<br><img src="http://img.noback.top/190909youtobe%E7%88%AC%E8%99%AB2.png" alt></p>
-<h2 id="整理循环下载"><a href="#整理循环下载" class="headerlink" title="整理循环下载"></a>整理循环下载</h2><p>OK,有了uid再加上之前我们发现的不变的元素，那么一条条完整的视频链接就有了</p>
-<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="hljs-keyword">from</span> you_get <span class="hljs-keyword">import</span> common <span class="hljs-keyword">as</span> you_get</span><br><span class="line"><span class="hljs-keyword">import</span> sys</span><br><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"><span class="hljs-keyword">import</span> time</span><br><span class="line"><span class="hljs-keyword">import</span> requests</span><br><span class="line"><span class="hljs-keyword">import</span> re</span><br><span class="line"></span><br><span class="line">static_url = <span class="hljs-string">"https://www.youtube.com{0}list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD"</span></span><br><span class="line">file_path = <span class="hljs-string">"D:\\video\youtobe_nginx_mooc"</span></span><br><span class="line"><span class="hljs-comment"># file_path = "F:\\video\youtobe_nginx_mooc"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">resp = requests.get(<span class="hljs-string">"https://www.youtube.com/playlist?list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD"</span>)</span><br><span class="line">pattern = <span class="hljs-string">"\/watch\?v=[0-9a-zA-Z_-]{11}&"</span></span><br><span class="line">video_url_lists = re.findall(pattern,resp.text)</span><br><span class="line"><span class="hljs-comment"># 去重</span></span><br><span class="line">video_url_lists = list(set(video_url_lists))</span><br><span class="line">print(len(video_url_lists))</span><br><span class="line"><span class="hljs-keyword">for</span> list <span class="hljs-keyword">in</span> video_url_lists:</span><br><span class="line">    format_url = static_url.format(list)</span><br><span class="line">    print(format_url)</span><br><span class="line">    print(<span class="hljs-string">"start get video from YouTobe"</span>)</span><br><span class="line">    sys.argv = [<span class="hljs-string">'you-get'</span>,<span class="hljs-string">'-o'</span>,file_path,format_url]</span><br><span class="line">    you_get.main()</span><br><span class="line">    time.sleep(<span class="hljs-number">1</span>)</span><br><span class="line">print(<span class="hljs-string">"download finished"</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># print(type(resp)) ## 由于这是返回的类型是 <class 'requests.models.Response'></span></span><br><span class="line"><span class="hljs-comment"># 但是在正则表达式中，要求是为str类型，因此如果我们使用pattern = re.findall('index' resp)时候就会报错</span></span><br><span class="line"><span class="hljs-comment"># 报错内容为TypeError: expected string or bytes-like object</span></span><br><span class="line"><span class="hljs-comment"># 修改 pattern = re.findall('index=',str(resp))</span></span><br><span class="line"><span class="hljs-comment"># 或者使用pattern = re.findall('index=',resp.text)</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-string">""""</span></span><br><span class="line"><span class="hljs-string">https://www.bilibili.com/read/cv4360/</span></span><br><span class="line"><span class="hljs-string">https://www.jianshu.com/p/e323cf85bd3d</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=5i9Ce9vzGxE&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=R4p7xxd3BTo&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=4</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">/watch?v=Do1Opl6DbvM&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=1</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=0JwSFgWUUQE&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=fvxAQsRy8Kk&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=8</span></span><br><span class="line"><span class="hljs-string">https://www.youtube.com/watch?v=R4p7xxd3BTo&list=PLAyxoOmo7O7eoz-Wkii_bwtBEbPwCWQzD&index=4</span></span><br><span class="line"><span class="hljs-string">"""</span></span><br></pre></td></tr></tbody></table></figure></body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
+            <html><head></head><body><h2 id="drf"><a href="#drf" class="headerlink" title="drf"></a>drf</h2><p>如何使用django-rest-framework</p>
+<p>1.首先下载</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">pip3 install django-rest-framework</span><br></pre></td></tr></tbody></table></figure>
+<p>2.应用<br>在setting中添加</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">INSTALLED_APPS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="hljs-string">'rest_framework'</span>,</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
+<p>3.在drf中使用登陆登出的功能</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    ...</span><br><span class="line">    url(<span class="hljs-string">r'^api-auth/'</span>, include(<span class="hljs-string">'rest_framework.urls'</span>))</span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure>
 
 
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/899b698f/"><i class="fas fa-angle-double-right"></i>又拍云</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T05:13:50.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/%E8%AE%BE%E5%A4%87/">设备</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    7 分钟 读完 (大约 1043 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="又拍云工作记录"><a href="#又拍云工作记录" class="headerlink" title="又拍云工作记录"></a>又拍云工作记录</h1><h2 id="交换机命名格式"><a href="#交换机命名格式" class="headerlink" title="交换机命名格式"></a>交换机命名格式</h2><p>三大运营商缩写 + 附近机场代码 + S01等</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">移动 CMN</span><br><span class="line">电信 CTN</span><br><span class="line">联通 CUN</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="交换机ipv6检测内容"><a href="#交换机ipv6检测内容" class="headerlink" title="交换机ipv6检测内容"></a>交换机ipv6检测内容</h2><p>原因 内网机器比如全是移动的，交换机配的移动的ip，下面配的也是移动的ip<br>这样ping的通，但是联通的服务器ip ping不同。也就是说是内网通，外网不同。<br>内网ping 网关肯定通</p>
-<p>检测：<br>用移动的交换机下面的服务器（出问题的交换机）  去mtr外网的ip，去看是哪里断掉的<br>而不是用外网的机器来mtr内网的ip，这样截止的地方会看不出来，因为不是内网的机器</p>
-<h2 id="ipv6配置"><a href="#ipv6配置" class="headerlink" title="ipv6配置"></a>ipv6配置</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">#业务vlan</span></span><br><span class="line">interface Vlan-interface1</span><br><span class="line">ipv6 address +业务vlan ip</span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line"><span class="hljs-comment">#互联vlan</span></span><br><span class="line">interface Vlan-interface200</span><br><span class="line">ipv6 address  +互联本地ip</span><br><span class="line"><span class="hljs-comment">#默认路由</span></span><br><span class="line">ipv6 route-static :: 0 + 互联对端ip</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="配置案例"><a href="#配置案例" class="headerlink" title="配置案例"></a>配置案例</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line">广东广州移动机房（自有机房NM）：2409:8C54:B000:0704::/64   互联地址 机房：FEC0::C/127， 我司 FEC0::D/127</span><br><span class="line"></span><br><span class="line">vlan 1 </span><br><span class="line">ip address 2409:8C54:B000:0704::/64 </span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line">vlan 20</span><br><span class="line">ipv6 address FEC0::D/127</span><br><span class="line">router-static</span><br><span class="line">ipv6 route-static :: 0 FEC0::C</span><br><span class="line"></span><br><span class="line">山东济南移动机房（自有节点NM）：2409:8C3C:0004:000C::/64，互联地址为：2409:8C3C:00FF:0004::000E/127、 我司 2409:8C3C:00FF:0004::0010/127</span><br><span class="line"></span><br><span class="line">vlan 1</span><br><span class="line">ip address 2409:8C3C:0004:000C::/64</span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line">vlan 20</span><br><span class="line">ipv6 address 2409:8C3C:00FF:0004::0010/127</span><br><span class="line">route-static</span><br><span class="line">ipv6 route-static :: 0 2409:8C3C:00FF:0004::000E</span><br><span class="line">vlan 1</span><br><span class="line">ipv6 address 240E:E9:B804:3:400::1/72</span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line">vlan 30 </span><br><span class="line">ipv6 address 240E:E9:B804:3:200::A3/127</span><br><span class="line">ipv6 address 240E:E9:B804:3:200::B3/127</span><br><span class="line">router-static</span><br><span class="line">ipv6 route-static :: 0 240E:E9:B804:3:200::A3</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="无法联网"><a href="#无法联网" class="headerlink" title="无法联网"></a>无法联网</h2><ol>
-<li><p>首先ping交换机ip  看是否通</p>
-</li>
-<li><p>串口线连接交换机  ping网关是否通不通  10.0.0.130</p>
-</li>
-<li><p>查看端口状态<br>dis int brief<br>聚合口是否起来 端口是否起来 pvid是否对应1000(统一是1000 除个别外可以在上联交换机上看10.0.0.130)</p>
-</li>
-<li><p>硬件问题<br>看模块是否发光  看跳线是否发光</p>
-</li>
-</ol>
-<h2 id="整理香港ntt点ip对应关系"><a href="#整理香港ntt点ip对应关系" class="headerlink" title="整理香港ntt点ip对应关系"></a>整理香港ntt点ip对应关系</h2><ol>
-<li>登陆netop服务器</li>
-<li>登陆香港ntt交换机</li>
-<li>查看vlan1 对应ip 其中157.xxx/27 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[NTT-CN-HKG-S01-Vlan-interface1]display this</span><br><span class="line"><span class="hljs-comment">#</span></span><br><span class="line">interface Vlan-interface1</span><br><span class="line"> ip address 157.119.232.1 255.255.255.224</span><br><span class="line"> ip address 10.81.0.254 255.255.255.0 sub</span><br><span class="line"> ip address 103.211.192.221 255.255.255.252 sub</span><br><span class="line"> ip address 103.251.128.1 255.255.255.224 sub</span><br><span class="line"> ip address 157.119.232.65 255.255.255.224 sub</span><br><span class="line"> ip address 192.168.1.1 255.255.255.0 sub</span><br><span class="line"> ip address 192.168.128.1 255.255.255.0 sub</span><br><span class="line"> ip address 192.168.232.1 255.255.255.224 sub</span><br><span class="line"> ipv6 address 2405:FD80:110::1/52</span><br><span class="line"><span class="hljs-comment">#</span></span><br><span class="line"><span class="hljs-built_in">return</span></span><br></pre></td></tr></tbody></table></figure>
-在netop服务器上用fping -g 157.119.231.1/27 来查看对应ip的状态</li>
-</ol>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@NETOPS machines]<span class="hljs-comment"># fping -g 157.119.232.65/27</span></span><br><span class="line">157.119.232.65 is alive</span><br><span class="line">157.119.232.66 is alive</span><br><span class="line">157.119.232.67 is alive</span><br><span class="line">157.119.232.68 is alive</span><br><span class="line">157.119.232.69 is alive</span><br><span class="line">157.119.232.70 is alive</span><br><span class="line">157.119.232.71 is alive</span><br><span class="line">157.119.232.72 is alive</span><br><span class="line">157.119.232.73 is alive</span><br><span class="line">157.119.232.74 is alive</span><br><span class="line">157.119.232.75 is alive</span><br><span class="line">157.119.232.85 is alive</span><br><span class="line">157.119.232.87 is alive</span><br><span class="line">157.119.232.86 is alive</span><br><span class="line">157.119.232.88 is alive</span><br><span class="line">157.119.232.89 is alive</span><br><span class="line">157.119.232.90 is alive</span><br><span class="line">157.119.232.91 is alive</span><br><span class="line">157.119.232.76 is unreachable</span><br><span class="line">157.119.232.77 is unreachable</span><br><span class="line">157.119.232.78 is unreachable</span><br><span class="line">157.119.232.79 is unreachable</span><br><span class="line">157.119.232.80 is unreachable</span><br><span class="line">157.119.232.81 is unreachable</span><br><span class="line">157.119.232.82 is unreachable</span><br><span class="line">157.119.232.83 is unreachable</span><br><span class="line">157.119.232.84 is unreachable</span><br><span class="line">157.119.232.92 is unreachable</span><br><span class="line">157.119.232.93 is unreachable</span><br><span class="line">157.119.232.94 is unreachable</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># fping -g 157.119.232.1/27</span></span><br><span class="line">157.119.232.1 is alive</span><br><span class="line">157.119.232.2 is alive</span><br><span class="line">157.119.232.3 is alive</span><br><span class="line">157.119.232.4 is alive</span><br><span class="line">157.119.232.5 is alive</span><br><span class="line">157.119.232.6 is alive</span><br><span class="line">157.119.232.7 is alive</span><br><span class="line">157.119.232.8 is alive</span><br><span class="line">157.119.232.9 is alive</span><br><span class="line">157.119.232.10 is alive</span><br><span class="line">157.119.232.11 is alive</span><br><span class="line">157.119.232.12 is alive</span><br><span class="line">157.119.232.13 is alive</span><br><span class="line">157.119.232.14 is alive</span><br><span class="line">157.119.232.15 is alive</span><br><span class="line">157.119.232.16 is alive</span><br><span class="line">157.119.232.17 is alive</span><br><span class="line">157.119.232.19 is alive</span><br><span class="line">157.119.232.18 is alive</span><br><span class="line">157.119.232.20 is alive</span><br><span class="line">157.119.232.21 is alive</span><br><span class="line">157.119.232.22 is alive</span><br><span class="line">157.119.232.23 is alive</span><br><span class="line">157.119.232.24 is alive</span><br><span class="line">157.119.232.25 is alive</span><br><span class="line">157.119.232.26 is alive</span><br><span class="line">157.119.232.27 is alive</span><br><span class="line">157.119.232.28 is alive</span><br><span class="line">157.119.232.29 is alive</span><br><span class="line">157.119.232.30 is alive</span><br></pre></td></tr></tbody></table></figure>
-
-
-<p>查看inventory中对应关系</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.73 /root/mingtao/inventory/machines/*</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-upapp-01:157.119.232.73</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.30 /root/mingtao/inventory/machines/*</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-cdn-v406:<span class="hljs-comment"># NTT-CN-HKG-030 ansible_ssh_host=157.119.232.30</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-openstack:<span class="hljs-comment"># NTT-CN-HKG-030 ansible_ssh_host=157.119.232.30</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-openstack:OPK-HKG-M30 ansible_ssh_host=157.119.232.30</span><br><span class="line">/root/mingtao/inventory/machines/lists-upops:NTT-CN-HKG-030 ansible_ssh_host=157.119.232.30</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.29 /root/mingtao/inventory/machines/*</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-cdn-v406:<span class="hljs-comment"># NTT-CN-HKG-029 ansible_ssh_host=157.119.232.29</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-openstack:<span class="hljs-comment"># NTT-CN-HKG-029 ansible_ssh_host=157.119.232.29</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-upapp-01:157.119.232.29</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.20 /root/mingtao/inventory/machines/*</span></span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.24 /root/mingtao/inventory/machines/*</span></span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.21 /root/mingtao/inventory/machines/*</span></span><br></pre></td></tr></tbody></table></figure>
-<p>记录机器的对应名字</p>
-<h3 id="ntt机器对应脚本"><a href="#ntt机器对应脚本" class="headerlink" title="ntt机器对应脚本"></a>ntt机器对应脚本</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#!/usr/bin/bash</span></span><br><span class="line"><span class="hljs-comment"># add ip (active and unknown)</span></span><br><span class="line">fping -g 157.119.232.65/27 > ntt_machine</span><br><span class="line">fping -g 157.119.231.1/27 >> ntt_machine</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># filter active to tmp.txt</span></span><br><span class="line">awk <span class="hljs-string">'{if($3=="alive"){print $1}}'</span> > tmp.txt ntt_machine</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Calculate the total</span></span><br><span class="line">nums=`cat tmp.txt | wc -l`</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># reset result.txt to blank</span></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"result:"</span> > result.txt</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># filter ip</span></span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> `seq 1 <span class="hljs-variable">$nums</span>`</span><br><span class="line"><span class="hljs-keyword">do</span></span><br><span class="line">        ip=`awk <span class="hljs-string">"NR==<span class="hljs-variable">$i</span>"</span> tmp.txt`</span><br><span class="line">        link=`grep -w <span class="hljs-variable">$ip</span> mingtao/inventory/machines/machines/*`</span><br><span class="line">        link=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$link</span> | awk -F<span class="hljs-string">":"</span> <span class="hljs-string">'{print $2}'</span> `</span><br><span class="line">        link=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$link</span> | awk <span class="hljs-string">'{if($1=="#"){print $2}else{print $1}}'</span>`</span><br><span class="line">        <span class="hljs-built_in">echo</span>  <span class="hljs-variable">$ip</span>   ,<span class="hljs-string">"active"</span>   ,   <span class="hljs-variable">$link</span> >> result.txt</span><br><span class="line"><span class="hljs-keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># add unknown to tmp.txt</span></span><br><span class="line">awk <span class="hljs-string">'{if($3!="alive"){print $1,$3}}'</span> >> result.txt ntt_machine</span><br><span class="line">~</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="底层设备到网络配置"><a href="#底层设备到网络配置" class="headerlink" title="底层设备到网络配置"></a>底层设备到网络配置</h3><p><img src="http://img.noback.top/2019-12-31-11-26-32.png" alt="2019-12-31-11-26-32"><br>通过该tower截图来获取网络配置需求<br>15台1U服务器<br>1台5130交换机<br>2个万兆多模模块<br>30根网线<br>16根电源线</p>
-<p>1个万兆口</p>
-<p>1-30口汇聚<br>49口接上联 走trunk</p>
+<hr>
+<h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><p>创建model 与 django类似<br>创建serializer 序列化model数据，以json的形式展示  （serializer modelserialzier）<br>创建view  与django类似</p>
+<p>使用httpie查看</p>
+<p>pip install httpie<br>http <a href="http://localhost:8000/snippets/" target="_blank" rel="noopener">http://localhost:8000/snippets/</a></p>
 </body></html>
         </div>
         
@@ -287,18 +207,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/c10f304f/"><i class="fas fa-angle-double-right"></i>常见错误</a>
+                <a class="has-link-black-ter" href="/posts/23293bb2/"><i class="fas fa-angle-double-right"></i>drf框架解析</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T05:13:35.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:47:38.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/%E8%AE%BE%E5%A4%87/">设备</a>
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/django/">django</a>
                 </div>
                 
                 
@@ -306,7 +226,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    4 分钟 读完 (大约 576 个字)
+                    2 分钟 读完 (大约 340 个字)
                 </span>
                 
                 
@@ -314,26 +234,109 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="linux错误"><a href="#linux错误" class="headerlink" title="linux错误"></a>linux错误</h1><h2 id="yum不支持python3"><a href="#yum不支持python3" class="headerlink" title="yum不支持python3"></a>yum不支持python3</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@gogogo alpaca]<span class="hljs-comment"># yum</span></span><br><span class="line">  File <span class="hljs-string">"/bin/yum"</span>, line 30</span><br><span class="line">    except KeyboardInterrupt, e:</span><br><span class="line">                            ^</span><br><span class="line">SyntaxError: invalid syntax</span><br><span class="line">  File <span class="hljs-string">"/usr/libexec/urlgrabber-ext-down"</span>, line 28</span><br><span class="line">    except OSError, e:</span><br></pre></td></tr></tbody></table></figure>
-<p><strong>解决办法</strong></p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">sed -i <span class="hljs-string">'s:bin/python:bin/python2.7:'</span> /usr/bin/yum</span><br><span class="line">sed -i <span class="hljs-string">'s:bin/python:bin/python2.7:'</span> /usr/libexec/urlgrabber-ext-down</span><br></pre></td></tr></tbody></table></figure>
+            <html><head></head><body><h1 id="drf框架解析1"><a href="#drf框架解析1" class="headerlink" title="drf框架解析1"></a>drf框架解析1</h1><p>在drf的view视图中，我们经常会用到viewset视图集的内容。<br>引用的方法有很多种</p>
+<ol>
+<li>直接引用 我们可以使用ModelViewSet</li>
+<li>根据不同的需求添加不同的mixins <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 列出列表</span></span><br><span class="line">class SwitchViewSet(viewsets.GenericViewSet,</span><br><span class="line">                    mixins.ListModelMixin):</span><br><span class="line">    serializer_class = SwitchSerializer</span><br><span class="line">    queryset = SwitchModel.objects.all()</span><br></pre></td></tr></tbody></table></figure>
+其中mixins有很多种</li>
+</ol>
+<ul>
+<li>ListModelMixin</li>
+<li>UpdateModelMixin</li>
+<li>CreateModelMixin</li>
+<li>RetrieveModelMixin</li>
+<li>DestroyModelMixin<br>这些mixins本身就已经提供了最基础的功能，如果我们需要添加附加的需求，可以重写这些方法<h2 id="mixins中的内容"><a href="#mixins中的内容" class="headerlink" title="mixins中的内容"></a>mixins中的内容</h2></li>
+</ul>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SwitchViewSet</span><span class="hljs-params">(viewsets.GenericViewSet,</span></span></span><br><span class="line"><span class="hljs-class"><span class="hljs-params">                    mixins.ListModelMixin)</span>:</span></span><br><span class="line">    <span class="hljs-comment"># 获取序列化工具</span></span><br><span class="line">    serializer_class = SwitchSerializer</span><br><span class="line">    <span class="hljs-comment"># 获取集合</span></span><br><span class="line">    queryset = SwitchModel.objects.all()</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="ListModelMixin"><a href="#ListModelMixin" class="headerlink" title="ListModelMixin"></a>ListModelMixin</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListModelMixin</span>:</span></span><br><span class="line">    <span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">    List a queryset.</span></span><br><span class="line"><span class="hljs-string">    """</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">list</span><span class="hljs-params">(self, request, *args, **kwargs)</span>:</span></span><br><span class="line">        queryset = self.filter_queryset(self.get_queryset())</span><br><span class="line"></span><br><span class="line">        page = self.paginate_queryset(queryset)</span><br><span class="line">        <span class="hljs-keyword">if</span> page <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:</span><br><span class="line">            serializer = self.get_serializer(page, many=<span class="hljs-literal">True</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> self.get_paginated_response(serializer.data)</span><br><span class="line"></span><br><span class="line">        serializer = self.get_serializer(queryset, many=<span class="hljs-literal">True</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> Response(serializer.data)</span><br></pre></td></tr></tbody></table></figure>
+<p>ListModelMixin 也就是get请求返回当前模型所有列表,filter_queryset达成过滤  get_queryset获取集合<br>第二段判断是否有做分类功能<br>第三段返回serializer</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">filter_queryset</span><span class="hljs-params">(self, queryset)</span>:</span></span><br><span class="line">       <span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">       Given a queryset, filter it with whichever filter backend is in use.</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">       You are unlikely to want to override this method, although you may need</span></span><br><span class="line"><span class="hljs-string">       to call it either from a list view, or from a custom `get_object`</span></span><br><span class="line"><span class="hljs-string">       method if you want to apply the configured filtering backend to the</span></span><br><span class="line"><span class="hljs-string">       default queryset.</span></span><br><span class="line"><span class="hljs-string">       """</span></span><br><span class="line">       <span class="hljs-keyword">for</span> backend <span class="hljs-keyword">in</span> list(self.filter_backends):</span><br><span class="line">           queryset = backend().filter_queryset(self.request, queryset, self)</span><br><span class="line">       <span class="hljs-keyword">return</span> queryset</span><br></pre></td></tr></tbody></table></figure></body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
 
-<h2 id="可以通外网，但是无法ping百度"><a href="#可以通外网，但是无法ping百度" class="headerlink" title="可以通外网，但是无法ping百度"></a>可以通外网，但是无法ping百度</h2><p>包括无法使用yum wget 等下载工具<br>或者报错 cannot find a valid baseurl for repo:base/7/x86_64 的解决方法</p>
-<p><strong>解决办法</strong><br>原因 - > DNS的问题</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> nameserver 114.114.114.114 > /etc/reslov.conf</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="linux中如何恢复到后台进程"><a href="#linux中如何恢复到后台进程" class="headerlink" title="linux中如何恢复到后台进程"></a>linux中如何恢复到后台进程</h2><p>linux 下我们如果想一个任务或者程序进行调度<br>bg 将一个后台暂停的命令，变成继续执行<br>fg 将后台的命令调至前台继续运行<br>jobs 查看当前在后台运行的命令<br>c-z 将前台命令放到后台运行 并且暂停<br>nohup command & 在后台不断运行command命令</p>
-<h2 id="ssh配置的问题"><a href="#ssh配置的问题" class="headerlink" title="ssh配置的问题"></a>ssh配置的问题</h2><p><font color="blue">这个问题主要是存在于交换机ssh登陆交换机的过程</font><br>ssh配置过程中，配置了密码登陆，但是出现下面的错误</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><ONI-KC-R01-CR1>ssh 10.0.0.166</span><br><span class="line">The server<span class="hljs-string">'s host key does not match the local cached key. Either the server administrator has changed the host key, or you connected to another server pretending to be this server. Please remove the local cached key, before logging in!</span></span><br></pre></td></tr></tbody></table></figure>
 
-<p>主要问题是一开始用ssh登陆交换机的时候，选择了保存key</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><ONI-KC-R01-CR1>ssh 10.0.0.166</span><br><span class="line">Username: tt</span><br><span class="line">Press CTRL+C to abort.</span><br><span class="line">Connecting to 10.0.0.166 port 22.</span><br><span class="line">The server is not authenticated. Continue? [Y/N]:y</span><br><span class="line">Do you want to save the server public key? [Y/N]:y</span><br></pre></td></tr></tbody></table></figure>
-<p>这样导致的问题就是在当前交换机上会保存一个登陆另一个交换机的key</p>
-<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">#</span><br><span class="line">public-key peer 10.0.0.166</span><br><span class="line"> public-key-code begin</span><br><span class="line">   30819F300D06092A864886F70D010101050003818D0030818902818100DF3E1240D158E197</span><br><span class="line">   CE0712173C8591883F88CC925B1C0CFC63C779E9F531C3B7E409BBB2CCED954C09A339BE78</span><br><span class="line">   46B1497E4771EDD7E88D2E380C50F37A6EC9254E6B27EC7AFFE6DCDFC1EA230D16C4DC9BB8</span><br><span class="line">   B831A2F0CB578B736566052E830A582836AA9BFFE0821CE7CB43F74077D38B20437479F260</span><br><span class="line">   A5D0550CA7D3D0747F0203010001</span><br><span class="line"> public-key-code end</span><br><span class="line"> peer-public-key end</span><br><span class="line">#</span><br></pre></td></tr></tbody></table></figure>
-<p>于是当你下次选择使用ssh+密码登陆交换机的时候就会发现错误</p>
-<p><font color="red">解决</font><br>删除当前交换机的key  并在下次登陆的时候选择</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><ONI-KC-R01-CR1>ssh 10.0.0.166</span><br><span class="line">Username: tt</span><br><span class="line">Press CTRL+C to abort.</span><br><span class="line">Connecting to 10.0.0.166 port 22.</span><br><span class="line">The server is not authenticated. Continue? [Y/N]:y</span><br><span class="line">Do you want to save the server public key? [Y/N]:n</span><br></pre></td></tr></tbody></table></figure>
 
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/f736b80/"><i class="fas fa-angle-double-right"></i>django 用户</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:47:21.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    9 分钟 读完 (大约 1304 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="django用户"><a href="#django用户" class="headerlink" title="django用户"></a>django用户</h1><p>django为开发者提供了三种不同的用户形式，一种是自带的用户模型(User),另外两种是可以自定义的用户模型，分别是(AbstractUser)(AbstractBaseUser),他们的继承关系分别是 User 继承子AbstractUser 继承自AbstractBaseUser</p>
+<h2 id="django自带的用户模型"><a href="#django自带的用户模型" class="headerlink" title="django自带的用户模型"></a>django自带的用户模型</h2><p>使用django自带的用户模型(快速实现)，该模型提供了一些开发过程中会经常使用到的参数，比如用户级别，名字，邮箱，密码等等。我们可以在$\color{red}{from django.contrib.auth.models import User}$中查看User的使用</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span><span class="hljs-params">(AbstractUser)</span>:</span></span><br><span class="line">    <span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">    Users within the Django authentication system are represented by this</span></span><br><span class="line"><span class="hljs-string">    model.</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">    Username and password are required. Other fields are optional.</span></span><br><span class="line"><span class="hljs-string">    """</span></span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Meta</span><span class="hljs-params">(AbstractUser.Meta)</span>:</span></span><br><span class="line">        swappable = <span class="hljs-string">'AUTH_USER_MODEL'</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="自定义User-Model"><a href="#自定义User-Model" class="headerlink" title="自定义User Model"></a>自定义User Model</h2><p>自定义Usermodel需要注意的是，$\color{red}{需要在setting.py中添加AUTH_USER_MODEL}$ ，由于django寻找用户的方式是在setting.py中寻找这个标示，所以在我们自定义的时候需要添加这个内容</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/setting.py</span></span><br><span class="line"><span class="hljs-keyword">from</span> app.model <span class="hljs-keyword">import</span> .</span><br><span class="line">AUTH_USER_MODEL=<span class="hljs-string">"app.modelname"</span></span><br></pre></td></tr></tbody></table></figure>
+<p>其他需要注意的地方，请看文章底部注意栏</p>
+<h3 id="方法一：扩展AbstractUser"><a href="#方法一：扩展AbstractUser" class="headerlink" title="方法一：扩展AbstractUser"></a>方法一：扩展AbstractUser</h3><p>如果你觉得django自带的用户不能满足你所需要的字段，需要额外添加字段的话，你可以使用AbstractUser</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/app/models.py</span></span><br><span class="line"><span class="hljs-keyword">from</span> django.contrib.auth.models <span class="hljs-keyword">import</span> AbstractUser</span><br><span class="line"><span class="hljs-keyword">from</span> django.db <span class="hljs-keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NewUser</span><span class="hljs-params">(AbstractUser)</span>:</span></span><br><span class="line">    new_field = models.CharField(max_length=<span class="hljs-number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># pro/setting.py</span></span><br><span class="line">AUTH_USER_MODEL=<span class="hljs-string">"app.modelname"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="方法二：扩展AbstractBaseUser"><a href="#方法二：扩展AbstractBaseUser" class="headerlink" title="方法二：扩展AbstractBaseUser"></a>方法二：扩展AbstractBaseUser</h2><p>AbstractBaseUser中只含有3个field: password, last_login和is_active. 如果你对django user model默认的first_name, last_name不满意, 或者只想保留默认的密码储存方式, 则可以选择这一方式</p>
+<p>自定义形式如AbstarctUser一样</p>
+<p>使用AbstractBaseUser时，虽然他提供了User最核心的实现，比如password，但是我们依旧需要添加一些必须定义的关键字段和方法</p>
+<p>USERNAME_FIELD，用户名称字段，必须设置，且 uniqe=True</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserProfile</span><span class="hljs-params">(AbstractBaseUser)</span>:</span></span><br><span class="line">    author = models.CharField(max_length=<span class="hljs-number">40</span>,unique=<span class="hljs-literal">True</span>)</span><br><span class="line"></span><br><span class="line">    USERNAME_FIELD = <span class="hljs-string">'author'</span></span><br></pre></td></tr></tbody></table></figure>
+<p>REQUIRED_FIELDS，当通过createsuperuser管理命令创建一个用户时，用于提示一个字段名称列表,不能包含USERNAME_FIELD以及password字段</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/models.py</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserProfile</span><span class="hljs-params">(AbstractBaseUser)</span></span></span><br><span class="line">    date_of_birth = models.DateField()</span><br><span class="line">    height = models.FloatField()</span><br><span class="line"></span><br><span class="line">    REQUIRED_FIELDS=[<span class="hljs-string">'date_of_birth'</span>,<span class="hljs-string">'height'</span>]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>is_active   必须定义。 一个布尔属性，标识用户是否是 “active” 的。AbstractBaseUser默认为 Ture</p>
+<p>get_full_name()<br>必须定义。 long格式的用户标识。</p>
+<p>get_short_name()<br>必须定义。 short格式的用户标识。</p>
+<p>可用方法<br>get_username()<br>返回 USERNAME_FIELD 的值。</p>
+<p>is_anonymous()<br>一直返回 False。用来区分 AnonymousUser。</p>
+<p>is_authenticated()<br>一直返回 Ture。用来告诉用户已被认证。</p>
+<p>set_password(raw_password)<br>设置密码。按照给定的原始字符串设置用户的密码，taking care of the password hashing。 不保存 AbstractBaseUser 对象。如果没有给定密码，密码就会被设置成不使用，同用set_unusable_password()。</p>
+<p>check_password(raw_password)<br>检查密码是否正确。 给定的密码正确返回 True。</p>
+<p>set_unusable_password()<br>设置user无密码。 不同于密码为空，如果使用 check_password()，则不会返回True。不保存AbstractBaseUser 对象。</p>
+<p>has_usable_password()<br>如果设置了set_unusable_password()，返回False。</p>
+<p>get_session_auth_hash()<br>返回密码字段的HMAC。 Used for Session invalidation on password change.</p>
+<h2 id="⚠️注意"><a href="#⚠️注意" class="headerlink" title="⚠️注意"></a>⚠️注意</h2><p>1.在创建任何迁移或者第一次运行 manager.py migrate 前设置 AUTH_USER_MODEL。设置AUTH_USER_MODEL对你的数据库结构有很大的影响。它改变了一些会使用到的表格，并且会影响到一些外键和多对多关系的构造。在你有表格被创建后更改此设置是不被 makemigrations 支持的，并且会导致你需要手动修改数据库结构，从旧用户表中导出数据，可能重新应用一些迁移。<br>2.由于Django的可交换模型的动态依赖特性的局限，你必须确保 AUTH_USER_MODEL 引用的模型在所属app中第一个迁移文件中被创建（通常命名为 0001_initial），否则你会碰到错误(The easiest way to construct a compliant custom User model is to inherit fromAbstractBaseUser. AbstractBaseUser provides the core implementation of a Usermodel, including hashed passwords and tokenized password resets. You must then provide some key implementation details:)</p>
+<h2 id="引用User"><a href="#引用User" class="headerlink" title="引用User"></a>引用User</h2><p>如果你选择了自定义用户类型，那么当你在view.py中尝试使用外键引用他的时候，你会出现错误，你应该使用$\color{red}{django.contrib.auth.get_user_model来引用模型}</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_user_model</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    <span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">    Return the User model that is active in this project.</span></span><br><span class="line"><span class="hljs-string">    """</span></span><br><span class="line">    <span class="hljs-keyword">try</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> django_apps.get_model(settings.AUTH_USER_MODEL, require_ready=<span class="hljs-literal">False</span>)</span><br><span class="line">    <span class="hljs-keyword">except</span> ValueError:</span><br><span class="line">        <span class="hljs-keyword">raise</span> ImproperlyConfigured(<span class="hljs-string">"AUTH_USER_MODEL must be of the form 'app_label.model_name'"</span>)</span><br><span class="line">    <span class="hljs-keyword">except</span> LookupError:</span><br><span class="line">        <span class="hljs-keyword">raise</span> ImproperlyConfigured(</span><br><span class="line">            <span class="hljs-string">"AUTH_USER_MODEL refers to model '%s' that has not been installed"</span> % settings.AUTH_USER_MODEL</span><br></pre></td></tr></tbody></table></figure>
+<p>同样的，他会根据setting中的AUTH_USER_MODEL来识别当前用户</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> django.contrib.auth <span class="hljs-keyword">import</span> get_user_model</span><br><span class="line"></span><br><span class="line">User = get_user_model</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>指定用户</strong></p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/app/models.py</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserProfile</span><span class="hljs-params">(models.Model)</span>:</span></span><br><span class="line">    author = models.ForeignKey(setting.AUTH_USER_MODEL)</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p><a href="https://www.cnblogs.com/huchong/p/9804635.html#_label0" target="_blank" rel="noopener">https://www.cnblogs.com/huchong/p/9804635.html#_label0</a><br><a href="https://blog.csdn.net/qq_37049050/article/details/79211059" target="_blank" rel="noopener">https://blog.csdn.net/qq_37049050/article/details/79211059</a></p>
 </body></html>
         </div>
         
@@ -356,18 +359,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/83186147/"><i class="fas fa-angle-double-right"></i>hexo博客优化</a>
+                <a class="has-link-black-ter" href="/posts/7068483c/"><i class="fas fa-angle-double-right"></i>DRF框架</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T05:12:17.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:42:23.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/%E8%AE%BE%E5%A4%87/">设备</a>
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/django/">django</a>
                 </div>
                 
                 
@@ -375,7 +378,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    2 分钟 读完 (大约 320 个字)
+                    15 分钟 读完 (大约 2186 个字)
                 </span>
                 
                 
@@ -383,17 +386,40 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="handsome博客优化"><a href="#handsome博客优化" class="headerlink" title="handsome博客优化"></a>handsome博客优化</h1><h2 id="修改右侧栏"><a href="#修改右侧栏" class="headerlink" title="修改右侧栏"></a>修改右侧栏</h2><p>sidebar.php 此处直接去除了 热门文字 、 最新评论 、 随机文字 这三个模块（他们在一个 Tab 里）</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><section id=<span class="hljs-string">"tabs-4"</span> class=<span class="hljs-string">"widget widget_tabs wrapper-md clear"</span>></span><br><span class="line">    <h3 class=<span class="hljs-string">"widget-title m-t-none text-md"</span>><?php _me(<span class="hljs-string">"闲言碎语"</span>) ?></h3></span><br><span class="line">    <div style=<span class="hljs-string">"font-size: 13px"</span>>这里是我的个人小站：猫之三千岁，用以记录生活中的点点滴滴，我一直认为有一个安静的、温馨的小窝是一件很快乐的事情。最后欢迎您不经意间的光临~ 🐾</div></span><br><span class="line"></section></span><br></pre></td></tr></tbody></table></figure>
+            <html><head></head><body><h2 id="rust风格"><a href="#rust风格" class="headerlink" title="rust风格"></a>rust风格</h2><p>Representational State Transfer  表现层状态转化（ 资源定位及资源操作）<br>表象层面说就是通过get,post,put,delete方式来实现前后台通信的一种轻量级,跨平台,跨语言架构设计风格的web服务</p>
+<p>http不仅仅是传输协议，更是一种应用协议。REST，即Representational State Transfer的缩写。意为是”表现层状态转化”。RESTful表示一种风格，理解REST前需要理解资源，何谓资源，广义的资源是指可以操作的所有对象。可能是一个系统资源，如txt、jgp、xml …，亦可以是诸如自己定义的虚拟集合的抽象，如books、usrs、times。RESTfutl代表一种简洁、方便、快捷、高效、透明的架构，这取决于你怎样组合。具有如下特点：</p>
+<p>1、规范化接口访问方式。这些http操作方法包括GET/POST/PUT/DELETE/OPTIONS等，每个操作方法都代表一个相同意义的操作，它向所有人透明地表明操作方式。比如GET只能读取/拉数据，当然你也可以是添加数据，但建议不要这么做，不然这样就失去了REST的意义。<br>GET 读取<br>POST 添加<br>PUT 修改<br>DELETE 删除<br>2、资源标识唯一。通过URI表示一个资源名称，形式/resource/patch。如/users，表示用户的组合，或用户群。当然还可以继续标识某个具体的一个用户，/users/11，表示id为11的用户。当然，你也可以又用一组/usrgroup/11的URI代表操作用户组，不过不建议这么做，因为这样从字面上重复了/users/11资源表示的内容。一个资源URI总是包含第一条实现的方法：<br>GET /users/11<br>POST /users/11<br>PUT /users/11<br>DELETE /users/11<br>当然，仅有这些还不足以包括资源操作的所有需求，所以还可以包含请求参数，如GET /users?type=list&page=1。<br>3、状态的转化。这就是REST的真实含义，指它允许资源URI具有不同的表现形式。同一个URI，根据不同请求方式，执行的动作不同；还可以根据请求的Header Accept的不同返回不同的结果，如text/html、text/css、text/xml等等。也可以理解为body不同。如查询快递一般，可以上次查询，物品还在仓库，而过一段时间已经在路上了。它表示的是一个互动过程。<br>4、所有信息都包含在当前请求中。请求的方式包含在 Request Header的Method中，还可以包含Accept、Accept-Encoding、Accept-Language，使用Authentication、Cookie等信息表明身份。同样，服务端通过发送Content-Length、Content-Type响应执行情况。最重要的是，需要返回Status Code通知执行状态，如200 201 400 404 500等http code。REST认为，所有信息都能通过请求一次性发送，而不必再采用方式保存状态，请求的信息本身已经说明了请求的意义。<br>5、无状态性。这是REST最重要的特性之一，这个状态指的是客户端与服务端无需为每次保存请求状态，客户端请求不必考虑当前状态，不必考虑上下文。具体上说，就是不必使用session等工具跟踪、保存请求的特殊性。比如，无论是谁，从哪里发送，几时发送，对同一个URI资源发送请求的结果都是一样的。据传，这样的设计是为当一台服务器宕机时，另一台服务器可以无差别地响应对方的请求。客户端请求只认URI，而不需理后台的设计。<br>实际上，在如今执行的RESTful设计当中，完全能执行这个要求的很少，最彻底的云服务，大部份为RESTful-like的风格。<br>6、可实现请求缓存。通过缓存减少请求次数，在HTTP响应里利用Cache-Control、Expires、Last-Modified三个头字段，可以让浏览器缓存资源一段时间。</p>
+<h2 id="drf的视图集"><a href="#drf的视图集" class="headerlink" title="drf的视图集"></a>drf的视图集</h2><p>ViewSet类只是一种类型的基于类的视图，即不提供任何方法的处理程序，例如.get()或.post()，而是提供操作，如.list()和.create()。<br><a href="http://www.sinodocs.cn/api-guide/viewsets.html" target="_blank" rel="noopener">http://www.sinodocs.cn/api-guide/viewsets.html</a></p>
+<h3 id="drf字段更新"><a href="#drf字段更新" class="headerlink" title="drf字段更新"></a>drf字段更新</h3><p>默认只有list和create 对应的方法就是get 和post<br>partial = True 局部更新</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestViewSet</span><span class="hljs-params">(viewsets.ModelViewSet)</span>:</span></span><br><span class="line">    serializer_class = TestSerializer</span><br><span class="line">    queryset = test_Model.objects.all()</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta"> @action(methods=['patch'], detail=False)</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update_field</span><span class="hljs-params">(self, request, *args, **kwargs)</span>:</span></span><br><span class="line">        request.data[<span class="hljs-string">"text"</span>] = <span class="hljs-string">"更新dsdsd"</span></span><br><span class="line">        instance = test_Model.objects.get(id=request.data[<span class="hljs-string">'id'</span>])</span><br><span class="line">        <span class="hljs-comment"># instance = self.get_object() 会报错</span></span><br><span class="line">        <span class="hljs-comment"># https://docs.djangoproject.com/en/2.2/ref/class-based-views/mixins-single-object/#django.views.generic.detail.SingleObjectMixin.get_object</span></span><br><span class="line">        <span class="hljs-comment"># 默认使用id查找</span></span><br><span class="line">        serializer = self.get_serializer(instance,data=request.data,partial=<span class="hljs-literal">True</span>)</span><br><span class="line">        serializer.is_valid()</span><br><span class="line">        serializer.save()</span><br><span class="line">        <span class="hljs-keyword">return</span> Response(serializer.data,status=status.HTTP_200_OK)</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">    @action(methods=['delete'],detail=False)</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">delete_field</span><span class="hljs-params">(self,request,*args,**kwargs)</span>:</span></span><br><span class="line">        instance = test_Model.objects.get(id=request.data[<span class="hljs-string">'id'</span>])</span><br><span class="line">        <span class="hljs-keyword">if</span> instance:</span><br><span class="line">            self.perform_destroy(instance)</span><br><span class="line">            <span class="hljs-keyword">return</span> Response({<span class="hljs-string">"flag"</span>:<span class="hljs-string">"删除成功"</span>},status=status.HTTP_200_OK)</span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span>  Response(status=status.HTTP_400_BAD_REQUEST)</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="部分修改网站"><a href="#部分修改网站" class="headerlink" title="部分修改网站"></a>部分修改网站</h2><p><a href="https://szyink.com/archives/229/" target="_blank" rel="noopener">https://szyink.com/archives/229/</a></p>
-<h2 id="如何获取自己的备案号"><a href="#如何获取自己的备案号" class="headerlink" title="如何获取自己的备案号"></a>如何获取自己的备案号</h2><p><a href="https://icp.chinaz.com/noback.top" target="_blank" rel="noopener">https://icp.chinaz.com/noback.top</a></p>
-<h2 id="改成CDN的内容"><a href="#改成CDN的内容" class="headerlink" title="改成CDN的内容"></a>改成CDN的内容</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">public static <span class="hljs-keyword">function</span> whenSwitchHeaderImgSrc(<span class="hljs-variable">$index</span> = 0, <span class="hljs-variable">$howToThumb</span>, <span class="hljs-variable">$attach</span>, <span class="hljs-variable">$content</span>, <span class="hljs-variable">$thumbField</span>)</span><br><span class="line">   {</span><br><span class="line">       <span class="hljs-variable">$options</span> = mget();</span><br><span class="line">       //<span class="hljs-variable">$randomNum</span> = unserialize(INDEX_IMAGE_ARRAY);</span><br><span class="line"></span><br><span class="line">       // 随机缩略图路径</span><br><span class="line">       // <span class="hljs-variable">$random</span> = <span class="hljs-string">"http://image.noback.top/"</span> . @<span class="hljs-variable">$randomNum</span>[<span class="hljs-variable">$index</span>] . <span class="hljs-string">'.jpg'</span>;//如果有文章置顶，这里可能会导致index not undefined</span><br><span class="line">       <span class="hljs-variable">$random</span> = <span class="hljs-string">'http://image.noback.top/'</span>.rand(1, 69).<span class="hljs-string">'.jpg'</span>;</span><br><span class="line">     	<span class="hljs-variable">$pattern</span> = <span class="hljs-string">'/\<img.*?src\=\"(.*?)\"[^>]*>/i'</span>;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="基本的视图集"><a href="#基本的视图集" class="headerlink" title="基本的视图集"></a>基本的视图集</h3><p>使用viewsets.ModelViewSet + DefaultRouter<br>其中base-name表示基础url  lookup表示查询参数(只根据主键查找)<br>获取局部地址 <a href="http://localhost:8080/{base-name}/{lookup}" target="_blank" rel="noopener">http://localhost:8080/{base-name}/{lookup}</a></p>
+<h2 id="drf路由集"><a href="#drf路由集" class="headerlink" title="drf路由集"></a>drf路由集</h2><p>为了更加便捷的开发项目,drf设计了路由集的内容，免去了路由配置中的麻烦，当然他也同时兼容django的路由设计<br><a href="https://www.django-rest-framework.org/api-guide/routers/" target="_blank" rel="noopener">https://www.django-rest-framework.org/api-guide/routers/</a></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> rest_framework <span class="hljs-keyword">import</span> routers</span><br><span class="line"></span><br><span class="line">router = DefaultRouter(trailing_slash=<span class="hljs-literal">False</span>) <span class="hljs-comment"># 是否以斜杠/结尾</span></span><br><span class="line"><span class="hljs-comment"># 声明注册路由</span></span><br><span class="line"><span class="hljs-comment"># 同path('switch/',views.per_switch.as_view()),</span></span><br><span class="line">router.register(prefix=<span class="hljs-string">'users'</span>, viewset=UserViewSet,basename=<span class="hljs-string">"another_name"</span>)</span><br><span class="line">router.register(<span class="hljs-string">'accounts'</span>, AccountViewSet)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 添加规则，django主动扫描urlpatterns变量获取路由</span></span><br><span class="line">urlpatterns = router.urls</span><br></pre></td></tr></tbody></table></figure>
+<p>以上 </p>
+<ul>
+<li>prefix定义前缀</li>
+<li>viewset定义视图</li>
+<li>basename定义前缀别名</li>
+</ul>
+<p>形成url格式(本地) —><br><a href="http://localhost:8080/user/" target="_blank" rel="noopener">http://localhost:8080/user/</a><br><a href="http://localhost:8000/accounts/" target="_blank" rel="noopener">http://localhost:8000/accounts/</a></p>
+<h3 id="兼容使用"><a href="#兼容使用" class="headerlink" title="兼容使用"></a>兼容使用</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">framework rest_framework.routers <span class="hljs-keyword">import</span> DefaultRouter</span><br><span class="line"></span><br><span class="line">router = DefaultRouter()</span><br><span class="line">router.register(<span class="hljs-string">'test'</span>,viewset=TestViewSet,base_name=<span class="hljs-string">"test"</span>)</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="hljs-string">'switch/'</span>,views.switch_list.as_view()),</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 变量累加</span></span><br><span class="line">urlpatterns += router.urls</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="路由集url"><a href="#路由集url" class="headerlink" title="路由集url"></a>路由集url</h3><p>django的路由集是真滴变态，当你使用带值参数去查找列表中的特定内容时候，他所表现的url是<br>^users/{pk}/set_password/$<br>注意 pk在中间 set_password是你方法的名字<br>如果你需要修改这些内容，可以在@action中指定<br>url_path = set_password<br>url_name = change_password</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SwitchViewSet</span><span class="hljs-params">(viewsets.GenericViewSet,</span></span></span><br><span class="line"><span class="hljs-class"><span class="hljs-params">                    mixins.ListModelMixin)</span>:</span></span><br><span class="line">    serializer_class = SwitchSerializer</span><br><span class="line">    queryset = SwitchModel.objects.all()</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># get</span></span><br><span class="line"><span class="hljs-meta">    @action(detail=True,url_path="xx")</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">list_peer</span><span class="hljs-params">(self, request, pk)</span>:</span></span><br><span class="line">        queryset = SwitchModel.objects.get(name=pk)</span><br><span class="line">        print(queryset)</span><br><span class="line">        <span class="hljs-comment"># page = self.paginate_queryset(queryset)</span></span><br><span class="line">        <span class="hljs-comment"># if page is not None:</span></span><br><span class="line">        <span class="hljs-comment">#    serializer = self.get_serializer(page, many=True)</span></span><br><span class="line">        <span class="hljs-comment">#    return self.get_paginated_response(serializer.data)</span></span><br><span class="line"></span><br><span class="line">        serializer = self.get_serializer(queryset)</span><br><span class="line">        <span class="hljs-keyword">return</span> Response(serializer.data)</span><br></pre></td></tr></tbody></table></figure>
+<p>如上一个列表查询的地址是  <a href="http://localhost:8080/{pk}/xx" target="_blank" rel="noopener">http://localhost:8080/{pk}/xx</a></p>
+<h2 id="drf过滤"><a href="#drf过滤" class="headerlink" title="drf过滤"></a>drf过滤</h2><h3 id="drf通用过滤"><a href="#drf通用过滤" class="headerlink" title="drf通用过滤"></a>drf通用过滤</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># setting.py</span></span><br><span class="line"><span class="hljs-comment"># 全局设置过滤器</span></span><br><span class="line">REST_FRAMEWORK = {</span><br><span class="line">    <span class="hljs-string">'DEFAULT_FILTER_BACKENDS'</span>: [<span class="hljs-string">'django_filters.rest_framework.DjangoFilterBackend'</span>]</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment"># views.py</span></span><br><span class="line"><span class="hljs-comment"># 单视图设置过滤器</span></span><br><span class="line">  filter_backends = [django_filters.rest_framework.DjangoFilterBackend]</span><br></pre></td></tr></tbody></table></figure>
+<p><a href="https://www.django-rest-framework.org/api-guide/filtering/" target="_blank" rel="noopener">https://www.django-rest-framework.org/api-guide/filtering/</a></p>
+<h2 id="drf分页"><a href="#drf分页" class="headerlink" title="drf分页"></a>drf分页</h2><p><a href="https://www.django-rest-framework.org/api-guide/pagination/" target="_blank" rel="noopener">https://www.django-rest-framework.org/api-guide/pagination/</a></p>
+<h2 id="drf过滤器"><a href="#drf过滤器" class="headerlink" title="drf过滤器"></a>drf过滤器</h2><p><a href="https://www.django-rest-framework.org/api-guide/serializers/" target="_blank" rel="noopener">https://www.django-rest-framework.org/api-guide/serializers/</a></p>
+<h2 id="drf解析器与渲染器"><a href="#drf解析器与渲染器" class="headerlink" title="drf解析器与渲染器"></a>drf解析器与渲染器</h2><p>视图的有效解析器集始终定义为类列表。当 request.data被访问时，REST框架将检查Content-Type传入请求上的标头，并确定使用哪个解析器来解析请求内容。<br>如果您未设置内容类型，则大多数客户端将默认使用’application/x-www-form-urlencoded’例如，如果要json使用jQuery和.ajax（）方法发送编码数据，则应确保包括该contentType: ‘application/json’设置。</p>
+<h3 id="设置解析器"><a href="#设置解析器" class="headerlink" title="设置解析器"></a>设置解析器</h3><p>仅允许json的内容</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># setting.py</span></span><br><span class="line"><span class="hljs-comment"># 全局设置解析</span></span><br><span class="line">REST_FRAMEWORK = {</span><br><span class="line">    <span class="hljs-string">'DEFAULT_PARSER_CLASSES'</span>: [</span><br><span class="line">        <span class="hljs-string">'rest_framework.parsers.JSONParser'</span>,</span><br><span class="line">    ]</span><br><span class="line">} </span><br><span class="line"><span class="hljs-comment"># 单视图设置解析</span></span><br><span class="line">class modelview():</span><br><span class="line">    parser_classes = [JSONParser]</span><br></pre></td></tr></tbody></table></figure>
+<p>其他各类解析<br><a href="https://www.django-rest-framework.org/api-guide/parsers/" target="_blank" rel="noopener">https://www.django-rest-framework.org/api-guide/parsers/</a></p>
+<h2 id="渲染器"><a href="#渲染器" class="headerlink" title="渲染器"></a>渲染器</h2><p>既然有收的解析器，那也有发出数据的渲染器，<br>REST框架包括许多内置的Renderer类，使您可以返回各种媒体类型的响应。还支持定义自己的自定义渲染器，这使您可以灵活地设计自己的媒体类型。</p>
+<h3 id="设置渲染器"><a href="#设置渲染器" class="headerlink" title="设置渲染器"></a>设置渲染器</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># setting.py</span></span><br><span class="line"><span class="hljs-comment"># 全局设置解析</span></span><br><span class="line">REST_FRAMEWORK = {</span><br><span class="line">    <span class="hljs-string">'DEFAULT_RENDERER_CLASSES'</span>: [</span><br><span class="line">        <span class="hljs-string">'rest_framework.renderers.JSONRenderer'</span>,</span><br><span class="line">        <span class="hljs-string">'rest_framework.renderers.BrowsableAPIRenderer'</span>,</span><br><span class="line">    ]</span><br><span class="line">} </span><br><span class="line"><span class="hljs-comment"># 单视图设置解析</span></span><br><span class="line">class modelview()</span><br><span class="line">    renderer_classes = [JSONRenderer]</span><br></pre></td></tr></tbody></table></figure>
 
-<p>突然又想了一个骚操作  只要把bing 4k壁纸上的<br><a href="https://bing.lylares.com/detail/cnjX2Vj0.html" target="_blank" rel="noopener">https://bing.lylares.com/detail/cnjX2Vj0.html</a></p>
-<p>后缀拿到 弄一个列表 随机一下  这样CDN流量钱都省了～</p>
-<h2 id="网站测速"><a href="#网站测速" class="headerlink" title="网站测速"></a>网站测速</h2><p><a href="https://developers.google.com/speed/pagespeed/insights/?hl=zh-cn&url=http%3A%2F%2Fnoback.top%2F" target="_blank" rel="noopener">https://developers.google.com/speed/pagespeed/insights/?hl=zh-cn&url=http%3A%2F%2Fnoback.top%2F</a></p>
-<h2 id="hexo博客优化"><a href="#hexo博客优化" class="headerlink" title="hexo博客优化"></a>hexo博客优化</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">end of the stream or a document separator is expected at line 8, column 1:</span><br><span class="line">报错内容 没有添加</span><br><span class="line">---</span><br><span class="line">title:</span><br><span class="line">tags:</span><br><span class="line">---</span><br><span class="line">等头部内容</span><br></pre></td></tr></tbody></table></figure></body></html>
+<p>其他渲染器<br><a href="https://www.django-rest-framework.org/api-guide/renderers/" target="_blank" rel="noopener">https://www.django-rest-framework.org/api-guide/renderers/</a></p>
+</body></html>
         </div>
         
         
@@ -415,18 +441,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/cd35325c/"><i class="fas fa-angle-double-right"></i>软件配置</a>
+                <a class="has-link-black-ter" href="/posts/65abc8f/"><i class="fas fa-angle-double-right"></i>django字段总结</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T05:11:16.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:41:01.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/%E8%AE%BE%E5%A4%87/">设备</a>
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/django/">django</a>
                 </div>
                 
                 
@@ -434,7 +460,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    7 分钟 读完 (大约 1056 个字)
+                    5 分钟 读完 (大约 763 个字)
                 </span>
                 
                 
@@ -442,49 +468,31 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="设备"><a href="#设备" class="headerlink" title="设备"></a>设备</h1><p>本文主要记录一些设备上的变动，包括快捷键的设置等等</p>
-<h2 id="vscode"><a href="#vscode" class="headerlink" title="vscode"></a>vscode</h2><h3 id="vscode设置代码块"><a href="#vscode设置代码块" class="headerlink" title="vscode设置代码块"></a>vscode设置代码块</h3><p>1.由于markdown不是什么编程语法，vscode不支持自动提示和补全,所以我们要现在用户设置中打开markdown的自动补全<br><font color="red">ctrl+shift+p</font>打开设置—> setting —-> 在其中添加</p>
-<figure class="highlight hljs"><table><tbody><tr><td class="code"><pre><span class="line">"[markdown]": {</span><br><span class="line">    "editor.wordWrap": "on",</span><br><span class="line">    "editor.quickSuggestions": true,</span><br><span class="line">},</span><br></pre></td></tr></tbody></table></figure>
+            <html><head></head><body><h1 id="django字段的设计"><a href="#django字段的设计" class="headerlink" title="django字段的设计"></a>django字段的设计</h1><p><a href="https://docs.djangoproject.com/zh-hans/2.2/ref/models/fields/#module-django.db.models.fields" target="_blank" rel="noopener">https://docs.djangoproject.com/zh-hans/2.2/ref/models/fields/#module-django.db.models.fields</a><br>orm的设计模式<br>在django的应用过程中，往往要设计model的设计，在model设计过程中要使用各种各样的关键词，这些关键词 关联到了数据库中每条记录的配置</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 引用</span></span><br><span class="line"><span class="hljs-keyword">from</span> django.db <span class="hljs-keyword">import</span> models</span><br></pre></td></tr></tbody></table></figure>
 
-<p>2.添加补全代码块<br>ctrl+shift+p —> 输入markdown –> 打开markdown.json —> 添加内容</p>
-<figure class="highlight hljs"><table><tbody><tr><td class="code"><pre><span class="line">"Print to console": {</span><br><span class="line">		"prefix": "fcr",</span><br><span class="line">		"body": [</span><br><span class="line">			<span class="hljs-string">"<font color='red'>$1</font>"</span></span><br><span class="line">		],</span><br><span class="line">		"description": "change font-color to red sign import "</span><br><span class="line">	}</span><br></pre></td></tr></tbody></table></figure>
-<p>其中prefix 是指你代码块的简洁写法,在你输入的时候会出现代码块的提示<br>body是主体内容,也就是我们添加的代码块<br>description 是注释，你可以标注一下这代码块是用来干嘛的</p>
-<h3 id="vscode-绑定vim自定义快捷键"><a href="#vscode-绑定vim自定义快捷键" class="headerlink" title="vscode 绑定vim自定义快捷键"></a>vscode 绑定vim自定义快捷键</h3><p>在vscode中自定义vim快捷键<br>“vim.insertModeKeyBindings”: [<br>        {<br>            “before”: [“j”, “j”],<br>            “after”: [“<esc>“]<br>        }<br>]<br><a href="https://github.com/VSCodeVim/Vim/#key-remapping" target="_blank" rel="noopener">https://github.com/VSCodeVim/Vim/#key-remapping</a></esc></p>
-<h2 id="chrome"><a href="#chrome" class="headerlink" title="chrome"></a>chrome</h2><h3 id="清除特定网址的缓存"><a href="#清除特定网址的缓存" class="headerlink" title="清除特定网址的缓存"></a>清除特定网址的缓存</h3><p>打开开发者工具（F12），选择 Network——Disable cache 即可。需要清除某网站缓存时 F12 打开开发者工具就会自动清除这个网站的缓存，而不必清除所有网站的缓存了</p>
-<h2 id="ss"><a href="#ss" class="headerlink" title="ss"></a>ss</h2><h3 id="ss加强模式"><a href="#ss加强模式" class="headerlink" title="ss加强模式"></a>ss加强模式</h3><p><font color="red"> Mac电脑使用shadowsocks无法连接公司内网问题</font><br>最近换了mac但是发现无法连接mac电脑，主要原因是在mac电脑中ss无法对所有软件都支持端口转发,这时候需要用到一个软件 proxifier,在这个上面做全局的端口转发即可</p>
-<p><img src="http://img.noback.top/blog/imgproxifier%E8%BD%AF%E4%BB%B6.png" alt><br>看到socks5的监听端口为 1086</p>
-<ol>
-<li>添加代理<br><img src="http://img.noback.top/blog/img20191022152254.png" alt></li>
-<li>添加规则<br><img src="http://img.noback.top/blog/img20191022152521.png" alt></li>
-</ol>
-<h2 id="mac"><a href="#mac" class="headerlink" title="mac"></a>mac</h2><h3 id="mac连接交换机"><a href="#mac连接交换机" class="headerlink" title="mac连接交换机"></a>mac连接交换机</h3><p>由于在mac中没有像windows中xshell这样简单方便的串口连接工具，因此我们只能使用screen来连接交换机</p>
-<p>首先用串口线连接交换机，然后查看接入的串口设备，他们放在/dev下面 由于不同的串口线命名不同，但是他们应该都会带有usb字样</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ls /dev | grep -i tty.*usb</span><br><span class="line">screen /dev/tty.usbxxxxx  9600</span><br></pre></td></tr></tbody></table></figure>
-<p>这里9600为交换机的默认波特率，但你也可以在交换机更换波特率的内容</p>
-<h3 id="mac下使用ftp"><a href="#mac下使用ftp" class="headerlink" title="mac下使用ftp"></a>mac下使用ftp</h3><p>由于新的Mac系统去调了自带的telnet命令和ftp命令，所以第一步我们要安装ftp命令。<br>我的系统是10.13.6</p>
-<p>ftp的安装需要很多的软件依赖</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">brew install telnet</span><br><span class="line">brew install inetutils</span><br><span class="line">brew link --overwrite inetutils</span><br></pre></td></tr></tbody></table></figure>
-<p><font color="red">登陆-</font></p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 方式一</span></span><br><span class="line">ftp ip</span><br><span class="line"><span class="hljs-comment"># 方式二</span></span><br><span class="line">ftp </span><br><span class="line">open ip</span><br></pre></td></tr></tbody></table></figure>
-<p><a href="https://www.jianshu.com/p/10c4e46c77f1" target="_blank" rel="noopener">https://www.jianshu.com/p/10c4e46c77f1</a><br>ftp使用方法<br><a href="https://blog.csdn.net/tianlesoftware/article/details/5818990" target="_blank" rel="noopener">https://blog.csdn.net/tianlesoftware/article/details/5818990</a></p>
-<h3 id="mac下改键记录"><a href="#mac下改键记录" class="headerlink" title="mac下改键记录"></a>mac下改键记录</h3><p>使用karabiner-element修改mac按键<br>修改内容为:<br>切换输入法 由之前的caps lock改成 shift<br>之前的caps 改成了 control</p>
-<ol>
-<li>下载karabiner-element</li>
-<li>在simple modifitions 中修改映射<br>from key caps_lock<br>to_key left_control</li>
-<li>修改shift和caps<br>由于karabiner-element不支持在窗口中修改，但可以指定json形式的配置文件<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">vi /Users/alpaca/.config/karabiner/karabiner.json</span><br><span class="line">                <span class="hljs-string">"rules"</span>: [</span><br><span class="line">                    {</span><br><span class="line">                        <span class="hljs-string">"manipulators"</span>: [</span><br><span class="line">                            {</span><br><span class="line">                                <span class="hljs-string">"description"</span>: <span class="hljs-string">"Change left_shift to control+space when used alone"</span>,</span><br><span class="line">                                <span class="hljs-string">"from"</span>: {</span><br><span class="line">                                    <span class="hljs-string">"key_code"</span>: <span class="hljs-string">"left_shift"</span>,</span><br><span class="line">                                    <span class="hljs-string">"modifiers"</span>: {</span><br><span class="line">                                        <span class="hljs-string">"optional"</span>: [</span><br><span class="line">                                            <span class="hljs-string">"any"</span></span><br><span class="line">                                        ]</span><br><span class="line">                                    }</span><br><span class="line">                                },</span><br><span class="line">                                <span class="hljs-string">"to"</span>: [</span><br><span class="line">                                    {</span><br><span class="line">                                        <span class="hljs-string">"key_code"</span>: <span class="hljs-string">"left_shift"</span></span><br><span class="line">                                    }</span><br><span class="line">                                ],</span><br><span class="line">                                <span class="hljs-string">"to_if_alone"</span>: [</span><br><span class="line">                                    {</span><br><span class="line">                                        <span class="hljs-string">"key_code"</span>: <span class="hljs-string">"spacebar"</span>,</span><br><span class="line">                                        <span class="hljs-string">"modifiers"</span>: [</span><br><span class="line">                                            <span class="hljs-string">"left_control"</span></span><br><span class="line">                                        ]</span><br><span class="line">                                    }</span><br><span class="line">                                ],</span><br><span class="line">                                <span class="hljs-string">"type"</span>: <span class="hljs-string">"basic"</span></span><br><span class="line">                            }</span><br><span class="line">                        ]</span><br><span class="line">                    }</span><br><span class="line">                ]</span><br></pre></td></tr></tbody></table></figure>
 
-</li>
-</ol>
-<h3 id="mac-usr-bin-python-权限问题"><a href="#mac-usr-bin-python-权限问题" class="headerlink" title="mac /usr/bin/python 权限问题"></a>mac /usr/bin/python 权限问题</h3><p>operation not permitted<br>一般情况下我们在使用mac系统过程中下载一些文件、新建一些项目之后，这些文件都会默认是只读状态，这时我们只需要简单的一句权限设置命令就可以解决</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">sudo chmod -R 777 filename</span><br></pre></td></tr></tbody></table></figure>
-<p>/usr/bin下面的文件在mac中会出现一下的错误</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">operation not permitted</span><br></pre></td></tr></tbody></table></figure>
-<p>这是因为mac启用了SIP（System Integrity Protection），增加了rootless机制，导致即使在root权限下依然无法修改文件，在必要时候为了能够修改下面的文件，我们只能关闭该保护机制</p>
-<p>1) 重启 开机过程中按住command+R 进入保护模式<br>2) 打开终端 </p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">csrutil <span class="hljs-built_in">disable</span></span><br></pre></td></tr></tbody></table></figure>
-<p>3) 再次重启，就可以修改/usr/bin下的目录文件 </p>
-<p>4)恢复保护机制</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">csrutil <span class="hljs-built_in">enable</span></span><br></pre></td></tr></tbody></table></figure></body></html>
+<h2 id="通用字段"><a href="#通用字段" class="headerlink" title="通用字段"></a>通用字段</h2><h3 id="null字段"><a href="#null字段" class="headerlink" title="null字段"></a>null字段</h3><p>如果设置为 True， 当该字段为空时，Django 会将数据库中该字段设置为NULL，默认为 False。<br>即数据库置空 如果null=true blank=true 则数据库内容为空白字符串</p>
+<h3 id="blank"><a href="#blank" class="headerlink" title="blank"></a>blank</h3><p>Field.blank<br>默认blank = False ,如果设置为True，则允许该字段为空。<br>与null不同的是,null存粹与数据库有相关，而blank与验证相关。如果blank=true,则表单验证将允许输入空值,如果blank=False 则不允许输入空值</p>
+<hr>
+<h3 id="choices"><a href="#choices" class="headerlink" title="choices"></a>choices</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TaskSwitchModel</span><span class="hljs-params">(models.Model)</span>:</span></span><br><span class="line">    ActionType = models.CharField(choices=[</span><br><span class="line">        (<span class="hljs-string">'snmp'</span>,<span class="hljs-string">'_(snmp)'</span>),</span><br><span class="line">        (<span class="hljs-string">"vlan"</span>,<span class="hljs-string">"_vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"sysname"</span>,<span class="hljs-string">"_sysname"</span>),</span><br><span class="line">        (<span class="hljs-string">"copyright-info"</span>,<span class="hljs-string">"_copyright-info"</span>),</span><br><span class="line">        (<span class="hljs-string">"int-vlan"</span>,<span class="hljs-string">"_int-vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"int"</span>,<span class="hljs-string">"_int"</span>)],max_length=<span class="hljs-number">100</span>,default=<span class="hljs-string">""</span>)</span><br><span class="line">    test = models.CharField(max_length=<span class="hljs-number">1</span>, choices=[(<span class="hljs-string">'A'</span>, (<span class="hljs-string">'Author'</span>)), (<span class="hljs-string">'E'</span>, (<span class="hljs-string">'Editor'</span>))]),</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TaskSwitchModel</span><span class="hljs-params">(model.ModelForm)</span>:</span></span><br><span class="line">    choices=(</span><br><span class="line">        (<span class="hljs-string">'snmp'</span>,<span class="hljs-string">'_(snmp)'</span>),</span><br><span class="line">        (<span class="hljs-string">"vlan"</span>,<span class="hljs-string">"_vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"sysname"</span>,<span class="hljs-string">"_sysname"</span>),</span><br><span class="line">        (<span class="hljs-string">"copyright-info"</span>,<span class="hljs-string">"_copyright-info"</span>),</span><br><span class="line">        (<span class="hljs-string">"int-vlan"</span>,<span class="hljs-string">"_int-vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"int"</span>,<span class="hljs-string">"_int"</span>)</span><br><span class="line">    )</span><br><span class="line">    ActionType = model.CharField(choices=choices,max_length=<span class="hljs-number">100</span>,default=<span class="hljs-string">""</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Field.choices<br>每个元组中的第一个元素是要在模型上设置的实际值，第二个元素是人类可读的名称.</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">select_choices =[</span><br><span class="line">    (<span class="hljs-string">'A'</span>,<span class="hljs-string">'A_'</span>),</span><br><span class="line">    (<span class="hljs-string">'B'</span>,<span class="hljs-string">'B_'</span>),</span><br><span class="line">    (<span class="hljs-string">'C'</span>,<span class="hljs-string">'C_'</span>),</span><br><span class="line">    (<span class="hljs-string">'D'</span>,<span class="hljs-string">'D_'</span>),</span><br><span class="line">]</span><br><span class="line">choices字段迭代</span><br><span class="line">每个元组的第一个元素是要应用于组的名称。第二个元素是一个可迭代的<span class="hljs-number">2</span>代元组</span><br><span class="line">select2_select1_choices=[</span><br><span class="line">    (<span class="hljs-string">'A'</span>,(</span><br><span class="line">        (<span class="hljs-string">'A_/'</span>,<span class="hljs-string">'A_movie'</span>),</span><br><span class="line">        (<span class="hljs-string">'A_+'</span>,<span class="hljs-string">'A_video'</span>),</span><br><span class="line">        (<span class="hljs-string">'A_-'</span>,<span class="hljs-string">'A_City'</span>),</span><br><span class="line">        )</span><br><span class="line">    ),</span><br><span class="line">    (<span class="hljs-string">'Video'</span>, (</span><br><span class="line">            (<span class="hljs-string">'vhs'</span>, <span class="hljs-string">'VHS Tape'</span>),</span><br><span class="line">            (<span class="hljs-string">'dvd'</span>, <span class="hljs-string">'DVD'</span>),</span><br><span class="line">        )</span><br><span class="line">    ),</span><br><span class="line">    (<span class="hljs-string">'unknown'</span>, <span class="hljs-string">'Unknown'</span>),</span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="db-column"><a href="#db-column" class="headerlink" title="db_column"></a>db_column</h3><p>设置数据库列的名称    age = models.CharFiled(db_column=”年龄”)</p>
+<h3 id="db-index"><a href="#db-index" class="headerlink" title="db_index"></a>db_index</h3><p>age = models.CharFiled(db_index=true)<br>如果设置为True，则创建数据库索引</p>
+<h3 id="default"><a href="#default" class="headerlink" title="default"></a>default</h3><p>可以是值也可以是可调用的对象，每次实例化模型的时候 会调用这个对象或值</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 1</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">contact_defult</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> {<span class="hljs-string">"email"</span>:<span class="hljs-string">"1097690268@qq.com"</span>}</span><br><span class="line"></span><br><span class="line">contact_info = JSONField(<span class="hljs-string">"ContactInfo"</span>, default=contact_default)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 2</span></span><br><span class="line">member_name = CharFiled(default=<span class="hljs-string">"小明"</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="editable"><a href="#editable" class="headerlink" title="editable"></a>editable</h3><p>可编辑字段<br>如果为False，则该字段将不会显示在管理员或其他任何人中 ModelForm。在模型验证期间也将跳过它们。默认值为True。</p>
+<hr>
+<h3 id="unique"><a href="#unique" class="headerlink" title="unique"></a>unique</h3><p>name = CharFiled(unique=true)<br>如上则会保证该字段的值为表中唯一，也就是不会出现同名的人<br>如果存在了unique 则不再需要db_index 因为unique默认存在索引</p>
+<h2 id="primary-key"><a href="#primary-key" class="headerlink" title="primary_key"></a>primary_key</h2><p>如果设置为True，则初始设置为该模型的主键。<br>如果您未primary_key=True在模型中指定任何字段，则Django会自动添加一个AutoField来保留主键，因此primary_key=True暗示null=False和 unique=True。一个对象只允许使用一个主键。<br>主键字段是只读的。如果更改现有对象上的主键的值然后保存，则将在旧对象的旁边创建一个新对象。</p>
+<h2 id="自定义的字段"><a href="#自定义的字段" class="headerlink" title="自定义的字段"></a>自定义的字段</h2><p><a href="https://docs.djangoproject.com/zh-hans/2.2/howto/custom-model-fields/" target="_blank" rel="noopener">https://docs.djangoproject.com/zh-hans/2.2/howto/custom-model-fields/</a></p>
+</body></html>
         </div>
         
         
@@ -523,9 +531,9 @@
             
             <li><a class="pagination-link has-text-black-ter" href="/page/8/">8</a></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/9/">9</a></li>
+            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/10/">10</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/12/">12</a></li>
             
         </ul>
     </nav>
@@ -560,7 +568,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        48
+                        56
                     </p>
                 </a>
             </div>
@@ -570,7 +578,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        24
+                        28
                     </p>
                 </a>
             </div>
@@ -651,7 +659,7 @@
                 <span class="level-item">blog_back_new</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">30</span>
+                <span class="level-item tag">29</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/blog-back-new/Rust/">
@@ -675,7 +683,7 @@
                 <span class="level-item">django</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/blog-back-new/git/">
@@ -739,7 +747,7 @@
                 <span class="level-item">linux</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
@@ -747,7 +755,7 @@
                 <span class="level-item">常用命令</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">
@@ -766,6 +774,14 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/%E8%84%9A%E6%9C%AC/">
+            <span class="level-start">
+                <span class="level-item">脚本</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">
             <span class="level-start">
                 <span class="level-item">负载均衡</span>
@@ -779,7 +795,7 @@
                 <span class="level-item">编程</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">
@@ -798,6 +814,22 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/SwaggerUi/">
+            <span class="level-start">
+                <span class="level-item">SwaggerUi</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/django/">
+            <span class="level-start">
+                <span class="level-item">django</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vim/">
             <span class="level-start">
                 <span class="level-item">vim</span>
@@ -811,9 +843,17 @@
                 <span class="level-item">网络</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">5</span>
             </span>
         </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/extra/">
+            <span class="level-start">
+                <span class="level-item">extra</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
             <span class="level-start">
                 <span class="level-item">二层交换机</span>
@@ -860,7 +900,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">17</span>
+                    <span class="level-item tag">25</span>
                 </span>
             </a>
         </li>
@@ -891,18 +931,18 @@
         
         <article class="media">
             
-            <a href="/posts/9bb9b12b/" class="media-left">
+            <a href="/posts/705ac99d/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="二层交换机">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux脚本">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-12T11:11:22.000Z">2020-01-12</time></div>
-                    <a href="/posts/9bb9b12b/" class="has-link-black-ter is-size-6">二层交换机</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T02:46:04.000Z">2020-01-16</time></div>
+                    <a href="/posts/705ac99d/" class="has-link-black-ter is-size-6">linux脚本</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">二层交换机</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
                     </p>
                 </div>
             </div>
@@ -910,35 +950,16 @@
         
         <article class="media">
             
-            <a href="/posts/845aaf29/" class="media-left">
+            <a href="/posts/877ac6e6/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="交换机状态检测">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-mtr命令">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T06:59:26.000Z">2020-01-10</time></div>
-                    <a href="/posts/845aaf29/" class="has-link-black-ter is-size-6">交换机状态检测</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/fe4ef317/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux常用命令">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T04:47:22.000Z">2020-01-09</time></div>
-                    <a href="/posts/fe4ef317/" class="has-link-black-ter is-size-6">linux常用命令</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T07:15:47.000Z">2020-01-15</time></div>
+                    <a href="/posts/877ac6e6/" class="has-link-black-ter is-size-6">linux-mtr命令</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>
                     </p>
@@ -948,18 +969,18 @@
         
         <article class="media">
             
-            <a href="/posts/bc3af3e9/" class="media-left">
+            <a href="/posts/1d7a61af/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux故障问题及解决方案">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux初始化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T04:23:01.000Z">2020-01-09</time></div>
-                    <a href="/posts/bc3af3e9/" class="has-link-black-ter is-size-6">linux故障问题及解决方案</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T02:30:41.000Z">2020-01-15</time></div>
+                    <a href="/posts/1d7a61af/" class="has-link-black-ter is-size-6">linux初始化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">故障问题</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
                     </p>
                 </div>
             </div>
@@ -967,18 +988,37 @@
         
         <article class="media">
             
-            <a href="/posts/e47927c/" class="media-left">
+            <a href="/posts/67b35a0f/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vim快捷键">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blog_back_new/linux/net/记录">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T03:08:30.000Z">2020-01-09</time></div>
-                    <a href="/posts/e47927c/" class="has-link-black-ter is-size-6">vim快捷键</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T09:48:03.265Z">2020-01-14</time></div>
+                    <a href="/posts/67b35a0f/" class="has-link-black-ter is-size-6">blog_back_new/linux/net/记录</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vim/">vim</a>
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/933b28f1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-filter">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T03:43:43.000Z">2020-01-14</time></div>
+                    <a href="/posts/933b28f1/" class="has-link-black-ter is-size-6">drf-filter</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
                     </p>
                 </div>
             </div>
@@ -1013,7 +1053,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">17</span>
+                    <span class="level-item tag">25</span>
                 </span>
             </a>
         </li>
@@ -1044,18 +1084,18 @@
         
         <article class="media">
             
-            <a href="/posts/9bb9b12b/" class="media-left">
+            <a href="/posts/705ac99d/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="二层交换机">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux脚本">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-12T11:11:22.000Z">2020-01-12</time></div>
-                    <a href="/posts/9bb9b12b/" class="has-link-black-ter is-size-6">二层交换机</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T02:46:04.000Z">2020-01-16</time></div>
+                    <a href="/posts/705ac99d/" class="has-link-black-ter is-size-6">linux脚本</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">二层交换机</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
                     </p>
                 </div>
             </div>
@@ -1063,35 +1103,16 @@
         
         <article class="media">
             
-            <a href="/posts/845aaf29/" class="media-left">
+            <a href="/posts/877ac6e6/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="交换机状态检测">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-mtr命令">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T06:59:26.000Z">2020-01-10</time></div>
-                    <a href="/posts/845aaf29/" class="has-link-black-ter is-size-6">交换机状态检测</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/fe4ef317/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux常用命令">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T04:47:22.000Z">2020-01-09</time></div>
-                    <a href="/posts/fe4ef317/" class="has-link-black-ter is-size-6">linux常用命令</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T07:15:47.000Z">2020-01-15</time></div>
+                    <a href="/posts/877ac6e6/" class="has-link-black-ter is-size-6">linux-mtr命令</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>
                     </p>
@@ -1101,18 +1122,18 @@
         
         <article class="media">
             
-            <a href="/posts/bc3af3e9/" class="media-left">
+            <a href="/posts/1d7a61af/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux故障问题及解决方案">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux初始化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T04:23:01.000Z">2020-01-09</time></div>
-                    <a href="/posts/bc3af3e9/" class="has-link-black-ter is-size-6">linux故障问题及解决方案</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T02:30:41.000Z">2020-01-15</time></div>
+                    <a href="/posts/1d7a61af/" class="has-link-black-ter is-size-6">linux初始化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">故障问题</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
                     </p>
                 </div>
             </div>
@@ -1120,18 +1141,37 @@
         
         <article class="media">
             
-            <a href="/posts/e47927c/" class="media-left">
+            <a href="/posts/67b35a0f/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vim快捷键">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blog_back_new/linux/net/记录">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T03:08:30.000Z">2020-01-09</time></div>
-                    <a href="/posts/e47927c/" class="has-link-black-ter is-size-6">vim快捷键</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T09:48:03.265Z">2020-01-14</time></div>
+                    <a href="/posts/67b35a0f/" class="has-link-black-ter is-size-6">blog_back_new/linux/net/记录</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vim/">vim</a>
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/933b28f1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-filter">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T03:43:43.000Z">2020-01-14</time></div>
+                    <a href="/posts/933b28f1/" class="has-link-black-ter is-size-6">drf-filter</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
                     </p>
                 </div>
             </div>

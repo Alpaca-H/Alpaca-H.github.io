@@ -7,12 +7,12 @@
 
 
 
-    <meta name="description" content="使用jwt  json web tokensource &#x2F;bin&#x2F;activepip install djangorestframework-jwt https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;30524397https:&#x2F;&#x2F;jpadilla.github.io&#x2F;django-rest-framework-jwt&#x2F;#security vue中使用token验证https:&#x2F;&#x2F;blog">
+    <meta name="description" content="Introducing drfhow to use it">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jwt">
 <meta property="og:url" content="http://blog.noback.top/posts/8d17cdf0/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
-<meta property="og:description" content="使用jwt  json web tokensource &#x2F;bin&#x2F;activepip install djangorestframework-jwt https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;30524397https:&#x2F;&#x2F;jpadilla.github.io&#x2F;django-rest-framework-jwt&#x2F;#security vue中使用token验证https:&#x2F;&#x2F;blog">
+<meta property="og:description" content="Introducing drfhow to use it">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.noback.top/images/og_image.png">
 <meta property="article:published_time" content="2019-12-29T12:48:40.000Z">
@@ -163,7 +163,7 @@
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/django/">django</a>
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
                 </div>
                 
                 
@@ -171,7 +171,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    几秒 读完 (大约 85 个字)
+                    2 分钟 读完 (大约 347 个字)
                 </span>
                 
                 
@@ -184,7 +184,19 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="使用jwt-json-web-token"><a href="#使用jwt-json-web-token" class="headerlink" title="使用jwt  json web token"></a>使用jwt  json web token</h1><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">source</span> /bin/active</span><br><span class="line">pip install djangorestframework-jwt</span><br></pre></td></tr></tbody></table></figure>
+            <html><head></head><body><p>Introducing drf<br>how to use it </p>
+<a id="more"></a>
+
+
+<h2 id="使用drf-jwt"><a href="#使用drf-jwt" class="headerlink" title="使用drf-jwt"></a>使用drf-jwt</h2><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装jwt</span></span><br><span class="line">source /bin/active</span><br><span class="line">pip install djangorestframework-jwt </span><br><span class="line"><span class="hljs-comment"># 配置setting.py</span></span><br><span class="line">REST_FRAMEWORK = {</span><br><span class="line">    <span class="hljs-string">'DEFAULT_PERMISSION_CLASSES'</span>: (</span><br><span class="line">        <span class="hljs-string">'rest_framework.permissions.IsAuthenticated'</span>,</span><br><span class="line">    ),</span><br><span class="line">    <span class="hljs-string">'DEFAULT_AUTHENTICATION_CLASSES'</span>: (</span><br><span class="line">        <span class="hljs-string">'rest_framework_jwt.authentication.JSONWebTokenAuthentication'</span>,</span><br><span class="line">        <span class="hljs-string">'rest_framework.authentication.SessionAuthentication'</span>,</span><br><span class="line">        <span class="hljs-string">'rest_framework.authentication.BasicAuthentication'</span>,</span><br><span class="line">    ),</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 配置url.py</span></span><br><span class="line"><span class="hljs-keyword">from</span> rest_framework_jwt.views <span class="hljs-keyword">import</span> obtain_jwt_token</span><br><span class="line">urlpatterns = [</span><br><span class="line">    <span class="hljs-string">''</span>,</span><br><span class="line">    <span class="hljs-comment"># ...</span></span><br><span class="line"></span><br><span class="line">    url(<span class="hljs-string">r'^api-token-auth/'</span>, obtain_jwt_token),</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 测试</span></span><br><span class="line">curl -X POST -d <span class="hljs-string">"username=admin&password=password123"</span> http://localhost:<span class="hljs-number">8000</span>/api-token-auth/</span><br><span class="line"><span class="hljs-comment"># 返回json</span></span><br><span class="line">curl -X POST -H <span class="hljs-string">"Content-Type: application/json"</span> -d <span class="hljs-string">'{"username":"admin","password":"password123"}'</span> http://localhost:<span class="hljs-number">8000</span>/api-token-auth/</span><br><span class="line"><span class="hljs-comment"># 定义验证方式</span></span><br><span class="line">curl -H <span class="hljs-string">"Authorization: JWT <your_token>"</span> http://localhost:<span class="hljs-number">8000</span>/protected-url/</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="http://img.noback.top/2020-01-13-17-45-18.png" alt="2020-01-13-17-45-18"></p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">//settings.py</span><br><span class="line"><span class="hljs-comment"># jwt token 有效期</span></span><br><span class="line"><span class="hljs-keyword">import</span> datetime</span><br><span class="line">JWT_AUTH = {</span><br><span class="line">    <span class="hljs-comment"># jwt 验证码有效期</span></span><br><span class="line">    <span class="hljs-string">'JWT_EXPIRATION_DELTA'</span>: datetime.timedelta(days=<span class="hljs-number">365</span>),</span><br><span class="line">    <span class="hljs-comment"># jwt 验证头部</span></span><br><span class="line">    <span class="hljs-string">'JWT_AUTH_HEADER_PREFIX'</span>: <span class="hljs-string">'Bearer'</span>,</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="django-jwt-自定义用户认证"><a href="#django-jwt-自定义用户认证" class="headerlink" title="django-jwt 自定义用户认证"></a>django-jwt 自定义用户认证</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">//settings.py</span><br><span class="line">AUTHENTICATION_BACKENDS = (</span><br><span class="line">    <span class="hljs-string">'django.contrib.auth.backends.ModelBackend'</span>,</span><br><span class="line">    <span class="hljs-string">'guardian.backends.ObjectPermissionBackend'</span>,</span><br><span class="line">    <span class="hljs-string">'users.views.CustomBackend'</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">JWT_AUTH = {</span><br><span class="line">		<span class="hljs-string">'JWT_AUTH_HEADER_PREFIX'</span>: <span class="hljs-string">'JWT'</span>,</span><br><span class="line">		<span class="hljs-string">'JWT_EXPIRATION_DELTA'</span>: datetime.timedelta(days=7)</span><br><span class="line">}</span><br><span class="line">//users views.py</span><br><span class="line">from django.db.models import Q</span><br><span class="line">from django.contrib.auth.backends import ModelBackend</span><br><span class="line">from django.contrib.auth import get_user_model</span><br><span class="line"></span><br><span class="line">User = get_user_model()</span><br><span class="line"><span class="hljs-comment"># Create your views here.</span></span><br><span class="line"></span><br><span class="line">class CustomBackend(ModelBackend):</span><br><span class="line">    <span class="hljs-string">""</span><span class="hljs-string">"</span></span><br><span class="line"><span class="hljs-string">    自定义用户验证</span></span><br><span class="line"><span class="hljs-string">    "</span><span class="hljs-string">""</span></span><br><span class="line">    def authenticate(self, request, username=None, password=None, **kwargs):</span><br><span class="line">        try:</span><br><span class="line">            user = User.objects.get(Q(username=username) | Q(mobile=username))</span><br><span class="line">            <span class="hljs-keyword">if</span> user.check_password(password):</span><br><span class="line">                <span class="hljs-built_in">return</span> user</span><br><span class="line">        except Exception as e:</span><br><span class="line">            <span class="hljs-built_in">return</span> None</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
 <p><a href="https://zhuanlan.zhihu.com/p/30524397" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/30524397</a><br><a href="https://jpadilla.github.io/django-rest-framework-jwt/#security" target="_blank" rel="noopener">https://jpadilla.github.io/django-rest-framework-jwt/#security</a></p>
 <h2 id="vue中使用token验证"><a href="#vue中使用token验证" class="headerlink" title="vue中使用token验证"></a>vue中使用token验证</h2><p><a href="https://blog.csdn.net/baiqiangdoudou/article/details/100174505" target="_blank" rel="noopener">https://blog.csdn.net/baiqiangdoudou/article/details/100174505</a></p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">curl -H <span class="hljs-string">"Authorization: JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTc0OTMwMjYyLCJlbWFpbCI6IjEwOTc2OTAyNjhAcXEuY29tIn0.cxzZhCOStN_w9OpVcq7rO-bcA_vWA172DtQaNdeGF3A"</span> http://localhost:8000/switch/</span><br></pre></td></tr></tbody></table></figure>
@@ -289,7 +301,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        48
+                        56
                     </p>
                 </a>
             </div>
@@ -299,7 +311,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        24
+                        28
                     </p>
                 </a>
             </div>
@@ -332,14 +344,18 @@
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#使用jwt-json-web-token">
+        <a class="is-flex" href="#使用drf-jwt">
         <span class="has-mr-6">1</span>
-        <span>使用jwt  json web token</span>
+        <span>使用drf-jwt</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#vue中使用token验证">
+        <a class="is-flex" href="#django-jwt-自定义用户认证">
         <span class="has-mr-6">1.1</span>
+        <span>django-jwt 自定义用户认证</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#vue中使用token验证">
+        <span class="has-mr-6">2</span>
         <span>vue中使用token验证</span>
-        </a></li></ul></li></ul>
+        </a></li></ul>
         </div>
     </div>
 </div>
