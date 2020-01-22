@@ -215,7 +215,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    3 分钟 读完 (大约 507 个字)
+                    3 分钟 读完 (大约 520 个字)
                 </span>
                 
                 
@@ -223,38 +223,22 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><a id="more"></a>
-
-
-<h2 id="vue中的各类插件以及使用方法"><a href="#vue中的各类插件以及使用方法" class="headerlink" title="vue中的各类插件以及使用方法"></a>vue中的各类插件以及使用方法</h2><p>在vue的使用过程中遇到了很多插件，有些插件只是提供了一部分很小的功能，占据不了太大的篇幅，因此收集到这里记录一下</p>
-<h2 id="qs插件"><a href="#qs插件" class="headerlink" title="qs插件"></a>qs插件</h2><p>qs插件是一个地址解析工具,主要是对于一串url地址进行序列化</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装</span></span><br><span class="line">npm install qs</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">import qs from <span class="hljs-string">'qs'</span>;</span><br><span class="line"><span class="hljs-comment"># 定义全局别名</span></span><br><span class="line">Vue.prototype.<span class="hljs-variable">$qs</span> = qs</span><br><span class="line"><span class="hljs-comment"># 使用</span></span><br><span class="line">this.<span class="hljs-variable">$http</span>.post(<span class="hljs-string">'/bb'</span>,</span><br><span class="line">    this.<span class="hljs-variable">$qs</span>.stringify({ aa:2, bb:3 })</span><br><span class="line">  )</span><br><span class="line">  .<span class="hljs-keyword">then</span>(<span class="hljs-keyword">function</span> (response) {</span><br><span class="line">    console.log(response.data);</span><br><span class="line">  })</span><br><span class="line">  .catch(<span class="hljs-keyword">function</span> (error) {</span><br><span class="line">    console.log(error);</span><br><span class="line">  });</span><br><span class="line"><span class="hljs-comment"># 则请求地址是这样的</span></span><br><span class="line">aa=2&&bb=3</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="vuex插件"><a href="#vuex插件" class="headerlink" title="vuex插件"></a>vuex插件</h2><p>作为vue中的状态管理插件</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">npm install vuex --save</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span></span><br><span class="line"><span class="hljs-keyword">import</span> Vuex <span class="hljs-keyword">from</span> <span class="hljs-string">'vuex'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="vue-route插件"><a href="#vue-route插件" class="headerlink" title="vue-route插件"></a>vue-route插件</h2><p>作为vue中的路由插件</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装</span></span><br><span class="line">npm install vue-router</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="使用-2"><a href="#使用-2" class="headerlink" title="使用"></a>使用</h3><figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span></span><br><span class="line"><span class="hljs-keyword">import</span> VueRouter <span class="hljs-keyword">from</span> <span class="hljs-string">'vue-router'</span></span><br><span class="line"></span><br><span class="line">Vue.use(VueRouter)</span><br></pre></td></tr></tbody></table></figure>
-
-
-<h2 id="vue-axios插件"><a href="#vue-axios插件" class="headerlink" title="vue-axios插件"></a>vue-axios插件</h2><h3 id="使用-3"><a href="#使用-3" class="headerlink" title="使用"></a>使用</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h3><p>vue  eslint 限制无法使用console.log调试</p>
-<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line">Failed to compile.</span><br><span class="line"></span><br><span class="line">./src/components/leftroute.vue</span><br><span class="line">Module <span class="hljs-built_in">Error</span> (<span class="hljs-keyword">from</span> ./node_modules/eslint-loader/index.js):</span><br><span class="line">error: Unexpected <span class="hljs-built_in">console</span> statement (no-<span class="hljs-built_in">console</span>) at src/components/leftroute.vue:<span class="hljs-number">31</span>:<span class="hljs-number">11</span>:</span><br><span class="line">  <span class="hljs-number">29</span> |         <span class="hljs-keyword">this</span>.$axios.get(<span class="hljs-string">'http://localhost:3000/people'</span>)</span><br><span class="line">  <span class="hljs-number">30</span> |         .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>)</span>{</span><br><span class="line">> <span class="hljs-number">31</span> |           <span class="hljs-built_in">console</span>.log(response);</span><br><span class="line">     |           ^</span><br><span class="line">  <span class="hljs-number">32</span> |         })</span><br><span class="line">  <span class="hljs-number">33</span> |         .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>)</span>{</span><br><span class="line">  <span class="hljs-number">34</span> |           <span class="hljs-built_in">console</span>.log(error);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">error: Unexpected <span class="hljs-built_in">console</span> statement (no-<span class="hljs-built_in">console</span>) at src/components/leftroute.vue:<span class="hljs-number">34</span>:<span class="hljs-number">11</span>:</span><br><span class="line">  <span class="hljs-number">32</span> |         })</span><br><span class="line">  <span class="hljs-number">33</span> |         .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>)</span>{</span><br><span class="line">> <span class="hljs-number">34</span> |           <span class="hljs-built_in">console</span>.log(error);</span><br><span class="line">     |           ^</span><br><span class="line">  <span class="hljs-number">35</span> |         });</span><br><span class="line">  <span class="hljs-number">36</span> |         }</span><br><span class="line">  <span class="hljs-number">37</span> |       }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-number">2</span> errors found.</span><br></pre></td></tr></tbody></table></figure>
-<p>解决方法 加入 </p>
-<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-string">"no-console"</span> : [<span class="hljs-string">"false"</span>]</span><br></pre></td></tr></tbody></table></figure>
-<p>或者把 node_modules/lib/rules/no-console.js 中的true改成fasle<br><a href="https://blog.csdn.net/weixin_42476786/article/details/85132793" target="_blank" rel="noopener">https://blog.csdn.net/weixin_42476786/article/details/85132793</a><br><a href="https://blog.csdn.net/qq_40637612/article/details/8760788" target="_blank" rel="noopener">https://blog.csdn.net/qq_40637612/article/details/8760788</a></p>
-<h2 id="mock-js-数据模拟"><a href="#mock-js-数据模拟" class="headerlink" title="mock.js 数据模拟"></a>mock.js 数据模拟</h2><p>在开发过程中，有很多的ajax请求，前后端分离开发你肯定遇到这样的问题，后台给你的接口文档，你需要在本地模拟数据返回，可能你也用到过我之前用的蠢方法，就是新建一个test.json文件，放入接口文档中写的返回示例，这么做有个很大的问题是不够灵活，而且还需要切换url，现在学会使用mock.js拦截ajax请求，更加方便的构造你需要的假数据</p>
-</body></html>
+            <html><head></head><body><p>vue中的各类插件以及使用方法</p></body></html>
         </div>
         
         
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/d0806758/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
