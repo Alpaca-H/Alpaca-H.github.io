@@ -145,18 +145,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/90ec9eea/"><i class="fas fa-angle-double-right"></i>图解算法</a>
+                <a class="has-link-black-ter" href="/posts/7068483c/"><i class="fas fa-angle-double-right"></i>DRF框架</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T05:07:36.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:42:23.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/%E6%89%A9%E5%B1%95/">扩展</a>
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/django/">django</a>
                 </div>
                 
                 
@@ -164,7 +164,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    5 分钟 读完 (大约 715 个字)
+                    15 分钟 读完 (大约 2186 个字)
                 </span>
                 
                 
@@ -172,15 +172,39 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><p>这个博文可能跟图解算法的内容讲的不一样，一般都是看了书之后换一种自己认为更加形象的比喻去理解内容，如果想要看图解算法的可以去购买或者查找一些PDF的书籍，笔记对于算法和数据结构并不像语言那样，对于版本的更迭有一定程度的影响。另外，算法图解这本书中的实例都是依靠Python编写的。</p>
-<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><p>其实二分法在我们生活中已经出现过了很多次，比如玩一个猜价格游戏，规定价格在500-1000之内，如果我们一个一个的去猜，则需要猜1000-500-2次，但是使用二分法猜测价格时，即每次对半猜测价格，那么每次都可以减去一半的错误价格，就像一张白纸对半折一样，最后的区域则会越来越小。而使用的次数则是log2n步。<br>同样的例子也存在于字典中，查字典的手法同样也可以使用二分法。</p>
-<p><strong>概念:最多需要猜测的次数与列表长度相同，这被称为线性时间</strong></p>
-<h3 id="例子1"><a href="#例子1" class="headerlink" title="例子1"></a>例子1</h3><p>创建一个函数，接受一个有序数组和一个元素，如果指定的元素出现在数组中，则返回其位置</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">def filter_number(list,keywords):</span><br><span class="line">    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(list)):</span><br><span class="line">        <span class="hljs-keyword">if</span> list[i] == keywords:</span><br><span class="line">            <span class="hljs-built_in">print</span>(i)</span><br><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:</span><br><span class="line">    list = [1,2,4,5,343,67,86,656]    </span><br><span class="line">    keywords = 343</span><br><span class="line">    filter_number(list,keywords)</span><br></pre></td></tr></tbody></table></figure>
-<p>如上所示是普通的遍历方法，遍历5次后得到343这个参数。但如果匹配的数字是656，则需要匹配7次，如果数组的长度是1000,匹配的结果是最后一个，则需要匹配1000次，这样就增加了负担</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 二分查找匹配</span></span><br><span class="line">def filter_number(list,keywords):</span><br><span class="line">    first = 0</span><br><span class="line">    end = len(list) - 1</span><br><span class="line">	</span><br><span class="line">    <span class="hljs-keyword">while</span> first <= end:</span><br><span class="line">        mid = int((first+end) / 2)</span><br><span class="line">        guess = list[mid]</span><br><span class="line">        <span class="hljs-keyword">if</span> guess == keywords:</span><br><span class="line">            <span class="hljs-built_in">return</span> mid</span><br><span class="line">        <span class="hljs-keyword">elif</span> guess < keywords:</span><br><span class="line">            first = mid + 1</span><br><span class="line">        <span class="hljs-keyword">elif</span> guess > keywords:</span><br><span class="line">            end = mid - 1</span><br><span class="line">    <span class="hljs-built_in">return</span> None </span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:</span><br><span class="line">    list = [1,2,4,5,6,8,9,10,11]    </span><br><span class="line">    keywords = 8</span><br><span class="line">    index = filter_number(list,keywords)</span><br><span class="line">    <span class="hljs-built_in">print</span>(index)</span><br></pre></td></tr></tbody></table></figure>
-<p>如上则完成了需求,<strong>但是二分查找存在一个问题，则是如果列表不是按照顺序排列的，那么二分法就存在的意义就不大了，因为当你使用二分法得到中间值时，你只能判断中间值与题目给出的元素之间大小，而中间值的附近元素，并不是依次递增或是递减的</strong></p>
-<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><p>假设有一个包含128个名字的有序列表，你要使用二分查找在其中查找一个名字，请 问最多需要几步才能找到<br>2的7次等于128  所以是7次<br>上面列表的长度翻倍后，最多需要几步？<br>8次</p>
+            <html><head></head><body><h2 id="rust风格"><a href="#rust风格" class="headerlink" title="rust风格"></a>rust风格</h2><p>Representational State Transfer  表现层状态转化（ 资源定位及资源操作）<br>表象层面说就是通过get,post,put,delete方式来实现前后台通信的一种轻量级,跨平台,跨语言架构设计风格的web服务</p>
+<p>http不仅仅是传输协议，更是一种应用协议。REST，即Representational State Transfer的缩写。意为是”表现层状态转化”。RESTful表示一种风格，理解REST前需要理解资源，何谓资源，广义的资源是指可以操作的所有对象。可能是一个系统资源，如txt、jgp、xml …，亦可以是诸如自己定义的虚拟集合的抽象，如books、usrs、times。RESTfutl代表一种简洁、方便、快捷、高效、透明的架构，这取决于你怎样组合。具有如下特点：</p>
+<p>1、规范化接口访问方式。这些http操作方法包括GET/POST/PUT/DELETE/OPTIONS等，每个操作方法都代表一个相同意义的操作，它向所有人透明地表明操作方式。比如GET只能读取/拉数据，当然你也可以是添加数据，但建议不要这么做，不然这样就失去了REST的意义。<br>GET 读取<br>POST 添加<br>PUT 修改<br>DELETE 删除<br>2、资源标识唯一。通过URI表示一个资源名称，形式/resource/patch。如/users，表示用户的组合，或用户群。当然还可以继续标识某个具体的一个用户，/users/11，表示id为11的用户。当然，你也可以又用一组/usrgroup/11的URI代表操作用户组，不过不建议这么做，因为这样从字面上重复了/users/11资源表示的内容。一个资源URI总是包含第一条实现的方法：<br>GET /users/11<br>POST /users/11<br>PUT /users/11<br>DELETE /users/11<br>当然，仅有这些还不足以包括资源操作的所有需求，所以还可以包含请求参数，如GET /users?type=list&page=1。<br>3、状态的转化。这就是REST的真实含义，指它允许资源URI具有不同的表现形式。同一个URI，根据不同请求方式，执行的动作不同；还可以根据请求的Header Accept的不同返回不同的结果，如text/html、text/css、text/xml等等。也可以理解为body不同。如查询快递一般，可以上次查询，物品还在仓库，而过一段时间已经在路上了。它表示的是一个互动过程。<br>4、所有信息都包含在当前请求中。请求的方式包含在 Request Header的Method中，还可以包含Accept、Accept-Encoding、Accept-Language，使用Authentication、Cookie等信息表明身份。同样，服务端通过发送Content-Length、Content-Type响应执行情况。最重要的是，需要返回Status Code通知执行状态，如200 201 400 404 500等http code。REST认为，所有信息都能通过请求一次性发送，而不必再采用方式保存状态，请求的信息本身已经说明了请求的意义。<br>5、无状态性。这是REST最重要的特性之一，这个状态指的是客户端与服务端无需为每次保存请求状态，客户端请求不必考虑当前状态，不必考虑上下文。具体上说，就是不必使用session等工具跟踪、保存请求的特殊性。比如，无论是谁，从哪里发送，几时发送，对同一个URI资源发送请求的结果都是一样的。据传，这样的设计是为当一台服务器宕机时，另一台服务器可以无差别地响应对方的请求。客户端请求只认URI，而不需理后台的设计。<br>实际上，在如今执行的RESTful设计当中，完全能执行这个要求的很少，最彻底的云服务，大部份为RESTful-like的风格。<br>6、可实现请求缓存。通过缓存减少请求次数，在HTTP响应里利用Cache-Control、Expires、Last-Modified三个头字段，可以让浏览器缓存资源一段时间。</p>
+<h2 id="drf的视图集"><a href="#drf的视图集" class="headerlink" title="drf的视图集"></a>drf的视图集</h2><p>ViewSet类只是一种类型的基于类的视图，即不提供任何方法的处理程序，例如.get()或.post()，而是提供操作，如.list()和.create()。<br><a href="http://www.sinodocs.cn/api-guide/viewsets.html" target="_blank" rel="noopener">http://www.sinodocs.cn/api-guide/viewsets.html</a></p>
+<h3 id="drf字段更新"><a href="#drf字段更新" class="headerlink" title="drf字段更新"></a>drf字段更新</h3><p>默认只有list和create 对应的方法就是get 和post<br>partial = True 局部更新</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestViewSet</span><span class="hljs-params">(viewsets.ModelViewSet)</span>:</span></span><br><span class="line">    serializer_class = TestSerializer</span><br><span class="line">    queryset = test_Model.objects.all()</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta"> @action(methods=['patch'], detail=False)</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update_field</span><span class="hljs-params">(self, request, *args, **kwargs)</span>:</span></span><br><span class="line">        request.data[<span class="hljs-string">"text"</span>] = <span class="hljs-string">"更新dsdsd"</span></span><br><span class="line">        instance = test_Model.objects.get(id=request.data[<span class="hljs-string">'id'</span>])</span><br><span class="line">        <span class="hljs-comment"># instance = self.get_object() 会报错</span></span><br><span class="line">        <span class="hljs-comment"># https://docs.djangoproject.com/en/2.2/ref/class-based-views/mixins-single-object/#django.views.generic.detail.SingleObjectMixin.get_object</span></span><br><span class="line">        <span class="hljs-comment"># 默认使用id查找</span></span><br><span class="line">        serializer = self.get_serializer(instance,data=request.data,partial=<span class="hljs-literal">True</span>)</span><br><span class="line">        serializer.is_valid()</span><br><span class="line">        serializer.save()</span><br><span class="line">        <span class="hljs-keyword">return</span> Response(serializer.data,status=status.HTTP_200_OK)</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">    @action(methods=['delete'],detail=False)</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">delete_field</span><span class="hljs-params">(self,request,*args,**kwargs)</span>:</span></span><br><span class="line">        instance = test_Model.objects.get(id=request.data[<span class="hljs-string">'id'</span>])</span><br><span class="line">        <span class="hljs-keyword">if</span> instance:</span><br><span class="line">            self.perform_destroy(instance)</span><br><span class="line">            <span class="hljs-keyword">return</span> Response({<span class="hljs-string">"flag"</span>:<span class="hljs-string">"删除成功"</span>},status=status.HTTP_200_OK)</span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span>  Response(status=status.HTTP_400_BAD_REQUEST)</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="基本的视图集"><a href="#基本的视图集" class="headerlink" title="基本的视图集"></a>基本的视图集</h3><p>使用viewsets.ModelViewSet + DefaultRouter<br>其中base-name表示基础url  lookup表示查询参数(只根据主键查找)<br>获取局部地址 <a href="http://localhost:8080/{base-name}/{lookup}" target="_blank" rel="noopener">http://localhost:8080/{base-name}/{lookup}</a></p>
+<h2 id="drf路由集"><a href="#drf路由集" class="headerlink" title="drf路由集"></a>drf路由集</h2><p>为了更加便捷的开发项目,drf设计了路由集的内容，免去了路由配置中的麻烦，当然他也同时兼容django的路由设计<br><a href="https://www.django-rest-framework.org/api-guide/routers/" target="_blank" rel="noopener">https://www.django-rest-framework.org/api-guide/routers/</a></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> rest_framework <span class="hljs-keyword">import</span> routers</span><br><span class="line"></span><br><span class="line">router = DefaultRouter(trailing_slash=<span class="hljs-literal">False</span>) <span class="hljs-comment"># 是否以斜杠/结尾</span></span><br><span class="line"><span class="hljs-comment"># 声明注册路由</span></span><br><span class="line"><span class="hljs-comment"># 同path('switch/',views.per_switch.as_view()),</span></span><br><span class="line">router.register(prefix=<span class="hljs-string">'users'</span>, viewset=UserViewSet,basename=<span class="hljs-string">"another_name"</span>)</span><br><span class="line">router.register(<span class="hljs-string">'accounts'</span>, AccountViewSet)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 添加规则，django主动扫描urlpatterns变量获取路由</span></span><br><span class="line">urlpatterns = router.urls</span><br></pre></td></tr></tbody></table></figure>
+<p>以上 </p>
+<ul>
+<li>prefix定义前缀</li>
+<li>viewset定义视图</li>
+<li>basename定义前缀别名</li>
+</ul>
+<p>形成url格式(本地) —><br><a href="http://localhost:8080/user/" target="_blank" rel="noopener">http://localhost:8080/user/</a><br><a href="http://localhost:8000/accounts/" target="_blank" rel="noopener">http://localhost:8000/accounts/</a></p>
+<h3 id="兼容使用"><a href="#兼容使用" class="headerlink" title="兼容使用"></a>兼容使用</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">framework rest_framework.routers <span class="hljs-keyword">import</span> DefaultRouter</span><br><span class="line"></span><br><span class="line">router = DefaultRouter()</span><br><span class="line">router.register(<span class="hljs-string">'test'</span>,viewset=TestViewSet,base_name=<span class="hljs-string">"test"</span>)</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="hljs-string">'switch/'</span>,views.switch_list.as_view()),</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 变量累加</span></span><br><span class="line">urlpatterns += router.urls</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="路由集url"><a href="#路由集url" class="headerlink" title="路由集url"></a>路由集url</h3><p>django的路由集是真滴变态，当你使用带值参数去查找列表中的特定内容时候，他所表现的url是<br>^users/{pk}/set_password/$<br>注意 pk在中间 set_password是你方法的名字<br>如果你需要修改这些内容，可以在@action中指定<br>url_path = set_password<br>url_name = change_password</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SwitchViewSet</span><span class="hljs-params">(viewsets.GenericViewSet,</span></span></span><br><span class="line"><span class="hljs-class"><span class="hljs-params">                    mixins.ListModelMixin)</span>:</span></span><br><span class="line">    serializer_class = SwitchSerializer</span><br><span class="line">    queryset = SwitchModel.objects.all()</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># get</span></span><br><span class="line"><span class="hljs-meta">    @action(detail=True,url_path="xx")</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">list_peer</span><span class="hljs-params">(self, request, pk)</span>:</span></span><br><span class="line">        queryset = SwitchModel.objects.get(name=pk)</span><br><span class="line">        print(queryset)</span><br><span class="line">        <span class="hljs-comment"># page = self.paginate_queryset(queryset)</span></span><br><span class="line">        <span class="hljs-comment"># if page is not None:</span></span><br><span class="line">        <span class="hljs-comment">#    serializer = self.get_serializer(page, many=True)</span></span><br><span class="line">        <span class="hljs-comment">#    return self.get_paginated_response(serializer.data)</span></span><br><span class="line"></span><br><span class="line">        serializer = self.get_serializer(queryset)</span><br><span class="line">        <span class="hljs-keyword">return</span> Response(serializer.data)</span><br></pre></td></tr></tbody></table></figure>
+<p>如上一个列表查询的地址是  <a href="http://localhost:8080/{pk}/xx" target="_blank" rel="noopener">http://localhost:8080/{pk}/xx</a></p>
+<h2 id="drf过滤"><a href="#drf过滤" class="headerlink" title="drf过滤"></a>drf过滤</h2><h3 id="drf通用过滤"><a href="#drf通用过滤" class="headerlink" title="drf通用过滤"></a>drf通用过滤</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># setting.py</span></span><br><span class="line"><span class="hljs-comment"># 全局设置过滤器</span></span><br><span class="line">REST_FRAMEWORK = {</span><br><span class="line">    <span class="hljs-string">'DEFAULT_FILTER_BACKENDS'</span>: [<span class="hljs-string">'django_filters.rest_framework.DjangoFilterBackend'</span>]</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment"># views.py</span></span><br><span class="line"><span class="hljs-comment"># 单视图设置过滤器</span></span><br><span class="line">  filter_backends = [django_filters.rest_framework.DjangoFilterBackend]</span><br></pre></td></tr></tbody></table></figure>
+<p><a href="https://www.django-rest-framework.org/api-guide/filtering/" target="_blank" rel="noopener">https://www.django-rest-framework.org/api-guide/filtering/</a></p>
+<h2 id="drf分页"><a href="#drf分页" class="headerlink" title="drf分页"></a>drf分页</h2><p><a href="https://www.django-rest-framework.org/api-guide/pagination/" target="_blank" rel="noopener">https://www.django-rest-framework.org/api-guide/pagination/</a></p>
+<h2 id="drf过滤器"><a href="#drf过滤器" class="headerlink" title="drf过滤器"></a>drf过滤器</h2><p><a href="https://www.django-rest-framework.org/api-guide/serializers/" target="_blank" rel="noopener">https://www.django-rest-framework.org/api-guide/serializers/</a></p>
+<h2 id="drf解析器与渲染器"><a href="#drf解析器与渲染器" class="headerlink" title="drf解析器与渲染器"></a>drf解析器与渲染器</h2><p>视图的有效解析器集始终定义为类列表。当 request.data被访问时，REST框架将检查Content-Type传入请求上的标头，并确定使用哪个解析器来解析请求内容。<br>如果您未设置内容类型，则大多数客户端将默认使用’application/x-www-form-urlencoded’例如，如果要json使用jQuery和.ajax（）方法发送编码数据，则应确保包括该contentType: ‘application/json’设置。</p>
+<h3 id="设置解析器"><a href="#设置解析器" class="headerlink" title="设置解析器"></a>设置解析器</h3><p>仅允许json的内容</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># setting.py</span></span><br><span class="line"><span class="hljs-comment"># 全局设置解析</span></span><br><span class="line">REST_FRAMEWORK = {</span><br><span class="line">    <span class="hljs-string">'DEFAULT_PARSER_CLASSES'</span>: [</span><br><span class="line">        <span class="hljs-string">'rest_framework.parsers.JSONParser'</span>,</span><br><span class="line">    ]</span><br><span class="line">} </span><br><span class="line"><span class="hljs-comment"># 单视图设置解析</span></span><br><span class="line">class modelview():</span><br><span class="line">    parser_classes = [JSONParser]</span><br></pre></td></tr></tbody></table></figure>
+<p>其他各类解析<br><a href="https://www.django-rest-framework.org/api-guide/parsers/" target="_blank" rel="noopener">https://www.django-rest-framework.org/api-guide/parsers/</a></p>
+<h2 id="渲染器"><a href="#渲染器" class="headerlink" title="渲染器"></a>渲染器</h2><p>既然有收的解析器，那也有发出数据的渲染器，<br>REST框架包括许多内置的Renderer类，使您可以返回各种媒体类型的响应。还支持定义自己的自定义渲染器，这使您可以灵活地设计自己的媒体类型。</p>
+<h3 id="设置渲染器"><a href="#设置渲染器" class="headerlink" title="设置渲染器"></a>设置渲染器</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># setting.py</span></span><br><span class="line"><span class="hljs-comment"># 全局设置解析</span></span><br><span class="line">REST_FRAMEWORK = {</span><br><span class="line">    <span class="hljs-string">'DEFAULT_RENDERER_CLASSES'</span>: [</span><br><span class="line">        <span class="hljs-string">'rest_framework.renderers.JSONRenderer'</span>,</span><br><span class="line">        <span class="hljs-string">'rest_framework.renderers.BrowsableAPIRenderer'</span>,</span><br><span class="line">    ]</span><br><span class="line">} </span><br><span class="line"><span class="hljs-comment"># 单视图设置解析</span></span><br><span class="line">class modelview()</span><br><span class="line">    renderer_classes = [JSONRenderer]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>其他渲染器<br><a href="https://www.django-rest-framework.org/api-guide/renderers/" target="_blank" rel="noopener">https://www.django-rest-framework.org/api-guide/renderers/</a></p>
 </body></html>
         </div>
         
@@ -203,18 +227,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/4904e4f5/"><i class="fas fa-angle-double-right"></i>额外知识</a>
+                <a class="has-link-black-ter" href="/posts/65abc8f/"><i class="fas fa-angle-double-right"></i>django字段总结</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T05:06:26.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:41:01.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/%E6%89%A9%E5%B1%95/">扩展</a>
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/django/">django</a>
                 </div>
                 
                 
@@ -222,7 +246,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    几秒 读完 (大约 72 个字)
+                    5 分钟 读完 (大约 763 个字)
                 </span>
                 
                 
@@ -230,11 +254,30 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="额外知识"><a href="#额外知识" class="headerlink" title="额外知识"></a>额外知识</h1><h2 id="盲打练习"><a href="#盲打练习" class="headerlink" title="盲打练习"></a>盲打练习</h2><p><a href="https://www.typingclub.com/sportal/program-3/116.play" target="_blank" rel="noopener">https://www.typingclub.com/sportal/program-3/116.play</a><br><a href="https://pqrs.org/osx/karabiner/" target="_blank" rel="noopener">https://pqrs.org/osx/karabiner/</a><br><a href="https://vim-adventures.com/" target="_blank" rel="noopener">https://vim-adventures.com/</a></p>
-<h2 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h2><p><a href="https://baike.baidu.com/item/%E6%80%BB%E7%BA%BF" target="_blank" rel="noopener">https://baike.baidu.com/item/%E6%80%BB%E7%BA%BF</a></p>
-<h2 id="oss与cdn的区别"><a href="#oss与cdn的区别" class="headerlink" title="oss与cdn的区别"></a>oss与cdn的区别</h2><p>xxx</p>
-<h2 id="webapi框架"><a href="#webapi框架" class="headerlink" title="webapi框架"></a>webapi框架</h2><h3 id="哪个是最快的web框架"><a href="#哪个是最快的web框架" class="headerlink" title="哪个是最快的web框架"></a>哪个是最快的web框架</h3><p><a href="https://github.com/the-benchmarker/web-frameworks" target="_blank" rel="noopener">https://github.com/the-benchmarker/web-frameworks</a></p>
-<h3 id="python高性能web框架"><a href="#python高性能web框架" class="headerlink" title="python高性能web框架"></a>python高性能web框架</h3><p><a href="https://falconframework.org/" target="_blank" rel="noopener">https://falconframework.org/</a></p>
+            <html><head></head><body><h1 id="django字段的设计"><a href="#django字段的设计" class="headerlink" title="django字段的设计"></a>django字段的设计</h1><p><a href="https://docs.djangoproject.com/zh-hans/2.2/ref/models/fields/#module-django.db.models.fields" target="_blank" rel="noopener">https://docs.djangoproject.com/zh-hans/2.2/ref/models/fields/#module-django.db.models.fields</a><br>orm的设计模式<br>在django的应用过程中，往往要设计model的设计，在model设计过程中要使用各种各样的关键词，这些关键词 关联到了数据库中每条记录的配置</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 引用</span></span><br><span class="line"><span class="hljs-keyword">from</span> django.db <span class="hljs-keyword">import</span> models</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="通用字段"><a href="#通用字段" class="headerlink" title="通用字段"></a>通用字段</h2><h3 id="null字段"><a href="#null字段" class="headerlink" title="null字段"></a>null字段</h3><p>如果设置为 True， 当该字段为空时，Django 会将数据库中该字段设置为NULL，默认为 False。<br>即数据库置空 如果null=true blank=true 则数据库内容为空白字符串</p>
+<h3 id="blank"><a href="#blank" class="headerlink" title="blank"></a>blank</h3><p>Field.blank<br>默认blank = False ,如果设置为True，则允许该字段为空。<br>与null不同的是,null存粹与数据库有相关，而blank与验证相关。如果blank=true,则表单验证将允许输入空值,如果blank=False 则不允许输入空值</p>
+<hr>
+<h3 id="choices"><a href="#choices" class="headerlink" title="choices"></a>choices</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TaskSwitchModel</span><span class="hljs-params">(models.Model)</span>:</span></span><br><span class="line">    ActionType = models.CharField(choices=[</span><br><span class="line">        (<span class="hljs-string">'snmp'</span>,<span class="hljs-string">'_(snmp)'</span>),</span><br><span class="line">        (<span class="hljs-string">"vlan"</span>,<span class="hljs-string">"_vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"sysname"</span>,<span class="hljs-string">"_sysname"</span>),</span><br><span class="line">        (<span class="hljs-string">"copyright-info"</span>,<span class="hljs-string">"_copyright-info"</span>),</span><br><span class="line">        (<span class="hljs-string">"int-vlan"</span>,<span class="hljs-string">"_int-vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"int"</span>,<span class="hljs-string">"_int"</span>)],max_length=<span class="hljs-number">100</span>,default=<span class="hljs-string">""</span>)</span><br><span class="line">    test = models.CharField(max_length=<span class="hljs-number">1</span>, choices=[(<span class="hljs-string">'A'</span>, (<span class="hljs-string">'Author'</span>)), (<span class="hljs-string">'E'</span>, (<span class="hljs-string">'Editor'</span>))]),</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TaskSwitchModel</span><span class="hljs-params">(model.ModelForm)</span>:</span></span><br><span class="line">    choices=(</span><br><span class="line">        (<span class="hljs-string">'snmp'</span>,<span class="hljs-string">'_(snmp)'</span>),</span><br><span class="line">        (<span class="hljs-string">"vlan"</span>,<span class="hljs-string">"_vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"sysname"</span>,<span class="hljs-string">"_sysname"</span>),</span><br><span class="line">        (<span class="hljs-string">"copyright-info"</span>,<span class="hljs-string">"_copyright-info"</span>),</span><br><span class="line">        (<span class="hljs-string">"int-vlan"</span>,<span class="hljs-string">"_int-vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"int"</span>,<span class="hljs-string">"_int"</span>)</span><br><span class="line">    )</span><br><span class="line">    ActionType = model.CharField(choices=choices,max_length=<span class="hljs-number">100</span>,default=<span class="hljs-string">""</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Field.choices<br>每个元组中的第一个元素是要在模型上设置的实际值，第二个元素是人类可读的名称.</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">select_choices =[</span><br><span class="line">    (<span class="hljs-string">'A'</span>,<span class="hljs-string">'A_'</span>),</span><br><span class="line">    (<span class="hljs-string">'B'</span>,<span class="hljs-string">'B_'</span>),</span><br><span class="line">    (<span class="hljs-string">'C'</span>,<span class="hljs-string">'C_'</span>),</span><br><span class="line">    (<span class="hljs-string">'D'</span>,<span class="hljs-string">'D_'</span>),</span><br><span class="line">]</span><br><span class="line">choices字段迭代</span><br><span class="line">每个元组的第一个元素是要应用于组的名称。第二个元素是一个可迭代的<span class="hljs-number">2</span>代元组</span><br><span class="line">select2_select1_choices=[</span><br><span class="line">    (<span class="hljs-string">'A'</span>,(</span><br><span class="line">        (<span class="hljs-string">'A_/'</span>,<span class="hljs-string">'A_movie'</span>),</span><br><span class="line">        (<span class="hljs-string">'A_+'</span>,<span class="hljs-string">'A_video'</span>),</span><br><span class="line">        (<span class="hljs-string">'A_-'</span>,<span class="hljs-string">'A_City'</span>),</span><br><span class="line">        )</span><br><span class="line">    ),</span><br><span class="line">    (<span class="hljs-string">'Video'</span>, (</span><br><span class="line">            (<span class="hljs-string">'vhs'</span>, <span class="hljs-string">'VHS Tape'</span>),</span><br><span class="line">            (<span class="hljs-string">'dvd'</span>, <span class="hljs-string">'DVD'</span>),</span><br><span class="line">        )</span><br><span class="line">    ),</span><br><span class="line">    (<span class="hljs-string">'unknown'</span>, <span class="hljs-string">'Unknown'</span>),</span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="db-column"><a href="#db-column" class="headerlink" title="db_column"></a>db_column</h3><p>设置数据库列的名称    age = models.CharFiled(db_column=”年龄”)</p>
+<h3 id="db-index"><a href="#db-index" class="headerlink" title="db_index"></a>db_index</h3><p>age = models.CharFiled(db_index=true)<br>如果设置为True，则创建数据库索引</p>
+<h3 id="default"><a href="#default" class="headerlink" title="default"></a>default</h3><p>可以是值也可以是可调用的对象，每次实例化模型的时候 会调用这个对象或值</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 1</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">contact_defult</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> {<span class="hljs-string">"email"</span>:<span class="hljs-string">"1097690268@qq.com"</span>}</span><br><span class="line"></span><br><span class="line">contact_info = JSONField(<span class="hljs-string">"ContactInfo"</span>, default=contact_default)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 2</span></span><br><span class="line">member_name = CharFiled(default=<span class="hljs-string">"小明"</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="editable"><a href="#editable" class="headerlink" title="editable"></a>editable</h3><p>可编辑字段<br>如果为False，则该字段将不会显示在管理员或其他任何人中 ModelForm。在模型验证期间也将跳过它们。默认值为True。</p>
+<hr>
+<h3 id="unique"><a href="#unique" class="headerlink" title="unique"></a>unique</h3><p>name = CharFiled(unique=true)<br>如上则会保证该字段的值为表中唯一，也就是不会出现同名的人<br>如果存在了unique 则不再需要db_index 因为unique默认存在索引</p>
+<h2 id="primary-key"><a href="#primary-key" class="headerlink" title="primary_key"></a>primary_key</h2><p>如果设置为True，则初始设置为该模型的主键。<br>如果您未primary_key=True在模型中指定任何字段，则Django会自动添加一个AutoField来保留主键，因此primary_key=True暗示null=False和 unique=True。一个对象只允许使用一个主键。<br>主键字段是只读的。如果更改现有对象上的主键的值然后保存，则将在旧对象的旁边创建一个新对象。</p>
+<h2 id="自定义的字段"><a href="#自定义的字段" class="headerlink" title="自定义的字段"></a>自定义的字段</h2><p><a href="https://docs.djangoproject.com/zh-hans/2.2/howto/custom-model-fields/" target="_blank" rel="noopener">https://docs.djangoproject.com/zh-hans/2.2/howto/custom-model-fields/</a></p>
 </body></html>
         </div>
         
@@ -257,18 +300,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/a02a083e/"><i class="fas fa-angle-double-right"></i>rust结构体</a>
+                <a class="has-link-black-ter" href="/posts/7e91b378/"><i class="fas fa-angle-double-right"></i>django内容总结</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T03:17:50.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:40:44.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/Rust/">Rust</a>
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/django/">django</a>
                 </div>
                 
                 
@@ -276,7 +319,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    3 分钟 读完 (大约 414 个字)
+                    13 分钟 读完 (大约 1914 个字)
                 </span>
                 
                 
@@ -284,99 +327,85 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h2 id="定义实例化结构体"><a href="#定义实例化结构体" class="headerlink" title="定义实例化结构体"></a>定义实例化结构体</h2><p>定义结构体，需要使用 struct 关键字并为整个结构体提供一个名字。结构体的名字需要描述它所组合的数据的意义.在结构体中需要有相应的属性和属性对应的类型</p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 创建实例模版</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">User</span></span> {</span><br><span class="line">    username: <span class="hljs-built_in">String</span>,</span><br><span class="line">    email: <span class="hljs-built_in">String</span>,</span><br><span class="line">    sign_in_count: <span class="hljs-built_in">u64</span>,</span><br><span class="line">    active: <span class="hljs-built_in">bool</span>,</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 实例化不可变模型</span></span><br><span class="line"><span class="hljs-keyword">let</span> user1 = User {</span><br><span class="line">    email: <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"someone@example.com"</span>),</span><br><span class="line">    username: <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"someusername123"</span>),</span><br><span class="line">    active: <span class="hljs-literal">true</span>,</span><br><span class="line">    sign_in_count: <span class="hljs-number">1</span>,</span><br><span class="line">};</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment">// 实例化可变模型</span></span><br><span class="line"><span class="hljs-keyword">let</span>  <span class="hljs-keyword">mut</span> user2 = User {</span><br><span class="line">    email: <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"someone@example.com"</span>),</span><br><span class="line">    username: <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"someusername123"</span>),</span><br><span class="line">    active: <span class="hljs-literal">true</span>,</span><br><span class="line">    sign_in_count: <span class="hljs-number">1</span>,</span><br><span class="line">};</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 调用与修改</span></span><br><span class="line"><span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, user2.email)</span><br><span class="line">user2.email = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"other@example.com"</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-
-<h3 id="使用函数来返回并创建实例化模型"><a href="#使用函数来返回并创建实例化模型" class="headerlink" title="使用函数来返回并创建实例化模型"></a>使用函数来返回并创建实例化模型</h3><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> user = return_struct(<span class="hljs-built_in">String</span>::from(<span class="hljs-string">"xx"</span>),<span class="hljs-number">2</span>);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,user.name);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">User</span></span> {</span><br><span class="line">    name: <span class="hljs-built_in">String</span>,</span><br><span class="line">    age: <span class="hljs-built_in">i32</span>,</span><br><span class="line">    active: <span class="hljs-built_in">bool</span>,</span><br><span class="line">    sigin_in_count: <span class="hljs-built_in">i32</span>,</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">return_struct</span></span>(name: <span class="hljs-built_in">String</span>,age: <span class="hljs-built_in">i32</span> ) -> User {</span><br><span class="line">    User {</span><br><span class="line">        <span class="hljs-comment">//同名字段</span></span><br><span class="line">        <span class="hljs-comment">//1. name: name,</span></span><br><span class="line">        <span class="hljs-comment">//2. name,</span></span><br><span class="line">        name,</span><br><span class="line">        age,</span><br><span class="line">        active: <span class="hljs-literal">true</span>,</span><br><span class="line">        sigin_in_count: <span class="hljs-number">1</span>,</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="实例更新"><a href="#实例更新" class="headerlink" title="实例更新"></a>实例更新</h3><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> user2 = User {</span><br><span class="line">    email: <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"another@example.com"</span>),</span><br><span class="line">    username: <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"anotherusername567"</span>),</span><br><span class="line">    ..user1</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="元组结构体"><a href="#元组结构体" class="headerlink" title="元组结构体"></a>元组结构体</h3><p>没有字段名 只有字段类型</p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Color</span></span>(<span class="hljs-built_in">i32</span>, <span class="hljs-built_in">i32</span>, <span class="hljs-built_in">i32</span>);</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Point</span></span>(<span class="hljs-built_in">i32</span>, <span class="hljs-built_in">i32</span>, <span class="hljs-built_in">i32</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> black = Color(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="line"><span class="hljs-keyword">let</span> origin = Point(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="方法语法"><a href="#方法语法" class="headerlink" title="方法语法"></a>方法语法</h3><p>方法语法同函数类似，但是方法实在结构体的上下文中被定义的，并且他们的第一个参数是self，它代表了调用该方法的结构体实例</p>
-<p>我们将某个实例能做的所有事情一起放在impl(implementation)中</p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Rectangle</span></span>{</span><br><span class="line">        width: <span class="hljs-built_in">u32</span>,</span><br><span class="line">        height: <span class="hljs-built_in">u32</span>,</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment">// 必须同名</span></span><br><span class="line"><span class="hljs-keyword">impl</span> Rectangle{</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">area</span></span>(&<span class="hljs-keyword">self</span>) -> <span class="hljs-built_in">u32</span>{</span><br><span class="line">        <span class="hljs-keyword">self</span>.width * <span class="hljs-keyword">self</span>.height</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> rect1 = Rectangle{width: <span class="hljs-number">30</span>,height: <span class="hljs-number">50</span>};</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(</span><br><span class="line">        <span class="hljs-string">"the area is {}"</span>,rect1.area()</span><br><span class="line">    );</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>其中self表示调用该方法的结构体实例</p>
-</body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/27cd4fcb/"><i class="fas fa-angle-double-right"></i>Rust概念-所有权</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-28T13:56:19.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-28</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/Rust/">Rust</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    10 分钟 读完 (大约 1550 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h2 id="Rust概念-所有权"><a href="#Rust概念-所有权" class="headerlink" title="Rust概念-所有权"></a>Rust概念-所有权</h2><h3 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h3><p>可以看一下这两篇文章<br><a href="https://learning-rust.github.io/docs/a6.variable_bindings,constants_and_statics.html" target="_blank" rel="noopener">https://learning-rust.github.io/docs/a6.variable_bindings,constants_and_statics.html</a><br><a href="http://wiki.jikexueyuan.com/project/rust/primitive-types.html" target="_blank" rel="noopener">http://wiki.jikexueyuan.com/project/rust/primitive-types.html</a></p>
-<p>在rust中变量模式是不可变的，因此我们叫做变量绑定，为了使他们可变，使用mut关键字即可<br>rust是一种静态类型的语言；它在编译时检查数据类型。并不需要在声明变量绑定时指定一个具体的数据类型。编译器会检查使用情况并为其设置更好的数据类型。<br>但是对于 <font color="red">常量和静态变量</font>，必须注释type。类型在冒号（:)之r</p>
-<h3 id="变量绑定"><a href="#变量绑定" class="headerlink" title="变量绑定"></a>变量绑定</h3><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 变量绑定</span></span><br><span class="line"><span class="hljs-keyword">let</span> a = <span class="hljs-literal">true</span>;</span><br><span class="line"><span class="hljs-keyword">let</span> b: <span class="hljs-built_in">bool</span> = <span class="hljs-literal">true</span>; </span><br><span class="line"><span class="hljs-comment">// 以上可以声明具体的数据类型，也可以不指定</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> (x,y) = (<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> z = <span class="hljs-number">5</span>;</span><br><span class="line">z = <span class="hljs-number">6</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 常数  必须指定</span></span><br><span class="line"><span class="hljs-keyword">const</span> N: <span class="hljs-built_in">i32</span> = <span class="hljs-number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 静态变量</span></span><br><span class="line"><span class="hljs-keyword">static</span> N: <span class="hljs-built_in">i32</span> = <span class="hljs-number">6</span>;</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="所有权"><a href="#所有权" class="headerlink" title="所有权"></a>所有权</h3><p>在rust中，一共分为两种数据类型</p>
+            <html><head></head><body><h1 id="django内容总结"><a href="#django内容总结" class="headerlink" title="django内容总结"></a>django内容总结</h1><h2 id="在后台对某些固定字段设置颜色"><a href="#在后台对某些固定字段设置颜色" class="headerlink" title="在后台对某些固定字段设置颜色"></a>在后台对某些固定字段设置颜色</h2><figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># models.py</span></span><br><span class="line"><span class="hljs-keyword">from</span> django.urls.html <span class="hljs-keyword">import</span> format_html</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span><span class="hljs-params">(models.Model)</span>:</span></span><br><span class="line">    first_name = models.CharField(max_length=<span class="hljs-number">50</span>)</span><br><span class="line">    last_name = models.CharField(max_length=<span class="hljs-number">50</span>)</span><br><span class="line">    color_code = models.CharField(max_length=<span class="hljs-number">6</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">colored_name</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> format_html(</span><br><span class="line"></span><br><span class="line">            <span class="hljs-string">'<span style="color: #{};">{} {}</span>'</span>,</span><br><span class="line"></span><br><span class="line">            self.color_code,</span><br><span class="line"></span><br><span class="line">            self.first_name,</span><br><span class="line"></span><br><span class="line">            self.last_name,</span><br><span class="line"></span><br><span class="line">        )</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="admin-py"><a href="#admin-py" class="headerlink" title="admin.py"></a>admin.py</h3><p>class PersonAdmin(admin.ModelAdmin):<br>    list_display = (‘first_name’, ‘last_name’, ‘colored_name’)</p>
+<h2 id="DjangoAdmin"><a href="#DjangoAdmin" class="headerlink" title="DjangoAdmin"></a>DjangoAdmin</h2><blockquote>
+<p>Django自带后台管理模板是其一大特色，但作为后台管理很多地方需要我们去改进，当然也可以使用一些其他的后台模板</p>
+</blockquote>
+<ul>
+<li>推荐模板1: xadmin xadmin在几年前是为django定制的后台管理模板，但是作者已经停止维护，但是在其分支中依旧有部分人在维护。<br>  具体使用跳转到我的掘金<a href="https://juejin.im/post/5afd267d51882542714ff756" target="_blank" rel="noopener">https://juejin.im/post/5afd267d51882542714ff756</a></li>
+<li>推荐模板2： django simple-ui 在github上的星数并不高，但是是基于饿了么element-ui所写的django后台模板，我还未使用</li>
+<li>使用本身自带的admin模板</li>
+<li>使用其他兼容多语言的后台模板</li>
+</ul>
+<p>url :<a href="https://my.oschina.net/zhiyonghe/blog/1532030" target="_blank" rel="noopener">https://my.oschina.net/zhiyonghe/blog/1532030</a></p>
+<hr>
+<h3 id="自带的Admin模板"><a href="#自带的Admin模板" class="headerlink" title="自带的Admin模板"></a>自带的Admin模板</h3><blockquote>
+<p>这里介绍一下自带的admin模板。</p>
+</blockquote>
 <ol>
-<li>基本数据类型： 如：bool（布尔），char（字符）,integer（整数）,floating（浮点）,arrays（数组），tuples(元组)，slice(切片),字符串（str），函数指针(functions)</li>
-<li>非基本数据类型 也就是引用类型</li>
+<li><p>admin界面汉化<br>在setting.py文件中设置语言</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># setting.py</span></span><br><span class="line"></span><br><span class="line">LANGUAGE_CODE = <span class="hljs-string">'zh-hans'</span></span><br><span class="line">IME_ZONE = <span class="hljs-string">'Asia/Shanghai'</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>Model注册<br>在Model.py中创建完类后，需要在admin.py中完成注册，才能在后台模板中显示，方法有二</p>
+</li>
 </ol>
-<p>在rust中，对于所有权一共有两种动作状态  移动和copy</p>
-<ul>
-<li>复制<br>当将a赋值给b的时候，首先rust会对原来a的元数据进行复制，并将复制的数据赋值给b，并把a的所有权状态 设置为“已复制（ copied ）”状态。</li>
-<li>移动<br>当将a赋值给b的时候，rust会把原来对a的原数据的所有权移动给b，并把a的所有权状态 设置为“已移动（ moved ）”状态。<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> x = <span class="hljs-number">5</span>;</span><br><span class="line"><span class="hljs-keyword">let</span> y = x;</span><br><span class="line"><span class="hljs-comment">// 基本数据类型 只发生了copied</span></span><br><span class="line"><span class="hljs-keyword">let</span> x = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello world"</span>);</span><br><span class="line"><span class="hljs-keyword">let</span> y = x;</span><br><span class="line"><span class="hljs-comment">// 引用数据类型，发生了moved</span></span><br></pre></td></tr></tbody></table></figure>
-<img src="http://img.noback.top/2019-12-28-23-30-18.png" alt="2019-12-28-23-30-18"><br>引用类型在存储到堆中时，会指定三个部分 分别时指针，长度和容量，并且指针指向堆上存放内存的内存地址<br>长度表示 String 的内容当前使用了多少字节的内存。容量是 String 从操作系统总共获取了多少字节的内存。长度与容量的区别是很重要的，</li>
-</ul>
-<h3 id="复制行为"><a href="#复制行为" class="headerlink" title="复制行为"></a>复制行为</h3><p><img src="http://img.noback.top/2019-12-28-23-32-47.png" alt="2019-12-28-23-32-47"><br>复制行为中，拷贝了一整份内容，包括指针长度和容量，于是他们共用同一个内存，而不是分别指向相等的两个内存<br><font color="red">二次释放错误</font><br>当变量离开作用域的使用,Rust自动调用drop函数并清理变量的堆内存，于是当出现复制行为的时候，他们执行的内存地址是相同的，当s1离开后，s2执行的内存地址无。当s1离开后，s2执行的内存地址无，这个叫做二次释放的错误，也是之前提到过的内存安全性 bug 之一。两次释放（相同）内存会导致内存污染，它可能会导致潜在的安全漏洞。<br><font color="blue">但是我在代码中试了一下，没有报错。。。</font></p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">     <span class="hljs-keyword">let</span> x = <span class="hljs-number">1</span>;</span><br><span class="line">     <span class="hljs-keyword">let</span> y = x;</span><br><span class="line">     <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Hello, world!{}"</span>,y);</span><br><span class="line">     <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,x)</span><br><span class="line">} </span><br><span class="line"><span class="hljs-comment">// input</span></span><br><span class="line">Hello, world!<span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-number">1</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># admin.py</span></span><br><span class="line"><span class="hljs-comment"># 方法一</span></span><br><span class="line"><span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin </span><br><span class="line"><span class="hljs-keyword">from</span> blog.models <span class="hljs-keyword">import</span> Blog</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BlogAdmin</span><span class="hljs-params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">    list_display=(<span class="hljs-string">'xx'</span>,<span class="hljs-string">'xx'</span>,<span class="hljs-string">'xx'</span>)  <span class="hljs-comment"># 要显示的字段</span></span><br><span class="line">    list_per_page = <span class="hljs-number">50</span>  <span class="hljs-comment"># 每页最多显示50条</span></span><br><span class="line">    ordering = (<span class="hljs-string">"-xxx"</span>)  <span class="hljs-comment"># 设置排序，-表示降序排序</span></span><br><span class="line">    list_editable = [<span class="hljs-string">''</span>,<span class="hljs-string">''</span>,<span class="hljs-string">''</span>] <span class="hljs-comment"># 设置可编辑字段</span></span><br><span class="line">    list_display_links = (<span class="hljs-string">''</span>,<span class="hljs-string">''</span>,) <span class="hljs-comment"># 默认情况下只能点击第一个字段进入编辑，设置多个字段可点击进入编辑</span></span><br><span class="line">    list_filter = (<span class="hljs-string">''</span>,<span class="hljs-string">''</span>,<span class="hljs-string">''</span>) <span class="hljs-comment"># 筛选器</span></span><br><span class="line">    search_fields  = (<span class="hljs-string">''</span>,<span class="hljs-string">''</span>,<span class="hljs-string">''</span>,) <span class="hljs-comment"># 搜索字段</span></span><br><span class="line">    date_hierarchy = <span class="hljs-string">'go_time'</span> <span class="hljs-comment"># 详细时间筛选</span></span><br><span class="line"></span><br><span class="line">admin.site.register(Blog,BlogAdmin)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 方法二</span></span><br><span class="line"><span class="hljs-keyword">from</span> djang.contrib <span class="hljs-keyword">import</span> admin</span><br><span class="line"><span class="hljs-keyword">from</span> blog.models <span class="hljs-keyword">import</span> Blog</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@admin.register(Blog)</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BlogAdmin</span><span class="hljs-params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">    list_display=(<span class="hljs-string">''</span>,<span class="hljs-string">''</span>,<span class="hljs-string">''</span>)</span><br></pre></td></tr></tbody></table></figure>
+<hr>
+<h2 id="Django-for-ajax"><a href="#Django-for-ajax" class="headerlink" title="Django for ajax"></a>Django for ajax</h2><p>django 前后台传递消息内容的方法有很多种,这里我们来讲一下ajax for django</p>
+<figure class="highlight hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 路由地址</span></span><br><span class="line"><span class="hljs-comment"># 项目路径下</span></span><br><span class="line">path(<span class="hljs-string">''</span>,include(<span class="hljs-string">'GraphPro.urls'</span>))</span><br><span class="line"><span class="hljs-comment"># 应用路径下</span></span><br><span class="line">path(<span class="hljs-string">'echartsdemo/'</span>,demoView.as_view(),name=<span class="hljs-string">"demo"</span>),</span><br><span class="line"><span class="hljs-comment"># 视图层</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span>  <span class="hljs-title">demoView</span><span class="hljs-params">(View)</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get</span><span class="hljs-params">(self,request)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> request.GET.get(<span class="hljs-string">'name'</span>) == <span class="hljs-string">'hzj'</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">"ssdsdsd"</span>)</span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            print(<span class="hljs-number">2</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> render(request,<span class="hljs-string">'demo.html'</span>)</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">post</span><span class="hljs-params">(self,request)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">pass</span></span><br><span class="line"><span class="hljs-comment"># 模板层</span></span><br><span class="line"><body></span><br><span class="line">    <!-- 为ECharts准备一个具备大小（宽高）的Dom --></span><br><span class="line">    <div id="main" style="width: 1000px;height:1000px;" ></div></span><br><span class="line"></span><br><span class="line">    <input type=<span class="hljs-string">"text"</span> id=<span class="hljs-string">"name"</span> value=<span class="hljs-string">"hzj"</span>></span><br><span class="line">    <span id="result"></span></span><br><span class="line">    <button class="button" id="click_func">点击</button></span><br><span class="line">    {{ data }}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <script type=<span class="hljs-string">"text/javascript"</span>></span><br><span class="line"></span><br><span class="line">         $(document).ready(function () {</span><br><span class="line">            var name = $(<span class="hljs-string">'#name'</span>).val();</span><br><span class="line">            var data = {<span class="hljs-string">"name"</span>:name};</span><br><span class="line">            $(<span class="hljs-string">"#click_func"</span>).click(function () {</span><br><span class="line">                $.get(</span><br><span class="line">                    //请求的url</span><br><span class="line">                    <span class="hljs-string">'{% url '</span>demoecharts<span class="hljs-string">' %}'</span>,</span><br><span class="line">                    data,</span><br><span class="line">                    function (ret) {</span><br><span class="line">                        console.log(ret)</span><br><span class="line">                    }</span><br><span class="line">                )</span><br><span class="line">            })</span><br><span class="line">        })</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    </script></span><br><span class="line"></body></span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="移动行为"><a href="#移动行为" class="headerlink" title="移动行为"></a>移动行为</h3><p><img src="http://img.noback.top/2019-12-28-23-43-58.png" alt="2019-12-28-23-43-58"><br>如果将原变量指针移向另外一个变量指针，原变量指针失效。当你再次调用s1变量时，由于指针的失去，没有指向存储数据的内存地址，报错无效引用</p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> x = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello"</span>); <span class="hljs-comment">// 这个是引用类型。数据在堆上面</span></span><br><span class="line">    <span class="hljs-keyword">let</span> y = x;</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Hello, world!{}"</span>,y);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,x)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// input</span></span><br><span class="line">error[E0382]: borrow of moved value: `x`</span><br><span class="line"> --> src/main.rs:<span class="hljs-number">5</span>:<span class="hljs-number">19</span></span><br><span class="line">  |</span><br><span class="line"><span class="hljs-number">2</span> |     <span class="hljs-keyword">let</span> x = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello"</span>);</span><br><span class="line">  |         - move occurs because `x` has type `std::string::String`, which does not implement the `Copy` trait</span><br><span class="line"><span class="hljs-number">3</span> |     <span class="hljs-keyword">let</span> y = x;</span><br><span class="line">  |             - value moved here</span><br><span class="line"><span class="hljs-number">4</span> |     <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Hello, world!{}"</span>,y);</span><br><span class="line"><span class="hljs-number">5</span> |     <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,x)</span><br><span class="line">  |                   ^ value borrowed here after <span class="hljs-keyword">move</span></span><br><span class="line"></span><br><span class="line">error: aborting due to previous error</span><br><span class="line"></span><br><span class="line">For more information about this error, <span class="hljs-keyword">try</span> `rustc --explain E0382`.</span><br><span class="line">error: could not compile `xx`.</span><br><span class="line"></span><br><span class="line">To learn more, run the command again with --verbose.</span><br><span class="line"><span class="hljs-comment">// 指针报错</span></span><br><span class="line">指针已经被<span class="hljs-keyword">move</span></span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="克隆行为"><a href="#克隆行为" class="headerlink" title="克隆行为"></a>克隆行为</h3><p>对于基础类型来说，变量的数据交互形式是复制<br>对于引用类型来说，变量的数据交互形式无法复制，只能移动。但是如果我们需要使用到复制堆上的数据，可以使用clone的通用函数</p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> x = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello"</span>); <span class="hljs-comment">// 这个是引用类型。数据在堆上面</span></span><br><span class="line">    <span class="hljs-keyword">let</span> y = x.clone();</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Hello, world!{}"</span>,y);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,x)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>进入页面直接请求后台数据</p>
+<figure class="highlight html hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-javascript">     $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{</span></span><br><span class="line"><span class="hljs-actionscript">         <span class="hljs-keyword">var</span> data = {<span class="hljs-string">"name"</span>:<span class="hljs-string">"hzj"</span>};</span></span><br><span class="line"><span class="hljs-javascript">         $.<span class="hljs-keyword">get</span>(</span></span><br><span class="line"><span class="hljs-actionscript">            <span class="hljs-comment">//请求的url</span></span></span><br><span class="line"><span class="hljs-actionscript">            <span class="hljs-string">'{% url '</span>demo<span class="hljs-string">' %}'</span>,</span></span><br><span class="line">            data,</span><br><span class="line"><span class="hljs-actionscript">            <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(ret)</span> </span>{</span></span><br><span class="line"><span class="hljs-javascript">                <span class="hljs-built_in">console</span>.log(ret)</span></span><br><span class="line">            }</span><br><span class="line">         )</span><br><span class="line">    })</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag"></<span class="hljs-name">script</span>></span></span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="引用和借用"><a href="#引用和借用" class="headerlink" title="引用和借用"></a>引用和借用</h2><h3 id="不可变引用"><a href="#不可变引用" class="headerlink" title="不可变引用"></a>不可变引用</h3><p>跳过所有权，引用对象数据，这里就要用到rust中的引用关键字&<br>&关键字作用是创建了一条指向某一对象的引用，再由引用对象指向数据错在内存地址<br>当引用本身&s1离开作用域后，调用drop函数，指向s1对象的指针被丢弃<br>同时，rust的引用本身也是不可变的，</p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> s1 = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> len = calculate_length(&s1);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"The length of '{}' is {}."</span>, s1, len);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//参数类型需要引用类型</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">calculate_length</span></span>(s: &<span class="hljs-built_in">String</span>) -> <span class="hljs-built_in">usize</span> {</span><br><span class="line">    s.len()</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="http://img.noback.top/2019-12-29-09-38-03.png" alt="2019-12-29-09-38-03"><br>以上 &s1的过程称为引用，获取因果那个作为函数参数称为借用</p>
-<h3 id="可变引用"><a href="#可变引用" class="headerlink" title="可变引用"></a>可变引用</h3><p>可变引用同不可变类似，但要保证<br>被引用类型为可变类型<br>引用为可变<br>函数参数为可变引用</p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> s = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello"</span>);</span><br><span class="line">    change(&<span class="hljs-keyword">mut</span> s);</span><br><span class="line">}</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">change</span></span>(some_string: &<span class="hljs-keyword">mut</span> <span class="hljs-built_in">String</span>) {</span><br><span class="line">    some_string.push_str(<span class="hljs-string">", world"</span>);</span><br><span class="line">}</span><br><span class="line">``` </span><br><span class="line"><font color='blue'>在特定作用域中的特定数据有且只有一个可变引用。这些代码会失败;但可以有多个不可变引用,并且不可变引用和可变引用不能同时存在，可以在其中一个小时后再调用</font></span><br><span class="line">解决</span><br><span class="line">```rust</span><br><span class="line"><span class="hljs-keyword">let</span> mst s = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello"</span>)</span><br><span class="line">{</span><br><span class="line">  <span class="hljs-keyword">let</span> r1 = &<span class="hljs-keyword">mut</span> s;</span><br><span class="line">} </span><br><span class="line"><span class="hljs-keyword">let</span> r2 = &<span class="hljs-keyword">mut</span> s;</span><br></pre></td></tr></tbody></table></figure>
+<p>异步加载数据</p>
+<figure class="highlight html hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-tag"><<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-javascript">        $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{</span></span><br><span class="line"><span class="hljs-actionscript">            <span class="hljs-keyword">var</span> data = {<span class="hljs-string">"name"</span>:<span class="hljs-string">"hzj"</span>};</span></span><br><span class="line"><span class="hljs-javascript">            $.<span class="hljs-keyword">get</span>(</span></span><br><span class="line"><span class="hljs-actionscript">               <span class="hljs-comment">//请求的url</span></span></span><br><span class="line"><span class="hljs-actionscript">               <span class="hljs-string">'{% url '</span>demo<span class="hljs-string">' %}'</span>,</span></span><br><span class="line">               data,</span><br><span class="line"><span class="hljs-actionscript">            ).done(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(ret)</span></span>{</span></span><br><span class="line"><span class="hljs-javascript">                <span class="hljs-built_in">console</span>.log(ret)</span></span><br><span class="line">            })</span><br><span class="line">       })</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="hljs-tag"></<span class="hljs-name">script</span>></span></span><br></pre></td></tr></tbody></table></figure>
+<hr>
+<blockquote>
+<p>介绍Mysql在Django中的引用<br>由于Django在初始化项目后，所使用的数据库是sqlite3,但为了扩展，我们这里计划使用Mysql,配置步骤如下</p>
+</blockquote>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-number">1.</span>在服务器上安装Mysql数据库(Centos版)</span><br><span class="line"></span><br><span class="line"><span class="hljs-number">2.</span>在django的setting.py中引用</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="slice-切片"><a href="#slice-切片" class="headerlink" title="slice 切片"></a>slice 切片</h2><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> s = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello world"</span>) </span><br><span class="line"><span class="hljs-keyword">let</span> hello = &s[..<span class="hljs-number">5</span>];</span><br><span class="line"><span class="hljs-comment">// let hello = &s[0..5];</span></span><br><span class="line"><span class="hljs-keyword">let</span> world = &s[<span class="hljs-number">6</span>..<span class="hljs-number">11</span>];</span><br><span class="line"><span class="hljs-comment">// let world = &s[6..len];</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> helloworld = &s[..];</span><br><span class="line"><span class="hljs-keyword">let</span> helloworld = &s[<span class="hljs-number">0</span>..len];</span><br></pre></td></tr></tbody></table></figure>
+<hr>
+<h2 id="错误类型总结"><a href="#错误类型总结" class="headerlink" title="错误类型总结"></a>错误类型总结</h2><p>由于mysql与django在配置过程中会存在很多的错误，这里总结一下</p>
+<h4 id="Mysql在Centos中权限不足的错误"><a href="#Mysql在Centos中权限不足的错误" class="headerlink" title="Mysql在Centos中权限不足的错误"></a>Mysql在Centos中权限不足的错误</h4><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)</span><br></pre></td></tr></tbody></table></figure>
+<p>原因是/var/lib/mysql的访问权限不足</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1.改变权限 chown -R mysql:mysql /var/lib/mysql   </span><br><span class="line">2. 启动服务器 /etc/init.d/mysql start (会自动生成mysql.sock文件)  </span><br><span class="line">3.重新启动mysql服务  /etc/init.d/mysql start</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="密码类型错误"><a href="#密码类型错误" class="headerlink" title="密码类型错误"></a>密码类型错误</h4><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1045, "Access denied for user 'root'@'122.224.83.xxx</span><br></pre></td></tr></tbody></table></figure>
+<p>原因 密码错误，注意密码不能是字符串</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="django-setting-中的配置"><a href="#django-setting-中的配置" class="headerlink" title="django setting 中的配置"></a>django setting 中的配置</h4><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">DATABASES = {</span><br><span class="line">    'default': {</span><br><span class="line"></span><br><span class="line">        'ENGINE': 'django.db.backends.mysql',</span><br><span class="line">        'NAME': 'itemids',  # 数据库名字</span><br><span class="line">        'USER': 'root',    # 数据库登录名</span><br><span class="line">        'PASSWORD': '12345x', # 数据库密码</span><br><span class="line">        'HOST': '106.14.195.xxx', 数据库IP</span><br><span class="line">        'POST': 3306, # 端口</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="引用pymysql"><a href="#引用pymysql" class="headerlink" title="引用pymysql"></a>引用pymysql</h4><p>由于MySQLdb只能使用在Python2中，在python3中已经停止了维护，所以这里我们引用pymyql的库</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">pipenv install pymysql</span><br><span class="line"><span class="hljs-comment"># 在与setting.py同级别的__init__.py中使用</span></span><br><span class="line"><span class="hljs-keyword">import</span> pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="pymysql版本不符合"><a href="#pymysql版本不符合" class="headerlink" title="pymysql版本不符合"></a>pymysql版本不符合</h4><p>报错内容:django.core.exceptions.ImproperlyConfigured: mysqlclient 1.3.3 or newer is required; you have 0.7.11<br>修改Pipenv\Lib\site-packages\django\db\backends\mysql\base.py<br>注释下面内容<br>if version < (1, 3, 3):<br>    raise ImproperlyConfigured(“mysqlclient 1.3.3 or newer is required; you have %s” % Database.<strong>version</strong>)</p>
+<p>(在Centos中，pipenv install 所生成的包 会在pipenv shell 激活环境的时候出现)</p>
+<p>由于上面注释，还会出现的报错内容为<br>File “C:\Users\Administrator\PycharmProjects\untitled1\venv\lib\site-packages\django\db\backends\mysql\operations.py”, line 146, in last_executed_query<br>将operations.py中的decode改成encode</p>
+<h4 id="mysql不能插入中文"><a href="#mysql不能插入中文" class="headerlink" title="mysql不能插入中文"></a>mysql不能插入中文</h4><p>报错内容： django.db.utils.InternalError: (1366, “Incorrect string value: ‘\xE5\xAE\x9A\xE6\x97\xB6…’ for column ‘name’ at row 1”)<br>解决方法: <a href="https://blog.csdn.net/tzh476/article/details/52644271" target="_blank" rel="noopener">https://blog.csdn.net/tzh476/article/details/52644271</a><br>删除之前的库，创建一个新的数据库，使用utf8mb64   之前默认创建的都是latin1</p>
+<h4 id="mysql-长度的问题"><a href="#mysql-长度的问题" class="headerlink" title="mysql 长度的问题"></a>mysql 长度的问题</h4><p>django.db.utils.InternalError: (1071, ‘Specified key was too long; max key length is 767 bytes’)<br><a href="https://blog.csdn.net/ljfphp/article/details/80406907" target="_blank" rel="noopener">https://blog.csdn.net/ljfphp/article/details/80406907</a><br><a href="https://www.orcode.com/question/407126_k280b8.html" target="_blank" rel="noopener">https://www.orcode.com/question/407126_k280b8.html</a></p>
+<p>解决方法1: 升级Mysql5.6–>>Mysql5.7<br>centos7 下  对mysql的操作 <a href="https://blog.csdn.net/xufengzhu/article/details/81110982" target="_blank" rel="noopener">https://blog.csdn.net/xufengzhu/article/details/81110982</a><br><a href="https://blog.51cto.com/lisea/1941616" target="_blank" rel="noopener">https://blog.51cto.com/lisea/1941616</a></p>
+<p>解决方法2 : 先使用utf8格式</p>
+<p>—-> 介绍Mysql在Django中的引用<br>由于Django在初始化项目后，所使用的数据库是sqlite3,但为了扩展，我们这里计划使用Mysql,配置步骤如下</p>
+<h2 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h2><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-number">1.</span>在服务器上安装Mysql数据库(Centos版)</span><br><span class="line"></span><br><span class="line"><span class="hljs-number">2.</span>在django的setting.py中引用</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="错误类型总结-1"><a href="#错误类型总结-1" class="headerlink" title="错误类型总结"></a>错误类型总结</h2><p>由于mysql与django在配置过程中会存在很多的错误，这里总结一下</p>
+<h4 id="Mysql在Centos中权限不足的错误-1"><a href="#Mysql在Centos中权限不足的错误-1" class="headerlink" title="Mysql在Centos中权限不足的错误"></a>Mysql在Centos中权限不足的错误</h4><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)</span><br></pre></td></tr></tbody></table></figure>
+<p>原因是/var/lib/mysql的访问权限不足</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1.改变权限 chown -R mysql:mysql /var/lib/mysql   </span><br><span class="line">2. 启动服务器 /etc/init.d/mysql start (会自动生成mysql.sock文件)  </span><br><span class="line">3.重新启动mysql服务  /etc/init.d/mysql start</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="密码类型错误-1"><a href="#密码类型错误-1" class="headerlink" title="密码类型错误"></a>密码类型错误</h4><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1045, "Access denied for user 'root'@'122.224.83.xxx</span><br></pre></td></tr></tbody></table></figure>
+<p>原因 密码错误，注意密码不能是字符串</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="django-setting-中的配置-1"><a href="#django-setting-中的配置-1" class="headerlink" title="django setting 中的配置"></a>django setting 中的配置</h4><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">DATABASES = {</span><br><span class="line">    'default': {</span><br><span class="line"></span><br><span class="line">        'ENGINE': 'django.db.backends.mysql',</span><br><span class="line">        'NAME': 'itemids',  # 数据库名字</span><br><span class="line">        'USER': 'root',    # 数据库登录名</span><br><span class="line">        'PASSWORD': '12345x', # 数据库密码</span><br><span class="line">        'HOST': '106.14.195.xxx', 数据库IP</span><br><span class="line">        'POST': 3306, # 端口</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="引用pymysql-1"><a href="#引用pymysql-1" class="headerlink" title="引用pymysql"></a>引用pymysql</h4><p>由于MySQLdb只能使用在Python2中，在python3中已经停止了维护，所以这里我们引用pymyql的库</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">pipenv install pymysql</span><br><span class="line"><span class="hljs-comment"># 在与setting.py同级别的__init__.py中使用</span></span><br><span class="line"><span class="hljs-keyword">import</span> pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="pymysql版本不符合-1"><a href="#pymysql版本不符合-1" class="headerlink" title="pymysql版本不符合"></a>pymysql版本不符合</h4><p>报错内容:django.core.exceptions.ImproperlyConfigured: mysqlclient 1.3.3 or newer is required; you have 0.7.11<br>修改Pipenv\Lib\site-packages\django\db\backends\mysql\base.py<br>注释下面内容<br>if version < (1, 3, 3):<br>    raise ImproperlyConfigured(“mysqlclient 1.3.3 or newer is required; you have %s” % Database.<strong>version</strong>)</p>
+<p>(在Centos中，pipenv install 所生成的包 会在pipenv shell 激活环境的时候出现)</p>
+<p>由于上面注释，还会出现的报错内容为<br>File “C:\Users\Administrator\PycharmProjects\untitled1\venv\lib\site-packages\django\db\backends\mysql\operations.py”, line 146, in last_executed_query<br>将operations.py中的decode改成encode</p>
+<h4 id="mysql不能插入中文-1"><a href="#mysql不能插入中文-1" class="headerlink" title="mysql不能插入中文"></a>mysql不能插入中文</h4><p>报错内容： django.db.utils.InternalError: (1366, “Incorrect string value: ‘\xE5\xAE\x9A\xE6\x97\xB6…’ for column ‘name’ at row 1”)<br>解决方法: <a href="https://blog.csdn.net/tzh476/article/details/52644271" target="_blank" rel="noopener">https://blog.csdn.net/tzh476/article/details/52644271</a><br>删除之前的库，创建一个新的数据库，使用utf8mb64   之前默认创建的都是latin1</p>
+<h4 id="mysql-长度的问题-1"><a href="#mysql-长度的问题-1" class="headerlink" title="mysql 长度的问题"></a>mysql 长度的问题</h4><p>django.db.utils.InternalError: (1071, ‘Specified key was too long; max key length is 767 bytes’)<br><a href="https://blog.csdn.net/ljfphp/article/details/80406907" target="_blank" rel="noopener">https://blog.csdn.net/ljfphp/article/details/80406907</a><br><a href="https://www.orcode.com/question/407126_k280b8.html" target="_blank" rel="noopener">https://www.orcode.com/question/407126_k280b8.html</a></p>
+<p>解决方法1: 升级Mysql5.6–>>Mysql5.7<br>centos7 下  对mysql的操作 <a href="https://blog.csdn.net/xufengzhu/article/details/81110982" target="_blank" rel="noopener">https://blog.csdn.net/xufengzhu/article/details/81110982</a><br><a href="https://blog.51cto.com/lisea/1941616" target="_blank" rel="noopener">https://blog.51cto.com/lisea/1941616</a></p>
+<p>解决方法2 : 先使用utf8格式</p>
 </body></html>
         </div>
         
@@ -399,18 +428,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/79b81c10/"><i class="fas fa-angle-double-right"></i>Python常用方法1</a>
+                <a class="has-link-black-ter" href="/posts/7f55f388/"><i class="fas fa-angle-double-right"></i>django错误合集</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-27T09:36:31.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-27</time>
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:40:29.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/Python/">Python</a>
+                <a class="has-link-grey -link" href="/categories/blog-back-new/">blog_back_new</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/blog-back-new/django/">django</a>
                 </div>
                 
                 
@@ -418,7 +447,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    5 分钟 读完 (大约 787 个字)
+                    4 分钟 读完 (大约 648 个字)
                 </span>
                 
                 
@@ -426,43 +455,89 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="python-常用方法"><a href="#python-常用方法" class="headerlink" title="python 常用方法"></a>python 常用方法</h1><h2 id="保留小数"><a href="#保留小数" class="headerlink" title="保留小数"></a>保留小数</h2><p>使用字符串格式化</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">a = <span class="hljs-number">11.234</span></span><br><span class="line">print(<span class="hljs-string">"%.2f"</span>%a)</span><br></pre></td></tr></tbody></table></figure>
-<p>使用round内置函数</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">a = <span class="hljs-number">11.234</span></span><br><span class="line">a = round(a,<span class="hljs-number">2</span>)</span><br><span class="line">print(a)</span><br></pre></td></tr></tbody></table></figure>
-<p>使用decimal模块</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> decimal <span class="hljs-keyword">import</span> Decimal</span><br><span class="line">a = <span class="hljs-number">12.345</span></span><br><span class="line">Decimal(a).quantize(Decimal(<span class="hljs-string">"0.00"</span>))</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="列表合并"><a href="#列表合并" class="headerlink" title="列表合并"></a>列表合并</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 使用+号操作</span></span><br><span class="line">list1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]</span><br><span class="line">list2 = [<span class="hljs-string">"z"</span>,<span class="hljs-string">"xx"</span>,] </span><br><span class="line">list3 = list1+list2</span><br><span class="line"><span class="hljs-comment"># 使用extend</span></span><br><span class="line">list4.extend(list1)</span><br><span class="line"><span class="hljs-comment"># 使用切片</span></span><br><span class="line">list4[len(<span class="hljs-number">11</span>):len(<span class="hljs-number">11</span>)] = list5</span><br></pre></td></tr></tbody></table></figure>
-
-
-<h2 id="os模块"><a href="#os模块" class="headerlink" title="os模块"></a>os模块</h2><h3 id="Python获取指定文件夹下的文件名"><a href="#Python获取指定文件夹下的文件名" class="headerlink" title="Python获取指定文件夹下的文件名"></a>Python获取指定文件夹下的文件名</h3><p><font color="red">模块os.walk可以遍历文件夹下的所有文件</font></p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">os.walk(top, topdown=Ture, οnerrοr=<span class="hljs-literal">None</span>, followlinks=<span class="hljs-literal">False</span>)</span><br><span class="line"><span class="hljs-comment"># return  (dirpath dirnames filenames)</span></span><br></pre></td></tr></tbody></table></figure>
-<ul>
-<li>dirpath: string 代表目录的路径</li>
-<li>dirnames list 包含了当前dirpath路径下所有的子目录名字（不包含目录路径）</li>
-<li>filenames：list，包含了当前dirpath路径下所有的非目录子文件的名字（不包含目录路径）。<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">file_name</span><span class="hljs-params">(file_dir)</span>:</span> </span><br><span class="line">    <span class="hljs-keyword">for</span> root, dirs, files <span class="hljs-keyword">in</span> os.walk(file_dir):</span><br><span class="line">        print(root) <span class="hljs-comment">#当前目录路径</span></span><br><span class="line">        print(dirs) <span class="hljs-comment">#当前路径下所有子目录</span></span><br><span class="line">        print(files) <span class="hljs-comment">#当前路径下所有非目录子文件</span></span><br><span class="line">        <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> files:</span><br><span class="line">            <span class="hljs-comment"># os.path.splitext # 对文件名进行切割成数组</span></span><br><span class="line">            <span class="hljs-keyword">if</span> os.path.splitext(file)[<span class="hljs-number">1</span>] == <span class="hljs-string">".jpeg"</span>:</span><br><span class="line">              print(file)</span><br><span class="line">            <span class="hljs-keyword">else</span>:</span><br><span class="line">              <span class="hljs-keyword">pass</span></span><br></pre></td></tr></tbody></table></figure>
-
-</li>
-</ul>
-<p><font color="red">模块os.listdir()可以得到当前路径下的文件名，不包括子目录中的文件</font></p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"><span class="hljs-comment"># 遍历获取所有文件</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">listdir</span><span class="hljs-params">(path, list_name)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> os.listdir(path):</span><br><span class="line">        file_path = os.path.join(path, file)</span><br><span class="line">        <span class="hljs-comment"># os.path.isdir(file) #判断文件是否为文件夹</span></span><br><span class="line">        <span class="hljs-keyword">if</span> os.path.isdir(file_path):</span><br><span class="line">            listdir(file_path, list_name)</span><br><span class="line">        <span class="hljs-keyword">elif</span> os.path.splitext(file_path)[<span class="hljs-number">1</span>]==<span class="hljs-string">'.jpeg'</span>:</span><br><span class="line">            list_name.append(file_path)</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="判断文件类型"><a href="#判断文件类型" class="headerlink" title="判断文件类型"></a>判断文件类型</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">os.path.isdir(path) <span class="hljs-comment"># 是否为文件夹</span></span><br><span class="line">os.path.isfile(path) <span class="hljs-comment"># 是否为文件</span></span><br></pre></td></tr></tbody></table></figure>
-
-
-<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>mode选项<br>r 读模式，只能读 文件不存在报错，<br>w 写模式，只能写 文件不存在则创建，<br>以上存在存在则清空在打开</p>
-<p>rb 二进制读模式 只能读  文件不存在报错<br>wb 二进制写模式 只能写  文件不存在则创建，<br>以上存在则清空再打开<br>有二进制内容 写入则需要encode(“utf-8”)</p>
-<p>rb+ 二进制读模式 可读可写 文件不存在报错<br>wb+ 二进制写模式 可读可写 文件不存在则创建，<br>以上存在则清空再打开</p>
-<p>a 追加写模式，文件存在则追加写入<br>a+ 追加读写方式<br>以上存在则追加写入</p>
-<p>默认进入为文件末尾<br>f.seek(0) 设置读写位置为开头<br>f.truncate(0) 将文章字节阶段为0</p>
-<h3 id="文件头部写如文件"><a href="#文件头部写如文件" class="headerlink" title="文件头部写如文件"></a>文件头部写如文件</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">with open(path, <span class="hljs-string">"r+"</span>) as f:</span><br><span class="line">     old = f.read()</span><br><span class="line">     f.seek(0)</span><br><span class="line">     f.write(data)</span><br><span class="line">     f.write(old)</span><br></pre></td></tr></tbody></table></figure>
-<p>或者</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">with open(path,<span class="hljs-string">"a"</span>) as f:</span><br><span class="line">      f.seek(0)</span><br><span class="line">      old = f.read()</span><br><span class="line">      <span class="hljs-comment"># 全部删除</span></span><br><span class="line">      f.truncate(0)</span><br><span class="line">      f.write(<span class="hljs-string">"---"</span>)</span><br><span class="line">      f.write(<span class="hljs-string">"tags: xxx"</span>)</span><br><span class="line">      f.write(<span class="hljs-string">"---"</span>)</span><br><span class="line">      f.close()</span><br></pre></td></tr></tbody></table></figure>
+            <html><head></head><body><h1 id="错误类型总结"><a href="#错误类型总结" class="headerlink" title="错误类型总结"></a>错误类型总结</h1><p>由于mysql与django在配置过程中会存在很多的错误，这里总结一下</p>
+<h2 id="Mysql在Centos中权限不足的错误"><a href="#Mysql在Centos中权限不足的错误" class="headerlink" title="Mysql在Centos中权限不足的错误"></a>Mysql在Centos中权限不足的错误</h2><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)</span><br></pre></td></tr></tbody></table></figure>
+<p>原因是/var/lib/mysql的访问权限不足</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1.改变权限 chown -R mysql:mysql /var/lib/mysql   </span><br><span class="line">2. 启动服务器 /etc/init.d/mysql start (会自动生成mysql.sock文件)  </span><br><span class="line">3.重新启动mysql服务  /etc/init.d/mysql start</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="密码类型错误"><a href="#密码类型错误" class="headerlink" title="密码类型错误"></a>密码类型错误</h2><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1045, "Access denied for user 'root'@'122.224.83.xxx</span><br></pre></td></tr></tbody></table></figure>
+<p>原因 密码错误，注意密码不能是字符串</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="django-setting-中的配置"><a href="#django-setting-中的配置" class="headerlink" title="django setting 中的配置"></a>django setting 中的配置</h2><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">DATABASES = {</span><br><span class="line">    'default': {</span><br><span class="line"></span><br><span class="line">        'ENGINE': 'django.db.backends.mysql',</span><br><span class="line">        'NAME': 'itemids',  # 数据库名字</span><br><span class="line">        'USER': 'root',    # 数据库登录名</span><br><span class="line">        'PASSWORD': '12345x', # 数据库密码</span><br><span class="line">        'HOST': '106.14.195.xxx', 数据库IP</span><br><span class="line">        'POST': 3306, # 端口</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="引用pymysql"><a href="#引用pymysql" class="headerlink" title="引用pymysql"></a>引用pymysql</h2><p>由于MySQLdb只能使用在Python2中，在python3中已经停止了维护，所以这里我们引用pymyql的库</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">pipenv install pymysql</span><br><span class="line"><span class="hljs-comment"># 在与setting.py同级别的__init__.py中使用</span></span><br><span class="line"><span class="hljs-keyword">import</span> pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="pymysql版本不符合"><a href="#pymysql版本不符合" class="headerlink" title="pymysql版本不符合"></a>pymysql版本不符合</h2><p>报错内容:django.core.exceptions.ImproperlyConfigured: mysqlclient 1.3.3 or newer is required; you have 0.7.11<br>修改Pipenv\Lib\site-packages\django\db\backends\mysql\base.py<br>注释下面内容<br>if version < (1, 3, 3):<br>    raise ImproperlyConfigured(“mysqlclient 1.3.3 or newer is required; you have %s” % Database.<strong>version</strong>)</p>
+<p>(在Centos中，pipenv install 所生成的包 会在pipenv shell 激活环境的时候出现)</p>
+<p>由于上面注释，还会出现的报错内容为<br>File “C:\Users\Administrator\PycharmProjects\untitled1\venv\lib\site-packages\django\db\backends\mysql\operations.py”, line 146, in last_executed_query<br>将operations.py中的decode改成encode</p>
+<h2 id="mysql不能插入中文"><a href="#mysql不能插入中文" class="headerlink" title="mysql不能插入中文"></a>mysql不能插入中文</h2><p>报错内容： django.db.utils.InternalError: (1366, “Incorrect string value: ‘\xE5\xAE\x9A\xE6\x97\xB6…’ for column ‘name’ at row 1”)<br>解决方法: <a href="https://blog.csdn.net/tzh476/article/details/52644271" target="_blank" rel="noopener">https://blog.csdn.net/tzh476/article/details/52644271</a><br>删除之前的库，创建一个新的数据库，使用utf8mb64   之前默认创建的都是latin1<br>不一样要删除之前的库，修改数据库的属性即可</p>
+<h2 id="mysql-长度的问题"><a href="#mysql-长度的问题" class="headerlink" title="mysql 长度的问题"></a>mysql 长度的问题</h2><p>django.db.utils.InternalError: (1071, ‘Specified key was too long; max key length is 767 bytes’)<br><a href="https://blog.csdn.net/ljfphp/article/details/80406907" target="_blank" rel="noopener">https://blog.csdn.net/ljfphp/article/details/80406907</a><br><a href="https://www.orcode.com/question/407126_k280b8.html" target="_blank" rel="noopener">https://www.orcode.com/question/407126_k280b8.html</a></p>
+<p>解决方法1: 升级Mysql5.6–>>Mysql5.7<br>centos7 下  对mysql的操作 <a href="https://blog.csdn.net/xufengzhu/article/details/81110982" target="_blank" rel="noopener">https://blog.csdn.net/xufengzhu/article/details/81110982</a><br><a href="https://blog.51cto.com/lisea/1941616" target="_blank" rel="noopener">https://blog.51cto.com/lisea/1941616</a></p>
+<p>解决方法2 : 先使用utf8格式</p>
+<h2 id="django-migrate的问题"><a href="#django-migrate的问题" class="headerlink" title="django migrate的问题"></a>django migrate的问题</h2><p>出现下面这个问题，基本上就是你的model设置错误了。有些字段类型需要固定的属性<br>如integerField字段需要default这个选项，添加完之后就Ok了</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">Please select a fix:</span><br><span class="line"> 1) Provide a one-off default now (will be <span class="hljs-built_in">set</span> on all existing rows with a null value <span class="hljs-keyword">for</span> this column)</span><br><span class="line"> 2) Quit, and <span class="hljs-built_in">let</span> me add a default <span class="hljs-keyword">in</span> models.p</span><br></pre></td></tr></tbody></table></figure></body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
 
 
-<h2 id="Python-math库"><a href="#Python-math库" class="headerlink" title="Python-math库"></a>Python-math库</h2><p>向上取整 math.ceil<br>向下取整 math.floor<br>四舍五入 round</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">import math</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#向上取整</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil---"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil(2.3) => "</span>, math.ceil(2.3)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil(2.6) => "</span>, math.ceil(2.6)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">#向下取整</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"\nmath.floor---"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.floor(2.3) => "</span>, math.floor(2.3)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.floor(2.6) => "</span>, math.floor(2.6)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">#四舍五入</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"\nround---"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"round(2.3) => "</span>, round(2.3)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"round(2.6) => "</span>, round(2.6)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">#这三个的返回结果都是浮点型</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"\n\nNOTE:every result is type of float"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil(2) => "</span>, math.ceil(2)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.floor(2) => "</span>, math.floor(2)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"round(2) => "</span>, round(2)</span><br></pre></td></tr></tbody></table></figure></body></html>
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/9ec06885/"><i class="fas fa-angle-double-right"></i>C语言基础</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:39:56.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">C语言</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    2 分钟 读完 (大约 334 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="C语言基础"><a href="#C语言基础" class="headerlink" title="C语言基础"></a>C语言基础</h1><p>对C语言基础只是的概括</p>
+<p>目标文件 可执行文件 库 源文件</p>
+<p>源文件指的是我们所编写的文件</p>
+<figure class="highlight c hljs"><table><tbody><tr><td class="code"><pre><span class="line">vi xx.c</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string"><stdio.h></span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>{</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"hello world"</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>以上xx.c就是我们的源文件</p>
+<p><strong>在unix中</strong><br>编译c语言 cc xx.c 会在当前文件夹生成一个a.out的可执行文件  运行即可</p>
+<p>整个流程就是用户输入代码生成源码文件 通过cc编译后生成可执行文件 运行输出内容<br>cc其实是一个命令，可以用man cc 查看  也可以用cc -v查看版本信息</p>
+<p><strong>在linux中</strong><br>使用gcc编译c文件 gcc xx.c</p>
+<h2 id="第一个c语言程序"><a href="#第一个c语言程序" class="headerlink" title="第一个c语言程序"></a>第一个c语言程序</h2><!-- vim-markdown-toc -->
+<figure class="highlight c hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-meta"># <span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string"><stdio.h></span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>{</span><br><span class="line">	<span class="hljs-keyword">int</span> nums;</span><br><span class="line">	nums = <span class="hljs-number">1</span>;</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"how many dogs do you have?\n"</span>);</span><br><span class="line">	getchar();</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">}</span><br><span class="line">include是预处理器指令  main是第一个被调用的函数 func a是构造块</span><br><span class="line">stdio.h 是c编译器软件包的标准部分</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><p>整数 int</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">int nums=12;</span><br><span class="line"></span><br><span class="line">int nums;</span><br><span class="line">nums = 12; </span><br><span class="line"></span><br><span class="line">int nums = 12 , ages = 20;</span><br></pre></td></tr></tbody></table></figure>
+<p>大致的执行过程为 int nums 划分出一块内存空间名为nums<br>nums = 12 为nums赋值12的变量</p>
+<h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><p>zsh: command not found: a.out<br>mac下无法执行cc编译后的文件<br><font color="blue">因为没有确定工作路径 运行./a.out就可以了</font></p>
+</body></html>
         </div>
         
         
@@ -501,7 +576,9 @@
             
             <li><a class="pagination-link has-text-black-ter" href="/page/11/">11</a></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/12/">12</a></li>
+            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/14/">14</a></li>
             
         </ul>
     </nav>
@@ -536,7 +613,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        56
+                        68
                     </p>
                 </a>
             </div>
@@ -546,7 +623,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        30
                     </p>
                 </a>
             </div>
@@ -763,7 +840,7 @@
                 <span class="level-item">编程</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">9</span>
+                <span class="level-item tag">21</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">
@@ -795,7 +872,15 @@
                 <span class="level-item">django</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">
+            <span class="level-start">
+                <span class="level-item">jwt</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vim/">
@@ -804,6 +889,14 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vue/">
+            <span class="level-start">
+                <span class="level-item">vue</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">10</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/">
@@ -868,7 +961,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">25</span>
+                    <span class="level-item tag">37</span>
                 </span>
             </a>
         </li>
@@ -899,18 +992,18 @@
         
         <article class="media">
             
-            <a href="/posts/705ac99d/" class="media-left">
+            <a href="/posts/6412f439/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux脚本">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vuejs基础2">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T02:46:04.000Z">2020-01-16</time></div>
-                    <a href="/posts/705ac99d/" class="has-link-black-ter is-size-6">linux脚本</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T03:32:11.000Z">2020-01-22</time></div>
+                    <a href="/posts/6412f439/" class="has-link-black-ter is-size-6">vuejs基础2</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
                     </p>
                 </div>
             </div>
@@ -918,18 +1011,18 @@
         
         <article class="media">
             
-            <a href="/posts/877ac6e6/" class="media-left">
+            <a href="/posts/1fd63f28/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-mtr命令">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue组件基础">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T07:15:47.000Z">2020-01-15</time></div>
-                    <a href="/posts/877ac6e6/" class="has-link-black-ter is-size-6">linux-mtr命令</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T03:31:26.000Z">2020-01-22</time></div>
+                    <a href="/posts/1fd63f28/" class="has-link-black-ter is-size-6">vue组件基础</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
                     </p>
                 </div>
             </div>
@@ -937,56 +1030,56 @@
         
         <article class="media">
             
-            <a href="/posts/1d7a61af/" class="media-left">
+            <a href="/posts/4b10b818/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux初始化">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-model">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T02:30:41.000Z">2020-01-15</time></div>
-                    <a href="/posts/1d7a61af/" class="has-link-black-ter is-size-6">linux初始化</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/67b35a0f/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blog_back_new/linux/net/记录">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T09:48:03.265Z">2020-01-14</time></div>
-                    <a href="/posts/67b35a0f/" class="has-link-black-ter is-size-6">blog_back_new/linux/net/记录</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/933b28f1/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-filter">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T03:43:43.000Z">2020-01-14</time></div>
-                    <a href="/posts/933b28f1/" class="has-link-black-ter is-size-6">drf-filter</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-21T02:17:43.000Z">2020-01-21</time></div>
+                    <a href="/posts/4b10b818/" class="has-link-black-ter is-size-6">drf-model</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/403006fc/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="home模块">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T09:31:26.000Z">2020-01-20</time></div>
+                    <a href="/posts/403006fc/" class="has-link-black-ter is-size-6">home模块</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/e8b3a2c2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="jwt原理与实战应用">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T05:07:46.000Z">2020-01-20</time></div>
+                    <a href="/posts/e8b3a2c2/" class="has-link-black-ter is-size-6">jwt原理与实战应用</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">jwt</a>
                     </p>
                 </div>
             </div>
@@ -1021,7 +1114,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">25</span>
+                    <span class="level-item tag">37</span>
                 </span>
             </a>
         </li>
@@ -1052,18 +1145,18 @@
         
         <article class="media">
             
-            <a href="/posts/705ac99d/" class="media-left">
+            <a href="/posts/6412f439/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux脚本">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vuejs基础2">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T02:46:04.000Z">2020-01-16</time></div>
-                    <a href="/posts/705ac99d/" class="has-link-black-ter is-size-6">linux脚本</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T03:32:11.000Z">2020-01-22</time></div>
+                    <a href="/posts/6412f439/" class="has-link-black-ter is-size-6">vuejs基础2</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
                     </p>
                 </div>
             </div>
@@ -1071,18 +1164,18 @@
         
         <article class="media">
             
-            <a href="/posts/877ac6e6/" class="media-left">
+            <a href="/posts/1fd63f28/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-mtr命令">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue组件基础">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T07:15:47.000Z">2020-01-15</time></div>
-                    <a href="/posts/877ac6e6/" class="has-link-black-ter is-size-6">linux-mtr命令</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T03:31:26.000Z">2020-01-22</time></div>
+                    <a href="/posts/1fd63f28/" class="has-link-black-ter is-size-6">vue组件基础</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
                     </p>
                 </div>
             </div>
@@ -1090,56 +1183,56 @@
         
         <article class="media">
             
-            <a href="/posts/1d7a61af/" class="media-left">
+            <a href="/posts/4b10b818/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux初始化">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-model">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T02:30:41.000Z">2020-01-15</time></div>
-                    <a href="/posts/1d7a61af/" class="has-link-black-ter is-size-6">linux初始化</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/67b35a0f/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blog_back_new/linux/net/记录">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T09:48:03.265Z">2020-01-14</time></div>
-                    <a href="/posts/67b35a0f/" class="has-link-black-ter is-size-6">blog_back_new/linux/net/记录</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/933b28f1/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-filter">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T03:43:43.000Z">2020-01-14</time></div>
-                    <a href="/posts/933b28f1/" class="has-link-black-ter is-size-6">drf-filter</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-21T02:17:43.000Z">2020-01-21</time></div>
+                    <a href="/posts/4b10b818/" class="has-link-black-ter is-size-6">drf-model</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/403006fc/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="home模块">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T09:31:26.000Z">2020-01-20</time></div>
+                    <a href="/posts/403006fc/" class="has-link-black-ter is-size-6">home模块</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/e8b3a2c2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="jwt原理与实战应用">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T05:07:46.000Z">2020-01-20</time></div>
+                    <a href="/posts/e8b3a2c2/" class="has-link-black-ter is-size-6">jwt原理与实战应用</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">jwt</a>
                     </p>
                 </div>
             </div>

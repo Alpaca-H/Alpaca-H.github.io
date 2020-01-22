@@ -145,13 +145,202 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/fe4ef317/"><i class="fas fa-angle-double-right"></i>linux常用命令</a>
+                <a class="has-link-black-ter" href="/posts/a1c58685/"><i class="fas fa-angle-double-right"></i>vue-element-admin</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-09T04:47:22.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-09</time>
+                <time class="level-item has-text-grey" datetime="2020-01-16T06:07:13.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-16</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    几秒 读完 (大约 70 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><a id="more"></a>
+<h2 id="vue-element-admin框架学习"><a href="#vue-element-admin框架学习" class="headerlink" title="vue-element-admin框架学习"></a>vue-element-admin框架学习</h2><h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><p>基本模版<br><a href="https://github.com/PanJiaChen/vue-admin-template" target="_blank" rel="noopener">https://github.com/PanJiaChen/vue-admin-template</a><br>基本模版-展示地址<br><a href="https://panjiachen.github.io/vue-admin-template/#/dashboard" target="_blank" rel="noopener">https://panjiachen.github.io/vue-admin-template/#/dashboard</a><br>实例项目<br><a href="https://github.com/PanJiaChen/vue-element-admin/blob/master/README.zh-CN.md" target="_blank" rel="noopener">https://github.com/PanJiaChen/vue-element-admin/blob/master/README.zh-CN.md</a><br>实例项目-展示地址<br><a href="https://panjiachen.github.io/vue-element-admin/#/dashboard" target="_blank" rel="noopener">https://panjiachen.github.io/vue-element-admin/#/dashboard</a></p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/d0806758/"><i class="fas fa-angle-double-right"></i>vue中的各类插件以及使用方法</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-16T05:50:56.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-16</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    3 分钟 读完 (大约 507 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><a id="more"></a>
+
+
+<h2 id="vue中的各类插件以及使用方法"><a href="#vue中的各类插件以及使用方法" class="headerlink" title="vue中的各类插件以及使用方法"></a>vue中的各类插件以及使用方法</h2><p>在vue的使用过程中遇到了很多插件，有些插件只是提供了一部分很小的功能，占据不了太大的篇幅，因此收集到这里记录一下</p>
+<h2 id="qs插件"><a href="#qs插件" class="headerlink" title="qs插件"></a>qs插件</h2><p>qs插件是一个地址解析工具,主要是对于一串url地址进行序列化</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装</span></span><br><span class="line">npm install qs</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">import qs from <span class="hljs-string">'qs'</span>;</span><br><span class="line"><span class="hljs-comment"># 定义全局别名</span></span><br><span class="line">Vue.prototype.<span class="hljs-variable">$qs</span> = qs</span><br><span class="line"><span class="hljs-comment"># 使用</span></span><br><span class="line">this.<span class="hljs-variable">$http</span>.post(<span class="hljs-string">'/bb'</span>,</span><br><span class="line">    this.<span class="hljs-variable">$qs</span>.stringify({ aa:2, bb:3 })</span><br><span class="line">  )</span><br><span class="line">  .<span class="hljs-keyword">then</span>(<span class="hljs-keyword">function</span> (response) {</span><br><span class="line">    console.log(response.data);</span><br><span class="line">  })</span><br><span class="line">  .catch(<span class="hljs-keyword">function</span> (error) {</span><br><span class="line">    console.log(error);</span><br><span class="line">  });</span><br><span class="line"><span class="hljs-comment"># 则请求地址是这样的</span></span><br><span class="line">aa=2&&bb=3</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="vuex插件"><a href="#vuex插件" class="headerlink" title="vuex插件"></a>vuex插件</h2><p>作为vue中的状态管理插件</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">npm install vuex --save</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span></span><br><span class="line"><span class="hljs-keyword">import</span> Vuex <span class="hljs-keyword">from</span> <span class="hljs-string">'vuex'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="vue-route插件"><a href="#vue-route插件" class="headerlink" title="vue-route插件"></a>vue-route插件</h2><p>作为vue中的路由插件</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装</span></span><br><span class="line">npm install vue-router</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="使用-2"><a href="#使用-2" class="headerlink" title="使用"></a>使用</h3><figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span></span><br><span class="line"><span class="hljs-keyword">import</span> VueRouter <span class="hljs-keyword">from</span> <span class="hljs-string">'vue-router'</span></span><br><span class="line"></span><br><span class="line">Vue.use(VueRouter)</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="vue-axios插件"><a href="#vue-axios插件" class="headerlink" title="vue-axios插件"></a>vue-axios插件</h2><h3 id="使用-3"><a href="#使用-3" class="headerlink" title="使用"></a>使用</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h3><p>vue  eslint 限制无法使用console.log调试</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line">Failed to compile.</span><br><span class="line"></span><br><span class="line">./src/components/leftroute.vue</span><br><span class="line">Module <span class="hljs-built_in">Error</span> (<span class="hljs-keyword">from</span> ./node_modules/eslint-loader/index.js):</span><br><span class="line">error: Unexpected <span class="hljs-built_in">console</span> statement (no-<span class="hljs-built_in">console</span>) at src/components/leftroute.vue:<span class="hljs-number">31</span>:<span class="hljs-number">11</span>:</span><br><span class="line">  <span class="hljs-number">29</span> |         <span class="hljs-keyword">this</span>.$axios.get(<span class="hljs-string">'http://localhost:3000/people'</span>)</span><br><span class="line">  <span class="hljs-number">30</span> |         .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>)</span>{</span><br><span class="line">> <span class="hljs-number">31</span> |           <span class="hljs-built_in">console</span>.log(response);</span><br><span class="line">     |           ^</span><br><span class="line">  <span class="hljs-number">32</span> |         })</span><br><span class="line">  <span class="hljs-number">33</span> |         .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>)</span>{</span><br><span class="line">  <span class="hljs-number">34</span> |           <span class="hljs-built_in">console</span>.log(error);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">error: Unexpected <span class="hljs-built_in">console</span> statement (no-<span class="hljs-built_in">console</span>) at src/components/leftroute.vue:<span class="hljs-number">34</span>:<span class="hljs-number">11</span>:</span><br><span class="line">  <span class="hljs-number">32</span> |         })</span><br><span class="line">  <span class="hljs-number">33</span> |         .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>)</span>{</span><br><span class="line">> <span class="hljs-number">34</span> |           <span class="hljs-built_in">console</span>.log(error);</span><br><span class="line">     |           ^</span><br><span class="line">  <span class="hljs-number">35</span> |         });</span><br><span class="line">  <span class="hljs-number">36</span> |         }</span><br><span class="line">  <span class="hljs-number">37</span> |       }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-number">2</span> errors found.</span><br></pre></td></tr></tbody></table></figure>
+<p>解决方法 加入 </p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-string">"no-console"</span> : [<span class="hljs-string">"false"</span>]</span><br></pre></td></tr></tbody></table></figure>
+<p>或者把 node_modules/lib/rules/no-console.js 中的true改成fasle<br><a href="https://blog.csdn.net/weixin_42476786/article/details/85132793" target="_blank" rel="noopener">https://blog.csdn.net/weixin_42476786/article/details/85132793</a><br><a href="https://blog.csdn.net/qq_40637612/article/details/8760788" target="_blank" rel="noopener">https://blog.csdn.net/qq_40637612/article/details/8760788</a></p>
+<h2 id="mock-js-数据模拟"><a href="#mock-js-数据模拟" class="headerlink" title="mock.js 数据模拟"></a>mock.js 数据模拟</h2><p>在开发过程中，有很多的ajax请求，前后端分离开发你肯定遇到这样的问题，后台给你的接口文档，你需要在本地模拟数据返回，可能你也用到过我之前用的蠢方法，就是新建一个test.json文件，放入接口文档中写的返回示例，这么做有个很大的问题是不够灵活，而且还需要切换url，现在学会使用mock.js拦截ajax请求，更加方便的构造你需要的假数据</p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/705ac99d/"><i class="fas fa-angle-double-right"></i>linux脚本</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-16T02:46:04.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-16</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    几秒 读完 (大约 40 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>建议在sed前使用<br>sed -n ‘///p’  查看结果</p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/705ac99d/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/877ac6e6/"><i class="fas fa-angle-double-right"></i>linux-mtr命令</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-15T07:15:47.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-15</time>
                 
                 
                 <div class="level-item">
@@ -164,7 +353,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    4 分钟 读完 (大约 568 个字)
+                    5 分钟 读完 (大约 804 个字)
                 </span>
                 
                 
@@ -172,7 +361,7 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h2 id="linux常用命令"><a href="#linux常用命令" class="headerlink" title="linux常用命令"></a>linux常用命令</h2><p>记录一些经常使用的命令和命令组合</p></body></html>
+            <html><head></head><body><p>MTR是Linux平台上一款非常好用的网络诊断工具，集成了traceroute、ping、nslookup的功能，用于诊断网络状态非常有用。下面请看简单介绍。<br>一旦你运行mtr ，它将探测本地系统和你指定的远程主机之间的网络连接。 它首先建立主机之间的每个网络跳跃点（网桥，路由器和网关等）的地址，然后ping每个跳跃点（发送一个序列ICMP ECHO请求）以确定到每台机器的链路的质量。</p></body></html>
         </div>
         
         
@@ -184,7 +373,7 @@
             </div>
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/fe4ef317/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                <a class="button is-size-7 is-light" href="/posts/877ac6e6/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
                 </div>
             </div>
         </div>
@@ -206,18 +395,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/bc3af3e9/"><i class="fas fa-angle-double-right"></i>linux故障问题及解决方案</a>
+                <a class="has-link-black-ter" href="/posts/1d7a61af/"><i class="fas fa-angle-double-right"></i>linux初始化</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-09T04:23:01.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-09</time>
+                <time class="level-item has-text-grey" datetime="2020-01-15T02:30:41.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-15</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">故障问题</a>
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
                 </div>
                 
                 
@@ -225,7 +414,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    3 分钟 读完 (大约 440 个字)
+                    19 分钟 读完 (大约 2845 个字)
                 </span>
                 
                 
@@ -233,205 +422,105 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="linux故障问题及解决方案"><a href="#linux故障问题及解决方案" class="headerlink" title="linux故障问题及解决方案"></a>linux故障问题及解决方案</h1><p>linux系统使用过程中 会遇到很多的故障和报错，与之对应的是一些快速的解决方案<br>这里记录一下</p></body></html>
+            <html><head></head><body><a id="more"></a>
+
+
+<h2 id="初始化脚本"><a href="#初始化脚本" class="headerlink" title="初始化脚本"></a>初始化脚本</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># ---> 脚本初始化</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">export</span> LC_ALL=en_US.utf8 </span><br><span class="line"><span class="hljs-comment"># 全局设置为en_US.utf8,为了防止出现乱码</span></span><br><span class="line"><span class="hljs-built_in">echo</span> -e <span class="hljs-string">'nameserver 192.168.147.20\nnameserver 192.168.21.20\nnameserver 114.114.114.114'</span> > /etc/resolv.conf</span><br><span class="line"><span class="hljs-comment"># 写入DNS到/etc/resolv.conf 保证能ping通外网</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># ---> 设置变量</span></span><br><span class="line"></span><br><span class="line">KERNEL=<span class="hljs-string">"kernel-ml"</span></span><br><span class="line"><span class="hljs-comment"># 设置KERNEL变量，一开始为无 ，reload后为无</span></span><br><span class="line">HOST=<span class="hljs-string">"DCK-ZJ-SAD-xxx"</span></span><br><span class="line"><span class="hljs-comment"># 设置HOST变量</span></span><br><span class="line">ZONE=<span class="hljs-string">"Asia/Shanghai"</span></span><br><span class="line"><span class="hljs-comment"># 设置时区变量</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># ---> 直接设置</span></span><br><span class="line"></span><br><span class="line">hostnamectl --static <span class="hljs-built_in">set</span>-hostname <span class="hljs-variable">$HOST</span></span><br><span class="line"><span class="hljs-comment"># 修改主机名  也可以直接修改</span></span><br><span class="line"><span class="hljs-comment"># echo "DCK-ZJ-SAD-xxx" > /etc/hostname</span></span><br><span class="line"></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-timezone <span class="hljs-variable">$ZONE</span></span><br><span class="line"><span class="hljs-comment"># 设置本地时间</span></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-ntp 0</span><br><span class="line"><span class="hljs-comment"># 关闭ntp同步</span></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-local-rtc 0</span><br><span class="line"><span class="hljs-comment"># 设置硬件时钟为UTC </span></span><br><span class="line"></span><br><span class="line">setenforce 0   </span><br><span class="line"><span class="hljs-comment"># 暂时取消selinux 高安全模式</span></span><br><span class="line">sed -r -i  <span class="hljs-string">'/^SELINUX=/s^=.*^=disabled^g'</span> /etc/selinux/config</span><br><span class="line"><span class="hljs-comment"># 永久取消selinux</span></span><br><span class="line">sed -r -i <span class="hljs-string">'/^[^root]/s:/bin/bash:/sbin/nologin:g'</span> /etc/passwd</span><br><span class="line"><span class="hljs-comment"># -r 支持正则</span></span><br><span class="line"><span class="hljs-comment"># -i 直接修改文件</span></span><br><span class="line"><span class="hljs-comment"># 匹配所有不是root开头的行 将后面的/bin/bash 修改成/sbin/nologin 收回所有除root用户以外的管理者登陆权限</span></span><br><span class="line"><span class="hljs-comment"># /^[^root]/ 取反，不是root的行</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sed -r -i <span class="hljs-string">'/#Port 22/s^.*^Port 65422^g;/^PasswordAuthentication/s^yes^no^g'</span> /etc/ssh/sshd_config</span><br><span class="line"><span class="hljs-comment">#[root@localhost ~]# sed -r -n '/#Port 22/s^.*^Port 65422^p;/^PasswordAuthentication/s^yes^no^p' /etc/ssh/sshd_config</span></span><br><span class="line"><span class="hljs-comment">#Port 65422</span></span><br><span class="line"><span class="hljs-comment">#PasswordAuthentication no</span></span><br><span class="line"><span class="hljs-comment"># 将登陆端口22 改成65422</span></span><br><span class="line"><span class="hljs-comment"># 将密码验证从yes改成no</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># --------> ??????????????</span></span><br><span class="line">sed -r -i -e <span class="hljs-string">'/DefaultLimitCORE/s^.*^DefaultLimitCORE=infinity^g'</span> -e <span class="hljs-string">'/DefaultLimitNOFILE/s^.*^DefaultLimitNOFILE=100000^g'</span> -e <span class="hljs-string">'/DefaultLimitNPROC/s^.*^DefaultLimitNPROC=100000^g'</span> /etc/systemd/system.conf </span><br><span class="line"><span class="hljs-comment">#[root@localhost ~]# sed -r -n  -e '/DefaultLimitCORE/s^.*^DefaultLimitCORE=infinity^p' -e '/DefaultLimitNOFILE/s^.*^DefaultLimitNOFILE=100000^p' -e '/DefaultLimitNPROC/s^.*^DefaultLimitNPROC=100000^p' /etc/systemd/system.conf</span></span><br><span class="line"><span class="hljs-comment">#DefaultLimitCORE=infinity</span></span><br><span class="line"><span class="hljs-comment">#DefaultLimitNOFILE=100000</span></span><br><span class="line"><span class="hljs-comment">#DefaultLimitNPROC=100000</span></span><br><span class="line"><span class="hljs-comment"># -e 多点编辑</span></span><br><span class="line"><span class="hljs-comment"># 好像也可以写成 </span></span><br><span class="line"><span class="hljs-comment"># sed -r -i 'xxxx:g;xxx:g;xx:g‘</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># /etc/systemd/system.conf 有啥用</span></span><br><span class="line"><span class="hljs-comment"># 为什么要这样设置</span></span><br><span class="line"><span class="hljs-comment"># 适当放大系统里的资源限制配额</span></span><br><span class="line"><span class="hljs-comment"># 还是不懂？</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sed -r -i <span class="hljs-string">'s@weekly@daily@g;s@^rotate.*@rotate 7@g;s@^#compress.*@compress@g'</span> /etc/logrotate.conf</span><br><span class="line"><span class="hljs-comment">#root@localhost ~]# sed -r -n 's@weekly@daily@p;s@^rotate.*@rotate 7@p;s@^#compress.*@compress@p ' /etc/logrotate.conf</span></span><br><span class="line"><span class="hljs-comment"># rotate log files daily</span></span><br><span class="line"><span class="hljs-comment">#daily</span></span><br><span class="line"><span class="hljs-comment">#rotate 7</span></span><br><span class="line"><span class="hljs-comment">#compress</span></span><br><span class="line"><span class="hljs-comment">#将logrotate日志系统设置为  每天执行  保留7天日志  日志进行压缩 等功能开启</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># ----------------> ??????????????????</span></span><br><span class="line">sed -r -i -e <span class="hljs-string">'/Compress=/s@.*@Compress=yes@g; /SystemMaxUse=/s@.*@SystemMaxUse=4G@g; '</span> -e <span class="hljs-string">'/SystemMaxFileSize=/s@.*@SystemMaxFileSize=256M@g; /MaxRetentionSec=/s@.*@MaxRetentionSec=2week@g'</span> /etc/systemd/journald.conf</span><br><span class="line"><span class="hljs-comment">#[root@localhost ~]# sed -r -n -e '/Compress=/s@.*@Compress=yes@p; /SystemMaxUse=/s@.*@SystemMaxUse=4G@p; ' -e '/SystemMaxFileSize=/s@.*@SystemMaxFileSize=256M@p; /MaxRetentionSec=/s@.*@MaxRetentionSec=2week@p' /etc/systemd/journald.conf</span></span><br><span class="line"><span class="hljs-comment">#Compress=yes</span></span><br><span class="line"><span class="hljs-comment">#SystemMaxUse=4G</span></span><br><span class="line"><span class="hljs-comment">#SystemMaxFileSize=256M</span></span><br><span class="line"><span class="hljs-comment">#MaxRetentionSec=2week</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># /etc/systemd/journald.conf 有啥用</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">localectl <span class="hljs-built_in">set</span>-locale LANG=en_US.utf8</span><br><span class="line"><span class="hljs-comment"># 声明语言环境，zh_CN.utf8 中文请款下可能会出现各种乱码</span></span><br><span class="line">cat > /etc/locale.conf <<EOF</span><br><span class="line">LANG=en_US.utf8</span><br><span class="line">LC_CTYPE=en_US.utf8</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cat > /etc/security/limits.d/20-nproc.conf  <<EOF</span><br><span class="line">*          soft    nproc    10240</span><br><span class="line">root       soft    proc     unlimited</span><br><span class="line">EOF</span><br><span class="line"><span class="hljs-comment"># 限制最大进程数和最大文件打开数</span></span><br><span class="line"><span class="hljs-comment"># 这个文件是干嘛的。。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cat > /etc/cron.d/upyun <<EOF</span><br><span class="line">CRON_TZ=<span class="hljs-variable">$ZONE</span></span><br><span class="line">0 * * * * root (/usr/sbin/ntpdate -o3 192.168.147.20 211.115.194.21 133.100.11.8 142.3.100.15)</span><br><span class="line">EOF</span><br><span class="line"><span class="hljs-comment"># 开机启动时加入时间同步，保证系统时间正确</span></span><br><span class="line"><span class="hljs-comment"># -o 指定version</span></span><br><span class="line"></span><br><span class="line">yum install -y tree ntpdate telnet bc nc net-tools wget lsof rsync bash-completion iptables-services firewalld sysstat <span class="hljs-built_in">bind</span>-utils python-setuptools yum-utils epel-release smartmontools</span><br><span class="line"></span><br><span class="line">rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org</span><br><span class="line">rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm</span><br><span class="line">rpm -Uvh http://download-ib01.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line">yum makecache fast</span><br><span class="line">yum --enablerepo=elrepo-kernel -y install docker-ce</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 各种安装</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sed -r -i <span class="hljs-string">'s/biosdevname=0//g;s/net.ifnames=0//g'</span> /etc/sysconfig/grub                                                                       </span><br><span class="line">sed -r -i <span class="hljs-string">'s/biosdevname=0//g;s/net.ifnames=0//g'</span> /etc/default/grub</span><br><span class="line">$(ip link|grep -iq <span class="hljs-string">"eth[0-9]\{1,3\}:.*up"</span>) && sed -r -i <span class="hljs-string">'/GRUB_CMDLINE_LINUX/s^(.*)="(.*)"$^\1="\2 biosdevname=0 net.ifnames=0"^g'</span> /etc/sysconfig/grub</span><br><span class="line">$(ip link|grep -iq <span class="hljs-string">"eth[0-9]\{1,3\}:.*up"</span>) && sed -r -i <span class="hljs-string">'/GRUB_CMDLINE_LINUX/s^(.*)="(.*)"$^\1="\2 biosdevname=0 net.ifnames=0"^g'</span> /etc/default/grub</span><br><span class="line">ntpdate -o3 192.168.147.20 211.115.194.21 133.100.11.8 142.3.100.15</span><br><span class="line"></span><br><span class="line">sed -r -i <span class="hljs-string">'$a /usr/sbin/ntpdate -u -o3 192.168.147.20 ntp.aliyun.com 211.115.194.21'</span> /etc/rc.d/rc.local    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ssh-keygen -t rsa -b 4096 -P <span class="hljs-string">""</span> -f ~/.ssh/id_rsa</span><br><span class="line"><span class="hljs-comment"># 生成key</span></span><br><span class="line">curl -X GET -u shaohy:Geminis987 -o ~/.ssh/authorized_keys http://devops.upyun.com:88/authorized_keys</span><br><span class="line"><span class="hljs-comment"># 下载远端key</span></span><br><span class="line">chmod 0400 ~/.ssh/*</span><br><span class="line"><span class="hljs-comment"># 修改权限</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> set_irq.sh set_net_smp_affinity.sh set_rps.sh;<span class="hljs-keyword">do</span></span><br><span class="line">        curl -X GET -u shaohy:Geminis987 -o /usr/<span class="hljs-built_in">local</span>/sbin/<span class="hljs-variable">$file</span> http://devops.upyun.com:88/<span class="hljs-variable">$file</span></span><br><span class="line">        chmod +x /usr/<span class="hljs-built_in">local</span>/sbin/<span class="hljs-variable">$file</span></span><br><span class="line">        sed -r -i <span class="hljs-string">"/<span class="hljs-variable">$file</span>/d"</span> /etc/rc.d/rc.local</span><br><span class="line">        <span class="hljs-built_in">echo</span> <span class="hljs-string">"/usr/local/sbin/<span class="hljs-variable">$file</span>"</span> >> /etc/rc.d/rc.local</span><br><span class="line"><span class="hljs-keyword">done</span>    </span><br><span class="line">chmod +x /etc/rc.d/rc.local</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># set.irq.sh set_net_smp_affinity.sh set_rps.sh 这三个在那里？</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> [ ! -z <span class="hljs-variable">$KERNEL</span> ];<span class="hljs-keyword">then</span></span><br><span class="line">    yum --enablerepo=elrepo-kernel -y install <span class="hljs-variable">$KERNEL</span></span><br><span class="line">    Version=`yum info <span class="hljs-variable">$KERNEL</span>|awk -F: <span class="hljs-string">'/Version/{print $2}'</span>`</span><br><span class="line">    Menu=`sed -r -n <span class="hljs-string">"s/^menuentry '(.*)' --class.*/\1/p"</span> /boot/grub2/grub.cfg|grep <span class="hljs-variable">$Version</span>`                                         </span><br><span class="line">    grub2-set-default <span class="hljs-string">"<span class="hljs-variable">$Menu</span>"</span></span><br><span class="line">    grub2-mkconfig -o /boot/grub2/grub.cfg</span><br><span class="line"><span class="hljs-keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#systemctl unmask NetworkManager</span></span><br><span class="line"><span class="hljs-comment">#systemctl enable NetworkManager</span></span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl <span class="hljs-built_in">disable</span> firewalld postfix irqbalance tuned rpcbind.target</span><br><span class="line">systemctl <span class="hljs-built_in">enable</span> auditd</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="安装必要的库"><a href="#安装必要的库" class="headerlink" title="安装必要的库"></a>安装必要的库</h2><ul>
+<li>tree<br>目录树</li>
+<li>ntpdate<br>ntp时间同步工具 </li>
+<li>telnet </li>
+<li>bc<br>科学计算器</li>
+<li>nc<br>网络工具</li>
+<li>net-tools<br>网络工具</li>
+<li>wget </li>
+<li>lsof </li>
+<li>rsync </li>
+<li>bash-completion </li>
+<li>iptables-services </li>
+<li>firewalld </li>
+<li>sysstat </li>
+<li>bind-utils </li>
+<li>python-setuptools </li>
+<li>yum-utils </li>
+<li>epel-release s</li>
+<li>martmontools</li>
+</ul>
+<h2 id="linux区域设置-locale"><a href="#linux区域设置-locale" class="headerlink" title="linux区域设置 locale"></a>linux区域设置 locale</h2><p>locale在linux中用来表示区域之间的差别，它根据文化传统等各个方面分成12个大类</p>
+<ul>
+<li>语言符号及其分类(LC_CTYPE) </li>
+<li>数字(LC_NUMERIC) </li>
+<li>比较和排序习惯(LC_COLLATE) </li>
+<li>时间显示格式(LC_TIME) </li>
+<li>货币单位(LC_MONETARY) </li>
+<li>信息主要是提示信息,错误信息,状态信息,标题,标签,按钮和菜单等(LC_MESSAGES) </li>
+<li>姓名书写方式(LC_NAME) </li>
+<li>地址书写方式(LC_ADDRESS) </li>
+<li>电话号码书写方式(LC_TELEPHONE) </li>
+<li>度量衡表达方式 (LC_MEASUREMENT) </li>
+<li>默认纸张尺寸大小(LC_PAPER) </li>
+<li>对locale自身包含信息的概述(LC_IDENTIFICATION)<br>但如果没有太多具体的要求，其实可以不用弄的那么的详细<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看配置项,其中@后边的是修正项</span></span><br><span class="line">ls /usr/share/i18n/locales</span><br><span class="line"><span class="hljs-comment"># 查看当前Linux语言环境</span></span><br><span class="line">locale</span><br><span class="line"><span class="hljs-comment"># 设置locale  LC_ALL > LC_* > LANG</span></span><br><span class="line"><span class="hljs-built_in">export</span> LC_ALL=zh_CN.utf8 </span><br><span class="line"><span class="hljs-comment"># 重置</span></span><br><span class="line"><span class="hljs-built_in">export</span> LC_ALL=C</span><br></pre></td></tr></tbody></table></figure>
+
+
+</li>
+</ul>
+<h2 id="linux时钟设置-timedatectl"><a href="#linux时钟设置-timedatectl" class="headerlink" title="linux时钟设置 timedatectl"></a>linux时钟设置 timedatectl</h2><p>timedatectl命令可以查询和更改系统时钟和设置，你可以使用此命令来设置或更改当前的日期，时间和时区，或实现与远程NTP服务器的自动系统时钟同步。</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看系统当前时间和日期</span></span><br><span class="line">root:~<span class="hljs-comment"># timedatectl status</span></span><br><span class="line">      Local time: Wed 2020-01-15 19:42:13 CST</span><br><span class="line">  Universal time: Wed 2020-01-15 11:42:13 UTC</span><br><span class="line">        RTC time: Wed 2020-01-15 11:41:51</span><br><span class="line">       Time zone: Asia/Shanghai (CST, +0800)</span><br><span class="line">     NTP enabled: n/a</span><br><span class="line">NTP synchronized: no</span><br><span class="line"> RTC <span class="hljs-keyword">in</span> <span class="hljs-built_in">local</span> TZ: no</span><br><span class="line">      DST active: n/a</span><br><span class="line"><span class="hljs-comment"># 查看Time</span></span><br><span class="line">root:~<span class="hljs-comment"># timedatectl | grep Time --color</span></span><br><span class="line">       Time zone: Asia/Shanghai (CST, +0800)</span><br><span class="line"><span class="hljs-comment"># 查看所有可用时区</span></span><br><span class="line">timedatectl list-timezones</span><br><span class="line"><span class="hljs-comment"># 设置时区</span></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-timezone <span class="hljs-string">"Asia/Shanghai"</span></span><br><span class="line"><span class="hljs-comment"># 协调世界时</span></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-timezone UTC</span><br><span class="line"><span class="hljs-comment"># 设置时间</span></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-time 15:38:30</span><br><span class="line"><span class="hljs-comment"># 设置硬件时钟为本地时间</span></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-local-rtc 1</span><br><span class="line"><span class="hljs-comment"># 设置硬件时钟为世界时(UTC)</span></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-local-rtc 0</span><br><span class="line"><span class="hljs-comment"># 查看硬件时钟</span></span><br><span class="line">timedatectl | grep <span class="hljs-built_in">local</span> --color</span><br></pre></td></tr></tbody></table></figure>
+
+<p><font color="red">将Linux时钟同步到远程NTP服务器</font><br>NTP即Network Time Protocol（网络时间协议)</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 自己当NTP服务器</span></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-ntp <span class="hljs-literal">true</span></span><br><span class="line"><span class="hljs-comment"># 禁用</span></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-ntp <span class="hljs-literal">false</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="linux-网络时间协议-Network-Time-Protocol-NTP"><a href="#linux-网络时间协议-Network-Time-Protocol-NTP" class="headerlink" title="linux 网络时间协议(Network Time Protocol)  NTP"></a>linux 网络时间协议(Network Time Protocol)  NTP</h2><p>NTP服务器用来同步时间 ，搭建一台本地的NTP服务器</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装</span></span><br><span class="line">yum install -y ntp</span><br><span class="line"><span class="hljs-comment"># 启动ntp服务</span></span><br><span class="line">systemctl start ntpd</span><br><span class="line"><span class="hljs-comment"># 设置开机启动</span></span><br><span class="line">systemctl <span class="hljs-built_in">enable</span> ntpd</span><br><span class="line"><span class="hljs-comment"># 查看同步情况</span></span><br><span class="line">/usr/sbin/ntpq -p</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="ntp配置"><a href="#ntp配置" class="headerlink" title="ntp配置"></a>ntp配置</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看安装ntp工具会产生哪些文件 </span></span><br><span class="line">root:~<span class="hljs-comment"># rpm -ql ntp</span></span><br><span class="line">/etc/dhcp/dhclient.d    </span><br><span class="line">/etc/dhcp/dhclient.d/ntp.sh</span><br><span class="line">/etc/ntp.conf   <span class="hljs-comment"># ntp配置文件</span></span><br><span class="line">/etc/ntp/crypto</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 配置文件内容</span></span><br><span class="line">driftfile /var/lib/ntp/drift  <span class="hljs-comment">#系统时间与BIOS时间的偏差记录</span></span><br><span class="line">restrict default nomodify notrap nopeer noquery    <span class="hljs-comment"># 控制相关权限</span></span><br><span class="line"><span class="hljs-comment"># default 指带所有ip</span></span><br><span class="line"><span class="hljs-comment"># ignore  ：关闭所有的 NTP 联机服务</span></span><br><span class="line"><span class="hljs-comment"># nomodify：客户端不能更改服务端的时间参数，但是客户端可以通过服务端进行网络校时。</span></span><br><span class="line"><span class="hljs-comment"># notrust ：客户端除非通过认证，否则该客户端来源将被视为不信任子网</span></span><br><span class="line"><span class="hljs-comment"># noquery ：不提供客户端的时间查询：用户端不能使用ntpq，ntpc等命令来查询ntp服务器</span></span><br><span class="line"><span class="hljs-comment"># notrap ：不提供trap远端登陆：拒绝为匹配的主机提供模式 6 控制消息陷阱服务。陷阱服务是 ntpdq 控制消息协议的子系统，用于远程事件日志记录程序。</span></span><br><span class="line"><span class="hljs-comment"># nopeer ：用于阻止主机尝试与服务器对等，并允许欺诈性服务器控制时钟</span></span><br><span class="line"><span class="hljs-comment"># kod ： 访问违规时发送 KoD 包。</span></span><br><span class="line"><span class="hljs-comment"># restrict -6 表示IPV6地址的权限设置</span></span><br><span class="line"></span><br><span class="line">restrict 127.0.0.1</span><br><span class="line">restrict ::1  <span class="hljs-comment"># 确保localhost（这个常用的IP地址用来指Linux服务器本身）有足够权限</span></span><br><span class="line"></span><br><span class="line">server 192.168.20.1 perfer <span class="hljs-comment"># 设定主机来源，perfer定义最优先</span></span><br><span class="line">restrict 192.168.20.1 nomodify notrap noquery <span class="hljs-comment"># 允许上有 时间服务器主动修改本机</span></span><br><span class="line"><span class="hljs-comment">#server 0.centos.pool.ntp.org iburst  </span></span><br><span class="line"><span class="hljs-comment">#erver 1.centos.pool.ntp.org iburst</span></span><br><span class="line"><span class="hljs-comment">#server 2.centos.pool.ntp.org iburst</span></span><br><span class="line"><span class="hljs-comment">#server 3.centos.pool.ntp.org iburst</span></span><br><span class="line">includefile /etc/ntp/crypto/pw</span><br><span class="line">keys /etc/ntp/keys</span><br><span class="line"><span class="hljs-built_in">disable</span> monitor</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># NTP服务需要使用到UDP端口号123</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 初次同步</span></span><br><span class="line">ntpdate -u 192.168.20.1</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="linux科学计算器-bc"><a href="#linux科学计算器-bc" class="headerlink" title="linux科学计算器 bc"></a>linux科学计算器 bc</h2><p>科学计算器</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装</span></span><br><span class="line">yum install bc -y</span><br><span class="line"><span class="hljs-comment"># 运行计算机</span></span><br><span class="line">bc -q </span><br><span class="line"><span class="hljs-comment"># 借助管道</span></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"1+2"</span> | bc</span><br><span class="line">ret=$(<span class="hljs-built_in">echo</span> <span class="hljs-string">"4+9"</span> | bc) && <span class="hljs-built_in">echo</span> <span class="hljs-variable">$ret</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="linux网络工具-NetCat"><a href="#linux网络工具-NetCat" class="headerlink" title="linux网络工具  NetCat"></a>linux网络工具  NetCat</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装</span></span><br><span class="line">yum install nc -y</span><br><span class="line"><span class="hljs-comment"># 使用</span></span><br><span class="line">-l Port <span class="hljs-comment"># 使用监听端口，等待端口活动</span></span><br><span class="line">-o<输出文件> <span class="hljs-comment"># 指定文件名称，把往来传输的数据以16进制字码倾倒成该文件保存</span></span><br><span class="line">-p<通信端口> <span class="hljs-comment"># 设置本地主机使用的通信端口。</span></span><br><span class="line">-r <span class="hljs-comment"># 指定本地与远端主机的通信端口。</span></span><br><span class="line">-s<来源地址> <span class="hljs-comment">#设置本地主机送出数据包的IP地址</span></span><br><span class="line">-u <span class="hljs-comment">#使用UDP传输协议</span></span><br><span class="line">-v <span class="hljs-comment">#显示指令执行过程</span></span><br><span class="line">-w <span class="hljs-comment"># 设置等待连线的时间</span></span><br><span class="line">-z <span class="hljs-comment"># 使用0输入/输出模式，只在扫描通信端口时使用</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>传文件,注意关闭防火墙或者关闭端口</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 发送端 10.0.5.197</span></span><br><span class="line">nc 10.0.5.233 8888  < xx.py</span><br><span class="line"><span class="hljs-comment"># 接收端 10.0.5.233</span></span><br><span class="line">nc -l 8888 > yy.py</span><br></pre></td></tr></tbody></table></figure>
+<p>端口扫描</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">nc -v -w 1 10.0.5.233 -z 20-30</span><br></pre></td></tr></tbody></table></figure>
+<p>聊天</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 主机端</span></span><br><span class="line">nc 10.0.5.233 8888</span><br><span class="line"><span class="hljs-comment"># 接收端</span></span><br><span class="line">nc -l 8888</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="etc-logrotate-滚动日志"><a href="#etc-logrotate-滚动日志" class="headerlink" title="/etc/logrotate  滚动日志"></a>/etc/logrotate  滚动日志</h2><p>Linux系统默认安装logrotate工具，它默认的配置文件在：<br>/etc/logrotate.conf<br>/etc/logrotate.d/<br>logrotate.conf 是主要的配置文件，logrotate.d 是一个目录，该目录里的所有文件都会被主动的读入/etc/logrotate.conf中执行。</p>
+<h3 id="查看安装会产生哪些文件"><a href="#查看安装会产生哪些文件" class="headerlink" title="查看安装会产生哪些文件"></a>查看安装会产生哪些文件</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@DCK-ZJ-SAD-035 logrotate.d]<span class="hljs-comment"># rpm -ql logrotate</span></span><br><span class="line">/etc/cron.daily/logrotate</span><br><span class="line">/etc/logrotate.conf  <span class="hljs-comment"># main</span></span><br><span class="line">/etc/logrotate.d  <span class="hljs-comment"># main</span></span><br><span class="line">/etc/rwtab.d/logrotate</span><br><span class="line">/usr/sbin/logrotate</span><br><span class="line">/usr/share/doc/logrotate-3.8.6</span><br><span class="line">/usr/share/doc/logrotate-3.8.6/CHANGES</span><br><span class="line">/usr/share/doc/logrotate-3.8.6/COPYING</span><br><span class="line">/usr/share/man/man5/logrotate.conf.5.gz</span><br><span class="line">/usr/share/man/man8/logrotate.8.gz</span><br><span class="line">/var/lib/logrotate</span><br><span class="line">/var/lib/logrotate/logrotate.status</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="定时轮循机制"><a href="#定时轮循机制" class="headerlink" title="定时轮循机制"></a>定时轮循机制</h3><p>Logrotate是基于CRON来运行的，其脚本是/etc/cron.daily/logrotate，日志轮转是系统自动完成的。</p>
+<p>logrotate这个任务默认放在cron的每日定时任务cron.daily下面 /etc/cron.daily/logrotate<br>/etc/目录下面还有cron.weekly/, cron.hourly/, cron.monthly/ 的目录都是可以放定时任务的</p>
+<p><strong>日志轮询周期根据时间分配有4种</strong><br>daily、weekly 、monthly、yearly<br>默认daily</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">cat /etc/cron.daily/logrotate </span><br><span class="line"><span class="hljs-meta">#!/bin/sh</span></span><br><span class="line">/usr/sbin/logrotate -s /var/lib/logrotate/logrotate.status /etc/logrotate.conf</span><br><span class="line">EXITVALUE=$?</span><br><span class="line"><span class="hljs-keyword">if</span> [ <span class="hljs-variable">$EXITVALUE</span> != 0 ]; <span class="hljs-keyword">then</span></span><br><span class="line">    /usr/bin/logger -t logrotate <span class="hljs-string">"ALERT exited abnormally with [<span class="hljs-variable">$EXITVALUE</span>]"</span></span><br><span class="line"><span class="hljs-keyword">fi</span></span><br><span class="line"><span class="hljs-built_in">exit</span> 0</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="logrotate配置"><a href="#logrotate配置" class="headerlink" title="logrotate配置"></a>logrotate配置</h3><p>全局配置 /etc/logrotate.conf<br>对应不同程序的配置 /etc/logrotate.d/</p>
+<p><font color="red">全局配置</font></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 轮询时间,可以是weekly,monthly,yearly</span></span><br><span class="line">daily</span><br><span class="line"><span class="hljs-comment"># 日志备份保存时间 7天,超过则删除</span></span><br><span class="line">rotate 7</span><br><span class="line">create   <span class="hljs-comment"># 创建文件</span></span><br><span class="line">dateext  <span class="hljs-comment"># 日志文件切割后添加日期后缀</span></span><br><span class="line">compress <span class="hljs-comment"># 切割后压缩</span></span><br><span class="line">include /etc/logrotate.d  <span class="hljs-comment"># 指向文件夹</span></span><br><span class="line">/var/<span class="hljs-built_in">log</span>/wtmp {</span><br><span class="line">    monthly</span><br><span class="line">    create 0664 root utmp</span><br><span class="line">        minsize 1M</span><br><span class="line">    rotate 1</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">/var/<span class="hljs-built_in">log</span>/btmp {</span><br><span class="line">    missingok</span><br><span class="line">    monthly</span><br><span class="line">    create 0600 root utmp</span><br><span class="line">    rotate 1</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><font color="red">部分应用程序配置，以nginx为例子</font></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 首先需要指定存放nginx日志文件的地址</span></span><br><span class="line">/usr/<span class="hljs-built_in">local</span>/nginx/logs/access.log  {</span><br><span class="line">daily</span><br><span class="line">rotate 7</span><br><span class="line">missingok  <span class="hljs-comment"># 在日志轮循期间，任何错误将被忽略，例如“文件无法找到”之类的错</span></span><br><span class="line">dateext</span><br><span class="line">compress</span><br><span class="line"><span class="hljs-comment"># npcompress # 如果你不希望对日志文件进行压缩，设置这个参数即可</span></span><br><span class="line">delaycompress <span class="hljs-comment"># 总是与compress选项一起用，delaycompress选项指示logrotate不要将最近的归档压缩，压缩将在下一次轮循周期进行</span></span><br><span class="line">notifempty <span class="hljs-comment"># 如果日志为空，轮询不进行</span></span><br><span class="line">sharedscripts  <span class="hljs-comment">#表示postrotate脚本在压缩了日志之后只执行一次</span></span><br><span class="line">postrotate</span><br><span class="line">    [ -e /usr/<span class="hljs-built_in">local</span>/nginx/logs/nginx.pid ] && <span class="hljs-built_in">kill</span> -USR1 `cat /usr/<span class="hljs-built_in">local</span>/nginx/logs/nginx.pid`</span><br><span class="line">endscript</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment"># create 644 www root  # 以指定的权限创建全新的日志文件，同时logrotate也会重命名原始日志文件。</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 执行程序</span></span><br><span class="line">logrotate /etc/logrotate.d/nginx</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="手动使用"><a href="#手动使用" class="headerlink" title="手动使用"></a>手动使用</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 如果等不及cron自动执行日志轮转，想手动强制切割日志，需要加-f参数</span></span><br><span class="line">/usr/sbin/logrotate -f /etc/logrotate.d/nginx</span><br><span class="line"><span class="hljs-comment"># 正式执行前最好通过Debug选项来验证一下（-d参数）</span></span><br><span class="line">/usr/sbin/logrotate -d -f /etc/logrotate.d/nginx</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="logrotate命令格式"><a href="#logrotate命令格式" class="headerlink" title="logrotate命令格式"></a>logrotate命令格式</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">logrotate [OPTION...] <configfile></span><br><span class="line">-d, --debug ：debug模式，测试配置文件是否有错误，不真实执行。</span><br><span class="line">-f, --force ：强制转储文件。</span><br><span class="line">-m, --mail=<span class="hljs-built_in">command</span> ：压缩日志后，发送日志到指定邮箱。</span><br><span class="line">-s, --state=statefile ：使用指定的状态文件。</span><br><span class="line">-v, --verbose ：显示转储过程。</span><br></pre></td></tr></tbody></table></figure>
+<p>默认将日志保存在/var/lib/logrotate.status文件中</p>
+<h3 id="logrotate原理"><a href="#logrotate原理" class="headerlink" title="logrotate原理"></a>logrotate原理</h3><ul>
+<li>create</li>
+<li>copytruncate</li>
+</ul>
+<h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><p>logrotate具体<br><a href="https://wsgzao.github.io/post/logrotate/" target="_blank" rel="noopener">https://wsgzao.github.io/post/logrotate/</a><br>locale具体<br><a href="https://www.cnblogs.com/wn1m/p/10837609.html" target="_blank" rel="noopener">https://www.cnblogs.com/wn1m/p/10837609.html</a></p>
+</body></html>
         </div>
         
         
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/bc3af3e9/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/e47927c/"><i class="fas fa-angle-double-right"></i>vim快捷键</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-09T03:08:30.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-09</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vim/">vim</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    几秒 读完 (大约 109 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h2 id="vim快捷键"><a href="#vim快捷键" class="headerlink" title="vim快捷键"></a>vim快捷键</h2><p>VIM 是 Linux 系统上一款文本编辑器，它是操作 Linux 的一款利器。<br>当前有很多优秀的 IDE 都支持安装 VIM 插件，原因就是使用它便捷，高效，很爽！<br>主要记录了 VIM 的一些常用使用技巧，方便随时查阅学习 。</p></body></html>
-        </div>
-        
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/e47927c/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/cd527bc1/"><i class="fas fa-angle-double-right"></i>linux文件系统2</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-09T03:04:27.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-09</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">文件系统</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    2 分钟 读完 (大约 303 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="linux文件系统2"><a href="#linux文件系统2" class="headerlink" title="linux文件系统2"></a>linux文件系统2</h1><p>linux中有许多常用的文件，各自有各自主要的作用 ，怕忘记，这里做些笔记</p></body></html>
-        </div>
-        
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/cd527bc1/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/82cf9f4/"><i class="fas fa-angle-double-right"></i>ipv6部署</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-09T02:16:11.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-09</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%83%A8%E7%BD%B2/">交换机部署</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    4 分钟 读完 (大约 587 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h2 id="ipv6部署部署案例"><a href="#ipv6部署部署案例" class="headerlink" title="ipv6部署部署案例"></a>ipv6部署部署案例</h2><p>由于ipv4快要用完了，很多交换机需要更换ipv6的地址，这里做一些配置的过程</p></body></html>
-        </div>
-        
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/82cf9f4/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
         
         
     </div>
@@ -467,7 +556,7 @@
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/12/">12</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/14/">14</a></li>
             
         </ul>
     </nav>
@@ -502,7 +591,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        56
+                        68
                     </p>
                 </a>
             </div>
@@ -512,7 +601,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        30
                     </p>
                 </a>
             </div>
@@ -729,7 +818,7 @@
                 <span class="level-item">编程</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">9</span>
+                <span class="level-item tag">21</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">
@@ -761,7 +850,15 @@
                 <span class="level-item">django</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">
+            <span class="level-start">
+                <span class="level-item">jwt</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vim/">
@@ -770,6 +867,14 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vue/">
+            <span class="level-start">
+                <span class="level-item">vue</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">10</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/">
@@ -834,7 +939,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">25</span>
+                    <span class="level-item tag">37</span>
                 </span>
             </a>
         </li>
@@ -865,18 +970,18 @@
         
         <article class="media">
             
-            <a href="/posts/705ac99d/" class="media-left">
+            <a href="/posts/6412f439/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux脚本">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vuejs基础2">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T02:46:04.000Z">2020-01-16</time></div>
-                    <a href="/posts/705ac99d/" class="has-link-black-ter is-size-6">linux脚本</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T03:32:11.000Z">2020-01-22</time></div>
+                    <a href="/posts/6412f439/" class="has-link-black-ter is-size-6">vuejs基础2</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
                     </p>
                 </div>
             </div>
@@ -884,18 +989,18 @@
         
         <article class="media">
             
-            <a href="/posts/877ac6e6/" class="media-left">
+            <a href="/posts/1fd63f28/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-mtr命令">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue组件基础">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T07:15:47.000Z">2020-01-15</time></div>
-                    <a href="/posts/877ac6e6/" class="has-link-black-ter is-size-6">linux-mtr命令</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T03:31:26.000Z">2020-01-22</time></div>
+                    <a href="/posts/1fd63f28/" class="has-link-black-ter is-size-6">vue组件基础</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
                     </p>
                 </div>
             </div>
@@ -903,56 +1008,56 @@
         
         <article class="media">
             
-            <a href="/posts/1d7a61af/" class="media-left">
+            <a href="/posts/4b10b818/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux初始化">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-model">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T02:30:41.000Z">2020-01-15</time></div>
-                    <a href="/posts/1d7a61af/" class="has-link-black-ter is-size-6">linux初始化</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/67b35a0f/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blog_back_new/linux/net/记录">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T09:48:03.265Z">2020-01-14</time></div>
-                    <a href="/posts/67b35a0f/" class="has-link-black-ter is-size-6">blog_back_new/linux/net/记录</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/933b28f1/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-filter">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T03:43:43.000Z">2020-01-14</time></div>
-                    <a href="/posts/933b28f1/" class="has-link-black-ter is-size-6">drf-filter</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-21T02:17:43.000Z">2020-01-21</time></div>
+                    <a href="/posts/4b10b818/" class="has-link-black-ter is-size-6">drf-model</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/403006fc/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="home模块">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T09:31:26.000Z">2020-01-20</time></div>
+                    <a href="/posts/403006fc/" class="has-link-black-ter is-size-6">home模块</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/e8b3a2c2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="jwt原理与实战应用">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T05:07:46.000Z">2020-01-20</time></div>
+                    <a href="/posts/e8b3a2c2/" class="has-link-black-ter is-size-6">jwt原理与实战应用</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">jwt</a>
                     </p>
                 </div>
             </div>
@@ -987,7 +1092,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">25</span>
+                    <span class="level-item tag">37</span>
                 </span>
             </a>
         </li>
@@ -1018,18 +1123,18 @@
         
         <article class="media">
             
-            <a href="/posts/705ac99d/" class="media-left">
+            <a href="/posts/6412f439/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux脚本">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vuejs基础2">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T02:46:04.000Z">2020-01-16</time></div>
-                    <a href="/posts/705ac99d/" class="has-link-black-ter is-size-6">linux脚本</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T03:32:11.000Z">2020-01-22</time></div>
+                    <a href="/posts/6412f439/" class="has-link-black-ter is-size-6">vuejs基础2</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
                     </p>
                 </div>
             </div>
@@ -1037,18 +1142,18 @@
         
         <article class="media">
             
-            <a href="/posts/877ac6e6/" class="media-left">
+            <a href="/posts/1fd63f28/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-mtr命令">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue组件基础">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T07:15:47.000Z">2020-01-15</time></div>
-                    <a href="/posts/877ac6e6/" class="has-link-black-ter is-size-6">linux-mtr命令</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T03:31:26.000Z">2020-01-22</time></div>
+                    <a href="/posts/1fd63f28/" class="has-link-black-ter is-size-6">vue组件基础</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
                     </p>
                 </div>
             </div>
@@ -1056,56 +1161,56 @@
         
         <article class="media">
             
-            <a href="/posts/1d7a61af/" class="media-left">
+            <a href="/posts/4b10b818/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux初始化">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-model">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T02:30:41.000Z">2020-01-15</time></div>
-                    <a href="/posts/1d7a61af/" class="has-link-black-ter is-size-6">linux初始化</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/67b35a0f/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blog_back_new/linux/net/记录">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T09:48:03.265Z">2020-01-14</time></div>
-                    <a href="/posts/67b35a0f/" class="has-link-black-ter is-size-6">blog_back_new/linux/net/记录</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/933b28f1/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-filter">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T03:43:43.000Z">2020-01-14</time></div>
-                    <a href="/posts/933b28f1/" class="has-link-black-ter is-size-6">drf-filter</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-21T02:17:43.000Z">2020-01-21</time></div>
+                    <a href="/posts/4b10b818/" class="has-link-black-ter is-size-6">drf-model</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/403006fc/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="home模块">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T09:31:26.000Z">2020-01-20</time></div>
+                    <a href="/posts/403006fc/" class="has-link-black-ter is-size-6">home模块</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/e8b3a2c2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="jwt原理与实战应用">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T05:07:46.000Z">2020-01-20</time></div>
+                    <a href="/posts/e8b3a2c2/" class="has-link-black-ter is-size-6">jwt原理与实战应用</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">jwt</a>
                     </p>
                 </div>
             </div>

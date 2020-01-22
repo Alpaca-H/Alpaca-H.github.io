@@ -145,18 +145,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/2a24e761/"><i class="fas fa-angle-double-right"></i>extra-net</a>
+                <a class="has-link-black-ter" href="/posts/4dba38f8/"><i class="fas fa-angle-double-right"></i>login模块</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-14T03:16:04.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-14</time>
+                <time class="level-item has-text-grey" datetime="2020-01-19T06:46:12.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-19</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/extra/">extra</a>
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
                 </div>
                 
                 
@@ -164,7 +164,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    几秒 读完 (大约 27 个字)
+                    5 分钟 读完 (大约 818 个字)
                 </span>
                 
                 
@@ -172,22 +172,51 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><p>Supplementary Info</p></body></html>
+            <html><head></head><body><a id="more"></a>
+
+<h2 id="login模块"><a href="#login模块" class="headerlink" title="login模块"></a>login模块</h2><h3 id="登陆验证功能"><a href="#登陆验证功能" class="headerlink" title="登陆验证功能"></a>登陆验证功能</h3><p>element-ui为我们提供了良好的验证功能模块</p>
+<ol>
+<li>在el-form中绑定rules</li>
+<li>编写规则</li>
+<li>对应输入框指定prop传出信息<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><template></span><br><span class="line">  <div id=<span class="hljs-string">"app"</span>></span><br><span class="line">    <div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"login_box"</span>></span><br><span class="line"></span><br><span class="line">      <!--表单登陆页面--></span><br><span class="line">      <div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"login_form"</span>></span><br><span class="line"></span><br><span class="line">        <!-- rules绑定过表单验证规则--></span><br><span class="line"></span><br><span class="line">        <el-form :rules=<span class="hljs-string">"rules"</span>></span><br><span class="line">          <!--用户名，prop传出信息--></span><br><span class="line">          <el-form-item label=<span class="hljs-string">"用户名"</span> prop=<span class="hljs-string">"username"</span>></span><br><span class="line">            <el-input v-model=<span class="hljs-string">"form.username"</span>><span class="hljs-xml"><span class="hljs-tag"></<span class="hljs-name">el-input</span>></span></span></span><br><span class="line">          <<span class="hljs-regexp">/el-form-item></span></span><br><span class="line"><span class="hljs-regexp">          <!--密码--></span></span><br><span class="line"><span class="hljs-regexp">          <el-form-item label="密码" prop="password"></span></span><br><span class="line"><span class="hljs-regexp">            <el-input type="password"</span></span><br><span class="line"><span class="hljs-regexp">                      v-model="form.password"></</span>el-input></span><br><span class="line">          <<span class="hljs-regexp">/el-form-item></span></span><br><span class="line"><span class="hljs-regexp">          <!--按钮--></span></span><br><span class="line"><span class="hljs-regexp">          <el-form-item label=""</span></span><br><span class="line"><span class="hljs-regexp">                        class="btns"></span></span><br><span class="line"><span class="hljs-regexp">            <el-button type="primary">登陆</</span>el-button></span><br><span class="line">            <el-button type=<span class="hljs-string">"info"</span>>重置<<span class="hljs-regexp">/el-button></span></span><br><span class="line"><span class="hljs-regexp">          </</span>el-form-item></span><br><span class="line">        <<span class="hljs-regexp">/el-form></span></span><br><span class="line"><span class="hljs-regexp">      </</span>div></span><br><span class="line">    <<span class="hljs-regexp">/div></span></span><br><span class="line"><span class="hljs-regexp">  </</span>div></span><br><span class="line"><<span class="hljs-regexp">/template></span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp"><script></span></span><br><span class="line"><span class="hljs-regexp">export default {</span></span><br><span class="line"><span class="hljs-regexp">  data() {</span></span><br><span class="line"><span class="hljs-regexp">    return {</span></span><br><span class="line"><span class="hljs-regexp">      form: {</span></span><br><span class="line"><span class="hljs-regexp">        username: "admin",</span></span><br><span class="line"><span class="hljs-regexp">        password: "admin"</span></span><br><span class="line"><span class="hljs-regexp">      },</span></span><br><span class="line"><span class="hljs-regexp">      /</span><span class="hljs-regexp">/ 定义规则</span></span><br><span class="line"><span class="hljs-regexp">      rules: {</span></span><br><span class="line"><span class="hljs-regexp">          username: [</span></span><br><span class="line"><span class="hljs-regexp">            // 空验证和格式验证</span></span><br><span class="line"><span class="hljs-regexp">            { required: true, message: '错误', trigger: 'blur' },</span></span><br><span class="line"><span class="hljs-regexp">            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }</span></span><br><span class="line"><span class="hljs-regexp">          ],</span></span><br><span class="line"><span class="hljs-regexp">          password: [</span></span><br><span class="line"><span class="hljs-regexp">            { required: true, message: '错误', trigger: 'blur' },</span></span><br><span class="line"><span class="hljs-regexp">            { min: 3, max: 5, message: '长度在3到5个字符',trigger: 'blur'}</span></span><br><span class="line"><span class="hljs-regexp">          ],</span></span><br><span class="line"><span class="hljs-regexp">        }</span></span><br><span class="line"><span class="hljs-regexp">    };</span></span><br><span class="line"><span class="hljs-regexp">  }</span></span><br><span class="line"><span class="hljs-regexp">};</span></span><br><span class="line"><span class="hljs-regexp"></</span>script></span><br><span class="line"></span><br><span class="line"><style scoped></span><br><span class="line">#app {</span><br><span class="line">  background-color: #2b4b6b;</span><br><span class="line">  height: <span class="hljs-number">100</span>%;</span><br><span class="line">}</span><br><span class="line">.login_box {</span><br><span class="line">  width: <span class="hljs-number">450</span>px;</span><br><span class="line">  height: <span class="hljs-number">300</span>px;</span><br><span class="line">  background-color: #fff;</span><br><span class="line">  border-radius: <span class="hljs-number">3</span>px;</span><br><span class="line">  position: absolute;</span><br><span class="line">  left: <span class="hljs-number">50</span>%;</span><br><span class="line">  right: <span class="hljs-number">50</span>%;</span><br><span class="line">  top: <span class="hljs-number">50</span>%;</span><br><span class="line">  transform: translate(<span class="hljs-number">-50</span>%, <span class="hljs-number">-50</span>%);</span><br><span class="line">}</span><br><span class="line">.login_form{</span><br><span class="line">  position: absolute;</span><br><span class="line">  bottom: <span class="hljs-number">0</span>;</span><br><span class="line">  width: <span class="hljs-number">100</span>%;</span><br><span class="line">  padding: <span class="hljs-number">0</span> <span class="hljs-number">20</span>px;</span><br><span class="line">  box-sizing: border-box;</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line">.btns {</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: flex-end;</span><br><span class="line">}</span><br><span class="line"><<span class="hljs-regexp">/style></span></span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<h3 id="重置表单-resetFields"><a href="#重置表单-resetFields" class="headerlink" title="重置表单 resetFields"></a>重置表单 resetFields</h3><p>使用ref声明对象名称<br>给标签添加ref</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><el-form :rules=<span class="hljs-string">"rules"</span> ref=<span class="hljs-string">"loginform"</span> :model=<span class="hljs-string">"form"</span>></span><br></pre></td></tr></tbody></table></figure>
+<p>写成方法，传递refname到script中</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><el-button type=<span class="hljs-string">"info"</span> @click=<span class="hljs-string">"resetForms('loginform')"</span>>重置<<span class="hljs-regexp">/el-button></span></span><br></pre></td></tr></tbody></table></figure>
+<p>重置表单</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line">methods: {</span><br><span class="line">    <span class="hljs-comment">//重置form表格</span></span><br><span class="line">    resetForms(loginform) {</span><br><span class="line">      <span class="hljs-keyword">this</span>.$refs[loginform].resetFields();</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="http://img.noback.top/2020-01-19-14-56-50.png" alt="2020-01-19-14-56-50"></p>
+<h3 id="表单预验证-vaildate"><a href="#表单预验证-vaildate" class="headerlink" title="表单预验证 vaildate"></a>表单预验证 vaildate</h3><p>给标签添加ref</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><el-form :rules=<span class="hljs-string">"rules"</span> ref=<span class="hljs-string">"loginform"</span> :model=<span class="hljs-string">"form"</span>></span><br></pre></td></tr></tbody></table></figure>
+<p>写成方法，传递refname到script中</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><el-button type=<span class="hljs-string">"info"</span> @click=<span class="hljs-string">"login('loginform')"</span>>登陆<<span class="hljs-regexp">/el-button></span></span><br></pre></td></tr></tbody></table></figure>
+<p>登陆表单</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line">methods: {</span><br><span class="line">    <span class="hljs-comment">//登陆form表格</span></span><br><span class="line">    login(editForm){</span><br><span class="line">      <span class="hljs-keyword">this</span>.$refs[editForm].validate(<span class="hljs-function"><span class="hljs-params">vaild</span> =></span> {</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(vaild)</span><br><span class="line">      });</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="消息提示message"><a href="#消息提示message" class="headerlink" title="消息提示message"></a>消息提示message</h3><p>局部引用message组件</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">import { Message } from <span class="hljs-string">'element-ui'</span></span><br><span class="line">Vue.prototype.<span class="hljs-variable">$message</span> = Message</span><br></pre></td></tr></tbody></table></figure>
+<p>标签绑定属性</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><el-button type=<span class="hljs-string">"primary"</span></span><br><span class="line">                       @click=<span class="hljs-string">"login('editForm')"</span></span><br><span class="line">                       :plain=<span class="hljs-string">"true"</span>>登陆<<span class="hljs-regexp">/el-button></span></span><br><span class="line"><span class="hljs-regexp">            <el-button type="info"</span></span><br><span class="line"><span class="hljs-regexp">                       @click="resetForms('editForm')"</span></span><br><span class="line"><span class="hljs-regexp">                       :plain="true">重置</</span>el-button></span><br></pre></td></tr></tbody></table></figure>
+<p>script中编写逻辑</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">this</span>.$message.success(<span class="hljs-string">"登陆成功"</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="前端获取token存放"><a href="#前端获取token存放" class="headerlink" title="前端获取token存放"></a>前端获取token存放</h3><figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line">  methods: {</span><br><span class="line">    <span class="hljs-comment">//重置form表格</span></span><br><span class="line">    resetForms(editForm) {</span><br><span class="line">      <span class="hljs-comment">//根据refs获取实例对象，得到对象以后调用element-ui方法重置字段</span></span><br><span class="line">      <span class="hljs-keyword">this</span>.$refs[editForm].resetFields();</span><br><span class="line">      <span class="hljs-keyword">this</span>.$message.success(<span class="hljs-string">"重置成功"</span>);</span><br><span class="line">    },</span><br><span class="line">    login(editForm) {</span><br><span class="line">      <span class="hljs-comment">// 获取对象内容，根据状态码验证是否登陆成功，并返回消息弹窗</span></span><br><span class="line">      <span class="hljs-keyword">this</span>.$refs[editForm].validate(<span class="hljs-keyword">async</span> vaild => {</span><br><span class="line">        <span class="hljs-keyword">if</span> (!vaild) <span class="hljs-keyword">return</span>;</span><br><span class="line">        <span class="hljs-keyword">const</span> { <span class="hljs-attr">data</span>: data, <span class="hljs-attr">status</span>: status } = <span class="hljs-keyword">await</span> <span class="hljs-keyword">this</span>.$http.post(</span><br><span class="line">          <span class="hljs-string">"login/"</span>,</span><br><span class="line">          <span class="hljs-keyword">this</span>.form</span><br><span class="line">        );</span><br><span class="line">        <span class="hljs-comment">//这里有个bug 不应该是直接拿的status状态码来看，而是应该应该拿到result返回数据中的status来看，由于前面接口没有写好，所以这里只能根据浏览器返回的status来看</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (status != <span class="hljs-number">200</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.$message.error(<span class="hljs-string">"登陆失败"</span>);</span><br><span class="line">        <span class="hljs-keyword">this</span>.$message.success(<span class="hljs-string">"登陆成功"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-built_in">window</span>.sessionStorage.setItem(<span class="hljs-string">"token"</span>, data.token);  <span class="hljs-comment">//存放token</span></span><br><span class="line">        <span class="hljs-keyword">this</span>.$router.push(<span class="hljs-string">"/home"</span>);</span><br><span class="line">      });</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="路由导航权限"><a href="#路由导航权限" class="headerlink" title="路由导航权限"></a>路由导航权限</h3><p>路由导航守卫控制访问权限<br>如果用户没有登陆，但是直接通过URL访问特定页面，需要重新导航到登陆页面</p>
+<p>原来的路由导航</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> routes = [</span><br><span class="line">  { <span class="hljs-attr">path</span>: <span class="hljs-string">'/'</span> , <span class="hljs-attr">redirect</span>: <span class="hljs-string">'/login'</span>},</span><br><span class="line">  { <span class="hljs-attr">path</span>: <span class="hljs-string">'/login'</span> ,<span class="hljs-attr">component</span>: Login },</span><br><span class="line">  { <span class="hljs-attr">path</span>: <span class="hljs-string">'/home'</span>,<span class="hljs-attr">component</span>: Home}</span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure>
+<p>修改成路由导航守卫后</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">//router.js</span></span><br><span class="line"><span class="hljs-keyword">const</span> routes = [</span><br><span class="line">  { <span class="hljs-attr">path</span>: <span class="hljs-string">'/'</span> , <span class="hljs-attr">redirect</span>: <span class="hljs-string">'/login'</span>},</span><br><span class="line">  { <span class="hljs-attr">path</span>: <span class="hljs-string">'/login'</span> ,<span class="hljs-attr">component</span>: Login },</span><br><span class="line">  { <span class="hljs-attr">path</span>: <span class="hljs-string">'/home'</span>,<span class="hljs-attr">component</span>: Home}</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> VueRouter({</span><br><span class="line">  mode: <span class="hljs-string">'history'</span>,</span><br><span class="line">  <span class="hljs-comment">// base: process.env.BASE_URL,</span></span><br><span class="line">  routes</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 挂载路由导航守卫</span></span><br><span class="line">router.beforeEach(<span class="hljs-function">(<span class="hljs-params">to,form,next</span>) =></span> {</span><br><span class="line">  <span class="hljs-comment">// to 将要访问的路径</span></span><br><span class="line">  <span class="hljs-comment">// from 代表从那个路径跳转过来</span></span><br><span class="line">  <span class="hljs-comment">// next 是一个函数,表示放行</span></span><br><span class="line">  <span class="hljs-comment">// next() 放行  next('/login') 强制跳转</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">if</span> (to.path === <span class="hljs-string">'/login'</span>) <span class="hljs-keyword">return</span> next()</span><br><span class="line">  <span class="hljs-comment">//获取token</span></span><br><span class="line">  <span class="hljs-keyword">const</span> tokenStr = <span class="hljs-built_in">window</span>.sessionStorage.getItem(<span class="hljs-string">'token'</span>)</span><br><span class="line">  <span class="hljs-keyword">if</span>(!tokenStr) <span class="hljs-keyword">return</span> next(<span class="hljs-string">'/login'</span>)</span><br><span class="line">  next()</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> router</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="登陆与注销"><a href="#登陆与注销" class="headerlink" title="登陆与注销"></a>登陆与注销</h3><p>基于token的方式实现退出比较简单，只需要本地的token即可，这样，后续的请求就不会携带token，必须重新生成一个新的token之后才可以访问页面</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><template></span><br><span class="line">  <div id=<span class="hljs-string">"app"</span>></span><br><span class="line">    /home</span><br><span class="line">    <el-button <span class="hljs-built_in">type</span>=<span class="hljs-string">"info"</span></span><br><span class="line">               @click=<span class="hljs-string">"Userexit"</span></span><br><span class="line">               :plain=<span class="hljs-string">"true"</span>>退出</el-button></span><br><span class="line">  </div></span><br><span class="line"></template></span><br><span class="line"></span><br><span class="line"><script></span><br><span class="line"><span class="hljs-built_in">export</span> default {</span><br><span class="line">    methods:{</span><br><span class="line">        <span class="hljs-function"><span class="hljs-title">Userexit</span></span>(){</span><br><span class="line">            window.sessionStorage.clear();</span><br><span class="line">            this.<span class="hljs-variable">$router</span>.push(<span class="hljs-string">'/login'</span>);</span><br><span class="line">            this.<span class="hljs-variable">$message</span>.success(<span class="hljs-string">"退出成功"</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">};</span><br><span class="line"></script></span><br><span class="line"><style></span><br><span class="line"></style></span><br></pre></td></tr></tbody></table></figure></body></html>
         </div>
         
         
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/2a24e761/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
         
         
     </div>
@@ -206,18 +235,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/10ccc76d/"><i class="fas fa-angle-double-right"></i>drf-pagination</a>
+                <a class="has-link-black-ter" href="/posts/6cd97811/"><i class="fas fa-angle-double-right"></i>项目注意点</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-13T10:02:34.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-13</time>
+                <time class="level-item has-text-grey" datetime="2020-01-19T05:37:44.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-19</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
                 </div>
                 
                 
@@ -225,7 +254,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    4 分钟 读完 (大约 535 个字)
+                    几秒 读完 (大约 40 个字)
                 </span>
                 
                 
@@ -233,77 +262,11 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><p>Introducing drf-pagination<br>how to use it </p></body></html>
-        </div>
-        
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/10ccc76d/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
+            <html><head></head><body><a id="more"></a>
 
 
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/a2d15b23/"><i class="fas fa-angle-double-right"></i>swagger-ui使用</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-13T03:29:18.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-13</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/SwaggerUi/">SwaggerUi</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    2 分钟 读完 (大约 244 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h2 id="SwaggerUi使用"><a href="#SwaggerUi使用" class="headerlink" title="SwaggerUi使用"></a>SwaggerUi使用</h2><h2 id="django搭建swagger-ui"><a href="#django搭建swagger-ui" class="headerlink" title="django搭建swagger-ui"></a>django搭建swagger-ui</h2><p>django2.0之前使用django-rest-swagger<br>django2.0之后使用drf-yasg<br>这里主要记录一些使用drf-yasg安装的过程</p>
-<h3 id="Qucik-Start"><a href="#Qucik-Start" class="headerlink" title="Qucik-Start"></a>Qucik-Start</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装</span></span><br><span class="line">yum install drf-yasg</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># setting设置</span></span><br><span class="line">INSTALLED_APPS  = [</span><br><span class="line">    ... </span><br><span class="line">   <span class="hljs-string">' drf_yasg '</span>，</span><br><span class="line">    ... </span><br><span class="line">]</span><br><span class="line"><span class="hljs-comment"># urls.py设置</span></span><br><span class="line">...</span><br><span class="line"><span class="hljs-keyword">from</span> rest_framework <span class="hljs-keyword">import</span> permissions</span><br><span class="line"><span class="hljs-keyword">from</span> drf_yasg.views <span class="hljs-keyword">import</span> get_schema_view</span><br><span class="line"><span class="hljs-keyword">from</span> drf_yasg <span class="hljs-keyword">import</span> openapi</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">schema_view = get_schema_view(</span><br><span class="line">   openapi.Info(</span><br><span class="line">      title=<span class="hljs-string">"Snippets API"</span>,</span><br><span class="line">      default_version=<span class="hljs-string">'v1'</span>,</span><br><span class="line">      description=<span class="hljs-string">"Test description"</span>,</span><br><span class="line">      terms_of_service=<span class="hljs-string">"https://www.google.com/policies/terms/"</span>,</span><br><span class="line">      contact=openapi.Contact(email=<span class="hljs-string">"contact@snippets.local"</span>),</span><br><span class="line">      license=openapi.License(name=<span class="hljs-string">"BSD License"</span>),</span><br><span class="line">   ),</span><br><span class="line">   public=<span class="hljs-literal">True</span>,</span><br><span class="line">   permission_classes=(permissions.AllowAny,),</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">   url(<span class="hljs-string">r'^swagger(?P<format>\.json|\.yaml)$'</span>, schema_view.without_ui(cache_timeout=<span class="hljs-number">0</span>), name=<span class="hljs-string">'schema-json'</span>),</span><br><span class="line">   url(<span class="hljs-string">r'^swagger/$'</span>, schema_view.with_ui(<span class="hljs-string">'swagger'</span>, cache_timeout=<span class="hljs-number">0</span>), name=<span class="hljs-string">'schema-swagger-ui'</span>),</span><br><span class="line">   url(<span class="hljs-string">r'^redoc/$'</span>, schema_view.with_ui(<span class="hljs-string">'redoc'</span>, cache_timeout=<span class="hljs-number">0</span>), name=<span class="hljs-string">'schema-redoc'</span>),</span><br><span class="line">   ...</span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure>
-<p>生成地址</p>
-<ul>
-<li>A JSON view of your API specification at /swagger.json</li>
-<li>A YAML view of your API specification at /swagger.yaml</li>
-<li>A swagger-ui view of your API specification at /swagger/</li>
-<li>A ReDoc view of your API specification at /redoc/</li>
-</ul>
-<h2 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h2><p>官方网址<br><a href="https://swagger.io/tools/swagger-ui/" target="_blank" rel="noopener">https://swagger.io/tools/swagger-ui/</a><br>drf-yasg gitbook文档<br><a href="https://drf-yasg.readthedocs.io/en/stable/" target="_blank" rel="noopener">https://drf-yasg.readthedocs.io/en/stable/</a><br>drf-yasg gitbook地址<br><a href="https://github.com/axnsan12/drf-yasg" target="_blank" rel="noopener">https://github.com/axnsan12/drf-yasg</a></p>
+<h2 id="项目注意点"><a href="#项目注意点" class="headerlink" title="项目注意点"></a>项目注意点</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><template></span><br><span class="line"></template></span><br><span class="line"><script></span><br><span class="line"><span class="hljs-built_in">export</span> default {</span><br><span class="line">}</span><br><span class="line"></script></span><br><span class="line"><style scoped></span><br><span class="line"></style></span><br></pre></td></tr></tbody></table></figure>
+<p>scoped 关键字用在样式标签中，主要是表示该样式是只使用于当前的vue组件</p>
 </body></html>
         </div>
         
@@ -326,18 +289,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/9bb9b12b/"><i class="fas fa-angle-double-right"></i>二层交换机</a>
+                <a class="has-link-black-ter" href="/posts/f538ba9d/"><i class="fas fa-angle-double-right"></i>elementUI电商项目1.md</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-12T11:11:22.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-12</time>
+                <time class="level-item has-text-grey" datetime="2020-01-19T04:53:37.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-19</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">二层交换机</a>
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
                 </div>
                 
                 
@@ -345,7 +308,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    15 分钟 读完 (大约 2301 个字)
+                    2 分钟 读完 (大约 293 个字)
                 </span>
                 
                 
@@ -353,22 +316,23 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><p>二层交换机知识</p></body></html>
+            <html><head></head><body><a id="more"></a>
+
+
+<h2 id="创建基本环境"><a href="#创建基本环境" class="headerlink" title="创建基本环境"></a>创建基本环境</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装各种内容</span></span><br><span class="line">yum install nodejs,vue,vue-cli</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="使用vue构建项目"><a href="#使用vue构建项目" class="headerlink" title="使用vue构建项目"></a>使用vue构建项目</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 创建项目的过程其实有很多种，一般建议用ui可视化创建和命令行创建，这里用可视化创建来举例子</span></span><br><span class="line">vue ui</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="http://img.noback.top/2020-01-19-12-59-20.png" alt="2020-01-19-12-59-20"><br>这里会给我们创建一个项目管理器，在里面我们可以创建项目和导入项目<br><img src="http://img.noback.top/2020-01-19-13-02-22.png" alt="2020-01-19-13-02-22"><br>点击创建项目,输入完信息以后，选择模版，点击完成。</p>
+<h2 id="项目运行的几种方式"><a href="#项目运行的几种方式" class="headerlink" title="项目运行的几种方式"></a>项目运行的几种方式</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">npm run </span><br><span class="line"><span class="hljs-comment"># 会出现运行项目的几种方式，基础的配置中会出现下面三个</span></span><br><span class="line">  serve</span><br><span class="line">    vue-cli-service serve</span><br><span class="line">  build</span><br><span class="line">    vue-cli-service build</span><br><span class="line">  lint</span><br><span class="line">    vue-cli-service lint</span><br></pre></td></tr></tbody></table></figure>
+<p>serve是热更新本地运行<br>build是打包项目<br>lint是编码规范检查</p>
+<h2 id="项目部署"><a href="#项目部署" class="headerlink" title="项目部署"></a>项目部署</h2><ol>
+<li>github-page部署<br>因为我已经部署了博客，所以这里就先不用这种部署方式了<br>url:<a href="https://cli.vuejs.org/guide/deployment.html#github-pages" target="_blank" rel="noopener">https://cli.vuejs.org/guide/deployment.html#github-pages</a><br>有用到的地方可以看一下</li>
+<li>docker-nginx部署<br>这个之后马上就要用到了，docker+nginx的使用。</li>
+</ol>
+</body></html>
         </div>
         
         
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/9bb9b12b/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
         
         
     </div>
@@ -387,18 +351,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/845aaf29/"><i class="fas fa-angle-double-right"></i>交换机状态检测</a>
+                <a class="has-link-black-ter" href="/posts/aefec9df/"><i class="fas fa-angle-double-right"></i>element-ui使用指南</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-10T06:59:26.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-10</time>
+                <time class="level-item has-text-grey" datetime="2020-01-19T03:16:26.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-19</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机</a>
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
                 </div>
                 
                 
@@ -406,7 +370,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    1 分钟 读完 (大约 172 个字)
+                    1 分钟 读完 (大约 155 个字)
                 </span>
                 
                 
@@ -414,22 +378,64 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="交换机状态检测"><a href="#交换机状态检测" class="headerlink" title="交换机状态检测"></a>交换机状态检测</h1><p>记录交换机上的一些状态检测指令，以及流程</p></body></html>
+            <html><head></head><body><a id="more"></a>
+
+
+<h2 id="基本表单"><a href="#基本表单" class="headerlink" title="基本表单"></a>基本表单</h2><figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><template></span><br><span class="line"><el-form ref=<span class="hljs-string">"form"</span> :model=<span class="hljs-string">"form"</span> label-width=<span class="hljs-string">"80px"</span>></span><br><span class="line">  <el-form-item label=<span class="hljs-string">"活动名称"</span>></span><br><span class="line">    <el-input v-model=<span class="hljs-string">"form.name"</span>><span class="hljs-xml"><span class="hljs-tag"></<span class="hljs-name">el-input</span>></span></span></span><br><span class="line">  <<span class="hljs-regexp">/el-form-item></span></span><br><span class="line"><span class="hljs-regexp">  <el-form-item label="活动区域"></span></span><br><span class="line"><span class="hljs-regexp">    <el-select v-model="form.region" placeholder="请选择活动区域"></span></span><br><span class="line"><span class="hljs-regexp">      <el-option label="区域一" value="shanghai"></</span>el-option></span><br><span class="line">      <el-option label=<span class="hljs-string">"区域二"</span> value=<span class="hljs-string">"beijing"</span>><span class="hljs-xml"><span class="hljs-tag"></<span class="hljs-name">el-option</span>></span></span></span><br><span class="line">    <<span class="hljs-regexp">/el-select></span></span><br><span class="line"><span class="hljs-regexp">  </</span>el-form-item></span><br><span class="line"><<span class="hljs-regexp">/el-form></span></span><br><span class="line"><span class="hljs-regexp"></</span>template></span><br><span class="line"><script></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {</span><br><span class="line">    data() {</span><br><span class="line">      <span class="hljs-keyword">return</span> {</span><br><span class="line">        ruleForm: {</span><br><span class="line">          name: <span class="hljs-string">''</span>,</span><br><span class="line">          region: <span class="hljs-string">''</span>,</span><br><span class="line">          date1: <span class="hljs-string">''</span>,</span><br><span class="line">          date2: <span class="hljs-string">''</span>,</span><br><span class="line">          delivery: <span class="hljs-literal">false</span>,</span><br><span class="line">          type: [],</span><br><span class="line">          resource: <span class="hljs-string">''</span>,</span><br><span class="line">          desc: <span class="hljs-string">''</span></span><br><span class="line">        },</span><br><span class="line">        rules: {</span><br><span class="line">          name: [</span><br><span class="line">            { <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请输入活动名称'</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">'blur'</span> },</span><br><span class="line">            { <span class="hljs-attr">min</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">max</span>: <span class="hljs-number">5</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'长度在 3 到 5 个字符'</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">'blur'</span> }</span><br><span class="line">          ],</span><br><span class="line">          region: [</span><br><span class="line">            { <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请选择活动区域'</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">'change'</span> }</span><br><span class="line">          ],</span><br><span class="line">          date1: [</span><br><span class="line">            { <span class="hljs-attr">type</span>: <span class="hljs-string">'date'</span>, <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请选择日期'</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">'change'</span> }</span><br><span class="line">          ],</span><br><span class="line">          date2: [</span><br><span class="line">            { <span class="hljs-attr">type</span>: <span class="hljs-string">'date'</span>, <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请选择时间'</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">'change'</span> }</span><br><span class="line">          ],</span><br><span class="line">          type: [</span><br><span class="line">            { <span class="hljs-attr">type</span>: <span class="hljs-string">'array'</span>, <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请至少选择一个活动性质'</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">'change'</span> }</span><br><span class="line">          ],</span><br><span class="line">          resource: [</span><br><span class="line">            { <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请选择活动资源'</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">'change'</span> }</span><br><span class="line">          ],</span><br><span class="line">          desc: [</span><br><span class="line">            { <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请填写活动形式'</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">'blur'</span> }</span><br><span class="line">          ]</span><br><span class="line">        }</span><br><span class="line">      };</span><br><span class="line">    },</span><br><span class="line">    methods: {</span><br><span class="line">      submitForm(formName) {</span><br><span class="line">        <span class="hljs-keyword">this</span>.$refs[formName].validate(<span class="hljs-function">(<span class="hljs-params">valid</span>) =></span> {</span><br><span class="line">          <span class="hljs-keyword">if</span> (valid) {</span><br><span class="line">            alert(<span class="hljs-string">'submit!'</span>);</span><br><span class="line">          } <span class="hljs-keyword">else</span> {</span><br><span class="line">            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'error submit!!'</span>);</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">          }</span><br><span class="line">        });</span><br><span class="line">      },</span><br><span class="line">      resetForm(formName) {</span><br><span class="line">        <span class="hljs-keyword">this</span>.$refs[formName].resetFields();</span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line"><<span class="hljs-regexp">/script></span></span><br></pre></td></tr></tbody></table></figure></body></html>
         </div>
         
         
         
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/3ffae61b/"><i class="fas fa-angle-double-right"></i>1-vue-cli目录结构详解</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-16T06:36:27.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-16</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    2 分钟 读完 (大约 337 个字)
+                </span>
+                
                 
             </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/845aaf29/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
         </div>
+        
+        <div class="content">
+            <html><head></head><body><a id="more"></a>
+
+<h2 id="vue-cli目录结构详解"><a href="#vue-cli目录结构详解" class="headerlink" title="vue-cli目录结构详解"></a>vue-cli目录结构详解</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">├─build                 // 保存一些webpack的初始化配置,项目构建</span><br><span class="line">│ ├─build.js            // 生产环境构建</span><br><span class="line">│ ├─check-version.js    // 检查npm、node版本</span><br><span class="line">│ ├─vue-loader.conf.js  // webpack loader配置</span><br><span class="line">│ ├─webpack.base.conf.js// webpack基础配置</span><br><span class="line">│ ├─webpack.dev.conf.js // 开发环境配置，构建本地开发服务器</span><br><span class="line">│ ├─webpack.prod.conf.js// 生产环境的配置</span><br><span class="line">│</span><br><span class="line">├─config                // config文件夹保存一些项目初始化的配置</span><br><span class="line">│ ├─dev.env.js          // 开发环境的配置</span><br><span class="line">│ ├─index.js            // 项目一些配置变量</span><br><span class="line">│ ├─prod.env.js         // 生产环境的配置</span><br><span class="line">│</span><br><span class="line">├─dist                  // 打包后的项目</span><br><span class="line">├─node_modules          // 依赖包</span><br><span class="line">│</span><br><span class="line">├─src                   // 源码目录</span><br><span class="line">│ ├─assets              // 静态文件目录</span><br><span class="line">│ ├─components          // 组件文件</span><br><span class="line">│ ├─router              // 路由</span><br><span class="line">│ ├─App.vue             // 是项目入口文件</span><br><span class="line">│ ├─main.js             // 是项目的核心文件，入口</span><br><span class="line">├─static                // 静态资源目录 </span><br><span class="line">├─.babelrc              // Babel的配置文件</span><br><span class="line">├─.editorconfig         // 代码规范配置文件</span><br><span class="line">├─.gitignore            // git忽略配置文件</span><br><span class="line">├─.postcssrc.js         // postcss插件配置文件</span><br><span class="line">├─index.html            // 页面入口文件</span><br><span class="line">├─package-lock.json     // 项目包管控文件</span><br><span class="line">├─package.json          // 项目配置</span><br><span class="line">└─README.md             // 项目说明书</span><br></pre></td></tr></tbody></table></figure></body></html>
+        </div>
+        
+        
         
         
     </div>
@@ -463,7 +469,7 @@
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/12/">12</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/14/">14</a></li>
             
         </ul>
     </nav>
@@ -498,7 +504,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        56
+                        68
                     </p>
                 </a>
             </div>
@@ -508,7 +514,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        30
                     </p>
                 </a>
             </div>
@@ -725,7 +731,7 @@
                 <span class="level-item">编程</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">9</span>
+                <span class="level-item tag">21</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">
@@ -757,7 +763,15 @@
                 <span class="level-item">django</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">
+            <span class="level-start">
+                <span class="level-item">jwt</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vim/">
@@ -766,6 +780,14 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vue/">
+            <span class="level-start">
+                <span class="level-item">vue</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">10</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/">
@@ -830,7 +852,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">25</span>
+                    <span class="level-item tag">37</span>
                 </span>
             </a>
         </li>
@@ -861,18 +883,18 @@
         
         <article class="media">
             
-            <a href="/posts/705ac99d/" class="media-left">
+            <a href="/posts/6412f439/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux脚本">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vuejs基础2">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T02:46:04.000Z">2020-01-16</time></div>
-                    <a href="/posts/705ac99d/" class="has-link-black-ter is-size-6">linux脚本</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T03:32:11.000Z">2020-01-22</time></div>
+                    <a href="/posts/6412f439/" class="has-link-black-ter is-size-6">vuejs基础2</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
                     </p>
                 </div>
             </div>
@@ -880,18 +902,18 @@
         
         <article class="media">
             
-            <a href="/posts/877ac6e6/" class="media-left">
+            <a href="/posts/1fd63f28/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-mtr命令">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue组件基础">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T07:15:47.000Z">2020-01-15</time></div>
-                    <a href="/posts/877ac6e6/" class="has-link-black-ter is-size-6">linux-mtr命令</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T03:31:26.000Z">2020-01-22</time></div>
+                    <a href="/posts/1fd63f28/" class="has-link-black-ter is-size-6">vue组件基础</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
                     </p>
                 </div>
             </div>
@@ -899,56 +921,56 @@
         
         <article class="media">
             
-            <a href="/posts/1d7a61af/" class="media-left">
+            <a href="/posts/4b10b818/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux初始化">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-model">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T02:30:41.000Z">2020-01-15</time></div>
-                    <a href="/posts/1d7a61af/" class="has-link-black-ter is-size-6">linux初始化</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/67b35a0f/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blog_back_new/linux/net/记录">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T09:48:03.265Z">2020-01-14</time></div>
-                    <a href="/posts/67b35a0f/" class="has-link-black-ter is-size-6">blog_back_new/linux/net/记录</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/933b28f1/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-filter">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T03:43:43.000Z">2020-01-14</time></div>
-                    <a href="/posts/933b28f1/" class="has-link-black-ter is-size-6">drf-filter</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-21T02:17:43.000Z">2020-01-21</time></div>
+                    <a href="/posts/4b10b818/" class="has-link-black-ter is-size-6">drf-model</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/403006fc/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="home模块">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T09:31:26.000Z">2020-01-20</time></div>
+                    <a href="/posts/403006fc/" class="has-link-black-ter is-size-6">home模块</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/e8b3a2c2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="jwt原理与实战应用">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T05:07:46.000Z">2020-01-20</time></div>
+                    <a href="/posts/e8b3a2c2/" class="has-link-black-ter is-size-6">jwt原理与实战应用</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">jwt</a>
                     </p>
                 </div>
             </div>
@@ -983,7 +1005,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">25</span>
+                    <span class="level-item tag">37</span>
                 </span>
             </a>
         </li>
@@ -1014,18 +1036,18 @@
         
         <article class="media">
             
-            <a href="/posts/705ac99d/" class="media-left">
+            <a href="/posts/6412f439/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux脚本">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vuejs基础2">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T02:46:04.000Z">2020-01-16</time></div>
-                    <a href="/posts/705ac99d/" class="has-link-black-ter is-size-6">linux脚本</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T03:32:11.000Z">2020-01-22</time></div>
+                    <a href="/posts/6412f439/" class="has-link-black-ter is-size-6">vuejs基础2</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
                     </p>
                 </div>
             </div>
@@ -1033,18 +1055,18 @@
         
         <article class="media">
             
-            <a href="/posts/877ac6e6/" class="media-left">
+            <a href="/posts/1fd63f28/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-mtr命令">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue组件基础">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T07:15:47.000Z">2020-01-15</time></div>
-                    <a href="/posts/877ac6e6/" class="has-link-black-ter is-size-6">linux-mtr命令</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T03:31:26.000Z">2020-01-22</time></div>
+                    <a href="/posts/1fd63f28/" class="has-link-black-ter is-size-6">vue组件基础</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
                     </p>
                 </div>
             </div>
@@ -1052,56 +1074,56 @@
         
         <article class="media">
             
-            <a href="/posts/1d7a61af/" class="media-left">
+            <a href="/posts/4b10b818/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux初始化">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-model">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-15T02:30:41.000Z">2020-01-15</time></div>
-                    <a href="/posts/1d7a61af/" class="has-link-black-ter is-size-6">linux初始化</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/67b35a0f/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blog_back_new/linux/net/记录">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T09:48:03.265Z">2020-01-14</time></div>
-                    <a href="/posts/67b35a0f/" class="has-link-black-ter is-size-6">blog_back_new/linux/net/记录</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/933b28f1/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-filter">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T03:43:43.000Z">2020-01-14</time></div>
-                    <a href="/posts/933b28f1/" class="has-link-black-ter is-size-6">drf-filter</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-21T02:17:43.000Z">2020-01-21</time></div>
+                    <a href="/posts/4b10b818/" class="has-link-black-ter is-size-6">drf-model</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/403006fc/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="home模块">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T09:31:26.000Z">2020-01-20</time></div>
+                    <a href="/posts/403006fc/" class="has-link-black-ter is-size-6">home模块</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/e8b3a2c2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="jwt原理与实战应用">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T05:07:46.000Z">2020-01-20</time></div>
+                    <a href="/posts/e8b3a2c2/" class="has-link-black-ter is-size-6">jwt原理与实战应用</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">jwt</a>
                     </p>
                 </div>
             </div>

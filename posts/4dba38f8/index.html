@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>login模块 - Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="login模块登陆验证功能element-ui为我们提供了良好的验证功能模块  在el-form中绑定rules 编写规则 对应输入框指定prop传出信息">
+<meta property="og:type" content="article">
+<meta property="og:title" content="login模块">
+<meta property="og:url" content="http://blog.noback.top/posts/4dba38f8/index.html">
+<meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
+<meta property="og:description" content="login模块登陆验证功能element-ui为我们提供了良好的验证功能模块  在el-form中绑定rules 编写规则 对应输入框指定prop传出信息">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
+<meta property="article:published_time" content="2020-01-19T06:46:12.000Z">
+<meta property="article:modified_time" content="2020-01-19T06:46:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://image.noback.top/datadog.svg" alt="login模块" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>login模块
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-19T06:46:12.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-19</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    5 分钟 读完 (大约 818 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><a id="more"></a>
+
+<h2 id="login模块"><a href="#login模块" class="headerlink" title="login模块"></a>login模块</h2><h3 id="登陆验证功能"><a href="#登陆验证功能" class="headerlink" title="登陆验证功能"></a>登陆验证功能</h3><p>element-ui为我们提供了良好的验证功能模块</p>
+<ol>
+<li>在el-form中绑定rules</li>
+<li>编写规则</li>
+<li>对应输入框指定prop传出信息<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><template></span><br><span class="line">  <div id=<span class="hljs-string">"app"</span>></span><br><span class="line">    <div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"login_box"</span>></span><br><span class="line"></span><br><span class="line">      <!--表单登陆页面--></span><br><span class="line">      <div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"login_form"</span>></span><br><span class="line"></span><br><span class="line">        <!-- rules绑定过表单验证规则--></span><br><span class="line"></span><br><span class="line">        <el-form :rules=<span class="hljs-string">"rules"</span>></span><br><span class="line">          <!--用户名，prop传出信息--></span><br><span class="line">          <el-form-item label=<span class="hljs-string">"用户名"</span> prop=<span class="hljs-string">"username"</span>></span><br><span class="line">            <el-input v-model=<span class="hljs-string">"form.username"</span>><span class="hljs-xml"><span class="hljs-tag"></<span class="hljs-name">el-input</span>></span></span></span><br><span class="line">          <<span class="hljs-regexp">/el-form-item></span></span><br><span class="line"><span class="hljs-regexp">          <!--密码--></span></span><br><span class="line"><span class="hljs-regexp">          <el-form-item label="密码" prop="password"></span></span><br><span class="line"><span class="hljs-regexp">            <el-input type="password"</span></span><br><span class="line"><span class="hljs-regexp">                      v-model="form.password"></</span>el-input></span><br><span class="line">          <<span class="hljs-regexp">/el-form-item></span></span><br><span class="line"><span class="hljs-regexp">          <!--按钮--></span></span><br><span class="line"><span class="hljs-regexp">          <el-form-item label=""</span></span><br><span class="line"><span class="hljs-regexp">                        class="btns"></span></span><br><span class="line"><span class="hljs-regexp">            <el-button type="primary">登陆</</span>el-button></span><br><span class="line">            <el-button type=<span class="hljs-string">"info"</span>>重置<<span class="hljs-regexp">/el-button></span></span><br><span class="line"><span class="hljs-regexp">          </</span>el-form-item></span><br><span class="line">        <<span class="hljs-regexp">/el-form></span></span><br><span class="line"><span class="hljs-regexp">      </</span>div></span><br><span class="line">    <<span class="hljs-regexp">/div></span></span><br><span class="line"><span class="hljs-regexp">  </</span>div></span><br><span class="line"><<span class="hljs-regexp">/template></span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp"><script></span></span><br><span class="line"><span class="hljs-regexp">export default {</span></span><br><span class="line"><span class="hljs-regexp">  data() {</span></span><br><span class="line"><span class="hljs-regexp">    return {</span></span><br><span class="line"><span class="hljs-regexp">      form: {</span></span><br><span class="line"><span class="hljs-regexp">        username: "admin",</span></span><br><span class="line"><span class="hljs-regexp">        password: "admin"</span></span><br><span class="line"><span class="hljs-regexp">      },</span></span><br><span class="line"><span class="hljs-regexp">      /</span><span class="hljs-regexp">/ 定义规则</span></span><br><span class="line"><span class="hljs-regexp">      rules: {</span></span><br><span class="line"><span class="hljs-regexp">          username: [</span></span><br><span class="line"><span class="hljs-regexp">            // 空验证和格式验证</span></span><br><span class="line"><span class="hljs-regexp">            { required: true, message: '错误', trigger: 'blur' },</span></span><br><span class="line"><span class="hljs-regexp">            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }</span></span><br><span class="line"><span class="hljs-regexp">          ],</span></span><br><span class="line"><span class="hljs-regexp">          password: [</span></span><br><span class="line"><span class="hljs-regexp">            { required: true, message: '错误', trigger: 'blur' },</span></span><br><span class="line"><span class="hljs-regexp">            { min: 3, max: 5, message: '长度在3到5个字符',trigger: 'blur'}</span></span><br><span class="line"><span class="hljs-regexp">          ],</span></span><br><span class="line"><span class="hljs-regexp">        }</span></span><br><span class="line"><span class="hljs-regexp">    };</span></span><br><span class="line"><span class="hljs-regexp">  }</span></span><br><span class="line"><span class="hljs-regexp">};</span></span><br><span class="line"><span class="hljs-regexp"></</span>script></span><br><span class="line"></span><br><span class="line"><style scoped></span><br><span class="line">#app {</span><br><span class="line">  background-color: #2b4b6b;</span><br><span class="line">  height: <span class="hljs-number">100</span>%;</span><br><span class="line">}</span><br><span class="line">.login_box {</span><br><span class="line">  width: <span class="hljs-number">450</span>px;</span><br><span class="line">  height: <span class="hljs-number">300</span>px;</span><br><span class="line">  background-color: #fff;</span><br><span class="line">  border-radius: <span class="hljs-number">3</span>px;</span><br><span class="line">  position: absolute;</span><br><span class="line">  left: <span class="hljs-number">50</span>%;</span><br><span class="line">  right: <span class="hljs-number">50</span>%;</span><br><span class="line">  top: <span class="hljs-number">50</span>%;</span><br><span class="line">  transform: translate(<span class="hljs-number">-50</span>%, <span class="hljs-number">-50</span>%);</span><br><span class="line">}</span><br><span class="line">.login_form{</span><br><span class="line">  position: absolute;</span><br><span class="line">  bottom: <span class="hljs-number">0</span>;</span><br><span class="line">  width: <span class="hljs-number">100</span>%;</span><br><span class="line">  padding: <span class="hljs-number">0</span> <span class="hljs-number">20</span>px;</span><br><span class="line">  box-sizing: border-box;</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line">.btns {</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: flex-end;</span><br><span class="line">}</span><br><span class="line"><<span class="hljs-regexp">/style></span></span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<h3 id="重置表单-resetFields"><a href="#重置表单-resetFields" class="headerlink" title="重置表单 resetFields"></a>重置表单 resetFields</h3><p>使用ref声明对象名称<br>给标签添加ref</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><el-form :rules=<span class="hljs-string">"rules"</span> ref=<span class="hljs-string">"loginform"</span> :model=<span class="hljs-string">"form"</span>></span><br></pre></td></tr></tbody></table></figure>
+<p>写成方法，传递refname到script中</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><el-button type=<span class="hljs-string">"info"</span> @click=<span class="hljs-string">"resetForms('loginform')"</span>>重置<<span class="hljs-regexp">/el-button></span></span><br></pre></td></tr></tbody></table></figure>
+<p>重置表单</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line">methods: {</span><br><span class="line">    <span class="hljs-comment">//重置form表格</span></span><br><span class="line">    resetForms(loginform) {</span><br><span class="line">      <span class="hljs-keyword">this</span>.$refs[loginform].resetFields();</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="http://img.noback.top/2020-01-19-14-56-50.png" alt="2020-01-19-14-56-50"></p>
+<h3 id="表单预验证-vaildate"><a href="#表单预验证-vaildate" class="headerlink" title="表单预验证 vaildate"></a>表单预验证 vaildate</h3><p>给标签添加ref</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><el-form :rules=<span class="hljs-string">"rules"</span> ref=<span class="hljs-string">"loginform"</span> :model=<span class="hljs-string">"form"</span>></span><br></pre></td></tr></tbody></table></figure>
+<p>写成方法，传递refname到script中</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><el-button type=<span class="hljs-string">"info"</span> @click=<span class="hljs-string">"login('loginform')"</span>>登陆<<span class="hljs-regexp">/el-button></span></span><br></pre></td></tr></tbody></table></figure>
+<p>登陆表单</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line">methods: {</span><br><span class="line">    <span class="hljs-comment">//登陆form表格</span></span><br><span class="line">    login(editForm){</span><br><span class="line">      <span class="hljs-keyword">this</span>.$refs[editForm].validate(<span class="hljs-function"><span class="hljs-params">vaild</span> =></span> {</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(vaild)</span><br><span class="line">      });</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="消息提示message"><a href="#消息提示message" class="headerlink" title="消息提示message"></a>消息提示message</h3><p>局部引用message组件</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">import { Message } from <span class="hljs-string">'element-ui'</span></span><br><span class="line">Vue.prototype.<span class="hljs-variable">$message</span> = Message</span><br></pre></td></tr></tbody></table></figure>
+<p>标签绑定属性</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><el-button type=<span class="hljs-string">"primary"</span></span><br><span class="line">                       @click=<span class="hljs-string">"login('editForm')"</span></span><br><span class="line">                       :plain=<span class="hljs-string">"true"</span>>登陆<<span class="hljs-regexp">/el-button></span></span><br><span class="line"><span class="hljs-regexp">            <el-button type="info"</span></span><br><span class="line"><span class="hljs-regexp">                       @click="resetForms('editForm')"</span></span><br><span class="line"><span class="hljs-regexp">                       :plain="true">重置</</span>el-button></span><br></pre></td></tr></tbody></table></figure>
+<p>script中编写逻辑</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">this</span>.$message.success(<span class="hljs-string">"登陆成功"</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="前端获取token存放"><a href="#前端获取token存放" class="headerlink" title="前端获取token存放"></a>前端获取token存放</h3><figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line">  methods: {</span><br><span class="line">    <span class="hljs-comment">//重置form表格</span></span><br><span class="line">    resetForms(editForm) {</span><br><span class="line">      <span class="hljs-comment">//根据refs获取实例对象，得到对象以后调用element-ui方法重置字段</span></span><br><span class="line">      <span class="hljs-keyword">this</span>.$refs[editForm].resetFields();</span><br><span class="line">      <span class="hljs-keyword">this</span>.$message.success(<span class="hljs-string">"重置成功"</span>);</span><br><span class="line">    },</span><br><span class="line">    login(editForm) {</span><br><span class="line">      <span class="hljs-comment">// 获取对象内容，根据状态码验证是否登陆成功，并返回消息弹窗</span></span><br><span class="line">      <span class="hljs-keyword">this</span>.$refs[editForm].validate(<span class="hljs-keyword">async</span> vaild => {</span><br><span class="line">        <span class="hljs-keyword">if</span> (!vaild) <span class="hljs-keyword">return</span>;</span><br><span class="line">        <span class="hljs-keyword">const</span> { <span class="hljs-attr">data</span>: data, <span class="hljs-attr">status</span>: status } = <span class="hljs-keyword">await</span> <span class="hljs-keyword">this</span>.$http.post(</span><br><span class="line">          <span class="hljs-string">"login/"</span>,</span><br><span class="line">          <span class="hljs-keyword">this</span>.form</span><br><span class="line">        );</span><br><span class="line">        <span class="hljs-comment">//这里有个bug 不应该是直接拿的status状态码来看，而是应该应该拿到result返回数据中的status来看，由于前面接口没有写好，所以这里只能根据浏览器返回的status来看</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (status != <span class="hljs-number">200</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.$message.error(<span class="hljs-string">"登陆失败"</span>);</span><br><span class="line">        <span class="hljs-keyword">this</span>.$message.success(<span class="hljs-string">"登陆成功"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-built_in">window</span>.sessionStorage.setItem(<span class="hljs-string">"token"</span>, data.token);  <span class="hljs-comment">//存放token</span></span><br><span class="line">        <span class="hljs-keyword">this</span>.$router.push(<span class="hljs-string">"/home"</span>);</span><br><span class="line">      });</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="路由导航权限"><a href="#路由导航权限" class="headerlink" title="路由导航权限"></a>路由导航权限</h3><p>路由导航守卫控制访问权限<br>如果用户没有登陆，但是直接通过URL访问特定页面，需要重新导航到登陆页面</p>
+<p>原来的路由导航</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> routes = [</span><br><span class="line">  { <span class="hljs-attr">path</span>: <span class="hljs-string">'/'</span> , <span class="hljs-attr">redirect</span>: <span class="hljs-string">'/login'</span>},</span><br><span class="line">  { <span class="hljs-attr">path</span>: <span class="hljs-string">'/login'</span> ,<span class="hljs-attr">component</span>: Login },</span><br><span class="line">  { <span class="hljs-attr">path</span>: <span class="hljs-string">'/home'</span>,<span class="hljs-attr">component</span>: Home}</span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure>
+<p>修改成路由导航守卫后</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">//router.js</span></span><br><span class="line"><span class="hljs-keyword">const</span> routes = [</span><br><span class="line">  { <span class="hljs-attr">path</span>: <span class="hljs-string">'/'</span> , <span class="hljs-attr">redirect</span>: <span class="hljs-string">'/login'</span>},</span><br><span class="line">  { <span class="hljs-attr">path</span>: <span class="hljs-string">'/login'</span> ,<span class="hljs-attr">component</span>: Login },</span><br><span class="line">  { <span class="hljs-attr">path</span>: <span class="hljs-string">'/home'</span>,<span class="hljs-attr">component</span>: Home}</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> VueRouter({</span><br><span class="line">  mode: <span class="hljs-string">'history'</span>,</span><br><span class="line">  <span class="hljs-comment">// base: process.env.BASE_URL,</span></span><br><span class="line">  routes</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 挂载路由导航守卫</span></span><br><span class="line">router.beforeEach(<span class="hljs-function">(<span class="hljs-params">to,form,next</span>) =></span> {</span><br><span class="line">  <span class="hljs-comment">// to 将要访问的路径</span></span><br><span class="line">  <span class="hljs-comment">// from 代表从那个路径跳转过来</span></span><br><span class="line">  <span class="hljs-comment">// next 是一个函数,表示放行</span></span><br><span class="line">  <span class="hljs-comment">// next() 放行  next('/login') 强制跳转</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">if</span> (to.path === <span class="hljs-string">'/login'</span>) <span class="hljs-keyword">return</span> next()</span><br><span class="line">  <span class="hljs-comment">//获取token</span></span><br><span class="line">  <span class="hljs-keyword">const</span> tokenStr = <span class="hljs-built_in">window</span>.sessionStorage.getItem(<span class="hljs-string">'token'</span>)</span><br><span class="line">  <span class="hljs-keyword">if</span>(!tokenStr) <span class="hljs-keyword">return</span> next(<span class="hljs-string">'/login'</span>)</span><br><span class="line">  next()</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> router</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="登陆与注销"><a href="#登陆与注销" class="headerlink" title="登陆与注销"></a>登陆与注销</h3><p>基于token的方式实现退出比较简单，只需要本地的token即可，这样，后续的请求就不会携带token，必须重新生成一个新的token之后才可以访问页面</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><template></span><br><span class="line">  <div id=<span class="hljs-string">"app"</span>></span><br><span class="line">    /home</span><br><span class="line">    <el-button <span class="hljs-built_in">type</span>=<span class="hljs-string">"info"</span></span><br><span class="line">               @click=<span class="hljs-string">"Userexit"</span></span><br><span class="line">               :plain=<span class="hljs-string">"true"</span>>退出</el-button></span><br><span class="line">  </div></span><br><span class="line"></template></span><br><span class="line"></span><br><span class="line"><script></span><br><span class="line"><span class="hljs-built_in">export</span> default {</span><br><span class="line">    methods:{</span><br><span class="line">        <span class="hljs-function"><span class="hljs-title">Userexit</span></span>(){</span><br><span class="line">            window.sessionStorage.clear();</span><br><span class="line">            this.<span class="hljs-variable">$router</span>.push(<span class="hljs-string">'/login'</span>);</span><br><span class="line">            this.<span class="hljs-variable">$message</span>.success(<span class="hljs-string">"退出成功"</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">};</span><br><span class="line"></script></span><br><span class="line"><style></span><br><span class="line"></style></span><br></pre></td></tr></tbody></table></figure></body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/4dba38f8/">login模块</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top"></a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/4dba38f8/">http://blog.noback.top/posts/4dba38f8/</a></li>
+            <li><strong>发布时间：</strong>2020-01-19</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/e8b3a2c2/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">jwt原理与实战应用</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/6cd97811/">
+                <span class="level-item">项目注意点</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/posts/4dba38f8/';
+        this.page.identifier = 'posts/4dba38f8/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        68
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        30
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#login模块">
+        <span class="has-mr-6">1</span>
+        <span>login模块</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#登陆验证功能">
+        <span class="has-mr-6">1.1</span>
+        <span>登陆验证功能</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://image.noback.top/datadog.svg" alt="login模块" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 login模块&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

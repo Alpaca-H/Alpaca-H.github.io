@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>jwt原理与实战应用 - Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="jwt原理与实战应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jwt原理与实战应用">
+<meta property="og:url" content="http://blog.noback.top/posts/e8b3a2c2/index.html">
+<meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
+<meta property="og:description" content="jwt原理与实战应用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
+<meta property="article:published_time" content="2020-01-20T05:07:46.000Z">
+<meta property="article:modified_time" content="2020-01-20T05:07:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://image.noback.top/datadog.svg" alt="jwt原理与实战应用" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>jwt原理与实战应用
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-20T05:07:46.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-20</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">jwt</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    5 分钟 读完 (大约 776 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h2 id="jwt原理与实战应用"><a href="#jwt原理与实战应用" class="headerlink" title="jwt原理与实战应用"></a>jwt原理与实战应用</h2><a id="more"></a>
+
+
+
+<ul>
+<li><p>基于传统的token认证<br>用户登陆，服务端给返回token,并将token保存在服务端，以后用户访问时，需要携带token，服务端获取token后，再去数据库中获取token认证校验</p>
+</li>
+<li><p>jwt形式的token认证<br>用户登录，服务端给用户返回一个token(服务端不保存)，以后用户再来访问，需要携带token，服务端获取token后，再做token认证</p>
+</li>
+</ul>
+<p><font color="优点">不用在服务端保存token</font></p>
+<h2 id="jwt实现过程"><a href="#jwt实现过程" class="headerlink" title="jwt实现过程"></a>jwt实现过程</h2><ul>
+<li>用户提交用户名和密码给服务器，如果登录成功，使用jwt创建一个token，并给用户返回。<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+</li>
+</ul>
+<h2 id="jwt-token组成"><a href="#jwt-token组成" class="headerlink" title="jwt-token组成"></a>jwt-token组成</h2><p>由三段字符串组成，并且用.连接</p>
+<h3 id="加密过程"><a href="#加密过程" class="headerlink" title="加密过程"></a>加密过程</h3><ul>
+<li><p>第一段字符串 header 内部包含算法/token类型.<br>json 转换成字符串，然后做base64url加密(base64加密)</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="hljs-string">"alg"</span>: <span class="hljs-string">"HS256"</span>, <span class="hljs-comment"># 算法</span></span><br><span class="line">    <span class="hljs-string">"typ"</span>: <span class="hljs-string">"JWT"</span>, <span class="hljs-comment"># 类型</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>第二段字符串payload 自定义值<br>json转换成字符串，然后做base64url加密(base64加密)</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="hljs-string">"id"</span>: <span class="hljs-string">"12343242"</span>,</span><br><span class="line">    <span class="hljs-string">"name"</span>: <span class="hljs-string">"hzj"</span>,</span><br><span class="line">    <span class="hljs-string">"exp"</span>: 323212423 <span class="hljs-comment"># 超时时间</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>第三段字符串:<br>拼接1,2部分内容，并对其进行HS256加密 + 加盐(加随机字符串)<br>对HS256加密后的密文再做base64url加密</p>
+</li>
+</ul>
+<p>返回给用户，用户下次访问带着jwt-token来访问</p>
+<h3 id="解密过程"><a href="#解密过程" class="headerlink" title="解密过程"></a>解密过程</h3><p>用户第二次访问，带着jjwt-token来访问，后端需要对token进行验证</p>
+<ul>
+<li>获取token，根据.对token进行切割</li>
+<li>对第二段进行base64url解密，并获取payload信息<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="hljs-string">"id"</span>: <span class="hljs-string">"1234343"</span>,</span><br><span class="line">    <span class="hljs-string">"name"</span>: <span class="hljs-string">"hzj"</span>,</span><br><span class="line">    <span class="hljs-string">"exp"</span>: 432423 <span class="hljs-comment"># 超时时间</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+<li>第三步: 把第一二段拼接，再次HS256加密后对base64url解密后的内容进行比较(认证通过)<br>在</li>
+</ul>
+<h2 id="jwt实现原理"><a href="#jwt实现原理" class="headerlink" title="jwt实现原理"></a>jwt实现原理</h2><ul>
+<li>底层使用pyjwt</li>
+<li>drf封装库使用的是django-estframework-jwt</li>
+</ul>
+<h3 id="pyjwt使用"><a href="#pyjwt使用" class="headerlink" title="pyjwt使用"></a>pyjwt使用</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装</span></span><br><span class="line">pip install pyjwt</span><br></pre></td></tr></tbody></table></figure>
+<p>生成token</p>
+<figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 配置</span></span><br><span class="line"><span class="hljs-keyword">import</span>  jwt</span><br><span class="line"><span class="hljs-keyword">import</span> datetime</span><br><span class="line"><span class="hljs-keyword">from</span> django.conf <span class="hljs-keyword">import</span>  settings</span><br><span class="line"><span class="hljs-comment"># 生成token</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">create_token</span><span class="hljs-params">(payload,timeout=<span class="hljs-number">1</span>)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># 随机符号，这里写了该项目的secret_key</span></span><br><span class="line">    salt = settings.SECRET_KEY</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># 构造header</span></span><br><span class="line">    headers = {</span><br><span class="line">        <span class="hljs-string">'typ'</span>: <span class="hljs-string">'jwt'</span>,</span><br><span class="line">        <span class="hljs-string">'alg'</span>: <span class="hljs-string">'HS256'</span>,</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># 构造payload</span></span><br><span class="line">    payload = {</span><br><span class="line">        <span class="hljs-string">'user_id'</span>: <span class="hljs-string">"ud"</span>,</span><br><span class="line">        <span class="hljs-string">'username'</span>: <span class="hljs-string">"username"</span>,</span><br><span class="line">        <span class="hljs-string">'exp'</span>: datetime.datetime.utcnow() + datetime.timedelta(minutes=timeout)</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    token = jwt.encode(payload=payload, key=salt, algorithm=<span class="hljs-string">"HS256"</span>, headers=headers).decode(<span class="hljs-string">'utf-8'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> token</span><br></pre></td></tr></tbody></table></figure>
+<p>验证token</p>
+<figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> rest_framework.authentication <span class="hljs-keyword">import</span> BaseAuthentication</span><br><span class="line"><span class="hljs-keyword">import</span>  this</span><br><span class="line"><span class="hljs-keyword">import</span> jwt</span><br><span class="line"><span class="hljs-keyword">import</span>  datetime</span><br><span class="line"><span class="hljs-keyword">from</span>  rest_framework.response <span class="hljs-keyword">import</span>  Response</span><br><span class="line"><span class="hljs-keyword">from</span> django.conf <span class="hljs-keyword">import</span>  settings</span><br><span class="line"><span class="hljs-keyword">from</span> rest_framework <span class="hljs-keyword">import</span> exceptions</span><br><span class="line">salt = settings.SECRET_KEY</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JwtQueryParamsAuthentication</span><span class="hljs-params">(BaseAuthentication)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">authenticate</span><span class="hljs-params">(self, request)</span>:</span></span><br><span class="line">        <span class="hljs-comment"># 获取token 并判断token的合法性</span></span><br><span class="line">        token = request.query_params.get(<span class="hljs-string">"token"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment"># 1。切割</span></span><br><span class="line">        <span class="hljs-comment"># 2. 解密第二段/判断过期</span></span><br><span class="line">        <span class="hljs-comment"># 3. 验证第三段合法性</span></span><br><span class="line"></span><br><span class="line">        playload = <span class="hljs-literal">None</span></span><br><span class="line">        msg = <span class="hljs-literal">None</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">try</span>:</span><br><span class="line">            payload = jwt.decode(token,salt,<span class="hljs-literal">True</span>)</span><br><span class="line">        <span class="hljs-keyword">except</span> exceptions:</span><br><span class="line">            msg = <span class="hljs-string">'token已经失效'</span></span><br><span class="line">        <span class="hljs-keyword">except</span> jwt.DecodeError:</span><br><span class="line">            msg = <span class="hljs-string">"token认证失败"</span></span><br><span class="line">        <span class="hljs-keyword">except</span> jwt.InvalidTokenError:</span><br><span class="line">            msg = <span class="hljs-string">"非法的token"</span></span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> playload:</span><br><span class="line">            <span class="hljs-keyword">pass</span></span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> (playload,msg)</span><br></pre></td></tr></tbody></table></figure>
+<p>views编写</p>
+<figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># views编写 </span></span><br><span class="line"><span class="hljs-keyword">from</span> api.extensions.auth <span class="hljs-keyword">import</span> JwtQueryParamsAuthentication</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProOrderView</span><span class="hljs-params">(ApiView)</span>:</span></span><br><span class="line">    authentication_classes = [JwtQueryParamsAuthentication,]</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="djangorestframework-jwt使用"><a href="#djangorestframework-jwt使用" class="headerlink" title="djangorestframework-jwt使用"></a>djangorestframework-jwt使用</h3><p>djangorestframework-jwt本质是调用pyjwt实现的</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装</span></span><br><span class="line">pip install djangorestframework-jwt</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><p>jwt认证<br><a href="http://yangjianhua.me/2020/01/django-drf-8/" target="_blank" rel="noopener">http://yangjianhua.me/2020/01/django-drf-8/</a></p>
+<p><a href="https://shuke163.github.io/2019/02/24/Django-REST-framework-API%E8%AE%A4%E8%AF%81-%E5%8C%85%E5%90%ABJWT%E8%AE%A4%E8%AF%81/" target="_blank" rel="noopener">https://shuke163.github.io/2019/02/24/Django-REST-framework-API%E8%AE%A4%E8%AF%81-%E5%8C%85%E5%90%ABJWT%E8%AE%A4%E8%AF%81/</a><br><a href="https://www.cnblogs.com/ruhai/p/11311852.html" target="_blank" rel="noopener">https://www.cnblogs.com/ruhai/p/11311852.html</a><br><a href="https://www.cnblogs.com/chichung/p/9967325.html" target="_blank" rel="noopener">https://www.cnblogs.com/chichung/p/9967325.html</a></p>
+</body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/e8b3a2c2/">jwt原理与实战应用</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top"></a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/e8b3a2c2/">http://blog.noback.top/posts/e8b3a2c2/</a></li>
+            <li><strong>发布时间：</strong>2020-01-20</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/403006fc/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">home模块</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/4dba38f8/">
+                <span class="level-item">login模块</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/posts/e8b3a2c2/';
+        this.page.identifier = 'posts/e8b3a2c2/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        68
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        30
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#jwt原理与实战应用">
+        <span class="has-mr-6">1</span>
+        <span>jwt原理与实战应用</span>
+        </a></li><li>
+        <a class="is-flex" href="#jwt实现过程">
+        <span class="has-mr-6">2</span>
+        <span>jwt实现过程</span>
+        </a></li><li>
+        <a class="is-flex" href="#jwt-token组成">
+        <span class="has-mr-6">3</span>
+        <span>jwt-token组成</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#加密过程">
+        <span class="has-mr-6">3.1</span>
+        <span>加密过程</span>
+        </a></li><li>
+        <a class="is-flex" href="#解密过程">
+        <span class="has-mr-6">3.2</span>
+        <span>解密过程</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#jwt实现原理">
+        <span class="has-mr-6">4</span>
+        <span>jwt实现原理</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#pyjwt使用">
+        <span class="has-mr-6">4.1</span>
+        <span>pyjwt使用</span>
+        </a></li><li>
+        <a class="is-flex" href="#djangorestframework-jwt使用">
+        <span class="has-mr-6">4.2</span>
+        <span>djangorestframework-jwt使用</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#地址">
+        <span class="has-mr-6">5</span>
+        <span>地址</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://image.noback.top/datadog.svg" alt="jwt原理与实战应用" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 jwt原理与实战应用&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

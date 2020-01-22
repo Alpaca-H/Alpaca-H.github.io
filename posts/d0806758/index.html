@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>vue中的各类插件以及使用方法 - Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="vue中的各类插件以及使用方法在vue的使用过程中遇到了很多插件，有些插件只是提供了一部分很小的功能，占据不了太大的篇幅，因此收集到这里记录一下 qs插件qs插件是一个地址解析工具,主要是对于一串url地址进行序列化 # 安装npm install qs  使用import qs from &#39;qs&#39;;# 定义全局别名Vue.prototype.$qs &#x3D; qs# 使用this.$http.p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue中的各类插件以及使用方法">
+<meta property="og:url" content="http://blog.noback.top/posts/d0806758/index.html">
+<meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
+<meta property="og:description" content="vue中的各类插件以及使用方法在vue的使用过程中遇到了很多插件，有些插件只是提供了一部分很小的功能，占据不了太大的篇幅，因此收集到这里记录一下 qs插件qs插件是一个地址解析工具,主要是对于一串url地址进行序列化 # 安装npm install qs  使用import qs from &#39;qs&#39;;# 定义全局别名Vue.prototype.$qs &#x3D; qs# 使用this.$http.p">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
+<meta property="article:published_time" content="2020-01-16T05:50:56.000Z">
+<meta property="article:modified_time" content="2020-01-16T05:50:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://image.noback.top/datadog.svg" alt="vue中的各类插件以及使用方法" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>vue中的各类插件以及使用方法
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-16T05:50:56.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-16</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    3 分钟 读完 (大约 507 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><a id="more"></a>
+
+
+<h2 id="vue中的各类插件以及使用方法"><a href="#vue中的各类插件以及使用方法" class="headerlink" title="vue中的各类插件以及使用方法"></a>vue中的各类插件以及使用方法</h2><p>在vue的使用过程中遇到了很多插件，有些插件只是提供了一部分很小的功能，占据不了太大的篇幅，因此收集到这里记录一下</p>
+<h2 id="qs插件"><a href="#qs插件" class="headerlink" title="qs插件"></a>qs插件</h2><p>qs插件是一个地址解析工具,主要是对于一串url地址进行序列化</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装</span></span><br><span class="line">npm install qs</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">import qs from <span class="hljs-string">'qs'</span>;</span><br><span class="line"><span class="hljs-comment"># 定义全局别名</span></span><br><span class="line">Vue.prototype.<span class="hljs-variable">$qs</span> = qs</span><br><span class="line"><span class="hljs-comment"># 使用</span></span><br><span class="line">this.<span class="hljs-variable">$http</span>.post(<span class="hljs-string">'/bb'</span>,</span><br><span class="line">    this.<span class="hljs-variable">$qs</span>.stringify({ aa:2, bb:3 })</span><br><span class="line">  )</span><br><span class="line">  .<span class="hljs-keyword">then</span>(<span class="hljs-keyword">function</span> (response) {</span><br><span class="line">    console.log(response.data);</span><br><span class="line">  })</span><br><span class="line">  .catch(<span class="hljs-keyword">function</span> (error) {</span><br><span class="line">    console.log(error);</span><br><span class="line">  });</span><br><span class="line"><span class="hljs-comment"># 则请求地址是这样的</span></span><br><span class="line">aa=2&&bb=3</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="vuex插件"><a href="#vuex插件" class="headerlink" title="vuex插件"></a>vuex插件</h2><p>作为vue中的状态管理插件</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">npm install vuex --save</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span></span><br><span class="line"><span class="hljs-keyword">import</span> Vuex <span class="hljs-keyword">from</span> <span class="hljs-string">'vuex'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="vue-route插件"><a href="#vue-route插件" class="headerlink" title="vue-route插件"></a>vue-route插件</h2><p>作为vue中的路由插件</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装</span></span><br><span class="line">npm install vue-router</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="使用-2"><a href="#使用-2" class="headerlink" title="使用"></a>使用</h3><figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span></span><br><span class="line"><span class="hljs-keyword">import</span> VueRouter <span class="hljs-keyword">from</span> <span class="hljs-string">'vue-router'</span></span><br><span class="line"></span><br><span class="line">Vue.use(VueRouter)</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="vue-axios插件"><a href="#vue-axios插件" class="headerlink" title="vue-axios插件"></a>vue-axios插件</h2><h3 id="使用-3"><a href="#使用-3" class="headerlink" title="使用"></a>使用</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h3><p>vue  eslint 限制无法使用console.log调试</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line">Failed to compile.</span><br><span class="line"></span><br><span class="line">./src/components/leftroute.vue</span><br><span class="line">Module <span class="hljs-built_in">Error</span> (<span class="hljs-keyword">from</span> ./node_modules/eslint-loader/index.js):</span><br><span class="line">error: Unexpected <span class="hljs-built_in">console</span> statement (no-<span class="hljs-built_in">console</span>) at src/components/leftroute.vue:<span class="hljs-number">31</span>:<span class="hljs-number">11</span>:</span><br><span class="line">  <span class="hljs-number">29</span> |         <span class="hljs-keyword">this</span>.$axios.get(<span class="hljs-string">'http://localhost:3000/people'</span>)</span><br><span class="line">  <span class="hljs-number">30</span> |         .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>)</span>{</span><br><span class="line">> <span class="hljs-number">31</span> |           <span class="hljs-built_in">console</span>.log(response);</span><br><span class="line">     |           ^</span><br><span class="line">  <span class="hljs-number">32</span> |         })</span><br><span class="line">  <span class="hljs-number">33</span> |         .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>)</span>{</span><br><span class="line">  <span class="hljs-number">34</span> |           <span class="hljs-built_in">console</span>.log(error);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">error: Unexpected <span class="hljs-built_in">console</span> statement (no-<span class="hljs-built_in">console</span>) at src/components/leftroute.vue:<span class="hljs-number">34</span>:<span class="hljs-number">11</span>:</span><br><span class="line">  <span class="hljs-number">32</span> |         })</span><br><span class="line">  <span class="hljs-number">33</span> |         .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>)</span>{</span><br><span class="line">> <span class="hljs-number">34</span> |           <span class="hljs-built_in">console</span>.log(error);</span><br><span class="line">     |           ^</span><br><span class="line">  <span class="hljs-number">35</span> |         });</span><br><span class="line">  <span class="hljs-number">36</span> |         }</span><br><span class="line">  <span class="hljs-number">37</span> |       }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-number">2</span> errors found.</span><br></pre></td></tr></tbody></table></figure>
+<p>解决方法 加入 </p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-string">"no-console"</span> : [<span class="hljs-string">"false"</span>]</span><br></pre></td></tr></tbody></table></figure>
+<p>或者把 node_modules/lib/rules/no-console.js 中的true改成fasle<br><a href="https://blog.csdn.net/weixin_42476786/article/details/85132793" target="_blank" rel="noopener">https://blog.csdn.net/weixin_42476786/article/details/85132793</a><br><a href="https://blog.csdn.net/qq_40637612/article/details/8760788" target="_blank" rel="noopener">https://blog.csdn.net/qq_40637612/article/details/8760788</a></p>
+<h2 id="mock-js-数据模拟"><a href="#mock-js-数据模拟" class="headerlink" title="mock.js 数据模拟"></a>mock.js 数据模拟</h2><p>在开发过程中，有很多的ajax请求，前后端分离开发你肯定遇到这样的问题，后台给你的接口文档，你需要在本地模拟数据返回，可能你也用到过我之前用的蠢方法，就是新建一个test.json文件，放入接口文档中写的返回示例，这么做有个很大的问题是不够灵活，而且还需要切换url，现在学会使用mock.js拦截ajax请求，更加方便的构造你需要的假数据</p>
+</body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/d0806758/">vue中的各类插件以及使用方法</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top"></a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/d0806758/">http://blog.noback.top/posts/d0806758/</a></li>
+            <li><strong>发布时间：</strong>2020-01-16</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/a1c58685/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">vue-element-admin</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/705ac99d/">
+                <span class="level-item">linux脚本</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/posts/d0806758/';
+        this.page.identifier = 'posts/d0806758/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        68
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        30
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#vue中的各类插件以及使用方法">
+        <span class="has-mr-6">1</span>
+        <span>vue中的各类插件以及使用方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#qs插件">
+        <span class="has-mr-6">2</span>
+        <span>qs插件</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#使用">
+        <span class="has-mr-6">2.1</span>
+        <span>使用</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#vuex插件">
+        <span class="has-mr-6">3</span>
+        <span>vuex插件</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#使用-1">
+        <span class="has-mr-6">3.1</span>
+        <span>使用</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#vue-route插件">
+        <span class="has-mr-6">4</span>
+        <span>vue-route插件</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#使用-2">
+        <span class="has-mr-6">4.1</span>
+        <span>使用</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#vue-axios插件">
+        <span class="has-mr-6">5</span>
+        <span>vue-axios插件</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#使用-3">
+        <span class="has-mr-6">5.1</span>
+        <span>使用</span>
+        </a></li><li>
+        <a class="is-flex" href="#错误">
+        <span class="has-mr-6">5.2</span>
+        <span>错误</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#mock-js-数据模拟">
+        <span class="has-mr-6">6</span>
+        <span>mock.js 数据模拟</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://image.noback.top/datadog.svg" alt="vue中的各类插件以及使用方法" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 vue中的各类插件以及使用方法&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
