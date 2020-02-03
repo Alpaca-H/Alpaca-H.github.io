@@ -13,6 +13,7 @@
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.noback.top/images/og_image.png">
+<meta property="article:author" content="何泽君">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
 
@@ -102,6 +103,9 @@
                 
                 <a class="navbar-item"
                 href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/about-me/">about-me</a>
                 
                 <a class="navbar-item"
                 href="/archives/">Archives</a>
@@ -297,7 +301,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    1 分钟 读完 (大约 200 个字)
+                    1 分钟 读完 (大约 202 个字)
                 </span>
                 
                 
@@ -305,60 +309,7 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><a id="more"></a>
-
-
-
-<h2 id="drf-model"><a href="#drf-model" class="headerlink" title="drf-model"></a>drf-model</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">class TestViewSet(viewsets.ModelViewSet):</span><br><span class="line">    serializer_class = TestSerializer</span><br><span class="line">    queryset = test_Model.objects.all()</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">#  create</span></span><br><span class="line">    @action(methods=[<span class="hljs-string">'post'</span>],detail=False)</span><br><span class="line">    def create_field(self, request, *args, **kwargs):</span><br><span class="line">        request.data[<span class="hljs-string">'name'</span>] = <span class="hljs-string">"hzj默认"</span></span><br><span class="line">        serializer = self.get_serializer(data=request.data)</span><br><span class="line">        serializer.is_valid(raise_exception=True)</span><br><span class="line">        self.perform_create(serializer)</span><br><span class="line">        headers = self.get_success_headers(serializer.data)</span><br><span class="line">        <span class="hljs-built_in">return</span> Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># update</span></span><br><span class="line">    @action(methods=[<span class="hljs-string">'patch'</span>], detail=False)</span><br><span class="line">    def update_field(self, request, *args, **kwargs):</span><br><span class="line">        request.data[<span class="hljs-string">"text"</span>] = <span class="hljs-string">"更新dsdsd"</span></span><br><span class="line">        instance = test_Model.objects.get(id=request.data[<span class="hljs-string">'id'</span>])</span><br><span class="line">        <span class="hljs-comment"># instance = self.get_object() 会报错</span></span><br><span class="line">        <span class="hljs-comment"># https://docs.djangoproject.com/en/2.2/ref/class-based-views/mixins-single-object/#django.views.generic.detail.SingleObjectMixin.get_object</span></span><br><span class="line">        <span class="hljs-comment"># 默认使用id查找</span></span><br><span class="line">        serializer = self.get_serializer(instance,data=request.data,partial=True)</span><br><span class="line">        serializer.is_valid()</span><br><span class="line">        serializer.save()</span><br><span class="line">        <span class="hljs-built_in">return</span> Response(serializer.data,status=status.HTTP_200_OK)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># delete</span></span><br><span class="line">    @action(methods=[<span class="hljs-string">'delete'</span>],detail=False)</span><br><span class="line">    def delete_field(self,request,*args,**kwargs):</span><br><span class="line">        instance = test_Model.objects.get(id=request.data[<span class="hljs-string">'id'</span>])</span><br><span class="line">        <span class="hljs-keyword">if</span> instance:</span><br><span class="line">            self.perform_destroy(instance)</span><br><span class="line">            <span class="hljs-built_in">return</span> Response({<span class="hljs-string">"flag"</span>:<span class="hljs-string">"删除成功"</span>},status=status.HTTP_200_OK)</span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            <span class="hljs-built_in">return</span>  Response(status=status.HTTP_400_BAD_REQUEST)</span><br></pre></td></tr></tbody></table></figure></body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/403006fc/"><i class="fas fa-angle-double-right"></i>home模块</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-20T09:31:26.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-20</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    几秒 读完 (大约 41 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h2 id="home模块"><a href="#home模块" class="headerlink" title="home模块"></a>home模块</h2></body></html>
+            <html><head></head><body><p>drf-model</p></body></html>
         </div>
         
         
@@ -370,7 +321,7 @@
             </div>
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/403006fc/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                <a class="button is-size-7 is-light" href="/posts/4b10b818/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
                 </div>
             </div>
         </div>
@@ -432,189 +383,6 @@
             <div class="level-start">
                 <div class="level-item">
                 <a class="button is-size-7 is-light" href="/posts/e8b3a2c2/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/4dba38f8/"><i class="fas fa-angle-double-right"></i>login模块</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-19T06:46:12.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-19</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    5 分钟 读完 (大约 821 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><p>login模块</p></body></html>
-        </div>
-        
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/4dba38f8/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/6cd97811/"><i class="fas fa-angle-double-right"></i>项目注意点</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-19T05:37:44.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-19</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    几秒 读完 (大约 46 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><p>vue项目注意点</p></body></html>
-        </div>
-        
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/6cd97811/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/f538ba9d/"><i class="fas fa-angle-double-right"></i>elementUI电商项目1.md</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-19T04:53:37.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-19</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    2 分钟 读完 (大约 298 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><p>elementUI电商项目1</p></body></html>
-        </div>
-        
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/f538ba9d/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
                 </div>
             </div>
         </div>
@@ -753,6 +521,241 @@
 
 
 
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/a1c58685/"><i class="fas fa-angle-double-right"></i>vue-element-admin</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-16T06:07:13.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-16</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    几秒 读完 (大约 74 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><a id="more"></a>
+<h2 id="vue-element-admin框架学习"><a href="#vue-element-admin框架学习" class="headerlink" title="vue-element-admin框架学习"></a>vue-element-admin框架学习</h2><p>目录结构</p>
+<h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><p>基本模版<br><a href="https://github.com/PanJiaChen/vue-admin-template" target="_blank" rel="noopener">https://github.com/PanJiaChen/vue-admin-template</a><br>基本模版-展示地址<br><a href="https://panjiachen.github.io/vue-admin-template/#/dashboard" target="_blank" rel="noopener">https://panjiachen.github.io/vue-admin-template/#/dashboard</a><br>实例项目<br><a href="https://github.com/PanJiaChen/vue-element-admin/blob/master/README.zh-CN.md" target="_blank" rel="noopener">https://github.com/PanJiaChen/vue-element-admin/blob/master/README.zh-CN.md</a><br>实例项目-展示地址<br><a href="https://panjiachen.github.io/vue-element-admin/#/dashboard" target="_blank" rel="noopener">https://panjiachen.github.io/vue-element-admin/#/dashboard</a></p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/d0806758/"><i class="fas fa-angle-double-right"></i>vue中的各类插件以及使用方法</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-16T05:50:56.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-16</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    3 分钟 读完 (大约 520 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>vue中的各类插件以及使用方法</p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/d0806758/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/933b28f1/"><i class="fas fa-angle-double-right"></i>drf-filter</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-14T03:43:43.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-14</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    几秒 读完 (大约 21 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>Introducing drf-filter<br>how to use it </p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/933b28f1/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/10ccc76d/"><i class="fas fa-angle-double-right"></i>drf-pagination</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-13T10:02:34.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-13</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    4 分钟 读完 (大约 535 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>Introducing drf-pagination<br>how to use it </p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/10ccc76d/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
 
     
 <div class="card card-transparent">
@@ -804,7 +807,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        68
+                        73
                     </p>
                 </a>
             </div>
@@ -814,7 +817,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        30
+                        33
                     </p>
                 </a>
             </div>
@@ -890,39 +893,39 @@
             </h3>
             <ul class="menu-list">
             <li>
-        <a class="level is-marginless" href="/categories/blog-back-new/">
+        <a class="level is-marginless" href="/categories/checklist/">
             <span class="level-start">
-                <span class="level-item">blog_back_new</span>
+                <span class="level-item">checklist</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">29</span>
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/code-more/">
+            <span class="level-start">
+                <span class="level-item">code/more</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/blog-back-new/Rust/">
+        <a class="level is-marginless" href="/categories/code-more/vue/">
             <span class="level-start">
-                <span class="level-item">Rust</span>
+                <span class="level-item">vue</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">4</span>
             </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/blog-back-new/ansible/">
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/docker/">
             <span class="level-start">
-                <span class="level-item">ansible</span>
+                <span class="level-item">docker</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/blog-back-new/django/">
-            <span class="level-start">
-                <span class="level-item">django</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">7</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/blog-back-new/git/">
+        <a class="level is-marginless" href="/categories/git/">
             <span class="level-start">
                 <span class="level-item">git</span>
             </span>
@@ -930,62 +933,30 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/blog-back-new/linux/">
-            <span class="level-start">
-                <span class="level-item">linux</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/blog-back-new/mysql/">
-            <span class="level-start">
-                <span class="level-item">mysql</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/blog-back-new/%E6%89%A9%E5%B1%95/">
-            <span class="level-start">
-                <span class="level-item">扩展</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/blog-back-new/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-            <span class="level-start">
-                <span class="level-item">数据结构</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/blog-back-new/%E8%AE%BE%E5%A4%87/">
-            <span class="level-start">
-                <span class="level-item">设备</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">6</span>
-            </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/checklist/">
-            <span class="level-start">
-                <span class="level-item">checklist</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/linux/">
             <span class="level-start">
                 <span class="level-item">linux</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">9</span>
+                <span class="level-item tag">17</span>
             </span>
         </a><ul><li>
+        <a class="level is-marginless" href="/categories/linux/ansible/">
+            <span class="level-start">
+                <span class="level-item">ansible</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/">
+            <span class="level-start">
+                <span class="level-item">linux网络管理</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
             <span class="level-start">
                 <span class="level-item">常用命令</span>
@@ -1026,12 +997,36 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/nginx/">
+            <span class="level-start">
+                <span class="level-item">nginx</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%89%A9%E5%B1%95/">
+            <span class="level-start">
+                <span class="level-item">扩展</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+            <span class="level-start">
+                <span class="level-item">数据结构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/">
             <span class="level-start">
                 <span class="level-item">编程</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">21</span>
+                <span class="level-item tag">30</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">
@@ -1050,6 +1045,14 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/Rust/">
+            <span class="level-start">
+                <span class="level-item">Rust</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/SwaggerUi/">
             <span class="level-start">
                 <span class="level-item">SwaggerUi</span>
@@ -1063,12 +1066,20 @@
                 <span class="level-item">django</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">11</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">
             <span class="level-start">
                 <span class="level-item">jwt</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/mysql/">
+            <span class="level-start">
+                <span class="level-item">mysql</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -1087,7 +1098,7 @@
                 <span class="level-item">vue</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">10</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/">
@@ -1129,7 +1140,23 @@
             <span class="level-end">
                 <span class="level-item tag">2</span>
             </span>
-        </a></li></ul></li>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/%E8%AE%B0%E4%BA%8B%E6%9C%AC/">
+            <span class="level-start">
+                <span class="level-item">记事本</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E8%AE%BE%E5%A4%87/">
+            <span class="level-start">
+                <span class="level-item">设备</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li>
             </ul>
         </div>
     </div>
@@ -1147,12 +1174,23 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/01/">
                 <span class="level-start">
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">37</span>
+                    <span class="level-item tag">39</span>
                 </span>
             </a>
         </li>
@@ -1183,18 +1221,18 @@
         
         <article class="media">
             
-            <a href="/posts/6412f439/" class="media-left">
+            <a href="/posts/12ec35da/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vuejs基础2">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nginx配置实例">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T03:32:11.000Z">2020-01-22</time></div>
-                    <a href="/posts/6412f439/" class="has-link-black-ter is-size-6">vuejs基础2</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T06:03:46.000Z">2020-02-03</time></div>
+                    <a href="/posts/12ec35da/" class="has-link-black-ter is-size-6">nginx配置实例</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/nginx/">nginx</a>
                     </p>
                 </div>
             </div>
@@ -1202,18 +1240,18 @@
         
         <article class="media">
             
-            <a href="/posts/1fd63f28/" class="media-left">
+            <a href="/posts/3f665668/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue组件基础">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux 常用命令2">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T03:31:26.000Z">2020-01-22</time></div>
-                    <a href="/posts/1fd63f28/" class="has-link-black-ter is-size-6">vue组件基础</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T05:44:41.000Z">2020-02-03</time></div>
+                    <a href="/posts/3f665668/" class="has-link-black-ter is-size-6">linux 常用命令2</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                     </p>
                 </div>
             </div>
@@ -1221,18 +1259,18 @@
         
         <article class="media">
             
-            <a href="/posts/4b10b818/" class="media-left">
+            <a href="/posts/f6c82bc1/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-model">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux常用命令整理">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-21T02:17:43.000Z">2020-01-21</time></div>
-                    <a href="/posts/4b10b818/" class="has-link-black-ter is-size-6">drf-model</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T01:43:33.000Z">2020-02-03</time></div>
+                    <a href="/posts/f6c82bc1/" class="has-link-black-ter is-size-6">linux常用命令整理</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                     </p>
                 </div>
             </div>
@@ -1240,18 +1278,18 @@
         
         <article class="media">
             
-            <a href="/posts/403006fc/" class="media-left">
+            <a href="/posts/21215442/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="home模块">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nginx基础">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T09:31:26.000Z">2020-01-20</time></div>
-                    <a href="/posts/403006fc/" class="has-link-black-ter is-size-6">home模块</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-30T06:27:43.000Z">2020-01-30</time></div>
+                    <a href="/posts/21215442/" class="has-link-black-ter is-size-6">nginx基础</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/nginx/">nginx</a>
                     </p>
                 </div>
             </div>
@@ -1259,18 +1297,18 @@
         
         <article class="media">
             
-            <a href="/posts/e8b3a2c2/" class="media-left">
+            <a href="/posts/ec496181/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="jwt原理与实战应用">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux文本编辑三剑客">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T05:07:46.000Z">2020-01-20</time></div>
-                    <a href="/posts/e8b3a2c2/" class="has-link-black-ter is-size-6">jwt原理与实战应用</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-29T14:09:25.000Z">2020-01-29</time></div>
+                    <a href="/posts/ec496181/" class="has-link-black-ter is-size-6">linux文本编辑三剑客</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">jwt</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                     </p>
                 </div>
             </div>
@@ -1300,12 +1338,23 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/01/">
                 <span class="level-start">
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">37</span>
+                    <span class="level-item tag">39</span>
                 </span>
             </a>
         </li>
@@ -1336,18 +1385,18 @@
         
         <article class="media">
             
-            <a href="/posts/6412f439/" class="media-left">
+            <a href="/posts/12ec35da/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vuejs基础2">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nginx配置实例">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T03:32:11.000Z">2020-01-22</time></div>
-                    <a href="/posts/6412f439/" class="has-link-black-ter is-size-6">vuejs基础2</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T06:03:46.000Z">2020-02-03</time></div>
+                    <a href="/posts/12ec35da/" class="has-link-black-ter is-size-6">nginx配置实例</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/nginx/">nginx</a>
                     </p>
                 </div>
             </div>
@@ -1355,18 +1404,18 @@
         
         <article class="media">
             
-            <a href="/posts/1fd63f28/" class="media-left">
+            <a href="/posts/3f665668/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue组件基础">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux 常用命令2">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T03:31:26.000Z">2020-01-22</time></div>
-                    <a href="/posts/1fd63f28/" class="has-link-black-ter is-size-6">vue组件基础</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T05:44:41.000Z">2020-02-03</time></div>
+                    <a href="/posts/3f665668/" class="has-link-black-ter is-size-6">linux 常用命令2</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                     </p>
                 </div>
             </div>
@@ -1374,18 +1423,18 @@
         
         <article class="media">
             
-            <a href="/posts/4b10b818/" class="media-left">
+            <a href="/posts/f6c82bc1/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="drf-model">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux常用命令整理">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-21T02:17:43.000Z">2020-01-21</time></div>
-                    <a href="/posts/4b10b818/" class="has-link-black-ter is-size-6">drf-model</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T01:43:33.000Z">2020-02-03</time></div>
+                    <a href="/posts/f6c82bc1/" class="has-link-black-ter is-size-6">linux常用命令整理</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                     </p>
                 </div>
             </div>
@@ -1393,18 +1442,18 @@
         
         <article class="media">
             
-            <a href="/posts/403006fc/" class="media-left">
+            <a href="/posts/21215442/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="home模块">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nginx基础">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T09:31:26.000Z">2020-01-20</time></div>
-                    <a href="/posts/403006fc/" class="has-link-black-ter is-size-6">home模块</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-30T06:27:43.000Z">2020-01-30</time></div>
+                    <a href="/posts/21215442/" class="has-link-black-ter is-size-6">nginx基础</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/nginx/">nginx</a>
                     </p>
                 </div>
             </div>
@@ -1412,18 +1461,18 @@
         
         <article class="media">
             
-            <a href="/posts/e8b3a2c2/" class="media-left">
+            <a href="/posts/ec496181/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="jwt原理与实战应用">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux文本编辑三剑客">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T05:07:46.000Z">2020-01-20</time></div>
-                    <a href="/posts/e8b3a2c2/" class="has-link-black-ter is-size-6">jwt原理与实战应用</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-29T14:09:25.000Z">2020-01-29</time></div>
+                    <a href="/posts/ec496181/" class="has-link-black-ter is-size-6">linux文本编辑三剑客</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">jwt</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                     </p>
                 </div>
             </div>
@@ -1449,7 +1498,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2020 Alpaca&#39;s blog | how to win&nbsp;
+                &copy; 2020 何泽君&nbsp;
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
                         href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 

@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>linux文本编辑三剑客 - Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="linux文本编辑三剑客，awk、grep、sed是linux操作文本的三大利器，合称文本三剑客，也是必须掌握的linux命令之一。三者的功能都是处理文本，但侧重点各不相同，其中属awk功能最强大，但也最复杂。grep更适合单纯的查找或匹配文本，sed更适合编辑匹配到的文本，awk更适合格式化文本，对文本进行较复杂格式处理 关于”三剑客”的特长什么是三剑客的特长&#x3D;  grep 更适合单纯的查找和匹">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux文本编辑三剑客">
+<meta property="og:url" content="http://blog.noback.top/posts/ec496181/index.html">
+<meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
+<meta property="og:description" content="linux文本编辑三剑客，awk、grep、sed是linux操作文本的三大利器，合称文本三剑客，也是必须掌握的linux命令之一。三者的功能都是处理文本，但侧重点各不相同，其中属awk功能最强大，但也最复杂。grep更适合单纯的查找或匹配文本，sed更适合编辑匹配到的文本，awk更适合格式化文本，对文本进行较复杂格式处理 关于”三剑客”的特长什么是三剑客的特长&#x3D;  grep 更适合单纯的查找和匹">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
+<meta property="article:published_time" content="2020-01-29T14:09:25.000Z">
+<meta property="article:modified_time" content="2020-01-29T14:09:25.000Z">
+<meta property="article:author" content="何泽君">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://image.noback.top/datadog.svg" alt="linux文本编辑三剑客" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/about-me/">about-me</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>linux文本编辑三剑客
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-29T14:09:25.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    30 分钟 读完 (大约 4508 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>linux文本编辑三剑客，awk、grep、sed是linux操作文本的三大利器，合称文本三剑客，也是必须掌握的linux命令之一。三者的功能都是处理文本，但侧重点各不相同，其中属awk功能最强大，但也最复杂。grep更适合单纯的查找或匹配文本，sed更适合编辑匹配到的文本，awk更适合格式化文本，对文本进行较复杂格式处理</p>
+<p>关于”三剑客”的特长<br>什么是三剑客的特长=</p>
+<ul>
+<li>grep 更适合单纯的查找和匹配文本</li>
+<li>sed 更适合编辑匹配的文本</li>
+<li>awk 更适合格式化文本,对文本进行较复杂格式处理</li>
+</ul>
+<a id="more"></a>
+
+<h1 id="linux文本编辑三剑客"><a href="#linux文本编辑三剑客" class="headerlink" title="linux文本编辑三剑客"></a>linux文本编辑三剑客</h1><h2 id="grep基础"><a href="#grep基础" class="headerlink" title="grep基础"></a>grep基础</h2><p>grep（global search regular expression(RE) and print out the line，全面搜索正则表达式并把行打印出来）是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">grep (选项) pattern flie</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-A <显示行数> 除了显示符合匹配行，也显示匹配行后的n行</span><br><span class="line">-B <显示行数> 除了显示符合匹配行，也显示匹配行前的n行</span><br><span class="line">-C <显示行数> 除了显示符合匹配行，也显示匹配行前后的n行  但不显示每一行的行数</span><br><span class="line">-c 仅显示统计匹配行数的总数</span><br><span class="line">-e 实现多个选项件的逻辑关系 or</span><br><span class="line">-E 扩展的正则表达式</span><br><span class="line">-f FILE：从FILE获取匹配参数格式</span><br><span class="line">-i --ignore-case 忽略字符大小写的差别</span><br><span class="line">-n 显示匹配的行号</span><br><span class="line">-o 仅显示匹配到的字符串</span><br><span class="line">-v 反向匹配，显示不被匹配的内容</span><br><span class="line">-w 只显示全字符合的列</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="需要注意的地方"><a href="#需要注意的地方" class="headerlink" title="需要注意的地方"></a>需要注意的地方</h3><ol>
+<li>egrep = grep -E  除了 < \> \b 以外其他正则都可以去掉\</li>
+<li>如果有要匹配的内容中,有( ;   )这种的话最好加””  比如 grep “;” test.txt</li>
+</ol>
+<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p><strong>匹配内容</strong><br>.匹配全部字符，不匹配空行<br>[]匹配指定范围内的任意单个字符<br>[^] 取反<br>[:alnum:] [0-9a-zA-Z]<br>[:alpha:] [a-zA-Z]<br>[:upper:] 或 [A-Z]<br>[:lower:] 或 [a-z]<br>[:blank:] 匹配空白字符<br>[:punct:] 标点符号<br><strong>匹配次数</strong></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">*匹配任意次 0-n次 ,贪婪模式(尽可能多匹配)</span><br><span class="line">.*匹配任意次 1-n次 </span><br><span class="line">\?匹配 0-1次</span><br><span class="line">\+至少匹配1次</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>位置确定</strong><br>^ 行首<br>$ 行尾<br>^$ 空白行</p>
+<p><strong>划组匹配</strong><br>在正则表达示中使用之前匹配到的内容，即划组匹配</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 分组形式 \(\)</span></span><br><span class="line"><span class="hljs-comment"># 读取方式 \1 \2 \3</span></span><br></pre></td></tr></tbody></table></figure>
+<p><img src="http://img.noback.top/blog/img20191112/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.png" alt></p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><ul>
+<li>多文件查找<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">grep <span class="hljs-string">"match_pattern"</span> file1 file2 file3</span><br></pre></td></tr></tbody></table></figure></li>
+<li>反项查找<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">grep -v <span class="hljs-string">"macth_pattern"</span> file1 file2 file3</span><br></pre></td></tr></tbody></table></figure></li>
+<li>匹配项标记颜色<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">grep <span class="hljs-string">"macth_pattern"</span> file1 --color=auto</span><br></pre></td></tr></tbody></table></figure></li>
+<li>正则匹配<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">grep -E <span class="hljs-string">"[1-9]+"</span></span><br><span class="line">或</span><br><span class="line">egrep <span class="hljs-string">"[1-9]+"</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>只显示匹配到的字符串<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> this is a <span class="hljs-built_in">test</span> line. | grep -o -E <span class="hljs-string">"[a-z]+\."</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>统计匹配到的内容数量<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">grep -c <span class="hljs-string">"text"</span> file1</span><br></pre></td></tr></tbody></table></figure></li>
+<li>显示匹配到的行号<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">grep -n <span class="hljs-string">"text"</span> file1</span><br></pre></td></tr></tbody></table></figure></li>
+<li>多级目录中递归搜索<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">grep <span class="hljs-string">"text"</span> . -r -n</span><br></pre></td></tr></tbody></table></figure></li>
+<li>忽略大小写<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"hello world"</span> | grep -i <span class="hljs-string">"HELLO"</span></span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+<hr>
+<h2 id="awk基础"><a href="#awk基础" class="headerlink" title="awk基础"></a>awk基础</h2><p>awk是由Alfred Aho 、Peter Weinberger 和 Brian Kernighan这三个人创造的，awk由这个三个人的姓氏的首个字母组成。awk其实可以看成是一门独立的编程语言，他支持条件判断、数组、循环等功能。awk共有两个版本(gawk与nawk版本),在linux中我们最常使用的是gawk,同时awk、grep、sed被称为Linux中的三剑客</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># ll /usr/bin/awk </span></span><br><span class="line">lrwxrwxrwx. 1 root root 4 Feb 15  2019 /usr/bin/awk -> gawk</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>语法</strong><br>awk [options] ‘{pattern + action}’ {filenames}<br>其中的action 我们最常用的就是print以及prinf,对于action来说，每次经过一行，都会当前行执行一边action<br>比如</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">awk <span class="hljs-string">'{print "1",NR}'</span> /etc/passwd</span><br></pre></td></tr></tbody></table></figure>
+<p>你会发现有多少行，他就输出了多少个1 每行一个</p>
+<h3 id="awk的工作流程"><a href="#awk的工作流程" class="headerlink" title="awk的工作流程"></a>awk的工作流程</h3><p>首先awk并不是列操作，而是行操作，同样的他也是一行一行的处理的，其中$0表示当前行，比如在正常情况下我们输出全文是用cat来查看的，那么用awk的操作是这样的,另外awk的接受标准输入和文件</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">cat /etc/passwd</span><br><span class="line">awk <span class="hljs-string">'{print $0}'</span> /etc/passwd</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 如上的内容是一样的</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="awk中的分隔符"><a href="#awk中的分隔符" class="headerlink" title="awk中的分隔符"></a>awk中的分隔符</h3><p>为了处理好每一行中的每一个字段，awk引入了分隔符的概念，分隔符有三种表现的形式，<br>一种是不输入任何不指定任何，则默认为空格<br>一种是自定义的分隔符 使用 -F 指定  比如 -F:<br>另外一种是使用 内置变量指定  -v FS=’#’</p>
+<p><strong>自定义分隔符</strong><br>既然默认的分隔符是空格,那么当然还有自定义的分隔符咯。我们使用-F选项来指定我们的分隔符</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 使用#分隔符</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># cat demo3.text </span></span><br><span class="line">123<span class="hljs-comment">#123#dsdshj#dlsj#</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># awk -F# '{print $1}' demo3.text </span></span><br><span class="line">123</span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># cat demo3.text </span></span><br><span class="line">123<span class="hljs-comment">#123#dsdshj#dlsj#</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># awk -v FS='#' '{print $1}' demo3.text </span></span><br><span class="line">123</span><br></pre></td></tr></tbody></table></figure>
+
+<p>其实在awk中不仅仅有输入的分割符,还有输出的分隔符，默认也为空格</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># awk -F# '{print $1,$2}' demo3.text </span></span><br><span class="line">123 123</span><br></pre></td></tr></tbody></table></figure>
+<p>OFS(output field separator)可以指定输出的分隔符,用法与FS相同</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># awk -v  FS='#' -v OFS='++++' '{print $1,$2}' demo3.text </span></span><br><span class="line">123++++123</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="awk重定向"><a href="#awk重定向" class="headerlink" title="awk重定向"></a>awk重定向</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">awk <span class="hljs-string">'BEGIN { print "Hello, World !!!" > "/tmp/message.txt" }'</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="awk的内建变量"><a href="#awk的内建变量" class="headerlink" title="awk的内建变量"></a>awk的内建变量</h3><p>awk支持内建变量和自定义变量</p>
+<p><strong>内建变量</strong></p>
+<ul>
+<li>$0 当前行</li>
+<li>$1~$n 第n个字段</li>
+<li>$NF 最后一个字段</li>
+<li>NF 当前行被分割字段总数</li>
+<li>NR 当前行行号</li>
+<li>FNR 各文件分别计数的行号</li>
+<li>FS 输入分隔符</li>
+<li>OFS 输出分隔符</li>
+<li>RS 输入换行符</li>
+<li>ORS 输出换行符</li>
+<li>FILENAME 当前文件名</li>
+<li>ARGC 命令行参数的个数</li>
+<li>ARGV 数组,保存的命令行所给定的各参数</li>
+</ul>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 给每一行添加行号,输出当前行号，以及当前行的内容</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># df | awk '{print NR,$0}'</span></span><br><span class="line">1 Filesystem     1K-blocks    Used Available Use% Mounted on</span><br><span class="line">2 /dev/vda1       41147472 6848400  32395580  18% /</span><br><span class="line">3 devtmpfs          930656       0    930656   0% /dev</span><br><span class="line">4 tmpfs             941116       0    941116   0% /dev/shm</span><br><span class="line">5 tmpfs             941116     452    940664   1% /run</span><br><span class="line">6 tmpfs             941116       0    941116   0% /sys/fs/cgroup</span><br><span class="line">7 tmpfs             188224       0    188224   0% /run/user/0</span><br><span class="line"><span class="hljs-comment"># 多个文件使用NR时,会根据的文件顺序累加序号</span></span><br><span class="line"><span class="hljs-comment"># FNR则会分开标序</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># ARGV,ARGC</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># awk 'BEGIN{print ARGV[0],ARGV[1],ARGV[2],ARGC}' demo1.txt demo2.text </span></span><br><span class="line">awk demo1.txt demo2.text 3</span><br><span class="line"><span class="hljs-comment"># 其中ARGV作为数组,第一个参数是awk</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>自定义变量名</strong><br>自定义变量的两种形式,一种是在action外面 使用选项指定变量，比如 -v name=”hzj”<br>另外一种则是在action前的pattern中定义，比如 {name=”hzj”; action->print name}</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># awk -v name="hzj" 'BEGIN{print name}'</span></span><br><span class="line">hzj</span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># awk 'BEGIN{name="hzj";print name}'</span></span><br><span class="line">hzj</span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># name=hzj</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># awk -v name=$name 'BEGIN{print name}'</span></span><br><span class="line">hzj</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="awk-参数"><a href="#awk-参数" class="headerlink" title="awk 参数"></a>awk 参数</h4><h5 id="options"><a href="#options" class="headerlink" title="options"></a>options</h5><p>-v name=”xx”   -v外部定义变量<br>###s##  pattern+action<br><strong>抛开Pattern 我们先来使用{action}</strong></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 输出文本内容</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># df</span></span><br><span class="line">Filesystem     1K-blocks    Used Available Use% Mounted on</span><br><span class="line">/dev/vda1       41147472 6848500  32395480  18% /</span><br><span class="line">devtmpfs          930656       0    930656   0% /dev</span><br><span class="line">tmpfs             941116       0    941116   0% /dev/shm</span><br><span class="line">tmpfs             941116     452    940664   1% /run</span><br><span class="line">tmpfs             941116       0    941116   0% /sys/fs/cgroup</span><br><span class="line">tmpfs             188224       0    188224   0% /run/user/0</span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># df | awk '{print $1}'</span></span><br><span class="line">Filesystem</span><br><span class="line">/dev/vda1</span><br><span class="line">devtmpfs</span><br><span class="line">tmpfs</span><br><span class="line">tmpfs</span><br><span class="line">tmpfs</span><br><span class="line">tmpfs</span><br></pre></td></tr></tbody></table></figure>
+<p>awk是逐行处理的,也就是说当awk处理一个文本的时候，他会一行一行的处理内容。其中awk默认以 <font style="color:red">换行符</font>  为标记识别每一行。另外对于每一行的处理中 awk会按照用户指定的 <font style="color:red">分隔符</font> 去分隔当前行，如果没有指定，则默认使用空格作为分隔符，当出现多个空格的时候,awk会自动将连续的空格理解成为一个分隔符。<br>其中 我们将被awk处理后的每一行都使用了特定的变量标记<br>$0表示当前处理的整行<br>$1表示第一个字段<br>$2表示第二个字段<br>$NF表示最后一个字段<br>NF表示当前行被分割后字段总数<br>因此 假设一行文本被空格分为8段，则$NF表示$8 NF=8 则$7=$(NF-1)</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 输出多行</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># df | awk '{print $1 $2 $3}'</span></span><br><span class="line">Filesystem1K-blocksUsed</span><br><span class="line">/dev/vda1411474726848536</span><br><span class="line">devtmpfs9306560</span><br><span class="line">tmpfs9411160</span><br><span class="line">tmpfs941116452</span><br><span class="line">tmpfs9411160</span><br><span class="line">tmpfs1882240</span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># df | awk '{print $1, $2 ,$3}'</span></span><br><span class="line">Filesystem 1K-blocks Used</span><br><span class="line">/dev/vda1 41147472 6848536</span><br><span class="line">devtmpfs 930656 0</span><br><span class="line">tmpfs 941116 0</span><br><span class="line">tmpfs 941116 452</span><br><span class="line">tmpfs 941116 0</span><br><span class="line">tmpfs 188224 0</span><br><span class="line"><span class="hljs-comment"># 自己添加字段</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># df | awk '{print $1 ,"this print test"}'</span></span><br><span class="line">Filesystem this <span class="hljs-built_in">print</span> <span class="hljs-built_in">test</span></span><br><span class="line">/dev/vda1 this <span class="hljs-built_in">print</span> <span class="hljs-built_in">test</span></span><br><span class="line">devtmpfs this <span class="hljs-built_in">print</span> <span class="hljs-built_in">test</span></span><br><span class="line">tmpfs this <span class="hljs-built_in">print</span> <span class="hljs-built_in">test</span></span><br><span class="line">tmpfs this <span class="hljs-built_in">print</span> <span class="hljs-built_in">test</span></span><br><span class="line">tmpfs this <span class="hljs-built_in">print</span> <span class="hljs-built_in">test</span></span><br><span class="line">tmpfs this <span class="hljs-built_in">print</span> <span class="hljs-built_in">test</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># df | awk '{print "$1="$1 , "testfield:""this print test"}'</span></span><br><span class="line"><span class="hljs-variable">$1</span>=Filesystem testfield:this <span class="hljs-built_in">print</span> <span class="hljs-built_in">test</span></span><br><span class="line"><span class="hljs-variable">$1</span>=/dev/vda1 testfield:this <span class="hljs-built_in">print</span> <span class="hljs-built_in">test</span></span><br><span class="line"><span class="hljs-variable">$1</span>=devtmpfs testfield:this <span class="hljs-built_in">print</span> <span class="hljs-built_in">test</span></span><br><span class="line"><span class="hljs-variable">$1</span>=tmpfs testfield:this <span class="hljs-built_in">print</span> <span class="hljs-built_in">test</span></span><br><span class="line"><span class="hljs-variable">$1</span>=tmpfs testfield:this <span class="hljs-built_in">print</span> <span class="hljs-built_in">test</span></span><br><span class="line"><span class="hljs-variable">$1</span>=tmpfs testfield:this <span class="hljs-built_in">print</span> <span class="hljs-built_in">test</span></span><br><span class="line"><span class="hljs-variable">$1</span>=tmpfs testfield:this <span class="hljs-built_in">print</span> <span class="hljs-built_in">test</span></span><br><span class="line"><span class="hljs-comment">#看上面的案例我们可以发现,当$1被双引号包裹的时候，他就是一个字符串,不再是变量</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>awk中的Pattern<br>其实action的主要操作就是print输出,简单来用就是输出内容，更复杂的就是对输出的内容进行格式化的操作。而Pattern所存在的两种模式,愈加加强了awk的能力。</p>
+<h3 id="awk中的逻辑"><a href="#awk中的逻辑" class="headerlink" title="awk中的逻辑"></a>awk中的逻辑</h3><p>为了更好的格式化,awk中也带有逻辑参数，其中包括开始BEGIN和结尾END,他们之间用{}分隔,比如</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">awk -v <span class="hljs-built_in">test</span>=<span class="hljs-string">"test"</span> <span class="hljs-string">'BEGIN{print "1",NR}{print test}END{print "input end" }'</span> /etc/passwd</span><br></pre></td></tr></tbody></table></figure>
+<p>你会发现他输出了很多个test，首先begin进入，然后输出1和行号0 紧接着不断的进入行输出test 在最后一行输入时 执行input end</p>
+<p><strong>特殊模式下的BEGIN与END</strong></p>
+<ul>
+<li>BEGIN 模式指定了处理文本之前需要执行的操作</li>
+<li>END 模式指定了处理完所有行之后所需要执行的操作</li>
+</ul>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># df | awk 'BEGIN{print "$1","$2"}'</span></span><br><span class="line"><span class="hljs-variable">$1</span> <span class="hljs-variable">$2</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># df | awk 'BEGIN{print "$1","$2"} {print $1,$2}'</span></span><br><span class="line"><span class="hljs-variable">$1</span> <span class="hljs-variable">$2</span></span><br><span class="line">Filesystem 1K-blocks</span><br><span class="line">/dev/vda1 41147472</span><br><span class="line">devtmpfs 930656</span><br><span class="line">tmpfs 941116</span><br><span class="line">tmpfs 941116</span><br><span class="line">tmpfs 941116</span><br><span class="line">tmpfs 188224</span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># df | awk 'BEGIN{print "$1","$2"} {print $1,$2} END{print "end for file"}'</span></span><br><span class="line"><span class="hljs-variable">$1</span> <span class="hljs-variable">$2</span></span><br><span class="line">Filesystem 1K-blocks</span><br><span class="line">/dev/vda1 41147472</span><br><span class="line">devtmpfs 930656</span><br><span class="line">tmpfs 941116</span><br><span class="line">tmpfs 941116</span><br><span class="line">tmpfs 941116</span><br><span class="line">tmpfs 188224</span><br><span class="line">end <span class="hljs-keyword">for</span> file</span><br></pre></td></tr></tbody></table></figure>
+<p>在BEGIN的模式下，首先awk会执行BEGIN中的action 之后才做去执行其他的action,同理,在执行完所有的action之后,awk回去执行END模式下面的action。<font style="color:red">需要注意的是两个特殊的模式BEGIN以及END都需要大写</font></p>
+<p>于是 awk的格式化能力表露无疑了,提取字段再加上BEGIN与END的两种特殊模式，一张完整的表不就出来了嘛</p>
+<p><strong>关系运算符</strong></p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line"><   小于      x < y</span><br><span class="line"><=  小于等于  x <= y</span><br><span class="line">==  等于      x==y</span><br><span class="line">!=  不等于  x!=y</span><br><span class="line">> = 大于等于 x>=y</span><br><span class="line">>   大于  x>y</span><br><span class="line">~  正则匹配  x ~ /正则/</span><br><span class="line">!~ 正则不匹配  x !~ /正则/</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="awk中的正则模式"><a href="#awk中的正则模式" class="headerlink" title="awk中的正则模式"></a>awk中的正则模式</h3><p>既然上面的关系运算符中出现了正则，那我们就来讲一讲正则模式<br>需要注意的是 当使用{x,y}这种次数匹配的正则表达式时，需要配合–posix选项或者–re-interval选项</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 匹配/etc/passwd 中以 tss开头的行</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># cat /etc/passwd |  awk '/tss/{print $0}'</span></span><br><span class="line">tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin</span><br><span class="line"><span class="hljs-comment"># 匹配/etc/passwd 中以 /bin/bash结尾的行</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># cat /etc/passwd |  awk '/\/bin\/bash$/{print $0}'</span></span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line"><span class="hljs-comment"># 匹配/etc/passwd 中以/bin/bash结尾的行 到以 tss开头的行</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># cat /etc/passwd |  awk '/\/bin\/bash$/,/^tss/{print $0}'</span></span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">sync:x:5:0:sync:/sbin:/bin/sync</span><br><span class="line">shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown</span><br><span class="line">halt:x:7:0:halt:/sbin:/sbin/halt</span><br><span class="line">mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</span><br><span class="line">operator:x:11:0:operator:/root:/sbin/nologin</span><br><span class="line">games:x:12:100:games:/usr/games:/sbin/nologin</span><br><span class="line">ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin</span><br><span class="line">nobody:x:99:99:Nobody:/:/sbin/nologin</span><br><span class="line">systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin</span><br><span class="line">dbus:x:81:81:System message bus:/:/sbin/nologin</span><br><span class="line">polkitd:x:999:998:User <span class="hljs-keyword">for</span> polkitd:/:/sbin/nologin</span><br><span class="line">sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin</span><br><span class="line">postfix:x:89:89::/var/spool/postfix:/sbin/nologin</span><br><span class="line">chrony:x:998:996::/var/lib/chrony:/sbin/nologin</span><br><span class="line">ntp:x:38:38::/etc/ntp:/sbin/nologin</span><br><span class="line">tcpdump:x:72:72::/:/sbin/nologin</span><br><span class="line">nscd:x:28:28:NSCD Daemon:/:/sbin/nologin</span><br><span class="line">mysql:x:27:27:MySQL Server:/var/lib/mysql:/bin/<span class="hljs-literal">false</span></span><br><span class="line">dockerroot:x:997:994:Docker User:/var/lib/docker:/sbin/nologin</span><br><span class="line">tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin</span><br><span class="line"><span class="hljs-comment"># 匹配行号大于2 且小于6的行</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># cat /etc/passwd |  awk 'NR>2 && NR<=6{print $0}'</span></span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">sync:x:5:0:sync:/sbin:/bin/sync</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="awk中的语法逻辑"><a href="#awk中的语法逻辑" class="headerlink" title="awk中的语法逻辑"></a>awk中的语法逻辑</h3><p>在awk中,同样可以使用if for while等在编程语法中出现的逻辑判断<br>if(){语句1;语句2;}</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 输出df第一行</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># df | awk 'NR==1{print $0}'</span></span><br><span class="line">Filesystem     1K-blocks    Used Available Use% Mounted on</span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># df | awk '{if(NR==1){print $0}}'</span></span><br><span class="line">Filesystem     1K-blocks    Used Available Use% Mounted on</span><br></pre></td></tr></tbody></table></figure>
+
+<p>if(){语句1;语句2;}else{语句3;语句4;}<br>if(){语句1;语句2;}else if(){语句3;语句4;}else{语句5;语句6;}</p>
+<p>for(初始化;表达式;更新){语句}<br>for(变量 in 数组){语句}<br>while(表达式){语句}<br>do{语句}while(条件)</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 循环输出1-10</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># awk 'BEGIN{for(i=1;i<=10;i++){print i}}'</span></span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">...</span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># awk 'BEGIN{i=1;while(i<=10){print i;i++}}'</span></span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">...</span><br><span class="line"><span class="hljs-comment"># 使用continue和break</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># awk 'BEGIN{for(i=1;i<=10;i++){if(i==3){continue};print i}}'</span></span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">4</span><br><span class="line">...</span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># awk 'BEGIN{for(i=1;i<=10;i++){if(i==3){break};print i}}'</span></span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line"><span class="hljs-comment"># 使用exit退出当前脚本</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># awk 'BEGIN{for(i=1;i<=10;i++){if(i==3){break};print i}}'</span></span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># df | awk 'BEGIN{print "filed"}{exit}{print $1}END{print "end file"}'</span></span><br><span class="line">filed</span><br><span class="line">end file</span><br><span class="line"><span class="hljs-comment"># 并不是直接结束,而是跳到了end</span></span><br><span class="line"><span class="hljs-comment"># 使用next 直接跳到下一行</span></span><br><span class="line">df | awk <span class="hljs-string">'BEGIN{print "输出第一行的下一行"}{if(NR==1){next};print $0}'</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># df | awk 'BEGIN{print "输出第一行的下一行"}{if(NR==1){next};print $0;{exit}}'</span></span><br><span class="line">输出第一行的下一行</span><br><span class="line">/dev/vda1       41147472 6851112  32392868  18% /</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">## sed基础</span></span><br><span class="line">sed [参数][地址commands][inputfile]</span><br><span class="line">sed 工作流程一次处理一行内容。处理时，把当前处理的行存储在临时缓冲区中，称为“模式空间”（patternspace ），接着用sed 命令处理缓冲区中的内容，处理完成后，把缓冲区的内容送往屏幕。然后读入下行，执行下一个循环。如果没有使诸如‘D’ 的特殊命令，那会在两个循环之间清空模式空间，但不会清空保留空间。这样不断重复，直到文件末尾。文件内容并没有改变，除非你使用重定向存储输出或-i。</span><br><span class="line"></span><br><span class="line">**参数:**</span><br><span class="line">--version 查看版本</span><br><span class="line">--<span class="hljs-built_in">help</span> 查看帮助</span><br><span class="line">-n 不输出模式空间内容到屏幕，即不自动打印</span><br><span class="line">-e 多点编辑，允许多个脚本指令被执行</span><br><span class="line">-r 支持正则</span><br><span class="line">-i 修改原文件内容</span><br><span class="line">-i.bak 在将处理的结果写入文件之前备份一份</span><br><span class="line">-f 支持使用脚本文件</span><br><span class="line"></span><br><span class="line">**地址：**</span><br><span class="line">- 不给地址 :对全文进行处理</span><br><span class="line">- 单地址 :</span><br><span class="line">    - <span class="hljs-comment">#: 指定行</span></span><br><span class="line">    - /pattern/: 被此处所能</span><br><span class="line">- 地址范围</span><br><span class="line">    - <span class="hljs-comment">#,# </span></span><br><span class="line">    - <span class="hljs-comment">#，+#</span></span><br><span class="line">    - /part1/,/part2/</span><br><span class="line">    - <span class="hljs-comment">#,/part1/</span></span><br><span class="line">- 步进 ～</span><br><span class="line">    - sed -n <span class="hljs-string">'1~2p'</span> 只打印奇数行,起始为1 步进为2</span><br><span class="line">    - sed -n <span class="hljs-string">'2~2p'</span> 只打印偶数行 </span><br><span class="line">**编辑命令<span class="hljs-built_in">command</span>:**</span><br><span class="line">p 打印当前模式空间内容，追加到默认输出之后</span><br><span class="line">n 替换第几个匹配的内容</span><br><span class="line">g 匹配所有行</span><br><span class="line">d 删除模式空间匹配到的行，并立即启用下一轮循环</span><br><span class="line"></span><br><span class="line">s/// 查找替换,支持使用其他分隔符，如 s@@@ s<span class="hljs-comment">###</span></span><br><span class="line">y 替换</span><br><span class="line">i\ 从当前行前插入</span><br><span class="line">a\ 从当前行后插入</span><br><span class="line">c\ 替换匹配行</span><br><span class="line">w 写入一个文件</span><br><span class="line">r 读取一个文件</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">### 使用案例</span></span><br><span class="line">```bash</span><br><span class="line">[root@hzj ~]<span class="hljs-comment"># cat demo</span></span><br><span class="line">aaa</span><br><span class="line">bbbb</span><br><span class="line">AABBCCDD</span><br><span class="line">[root@hzj ~]<span class="hljs-comment"># sed "/aaa/p" demo  #aaa进入模式空间，/p打印模式空间内容。出现两遍aaa</span></span><br><span class="line">aaa</span><br><span class="line">aaa</span><br><span class="line">bbbb</span><br><span class="line">AABBCCDD </span><br><span class="line">[root@hzj ~]<span class="hljs-comment"># sed -n "/aaa/p" demo  #-n关闭自动输出，/p打印模式空间内容，出现一遍aaa</span></span><br><span class="line">aaa</span><br><span class="line">[root@hzj ~]<span class="hljs-comment"># sed -e "s/a/A/" -e "s/b/B/" demo  #-e多点编辑</span></span><br><span class="line">Aaa</span><br><span class="line">Bbbb</span><br><span class="line">AABBCCDD</span><br><span class="line">[root@hzj ~]<span class="hljs-comment"># cat sedscript.txt</span></span><br><span class="line">s/A/a/g</span><br><span class="line">[root@hzj ~]<span class="hljs-comment"># sed -f sedscript.txt demo  #-f使用文件处理</span></span><br><span class="line">aaa</span><br><span class="line">bbbb</span><br><span class="line">aaBBCCDD</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@hzj ~]<span class="hljs-comment"># sed -n "p" demo  #关闭默认输出。p输出模式空间内容</span></span><br><span class="line">aaa</span><br><span class="line">bbbb</span><br><span class="line">AABjBCCDD</span><br><span class="line">[root@hzj ~]<span class="hljs-comment"># sed "2s/b/B/g" demo  #替换第2行的b->B</span></span><br><span class="line">aaa</span><br><span class="line">BBBB</span><br><span class="line">AABBCCDD</span><br><span class="line">[root@hzj ~]<span class="hljs-comment"># sed -n '1,3p' /etc/passwd # 输出第1,3行</span></span><br><span class="line"></span><br><span class="line">[root@hzj ~]<span class="hljs-comment"># sed -n '/^root/,/daemon/p' # 输出passwd文件的root～daemon行</span></span><br><span class="line"></span><br><span class="line">[root@hzj ~]<span class="hljs-comment"># sed -n '/x:[0:1]:/p' /etc/passwd #输出passwd文件中uid是0或1的行</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">删除第一行</span><br><span class="line">sed <span class="hljs-string">'1d'</span> /etc/passwd </span><br><span class="line">删除第一行和第三行</span><br><span class="line">sed -e <span class="hljs-string">'1d'</span> -e <span class="hljs-string">'3d'</span> /etc/passwd</span><br><span class="line">sed  <span class="hljs-string">'1d;3d'</span> /etc/passwd</span><br><span class="line">保留第一行 删除其他行</span><br><span class="line">sed <span class="hljs-string">'1!d'</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">在第二行后加123</span><br><span class="line">sed <span class="hljs-string">"2a123"</span> demo </span><br><span class="line">在第一行前加123</span><br><span class="line">sed <span class="hljs-string">"1i123"</span> demo</span><br><span class="line">保存第三行的内容到demo3文件中</span><br><span class="line">sed -n <span class="hljs-string">"3w/root/demo3"</span> demo</span><br><span class="line">读取demo3的内容到第1行后</span><br><span class="line">sed <span class="hljs-string">"1r/root/demo3"</span> demo</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">先匹配后替换</span><br><span class="line">sed -e <span class="hljs-string">'/^root/s/^1/2'</span> /etc/passwd</span><br><span class="line">匹配第一个并修改</span><br><span class="line">sed <span class="hljs-string">'s/root/ROOT'</span> /etc/passwd</span><br><span class="line">匹配第二个并修改</span><br><span class="line">sed <span class="hljs-string">'s/root/ROOT'</span> /etc/passwd</span><br><span class="line">匹配所有并修改</span><br><span class="line">sed <span class="hljs-string">'s/root/ROOT/g'</span> /etc/passwd</span><br><span class="line">匹配修改成功后，打印变动行</span><br><span class="line">sed -n <span class="hljs-string">'s/root/ROOT/pg'</span> /etc/passwd</span><br><span class="line">修改后另存为其他文件</span><br><span class="line">sed -n <span class="hljs-string">'s/root/ROOT/pg;w passwd.md'</span> /etc/passwd</span><br><span class="line">sed -n <span class="hljs-string">'s/root/ROOT/pgw passwd.md'</span> /etc/passwd</span><br><span class="line">在文件的每行前面添加<span class="hljs-comment">#注释</span></span><br><span class="line">sed -n <span class="hljs-string">'s/^/#/p'</span> /etc/passwd</span><br><span class="line">删除文件的第1个字符</span><br><span class="line">sed <span class="hljs-string">'s/^.//1'</span> /etc/passwd</span><br><span class="line">删除文件的第二个字符</span><br><span class="line">sed <span class="hljs-string">'s/.//2'</span> /etc/passwd</span><br><span class="line">在每一行的上面添加hello </span><br><span class="line">sed <span class="hljs-string">'i hello'</span> /etc/passwd</span><br><span class="line">在第一行的上面添加hello</span><br><span class="line">sed <span class="hljs-string">'1a hello'</span> /etc/passwd</span><br><span class="line">将a~z替换成A～Z </span><br><span class="line">sed <span class="hljs-string">'y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/'</span> /etc/passwd</span><br><span class="line">替换匹配行</span><br><span class="line">sed -n <span class="hljs-string">'1c hello'</span> /etc/passwd</span><br><span class="line">输出1行</span><br><span class="line">sed -n <span class="hljs-string">'1q'</span> /etc/passwd</span><br><span class="line">打印奇数行</span><br><span class="line">sed -n <span class="hljs-string">'p;n'</span> /etc/passwd</span><br><span class="line">打印偶数行</span><br><span class="line">sed -n <span class="hljs-string">'n;p'</span> /etc/passwd</span><br><span class="line">打印匹配字符串的下一行</span><br><span class="line">sed -n <span class="hljs-string">'/^root/{n;p}'</span> /etc/passwd</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="sed基本操作"><a href="#sed基本操作" class="headerlink" title="sed基本操作"></a>sed基本操作</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 打印包含pattern的行</span></span><br><span class="line">sed <span class="hljs-string">'root/p'</span> /etc/passwd | less <span class="hljs-comment"># 输出匹配行+全文</span></span><br><span class="line">sed -n <span class="hljs-string">'root/p'</span> /etc/passwd <span class="hljs-comment"># 输出匹配行</span></span><br><span class="line">sed -n <span class="hljs-string">'/^root/p'</span> /etc/passwd <span class="hljs-comment"># 输出以root开头行</span></span><br><span class="line">sed -n <span class="hljs-string">'root/!p'</span> /etc/passwd <span class="hljs-comment"># 输出以root开头以外的行</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 删除pattern的行</span></span><br><span class="line">sed <span class="hljs-string">'/^root/,/shutdown/d'</span> /etc/passwd </span><br><span class="line">sed -n <span class="hljs-string">'/^root/,~3p'</span> /etc/passwd  <span class="hljs-comment"># 步进多次</span></span><br><span class="line">sed -n <span class="hljs-string">'/^root/,+3p'</span> /etc/passwd  <span class="hljs-comment"># 步进一次</span></span><br><span class="line">sed <span class="hljs-string">'/^root/{n;d}'</span> /etc/passwd <span class="hljs-comment"># 匹配行的下一行</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 行插入  追加 修改</span></span><br><span class="line">sed -r <span class="hljs-string">'/^root/i\>>>> test by geminis'</span> /etc/passwd</span><br><span class="line">sed -r <span class="hljs-string">'/^root/a\>>>> test by geminis'</span> /etc/passwd</span><br><span class="line">sed -r <span class="hljs-string">'/^root/c\>>>> test by geminis'</span> /etc/passwd</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 删除空格</span></span><br><span class="line">sed s/[[:space:]]//g file</span><br><span class="line"><span class="hljs-comment"># 删除空格 </span></span><br><span class="line">sed /^$/d file</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><p><a href="https://www.cnblogs.com/along21/p/10366886.html#auto_id_15" target="_blank" rel="noopener">https://www.cnblogs.com/along21/p/10366886.html#auto_id_15</a></p>
+</body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/ec496181/">linux文本编辑三剑客</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top">何泽君</a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/ec496181/">http://blog.noback.top/posts/ec496181/</a></li>
+            <li><strong>发布时间：</strong>2020-01-29</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/21215442/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">nginx基础</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/f2caabf2/">
+                <span class="level-item">20200128</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/posts/ec496181/';
+        this.page.identifier = 'posts/ec496181/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        73
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        33
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#linux文本编辑三剑客">
+        <span class="has-mr-6">1</span>
+        <span>linux文本编辑三剑客</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#grep基础">
+        <span class="has-mr-6">1.1</span>
+        <span>grep基础</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#需要注意的地方">
+        <span class="has-mr-6">1.1.1</span>
+        <span>需要注意的地方</span>
+        </a></li><li>
+        <a class="is-flex" href="#正则表达式">
+        <span class="has-mr-6">1.1.2</span>
+        <span>正则表达式</span>
+        </a></li><li>
+        <a class="is-flex" href="#实例">
+        <span class="has-mr-6">1.1.3</span>
+        <span>实例</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#awk基础">
+        <span class="has-mr-6">1.2</span>
+        <span>awk基础</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#awk的工作流程">
+        <span class="has-mr-6">1.2.1</span>
+        <span>awk的工作流程</span>
+        </a></li><li>
+        <a class="is-flex" href="#awk中的分隔符">
+        <span class="has-mr-6">1.2.2</span>
+        <span>awk中的分隔符</span>
+        </a></li><li>
+        <a class="is-flex" href="#awk重定向">
+        <span class="has-mr-6">1.2.3</span>
+        <span>awk重定向</span>
+        </a></li><li>
+        <a class="is-flex" href="#awk的内建变量">
+        <span class="has-mr-6">1.2.4</span>
+        <span>awk的内建变量</span>
+        </a></li><li>
+        <a class="is-flex" href="#awk中的逻辑">
+        <span class="has-mr-6">1.2.5</span>
+        <span>awk中的逻辑</span>
+        </a></li><li>
+        <a class="is-flex" href="#awk中的正则模式">
+        <span class="has-mr-6">1.2.6</span>
+        <span>awk中的正则模式</span>
+        </a></li><li>
+        <a class="is-flex" href="#awk中的语法逻辑">
+        <span class="has-mr-6">1.2.7</span>
+        <span>awk中的语法逻辑</span>
+        </a></li><li>
+        <a class="is-flex" href="#sed基本操作">
+        <span class="has-mr-6">1.2.8</span>
+        <span>sed基本操作</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#地址">
+        <span class="has-mr-6">1.3</span>
+        <span>地址</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://image.noback.top/datadog.svg" alt="linux文本编辑三剑客" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 何泽君&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

@@ -17,6 +17,7 @@
 <meta property="og:image" content="http://blog.noback.top/images/og_image.png">
 <meta property="article:published_time" content="2020-01-22T03:32:11.000Z">
 <meta property="article:modified_time" content="2020-01-22T03:32:11.000Z">
+<meta property="article:author" content="何泽君">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
 
@@ -108,6 +109,9 @@
                 href="/">Home</a>
                 
                 <a class="navbar-item"
+                href="/about-me/">about-me</a>
+                
+                <a class="navbar-item"
                 href="/archives/">Archives</a>
                 
                 <a class="navbar-item"
@@ -187,13 +191,10 @@
             <html><head></head><body><p>vuejs基础2</p>
 <a id="more"></a>
 <p><a href="https://cn.vuejs.org" target="_blank" rel="noopener">https://cn.vuejs.org</a><br>线上:<a href="https://jsfiddle.net/chrisvfritz/50wL7mdz/" target="_blank" rel="noopener">https://jsfiddle.net/chrisvfritz/50wL7mdz/</a></p>
-<h2 id="添加环境"><a href="#添加环境" class="headerlink" title="添加环境"></a>添加环境</h2><p>1.通过引入的方式引入vue</p>
-<figure class="highlight html hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"><!-- 开发环境版本，包含了有帮助的命令行警告 --></span></span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>></span><span class="hljs-tag"></<span class="hljs-name">script</span>></span> </span><br><span class="line"><span class="hljs-comment"><!-- 生产环境版本，优化了尺寸和速度 --></span></span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/vue"</span>></span><span class="hljs-tag"></<span class="hljs-name">script</span>></span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="添加环境"><a href="#添加环境" class="headerlink" title="添加环境"></a>添加环境</h2><p>通过引入的方式引入vue</p>
+<figure class="highlight html hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"><!-- 开发环境版本，包含了有帮助的命令行警告 --></span></span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>></span><span class="hljs-tag"></<span class="hljs-name">script</span>></span> </span><br><span class="line"><span class="hljs-comment"><!--生产环境版本，优化了尺寸和速度 --></span></span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/vue"</span>></span><span class="hljs-tag"></<span class="hljs-name">script</span>></span></span><br></pre></td></tr></tbody></table></figure>
 
-
-
-
-<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line">id=<span class="hljs-string">"app"</span> --- > <span class="hljs-comment">//el:#app</span></span><br><span class="line">v-bind:title = <span class="hljs-string">"message"</span>  --- > <span class="hljs-comment">//绑定标签属性(指令)</span></span><br><span class="line">{{message}} ---- > data:{  <span class="hljs-attr">message</span>:<span class="hljs-string">"hello vue!"</span>}</span><br><span class="line"><span class="hljs-keyword">var</span> app2  = <span class="hljs-keyword">new</span> Vue({</span><br><span class="line">})  ---> <span class="hljs-comment">//申明vue的对象</span></span><br><span class="line"></span><br><span class="line">v-<span class="hljs-keyword">if</span>=<span class="hljs-literal">true</span>  ----> <span class="hljs-comment">//条件判断</span></span><br><span class="line">v-<span class="hljs-keyword">if</span>:<span class="hljs-string">"seen"</span>   <span class="hljs-keyword">new</span> Vue({ <span class="hljs-attr">el</span>:<span class="hljs-string">'#app'</span>,<span class="hljs-attr">data</span>:{ <span class="hljs-attr">seen</span>:<span class="hljs-literal">true</span>}   })</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//条件循环</span></span><br><span class="line"><div id=<span class="hljs-string">"app-4"</span>></span><br><span class="line">  <ol></span><br><span class="line">    <li v-<span class="hljs-keyword">for</span>=<span class="hljs-string">"todo in todos"</span>></span><br><span class="line">      {{ todo.text }}</span><br><span class="line">    <<span class="hljs-regexp">/li></span></span><br><span class="line"><span class="hljs-regexp">  </</span>ol></span><br><span class="line"><<span class="hljs-regexp">/div></span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">var app4 = new Vue({</span></span><br><span class="line"><span class="hljs-regexp">    el:"#app-4",</span></span><br><span class="line"><span class="hljs-regexp">    data:{</span></span><br><span class="line"><span class="hljs-regexp">        todo:[</span></span><br><span class="line"><span class="hljs-regexp">            {text:'xxx'},</span></span><br><span class="line"><span class="hljs-regexp">            {text:'xxx'},</span></span><br><span class="line"><span class="hljs-regexp">            {text:'xxx'},</span></span><br><span class="line"><span class="hljs-regexp">        ]</span></span><br><span class="line"><span class="hljs-regexp">    }</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">})</span></span><br><span class="line"><span class="hljs-regexp">app4.todo.push({text:'yyy'}) /</span><span class="hljs-regexp">/添加内容</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">/</span><span class="hljs-regexp">/  v-on:click = "funcname"  自定义点击方法</span></span><br><span class="line"><span class="hljs-regexp"><div id="app-5"></span></span><br><span class="line"><span class="hljs-regexp">    <p>{{message}}</</span>p></span><br><span class="line">    <button v-on:click=<span class="hljs-string">"reverseMessage"</span>>反转消息<<span class="hljs-regexp">/button></span></span><br><span class="line"><span class="hljs-regexp"></</span>div></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> app5 = <span class="hljs-keyword">new</span> Vue({</span><br><span class="line">    el:<span class="hljs-string">"#app-5"</span>,</span><br><span class="line">    data:{</span><br><span class="line">        message: <span class="hljs-string">'hello,vue.js!'</span></span><br><span class="line">    }</span><br><span class="line">    methods:{</span><br><span class="line">        reverseMessage:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{</span><br><span class="line">            <span class="hljs-keyword">this</span>.message = <span class="hljs-keyword">this</span>.message.split(<span class="hljs-string">''</span>).reveser().join(<span class="hljs-string">''</span>)</span><br><span class="line">        }     </span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 表单双向绑定</span></span><br><span class="line"><div id=<span class="hljs-string">"app6"</span>></span><br><span class="line">    <p>{{message}}<<span class="hljs-regexp">/p></span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">    <input v-model="message"></span></span><br><span class="line"><span class="hljs-regexp"></</span>div></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">new</span> app6 = <span class="hljs-keyword">new</span> Vue({</span><br><span class="line">    el:<span class="hljs-string">"#app6"</span>,</span><br><span class="line">    data:{</span><br><span class="line">        message: <span class="hljs-string">"hello world"</span></span><br><span class="line">    }</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight html hljs"><table><tbody><tr><td class="code"><pre><span class="line">id="app" --- > //el:#app</span><br><span class="line">v-bind:title = "message"  --- > //绑定标签属性(指令)</span><br><span class="line">{{message}} ---- > data:{  message:"hello vue!"}</span><br><span class="line">var app2  = new Vue({</span><br><span class="line">})  ---> //申明vue的对象</span><br><span class="line">//v-if=true  ----> //条件判断</span><br><span class="line">//v-if:"seen"   new Vue({ el:'#app',data:{ seen:true}   })</span><br><span class="line">//条件循环</span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app-4"</span>></span></span><br><span class="line">  <span class="hljs-tag"><<span class="hljs-name">ol</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"todo in todos"</span>></span></span><br><span class="line">      {{ todo.text }}</span><br><span class="line">    <span class="hljs-tag"></<span class="hljs-name">li</span>></span></span><br><span class="line">  <span class="hljs-tag"></<span class="hljs-name">ol</span>></span></span><br><span class="line"><span class="hljs-tag"></<span class="hljs-name">div</span>></span></span><br><span class="line"></span><br><span class="line">var app4 = new Vue({</span><br><span class="line">    el:"#app-4",</span><br><span class="line">    data:{</span><br><span class="line">        todo:[</span><br><span class="line">            {text:'xxx'},</span><br><span class="line">            {text:'xxx'},</span><br><span class="line">            {text:'xxx'},</span><br><span class="line">        ]</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">})</span><br><span class="line">app4.todo.push({text:'yyy'}) //添加内容</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//  v-on:click = "funcname"  自定义点击方法</span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app-5"</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">p</span>></span>{{message}}<span class="hljs-tag"></<span class="hljs-name">p</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"reverseMessage"</span>></span>反转消息<span class="hljs-tag"></<span class="hljs-name">button</span>></span></span><br><span class="line"><span class="hljs-tag"></<span class="hljs-name">div</span>></span></span><br><span class="line"></span><br><span class="line">var app5 = new Vue({</span><br><span class="line">    el:"#app-5",</span><br><span class="line">    data:{</span><br><span class="line">        message: 'hello,vue.js!'</span><br><span class="line">    }</span><br><span class="line">    methods:{</span><br><span class="line">        reverseMessage:function () {</span><br><span class="line">            this.message = this.message.split('').reveser().join('')</span><br><span class="line">        }     </span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">})</span><br><span class="line">// 表单双向绑定</span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app6"</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">p</span>></span>{{message}}<span class="hljs-tag"></<span class="hljs-name">p</span>></span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">"message"</span>></span></span><br><span class="line"><span class="hljs-tag"></<span class="hljs-name">div</span>></span></span><br><span class="line"></span><br><span class="line">new app6 = new Vue({</span><br><span class="line">    el:"#app6",</span><br><span class="line">    data:{</span><br><span class="line">        message: "hello world"</span><br><span class="line">    }</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="vue的生命周期"><a href="#vue的生命周期" class="headerlink" title="vue的生命周期"></a>vue的生命周期</h2><p>每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM等，但为了让开发者能更好的控制vue的整个流程，以及在特定时候添加特定功能，这时候我们必须要了解的是vue的生命周期<br><img src="https://cn.vuejs.org/images/lifecycle.png" alt></p>
 <p>先了解一下dom的解析流程<br>浏览器渲染引擎工作流程都差不多，大致分为5步，创建DOM树——创建StyleRules——创建Render树——布局Layout——绘制Painting<br>1.用HTML分析器，分析分析HTML元素，构建一颗DOM树(标记化和树构建)<br>2.用CSS分析器，分析CSS文件和元素上的inline样式，生成页面的样式表。<br>3.将DOM树和样式表，关联起来，构建一颗Render树(这一过程又称为Attachment)。每个DOM节点都有attach方法，接受样式信息，返回一个render对象(又名renderer)。这些render对象最终会被构建成一颗Render树。<br>4.有了Render树，浏览器开始布局，为每个Render树上的节点确定一个在显示屏上出现的精确坐标。<br>5.Render树和节点显示坐标都有了，就调用每个节点paint方法，把它们绘制出来。 </p>
@@ -221,7 +222,7 @@
         
             <ul class="post-copyright">
             <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/6412f439/">vuejs基础2</a></li>
-            <li><strong>本文作者：</strong><a href="http://blog.noback.top"></a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top">何泽君</a></li>
             <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/6412f439/">http://blog.noback.top/posts/6412f439/</a></li>
             <li><strong>发布时间：</strong>2020-01-22</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
@@ -240,6 +241,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/3ee8c444/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">docker基础-1</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -308,7 +316,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        68
+                        73
                     </p>
                 </a>
             </div>
@@ -318,7 +326,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        30
+                        33
                     </p>
                 </a>
             </div>
@@ -386,7 +394,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2020 vuejs基础2&nbsp;
+                &copy; 2020 何泽君&nbsp;
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
                         href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
