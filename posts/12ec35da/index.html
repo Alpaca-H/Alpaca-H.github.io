@@ -175,7 +175,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    1 分钟 读完 (大约 129 个字)
+                    8 分钟 读完 (大约 1128 个字)
                 </span>
                 
                 
@@ -193,8 +193,41 @@
 
 
 
-<h1 id="nginx配置实例"><a href="#nginx配置实例" class="headerlink" title="nginx配置实例"></a>nginx配置实例</h1><h2 id="nginx配置实例–反向代理"><a href="#nginx配置实例–反向代理" class="headerlink" title="nginx配置实例–反向代理"></a>nginx配置实例–反向代理</h2><p>配置内容<br>1台客户机、1台Nginx代理服务器(10.0.5.233)、一个网页<br>效果: 客户机在浏览器中输入<a href="http://www.123.com" target="_blank" rel="noopener">www.123.com</a> 由nginx代理进行转发到我们自己的网页上</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 首先 在客户机端做域名与ip的映射</span></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"10.0.5.255 www.123.com"</span> >> /etc/hosts</span><br><span class="line"><span class="hljs-comment"># 配置nginx文件</span></span><br><span class="line">server {</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  10.0.5.233;</span><br><span class="line">        root         /usr/share/nginx/html;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment"># Load configuration files for the default server block.</span></span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">        location / {</span><br><span class="line">           root html;</span><br><span class="line">           proxy_pass http://127.0.0.1:8001;</span><br><span class="line">           index index.html index.htm;</span><br><span class="line">        }</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure></body></html>
+<h1 id="nginx配置实例"><a href="#nginx配置实例" class="headerlink" title="nginx配置实例"></a>nginx配置实例</h1><h2 id="nginx配置实例–反向代理1"><a href="#nginx配置实例–反向代理1" class="headerlink" title="nginx配置实例–反向代理1"></a>nginx配置实例–反向代理1</h2><p>配置内容<br>1台Nginx代理服务器(10.0.5.233)、一个网页<br>效果: 客户机在浏览器中输入<a href="http://www.123.com" target="_blank" rel="noopener">www.123.com</a> 由nginx代理进行转发到我们自己的网页上</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 首先 在客户机端做域名与ip的映射</span></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"10.0.5.255 www.123.com"</span> >> /etc/hosts</span><br><span class="line"><span class="hljs-comment"># 配置nginx文件 /etc/nginx/nginx.conf</span></span><br><span class="line">server {</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  10.0.5.233;</span><br><span class="line">        root         /usr/share/nginx/html;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment"># Load configuration files for the default server block.</span></span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">        location / {</span><br><span class="line">           root html;</span><br><span class="line">           proxy_pass http://127.0.0.1:8001;</span><br><span class="line">           index index.html index.htm;</span><br><span class="line">        }</span><br><span class="line">    } </span><br><span class="line"><span class="hljs-comment"># 上面是nginx服务器的配置，表示的是监听10.0.5.233:80 将收到的请求转发到 http://127.0.0.1:8001本地端口</span></span><br><span class="line"><span class="hljs-comment"># 当我们在浏览器输入www.123.com:80 --> 10.0.5.233:80 --> server127.0.0.1:8001</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="nginx配置–反向代理2"><a href="#nginx配置–反向代理2" class="headerlink" title="nginx配置–反向代理2"></a>nginx配置–反向代理2</h2><p>配置内容<br>1台Nginx代理服务器(10.0.5.233)、2个网页<br>效果: 客户机在浏览器中输入<a href="http://www.123.com/web1/" target="_blank" rel="noopener">www.123.com/web1/</a> 跳转到第一个web页面 ; 输入<a href="http://www.123.com/web2/" target="_blank" rel="noopener">www.123.com/web2/</a> 跳转到第二个web页面</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># web页面自行配置,分别是</span></span><br><span class="line"><span class="hljs-comment"># 127.0.0.1:8080/web1/ -> web1</span></span><br><span class="line"><span class="hljs-comment"># 127.0.0.1:8081/web2/ -> web2</span></span><br><span class="line"><span class="hljs-comment"># 配置nginx文件 /etc/nginx/nginx.conf</span></span><br><span class="line">server {</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  10.0.5.233;</span><br><span class="line">        root         /usr/share/nginx/html;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment"># Load configuration files for the default server block.</span></span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment"># ～ 表示后面的为正则表达式</span></span><br><span class="line">        location ~ /web1/ {</span><br><span class="line">           proxy_pass http://127.0.0.1:8080;</span><br><span class="line">        } </span><br><span class="line">        location ~ /web2/ {</span><br><span class="line">            proxy_pass http://127.0.0.1:8081;</span><br><span class="line">        }</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="nginx配置–负载均衡"><a href="#nginx配置–负载均衡" class="headerlink" title="nginx配置–负载均衡"></a>nginx配置–负载均衡</h2><p>配置内容<br>1台Nginx代理服务器(10.0.5.233) 2个web服务器</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">upstream myserver {</span><br><span class="line">    server 10.0.5.197:8001;</span><br><span class="line">    server 10.0.5.198:8001;</span><br><span class="line">} </span><br><span class="line">server {</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  10.0.5.233;</span><br><span class="line">        root         /usr/share/nginx/html;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment"># Load configuration files for the default server block.</span></span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment"># ～ 表示后面的为正则表达式</span></span><br><span class="line">        location  / {</span><br><span class="line">           proxy_pass http://myserver;</span><br><span class="line">        } </span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="策略："><a href="#策略：" class="headerlink" title="策略："></a>策略：</h3><ol>
+<li>默认策略为轮询<br>每个请求按时间顺序逐一分配到后端服务器，如果后端服务器down掉，能自动剔除</li>
+<li>权重策略<br>weight代表权重，权重默认为1，权重越高被分配的用户越多<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">upstream myserver {</span><br><span class="line">    server 10.0.5.197:8001 weight=10;</span><br><span class="line">    server 10.0.5.198:8001 weight=20;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+<li>ip_hash策略<br>每个请求按照按访问ip的hash结果分配，每个访客固定访问一个后端服务器，可以解决session的问题<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">upstream myserver {</span><br><span class="line">    ip_hash;</span><br><span class="line">    server 10.0.5.197:8001;</span><br><span class="line">    server 10.0.5.198:8001;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+<li>fair策略<br>科举服务器响应时间来分配，响应的越快则优先分配<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">upstream myserver {</span><br><span class="line">    server 10.0.5.197:8001;</span><br><span class="line">    server 10.0.5.198:8001;</span><br><span class="line">    fair;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<h2 id="nginx配置实例–动静分离"><a href="#nginx配置实例–动静分离" class="headerlink" title="nginx配置实例–动静分离"></a>nginx配置实例–动静分离</h2><p>动态请求与静态请求分开，用nginx处理静态页面，django处理动态页面</p>
+<ul>
+<li>静态文件放在静态资源管理服务器上，动态资源放在另外的服务器上，有Nginx做转发</li>
+<li>静态文件和动态资源一起发布在同一个服务器上，由nginx做分离</li>
+</ul>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">server {</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  10.0.5.233;</span><br><span class="line">        root         /usr/share/nginx/html;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment"># Load configuration files for the default server block.</span></span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">        location /image/ {</span><br><span class="line">           root /image/;  <span class="hljs-comment"># 静态文件路径</span></span><br><span class="line">           index index.html index.htm;</span><br><span class="line">        }</span><br><span class="line">        location /data/ {</span><br><span class="line">            root /data/;  <span class="hljs-comment"># 静态文件路径</span></span><br><span class="line">            autoindex on; <span class="hljs-comment"># 自动列出目录</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="nginx配置实例–高可用集群"><a href="#nginx配置实例–高可用集群" class="headerlink" title="nginx配置实例–高可用集群"></a>nginx配置实例–高可用集群</h2><p>keepalived+nginx<br>配置需求：<br>master机器(main nginx) slave机器(backup nginx)  两台web服务器做轮询负载均衡 、 一个虚拟IP+4个机器IP</p>
+<p>nginx活性检测脚本</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#!/bin/bash</span></span><br><span class="line"><span class="hljs-comment"># 检测nginx进程数量</span></span><br><span class="line">status=`ps -C nginx --no-header | wc -l`</span><br><span class="line"><span class="hljs-comment"># 如果没有进程，则重启之后再次检测nginx数量,如果依旧没有则杀掉所有keepalived的进程</span></span><br><span class="line"><span class="hljs-keyword">if</span> [ <span class="hljs-variable">$status</span> -eq 0 ];<span class="hljs-keyword">then</span></span><br><span class="line">    /usr/sbin/nginx</span><br><span class="line">    sleep 2</span><br><span class="line">    <span class="hljs-keyword">if</span> [ `ps -C nginx --no-header | wc -l ` -eq 0 ]; <span class="hljs-keyword">then</span></span><br><span class="line">        killall keepalived</span><br><span class="line">    <span class="hljs-keyword">fi</span></span><br><span class="line"><span class="hljs-keyword">fi</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>keepalived配置,根据主机与从机的不通，只需要修改几个参数即可<br>router_id 、 state 、interface 、 virtual_router_id 、priority</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装keepalived</span></span><br><span class="line">yum install keepalived</span><br><span class="line"><span class="hljs-comment"># 修改配置文件</span></span><br><span class="line">! Configuration File <span class="hljs-keyword">for</span> keepalived</span><br><span class="line"></span><br><span class="line">global_defs {</span><br><span class="line">   notification_email {</span><br><span class="line">     acassen@firewall.loc</span><br><span class="line">     failover@firewall.loc</span><br><span class="line">     sysadmin@firewall.loc</span><br><span class="line">   }</span><br><span class="line">   notification_email_from Alexandre.Cassen@firewall.loc</span><br><span class="line">   smtp_server 192.168.200.1</span><br><span class="line">   smtp_connect_timeout 30</span><br><span class="line">   router_id  nginx_master</span><br><span class="line">   vrrp_skip_check_adv_addr</span><br><span class="line">   vrrp_strict</span><br><span class="line">   vrrp_garp_interval 0</span><br><span class="line">   vrrp_gna_interval 0</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># nginx活性检测</span></span><br><span class="line">vrrp_script chk_http_port{</span><br><span class="line">    script <span class="hljs-string">"/usr/local/src/nginx_check.sh"</span></span><br><span class="line"></span><br><span class="line">    interval 2 <span class="hljs-comment"># 检测脚本执行的间隔</span></span><br><span class="line"></span><br><span class="line">    weight 2 <span class="hljs-comment"># 权重</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">vrrp_instance VI_1 {</span><br><span class="line">    state BACKUP   <span class="hljs-comment"># DS-backup机器 BACKUP MASTER</span></span><br><span class="line">    interface eno1 </span><br><span class="line">    virtual_router_id 51</span><br><span class="line">    priority 10  <span class="hljs-comment"># 优先级别</span></span><br><span class="line">    advert_int 1</span><br><span class="line">    authentication {</span><br><span class="line">        auth_type PASS</span><br><span class="line">        auth_pass 1111</span><br><span class="line">    }</span><br><span class="line">    virtual_ipaddress {</span><br><span class="line">        10.0.5.196/20</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>nginx配置</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">upstream myserver {</span><br><span class="line">    server 10.0.5.197:8001;</span><br><span class="line">    server 10.0.5.198:8001;</span><br><span class="line">} </span><br><span class="line">server {</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  10.0.5.196;</span><br><span class="line">        root         /usr/share/nginx/html;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment"># Load configuration files for the default server block.</span></span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment"># ～ 表示后面的为正则表达式</span></span><br><span class="line">        location  / {</span><br><span class="line">           proxy_pass http://myserver;</span><br><span class="line">        } </span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="http://img.noback.top/2020-02-04-15-41-24.png" alt="2020-02-04-15-41-24"><br>当用户访问10.0.5.196:80端口的时候，由于196是vip 此时正在master主机上面，因此他会读取master主机上面的nginx配置文件，后续因为nginx的负载均衡(轮询的配置)，当你不断的访问10.0.5.196时，页面会在10.0.5.197:8001 与10.0.5.198:8001直接来回的跳动</p>
+<h2 id="nginx原理"><a href="#nginx原理" class="headerlink" title="nginx原理"></a>nginx原理</h2><p><a href="https://www.bilibili.com/video/av68136734?p=17" target="_blank" rel="noopener">https://www.bilibili.com/video/av68136734?p=17</a><br><a href="https://www.cnblogs.com/dongye95/p/11096785.html#_label0_0" target="_blank" rel="noopener">https://www.cnblogs.com/dongye95/p/11096785.html#_label0_0</a></p>
+</body></html>
         </div>
         
             <ul class="post-copyright">
@@ -340,9 +373,33 @@
         <span class="has-mr-6">1</span>
         <span>nginx配置实例</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#nginx配置实例–反向代理">
+        <a class="is-flex" href="#nginx配置实例–反向代理1">
         <span class="has-mr-6">1.1</span>
-        <span>nginx配置实例–反向代理</span>
+        <span>nginx配置实例–反向代理1</span>
+        </a></li><li>
+        <a class="is-flex" href="#nginx配置–反向代理2">
+        <span class="has-mr-6">1.2</span>
+        <span>nginx配置–反向代理2</span>
+        </a></li><li>
+        <a class="is-flex" href="#nginx配置–负载均衡">
+        <span class="has-mr-6">1.3</span>
+        <span>nginx配置–负载均衡</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#策略：">
+        <span class="has-mr-6">1.3.1</span>
+        <span>策略：</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#nginx配置实例–动静分离">
+        <span class="has-mr-6">1.4</span>
+        <span>nginx配置实例–动静分离</span>
+        </a></li><li>
+        <a class="is-flex" href="#nginx配置实例–高可用集群">
+        <span class="has-mr-6">1.5</span>
+        <span>nginx配置实例–高可用集群</span>
+        </a></li><li>
+        <a class="is-flex" href="#nginx原理">
+        <span class="has-mr-6">1.6</span>
+        <span>nginx原理</span>
         </a></li></ul></li></ul>
         </div>
     </div>

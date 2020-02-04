@@ -2,21 +2,21 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>docker基础-1 - Alpaca&#39;s blog | how to win</title>
+<title>docker基础 - Alpaca&#39;s blog | how to win</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
     <meta name="description" content="use docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker基础-1">
+<meta property="og:title" content="docker基础">
 <meta property="og:url" content="http://blog.noback.top/posts/3ee8c444/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
 <meta property="og:description" content="use docker">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.noback.top/images/og_image.png">
-<meta property="article:published_time" content="2020-01-22T09:26:54.000Z">
-<meta property="article:modified_time" content="2020-01-22T09:26:54.000Z">
+<meta property="article:published_time" content="2020-02-04T09:26:54.000Z">
+<meta property="article:modified_time" content="2020-02-04T09:26:54.000Z">
 <meta property="article:author" content="何泽君">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
@@ -97,7 +97,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="http://image.noback.top/datadog.svg" alt="docker基础-1" height="28">
+                <img src="http://image.noback.top/datadog.svg" alt="docker基础" height="28">
             
             </a>
         </div>
@@ -156,13 +156,13 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>docker基础-1
+                <i class="fas fa-angle-double-right"></i>docker基础
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-22T09:26:54.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-22</time>
+                <time class="level-item has-text-grey" datetime="2020-02-04T09:26:54.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-04</time>
                 
                 
                 <div class="level-item">
@@ -175,7 +175,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    10 分钟 读完 (大约 1559 个字)
+                    17 分钟 读完 (大约 2515 个字)
                 </span>
                 
                 
@@ -191,7 +191,28 @@
             <html><head></head><body><p>use docker </p>
 <a id="more"></a>
 
-<h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
+<h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><h2 id="docker与虚拟机的区别"><a href="#docker与虚拟机的区别" class="headerlink" title="docker与虚拟机的区别"></a>docker与虚拟机的区别</h2><h3 id="虚拟机"><a href="#虚拟机" class="headerlink" title="虚拟机"></a>虚拟机</h3><p>虚拟机运行多个隔离应用时<br><img src="http://img.noback.top/2020-02-04-18-07-59.png" alt="2020-02-04-18-07-59"></p>
+<p>从下到上来看:</p>
+<ul>
+<li>基础设施(Infrastructure)。它可以是你的个人电脑，数据中心的服务器，或者是云主机。</li>
+<li>主操作系统(Host Operating System)。你的个人电脑之上，运行的可能是MacOS，Windows或者某个Linux发行版。</li>
+<li>虚拟机管理系统(Hypervisor)。利用Hypervisor，可以在主操作系统之上运行多个不同的从操作系统。类型1的Hypervisor有支持MacOS的HyperKit，支持Windows的Hyper-V以及支持Linux的KVM。类型2的Hypervisor有VirtualBox和VMWare。</li>
+<li>从操作系统(Guest Operating System)。假设你需要运行3个相互隔离的应用，则需要使用Hypervisor启动3个从操作系统，也就是3个虚拟机。这些虚拟机都非常大，也许有700MB，这就意味着它们将占用2.1GB的磁盘空间。它们还会消耗很多CPU和内存。</li>
+<li>各种依赖。每一个从操作系统都需要安装许多依赖。如果你的的应用需要连接PostgreSQL的话，则需要安装libpq-dev；如果你使用Ruby的话，应该需要安装gems；如果使用其他编程语言，比如Python或者Node.js，都会需要安装对应的依赖库。</li>
+<li>应用。安装依赖之后，就可以在各个从操作系统分别运行应用了，这样各个应用就是相互隔离的。</li>
+</ul>
+<h3 id="dokcer容器"><a href="#dokcer容器" class="headerlink" title="dokcer容器"></a>dokcer容器</h3><p><img src="http://img.noback.top/2020-02-04-18-10-43.png" alt="2020-02-04-18-10-43"><br>相比于虚拟机来说  docker更加的简洁</p>
+<p>从下到上</p>
+<ul>
+<li>基础设施(Infrastructure)。</li>
+<li>主操作系统(Host Operating System)。所有主流的Linux发行版都可以运行Docker。对于MacOS和Windows，也有一些办法”运行”Docker。</li>
+<li>Docker守护进程(Docker Daemon)。Docker守护进程取代了Hypervisor，它是运行在操作系统之上的后台进程，负责管理Docker容器。</li>
+<li>各种依赖。对于Docker，应用的所有依赖都打包在Docker镜像中，Docker容器是基于Docker镜像创建的。</li>
+<li>应用。应用的源代码与它的依赖都打包在Docker镜像中，不同的应用需要不同的Docker镜像。不同的应用运行在不同的Docker容器中，它们是相互隔离的</li>
+</ul>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>Docker守护进程可以直接与主操作系统进行通信，为各个Docker容器分配资源；它还可以将容器与主操作系统隔离，并将各个容器互相隔离。虚拟机启动需要数分钟，而Docker容器可以在数毫秒内启动。由于没有臃肿的从操作系统，Docker可以节省大量的磁盘空间以及其他系统资源。</p>
+<p>说了这么多Docker的优势，大家也没有必要完全否定虚拟机技术，因为两者有不同的使用场景。虚拟机更擅长于彻底隔离整个运行环境。例如，云服务提供商通常采用虚拟机技术隔离不同的用户。而Docker通常用于隔离不同的应用，例如前端，后端以及数据库。</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
 <li>镜像(Image)<br>面向docker引擎的只读模版，包含了文件系统</li>
 <li>容器(Container)<br>沙箱，利用容器来运行和隔离应用，容器与容器之间是相互隔离、互不可见的<br><font color="red">镜像自身是只读的。容器从镜像启动的时候，Docker会在镜像的最上层创建一个可写层。镜像本身将保持不变。</font></li>
 <li>仓库(Repository)<br>存放镜像的地方，类似于代码仓库github  gitee等等</li>
@@ -202,7 +223,7 @@
 
 <h3 id="运行镜像"><a href="#运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker run -t -i ubuntu /bin/bash</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="查看镜像信息"><a href="#查看镜像信息" class="headerlink" title="查看镜像信息"></a>查看镜像信息</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 列出本地主机上所有镜像</span></span><br><span class="line">root:~<span class="hljs-comment"># docker images</span></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">docker.io/ubuntu    latest              ccc6e87d482b        6 days ago          64.2 MB</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 添加新的镜像标签</span></span><br><span class="line">root:～<span class="hljs-comment"># docker tag docker.io/ubuntu:latest docker-ubuntu-version:v2</span></span><br><span class="line">root:~<span class="hljs-comment"># docker images</span></span><br><span class="line">REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">docker-ubuntu-version   v2                  ccc6e87d482b        6 days ago          64.2 MB</span><br><span class="line">docker.io/ubuntu        latest              ccc6e87d482b        6 days ago          64.2 MB</span><br><span class="line">docker.io/ubuntu        14.04               6e4f1fe62ff1        4 weeks ago         197 MB</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查看镜像相信信息</span></span><br><span class="line">docker inspect ccc6e87d482b </span><br><span class="line">docker imspect ccc</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="查看镜像信息"><a href="#查看镜像信息" class="headerlink" title="查看镜像信息"></a>查看镜像信息</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 列出本地主机上所有镜像</span></span><br><span class="line"><span class="hljs-comment"># --------------------------</span></span><br><span class="line">root:~<span class="hljs-comment"># docker images</span></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">docker.io/ubuntu    latest              ccc6e87d482b        6 days ago          64.2 MB</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># REPOSITORY 表示镜像的仓库源</span></span><br><span class="line"><span class="hljs-comment"># TAG 表示镜像的标签</span></span><br><span class="line"><span class="hljs-comment"># IMAGE ID 表示镜像的ID</span></span><br><span class="line"><span class="hljs-comment"># CREATED 镜像的创建时间</span></span><br><span class="line"><span class="hljs-comment"># SIZE 镜像大小</span></span><br><span class="line"><span class="hljs-comment"># --------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 添加新的镜像标签</span></span><br><span class="line">root:～<span class="hljs-comment"># docker tag docker.io/ubuntu:latest docker-ubuntu-version:v2</span></span><br><span class="line">root:~<span class="hljs-comment"># docker images</span></span><br><span class="line">REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">docker-ubuntu-version   v2                  ccc6e87d482b        6 days ago          64.2 MB</span><br><span class="line">docker.io/ubuntu        latest              ccc6e87d482b        6 days ago          64.2 MB</span><br><span class="line">docker.io/ubuntu        14.04               6e4f1fe62ff1        4 weeks ago         197 MB</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查看镜像相信信息</span></span><br><span class="line">docker inspect ccc6e87d482b </span><br><span class="line">docker imspect ccc</span><br></pre></td></tr></tbody></table></figure>
 <p>REPOSITORY表示镜像来自于哪个仓库<br>TAG 标签信息，版本信息<br>IMAMGE ID 镜像的ID号码，唯一<br>CREATED 创建时间<br>SIZE  镜像大小</p>
 <h3 id="搜寻镜像"><a href="#搜寻镜像" class="headerlink" title="搜寻镜像"></a>搜寻镜像</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker search mysql</span><br><span class="line"><span class="hljs-comment"># --automated=false 仅显示自动创建的镜像</span></span><br><span class="line"><span class="hljs-comment"># --no-trunc=false 输出信息不截断显示</span></span><br><span class="line"><span class="hljs-comment"># -s --starts=0 指定仅显示评价为指定星级以上的镜像</span></span><br></pre></td></tr></tbody></table></figure>
 
@@ -244,7 +265,9 @@
 <li>对数据卷的更新，不会影响镜像</li>
 <li>卷会一直存在 知道没有容器使用</li>
 </ul>
-<h3 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h3><h2 id="错误合集"><a href="#错误合集" class="headerlink" title="错误合集"></a>错误合集</h2><ul>
+<h3 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h3><h2 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看版本</span></span><br><span class="line">docker version</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 显示docker信息，包括容器数量，镜像数量等等</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># docker info</span></span><br><span class="line">Client:</span><br><span class="line"> Debug Mode: <span class="hljs-literal">false</span></span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Containers: 3</span><br><span class="line">  Running: 0</span><br><span class="line">  Paused: 0</span><br><span class="line">  Stopped: 3</span><br><span class="line"> Images: 1</span><br><span class="line"> Server Version: 19.03.1</span><br><span class="line"> Storage Driver: overlay2</span><br><span class="line">  Backing Filesystem: extfs</span><br><span class="line">  Supports d_type: <span class="hljs-literal">true</span></span><br><span class="line">  Native Overlay Diff: <span class="hljs-literal">true</span></span><br><span class="line"> Logging Driver: json-file</span><br><span class="line"> Cgroup Driver: cgroupfs</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="错误合集"><a href="#错误合集" class="headerlink" title="错误合集"></a>错误合集</h2><ul>
 <li><p>错误1<br>没有开启docker服务</p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 检测</span></span><br><span class="line">root:~<span class="hljs-comment"># systemctl status docker</span></span><br><span class="line">* docker.service - Docker Application Container Engine</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/docker.service; disabled; vendor preset: disabled)</span><br><span class="line">   Active: inactive (dead)</span><br><span class="line">     Docs: http://docs.docker.com</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 开启服务</span></span><br><span class="line">systemctl start docker</span><br></pre></td></tr></tbody></table></figure>
 </li>
@@ -256,10 +279,10 @@
         </div>
         
             <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/3ee8c444/">docker基础-1</a></li>
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/3ee8c444/">docker基础</a></li>
             <li><strong>本文作者：</strong><a href="http://blog.noback.top">何泽君</a></li>
             <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/3ee8c444/">http://blog.noback.top/posts/3ee8c444/</a></li>
-            <li><strong>发布时间：</strong>2020-01-22</li>
+            <li><strong>发布时间：</strong>2020-02-04</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
@@ -277,17 +300,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/f2caabf2/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">20200128</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/posts/6412f439/">
-                <span class="level-item">vuejs基础2</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/21215442/">
+                <span class="level-item">nginx基础</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -398,88 +414,108 @@
         <span class="has-mr-6">1</span>
         <span>docker</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#概念">
+        <a class="is-flex" href="#docker与虚拟机的区别">
         <span class="has-mr-6">1.1</span>
+        <span>docker与虚拟机的区别</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#虚拟机">
+        <span class="has-mr-6">1.1.1</span>
+        <span>虚拟机</span>
+        </a></li><li>
+        <a class="is-flex" href="#dokcer容器">
+        <span class="has-mr-6">1.1.2</span>
+        <span>dokcer容器</span>
+        </a></li><li>
+        <a class="is-flex" href="#区别">
+        <span class="has-mr-6">1.1.3</span>
+        <span>区别</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#概念">
+        <span class="has-mr-6">1.2</span>
         <span>概念</span>
         </a></li><li>
         <a class="is-flex" href="#安装">
-        <span class="has-mr-6">1.2</span>
+        <span class="has-mr-6">1.3</span>
         <span>安装</span>
         </a></li><li>
         <a class="is-flex" href="#镜像指令">
-        <span class="has-mr-6">1.3</span>
+        <span class="has-mr-6">1.4</span>
         <span>镜像指令</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#获取镜像">
-        <span class="has-mr-6">1.3.1</span>
+        <span class="has-mr-6">1.4.1</span>
         <span>获取镜像</span>
         </a></li><li>
         <a class="is-flex" href="#运行镜像">
-        <span class="has-mr-6">1.3.2</span>
+        <span class="has-mr-6">1.4.2</span>
         <span>运行镜像</span>
         </a></li><li>
         <a class="is-flex" href="#查看镜像信息">
-        <span class="has-mr-6">1.3.3</span>
+        <span class="has-mr-6">1.4.3</span>
         <span>查看镜像信息</span>
         </a></li><li>
         <a class="is-flex" href="#搜寻镜像">
-        <span class="has-mr-6">1.3.4</span>
+        <span class="has-mr-6">1.4.4</span>
         <span>搜寻镜像</span>
         </a></li><li>
         <a class="is-flex" href="#删除镜像">
-        <span class="has-mr-6">1.3.5</span>
+        <span class="has-mr-6">1.4.5</span>
         <span>删除镜像</span>
         </a></li><li>
         <a class="is-flex" href="#创建镜像">
-        <span class="has-mr-6">1.3.6</span>
+        <span class="has-mr-6">1.4.6</span>
         <span>创建镜像</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#容器">
-        <span class="has-mr-6">1.4</span>
+        <span class="has-mr-6">1.5</span>
         <span>容器</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#创建容器与启动">
-        <span class="has-mr-6">1.4.1</span>
+        <span class="has-mr-6">1.5.1</span>
         <span>创建容器与启动</span>
         </a></li><li>
         <a class="is-flex" href="#新建并启动容器">
-        <span class="has-mr-6">1.4.2</span>
+        <span class="has-mr-6">1.5.2</span>
         <span>新建并启动容器</span>
         </a></li><li>
         <a class="is-flex" href="#守护状态运行">
-        <span class="has-mr-6">1.4.3</span>
+        <span class="has-mr-6">1.5.3</span>
         <span>守护状态运行</span>
         </a></li><li>
         <a class="is-flex" href="#终止容器">
-        <span class="has-mr-6">1.4.4</span>
+        <span class="has-mr-6">1.5.4</span>
         <span>终止容器</span>
         </a></li><li>
         <a class="is-flex" href="#进入容器">
-        <span class="has-mr-6">1.4.5</span>
+        <span class="has-mr-6">1.5.5</span>
         <span>进入容器</span>
         </a></li><li>
         <a class="is-flex" href="#删除容器">
-        <span class="has-mr-6">1.4.6</span>
+        <span class="has-mr-6">1.5.6</span>
         <span>删除容器</span>
         </a></li><li>
         <a class="is-flex" href="#导入与导出容器">
-        <span class="has-mr-6">1.4.7</span>
+        <span class="has-mr-6">1.5.7</span>
         <span>导入与导出容器</span>
         </a></li><li>
         <a class="is-flex" href="#查看容器">
-        <span class="has-mr-6">1.4.8</span>
+        <span class="has-mr-6">1.5.8</span>
         <span>查看容器</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#数据管理">
-        <span class="has-mr-6">1.5</span>
+        <span class="has-mr-6">1.6</span>
         <span>数据管理</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#创建数据卷">
-        <span class="has-mr-6">1.5.1</span>
+        <span class="has-mr-6">1.6.1</span>
         <span>创建数据卷</span>
         </a></li></ul></li><li>
+        <a class="is-flex" href="#帮助命令">
+        <span class="has-mr-6">1.7</span>
+        <span>帮助命令</span>
+        </a></li><li>
         <a class="is-flex" href="#错误合集">
-        <span class="has-mr-6">1.6</span>
+        <span class="has-mr-6">1.8</span>
         <span>错误合集</span>
         </a></li></ul></li></ul>
         </div>
@@ -505,7 +541,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="http://image.noback.top/datadog.svg" alt="docker基础-1" height="28">
+                    <img src="http://image.noback.top/datadog.svg" alt="docker基础" height="28">
                 
                 </a>
                 <p class="is-size-7">

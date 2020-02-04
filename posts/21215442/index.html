@@ -175,7 +175,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    19 分钟 读完 (大约 2810 个字)
+                    20 分钟 读完 (大约 2949 个字)
                 </span>
                 
                 
@@ -191,8 +191,7 @@
             <html><head></head><body><p>learn nginx</p>
 <a id="more"></a>
 
-<h1 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h1><p>nginx基本概念<br>nginx是什么<br>反向代理<br>正向代理<br>负载均衡<br>动静分离</p>
-<h2 id="nginx安装"><a href="#nginx安装" class="headerlink" title="nginx安装"></a>nginx安装</h2><ul>
+<h1 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h1><h2 id="nginx安装"><a href="#nginx安装" class="headerlink" title="nginx安装"></a>nginx安装</h2><ul>
 <li>直接安装<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">yum install nginx </span><br><span class="line"><span class="hljs-comment"># 查看版本</span></span><br><span class="line">nginx -v</span><br></pre></td></tr></tbody></table></figure></li>
 <li>编译安装<br>安装gcc、make、wget、g++这些软件</li>
 </ul>
@@ -240,6 +239,10 @@
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">http {</span><br><span class="line">    log_format  main  <span class="hljs-string">'$remote_addr - $remote_user [$time_local] "$request" '</span></span><br><span class="line">                      <span class="hljs-string">'$status $body_bytes_sent "$http_referer" '</span></span><br><span class="line">                      <span class="hljs-string">'"$http_user_agent" "$http_x_forwarded_for"'</span>;</span><br><span class="line"></span><br><span class="line">    access_log  /var/<span class="hljs-built_in">log</span>/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    sendfile            on;</span><br><span class="line">    tcp_nopush          on;</span><br><span class="line">    tcp_nodelay         on;</span><br><span class="line">    keepalive_timeout   65;</span><br><span class="line">    types_hash_max_size 2048;</span><br><span class="line"></span><br><span class="line">    include             /etc/nginx/mime.types;</span><br><span class="line">    default_type        application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># Load modular configuration files from the /etc/nginx/conf.d directory.</span></span><br><span class="line">    <span class="hljs-comment"># See http://nginx.org/en/docs/ngx_core_module.html#include</span></span><br><span class="line">    <span class="hljs-comment"># for more information</span></span><br><span class="line">    include /etc/nginx/conf.d/*.conf;   <span class="hljs-comment"># 存放server</span></span><br><span class="line"></span><br><span class="line">    server {</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  10.0.5.233;</span><br><span class="line">        root         /usr/share/nginx/html;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment"># Load configuration files for the default server block.</span></span><br><span class="line">        include /etc/nginx/default.d/*.conf; <span class="hljs-comment"># 存放location</span></span><br><span class="line"></span><br><span class="line">        location / {</span><br><span class="line">           root html;</span><br><span class="line">           proxy_pass http://127.0.0.1:8001;</span><br><span class="line">           index index.html index.htm;</span><br><span class="line">        }</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <p>在/etc/nginx/nginx.conf中存放了一些初始的配置，可以选择在在这个文件中直接添加server来配置nginx，也可以将自己的server单独写到conf.d/文件夹中去，或者写到nginx.conf.default中去</p>
+<h3 id="location模块配置"><a href="#location模块配置" class="headerlink" title="location模块配置"></a>location模块配置</h3><p>配置内容如下</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">location [ = | ~ | ~* | ^~ ]  uri {</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>= 用于不需要正则表达式的uri 要求严格匹配，如果匹配成功，就往下搜索并处理请求<br>~ 用于需要正则表达式的uri 区分大小写<br><del>* 用于需要正则表达式的uri 不区分大小写<br>^</del> 用于不需要正则表达式的uri，要求Nginx服务器找到标识uri和请求字符串匹配度最高的location后，立即使用此location处理请求，而不在使用location块中的正则uri和请求字符串做匹配</p>
+<h2 id="配置实例"><a href="#配置实例" class="headerlink" title="配置实例"></a>配置实例</h2><p><img src="https://img2018.cnblogs.com/blog/1381066/201906/1381066-20190627141117429-435885754.png" alt></p>
 </body></html>
         </div>
         
@@ -264,6 +267,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/3ee8c444/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">docker基础</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -394,6 +404,14 @@
         <a class="is-flex" href="#nginx文件配置">
         <span class="has-mr-6">1.4</span>
         <span>nginx文件配置</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#location模块配置">
+        <span class="has-mr-6">1.4.1</span>
+        <span>location模块配置</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#配置实例">
+        <span class="has-mr-6">1.5</span>
+        <span>配置实例</span>
         </a></li></ul></li></ul>
         </div>
     </div>
