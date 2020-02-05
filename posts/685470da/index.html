@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>docker镜像分层原理 - Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="learn docker 😊">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker镜像分层原理">
+<meta property="og:url" content="http://blog.noback.top/posts/685470da/index.html">
+<meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
+<meta property="og:description" content="learn docker 😊">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
+<meta property="article:published_time" content="2020-02-05T03:09:43.000Z">
+<meta property="article:modified_time" content="2020-02-05T03:09:43.000Z">
+<meta property="article:author" content="何泽君">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://image.noback.top/datadog.svg" alt="docker镜像分层原理" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/about-me/">about-me</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>docker镜像分层原理
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-05T03:09:43.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-05</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    12 分钟 读完 (大约 1771 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>learn docker 😊</p>
+<a id="more"></a>
+
+<h1 id="docker镜像分成原理"><a href="#docker镜像分成原理" class="headerlink" title="docker镜像分成原理"></a>docker镜像分成原理</h1><h2 id="原理解析"><a href="#原理解析" class="headerlink" title="原理解析"></a>原理解析</h2><p>了解几个概念</p>
+<ul>
+<li>联合文件系统(Union File System):是一种把其它文件系统联合到一个联合挂载点的文件系统服务，它使用 branch 把不同文件系统的文件和目录”透明地”覆盖，形成一个单一一致的文件系统。这些 branch 或者是 read-only 的，或者是 read-write 的，所以当对这个虚拟后的联合文件系统进行写操作的时候，系统是真正写到了一个新的文件中。看起来这个虚拟后的联合文件系统是可以对任何文件进行操作的，但是其实它并没有改变原来的文件。这是因为 Union File System 用到了一个重要的资源管理技术：写时复制。</li>
+<li>写时复制(copy-on-write，常被简写为 CoW)，也叫隐式共享，是一种提高资源使用效率的资源管理技术。它的思想是：如果一个资源是重复的，在没有对资源做出修改前，并不需要立即复制出一个新的资源实例，这个资源被不同的所有者共享使用。当任何一个所有者要对该资源做出修改时，复制出一个新的资源实例给该所有者进行修改，修改后的资源成为其所有者的私有资源。通过这种资源共享的方式，可以显著地减少复制相同资源带来的消耗，但是这样做也会在进行资源的修改时增加一部分开销。</li>
+</ul>
+<p><font color="red">AUFS文件系统实例</font><br><a href="https://www.cnblogs.com/sparkdev/p/11237347.html" target="_blank" rel="noopener">https://www.cnblogs.com/sparkdev/p/11237347.html</a></p>
+<h2 id="docker镜像组成"><a href="#docker镜像组成" class="headerlink" title="docker镜像组成"></a>docker镜像组成</h2><p>在docker的image中,他其实是由一层一层的基础文件系统所叠加起来的，联合文件系统(UnionFS)他可以将几层目录挂载到一起，形成一个虚拟文件系统,docker 通过这些文件再加上宿主机的内核提供了一个 linux 的虚拟环境。每一层文件系统我们叫做一层 layer，联合文件系统可以对每一层文件系统设置三种权限，只读（readonly）、读写（readwrite）和写出（whiteout-able）</p>
+<p>但是在docker的镜像中的每一层的基础文件系统都是只读的，我们可以把他们叫做base 最基础的。构建镜像的时候，从一个最基本的操作系统开始，每个构建的操作都相当于做一层的修改，增加了一层文件系统。一层层往上叠加，上层的修改会覆盖底层该位置的可见性，这也很容易理解，就像上层把底层遮住了一样。当你使用的时候，你只会看到一个完全的整体，你不知道里面有几层，也不清楚每一层所做的修改是什么。结构类似这样：<br><img src="http://img.noback.top/2020-02-05-11-18-03.png" alt="2020-02-05-11-18-03"></p>
+<p>当我们在从官方拉去镜像的时候，他的操作也会实现这一步叠加的过程，记住 像我们平时使用的ubuntu centos nginx这样的docker镜像都不是最原始的镜像，他们也都是一层一层的文件系统base叠加起来的,比如拉去ubuntu镜像<br><img src="http://img.noback.top/2020-02-05-11-22-23.png" alt="2020-02-05-11-22-23"><br>他一共会拉去四层文件系统来完成整个ubuntu镜像的搭建，最后生成一个ubuntu的镜像，因此在外部看来他是单独的镜像文件，但其实他是由多个基础的文件系统通过联合文件系统叠加产生的。</p>
+<h2 id="docker镜像加载"><a href="#docker镜像加载" class="headerlink" title="docker镜像加载"></a>docker镜像加载</h2><p><img src="http://img.noback.top/2020-02-05-11-35-32.png" alt="2020-02-05-11-35-32"></p>
+<ul>
+<li>bootfs 在linux的开机过程中会用到bootfs,主要包含bootloader 和 kernel，bootloader 主要用于引导加载 kernel，当 kernel 被加载到内存中后kernel后，bootfs就会被umount掉。</li>
+<li>rootfs  rootfs (root file system) 包含的就是典型 Linux 系统中的/dev，/proc，/bin，/etc 等标准目录和文件,不同的linux发行版本，rootfs文件系统可能不通</li>
+</ul>
+<p><img src="http://img.noback.top/2020-02-05-12-04-07.png" alt="2020-02-05-12-04-07"><br>控制读写权限,传统的 Linux 加载 bootfs 时会先将 rootfs 设为 read-only，然后在系统自检之后将 rootfs 从 read-only 改为 read-write，然后我们就可以在 rootfs 上进行读写操作了。但 Docker 在 bootfs 自检完毕之后并不会把 rootfs 的 read-only 改为 read-write，而是利用 union mount（UnionFS 的一种挂载机制）将 image 中的其他的 layer 加载到之前的 read-only 的 rootfs层之上，每一层 layer 都是 rootfs 的结构，并且是read-only 的。所以，我们是无法修改一个已有镜像里面的 layer 的！只有当我们创建一个容器，也就是将 Docker 镜像进行实例化，系统会分配一层空的 read-write 的 rootfs ，用于保存我们做的修改。</p>
+<h2 id="镜像大小的问题"><a href="#镜像大小的问题" class="headerlink" title="镜像大小的问题"></a>镜像大小的问题</h2><p>为什么tomcat镜像大小大于centos镜像大小?<br><img src="http://img.noback.top/2020-02-05-12-13-04.png" alt="2020-02-05-12-13-04"><br>可以通过上面docker镜像的组成、加载两方面来解释<br>同样以kernel作为最底层文件系统，在centos镜像中，上层只放了一个centos的rootfs，而tomcat需要写入多层base文件系统，比如jdk8 tomcat 等等，因此tomcat的镜像大小大于centos的镜像大小</p>
+<h2 id="镜像分层的好处"><a href="#镜像分层的好处" class="headerlink" title="镜像分层的好处"></a>镜像分层的好处</h2><p><font color="red">共享资源</font><br>有多个镜像都从相同的base镜像构建而来，那么宿主机只需在磁盘上保存一份base镜像，同时内存中也只需加载一份base镜像，就可以为所有容器服务了，饿而且镜像的每一层都可以被共享</p>
+<h2 id="创建镜像"><a href="#创建镜像" class="headerlink" title="创建镜像"></a>创建镜像</h2><ul>
+<li>基于已有镜像的容器创建<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 提交一个容器成为一个新的镜像</span></span><br><span class="line">docker commit [OPTIONS] CONTAINER [RSPOSITORY[:TAG]]</span><br><span class="line"><span class="hljs-comment"># -a; --author="" 作者信息</span></span><br><span class="line"><span class="hljs-comment"># -m; --message="" 提交信息</span></span><br><span class="line"><span class="hljs-comment"># -p; --pause=true 提交时暂停容器运行</span></span><br></pre></td></tr></tbody></table></figure>
+创建流程<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># pull 一个新的image </span></span><br><span class="line">docker pull ubuntu</span><br><span class="line"><span class="hljs-comment"># 改变ubuntu 使其与原来image不同</span></span><br><span class="line">docker run -it ccc6e87d482b /bin/bash</span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"update file "</span> > <span class="hljs-built_in">test</span></span><br><span class="line"><span class="hljs-built_in">exit</span></span><br><span class="line"><span class="hljs-comment"># 返回前记住当前容器的名字，一般都是主机名</span></span><br><span class="line"><span class="hljs-comment"># 提交当前容器为新的镜像文件</span></span><br><span class="line">docker commit -m <span class="hljs-string">"update - add a file in ubuntu "</span> -a <span class="hljs-string">"hzj"</span> dc758c368fda <span class="hljs-built_in">test</span></span><br><span class="line"><span class="hljs-comment"># 查看当前镜像列表</span></span><br><span class="line">root:~<span class="hljs-comment"># docker images</span></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line"><span class="hljs-built_in">test</span>                latest              41f1d7eba8f3        10 seconds ago      64.2 MB</span><br><span class="line">docker.io/ubuntu    latest              ccc6e87d482b        6 days ago          64.2 MB</span><br></pre></td></tr></tbody></table></figure></li>
+<li>基于本地模版导入<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 下载模版压缩包</span></span><br><span class="line">wget xx</span><br><span class="line"><span class="hljs-comment"># 根据压缩包导入成镜像</span></span><br><span class="line">cat ubuntu-14.04.tar.gz | docker import - ubuntu:14.04 </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 保存镜像到本地文件</span></span><br><span class="line">docker save -o ubuntu_latest.tar ubuntu:latest</span><br><span class="line"><span class="hljs-comment"># 载入镜像</span></span><br><span class="line">docker load --input ubuntu_latest.tar</span><br><span class="line">docker load < ubuntu_latest.tar</span><br></pre></td></tr></tbody></table></figure></li>
+<li>基于Dockerfile创建</li>
+</ul>
+<p>后面再记录</p>
+</body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/685470da/">docker镜像分层原理</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top">何泽君</a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/685470da/">http://blog.noback.top/posts/685470da/</a></li>
+            <li><strong>发布时间：</strong>2020-02-05</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/5f4d14d2/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">docker容器数据卷</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/3ee8c444/">
+                <span class="level-item">docker基础</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/posts/685470da/';
+        this.page.identifier = 'posts/685470da/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        76
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        33
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#docker镜像分成原理">
+        <span class="has-mr-6">1</span>
+        <span>docker镜像分成原理</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#原理解析">
+        <span class="has-mr-6">1.1</span>
+        <span>原理解析</span>
+        </a></li><li>
+        <a class="is-flex" href="#docker镜像组成">
+        <span class="has-mr-6">1.2</span>
+        <span>docker镜像组成</span>
+        </a></li><li>
+        <a class="is-flex" href="#docker镜像加载">
+        <span class="has-mr-6">1.3</span>
+        <span>docker镜像加载</span>
+        </a></li><li>
+        <a class="is-flex" href="#镜像大小的问题">
+        <span class="has-mr-6">1.4</span>
+        <span>镜像大小的问题</span>
+        </a></li><li>
+        <a class="is-flex" href="#镜像分层的好处">
+        <span class="has-mr-6">1.5</span>
+        <span>镜像分层的好处</span>
+        </a></li><li>
+        <a class="is-flex" href="#创建镜像">
+        <span class="has-mr-6">1.6</span>
+        <span>创建镜像</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://image.noback.top/datadog.svg" alt="docker镜像分层原理" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 何泽君&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

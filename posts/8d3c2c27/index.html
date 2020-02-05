@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>docker-DokcerFile - Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="learn docker 🐳">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker-DokcerFile">
+<meta property="og:url" content="http://blog.noback.top/posts/8d3c2c27/index.html">
+<meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
+<meta property="og:description" content="learn docker 🐳">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
+<meta property="article:published_time" content="2020-02-05T05:56:09.000Z">
+<meta property="article:modified_time" content="2020-02-05T05:56:09.000Z">
+<meta property="article:author" content="何泽君">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://image.noback.top/datadog.svg" alt="docker-DokcerFile" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/about-me/">about-me</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>docker-DokcerFile
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-05T05:56:09.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-05</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    5 分钟 读完 (大约 764 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>learn docker 🐳</p>
+<a id="more"></a>
+
+
+<h1 id="DokcerFile"><a href="#DokcerFile" class="headerlink" title="DokcerFile"></a>DokcerFile</h1><p>dockerfile构建三步骤<br>dockerfile,docker build ,docker run</p>
+<p>dockerfiley有很多具体的实例可以在docker hub上看到 ，比如</p>
+<ul>
+<li>centos<br><a href="https://hub.docker.com/_/centos" target="_blank" rel="noopener">https://hub.docker.com/_/centos</a><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">FROM scratch</span><br><span class="line">ADD centos-7-x86_64-docker.tar.xz /</span><br><span class="line"></span><br><span class="line">LABEL org.label-schema.schema-version=<span class="hljs-string">"1.0"</span> \</span><br><span class="line">    org.label-schema.name=<span class="hljs-string">"CentOS Base Image"</span> \</span><br><span class="line">    org.label-schema.vendor=<span class="hljs-string">"CentOS"</span> \</span><br><span class="line">    org.label-schema.license=<span class="hljs-string">"GPLv2"</span> \</span><br><span class="line">    org.label-schema.build-date=<span class="hljs-string">"20191001"</span></span><br><span class="line"></span><br><span class="line">CMD [<span class="hljs-string">"/bin/bash"</span>] <span class="hljs-comment"># 在进入容器后第一步执行的命令</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>tomcat镜像<br><a href="https://github.com/docker-library/tomcat/blob/807a2b4f219d70f5ba6f4773d4ee4ee155850b0d/8.5/jdk11/openjdk/Dockerfile" target="_blank" rel="noopener">https://github.com/docker-library/tomcat/blob/807a2b4f219d70f5ba6f4773d4ee4ee155850b0d/8.5/jdk11/openjdk/Dockerfile</a></li>
+</ul>
+<h2 id="dockerfile编写规则"><a href="#dockerfile编写规则" class="headerlink" title="dockerfile编写规则"></a>dockerfile编写规则</h2><ol>
+<li>每条保留字指令都必须为大写字母且后面要跟至少一个参数</li>
+<li>指令按照顺序从上倒下，依次执行</li>
+<li>#表示注释</li>
+<li>每条指令都会创建一个新的镜像层，并对镜像进行提交</li>
+</ol>
+<h2 id="dockerfile执行顺序"><a href="#dockerfile执行顺序" class="headerlink" title="dockerfile执行顺序"></a>dockerfile执行顺序</h2><ol>
+<li>docker从基础镜像运行一个容器</li>
+<li>执行一条指令并对容器作出修改</li>
+<li>执行类似docker commit的操作提交一个新的镜像层</li>
+<li>docker再基于刚提交的镜像运行一个新容器</li>
+<li>执行dockerfile中的下一跳指令直到所有指令都执行完成</li>
+</ol>
+<h2 id="docker编写关键字"><a href="#docker编写关键字" class="headerlink" title="docker编写关键字"></a>docker编写关键字</h2><ul>
+<li>FROM<br>声明基础镜像，如centos中声明的scratch</li>
+<li>MAINTAINER<br>镜像维护者的姓名和邮箱地址</li>
+<li>RUN<br>容器构建时需要运行的命令</li>
+<li>EXPOSE<br>暴露端口，比如tomcat镜像中的dockerfile 他expose了一个8080端口，当我们在用-P随机指定端口的时候，他会默认映射我们所暴露的端口，如8080</li>
+<li>WORKDIR<br>登陆之后的工作目录</li>
+<li>ENV<br>用来构建镜像过程中设置环境变量</li>
+<li>ADD<br>拷贝并解压到镜像中</li>
+<li>COPY<br>拷贝文件到镜像中，写法:<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">COPY src dest</span><br><span class="line">COPY [<span class="hljs-string">"src"</span>,<span class="hljs-string">"dest"</span>]</span><br></pre></td></tr></tbody></table></figure></li>
+<li>VOLUME<br>容器数据卷,用于数据保存和持久化工作,写法:<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">VOLUME [<span class="hljs-string">"/data/"</span>,<span class="hljs-string">"/data1/"</span>,]</span><br></pre></td></tr></tbody></table></figure></li>
+<li>CMD<br>dockerfile中可以有多个CMD命令,但只有最后一个生效，且CMD会被docker run之后的CMD替换掉，比如我们在启动一个镜像的时候会执行docker run -it centos /bin/bash<br>指定一个容器要运行时，启动的命令,写法:<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># shell 格式</span></span><br><span class="line">CMD <命令></span><br><span class="line"><span class="hljs-comment"># exec 格式</span></span><br><span class="line">CMD [<span class="hljs-string">"可执行文件"</span>,<span class="hljs-string">"参数1"</span>,<span class="hljs-string">"参数2"</span>]</span><br><span class="line"><span class="hljs-comment"># 参数列表格式</span></span><br><span class="line">CMN [<span class="hljs-string">'参数1'</span>,<span class="hljs-string">'参数2'</span>]</span><br></pre></td></tr></tbody></table></figure></li>
+<li>ENTRYPOINT<br>指定一个容器启动时候要运行的命令，不会被替换</li>
+<li>ONBUILD<br>当构建一个被继承的Dockerfile时运行命令,父镜像在被子继承后，父镜像的onbuild被触发</li>
+</ul>
+<h2 id="编写实例"><a href="#编写实例" class="headerlink" title="编写实例"></a>编写实例</h2><h3 id="一个挂载文件的dockerfile"><a href="#一个挂载文件的dockerfile" class="headerlink" title="一个挂载文件的dockerfile"></a>一个挂载文件的dockerfile</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">FROM centos</span><br><span class="line">VOLUME [<span class="hljs-string">"data1/"</span>,<span class="hljs-string">"data2/"</span>]  <span class="hljs-comment"># 这种定义方式无法像命令一样指定本地的文件</span></span><br><span class="line">CMD <span class="hljs-built_in">echo</span> <span class="hljs-string">"VOLUME TEST!"</span></span><br><span class="line">CMD /bin/bash</span><br></pre></td></tr></tbody></table></figure>
+<p>根据编写的dockerfile构建自定义镜像</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker build -f /tmp/dockerfile -t hzj/centos .</span><br></pre></td></tr></tbody></table></figure>
+<p>使用Inspect查看挂载的文件路径</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker inspect hzj/centos</span><br></pre></td></tr></tbody></table></figure>
+<p>出现挂载的路径</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">"Mounts": [</span><br><span class="line">            {</span><br><span class="line">                "Type": "volume",</span><br><span class="line">                "Name": "2a8601766a8ec82c39132bc64c2c99546053cb4104bd94507f215b888e60464d",</span><br><span class="line">                "Source": "/var/lib/docker/volumes/2a8601766a8ec82c39132bc64c2c99546053cb4104bd94507f215b888e60464d/_data",</span><br><span class="line">                "Destination": "/data2",</span><br><span class="line">                "Driver": "local",</span><br><span class="line">                "Mode": "",</span><br><span class="line">                "RW": true,</span><br><span class="line">                "Propagation": ""</span><br><span class="line">            },</span><br></pre></td></tr></tbody></table></figure>
+
+</body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/8d3c2c27/">docker-DokcerFile</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top">何泽君</a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/8d3c2c27/">http://blog.noback.top/posts/8d3c2c27/</a></li>
+            <li><strong>发布时间：</strong>2020-02-05</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/5f4d14d2/">
+                <span class="level-item">docker容器数据卷</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/posts/8d3c2c27/';
+        this.page.identifier = 'posts/8d3c2c27/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        76
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        33
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#DokcerFile">
+        <span class="has-mr-6">1</span>
+        <span>DokcerFile</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#dockerfile编写规则">
+        <span class="has-mr-6">1.1</span>
+        <span>dockerfile编写规则</span>
+        </a></li><li>
+        <a class="is-flex" href="#dockerfile执行顺序">
+        <span class="has-mr-6">1.2</span>
+        <span>dockerfile执行顺序</span>
+        </a></li><li>
+        <a class="is-flex" href="#docker编写关键字">
+        <span class="has-mr-6">1.3</span>
+        <span>docker编写关键字</span>
+        </a></li><li>
+        <a class="is-flex" href="#编写实例">
+        <span class="has-mr-6">1.4</span>
+        <span>编写实例</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#一个挂载文件的dockerfile">
+        <span class="has-mr-6">1.4.1</span>
+        <span>一个挂载文件的dockerfile</span>
+        </a></li></ul></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://image.noback.top/datadog.svg" alt="docker-DokcerFile" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 何泽君&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

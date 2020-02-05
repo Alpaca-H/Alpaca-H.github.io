@@ -149,6 +149,180 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
+                <a class="has-link-black-ter" href="/posts/90ec9eea/"><i class="fas fa-angle-double-right"></i>图解算法</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T05:07:36.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E6%89%A9%E5%B1%95/">扩展</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    5 分钟 读完 (大约 715 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>这个博文可能跟图解算法的内容讲的不一样，一般都是看了书之后换一种自己认为更加形象的比喻去理解内容，如果想要看图解算法的可以去购买或者查找一些PDF的书籍，笔记对于算法和数据结构并不像语言那样，对于版本的更迭有一定程度的影响。另外，算法图解这本书中的实例都是依靠Python编写的。</p>
+<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><p>其实二分法在我们生活中已经出现过了很多次，比如玩一个猜价格游戏，规定价格在500-1000之内，如果我们一个一个的去猜，则需要猜1000-500-2次，但是使用二分法猜测价格时，即每次对半猜测价格，那么每次都可以减去一半的错误价格，就像一张白纸对半折一样，最后的区域则会越来越小。而使用的次数则是log2n步。<br>同样的例子也存在于字典中，查字典的手法同样也可以使用二分法。</p>
+<p><strong>概念:最多需要猜测的次数与列表长度相同，这被称为线性时间</strong></p>
+<h3 id="例子1"><a href="#例子1" class="headerlink" title="例子1"></a>例子1</h3><p>创建一个函数，接受一个有序数组和一个元素，如果指定的元素出现在数组中，则返回其位置</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">def filter_number(list,keywords):</span><br><span class="line">    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(list)):</span><br><span class="line">        <span class="hljs-keyword">if</span> list[i] == keywords:</span><br><span class="line">            <span class="hljs-built_in">print</span>(i)</span><br><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:</span><br><span class="line">    list = [1,2,4,5,343,67,86,656]    </span><br><span class="line">    keywords = 343</span><br><span class="line">    filter_number(list,keywords)</span><br></pre></td></tr></tbody></table></figure>
+<p>如上所示是普通的遍历方法，遍历5次后得到343这个参数。但如果匹配的数字是656，则需要匹配7次，如果数组的长度是1000,匹配的结果是最后一个，则需要匹配1000次，这样就增加了负担</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 二分查找匹配</span></span><br><span class="line">def filter_number(list,keywords):</span><br><span class="line">    first = 0</span><br><span class="line">    end = len(list) - 1</span><br><span class="line">	</span><br><span class="line">    <span class="hljs-keyword">while</span> first <= end:</span><br><span class="line">        mid = int((first+end) / 2)</span><br><span class="line">        guess = list[mid]</span><br><span class="line">        <span class="hljs-keyword">if</span> guess == keywords:</span><br><span class="line">            <span class="hljs-built_in">return</span> mid</span><br><span class="line">        <span class="hljs-keyword">elif</span> guess < keywords:</span><br><span class="line">            first = mid + 1</span><br><span class="line">        <span class="hljs-keyword">elif</span> guess > keywords:</span><br><span class="line">            end = mid - 1</span><br><span class="line">    <span class="hljs-built_in">return</span> None </span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:</span><br><span class="line">    list = [1,2,4,5,6,8,9,10,11]    </span><br><span class="line">    keywords = 8</span><br><span class="line">    index = filter_number(list,keywords)</span><br><span class="line">    <span class="hljs-built_in">print</span>(index)</span><br></pre></td></tr></tbody></table></figure>
+<p>如上则完成了需求,<strong>但是二分查找存在一个问题，则是如果列表不是按照顺序排列的，那么二分法就存在的意义就不大了，因为当你使用二分法得到中间值时，你只能判断中间值与题目给出的元素之间大小，而中间值的附近元素，并不是依次递增或是递减的</strong></p>
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><p>假设有一个包含128个名字的有序列表，你要使用二分查找在其中查找一个名字，请 问最多需要几步才能找到<br>2的7次等于128  所以是7次<br>上面列表的长度翻倍后，最多需要几步？<br>8次</p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/4904e4f5/"><i class="fas fa-angle-double-right"></i>额外知识</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T05:06:26.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E6%89%A9%E5%B1%95/">扩展</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    几秒 读完 (大约 72 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="额外知识"><a href="#额外知识" class="headerlink" title="额外知识"></a>额外知识</h1><h2 id="盲打练习"><a href="#盲打练习" class="headerlink" title="盲打练习"></a>盲打练习</h2><p><a href="https://www.typingclub.com/sportal/program-3/116.play" target="_blank" rel="noopener">https://www.typingclub.com/sportal/program-3/116.play</a><br><a href="https://pqrs.org/osx/karabiner/" target="_blank" rel="noopener">https://pqrs.org/osx/karabiner/</a><br><a href="https://vim-adventures.com/" target="_blank" rel="noopener">https://vim-adventures.com/</a></p>
+<h2 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h2><p><a href="https://baike.baidu.com/item/%E6%80%BB%E7%BA%BF" target="_blank" rel="noopener">https://baike.baidu.com/item/%E6%80%BB%E7%BA%BF</a></p>
+<h2 id="oss与cdn的区别"><a href="#oss与cdn的区别" class="headerlink" title="oss与cdn的区别"></a>oss与cdn的区别</h2><p>xxx</p>
+<h2 id="webapi框架"><a href="#webapi框架" class="headerlink" title="webapi框架"></a>webapi框架</h2><h3 id="哪个是最快的web框架"><a href="#哪个是最快的web框架" class="headerlink" title="哪个是最快的web框架"></a>哪个是最快的web框架</h3><p><a href="https://github.com/the-benchmarker/web-frameworks" target="_blank" rel="noopener">https://github.com/the-benchmarker/web-frameworks</a></p>
+<h3 id="python高性能web框架"><a href="#python高性能web框架" class="headerlink" title="python高性能web框架"></a>python高性能web框架</h3><p><a href="https://falconframework.org/" target="_blank" rel="noopener">https://falconframework.org/</a></p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/a02a083e/"><i class="fas fa-angle-double-right"></i>rust结构体</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T03:17:50.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/Rust/">Rust</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    3 分钟 读完 (大约 414 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h2 id="定义实例化结构体"><a href="#定义实例化结构体" class="headerlink" title="定义实例化结构体"></a>定义实例化结构体</h2><p>定义结构体，需要使用 struct 关键字并为整个结构体提供一个名字。结构体的名字需要描述它所组合的数据的意义.在结构体中需要有相应的属性和属性对应的类型</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 创建实例模版</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">User</span></span> {</span><br><span class="line">    username: <span class="hljs-built_in">String</span>,</span><br><span class="line">    email: <span class="hljs-built_in">String</span>,</span><br><span class="line">    sign_in_count: <span class="hljs-built_in">u64</span>,</span><br><span class="line">    active: <span class="hljs-built_in">bool</span>,</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 实例化不可变模型</span></span><br><span class="line"><span class="hljs-keyword">let</span> user1 = User {</span><br><span class="line">    email: <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"someone@example.com"</span>),</span><br><span class="line">    username: <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"someusername123"</span>),</span><br><span class="line">    active: <span class="hljs-literal">true</span>,</span><br><span class="line">    sign_in_count: <span class="hljs-number">1</span>,</span><br><span class="line">};</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment">// 实例化可变模型</span></span><br><span class="line"><span class="hljs-keyword">let</span>  <span class="hljs-keyword">mut</span> user2 = User {</span><br><span class="line">    email: <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"someone@example.com"</span>),</span><br><span class="line">    username: <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"someusername123"</span>),</span><br><span class="line">    active: <span class="hljs-literal">true</span>,</span><br><span class="line">    sign_in_count: <span class="hljs-number">1</span>,</span><br><span class="line">};</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 调用与修改</span></span><br><span class="line"><span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, user2.email)</span><br><span class="line">user2.email = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"other@example.com"</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="使用函数来返回并创建实例化模型"><a href="#使用函数来返回并创建实例化模型" class="headerlink" title="使用函数来返回并创建实例化模型"></a>使用函数来返回并创建实例化模型</h3><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> user = return_struct(<span class="hljs-built_in">String</span>::from(<span class="hljs-string">"xx"</span>),<span class="hljs-number">2</span>);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,user.name);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">User</span></span> {</span><br><span class="line">    name: <span class="hljs-built_in">String</span>,</span><br><span class="line">    age: <span class="hljs-built_in">i32</span>,</span><br><span class="line">    active: <span class="hljs-built_in">bool</span>,</span><br><span class="line">    sigin_in_count: <span class="hljs-built_in">i32</span>,</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">return_struct</span></span>(name: <span class="hljs-built_in">String</span>,age: <span class="hljs-built_in">i32</span> ) -> User {</span><br><span class="line">    User {</span><br><span class="line">        <span class="hljs-comment">//同名字段</span></span><br><span class="line">        <span class="hljs-comment">//1. name: name,</span></span><br><span class="line">        <span class="hljs-comment">//2. name,</span></span><br><span class="line">        name,</span><br><span class="line">        age,</span><br><span class="line">        active: <span class="hljs-literal">true</span>,</span><br><span class="line">        sigin_in_count: <span class="hljs-number">1</span>,</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="实例更新"><a href="#实例更新" class="headerlink" title="实例更新"></a>实例更新</h3><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> user2 = User {</span><br><span class="line">    email: <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"another@example.com"</span>),</span><br><span class="line">    username: <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"anotherusername567"</span>),</span><br><span class="line">    ..user1</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="元组结构体"><a href="#元组结构体" class="headerlink" title="元组结构体"></a>元组结构体</h3><p>没有字段名 只有字段类型</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Color</span></span>(<span class="hljs-built_in">i32</span>, <span class="hljs-built_in">i32</span>, <span class="hljs-built_in">i32</span>);</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Point</span></span>(<span class="hljs-built_in">i32</span>, <span class="hljs-built_in">i32</span>, <span class="hljs-built_in">i32</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> black = Color(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="line"><span class="hljs-keyword">let</span> origin = Point(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="方法语法"><a href="#方法语法" class="headerlink" title="方法语法"></a>方法语法</h3><p>方法语法同函数类似，但是方法实在结构体的上下文中被定义的，并且他们的第一个参数是self，它代表了调用该方法的结构体实例</p>
+<p>我们将某个实例能做的所有事情一起放在impl(implementation)中</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Rectangle</span></span>{</span><br><span class="line">        width: <span class="hljs-built_in">u32</span>,</span><br><span class="line">        height: <span class="hljs-built_in">u32</span>,</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment">// 必须同名</span></span><br><span class="line"><span class="hljs-keyword">impl</span> Rectangle{</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">area</span></span>(&<span class="hljs-keyword">self</span>) -> <span class="hljs-built_in">u32</span>{</span><br><span class="line">        <span class="hljs-keyword">self</span>.width * <span class="hljs-keyword">self</span>.height</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> rect1 = Rectangle{width: <span class="hljs-number">30</span>,height: <span class="hljs-number">50</span>};</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(</span><br><span class="line">        <span class="hljs-string">"the area is {}"</span>,rect1.area()</span><br><span class="line">    );</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>其中self表示调用该方法的结构体实例</p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
                 <a class="has-link-black-ter" href="/posts/27cd4fcb/"><i class="fas fa-angle-double-right"></i>Rust概念-所有权</a>
             
         </h1>
@@ -309,203 +483,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/1d0174bc/"><i class="fas fa-angle-double-right"></i>Python报错总结</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-27T09:36:10.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-27</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/Python/">Python</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    几秒 读完 (大约 60 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="Python报错总结"><a href="#Python报错总结" class="headerlink" title="Python报错总结"></a>Python报错总结</h1><h2 id="Non-ASCII"><a href="#Non-ASCII" class="headerlink" title="Non-ASCII"></a>Non-ASCII</h2><p>python出现SyntaxError: Non-ASCII character ‘\xe6’ in file 打印日期.py on line 1, but no encoding declared;</p>
-<p><font color="red">解决方法</font><br>在文件头部添加如下两行注释码：</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/python</span></span><br><span class="line"><span class="hljs-comment"># -*- coding: <encoding name> -*- 例如，可添加# -*- coding: utf-8 -*-</span></span><br></pre></td></tr></tbody></table></figure>
-</body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/23ccefd3/"><i class="fas fa-angle-double-right"></i>深拷贝与浅拷贝</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-27T09:33:42.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-27</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    4 分钟 读完 (大约 598 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>数据分为</p>
-<ul>
-<li><p>基本数据类型(String, Number, Boolean, Null, Undefined，Symbol)</p>
-</li>
-<li><p>对象数据类型。</p>
-</li>
-<li><p>基本数据类型的特点: 直接存储在栈(stack)中的数据</p>
-</li>
-<li><p>引用数据类型的特点：存储的是该对象在栈中引用，真实的数据存放在堆内存里<br>引用数据类型在栈中存储了指针，该指针指向堆中该实体的起始地址。当解释器寻找引用值时，会首先检索其在栈中的地址，取得地址后从堆中获得实体。</p>
-</li>
-</ul>
-<p>[图]</p>
-<h3 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h3><p>深拷贝和浅拷贝是只针对Object和Array这样的引用数据类型的。<br>浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。但深拷贝会另外创造一个一模一样的对象，新对象跟原对象不共享内存，修改新对象不会改到原对象。<br><img src="https://user-gold-cdn.xitu.io/2018/7/29/164e6856d76ff161?imageslim" alt="图片"><br><font color="blue">是和Linux中的软硬链接有关系吗</font></p>
-<h3 id="赋值和浅拷贝的区别"><a href="#赋值和浅拷贝的区别" class="headerlink" title="赋值和浅拷贝的区别"></a>赋值和浅拷贝的区别</h3><ul>
-<li>当我们把一个对象赋值给一个新的变量时，赋的其实是该对象的在栈中的地址，而不是堆中的数据。也就是两个对象指向的是同一个存储空间，无论哪个对象发生改变，其实都是改变的存储空间的内容，因此，两个对象是联动的。</li>
-<li>浅拷贝是按位拷贝对象，它会创建一个新对象，这个对象有着原始对象属性值的一份精确拷贝。如果属性是基本类型，拷贝的就是基本类型的值；如果属性是内存地址（引用类型），拷贝的就是内存地址 ，因此如果其中一个对象改变了这个地址，就会影响到另一个对象。即默认拷贝构造函数只是对对象进行浅拷贝复制(逐个成员依次拷贝)，即只复制对象空间而不复制资源。</li>
-</ul>
-<p>浅拷贝与深拷贝</p>
-<p><a href="https://www.runoob.com/w3cnote/python-understanding-dict-copy-shallow-or-deep.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/python-understanding-dict-copy-shallow-or-deep.html</a><br><a href="https://juejin.im/post/5b5dcf8351882519790c9a2e#heading-7" target="_blank" rel="noopener">https://juejin.im/post/5b5dcf8351882519790c9a2e#heading-7</a></p>
-</body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/4fbe8671/"><i class="fas fa-angle-double-right"></i>Rust基础</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-26T04:27:09.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-26</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/Rust/">Rust</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    3 分钟 读完 (大约 458 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h1><p>url <a href="https://www.rust-lang.org/zh-CN/tools/install" target="_blank" rel="noopener">https://www.rust-lang.org/zh-CN/tools/install</a></p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">curl --proto <span class="hljs-string">'=https'</span> --tlsv1.2 -sSf https://sh.rustup.rs | sh</span><br></pre></td></tr></tbody></table></figure>
-<p>while you input enter ，will install rust default</p>
-<p>上面这条命令会安装一些内容，比如  cargo  rustup<br>如果你想要使用他们，需要将他们添加到环境变量中</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 方法1</span></span><br><span class="line"><span class="hljs-built_in">source</span> <span class="hljs-variable">$HOME</span>/.cargo/env</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 方法2</span></span><br><span class="line"><span class="hljs-built_in">export</span>  PATH=<span class="hljs-string">"<span class="hljs-variable">$HOME</span>/.cargo/bin:<span class="hljs-variable">$PATH</span>"</span> </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 其实env里面写的就是方法2</span></span><br><span class="line"><span class="hljs-comment"># 查看是否安装完成</span></span><br><span class="line">rustc --version</span><br><span class="line">rustc 1.39.0 (4560ea788 2019-11-04)</span><br></pre></td></tr></tbody></table></figure>
-
-
-<h1 id="update"><a href="#update" class="headerlink" title="update"></a>update</h1><p>更新版本, rustup用来管理rust的版本,rust每6个礼拜会进行一次版本迭代，使用rustup update更新版本</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">rustup update</span><br></pre></td></tr></tbody></table></figure>
-
-<h1 id="cargo工具"><a href="#cargo工具" class="headerlink" title="cargo工具"></a>cargo工具</h1><p>Cargo：Rust 的构建工具和包管理器</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">cargo build <span class="hljs-comment">#构建项目</span></span><br><span class="line">cargo run <span class="hljs-comment"># 构建并运行项目</span></span><br><span class="line">cargo <span class="hljs-built_in">test</span> <span class="hljs-comment"># 测试项目</span></span><br><span class="line">cargo doc <span class="hljs-comment"># 为项目构建文档</span></span><br><span class="line">cargo publish <span class="hljs-comment"># 将库发布到cartes.io </span></span><br><span class="line">cargo new xxproject <span class="hljs-comment"># 创建xxproject项目</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># cargo  开发者社区</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="cargo-使用"><a href="#cargo-使用" class="headerlink" title="cargo 使用"></a>cargo 使用</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">cargo new helloworld <span class="hljs-comment"># 创建一个项目helloworld </span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 生成如下文件</span></span><br><span class="line">[root@dev rustttt]<span class="hljs-comment">#  tree .</span></span><br><span class="line">.</span><br><span class="line">└── helloworld</span><br><span class="line">    ├── Cargo.toml</span><br><span class="line">    └── src</span><br><span class="line">        └── main.rs</span><br></pre></td></tr></tbody></table></figure>
-<ul>
-<li>Cargo.toml中包含了编译你项目时所需要的内容清单</li>
-<li>src/main.rs 中包含了主程序</li>
-</ul>
-<p>使用cargo build 构建项目,编译完成之后，会在生成一个编译后的可执行文件，执行他们</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@dev helloworld]<span class="hljs-comment"># ./target/debug/helloworld</span></span><br><span class="line">Hello, world!</span><br></pre></td></tr></tbody></table></figure>
-
-<p>使用cargo run 构建项目并运行。</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@dev helloworld]<span class="hljs-comment"># cargo run</span></span><br><span class="line">   Compiling helloworld v0.1.0 (/root/rustttt/helloworld)</span><br><span class="line">    Finished dev [unoptimized + debuginfo] target(s) <span class="hljs-keyword">in</span> 0.51s</span><br><span class="line">     Running `target/debug/helloworld`</span><br><span class="line">Hello, world!</span><br></pre></td></tr></tbody></table></figure>
-
-<p><font color="red">具体是使用文档</font><br><font color="red"><a href="https://doc.rust-lang.org/cargo/guide/index.html" target="_blank" rel="noopener">https://doc.rust-lang.org/cargo/guide/index.html</a></font></p>
-<h2 id="编译rust文件-rustc"><a href="#编译rust文件-rustc" class="headerlink" title="编译rust文件  rustc"></a>编译rust文件  rustc</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 使用cargo build创建helloworld目录</span></span><br><span class="line">cargo build helloworld</span><br><span class="line"><span class="hljs-built_in">cd</span> helloworld/src/</span><br><span class="line"><span class="hljs-comment"># 编译文件</span></span><br><span class="line">rustc main.rs </span><br><span class="line">./main</span><br><span class="line"><span class="hljs-comment"># 输出内容</span></span><br><span class="line">hello wolrd</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><p>不下载环境，直接测试代码<br><a href="https://play.rust-lang.org" target="_blank" rel="noopener">https://play.rust-lang.org</a><br>Rust官方文档<br><a href="https://www.rust-lang.org/zh-CN/tools/install" target="_blank" rel="noopener">https://www.rust-lang.org/zh-CN/tools/install</a></p>
-</body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -527,6 +504,8 @@
             <li><a class="pagination-link is-current" href="/page/14/">14</a></li>
             
             <li><a class="pagination-link has-text-black-ter" href="/page/15/">15</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/16/">16</a></li>
             
         </ul>
     </nav>
@@ -561,7 +540,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        73
+                        76
                     </p>
                 </a>
             </div>
@@ -671,14 +650,6 @@
                 <span class="level-item tag">4</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/docker/">
-            <span class="level-start">
-                <span class="level-item">docker</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/git/">
             <span class="level-start">
                 <span class="level-item">git</span>
@@ -692,7 +663,7 @@
                 <span class="level-item">linux</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">17</span>
+                <span class="level-item tag">21</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/linux/ansible/">
@@ -701,6 +672,14 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/docker/">
+            <span class="level-start">
+                <span class="level-item">docker</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/">
@@ -933,7 +912,7 @@
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -975,6 +954,63 @@
         
         <article class="media">
             
+            <a href="/posts/8d3c2c27/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-DokcerFile">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-05T05:56:09.000Z">2020-02-05</time></div>
+                    <a href="/posts/8d3c2c27/" class="has-link-black-ter is-size-6">docker-DokcerFile</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/5f4d14d2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker容器数据卷">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-05T04:35:48.000Z">2020-02-05</time></div>
+                    <a href="/posts/5f4d14d2/" class="has-link-black-ter is-size-6">docker容器数据卷</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/685470da/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker镜像分层原理">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-05T03:09:43.000Z">2020-02-05</time></div>
+                    <a href="/posts/685470da/" class="has-link-black-ter is-size-6">docker镜像分层原理</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/posts/3ee8c444/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="docker基础">
@@ -986,7 +1022,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-04T09:26:54.000Z">2020-02-04</time></div>
                     <a href="/posts/3ee8c444/" class="has-link-black-ter is-size-6">docker基础</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/docker/">docker</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
                     </p>
                 </div>
             </div>
@@ -1006,63 +1042,6 @@
                     <a href="/posts/21215442/" class="has-link-black-ter is-size-6">nginx基础</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/nginx/">nginx</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/12ec35da/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nginx配置实例">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T06:03:46.000Z">2020-02-03</time></div>
-                    <a href="/posts/12ec35da/" class="has-link-black-ter is-size-6">nginx配置实例</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/nginx/">nginx</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/3f665668/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux 常用命令2">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T05:44:41.000Z">2020-02-03</time></div>
-                    <a href="/posts/3f665668/" class="has-link-black-ter is-size-6">linux 常用命令2</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/f6c82bc1/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux常用命令整理">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T01:43:33.000Z">2020-02-03</time></div>
-                    <a href="/posts/f6c82bc1/" class="has-link-black-ter is-size-6">linux常用命令整理</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                     </p>
                 </div>
             </div>
@@ -1097,7 +1076,7 @@
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -1139,6 +1118,63 @@
         
         <article class="media">
             
+            <a href="/posts/8d3c2c27/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-DokcerFile">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-05T05:56:09.000Z">2020-02-05</time></div>
+                    <a href="/posts/8d3c2c27/" class="has-link-black-ter is-size-6">docker-DokcerFile</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/5f4d14d2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker容器数据卷">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-05T04:35:48.000Z">2020-02-05</time></div>
+                    <a href="/posts/5f4d14d2/" class="has-link-black-ter is-size-6">docker容器数据卷</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/685470da/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker镜像分层原理">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-05T03:09:43.000Z">2020-02-05</time></div>
+                    <a href="/posts/685470da/" class="has-link-black-ter is-size-6">docker镜像分层原理</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/posts/3ee8c444/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="docker基础">
@@ -1150,7 +1186,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-04T09:26:54.000Z">2020-02-04</time></div>
                     <a href="/posts/3ee8c444/" class="has-link-black-ter is-size-6">docker基础</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/docker/">docker</a>
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
                     </p>
                 </div>
             </div>
@@ -1170,63 +1206,6 @@
                     <a href="/posts/21215442/" class="has-link-black-ter is-size-6">nginx基础</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/nginx/">nginx</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/12ec35da/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nginx配置实例">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T06:03:46.000Z">2020-02-03</time></div>
-                    <a href="/posts/12ec35da/" class="has-link-black-ter is-size-6">nginx配置实例</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/nginx/">nginx</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/3f665668/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux 常用命令2">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T05:44:41.000Z">2020-02-03</time></div>
-                    <a href="/posts/3f665668/" class="has-link-black-ter is-size-6">linux 常用命令2</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/f6c82bc1/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux常用命令整理">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T01:43:33.000Z">2020-02-03</time></div>
-                    <a href="/posts/f6c82bc1/" class="has-link-black-ter is-size-6">linux常用命令整理</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                     </p>
                 </div>
             </div>

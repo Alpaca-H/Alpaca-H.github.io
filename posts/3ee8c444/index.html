@@ -167,7 +167,7 @@
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/docker/">docker</a>
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
                 </div>
                 
                 
@@ -175,7 +175,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    17 分钟 读完 (大约 2515 个字)
+                    16 分钟 读完 (大约 2458 个字)
                 </span>
                 
                 
@@ -219,25 +219,19 @@
 </ul>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># centos7安装</span></span><br><span class="line">yum install docker -y </span><br><span class="line"><span class="hljs-comment"># 查看版本</span></span><br><span class="line">docker --version</span><br><span class="line">Docker version 19.03.1, build 74b1e89</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="镜像指令"><a href="#镜像指令" class="headerlink" title="镜像指令"></a>镜像指令</h2><h3 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装Ubuntu:latest镜像</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># docker pull ubuntu</span></span><br><span class="line">Using default tag: latest</span><br><span class="line">latest: Pulling from library/ubuntu</span><br><span class="line">5c939e3a4d10: Downloading  8.608MB/26.69MB</span><br><span class="line">c63719cdbe7a: Download complete</span><br><span class="line">19a861ea6baf: Download complete</span><br><span class="line">651c9d2d6c4f: Downloadan zhuang </span><br><span class="line"><span class="hljs-comment"># 安装Ubuntu:14.04镜像</span></span><br><span class="line">docker pull ubuntu:14.04</span><br><span class="line"><span class="hljs-comment"># 从社区安装ubuntu镜像</span></span><br><span class="line">docker pull dl.dockerpool.com:5000/ubuntu</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h2><h3 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装Ubuntu:latest镜像</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># docker pull ubuntu</span></span><br><span class="line">Using default tag: latest</span><br><span class="line">latest: Pulling from library/ubuntu</span><br><span class="line">5c939e3a4d10: Downloading  8.608MB/26.69MB</span><br><span class="line">c63719cdbe7a: Download complete</span><br><span class="line">19a861ea6baf: Download complete</span><br><span class="line">651c9d2d6c4f: Downloadan zhuang </span><br><span class="line"><span class="hljs-comment"># 安装Ubuntu:14.04镜像</span></span><br><span class="line">docker pull ubuntu:14.04</span><br><span class="line"><span class="hljs-comment"># 从社区安装ubuntu镜像</span></span><br><span class="line">docker pull dl.dockerpool.com:5000/ubuntu</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="运行镜像"><a href="#运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker run -t -i ubuntu /bin/bash</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="查看镜像信息"><a href="#查看镜像信息" class="headerlink" title="查看镜像信息"></a>查看镜像信息</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 列出本地主机上所有镜像</span></span><br><span class="line"><span class="hljs-comment"># --------------------------</span></span><br><span class="line">root:~<span class="hljs-comment"># docker images</span></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">docker.io/ubuntu    latest              ccc6e87d482b        6 days ago          64.2 MB</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># REPOSITORY 表示镜像的仓库源</span></span><br><span class="line"><span class="hljs-comment"># TAG 表示镜像的标签</span></span><br><span class="line"><span class="hljs-comment"># IMAGE ID 表示镜像的ID</span></span><br><span class="line"><span class="hljs-comment"># CREATED 镜像的创建时间</span></span><br><span class="line"><span class="hljs-comment"># SIZE 镜像大小</span></span><br><span class="line"><span class="hljs-comment"># --------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 添加新的镜像标签</span></span><br><span class="line">root:～<span class="hljs-comment"># docker tag docker.io/ubuntu:latest docker-ubuntu-version:v2</span></span><br><span class="line">root:~<span class="hljs-comment"># docker images</span></span><br><span class="line">REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">docker-ubuntu-version   v2                  ccc6e87d482b        6 days ago          64.2 MB</span><br><span class="line">docker.io/ubuntu        latest              ccc6e87d482b        6 days ago          64.2 MB</span><br><span class="line">docker.io/ubuntu        14.04               6e4f1fe62ff1        4 weeks ago         197 MB</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查看镜像相信信息</span></span><br><span class="line">docker inspect ccc6e87d482b </span><br><span class="line">docker imspect ccc</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="查看镜像信息"><a href="#查看镜像信息" class="headerlink" title="查看镜像信息"></a>查看镜像信息</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 列出本地主机上所有镜像</span></span><br><span class="line"><span class="hljs-comment"># --------------------------</span></span><br><span class="line">root:~<span class="hljs-comment"># docker images</span></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">docker.io/ubuntu    latest              ccc6e87d482b        6 days ago          64.2 MB</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># REPOSITORY 表示镜像的仓库源</span></span><br><span class="line"><span class="hljs-comment"># TAG 表示镜像的标签</span></span><br><span class="line"><span class="hljs-comment"># IMAGE ID 表示镜像的ID</span></span><br><span class="line"><span class="hljs-comment"># CREATED 镜像的创建时间</span></span><br><span class="line"><span class="hljs-comment"># SIZE 镜像大小</span></span><br><span class="line"><span class="hljs-comment"># --------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 显示所有镜像的ID -a 显示所有镜像 -q显示ID</span></span><br><span class="line">root:~<span class="hljs-comment"># docker images -qa</span></span><br><span class="line">41f1d7eba8f3</span><br><span class="line">470671670cac</span><br><span class="line">ccc6e87d482b</span><br><span class="line">fce289e99eb9</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 显示镜像的摘要信息</span></span><br><span class="line">root:~<span class="hljs-comment"># docker images --digests</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 显示镜像详细信息</span></span><br><span class="line">root:~<span class="hljs-comment"># docker images --no-trunc</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 添加新的镜像标签</span></span><br><span class="line">root:～<span class="hljs-comment"># docker tag docker.io/ubuntu:latest docker-ubuntu-version:v2</span></span><br><span class="line">root:~<span class="hljs-comment"># docker images</span></span><br><span class="line">REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">docker-ubuntu-version   v2                  ccc6e87d482b        6 days ago          64.2 MB</span><br><span class="line">docker.io/ubuntu        latest              ccc6e87d482b        6 days ago          64.2 MB</span><br><span class="line">docker.io/ubuntu        14.04               6e4f1fe62ff1        4 weeks ago         197 MB</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查看镜像相信信息</span></span><br><span class="line">docker inspect ccc6e87d482b </span><br><span class="line">docker imspect ccc</span><br></pre></td></tr></tbody></table></figure>
 <p>REPOSITORY表示镜像来自于哪个仓库<br>TAG 标签信息，版本信息<br>IMAMGE ID 镜像的ID号码，唯一<br>CREATED 创建时间<br>SIZE  镜像大小</p>
 <h3 id="搜寻镜像"><a href="#搜寻镜像" class="headerlink" title="搜寻镜像"></a>搜寻镜像</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker search mysql</span><br><span class="line"><span class="hljs-comment"># --automated=false 仅显示自动创建的镜像</span></span><br><span class="line"><span class="hljs-comment"># --no-trunc=false 输出信息不截断显示</span></span><br><span class="line"><span class="hljs-comment"># -s --starts=0 指定仅显示评价为指定星级以上的镜像</span></span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker rmi IMAGE[IMAGE...]</span><br><span class="line"><span class="hljs-comment"># IMAGE...可以是标签或者ID</span></span><br><span class="line"><span class="hljs-comment"># docker rmi -f IMAGE[IMAGE...] 强制删除</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker rmi IMAGE[IMAGE...]</span><br><span class="line"><span class="hljs-comment"># IMAGE...可以是标签或者ID</span></span><br><span class="line"><span class="hljs-comment"># docker rmi -f IMAGE[IMAGE...] 强制删除</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 删除全部</span></span><br><span class="line">docker rmi  -f $(docker images -qa)</span><br></pre></td></tr></tbody></table></figure>
 <p>当前镜像有被使用于某一个容器的时候，使用docker rmi IMAGE 会出现报错的内容,可以进行强制的删除，但这样的做法并不建议，可以先删除依赖于该镜像的容器，然后再删除该镜像</p>
-<h3 id="创建镜像"><a href="#创建镜像" class="headerlink" title="创建镜像"></a>创建镜像</h3><ul>
-<li>基于已有镜像的容器创建<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker commit [OPTIONS] CONTAINER [RSPOSITORY[:TAG]]</span><br><span class="line"><span class="hljs-comment"># -a; --author="" 作者信息</span></span><br><span class="line"><span class="hljs-comment"># -m; --message="" 提交信息</span></span><br><span class="line"><span class="hljs-comment"># -p; --pause=true 提交时暂停容器运行</span></span><br></pre></td></tr></tbody></table></figure>
-创建流程<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># pull 一个新的image </span></span><br><span class="line">docker pull ubuntu</span><br><span class="line"><span class="hljs-comment"># 改变ubuntu 使其与原来image不同</span></span><br><span class="line">docker run -it ccc6e87d482b /bin/bash</span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"update file "</span> > <span class="hljs-built_in">test</span></span><br><span class="line"><span class="hljs-built_in">exit</span></span><br><span class="line"><span class="hljs-comment"># 返回前记住当前容器的名字，一般都是主机名</span></span><br><span class="line"><span class="hljs-comment"># 提交当前容器为新的镜像文件</span></span><br><span class="line">docker commit -m <span class="hljs-string">"update - add a file in ubuntu "</span> -a <span class="hljs-string">"hzj"</span> dc758c368fda <span class="hljs-built_in">test</span></span><br><span class="line"><span class="hljs-comment"># 查看当前镜像列表</span></span><br><span class="line">root:~<span class="hljs-comment"># docker images</span></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line"><span class="hljs-built_in">test</span>                latest              41f1d7eba8f3        10 seconds ago      64.2 MB</span><br><span class="line">docker.io/ubuntu    latest              ccc6e87d482b        6 days ago          64.2 MB</span><br></pre></td></tr></tbody></table></figure></li>
-<li>基于本地模版导入<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 下载模版压缩包</span></span><br><span class="line">wget xx</span><br><span class="line"><span class="hljs-comment"># 根据压缩包导入成镜像</span></span><br><span class="line">cat ubuntu-14.04.tar.gz | docker import - ubuntu:14.04 </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 保存镜像到本地文件</span></span><br><span class="line">docker save -o ubuntu_latest.tar ubuntu:latest</span><br><span class="line"><span class="hljs-comment"># 载入镜像</span></span><br><span class="line">docker load --input ubuntu_latest.tar</span><br><span class="line">docker load < ubuntu_latest.tar</span><br></pre></td></tr></tbody></table></figure></li>
-<li>基于Dockerfile创建</li>
-</ul>
 <h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><h3 id="创建容器与启动"><a href="#创建容器与启动" class="headerlink" title="创建容器与启动"></a>创建容器与启动</h3><p>使用create创建容器后，容器是处于停止状态的，可以使用start开启</p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 创建容器</span></span><br><span class="line">docker create -it ubuntu:<span class="hljs-built_in">test</span> </span><br><span class="line"><span class="hljs-comment"># 开启容器</span></span><br><span class="line">docker start ID</span><br><span class="line"><span class="hljs-comment"># 重新开启容器</span></span><br><span class="line">docker restart ID</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="新建并启动容器"><a href="#新建并启动容器" class="headerlink" title="新建并启动容器"></a>新建并启动容器</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker run -i -t ubuntu:latest /bin/bash</span><br><span class="line"><span class="hljs-comment"># -t 给docker分一个伪终端 </span></span><br><span class="line"><span class="hljs-comment"># -i 提供交互模式</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="新建并启动容器"><a href="#新建并启动容器" class="headerlink" title="新建并启动容器"></a>新建并启动容器</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># docker run [OPTIONS] IMAGE [COMMAND][ARG...]</span></span><br><span class="line"><span class="hljs-comment"># --name 指定容器名字，未指定则随机生成</span></span><br><span class="line"><span class="hljs-comment"># -t 给docker分一个伪终端 </span></span><br><span class="line"><span class="hljs-comment"># -i 提供交互模式 </span></span><br><span class="line"><span class="hljs-comment"># -d 后台运行容器，并返回容器ID</span></span><br><span class="line"><span class="hljs-comment"># -P 随机端口映射</span></span><br><span class="line"><span class="hljs-comment"># -p 指定端口映射 主机端口:容器端口</span></span><br><span class="line">docker run -i -t ubuntu:latest /bin/bash</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 区分-p 与 -P的区别</span></span><br><span class="line">docker pull comcat </span><br><span class="line">docker run -it -d -p 8080:8080 tomcat</span><br><span class="line">docker run -it -d -P tomcat</span><br><span class="line">root:~<span class="hljs-comment"># docker ps</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                     NAMES</span><br><span class="line">d5987c3d0257        tomcat              <span class="hljs-string">"catalina.sh run"</span>   3 seconds ago       Up 2 seconds        0.0.0.0:32768->8080/tcp   xenodochial_hugle</span><br><span class="line">ae1370718b31        tomcat              <span class="hljs-string">"catalina.sh run"</span>   36 seconds ago      Up 35 seconds       0.0.0.0:8080->8080/tcp    upbeat_beaver</span><br></pre></td></tr></tbody></table></figure>
 <p>exit后容器处于终止状态</p>
 <h3 id="守护状态运行"><a href="#守护状态运行" class="headerlink" title="守护状态运行"></a>守护状态运行</h3><p>正常情况下，退出容器后，容器处于终止状态。使用-d可以在后台运行容器</p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker run -d ubuntu:latest /bin/bash -c <span class="hljs-string">"while true;do echo helloworld > xx.txt;sleep 1;done"</span></span><br></pre></td></tr></tbody></table></figure>
@@ -252,20 +246,15 @@
 </li>
 </ul>
 <h3 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h3><p>删除终止状态下的容器</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker rm [OPTIONS] CONTAINER [CONTAINER...]</span><br><span class="line"><span class="hljs-comment"># -f --force=false 终止并删除一个正在运行的容器</span></span><br><span class="line"><span class="hljs-comment"># -l --link=false 删除容器的连接，但保留容器</span></span><br><span class="line"><span class="hljs-comment"># -v --volumes=false 删除容器挂载的数据卷</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker rm [OPTIONS] CONTAINER [CONTAINER...]</span><br><span class="line"><span class="hljs-comment"># -f --force=false 终止并删除一个正在运行的容器</span></span><br><span class="line"><span class="hljs-comment"># -l --link=false 删除容器的连接，但保留容器</span></span><br><span class="line"><span class="hljs-comment"># -v --volumes=false 删除容器挂载的数据卷</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 停止所有容器</span></span><br><span class="line">docker stop $(dokcer ps -q)</span><br><span class="line"><span class="hljs-comment"># 删除所有容器</span></span><br><span class="line">docker rm $(docker ps -aq) <span class="hljs-comment">#需要先暂停</span></span><br><span class="line">docker rm -f $(docker ps -aq) <span class="hljs-comment"># 不需要暂停</span></span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="导入与导出容器"><a href="#导入与导出容器" class="headerlink" title="导入与导出容器"></a>导入与导出容器</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 导入</span></span><br><span class="line">docker <span class="hljs-built_in">export</span> ID > xx.tar</span><br><span class="line"><span class="hljs-comment"># 导出</span></span><br><span class="line">cat xx.tar | docker import - <span class="hljs-built_in">test</span>/ubuntu:v1</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="查看容器"><a href="#查看容器" class="headerlink" title="查看容器"></a>查看容器</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看所有容器</span></span><br><span class="line">root:~<span class="hljs-comment"># docker ps -a</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS               NAMES</span><br><span class="line">7945b6135dda        ubuntu              <span class="hljs-string">"echo '“hello world'"</span>   5 seconds ago       Exited (0) 4 seconds ago                       silly_kirch</span><br><span class="line"><span class="hljs-comment"># 查看所有终止容器ID</span></span><br><span class="line">root:~<span class="hljs-comment"># docker ps -a -q</span></span><br><span class="line">225f9b6d5fc2</span><br><span class="line">674c77f3b1ea</span><br><span class="line">dc758c368fda</span><br><span class="line">7945b6135dda</span><br><span class="line">2ebd811581a6</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="查看容器"><a href="#查看容器" class="headerlink" title="查看容器"></a>查看容器</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看活跃的容器</span></span><br><span class="line">root:~<span class="hljs-comment"># docker ps</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line">4171c783b51f        470671670cac        <span class="hljs-string">"/bin/bash"</span>         12 days ago         Up 2 seconds                            devtest</span><br><span class="line"><span class="hljs-comment"># 查看所有容器</span></span><br><span class="line">root:~<span class="hljs-comment"># docker ps -a</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS               NAMES</span><br><span class="line">7945b6135dda        ubuntu              <span class="hljs-string">"echo '“hello world'"</span>   5 seconds ago       Exited (0) 4 seconds ago                       silly_kirch</span><br><span class="line"><span class="hljs-comment"># -l 显示最近创建的容器</span></span><br><span class="line"><span class="hljs-comment"># -n 显示最近n个创建的容器</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查看容器日志</span></span><br><span class="line">docker logs -f -t --tail  IMAGE</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查看容器内运行进程</span></span><br><span class="line">docker top IMAGE</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#</span></span><br></pre></td></tr></tbody></table></figure>
 <p>status 状态表示是否在后台运行，up表示在后台运行  Exited表示终止</p>
-<h2 id="数据管理"><a href="#数据管理" class="headerlink" title="数据管理"></a>数据管理</h2><p>数据卷是一个可提供使用的特殊目录，他绕过文件系统，可以提供很多有用的内容</p>
-<ul>
-<li>数据卷可以在容器之间共享和重复使用</li>
-<li>对数据卷的修改会立马生效</li>
-<li>对数据卷的更新，不会影响镜像</li>
-<li>卷会一直存在 知道没有容器使用</li>
-</ul>
-<h3 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h3><h2 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看版本</span></span><br><span class="line">docker version</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 显示docker信息，包括容器数量，镜像数量等等</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># docker info</span></span><br><span class="line">Client:</span><br><span class="line"> Debug Mode: <span class="hljs-literal">false</span></span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Containers: 3</span><br><span class="line">  Running: 0</span><br><span class="line">  Paused: 0</span><br><span class="line">  Stopped: 3</span><br><span class="line"> Images: 1</span><br><span class="line"> Server Version: 19.03.1</span><br><span class="line"> Storage Driver: overlay2</span><br><span class="line">  Backing Filesystem: extfs</span><br><span class="line">  Supports d_type: <span class="hljs-literal">true</span></span><br><span class="line">  Native Overlay Diff: <span class="hljs-literal">true</span></span><br><span class="line"> Logging Driver: json-file</span><br><span class="line"> Cgroup Driver: cgroupfs</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="复制容器内文件"><a href="#复制容器内文件" class="headerlink" title="复制容器内文件"></a>复制容器内文件</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker cp IMAGE:file_path now_path</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看版本</span></span><br><span class="line">docker version</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 显示docker信息，包括容器数量，镜像数量等等</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># docker info</span></span><br><span class="line">Client:</span><br><span class="line"> Debug Mode: <span class="hljs-literal">false</span></span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Containers: 3</span><br><span class="line">  Running: 0</span><br><span class="line">  Paused: 0</span><br><span class="line">  Stopped: 3</span><br><span class="line"> Images: 1</span><br><span class="line"> Server Version: 19.03.1</span><br><span class="line"> Storage Driver: overlay2</span><br><span class="line">  Backing Filesystem: extfs</span><br><span class="line">  Supports d_type: <span class="hljs-literal">true</span></span><br><span class="line">  Native Overlay Diff: <span class="hljs-literal">true</span></span><br><span class="line"> Logging Driver: json-file</span><br><span class="line"> Cgroup Driver: cgroupfs</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#</span></span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="错误合集"><a href="#错误合集" class="headerlink" title="错误合集"></a>错误合集</h2><ul>
 <li><p>错误1<br>没有开启docker服务</p>
@@ -299,6 +288,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/685470da/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">docker镜像分层原理</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -367,7 +363,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        73
+                        76
                     </p>
                 </a>
             </div>
@@ -438,9 +434,9 @@
         <span class="has-mr-6">1.3</span>
         <span>安装</span>
         </a></li><li>
-        <a class="is-flex" href="#镜像指令">
+        <a class="is-flex" href="#镜像">
         <span class="has-mr-6">1.4</span>
-        <span>镜像指令</span>
+        <span>镜像</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#获取镜像">
         <span class="has-mr-6">1.4.1</span>
@@ -461,10 +457,6 @@
         <a class="is-flex" href="#删除镜像">
         <span class="has-mr-6">1.4.5</span>
         <span>删除镜像</span>
-        </a></li><li>
-        <a class="is-flex" href="#创建镜像">
-        <span class="has-mr-6">1.4.6</span>
-        <span>创建镜像</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#容器">
         <span class="has-mr-6">1.5</span>
@@ -501,21 +493,17 @@
         <a class="is-flex" href="#查看容器">
         <span class="has-mr-6">1.5.8</span>
         <span>查看容器</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#数据管理">
-        <span class="has-mr-6">1.6</span>
-        <span>数据管理</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#创建数据卷">
-        <span class="has-mr-6">1.6.1</span>
-        <span>创建数据卷</span>
+        </a></li><li>
+        <a class="is-flex" href="#复制容器内文件">
+        <span class="has-mr-6">1.5.9</span>
+        <span>复制容器内文件</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#帮助命令">
-        <span class="has-mr-6">1.7</span>
+        <span class="has-mr-6">1.6</span>
         <span>帮助命令</span>
         </a></li><li>
         <a class="is-flex" href="#错误合集">
-        <span class="has-mr-6">1.8</span>
+        <span class="has-mr-6">1.7</span>
         <span>错误合集</span>
         </a></li></ul></li></ul>
         </div>
