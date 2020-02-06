@@ -175,7 +175,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    5 分钟 读完 (大约 764 个字)
+                    12 分钟 读完 (大约 1763 个字)
                 </span>
                 
                 
@@ -214,7 +214,8 @@
 <h2 id="docker编写关键字"><a href="#docker编写关键字" class="headerlink" title="docker编写关键字"></a>docker编写关键字</h2><ul>
 <li>FROM<br>声明基础镜像，如centos中声明的scratch</li>
 <li>MAINTAINER<br>镜像维护者的姓名和邮箱地址</li>
-<li>RUN<br>容器构建时需要运行的命令</li>
+<li>LABEL<br>镜像版本信息</li>
+<li>RUN<br>容器构建时需要运行的命令，可以用 \ 分行</li>
 <li>EXPOSE<br>暴露端口，比如tomcat镜像中的dockerfile 他expose了一个8080端口，当我们在用-P随机指定端口的时候，他会默认映射我们所暴露的端口，如8080</li>
 <li>WORKDIR<br>登陆之后的工作目录</li>
 <li>ENV<br>用来构建镜像过程中设置环境变量</li>
@@ -225,6 +226,30 @@
 <li>ENTRYPOINT<br>指定一个容器启动时候要运行的命令，不会被替换</li>
 <li>ONBUILD<br>当构建一个被继承的Dockerfile时运行命令,父镜像在被子继承后，父镜像的onbuild被触发</li>
 </ul>
+<h3 id="ADD和COPY-以及远程文件的添加"><a href="#ADD和COPY-以及远程文件的添加" class="headerlink" title="ADD和COPY 以及远程文件的添加"></a>ADD和COPY 以及远程文件的添加</h3><p>ADD不但可以复制还可以解压</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ADD xx.tar.gz /</span><br><span class="line">COPY xx /tmp/data1/</span><br></pre></td></tr></tbody></table></figure>
+
+<p><font color="red">添加远程文件/目录 使用RUN curl | RUN wget </font></p>
+<h3 id="WORKDIR"><a href="#WORKDIR" class="headerlink" title="WORKDIR"></a>WORKDIR</h3><p>WORKDIR表示工作目录</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">WORKDIR /<span class="hljs-built_in">test</span></span><br></pre></td></tr></tbody></table></figure>
+<p>如果没有test工作目录，则会自动创建</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">WORKDIR /<span class="hljs-built_in">test</span></span><br><span class="line">WORKDIR demo1</span><br></pre></td></tr></tbody></table></figure>
+<p>以上会生成的工作目录是/test/demo1</p>
+<p><font color="red">尽量使用绝对目录</font></p>
+<h3 id="CMD与ENTRYPOINT"><a href="#CMD与ENTRYPOINT" class="headerlink" title="CMD与ENTRYPOINT"></a>CMD与ENTRYPOINT</h3><p>在tomcat的官方镜像包中，dockerfile里面的最后有这么一句CMD</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">CMD [<span class="hljs-string">"catalina.sh"</span>,<span class="hljs-string">"run"</span>]</span><br></pre></td></tr></tbody></table></figure>
+<p>意思就是说在dokcer run没有加CMD的情况下启动时，会去运行CMD [“catalina.sh”,”run”] 这一串内容。</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">06-Feb-2020 05:29:22.623 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 389 ms</span><br><span class="line">06-Feb-2020 05:29:22.639 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]</span><br><span class="line">06-Feb-2020 05:29:22.639 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.50</span><br><span class="line">06-Feb-2020 05:29:22.647 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]</span><br><span class="line">06-Feb-2020 05:29:22.653 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]</span><br><span class="line">06-Feb-2020 05:29:22.655 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 32 ms</span><br></pre></td></tr></tbody></table></figure>
+<p>但如果我们在后面加了如 /bin/bash</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:/tmp<span class="hljs-comment"># docker run -it -P tomcat /bin/bash</span></span><br><span class="line">root@2ee3ee482178:/usr/<span class="hljs-built_in">local</span>/tomcat<span class="hljs-comment">#</span></span><br></pre></td></tr></tbody></table></figure>
+<p>他就不回去运行这个catalina.sh这个程序</p>
+<p><font color="red">ENTRYPOINT可以将参数累加</font></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">FROM centos</span><br><span class="line">RUN yum install curl -y</span><br><span class="line">ENTRYPOINT  [<span class="hljs-string">"curl"</span>,<span class="hljs-string">"-s"</span>,<span class="hljs-string">"https://ip.cn/"</span>]</span><br><span class="line"></span><br><span class="line">docker run -it centos   ->  [<span class="hljs-string">"curl"</span>,<span class="hljs-string">"-s"</span>,<span class="hljs-string">"https://ip.cn/"</span>]  </span><br><span class="line">docker run -it centos -i  -> [<span class="hljs-string">"curl"</span>,<span class="hljs-string">"-s"</span>,<span class="hljs-string">"-i"</span>,<span class="hljs-string">"https://ip.cn/"</span>]</span><br></pre></td></tr></tbody></table></figure>
+
+<p><font color="red">两种风格的编写格式</font><br><img src="http://img.noback.top/2020-02-06-20-53-20.png" alt="2020-02-06-20-53-20"></p>
+<h3 id="ONBUILD使用"><a href="#ONBUILD使用" class="headerlink" title="ONBUILD使用"></a>ONBUILD使用</h3><p>ONBUILD就是在继承父容器之后，如果子容器运行了，就会在父容器中运行ONBUILD后面的命令</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">FROM centos</span><br><span class="line">RUN yum install -y curl</span><br><span class="line">ENTRYPOINT [<span class="hljs-string">"curl"</span>,<span class="hljs-string">"-s"</span>,<span class="hljs-string">"https://ip.cn/"</span>] </span><br><span class="line">ONBUILD RUN <span class="hljs-built_in">echo</span> <span class="hljs-string">"son is run "</span></span><br></pre></td></tr></tbody></table></figure>
+<p>父容器为m1 子容器为m2,这里的继承就是说以父容器镜像为基本模版创建的子镜像后生成的子容器</p>
 <h2 id="编写实例"><a href="#编写实例" class="headerlink" title="编写实例"></a>编写实例</h2><h3 id="一个挂载文件的dockerfile"><a href="#一个挂载文件的dockerfile" class="headerlink" title="一个挂载文件的dockerfile"></a>一个挂载文件的dockerfile</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">FROM centos</span><br><span class="line">VOLUME [<span class="hljs-string">"data1/"</span>,<span class="hljs-string">"data2/"</span>]  <span class="hljs-comment"># 这种定义方式无法像命令一样指定本地的文件</span></span><br><span class="line">CMD <span class="hljs-built_in">echo</span> <span class="hljs-string">"VOLUME TEST!"</span></span><br><span class="line">CMD /bin/bash</span><br></pre></td></tr></tbody></table></figure>
 <p>根据编写的dockerfile构建自定义镜像</p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker build -f /tmp/dockerfile -t hzj/centos .</span><br></pre></td></tr></tbody></table></figure>
@@ -233,6 +258,22 @@
 <p>出现挂载的路径</p>
 <figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">"Mounts": [</span><br><span class="line">            {</span><br><span class="line">                "Type": "volume",</span><br><span class="line">                "Name": "2a8601766a8ec82c39132bc64c2c99546053cb4104bd94507f215b888e60464d",</span><br><span class="line">                "Source": "/var/lib/docker/volumes/2a8601766a8ec82c39132bc64c2c99546053cb4104bd94507f215b888e60464d/_data",</span><br><span class="line">                "Destination": "/data2",</span><br><span class="line">                "Driver": "local",</span><br><span class="line">                "Mode": "",</span><br><span class="line">                "RW": true,</span><br><span class="line">                "Propagation": ""</span><br><span class="line">            },</span><br></pre></td></tr></tbody></table></figure>
 
+<h3 id="用dockerfile创建一个centos镜像"><a href="#用dockerfile创建一个centos镜像" class="headerlink" title="用dockerfile创建一个centos镜像"></a>用dockerfile创建一个centos镜像</h3><p>初始centos镜像只有最基本的kernel内容，并没有其他的软件，比如vim，比如ifconfig等。使用dockerfile创建一个centos系统</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">FROM centos <span class="hljs-comment"># 基于centos，网上写东西 再生成镜像  镜像的分层原理</span></span><br><span class="line">MAINTAINER hzj<a1097690268@gmail.com> <span class="hljs-comment"># 作者信息</span></span><br><span class="line"></span><br><span class="line">ENV workdir /usr/<span class="hljs-built_in">local</span> <span class="hljs-comment"># 申明环境变量</span></span><br><span class="line">WORKDIR <span class="hljs-variable">$workdir</span> <span class="hljs-comment"># 设置登陆后的工作环境</span></span><br><span class="line"></span><br><span class="line">RUN yum -y install vim</span><br><span class="line">RUN yum -y install net-tools</span><br><span class="line"></span><br><span class="line">EXPOSE 80 <span class="hljs-comment"># 暴露端口</span></span><br><span class="line"></span><br><span class="line">CMD <span class="hljs-built_in">echo</span> <span class="hljs-variable">$workdir</span></span><br><span class="line">CMD <span class="hljs-built_in">echo</span> <span class="hljs-string">"success"</span></span><br><span class="line">CMD /bin/bash</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker  build  -f dockerfile -t hzj/centos:v3 .</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="docker开启mysql镜像"><a href="#docker开启mysql镜像" class="headerlink" title="docker开启mysql镜像"></a>docker开启mysql镜像</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker pull mysql</span><br><span class="line">docker run -p 12345:3306 --name mysql \</span><br><span class="line">-v /conf/mysql/conf:/etc/mysql/conf.d \</span><br><span class="line">-v /conf/mysql/logs:/logs \ </span><br><span class="line">-v /conf/mysql/data:/var/lib/mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWD=123456 \ <span class="hljs-comment">#初始化密码</span></span><br><span class="line">-d mysql:5.6</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="docker开启redis镜像"><a href="#docker开启redis镜像" class="headerlink" title="docker开启redis镜像"></a>docker开启redis镜像</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker pull redis</span><br><span class="line">docker run -p 6379:6379 \</span><br><span class="line">-v /hzj/myredis/data:/data \</span><br><span class="line">-v /hzj/myredis/conf/redis.conf:/usr/<span class="hljs-built_in">local</span>/etc/redis/redis.conf \ </span><br><span class="line">-d redis:3.2 redis-server /usr/<span class="hljs-built_in">local</span>/etc/redis/redis.conf \</span><br><span class="line">--appendonly yes</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="docker安装stress压力测试软件"><a href="#docker安装stress压力测试软件" class="headerlink" title="docker安装stress压力测试软件"></a>docker安装stress压力测试软件</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">FROM ubuntu</span><br><span class="line">RUN apt-get update && apt-get install stress -y</span><br><span class="line">ENTRYPOINT [<span class="hljs-string">"/usr/bin/stress"</span>]</span><br><span class="line"><span class="hljs-comment"># ENTRYPOINT ["/bin/bash","-c","stress"]</span></span><br><span class="line">CMD []</span><br></pre></td></tr></tbody></table></figure>
+<p>生成镜像</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">dokcer build -f dockerfile -t new/ubuntu-stress .</span><br></pre></td></tr></tbody></table></figure>
+<p>利用镜像运行容器</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 不加参数 /usr/bin/stress</span></span><br><span class="line">root:~<span class="hljs-comment"># docker  run -it   new/ubuntu-stress</span></span><br><span class="line"><span class="hljs-string">'stress'</span> imposes certain types of compute stress on your system</span><br><span class="line"></span><br><span class="line">Usage: stress [OPTION [ARG]] ...</span><br><span class="line"> -?, --<span class="hljs-built_in">help</span>         show this <span class="hljs-built_in">help</span> statement</span><br><span class="line">     --version      show version statement</span><br><span class="line"> -v, --verbose      be verbose</span><br><span class="line"> -q, --quiet        be quiet</span><br><span class="line"> -n, --dry-run      show what would have been <span class="hljs-keyword">done</span></span><br><span class="line"> -t, --timeout N    timeout after N seconds</span><br><span class="line">     --backoff N    <span class="hljs-built_in">wait</span> factor of N microseconds before work starts</span><br><span class="line"> -c, --cpu N        spawn N workers spinning on sqrt()</span><br><span class="line"> -i, --io N         spawn N workers spinning on sync()</span><br><span class="line"> -m, --vm N         spawn N workers spinning on malloc()/free()</span><br><span class="line">     --vm-bytes B   malloc B bytes per vm worker (default is 256MB)</span><br><span class="line">     --vm-stride B  touch a byte every B bytes (default is 4096)</span><br><span class="line">     --vm-hang N    sleep N secs before free (default none, 0 is inf)</span><br><span class="line">     --vm-keep      redirty memory instead of freeing and reallocating</span><br><span class="line"> -d, --hdd N        spawn N workers spinning on write()/unlink()</span><br><span class="line">     --hdd-bytes B  write B bytes per hdd worker (default is 1GB)</span><br><span class="line"></span><br><span class="line">Example: stress --cpu 8 --io 4 --vm 2 --vm-bytes 128M --timeout 10s</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 加参数 /usr/bin/stress -m 1</span></span><br><span class="line">root:~<span class="hljs-comment"># docker  run -it   new/ubuntu-stress -m 1</span></span><br><span class="line">stress: info: [1] dispatching hogs: 0 cpu, 0 io, 1 vm, 0 hdd</span><br><span class="line">^Cstress: FAIL: [1] (415) <-- worker 6 got signal 2</span><br><span class="line">stress: WARN: [1] (417) now reaping child worker processes</span><br><span class="line">stress: FAIL: [1] (421) <span class="hljs-built_in">kill</span> error: No such process</span><br><span class="line">stress: FAIL: [1] (451) failed run completed <span class="hljs-keyword">in</span> 2s</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h2><p>docker官方提供的一个dockerfile编写的规范<br><a href="https://docs.docker.com/engine/reference/builder/" target="_blank" rel="noopener">https://docs.docker.com/engine/reference/builder/</a><br>docker镜像发布到docker-hub上面<br><a href="https://coding.imooc.com/lesson/189.html#mid=11620" target="_blank" rel="noopener">https://coding.imooc.com/lesson/189.html#mid=11620</a></p>
 </body></html>
         </div>
         
@@ -257,6 +298,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/d99f9929/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">docker视频</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -325,7 +373,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        76
+                        79
                     </p>
                 </a>
             </div>
@@ -335,7 +383,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        34
                     </p>
                 </a>
             </div>
@@ -383,7 +431,23 @@
         <a class="is-flex" href="#docker编写关键字">
         <span class="has-mr-6">1.3</span>
         <span>docker编写关键字</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#ADD和COPY-以及远程文件的添加">
+        <span class="has-mr-6">1.3.1</span>
+        <span>ADD和COPY 以及远程文件的添加</span>
         </a></li><li>
+        <a class="is-flex" href="#WORKDIR">
+        <span class="has-mr-6">1.3.2</span>
+        <span>WORKDIR</span>
+        </a></li><li>
+        <a class="is-flex" href="#CMD与ENTRYPOINT">
+        <span class="has-mr-6">1.3.3</span>
+        <span>CMD与ENTRYPOINT</span>
+        </a></li><li>
+        <a class="is-flex" href="#ONBUILD使用">
+        <span class="has-mr-6">1.3.4</span>
+        <span>ONBUILD使用</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#编写实例">
         <span class="has-mr-6">1.4</span>
         <span>编写实例</span>
@@ -391,7 +455,27 @@
         <a class="is-flex" href="#一个挂载文件的dockerfile">
         <span class="has-mr-6">1.4.1</span>
         <span>一个挂载文件的dockerfile</span>
-        </a></li></ul></li></ul></li></ul>
+        </a></li><li>
+        <a class="is-flex" href="#用dockerfile创建一个centos镜像">
+        <span class="has-mr-6">1.4.2</span>
+        <span>用dockerfile创建一个centos镜像</span>
+        </a></li><li>
+        <a class="is-flex" href="#docker开启mysql镜像">
+        <span class="has-mr-6">1.4.3</span>
+        <span>docker开启mysql镜像</span>
+        </a></li><li>
+        <a class="is-flex" href="#docker开启redis镜像">
+        <span class="has-mr-6">1.4.4</span>
+        <span>docker开启redis镜像</span>
+        </a></li><li>
+        <a class="is-flex" href="#docker安装stress压力测试软件">
+        <span class="has-mr-6">1.4.5</span>
+        <span>docker安装stress压力测试软件</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#网址">
+        <span class="has-mr-6">1.5</span>
+        <span>网址</span>
+        </a></li></ul></li></ul>
         </div>
     </div>
 </div>

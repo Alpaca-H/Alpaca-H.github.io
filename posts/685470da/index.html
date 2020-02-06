@@ -175,7 +175,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    12 分钟 读完 (大约 1771 个字)
+                    13 分钟 读完 (大约 1876 个字)
                 </span>
                 
                 
@@ -191,7 +191,12 @@
             <html><head></head><body><p>learn docker 😊</p>
 <a id="more"></a>
 
-<h1 id="docker镜像分成原理"><a href="#docker镜像分成原理" class="headerlink" title="docker镜像分成原理"></a>docker镜像分成原理</h1><h2 id="原理解析"><a href="#原理解析" class="headerlink" title="原理解析"></a>原理解析</h2><p>了解几个概念</p>
+<h1 id="docker镜像分成原理"><a href="#docker镜像分成原理" class="headerlink" title="docker镜像分成原理"></a>docker镜像分成原理</h1><h2 id="base镜像"><a href="#base镜像" class="headerlink" title="base镜像"></a>base镜像</h2><p>base 镜像有两层含义：</p>
+<ul>
+<li>不依赖其他镜像，从 scratch 构建。</li>
+<li>其他镜像可以之为基础进行扩展。<br>如centos镜像</li>
+</ul>
+<h2 id="原理解析"><a href="#原理解析" class="headerlink" title="原理解析"></a>原理解析</h2><p>了解几个概念</p>
 <ul>
 <li>联合文件系统(Union File System):是一种把其它文件系统联合到一个联合挂载点的文件系统服务，它使用 branch 把不同文件系统的文件和目录”透明地”覆盖，形成一个单一一致的文件系统。这些 branch 或者是 read-only 的，或者是 read-write 的，所以当对这个虚拟后的联合文件系统进行写操作的时候，系统是真正写到了一个新的文件中。看起来这个虚拟后的联合文件系统是可以对任何文件进行操作的，但是其实它并没有改变原来的文件。这是因为 Union File System 用到了一个重要的资源管理技术：写时复制。</li>
 <li>写时复制(copy-on-write，常被简写为 CoW)，也叫隐式共享，是一种提高资源使用效率的资源管理技术。它的思想是：如果一个资源是重复的，在没有对资源做出修改前，并不需要立即复制出一个新的资源实例，这个资源被不同的所有者共享使用。当任何一个所有者要对该资源做出修改时，复制出一个新的资源实例给该所有者进行修改，修改后的资源成为其所有者的私有资源。通过这种资源共享的方式，可以显著地减少复制相同资源带来的消耗，但是这样做也会在进行资源的修改时增加一部分开销。</li>
@@ -214,7 +219,13 @@
 <li>基于本地模版导入<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 下载模版压缩包</span></span><br><span class="line">wget xx</span><br><span class="line"><span class="hljs-comment"># 根据压缩包导入成镜像</span></span><br><span class="line">cat ubuntu-14.04.tar.gz | docker import - ubuntu:14.04 </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 保存镜像到本地文件</span></span><br><span class="line">docker save -o ubuntu_latest.tar ubuntu:latest</span><br><span class="line"><span class="hljs-comment"># 载入镜像</span></span><br><span class="line">docker load --input ubuntu_latest.tar</span><br><span class="line">docker load < ubuntu_latest.tar</span><br></pre></td></tr></tbody></table></figure></li>
 <li>基于Dockerfile创建</li>
 </ul>
-<p>后面再记录</p>
+<p><font color="red">如何创建一个hello-world的docker镜像</font> </p>
+<ol>
+<li>创建一个输出hello world的c文件<figure class="highlight c hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string"><stdio.h></span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">  <span class="hljs-built_in">printf</span>(<span class="hljs-string">"hello world\n"</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+<li>编译c文件<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">gcc -static hello.c -o hello</span><br></pre></td></tr></tbody></table></figure></li>
+<li>编写dockerfile<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">FROM scratch</span><br><span class="line">ADD hello /</span><br><span class="line">CMD [<span class="hljs-string">'/hello'</span>]</span><br></pre></td></tr></tbody></table></figure></li>
+<li>新建helloworld镜像<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker -f /tmp/dockerfile -t helloworld .</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
 </body></html>
         </div>
         
@@ -314,7 +325,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        76
+                        79
                     </p>
                 </a>
             </div>
@@ -324,7 +335,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        34
                     </p>
                 </a>
             </div>
@@ -361,28 +372,32 @@
         <span class="has-mr-6">1</span>
         <span>docker镜像分成原理</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#原理解析">
+        <a class="is-flex" href="#base镜像">
         <span class="has-mr-6">1.1</span>
+        <span>base镜像</span>
+        </a></li><li>
+        <a class="is-flex" href="#原理解析">
+        <span class="has-mr-6">1.2</span>
         <span>原理解析</span>
         </a></li><li>
         <a class="is-flex" href="#docker镜像组成">
-        <span class="has-mr-6">1.2</span>
+        <span class="has-mr-6">1.3</span>
         <span>docker镜像组成</span>
         </a></li><li>
         <a class="is-flex" href="#docker镜像加载">
-        <span class="has-mr-6">1.3</span>
+        <span class="has-mr-6">1.4</span>
         <span>docker镜像加载</span>
         </a></li><li>
         <a class="is-flex" href="#镜像大小的问题">
-        <span class="has-mr-6">1.4</span>
+        <span class="has-mr-6">1.5</span>
         <span>镜像大小的问题</span>
         </a></li><li>
         <a class="is-flex" href="#镜像分层的好处">
-        <span class="has-mr-6">1.5</span>
+        <span class="has-mr-6">1.6</span>
         <span>镜像分层的好处</span>
         </a></li><li>
         <a class="is-flex" href="#创建镜像">
-        <span class="has-mr-6">1.6</span>
+        <span class="has-mr-6">1.7</span>
         <span>创建镜像</span>
         </a></li></ul></li></ul>
         </div>

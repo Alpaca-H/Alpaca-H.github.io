@@ -175,7 +175,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    16 分钟 读完 (大约 2458 个字)
+                    19 分钟 读完 (大约 2842 个字)
                 </span>
                 
                 
@@ -217,9 +217,16 @@
 <li>容器(Container)<br>沙箱，利用容器来运行和隔离应用，容器与容器之间是相互隔离、互不可见的<br><font color="red">镜像自身是只读的。容器从镜像启动的时候，Docker会在镜像的最上层创建一个可写层。镜像本身将保持不变。</font></li>
 <li>仓库(Repository)<br>存放镜像的地方，类似于代码仓库github  gitee等等</li>
 </ul>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># centos7安装</span></span><br><span class="line">yum install docker -y </span><br><span class="line"><span class="hljs-comment"># 查看版本</span></span><br><span class="line">docker --version</span><br><span class="line">Docker version 19.03.1, build 74b1e89</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="http://img.noback.top/2020-02-06-19-51-47.png" alt="2020-02-06-19-51-47"></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># centos7老版本安装</span></span><br><span class="line">yum install docker -y </span><br><span class="line"><span class="hljs-comment"># 查看版本</span></span><br><span class="line">docker --version</span><br><span class="line">Docker version 19.03.1, build 74b1e89</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="安装docker-ce-社区版本"><a href="#安装docker-ce-社区版本" class="headerlink" title="安装docker-ce 社区版本"></a>安装docker-ce 社区版本</h2><p>docker 具有社区版和企业版，在企业版中会提供一起额外的收费服务<br><a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/centos/</a></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># centos7安装docker-ce</span></span><br><span class="line"><span class="hljs-comment"># 卸载旧版本docker</span></span><br><span class="line">sudo yum remove docker \</span><br><span class="line">                  docker-client \</span><br><span class="line">                  docker-client-latest \</span><br><span class="line">                  docker-common \</span><br><span class="line">                  docker-latest \</span><br><span class="line">                  docker-latest-logrotate \</span><br><span class="line">                  docker-logrotate \</span><br><span class="line">                  docker-engine</span><br><span class="line"><span class="hljs-comment"># 设置存储库</span></span><br><span class="line">sudo yum install -y yum-utils \</span><br><span class="line">  device-mapper-persistent-data \</span><br><span class="line">  lvm2</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 添加下载源</span></span><br><span class="line"><span class="hljs-comment"># 国外源</span></span><br><span class="line">sudo yum-config-manager  --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line"><span class="hljs-comment"># 阿里源</span></span><br><span class="line">sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 安装docker社区版本</span></span><br><span class="line">sudo yum install docker-ce docker-ce-cli containerd.io</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 启动docker</span></span><br><span class="line">sudo systemctl start docker</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 测试</span></span><br><span class="line">docker run hello-world</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查看版本</span></span><br><span class="line">docker version</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h2><h3 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装Ubuntu:latest镜像</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># docker pull ubuntu</span></span><br><span class="line">Using default tag: latest</span><br><span class="line">latest: Pulling from library/ubuntu</span><br><span class="line">5c939e3a4d10: Downloading  8.608MB/26.69MB</span><br><span class="line">c63719cdbe7a: Download complete</span><br><span class="line">19a861ea6baf: Download complete</span><br><span class="line">651c9d2d6c4f: Downloadan zhuang </span><br><span class="line"><span class="hljs-comment"># 安装Ubuntu:14.04镜像</span></span><br><span class="line">docker pull ubuntu:14.04</span><br><span class="line"><span class="hljs-comment"># 从社区安装ubuntu镜像</span></span><br><span class="line">docker pull dl.dockerpool.com:5000/ubuntu</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="提交一个容器为新的镜像-不提倡"><a href="#提交一个容器为新的镜像-不提倡" class="headerlink" title="提交一个容器为新的镜像(不提倡)"></a>提交一个容器为新的镜像(不提倡)</h3><p>建议使用dockerfile创建新的镜像</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker commit CONTAINER  REPOSITORY:tag</span><br><span class="line">root:~<span class="hljs-comment"># docker ps</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line">612090a371f6        centos              <span class="hljs-string">"/bin/bash"</span>         5 seconds ago       Up 5 seconds                            frosty_tereshkova</span><br><span class="line">root:~<span class="hljs-comment"># docker commit frosty_tereshkova new/centos:v4</span></span><br><span class="line">sha256:2b405e30c679a448d9b913c19c48a4c435447655001abad264fcc3e7b2264312</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="运行镜像"><a href="#运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker run -t -i ubuntu /bin/bash</span><br></pre></td></tr></tbody></table></figure>
 
@@ -257,11 +264,16 @@
 <h2 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看版本</span></span><br><span class="line">docker version</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 显示docker信息，包括容器数量，镜像数量等等</span></span><br><span class="line">[root@CodeSheep ~]<span class="hljs-comment"># docker info</span></span><br><span class="line">Client:</span><br><span class="line"> Debug Mode: <span class="hljs-literal">false</span></span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Containers: 3</span><br><span class="line">  Running: 0</span><br><span class="line">  Paused: 0</span><br><span class="line">  Stopped: 3</span><br><span class="line"> Images: 1</span><br><span class="line"> Server Version: 19.03.1</span><br><span class="line"> Storage Driver: overlay2</span><br><span class="line">  Backing Filesystem: extfs</span><br><span class="line">  Supports d_type: <span class="hljs-literal">true</span></span><br><span class="line">  Native Overlay Diff: <span class="hljs-literal">true</span></span><br><span class="line"> Logging Driver: json-file</span><br><span class="line"> Cgroup Driver: cgroupfs</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#</span></span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="错误合集"><a href="#错误合集" class="headerlink" title="错误合集"></a>错误合集</h2><ul>
+<li><p>错误0<br>docker下载源出错</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">base                                                                                                                                                            | 3.6 kB  00:00:00     </span><br><span class="line">http://download.docker.com/linux/centos/docker-ce.rep/repodata/repomd.xml: [Errno 14] HTTPS Error 404 - Not Found</span><br><span class="line">Trying other mirror.</span><br><span class="line">To address this issue please refer to the below wiki article</span><br></pre></td></tr></tbody></table></figure>
+<p>这是因为添加源是国外源，有时候网络不对的情况下无法安装，建议添加阿里源</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 删除仓库内的国外源</span></span><br><span class="line"><span class="hljs-built_in">cd</span> /etc/yum.repos.d/</span><br><span class="line">rm -rf docker-ce.repo download.docker.com_linux_centos_docker-ce.rep.repo </span><br><span class="line"><span class="hljs-comment"># 添加阿里源</span></span><br><span class="line">sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>错误1<br>没有开启docker服务</p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 检测</span></span><br><span class="line">root:~<span class="hljs-comment"># systemctl status docker</span></span><br><span class="line">* docker.service - Docker Application Container Engine</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/docker.service; disabled; vendor preset: disabled)</span><br><span class="line">   Active: inactive (dead)</span><br><span class="line">     Docs: http://docs.docker.com</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 开启服务</span></span><br><span class="line">systemctl start docker</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>错误2<br>使用当前镜像的容器正在运行</p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># docker rmi ccc6e87d482</span></span><br><span class="line">Error response from daemon: conflict: unable to delete ccc6e87d482b (must be forced) - image is referenced <span class="hljs-keyword">in</span> multiple repositories</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 强制删除</span></span><br><span class="line">docker rmi -f ccc6e87d482</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 不建议强制删除，应当先删除所有依赖于该镜像的容器，再删除镜像</span></span><br></pre></td></tr></tbody></table></figure>
+
 </li>
 </ul>
 </body></html>
@@ -363,7 +375,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        76
+                        79
                     </p>
                 </a>
             </div>
@@ -373,7 +385,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        34
                     </p>
                 </a>
             </div>
@@ -434,76 +446,84 @@
         <span class="has-mr-6">1.3</span>
         <span>安装</span>
         </a></li><li>
-        <a class="is-flex" href="#镜像">
+        <a class="is-flex" href="#安装docker-ce-社区版本">
         <span class="has-mr-6">1.4</span>
+        <span>安装docker-ce 社区版本</span>
+        </a></li><li>
+        <a class="is-flex" href="#镜像">
+        <span class="has-mr-6">1.5</span>
         <span>镜像</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#获取镜像">
-        <span class="has-mr-6">1.4.1</span>
+        <span class="has-mr-6">1.5.1</span>
         <span>获取镜像</span>
         </a></li><li>
+        <a class="is-flex" href="#提交一个容器为新的镜像-不提倡">
+        <span class="has-mr-6">1.5.2</span>
+        <span>提交一个容器为新的镜像(不提倡)</span>
+        </a></li><li>
         <a class="is-flex" href="#运行镜像">
-        <span class="has-mr-6">1.4.2</span>
+        <span class="has-mr-6">1.5.3</span>
         <span>运行镜像</span>
         </a></li><li>
         <a class="is-flex" href="#查看镜像信息">
-        <span class="has-mr-6">1.4.3</span>
+        <span class="has-mr-6">1.5.4</span>
         <span>查看镜像信息</span>
         </a></li><li>
         <a class="is-flex" href="#搜寻镜像">
-        <span class="has-mr-6">1.4.4</span>
+        <span class="has-mr-6">1.5.5</span>
         <span>搜寻镜像</span>
         </a></li><li>
         <a class="is-flex" href="#删除镜像">
-        <span class="has-mr-6">1.4.5</span>
+        <span class="has-mr-6">1.5.6</span>
         <span>删除镜像</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#容器">
-        <span class="has-mr-6">1.5</span>
+        <span class="has-mr-6">1.6</span>
         <span>容器</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#创建容器与启动">
-        <span class="has-mr-6">1.5.1</span>
+        <span class="has-mr-6">1.6.1</span>
         <span>创建容器与启动</span>
         </a></li><li>
         <a class="is-flex" href="#新建并启动容器">
-        <span class="has-mr-6">1.5.2</span>
+        <span class="has-mr-6">1.6.2</span>
         <span>新建并启动容器</span>
         </a></li><li>
         <a class="is-flex" href="#守护状态运行">
-        <span class="has-mr-6">1.5.3</span>
+        <span class="has-mr-6">1.6.3</span>
         <span>守护状态运行</span>
         </a></li><li>
         <a class="is-flex" href="#终止容器">
-        <span class="has-mr-6">1.5.4</span>
+        <span class="has-mr-6">1.6.4</span>
         <span>终止容器</span>
         </a></li><li>
         <a class="is-flex" href="#进入容器">
-        <span class="has-mr-6">1.5.5</span>
+        <span class="has-mr-6">1.6.5</span>
         <span>进入容器</span>
         </a></li><li>
         <a class="is-flex" href="#删除容器">
-        <span class="has-mr-6">1.5.6</span>
+        <span class="has-mr-6">1.6.6</span>
         <span>删除容器</span>
         </a></li><li>
         <a class="is-flex" href="#导入与导出容器">
-        <span class="has-mr-6">1.5.7</span>
+        <span class="has-mr-6">1.6.7</span>
         <span>导入与导出容器</span>
         </a></li><li>
         <a class="is-flex" href="#查看容器">
-        <span class="has-mr-6">1.5.8</span>
+        <span class="has-mr-6">1.6.8</span>
         <span>查看容器</span>
         </a></li><li>
         <a class="is-flex" href="#复制容器内文件">
-        <span class="has-mr-6">1.5.9</span>
+        <span class="has-mr-6">1.6.9</span>
         <span>复制容器内文件</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#帮助命令">
-        <span class="has-mr-6">1.6</span>
+        <span class="has-mr-6">1.7</span>
         <span>帮助命令</span>
         </a></li><li>
         <a class="is-flex" href="#错误合集">
-        <span class="has-mr-6">1.7</span>
+        <span class="has-mr-6">1.8</span>
         <span>错误合集</span>
         </a></li></ul></li></ul>
         </div>
