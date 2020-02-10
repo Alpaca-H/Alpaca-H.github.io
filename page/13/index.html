@@ -149,67 +149,6 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/8d17cdf0/"><i class="fas fa-angle-double-right"></i>jwt</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:48:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    2 分钟 读完 (大约 347 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><p>Introducing drf<br>how to use it </p></body></html>
-        </div>
-        
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/8d17cdf0/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
                 <a class="has-link-black-ter" href="/posts/437192d0/"><i class="fas fa-angle-double-right"></i>drf-note</a>
             
         </h1>
@@ -501,6 +440,79 @@
 
 
 
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/65abc8f/"><i class="fas fa-angle-double-right"></i>django字段总结</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:41:01.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    5 分钟 读完 (大约 763 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="django字段的设计"><a href="#django字段的设计" class="headerlink" title="django字段的设计"></a>django字段的设计</h1><p><a href="https://docs.djangoproject.com/zh-hans/2.2/ref/models/fields/#module-django.db.models.fields" target="_blank" rel="noopener">https://docs.djangoproject.com/zh-hans/2.2/ref/models/fields/#module-django.db.models.fields</a><br>orm的设计模式<br>在django的应用过程中，往往要设计model的设计，在model设计过程中要使用各种各样的关键词，这些关键词 关联到了数据库中每条记录的配置</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 引用</span></span><br><span class="line"><span class="hljs-keyword">from</span> django.db <span class="hljs-keyword">import</span> models</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="通用字段"><a href="#通用字段" class="headerlink" title="通用字段"></a>通用字段</h2><h3 id="null字段"><a href="#null字段" class="headerlink" title="null字段"></a>null字段</h3><p>如果设置为 True， 当该字段为空时，Django 会将数据库中该字段设置为NULL，默认为 False。<br>即数据库置空 如果null=true blank=true 则数据库内容为空白字符串</p>
+<h3 id="blank"><a href="#blank" class="headerlink" title="blank"></a>blank</h3><p>Field.blank<br>默认blank = False ,如果设置为True，则允许该字段为空。<br>与null不同的是,null存粹与数据库有相关，而blank与验证相关。如果blank=true,则表单验证将允许输入空值,如果blank=False 则不允许输入空值</p>
+<hr>
+<h3 id="choices"><a href="#choices" class="headerlink" title="choices"></a>choices</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TaskSwitchModel</span><span class="hljs-params">(models.Model)</span>:</span></span><br><span class="line">    ActionType = models.CharField(choices=[</span><br><span class="line">        (<span class="hljs-string">'snmp'</span>,<span class="hljs-string">'_(snmp)'</span>),</span><br><span class="line">        (<span class="hljs-string">"vlan"</span>,<span class="hljs-string">"_vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"sysname"</span>,<span class="hljs-string">"_sysname"</span>),</span><br><span class="line">        (<span class="hljs-string">"copyright-info"</span>,<span class="hljs-string">"_copyright-info"</span>),</span><br><span class="line">        (<span class="hljs-string">"int-vlan"</span>,<span class="hljs-string">"_int-vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"int"</span>,<span class="hljs-string">"_int"</span>)],max_length=<span class="hljs-number">100</span>,default=<span class="hljs-string">""</span>)</span><br><span class="line">    test = models.CharField(max_length=<span class="hljs-number">1</span>, choices=[(<span class="hljs-string">'A'</span>, (<span class="hljs-string">'Author'</span>)), (<span class="hljs-string">'E'</span>, (<span class="hljs-string">'Editor'</span>))]),</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TaskSwitchModel</span><span class="hljs-params">(model.ModelForm)</span>:</span></span><br><span class="line">    choices=(</span><br><span class="line">        (<span class="hljs-string">'snmp'</span>,<span class="hljs-string">'_(snmp)'</span>),</span><br><span class="line">        (<span class="hljs-string">"vlan"</span>,<span class="hljs-string">"_vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"sysname"</span>,<span class="hljs-string">"_sysname"</span>),</span><br><span class="line">        (<span class="hljs-string">"copyright-info"</span>,<span class="hljs-string">"_copyright-info"</span>),</span><br><span class="line">        (<span class="hljs-string">"int-vlan"</span>,<span class="hljs-string">"_int-vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"int"</span>,<span class="hljs-string">"_int"</span>)</span><br><span class="line">    )</span><br><span class="line">    ActionType = model.CharField(choices=choices,max_length=<span class="hljs-number">100</span>,default=<span class="hljs-string">""</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Field.choices<br>每个元组中的第一个元素是要在模型上设置的实际值，第二个元素是人类可读的名称.</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">select_choices =[</span><br><span class="line">    (<span class="hljs-string">'A'</span>,<span class="hljs-string">'A_'</span>),</span><br><span class="line">    (<span class="hljs-string">'B'</span>,<span class="hljs-string">'B_'</span>),</span><br><span class="line">    (<span class="hljs-string">'C'</span>,<span class="hljs-string">'C_'</span>),</span><br><span class="line">    (<span class="hljs-string">'D'</span>,<span class="hljs-string">'D_'</span>),</span><br><span class="line">]</span><br><span class="line">choices字段迭代</span><br><span class="line">每个元组的第一个元素是要应用于组的名称。第二个元素是一个可迭代的<span class="hljs-number">2</span>代元组</span><br><span class="line">select2_select1_choices=[</span><br><span class="line">    (<span class="hljs-string">'A'</span>,(</span><br><span class="line">        (<span class="hljs-string">'A_/'</span>,<span class="hljs-string">'A_movie'</span>),</span><br><span class="line">        (<span class="hljs-string">'A_+'</span>,<span class="hljs-string">'A_video'</span>),</span><br><span class="line">        (<span class="hljs-string">'A_-'</span>,<span class="hljs-string">'A_City'</span>),</span><br><span class="line">        )</span><br><span class="line">    ),</span><br><span class="line">    (<span class="hljs-string">'Video'</span>, (</span><br><span class="line">            (<span class="hljs-string">'vhs'</span>, <span class="hljs-string">'VHS Tape'</span>),</span><br><span class="line">            (<span class="hljs-string">'dvd'</span>, <span class="hljs-string">'DVD'</span>),</span><br><span class="line">        )</span><br><span class="line">    ),</span><br><span class="line">    (<span class="hljs-string">'unknown'</span>, <span class="hljs-string">'Unknown'</span>),</span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="db-column"><a href="#db-column" class="headerlink" title="db_column"></a>db_column</h3><p>设置数据库列的名称    age = models.CharFiled(db_column=”年龄”)</p>
+<h3 id="db-index"><a href="#db-index" class="headerlink" title="db_index"></a>db_index</h3><p>age = models.CharFiled(db_index=true)<br>如果设置为True，则创建数据库索引</p>
+<h3 id="default"><a href="#default" class="headerlink" title="default"></a>default</h3><p>可以是值也可以是可调用的对象，每次实例化模型的时候 会调用这个对象或值</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 1</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">contact_defult</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> {<span class="hljs-string">"email"</span>:<span class="hljs-string">"1097690268@qq.com"</span>}</span><br><span class="line"></span><br><span class="line">contact_info = JSONField(<span class="hljs-string">"ContactInfo"</span>, default=contact_default)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 2</span></span><br><span class="line">member_name = CharFiled(default=<span class="hljs-string">"小明"</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="editable"><a href="#editable" class="headerlink" title="editable"></a>editable</h3><p>可编辑字段<br>如果为False，则该字段将不会显示在管理员或其他任何人中 ModelForm。在模型验证期间也将跳过它们。默认值为True。</p>
+<hr>
+<h3 id="unique"><a href="#unique" class="headerlink" title="unique"></a>unique</h3><p>name = CharFiled(unique=true)<br>如上则会保证该字段的值为表中唯一，也就是不会出现同名的人<br>如果存在了unique 则不再需要db_index 因为unique默认存在索引</p>
+<h2 id="primary-key"><a href="#primary-key" class="headerlink" title="primary_key"></a>primary_key</h2><p>如果设置为True，则初始设置为该模型的主键。<br>如果您未primary_key=True在模型中指定任何字段，则Django会自动添加一个AutoField来保留主键，因此primary_key=True暗示null=False和 unique=True。一个对象只允许使用一个主键。<br>主键字段是只读的。如果更改现有对象上的主键的值然后保存，则将在旧对象的旁边创建一个新对象。</p>
+<h2 id="自定义的字段"><a href="#自定义的字段" class="headerlink" title="自定义的字段"></a>自定义的字段</h2><p><a href="https://docs.djangoproject.com/zh-hans/2.2/howto/custom-model-fields/" target="_blank" rel="noopener">https://docs.djangoproject.com/zh-hans/2.2/howto/custom-model-fields/</a></p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
 
     
 <div class="card card-transparent">
@@ -560,7 +572,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        87
+                        86
                     </p>
                 </a>
             </div>
@@ -570,7 +582,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        35
+                        25
                     </p>
                 </a>
             </div>
@@ -580,7 +592,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        11
                     </p>
                 </a>
             </div>
@@ -654,33 +666,17 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/code-more/">
+        <a class="level is-marginless" href="/categories/code/">
             <span class="level-start">
-                <span class="level-item">code/more</span>
+                <span class="level-item">code</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">11</span>
             </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/code-more/vue/">
-            <span class="level-start">
-                <span class="level-item">vue</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li></ul></li><li>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/docker/">
             <span class="level-start">
                 <span class="level-item">docker</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/git/">
-            <span class="level-start">
-                <span class="level-item">git</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -691,9 +687,25 @@
                 <span class="level-item">linux</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">30</span>
+                <span class="level-item tag">33</span>
             </span>
         </a><ul><li>
+        <a class="level is-marginless" href="/categories/linux/COMMAND/">
+            <span class="level-start">
+                <span class="level-item">COMMAND</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/Command/">
+            <span class="level-start">
+                <span class="level-item">Command</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/linux/ansible/">
             <span class="level-start">
                 <span class="level-item">ansible</span>
@@ -710,28 +722,12 @@
                 <span class="level-item tag">13</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/">
+        <a class="level is-marginless" href="/categories/linux/linux-network/">
             <span class="level-start">
-                <span class="level-item">linux网络管理</span>
+                <span class="level-item">linux-network</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-            <span class="level-start">
-                <span class="level-item">常用命令</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">
-            <span class="level-start">
-                <span class="level-item">故障问题</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/linux/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
@@ -747,25 +743,9 @@
                 <span class="level-item">脚本</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">
-            <span class="level-start">
-                <span class="level-item">负载均衡</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/nginx/">
-            <span class="level-start">
-                <span class="level-item">nginx</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/%E5%B7%A5%E5%85%B7/">
             <span class="level-start">
                 <span class="level-item">工具</span>
@@ -795,36 +775,12 @@
                 <span class="level-item">编程</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">30</span>
+                <span class="level-item tag">23</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">
             <span class="level-start">
                 <span class="level-item">C语言</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/Python/">
-            <span class="level-start">
-                <span class="level-item">Python</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/Rust/">
-            <span class="level-start">
-                <span class="level-item">Rust</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/SwaggerUi/">
-            <span class="level-start">
-                <span class="level-item">SwaggerUi</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -844,30 +800,6 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/mysql/">
-            <span class="level-start">
-                <span class="level-item">mysql</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vim/">
-            <span class="level-start">
-                <span class="level-item">vim</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vue/">
-            <span class="level-start">
-                <span class="level-item">vue</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">6</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/">
@@ -959,7 +891,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">37</span>
+                    <span class="level-item tag">36</span>
                 </span>
             </a>
         </li>
@@ -1123,7 +1055,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">37</span>
+                    <span class="level-item tag">36</span>
                 </span>
             </a>
         </li>

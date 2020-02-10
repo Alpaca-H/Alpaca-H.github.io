@@ -160,6 +160,211 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
+                <a class="has-link-black-ter" href="/posts/1d7a61af/"><i class="fas fa-angle-double-right"></i>linux初始化</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-15T02:30:41.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-15</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    19 分钟 读完 (大约 2845 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><a id="more"></a>
+
+
+<h2 id="初始化脚本"><a href="#初始化脚本" class="headerlink" title="初始化脚本"></a>初始化脚本</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># ---> 脚本初始化</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">export</span> LC_ALL=en_US.utf8 </span><br><span class="line"><span class="hljs-comment"># 全局设置为en_US.utf8,为了防止出现乱码</span></span><br><span class="line"><span class="hljs-built_in">echo</span> -e <span class="hljs-string">'nameserver 192.168.147.20\nnameserver 192.168.21.20\nnameserver 114.114.114.114'</span> > /etc/resolv.conf</span><br><span class="line"><span class="hljs-comment"># 写入DNS到/etc/resolv.conf 保证能ping通外网</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># ---> 设置变量</span></span><br><span class="line"></span><br><span class="line">KERNEL=<span class="hljs-string">"kernel-ml"</span></span><br><span class="line"><span class="hljs-comment"># 设置KERNEL变量，一开始为无 ，reload后为无</span></span><br><span class="line">HOST=<span class="hljs-string">"DCK-ZJ-SAD-xxx"</span></span><br><span class="line"><span class="hljs-comment"># 设置HOST变量</span></span><br><span class="line">ZONE=<span class="hljs-string">"Asia/Shanghai"</span></span><br><span class="line"><span class="hljs-comment"># 设置时区变量</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># ---> 直接设置</span></span><br><span class="line"></span><br><span class="line">hostnamectl --static <span class="hljs-built_in">set</span>-hostname <span class="hljs-variable">$HOST</span></span><br><span class="line"><span class="hljs-comment"># 修改主机名  也可以直接修改</span></span><br><span class="line"><span class="hljs-comment"># echo "DCK-ZJ-SAD-xxx" > /etc/hostname</span></span><br><span class="line"></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-timezone <span class="hljs-variable">$ZONE</span></span><br><span class="line"><span class="hljs-comment"># 设置本地时间</span></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-ntp 0</span><br><span class="line"><span class="hljs-comment"># 关闭ntp同步</span></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-local-rtc 0</span><br><span class="line"><span class="hljs-comment"># 设置硬件时钟为UTC </span></span><br><span class="line"></span><br><span class="line">setenforce 0   </span><br><span class="line"><span class="hljs-comment"># 暂时取消selinux 高安全模式</span></span><br><span class="line">sed -r -i  <span class="hljs-string">'/^SELINUX=/s^=.*^=disabled^g'</span> /etc/selinux/config</span><br><span class="line"><span class="hljs-comment"># 永久取消selinux</span></span><br><span class="line">sed -r -i <span class="hljs-string">'/^[^root]/s:/bin/bash:/sbin/nologin:g'</span> /etc/passwd</span><br><span class="line"><span class="hljs-comment"># -r 支持正则</span></span><br><span class="line"><span class="hljs-comment"># -i 直接修改文件</span></span><br><span class="line"><span class="hljs-comment"># 匹配所有不是root开头的行 将后面的/bin/bash 修改成/sbin/nologin 收回所有除root用户以外的管理者登陆权限</span></span><br><span class="line"><span class="hljs-comment"># /^[^root]/ 取反，不是root的行</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sed -r -i <span class="hljs-string">'/#Port 22/s^.*^Port 65422^g;/^PasswordAuthentication/s^yes^no^g'</span> /etc/ssh/sshd_config</span><br><span class="line"><span class="hljs-comment">#[root@localhost ~]# sed -r -n '/#Port 22/s^.*^Port 65422^p;/^PasswordAuthentication/s^yes^no^p' /etc/ssh/sshd_config</span></span><br><span class="line"><span class="hljs-comment">#Port 65422</span></span><br><span class="line"><span class="hljs-comment">#PasswordAuthentication no</span></span><br><span class="line"><span class="hljs-comment"># 将登陆端口22 改成65422</span></span><br><span class="line"><span class="hljs-comment"># 将密码验证从yes改成no</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># --------> ??????????????</span></span><br><span class="line">sed -r -i -e <span class="hljs-string">'/DefaultLimitCORE/s^.*^DefaultLimitCORE=infinity^g'</span> -e <span class="hljs-string">'/DefaultLimitNOFILE/s^.*^DefaultLimitNOFILE=100000^g'</span> -e <span class="hljs-string">'/DefaultLimitNPROC/s^.*^DefaultLimitNPROC=100000^g'</span> /etc/systemd/system.conf </span><br><span class="line"><span class="hljs-comment">#[root@localhost ~]# sed -r -n  -e '/DefaultLimitCORE/s^.*^DefaultLimitCORE=infinity^p' -e '/DefaultLimitNOFILE/s^.*^DefaultLimitNOFILE=100000^p' -e '/DefaultLimitNPROC/s^.*^DefaultLimitNPROC=100000^p' /etc/systemd/system.conf</span></span><br><span class="line"><span class="hljs-comment">#DefaultLimitCORE=infinity</span></span><br><span class="line"><span class="hljs-comment">#DefaultLimitNOFILE=100000</span></span><br><span class="line"><span class="hljs-comment">#DefaultLimitNPROC=100000</span></span><br><span class="line"><span class="hljs-comment"># -e 多点编辑</span></span><br><span class="line"><span class="hljs-comment"># 好像也可以写成 </span></span><br><span class="line"><span class="hljs-comment"># sed -r -i 'xxxx:g;xxx:g;xx:g‘</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># /etc/systemd/system.conf 有啥用</span></span><br><span class="line"><span class="hljs-comment"># 为什么要这样设置</span></span><br><span class="line"><span class="hljs-comment"># 适当放大系统里的资源限制配额</span></span><br><span class="line"><span class="hljs-comment"># 还是不懂？</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sed -r -i <span class="hljs-string">'s@weekly@daily@g;s@^rotate.*@rotate 7@g;s@^#compress.*@compress@g'</span> /etc/logrotate.conf</span><br><span class="line"><span class="hljs-comment">#root@localhost ~]# sed -r -n 's@weekly@daily@p;s@^rotate.*@rotate 7@p;s@^#compress.*@compress@p ' /etc/logrotate.conf</span></span><br><span class="line"><span class="hljs-comment"># rotate log files daily</span></span><br><span class="line"><span class="hljs-comment">#daily</span></span><br><span class="line"><span class="hljs-comment">#rotate 7</span></span><br><span class="line"><span class="hljs-comment">#compress</span></span><br><span class="line"><span class="hljs-comment">#将logrotate日志系统设置为  每天执行  保留7天日志  日志进行压缩 等功能开启</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># ----------------> ??????????????????</span></span><br><span class="line">sed -r -i -e <span class="hljs-string">'/Compress=/s@.*@Compress=yes@g; /SystemMaxUse=/s@.*@SystemMaxUse=4G@g; '</span> -e <span class="hljs-string">'/SystemMaxFileSize=/s@.*@SystemMaxFileSize=256M@g; /MaxRetentionSec=/s@.*@MaxRetentionSec=2week@g'</span> /etc/systemd/journald.conf</span><br><span class="line"><span class="hljs-comment">#[root@localhost ~]# sed -r -n -e '/Compress=/s@.*@Compress=yes@p; /SystemMaxUse=/s@.*@SystemMaxUse=4G@p; ' -e '/SystemMaxFileSize=/s@.*@SystemMaxFileSize=256M@p; /MaxRetentionSec=/s@.*@MaxRetentionSec=2week@p' /etc/systemd/journald.conf</span></span><br><span class="line"><span class="hljs-comment">#Compress=yes</span></span><br><span class="line"><span class="hljs-comment">#SystemMaxUse=4G</span></span><br><span class="line"><span class="hljs-comment">#SystemMaxFileSize=256M</span></span><br><span class="line"><span class="hljs-comment">#MaxRetentionSec=2week</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># /etc/systemd/journald.conf 有啥用</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">localectl <span class="hljs-built_in">set</span>-locale LANG=en_US.utf8</span><br><span class="line"><span class="hljs-comment"># 声明语言环境，zh_CN.utf8 中文请款下可能会出现各种乱码</span></span><br><span class="line">cat > /etc/locale.conf <<EOF</span><br><span class="line">LANG=en_US.utf8</span><br><span class="line">LC_CTYPE=en_US.utf8</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cat > /etc/security/limits.d/20-nproc.conf  <<EOF</span><br><span class="line">*          soft    nproc    10240</span><br><span class="line">root       soft    proc     unlimited</span><br><span class="line">EOF</span><br><span class="line"><span class="hljs-comment"># 限制最大进程数和最大文件打开数</span></span><br><span class="line"><span class="hljs-comment"># 这个文件是干嘛的。。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cat > /etc/cron.d/upyun <<EOF</span><br><span class="line">CRON_TZ=<span class="hljs-variable">$ZONE</span></span><br><span class="line">0 * * * * root (/usr/sbin/ntpdate -o3 192.168.147.20 211.115.194.21 133.100.11.8 142.3.100.15)</span><br><span class="line">EOF</span><br><span class="line"><span class="hljs-comment"># 开机启动时加入时间同步，保证系统时间正确</span></span><br><span class="line"><span class="hljs-comment"># -o 指定version</span></span><br><span class="line"></span><br><span class="line">yum install -y tree ntpdate telnet bc nc net-tools wget lsof rsync bash-completion iptables-services firewalld sysstat <span class="hljs-built_in">bind</span>-utils python-setuptools yum-utils epel-release smartmontools</span><br><span class="line"></span><br><span class="line">rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org</span><br><span class="line">rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm</span><br><span class="line">rpm -Uvh http://download-ib01.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line">yum makecache fast</span><br><span class="line">yum --enablerepo=elrepo-kernel -y install docker-ce</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 各种安装</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sed -r -i <span class="hljs-string">'s/biosdevname=0//g;s/net.ifnames=0//g'</span> /etc/sysconfig/grub                                                                       </span><br><span class="line">sed -r -i <span class="hljs-string">'s/biosdevname=0//g;s/net.ifnames=0//g'</span> /etc/default/grub</span><br><span class="line">$(ip link|grep -iq <span class="hljs-string">"eth[0-9]\{1,3\}:.*up"</span>) && sed -r -i <span class="hljs-string">'/GRUB_CMDLINE_LINUX/s^(.*)="(.*)"$^\1="\2 biosdevname=0 net.ifnames=0"^g'</span> /etc/sysconfig/grub</span><br><span class="line">$(ip link|grep -iq <span class="hljs-string">"eth[0-9]\{1,3\}:.*up"</span>) && sed -r -i <span class="hljs-string">'/GRUB_CMDLINE_LINUX/s^(.*)="(.*)"$^\1="\2 biosdevname=0 net.ifnames=0"^g'</span> /etc/default/grub</span><br><span class="line">ntpdate -o3 192.168.147.20 211.115.194.21 133.100.11.8 142.3.100.15</span><br><span class="line"></span><br><span class="line">sed -r -i <span class="hljs-string">'$a /usr/sbin/ntpdate -u -o3 192.168.147.20 ntp.aliyun.com 211.115.194.21'</span> /etc/rc.d/rc.local    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ssh-keygen -t rsa -b 4096 -P <span class="hljs-string">""</span> -f ~/.ssh/id_rsa</span><br><span class="line"><span class="hljs-comment"># 生成key</span></span><br><span class="line">curl -X GET -u shaohy:Geminis987 -o ~/.ssh/authorized_keys http://devops.upyun.com:88/authorized_keys</span><br><span class="line"><span class="hljs-comment"># 下载远端key</span></span><br><span class="line">chmod 0400 ~/.ssh/*</span><br><span class="line"><span class="hljs-comment"># 修改权限</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> set_irq.sh set_net_smp_affinity.sh set_rps.sh;<span class="hljs-keyword">do</span></span><br><span class="line">        curl -X GET -u shaohy:Geminis987 -o /usr/<span class="hljs-built_in">local</span>/sbin/<span class="hljs-variable">$file</span> http://devops.upyun.com:88/<span class="hljs-variable">$file</span></span><br><span class="line">        chmod +x /usr/<span class="hljs-built_in">local</span>/sbin/<span class="hljs-variable">$file</span></span><br><span class="line">        sed -r -i <span class="hljs-string">"/<span class="hljs-variable">$file</span>/d"</span> /etc/rc.d/rc.local</span><br><span class="line">        <span class="hljs-built_in">echo</span> <span class="hljs-string">"/usr/local/sbin/<span class="hljs-variable">$file</span>"</span> >> /etc/rc.d/rc.local</span><br><span class="line"><span class="hljs-keyword">done</span>    </span><br><span class="line">chmod +x /etc/rc.d/rc.local</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># set.irq.sh set_net_smp_affinity.sh set_rps.sh 这三个在那里？</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> [ ! -z <span class="hljs-variable">$KERNEL</span> ];<span class="hljs-keyword">then</span></span><br><span class="line">    yum --enablerepo=elrepo-kernel -y install <span class="hljs-variable">$KERNEL</span></span><br><span class="line">    Version=`yum info <span class="hljs-variable">$KERNEL</span>|awk -F: <span class="hljs-string">'/Version/{print $2}'</span>`</span><br><span class="line">    Menu=`sed -r -n <span class="hljs-string">"s/^menuentry '(.*)' --class.*/\1/p"</span> /boot/grub2/grub.cfg|grep <span class="hljs-variable">$Version</span>`                                         </span><br><span class="line">    grub2-set-default <span class="hljs-string">"<span class="hljs-variable">$Menu</span>"</span></span><br><span class="line">    grub2-mkconfig -o /boot/grub2/grub.cfg</span><br><span class="line"><span class="hljs-keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#systemctl unmask NetworkManager</span></span><br><span class="line"><span class="hljs-comment">#systemctl enable NetworkManager</span></span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl <span class="hljs-built_in">disable</span> firewalld postfix irqbalance tuned rpcbind.target</span><br><span class="line">systemctl <span class="hljs-built_in">enable</span> auditd</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="安装必要的库"><a href="#安装必要的库" class="headerlink" title="安装必要的库"></a>安装必要的库</h2><ul>
+<li>tree<br>目录树</li>
+<li>ntpdate<br>ntp时间同步工具 </li>
+<li>telnet </li>
+<li>bc<br>科学计算器</li>
+<li>nc<br>网络工具</li>
+<li>net-tools<br>网络工具</li>
+<li>wget </li>
+<li>lsof </li>
+<li>rsync </li>
+<li>bash-completion </li>
+<li>iptables-services </li>
+<li>firewalld </li>
+<li>sysstat </li>
+<li>bind-utils </li>
+<li>python-setuptools </li>
+<li>yum-utils </li>
+<li>epel-release s</li>
+<li>martmontools</li>
+</ul>
+<h2 id="linux区域设置-locale"><a href="#linux区域设置-locale" class="headerlink" title="linux区域设置 locale"></a>linux区域设置 locale</h2><p>locale在linux中用来表示区域之间的差别，它根据文化传统等各个方面分成12个大类</p>
+<ul>
+<li>语言符号及其分类(LC_CTYPE) </li>
+<li>数字(LC_NUMERIC) </li>
+<li>比较和排序习惯(LC_COLLATE) </li>
+<li>时间显示格式(LC_TIME) </li>
+<li>货币单位(LC_MONETARY) </li>
+<li>信息主要是提示信息,错误信息,状态信息,标题,标签,按钮和菜单等(LC_MESSAGES) </li>
+<li>姓名书写方式(LC_NAME) </li>
+<li>地址书写方式(LC_ADDRESS) </li>
+<li>电话号码书写方式(LC_TELEPHONE) </li>
+<li>度量衡表达方式 (LC_MEASUREMENT) </li>
+<li>默认纸张尺寸大小(LC_PAPER) </li>
+<li>对locale自身包含信息的概述(LC_IDENTIFICATION)<br>但如果没有太多具体的要求，其实可以不用弄的那么的详细<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看配置项,其中@后边的是修正项</span></span><br><span class="line">ls /usr/share/i18n/locales</span><br><span class="line"><span class="hljs-comment"># 查看当前Linux语言环境</span></span><br><span class="line">locale</span><br><span class="line"><span class="hljs-comment"># 设置locale  LC_ALL > LC_* > LANG</span></span><br><span class="line"><span class="hljs-built_in">export</span> LC_ALL=zh_CN.utf8 </span><br><span class="line"><span class="hljs-comment"># 重置</span></span><br><span class="line"><span class="hljs-built_in">export</span> LC_ALL=C</span><br></pre></td></tr></tbody></table></figure>
+
+
+</li>
+</ul>
+<h2 id="linux时钟设置-timedatectl"><a href="#linux时钟设置-timedatectl" class="headerlink" title="linux时钟设置 timedatectl"></a>linux时钟设置 timedatectl</h2><p>timedatectl命令可以查询和更改系统时钟和设置，你可以使用此命令来设置或更改当前的日期，时间和时区，或实现与远程NTP服务器的自动系统时钟同步。</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看系统当前时间和日期</span></span><br><span class="line">root:~<span class="hljs-comment"># timedatectl status</span></span><br><span class="line">      Local time: Wed 2020-01-15 19:42:13 CST</span><br><span class="line">  Universal time: Wed 2020-01-15 11:42:13 UTC</span><br><span class="line">        RTC time: Wed 2020-01-15 11:41:51</span><br><span class="line">       Time zone: Asia/Shanghai (CST, +0800)</span><br><span class="line">     NTP enabled: n/a</span><br><span class="line">NTP synchronized: no</span><br><span class="line"> RTC <span class="hljs-keyword">in</span> <span class="hljs-built_in">local</span> TZ: no</span><br><span class="line">      DST active: n/a</span><br><span class="line"><span class="hljs-comment"># 查看Time</span></span><br><span class="line">root:~<span class="hljs-comment"># timedatectl | grep Time --color</span></span><br><span class="line">       Time zone: Asia/Shanghai (CST, +0800)</span><br><span class="line"><span class="hljs-comment"># 查看所有可用时区</span></span><br><span class="line">timedatectl list-timezones</span><br><span class="line"><span class="hljs-comment"># 设置时区</span></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-timezone <span class="hljs-string">"Asia/Shanghai"</span></span><br><span class="line"><span class="hljs-comment"># 协调世界时</span></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-timezone UTC</span><br><span class="line"><span class="hljs-comment"># 设置时间</span></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-time 15:38:30</span><br><span class="line"><span class="hljs-comment"># 设置硬件时钟为本地时间</span></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-local-rtc 1</span><br><span class="line"><span class="hljs-comment"># 设置硬件时钟为世界时(UTC)</span></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-local-rtc 0</span><br><span class="line"><span class="hljs-comment"># 查看硬件时钟</span></span><br><span class="line">timedatectl | grep <span class="hljs-built_in">local</span> --color</span><br></pre></td></tr></tbody></table></figure>
+
+<p><font color="red">将Linux时钟同步到远程NTP服务器</font><br>NTP即Network Time Protocol（网络时间协议)</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 自己当NTP服务器</span></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-ntp <span class="hljs-literal">true</span></span><br><span class="line"><span class="hljs-comment"># 禁用</span></span><br><span class="line">timedatectl <span class="hljs-built_in">set</span>-ntp <span class="hljs-literal">false</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="linux-网络时间协议-Network-Time-Protocol-NTP"><a href="#linux-网络时间协议-Network-Time-Protocol-NTP" class="headerlink" title="linux 网络时间协议(Network Time Protocol)  NTP"></a>linux 网络时间协议(Network Time Protocol)  NTP</h2><p>NTP服务器用来同步时间 ，搭建一台本地的NTP服务器</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装</span></span><br><span class="line">yum install -y ntp</span><br><span class="line"><span class="hljs-comment"># 启动ntp服务</span></span><br><span class="line">systemctl start ntpd</span><br><span class="line"><span class="hljs-comment"># 设置开机启动</span></span><br><span class="line">systemctl <span class="hljs-built_in">enable</span> ntpd</span><br><span class="line"><span class="hljs-comment"># 查看同步情况</span></span><br><span class="line">/usr/sbin/ntpq -p</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="ntp配置"><a href="#ntp配置" class="headerlink" title="ntp配置"></a>ntp配置</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看安装ntp工具会产生哪些文件 </span></span><br><span class="line">root:~<span class="hljs-comment"># rpm -ql ntp</span></span><br><span class="line">/etc/dhcp/dhclient.d    </span><br><span class="line">/etc/dhcp/dhclient.d/ntp.sh</span><br><span class="line">/etc/ntp.conf   <span class="hljs-comment"># ntp配置文件</span></span><br><span class="line">/etc/ntp/crypto</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 配置文件内容</span></span><br><span class="line">driftfile /var/lib/ntp/drift  <span class="hljs-comment">#系统时间与BIOS时间的偏差记录</span></span><br><span class="line">restrict default nomodify notrap nopeer noquery    <span class="hljs-comment"># 控制相关权限</span></span><br><span class="line"><span class="hljs-comment"># default 指带所有ip</span></span><br><span class="line"><span class="hljs-comment"># ignore  ：关闭所有的 NTP 联机服务</span></span><br><span class="line"><span class="hljs-comment"># nomodify：客户端不能更改服务端的时间参数，但是客户端可以通过服务端进行网络校时。</span></span><br><span class="line"><span class="hljs-comment"># notrust ：客户端除非通过认证，否则该客户端来源将被视为不信任子网</span></span><br><span class="line"><span class="hljs-comment"># noquery ：不提供客户端的时间查询：用户端不能使用ntpq，ntpc等命令来查询ntp服务器</span></span><br><span class="line"><span class="hljs-comment"># notrap ：不提供trap远端登陆：拒绝为匹配的主机提供模式 6 控制消息陷阱服务。陷阱服务是 ntpdq 控制消息协议的子系统，用于远程事件日志记录程序。</span></span><br><span class="line"><span class="hljs-comment"># nopeer ：用于阻止主机尝试与服务器对等，并允许欺诈性服务器控制时钟</span></span><br><span class="line"><span class="hljs-comment"># kod ： 访问违规时发送 KoD 包。</span></span><br><span class="line"><span class="hljs-comment"># restrict -6 表示IPV6地址的权限设置</span></span><br><span class="line"></span><br><span class="line">restrict 127.0.0.1</span><br><span class="line">restrict ::1  <span class="hljs-comment"># 确保localhost（这个常用的IP地址用来指Linux服务器本身）有足够权限</span></span><br><span class="line"></span><br><span class="line">server 192.168.20.1 perfer <span class="hljs-comment"># 设定主机来源，perfer定义最优先</span></span><br><span class="line">restrict 192.168.20.1 nomodify notrap noquery <span class="hljs-comment"># 允许上有 时间服务器主动修改本机</span></span><br><span class="line"><span class="hljs-comment">#server 0.centos.pool.ntp.org iburst  </span></span><br><span class="line"><span class="hljs-comment">#erver 1.centos.pool.ntp.org iburst</span></span><br><span class="line"><span class="hljs-comment">#server 2.centos.pool.ntp.org iburst</span></span><br><span class="line"><span class="hljs-comment">#server 3.centos.pool.ntp.org iburst</span></span><br><span class="line">includefile /etc/ntp/crypto/pw</span><br><span class="line">keys /etc/ntp/keys</span><br><span class="line"><span class="hljs-built_in">disable</span> monitor</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># NTP服务需要使用到UDP端口号123</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 初次同步</span></span><br><span class="line">ntpdate -u 192.168.20.1</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="linux科学计算器-bc"><a href="#linux科学计算器-bc" class="headerlink" title="linux科学计算器 bc"></a>linux科学计算器 bc</h2><p>科学计算器</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装</span></span><br><span class="line">yum install bc -y</span><br><span class="line"><span class="hljs-comment"># 运行计算机</span></span><br><span class="line">bc -q </span><br><span class="line"><span class="hljs-comment"># 借助管道</span></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"1+2"</span> | bc</span><br><span class="line">ret=$(<span class="hljs-built_in">echo</span> <span class="hljs-string">"4+9"</span> | bc) && <span class="hljs-built_in">echo</span> <span class="hljs-variable">$ret</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="linux网络工具-NetCat"><a href="#linux网络工具-NetCat" class="headerlink" title="linux网络工具  NetCat"></a>linux网络工具  NetCat</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装</span></span><br><span class="line">yum install nc -y</span><br><span class="line"><span class="hljs-comment"># 使用</span></span><br><span class="line">-l Port <span class="hljs-comment"># 使用监听端口，等待端口活动</span></span><br><span class="line">-o<输出文件> <span class="hljs-comment"># 指定文件名称，把往来传输的数据以16进制字码倾倒成该文件保存</span></span><br><span class="line">-p<通信端口> <span class="hljs-comment"># 设置本地主机使用的通信端口。</span></span><br><span class="line">-r <span class="hljs-comment"># 指定本地与远端主机的通信端口。</span></span><br><span class="line">-s<来源地址> <span class="hljs-comment">#设置本地主机送出数据包的IP地址</span></span><br><span class="line">-u <span class="hljs-comment">#使用UDP传输协议</span></span><br><span class="line">-v <span class="hljs-comment">#显示指令执行过程</span></span><br><span class="line">-w <span class="hljs-comment"># 设置等待连线的时间</span></span><br><span class="line">-z <span class="hljs-comment"># 使用0输入/输出模式，只在扫描通信端口时使用</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>传文件,注意关闭防火墙或者关闭端口</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 发送端 10.0.5.197</span></span><br><span class="line">nc 10.0.5.233 8888  < xx.py</span><br><span class="line"><span class="hljs-comment"># 接收端 10.0.5.233</span></span><br><span class="line">nc -l 8888 > yy.py</span><br></pre></td></tr></tbody></table></figure>
+<p>端口扫描</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">nc -v -w 1 10.0.5.233 -z 20-30</span><br></pre></td></tr></tbody></table></figure>
+<p>聊天</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 主机端</span></span><br><span class="line">nc 10.0.5.233 8888</span><br><span class="line"><span class="hljs-comment"># 接收端</span></span><br><span class="line">nc -l 8888</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="etc-logrotate-滚动日志"><a href="#etc-logrotate-滚动日志" class="headerlink" title="/etc/logrotate  滚动日志"></a>/etc/logrotate  滚动日志</h2><p>Linux系统默认安装logrotate工具，它默认的配置文件在：<br>/etc/logrotate.conf<br>/etc/logrotate.d/<br>logrotate.conf 是主要的配置文件，logrotate.d 是一个目录，该目录里的所有文件都会被主动的读入/etc/logrotate.conf中执行。</p>
+<h3 id="查看安装会产生哪些文件"><a href="#查看安装会产生哪些文件" class="headerlink" title="查看安装会产生哪些文件"></a>查看安装会产生哪些文件</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@DCK-ZJ-SAD-035 logrotate.d]<span class="hljs-comment"># rpm -ql logrotate</span></span><br><span class="line">/etc/cron.daily/logrotate</span><br><span class="line">/etc/logrotate.conf  <span class="hljs-comment"># main</span></span><br><span class="line">/etc/logrotate.d  <span class="hljs-comment"># main</span></span><br><span class="line">/etc/rwtab.d/logrotate</span><br><span class="line">/usr/sbin/logrotate</span><br><span class="line">/usr/share/doc/logrotate-3.8.6</span><br><span class="line">/usr/share/doc/logrotate-3.8.6/CHANGES</span><br><span class="line">/usr/share/doc/logrotate-3.8.6/COPYING</span><br><span class="line">/usr/share/man/man5/logrotate.conf.5.gz</span><br><span class="line">/usr/share/man/man8/logrotate.8.gz</span><br><span class="line">/var/lib/logrotate</span><br><span class="line">/var/lib/logrotate/logrotate.status</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="定时轮循机制"><a href="#定时轮循机制" class="headerlink" title="定时轮循机制"></a>定时轮循机制</h3><p>Logrotate是基于CRON来运行的，其脚本是/etc/cron.daily/logrotate，日志轮转是系统自动完成的。</p>
+<p>logrotate这个任务默认放在cron的每日定时任务cron.daily下面 /etc/cron.daily/logrotate<br>/etc/目录下面还有cron.weekly/, cron.hourly/, cron.monthly/ 的目录都是可以放定时任务的</p>
+<p><strong>日志轮询周期根据时间分配有4种</strong><br>daily、weekly 、monthly、yearly<br>默认daily</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">cat /etc/cron.daily/logrotate </span><br><span class="line"><span class="hljs-meta">#!/bin/sh</span></span><br><span class="line">/usr/sbin/logrotate -s /var/lib/logrotate/logrotate.status /etc/logrotate.conf</span><br><span class="line">EXITVALUE=$?</span><br><span class="line"><span class="hljs-keyword">if</span> [ <span class="hljs-variable">$EXITVALUE</span> != 0 ]; <span class="hljs-keyword">then</span></span><br><span class="line">    /usr/bin/logger -t logrotate <span class="hljs-string">"ALERT exited abnormally with [<span class="hljs-variable">$EXITVALUE</span>]"</span></span><br><span class="line"><span class="hljs-keyword">fi</span></span><br><span class="line"><span class="hljs-built_in">exit</span> 0</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="logrotate配置"><a href="#logrotate配置" class="headerlink" title="logrotate配置"></a>logrotate配置</h3><p>全局配置 /etc/logrotate.conf<br>对应不同程序的配置 /etc/logrotate.d/</p>
+<p><font color="red">全局配置</font></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 轮询时间,可以是weekly,monthly,yearly</span></span><br><span class="line">daily</span><br><span class="line"><span class="hljs-comment"># 日志备份保存时间 7天,超过则删除</span></span><br><span class="line">rotate 7</span><br><span class="line">create   <span class="hljs-comment"># 创建文件</span></span><br><span class="line">dateext  <span class="hljs-comment"># 日志文件切割后添加日期后缀</span></span><br><span class="line">compress <span class="hljs-comment"># 切割后压缩</span></span><br><span class="line">include /etc/logrotate.d  <span class="hljs-comment"># 指向文件夹</span></span><br><span class="line">/var/<span class="hljs-built_in">log</span>/wtmp {</span><br><span class="line">    monthly</span><br><span class="line">    create 0664 root utmp</span><br><span class="line">        minsize 1M</span><br><span class="line">    rotate 1</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">/var/<span class="hljs-built_in">log</span>/btmp {</span><br><span class="line">    missingok</span><br><span class="line">    monthly</span><br><span class="line">    create 0600 root utmp</span><br><span class="line">    rotate 1</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><font color="red">部分应用程序配置，以nginx为例子</font></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 首先需要指定存放nginx日志文件的地址</span></span><br><span class="line">/usr/<span class="hljs-built_in">local</span>/nginx/logs/access.log  {</span><br><span class="line">daily</span><br><span class="line">rotate 7</span><br><span class="line">missingok  <span class="hljs-comment"># 在日志轮循期间，任何错误将被忽略，例如“文件无法找到”之类的错</span></span><br><span class="line">dateext</span><br><span class="line">compress</span><br><span class="line"><span class="hljs-comment"># npcompress # 如果你不希望对日志文件进行压缩，设置这个参数即可</span></span><br><span class="line">delaycompress <span class="hljs-comment"># 总是与compress选项一起用，delaycompress选项指示logrotate不要将最近的归档压缩，压缩将在下一次轮循周期进行</span></span><br><span class="line">notifempty <span class="hljs-comment"># 如果日志为空，轮询不进行</span></span><br><span class="line">sharedscripts  <span class="hljs-comment">#表示postrotate脚本在压缩了日志之后只执行一次</span></span><br><span class="line">postrotate</span><br><span class="line">    [ -e /usr/<span class="hljs-built_in">local</span>/nginx/logs/nginx.pid ] && <span class="hljs-built_in">kill</span> -USR1 `cat /usr/<span class="hljs-built_in">local</span>/nginx/logs/nginx.pid`</span><br><span class="line">endscript</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment"># create 644 www root  # 以指定的权限创建全新的日志文件，同时logrotate也会重命名原始日志文件。</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 执行程序</span></span><br><span class="line">logrotate /etc/logrotate.d/nginx</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="手动使用"><a href="#手动使用" class="headerlink" title="手动使用"></a>手动使用</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 如果等不及cron自动执行日志轮转，想手动强制切割日志，需要加-f参数</span></span><br><span class="line">/usr/sbin/logrotate -f /etc/logrotate.d/nginx</span><br><span class="line"><span class="hljs-comment"># 正式执行前最好通过Debug选项来验证一下（-d参数）</span></span><br><span class="line">/usr/sbin/logrotate -d -f /etc/logrotate.d/nginx</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="logrotate命令格式"><a href="#logrotate命令格式" class="headerlink" title="logrotate命令格式"></a>logrotate命令格式</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">logrotate [OPTION...] <configfile></span><br><span class="line">-d, --debug ：debug模式，测试配置文件是否有错误，不真实执行。</span><br><span class="line">-f, --force ：强制转储文件。</span><br><span class="line">-m, --mail=<span class="hljs-built_in">command</span> ：压缩日志后，发送日志到指定邮箱。</span><br><span class="line">-s, --state=statefile ：使用指定的状态文件。</span><br><span class="line">-v, --verbose ：显示转储过程。</span><br></pre></td></tr></tbody></table></figure>
+<p>默认将日志保存在/var/lib/logrotate.status文件中</p>
+<h3 id="logrotate原理"><a href="#logrotate原理" class="headerlink" title="logrotate原理"></a>logrotate原理</h3><ul>
+<li>create</li>
+<li>copytruncate</li>
+</ul>
+<h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><p>logrotate具体<br><a href="https://wsgzao.github.io/post/logrotate/" target="_blank" rel="noopener">https://wsgzao.github.io/post/logrotate/</a><br>locale具体<br><a href="https://www.cnblogs.com/wn1m/p/10837609.html" target="_blank" rel="noopener">https://www.cnblogs.com/wn1m/p/10837609.html</a></p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/fe4ef317/"><i class="fas fa-angle-double-right"></i>linux常用命令</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-09T04:47:22.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-09</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/COMMAND/">COMMAND</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    4 分钟 读完 (大约 568 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h2 id="linux常用命令"><a href="#linux常用命令" class="headerlink" title="linux常用命令"></a>linux常用命令</h2><p>记录一些经常使用的命令和命令组合</p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/fe4ef317/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
                 <a class="has-link-black-ter" href="/posts/bc3af3e9/"><i class="fas fa-angle-double-right"></i>linux故障问题及解决方案</a>
             
         </h1>
@@ -171,7 +376,7 @@
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">故障问题</a>
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                 </div>
                 
                 
@@ -195,6 +400,11 @@
         <hr style="height:1px;margin:1rem 0"/>
         <div class="level is-mobile is-flex">
             <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/linux/" rel="tag">linux</a>
+                </div>
                 
             </div>
             <div class="level-start">
@@ -293,7 +503,7 @@
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">负载均衡</a>
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                 </div>
                 
                 
@@ -317,6 +527,11 @@
         <hr style="height:1px;margin:1rem 0"/>
         <div class="level is-mobile is-flex">
             <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/linux/" rel="tag">linux</a>
+                </div>
                 
             </div>
             <div class="level-start">
@@ -415,7 +630,7 @@
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">负载均衡</a>
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                 </div>
                 
                 
@@ -439,6 +654,11 @@
         <hr style="height:1px;margin:1rem 0"/>
         <div class="level is-mobile is-flex">
             <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/linux/" rel="tag">linux</a>
+                </div>
                 
             </div>
             <div class="level-start">
@@ -476,7 +696,7 @@
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/">linux网络管理</a>
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/linux-network/">linux-network</a>
                 </div>
                 
                 
@@ -537,7 +757,7 @@
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/">linux网络管理</a>
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/linux-network/">linux-network</a>
                 </div>
                 
                 
@@ -596,7 +816,7 @@
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/">linux网络管理</a>
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/linux-network/">linux-network</a>
                 </div>
                 
                 
@@ -660,239 +880,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/ea06c230/"><i class="fas fa-angle-double-right"></i>ansible基础</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:54:37.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/ansible/">ansible</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    22 分钟 读完 (大约 3288 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h2 id="主机清单-inventory"><a href="#主机清单-inventory" class="headerlink" title="主机清单 inventory"></a>主机清单 inventory</h2><p>ansible中添加主机清单的几种形式</p>
-<ol>
-<li><p>直接在命令行中指定ip,-k登陆时指定密码</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ansible 192.168.20.1 -m ping -k</span><br><span class="line">ansible 192.168.20.1,192.168.20.2 -m ping -k</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>在配置文件中指定  默认文件夹/etc/ansible/hosts</p>
-</li>
-</ol>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[name1]</span><br><span class="line">192.168.20.1</span><br><span class="line">[name2]</span><br><span class="line">192.168.20.2</span><br><span class="line">ansible name1 -m ping -k <span class="hljs-comment"># 指定分组</span></span><br><span class="line">ansible all -m ping -k <span class="hljs-comment"># 指定所有</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p><img src="http://img.noback.top/blog/img/20190902/ansible2.png" alt><br>由于ansible是通过ssh访问被执行端主机的，因此没有ssh的权限是无法完成任务的，即使这里的命令是ping，但依旧要走ssh的流程<br>这里的ping并不是linux下的ping ,而是ansible工具下面的ping模块</p>
-<ol start="3">
-<li><p>不使用默认文件下，自定义文件夹</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"192.168.20.1"</span>  >> xx</span><br><span class="line">ansible -i xx all -m ping -k</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>在配置组里面中直接确认登陆用户</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"192.168.20.1 ansible_ssh_user=root ansible_ssh_pass=upyun123"</span></span><br><span class="line">ansible -i xx all -m ping</span><br></pre></td></tr></tbody></table></figure>
-
-</li>
-</ol>
-<hr>
-<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><ol>
-<li>local_tmp是本地的执行指令</li>
-<li>remote_tmp是远程的执行指令<br>当用户使用ansible控制被控端执行指令的时候，他会先将内容放在local_tmp文件中，然后上传到被控端并生成remote_tmp上执行。执行完成之后会删除这两个tmp文件</li>
-<li>library = /usr/share/my_modules/ 库存放地址</li>
-<li>forks = 5 默认并发数</li>
-<li>sudo_user = root 默认sudo 用户</li>
-<li>ask_sudo_pass = True  每次执行ansible是否询问ssh密码</li>
-<li>ask_pass = True</li>
-<li>remote_port = 22</li>
-<li>host_key_checking = False 检查对应服务器的host_key —–>建议取消注释</li>
-<li>log_path=/var/log/ansible.log 日志文件 </li>
-</ol>
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h4 id="ansible-doc-说明文档"><a href="#ansible-doc-说明文档" class="headerlink" title="ansible-doc 说明文档"></a>ansible-doc 说明文档</h4><p>ansible-doc [options] [module..]<br>-a 显示所有模块的文档 参数尽量放在单引号里面<br>-l –list 列出可用模块<br>-s –snippet xxx 显示xxx模块的playbook片段</p>
-<p>role扩展模块<br>ansible-galaxy专门有一个网站提供不同用户上传的”角色”<br>地址:<a href="https://galaxy.ansible.com/" target="_blank" rel="noopener">https://galaxy.ansible.com/</a></p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 列出所有已安装的galaxy</span></span><br><span class="line">ansible-galaxy list</span><br><span class="line"><span class="hljs-comment"># 安装galaxy</span></span><br><span class="line">ansible-galaxy install xxx</span><br><span class="line"><span class="hljs-comment"># 删除galaxy</span></span><br><span class="line">ansible-galaxy remove xxx</span><br></pre></td></tr></tbody></table></figure>
-<p>role默认安装路径为/etc/ansible/roles/下</p>
-<h4 id="ansible"><a href="#ansible" class="headerlink" title="ansible"></a>ansible</h4><p>列出指定组别的host列表<br>ansible appsevr –list-hosts<br>列出所有列表的host<br>ansible all –list-hosts<br>ansible all –list<br>支持通配符匹配host<br>ansible *serv –list<br>多IP批量执行<br>ansible 192.168.0.1,192.168.0.2 -m ping<br>多组别批量执行(逻辑或关系,合并，A和B所有)<br>ansible websevr:appsevr -m ping<br>(逻辑与关系,区分,在A中,也在B中)<br>ansible “websevr:&appsevr” -m ping<br>(逻辑非,在A中不在B中,此处必须要用单引号)<br>ansible ‘websevr:!appsevr’ -m ping </p>
-<p>ansible <host-pattern> [-m module_name] [-a args]<br>–version 显示版本<br>-m module 指定模板,默认为command<br>-v 详细过程 -vv -vvv更详细<br>–list –list-hosts 显示主机列表，<br>-k –ask-pass 提示输入ssh连接密码，默认为key验证<br>-K –ask-become-pass 提示输入sudo时的口令<br>-C –check 检查，并不执行<br>-T –timeout=TIMEOUT 执行命令的超时时间,默认为10s<br>-u –user=REMOTE_USER 执行远程执行的用户<br>-b –become 代替旧版的sudo切换 (默认为ansible.cfg里面设置的用户,一般为root)<br>-a 指定参数</host-pattern></p>
-<h4 id="ansible-m命令模块"><a href="#ansible-m命令模块" class="headerlink" title="ansible -m命令模块"></a>ansible -m命令模块</h4><h5 id="command"><a href="#command" class="headerlink" title="command"></a>command</h5><p>在command中,我们可以创建文件，但是对于文件的操作,有一个专门的file模块</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 创建一个文件</span></span><br><span class="line">ansible -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'mkdir \data'</span></span><br><span class="line"><span class="hljs-comment"># 查看文件是否创建成功</span></span><br><span class="line">ansible -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'ls -al \data'</span></span><br><span class="line"><span class="hljs-comment"># 查看command帮助</span></span><br><span class="line">ansible-doc <span class="hljs-built_in">command</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h5 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h5><p>如果-a 后带的参数中出现 $ < > | ;  & 等字符，command是不支持的，需要用到shell 模块</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 输出主机名字</span></span><br><span class="line">ansible 192.168.1.3 -m shell -a <span class="hljs-string">'echo $HOSTNAME'</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="ansible命令执行流程"><a href="#ansible命令执行流程" class="headerlink" title="ansible命令执行流程"></a>ansible命令执行流程</h2><p>1.加载自己的配置文件 默认为/etc/ansible/ansible.cfg<br>2.加载自己对应的模块文件,如command<br>3.通过ansible将模块或命令生成对应的临时py文件,并将文件传输至远程服务器的对应执行用户$HOME/.ansible/tmp/ansible-tmp-数字/xxx.py文件<br>4.增加文件的执行权限<br>5.执行并返回结果<br>6.删除临时py文件,sleep 0退出<br>执行状态:<br>绿色 执行成功并且不需要做改变的操作<br>黄色 执行成功但是对目标主机做了修改<br>红色 执行失败<br>(颜色内容在/etc/ansible.cfg里面修改)</p>
-<p><strong>生成ssh</strong><br>ssh-keygen<br><strong>复制ssh密钥到其他主机</strong><br>ssh-copy-id 主机ip</p>
-<hr>
-<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>由于Ansible的模块过多，将近有1378个模块数量,但是每个模块的介绍以及使用方法都存放在/usr/bin/ansible-doc当中</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看当前ansible模块数量</span></span><br><span class="line">ansible-doc -l | wc -l</span><br><span class="line"><span class="hljs-comment"># ansible-doc的使用方法</span></span><br><span class="line">ansible-doc [options] [module..]</span><br><span class="line">-a 显示所有模块的文档 参数尽量放在单引号里面</span><br><span class="line">-l --list 列出可用模块</span><br><span class="line">-s --snippet xxx 显示xxx模块的playbook片段</span><br><span class="line"><span class="hljs-comment"># 使用-m指定模块，默认为command</span></span><br><span class="line">ansible -m <span class="hljs-built_in">command</span></span><br></pre></td></tr></tbody></table></figure>
-
-
-<h3 id="command-1"><a href="#command-1" class="headerlink" title="command"></a>command</h3><p>在command中,我们可以创建文件，但是对于文件的操作,有一个专门的file模块</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 创建一个文件</span></span><br><span class="line">ansible -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'mkdir \data'</span></span><br><span class="line"><span class="hljs-comment"># 查看文件是否创建成功</span></span><br><span class="line">ansible -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'ls -al \data'</span></span><br><span class="line"><span class="hljs-comment"># 查看command帮助</span></span><br><span class="line">ansible-doc <span class="hljs-built_in">command</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="shell-1"><a href="#shell-1" class="headerlink" title="shell"></a>shell</h3><p>如果-a 后带的参数中出现 $ < > | ;  & 等字符，command是不支持的，需要用到shell 模块</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 输出主机名字</span></span><br><span class="line">ansible 192.168.1.3 -m shell -a <span class="hljs-string">'echo $HOSTNAME'</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="script"><a href="#script" class="headerlink" title="script"></a>script</h3><p>既然ansible可以对多台主机进行批量的操作，那往往我们会遇到一个场景，即需要我们在多台主机上执行一个脚本，这个场景下我们有两个方法:<br>1.将脚本文件复制到多台主机上后,调用ansible使用<br>2.使用script模块，仅在控制端存在脚本文件即可</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 方法一,先将文件发到对应控制端主机</span></span><br><span class="line">ansible 192.168.1.3 -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'/root/ansible_test.sh'</span></span><br><span class="line"><span class="hljs-comment"># 方法二</span></span><br><span class="line">root@DESKTOP-GT1K5L0:~<span class="hljs-comment"># ansible 192.168.1.3 -m script -a '/root/ansible_test.sh'</span></span><br><span class="line">192.168.1.3 | SUCCESS => {</span><br><span class="line">    <span class="hljs-string">"changed"</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">    <span class="hljs-string">"rc"</span>: 0,</span><br><span class="line">    <span class="hljs-string">"stderr"</span>: <span class="hljs-string">"Shared connection to 192.168.1.3 closed"</span>,</span><br><span class="line">    <span class="hljs-string">"stdout"</span>: <span class="hljs-string">"to do it,ansible"</span>,</span><br><span class="line">    <span class="hljs-string">"stdout_lines"</span>: [</span><br><span class="line">        <span class="hljs-string">"to do it,ansible"</span></span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-
-<h3 id="Copy"><a href="#Copy" class="headerlink" title="Copy"></a>Copy</h3><p>在上面我们提到了从控制端传输文件到被控端,既然是批量的操作,那么在ansible中同样存在一个copy的模块,可以用来传输文件<br>场景: 关闭多台主机的selinux<br>流程: 复制控制端selinux的配置文件，修改后发送到被控制端</p>
-<p>注意:这里的ho表示的是一个主机群 在/etc/ansible/hosts中已经添加了</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看控制端selinux状态</span></span><br><span class="line">getenforce</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查看被控端selinux状态</span></span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># ansible ho -m command -a 'getenforce'</span></span><br><span class="line">192.168.1.6 | SUCCESS | rc=0 >></span><br><span class="line">Enforcing</span><br><span class="line">192.168.1.7 | SUCCESS | rc=0 >></span><br><span class="line">Enforcing</span><br><span class="line">192.168.1.5 | SUCCESS | rc=0 >></span><br><span class="line">Enforcing</span><br><span class="line">192.168.1.4 | SUCCESS | rc=0 >></span><br><span class="line">Enforcing</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 复制selinux配置文件，并修改配置</span></span><br><span class="line">cp /etc/selinux/config  .</span><br><span class="line">SELINUX=disabled</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 复制配置文件到被控端指定路径,并做好备份</span></span><br><span class="line">ansible ho -m copy -a<span class="hljs-string">'src=/root/hzj/config dest=/etc/selinux/config backup=yes'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查看被控端是否生成备份文件</span></span><br><span class="line">ansible ho -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'ls /etc/selinux/'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 重启</span></span><br><span class="line">ansible ho -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'reboot'</span></span><br><span class="line"><span class="hljs-comment"># 查看被控端selinux是否修改完成</span></span><br><span class="line">ansible ho -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'getenforce'</span></span><br><span class="line">[root@localhost hzj]<span class="hljs-comment"># ansible ho -m command -a 'getenforce'</span></span><br><span class="line">192.168.1.7 | SUCCESS | rc=0 >></span><br><span class="line">Disabled</span><br><span class="line">192.168.1.4 | SUCCESS | rc=0 >></span><br><span class="line">Disabled</span><br><span class="line">192.168.1.5 | SUCCESS | rc=0 >></span><br><span class="line">Disabled</span><br><span class="line">192.168.1.6 | SUCCESS | rc=0 >></span><br><span class="line">Disabled</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h3><p>ansible支持从被控端抓取文件到控制端,抓取后的格式为\example.com\dest<br>src表示抓取路径<br>dest表示存放路径</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 复制所有主机的日志到控制端</span></span><br><span class="line">ansible ho -m fetch -a <span class="hljs-string">'src=/var/log/messages dest=/root/data'</span></span><br></pre></td></tr></tbody></table></figure>
-<p>但是fetch仅支持单个文件的抓取，当我们想要抓取多个日志文件时，可以先进行打包</p>
-<h3 id="file"><a href="#file" class="headerlink" title="file"></a>file</h3><p>设置文件的属性</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 创建文件</span></span><br><span class="line">ansible ho -m file -a <span class="hljs-string">'name=/data/f3 state=touch'</span></span><br><span class="line"><span class="hljs-comment"># 删除文件</span></span><br><span class="line">ansible ho -m file -a <span class="hljs-string">'name=/data/f3 state=absent'</span></span><br><span class="line"><span class="hljs-comment"># 创建文件夹</span></span><br><span class="line">ansible ho -m file -a <span class="hljs-string">'name=/data/f3 state=directory'</span></span><br><span class="line"><span class="hljs-comment"># 删除文件夹</span></span><br><span class="line">ansible ho -m file -a <span class="hljs-string">'name=/data/f3 state=absent'</span></span><br><span class="line"><span class="hljs-comment"># 创建软连接</span></span><br><span class="line">ansible ho -m file -a <span class="hljs-string">'src=/root/test name=/data/fq state=link'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 但是需要注意的是如果你创建了文件f3 当你创建文件夹f3的时候会出现错误</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="hostname"><a href="#hostname" class="headerlink" title="hostname"></a>hostname</h3><p>修改主机名</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ansible ho -m hostname -a <span class="hljs-string">'name=node'</span></span><br><span class="line"><span class="hljs-comment"># 重启后生效</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="cron"><a href="#cron" class="headerlink" title="cron"></a>cron</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 给每台主机添加任务,name为注释</span></span><br><span class="line">ansible ho -m cron -a <span class="hljs-string">'minute=* weekday=1,3,5,7 job="usr/bin/wall message"  name=test'</span></span><br><span class="line"><span class="hljs-comment"># 取消任务</span></span><br><span class="line">ansible ho -m cron -a <span class="hljs-string">'disabled=true job="usr/bin/wall message" name=test'</span></span><br><span class="line"><span class="hljs-comment"># 重新启用</span></span><br><span class="line">ansible ho -m cron -a <span class="hljs-string">'disabled=no job="usr/bin/wall message" name=test'</span></span><br><span class="line"><span class="hljs-comment"># 删除某条任务</span></span><br><span class="line">ansible ho -m corn -a <span class="hljs-string">'jon="usr/bin/wall message" state=absent'</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># name指定包  state指定状态</span></span><br><span class="line">ansible ho -m yum -a <span class="hljs-string">'name=httpd state=latest'</span> 安装</span><br><span class="line">ansible ho -m yum -a <span class="hljs-string">'name=httpd state=absent'</span> 删除</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 关闭服务  name指定服务名称  state指定状态</span></span><br><span class="line">ansible ho -m service -a <span class="hljs-string">'name=httpd state=stopped'</span></span><br><span class="line">ansible ho -m service -a <span class="hljs-string">'name=httpd state=started'</span></span><br><span class="line">ansible ho -m service -a<span class="hljs-string">'name=httpd state=reloaded'</span></span><br><span class="line">ansible ho -m service -a<span class="hljs-string">'name=httpd state=restarted'</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="User"><a href="#User" class="headerlink" title="User"></a>User</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ansible ho -m user -a <span class="hljs-string">'name=user comment="test user" uid=2048 home=/app/user group=root'</span></span><br><span class="line">ansible ho -m user -a <span class="hljs-string">'name=sysuser system=yes home=/app/syseser1'</span></span><br><span class="line">ansible ho -m user -a <span class="hljs-string">'name=user state=absent remove=yes'</span> 删除用户以及家目录等数据</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="playbook的编写"><a href="#playbook的编写" class="headerlink" title="playbook的编写"></a>playbook的编写</h2><p>随着工作的增加,单条ansible命令(adhoc)已经不能满足我们的需求.于是我们可以把多条ansible命令写入playbook中,让系统根据playbook中的顺序依次执行ansible。我们把它叫做剧本</p>
-<h3 id="Playbook的编写方式"><a href="#Playbook的编写方式" class="headerlink" title="Playbook的编写方式"></a>Playbook的编写方式</h3><p>Playbook的编写格式采用的是yaml语言<br>url: <a href="http://www.ruanyifeng.com/blog/2016/07/yaml.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/07/yaml.html</a><br>url2: <a href="https://www.jianshu.com/p/97222440cd08" target="_blank" rel="noopener">https://www.jianshu.com/p/97222440cd08</a><br>urs3: <a href="https://yaml.org/" target="_blank" rel="noopener">https://yaml.org/</a>  多种语言实现yaml</p>
-<p>简单的介绍一下yaml语言的使用</p>
-<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1. 在单一档案中,可以用连续的连字符(---)区分多个档案。另外，还有选择性的连续三个点号(...)用来表示档案结尾</span><br><span class="line">2. 次行开始正常写Playbook的内容，一般建议写明该playbook的功能</span><br><span class="line">3. 使用#号注释代码</span><br><span class="line">4. 缩进统一用tab</span><br><span class="line">5. 一个完整的代码块功能最少的元素需要包括name:task</span><br><span class="line">6. 一个name只能包括一个task</span><br><span class="line">7. yaml文件扩展名通常为yml或者yaml</span><br></pre></td></tr></tbody></table></figure>
-
-<p>playbook例子</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">---</span><br><span class="line">- hosts: webservers</span><br><span class="line">  vars:</span><br><span class="line">    http_port: 80</span><br><span class="line">    max_clients: 200</span><br><span class="line">  remote_user: root</span><br><span class="line">  tasks:</span><br><span class="line">  - name: ensure apache is at the latest version</span><br><span class="line">    yum: pkg=httpd state=latest</span><br><span class="line">  - name: write the apache config file</span><br><span class="line">    template: src=/srv/httpd.j2 dest=/etc/httpd.conf</span><br><span class="line">    notify:</span><br><span class="line">    - restart apache</span><br><span class="line">  - name: ensure apache is running</span><br><span class="line">    service: name=httpd state=started</span><br><span class="line">  handlers:</span><br><span class="line">    - name: restart apache</span><br><span class="line">      service: name=httpd state=restarted</span><br></pre></td></tr></tbody></table></figure>
-
-<p><strong>playbook核心元素</strong></p>
-<ul>
-<li>Hosts 执行的远程主机列表</li>
-<li>Tasks 任务集</li>
-<li>Varniables 内置变量或自定义变量在playbook中调用</li>
-<li>Templates 模板,可替换模板文件中的变量并实现一些简单逻辑的文件</li>
-<li>Handlers 和 notity 结合使用,由特定条件触发的操作，满足条件方才执行,否则不执行</li>
-<li>tags 标签  指定某条任务执行,用于选择运行playbook中的部分代码。ansible具有幂等性,因此会自动跳过没有变化的部分，即便如此，有些代码为测试其确实没有发生变化的时间<br>依然会很长。因此可以使用tags跳过一些代码片段。<br>ansible-playbook -t tagsname useradd.yml</li>
-</ul>
-<p>adhoc 和 playbook 对比</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># adhoc 改变主机名字</span></span><br><span class="line">ansible ho -m hostname -a <span class="hljs-string">'name=xxx'</span></span><br><span class="line"><span class="hljs-comment"># playboot 修改主机名字</span></span><br><span class="line">---</span><br><span class="line">- host: ho</span><br><span class="line">  remote_user: root</span><br><span class="line">  </span><br><span class="line">  tasks:</span><br><span class="line">  - name: hello</span><br><span class="line">    hostname: name=node</span><br></pre></td></tr></tbody></table></figure>
-<p>多条adhoc 和playbook对比</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># adhoc </span></span><br><span class="line">ansible ho -m file -a <span class="hljs-string">'name=/data/newfile state=touch'</span>  <span class="hljs-comment"># 创建文件</span></span><br><span class="line">ansible ho -m user -a <span class="hljs-string">'name=test2 system=yes shell=/sbin/nologin'</span> <span class="hljs-comment"># 创建用户</span></span><br><span class="line">ansible ho -m yum -a <span class="hljs-string">'name=httpd'</span> <span class="hljs-comment"># 安装httpd</span></span><br><span class="line">ansible ho -m copy -a <span class="hljs-string">'src=/var/www/html/index.html dest=/var/www/html'</span> <span class="hljs-comment"># 复制文件</span></span><br><span class="line">ansible ho -m service -a <span class="hljs-string">'name=httpd state=started enabled=yes'</span> <span class="hljs-comment"># 启动服务</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># playbook</span></span><br><span class="line">- hosts: ho</span><br><span class="line">  remote_user: root</span><br><span class="line">  </span><br><span class="line">  tasks:</span><br><span class="line">  - name: create file</span><br><span class="line">    file: name=/data/newfile state=touch</span><br><span class="line">  - name: create user</span><br><span class="line">    file: name=test2 system=yes shell=/sbin/nologin</span><br><span class="line">  - name: install httpd</span><br><span class="line">    yum: name=httpd</span><br><span class="line">  - name: copy file</span><br><span class="line">    copy: src=/var/www/html/index.html dest=/var/www/html</span><br><span class="line">  - name: start service</span><br><span class="line">    service: name=httpd state=started enabled=yes</span><br></pre></td></tr></tbody></table></figure>
-
-<p>shell脚本与playbook对比</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># shell脚本</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#!/bin/bash</span></span><br><span class="line"><span class="hljs-comment"># 安装Apache</span></span><br><span class="line">yum install --quiet -y httpd</span><br><span class="line"><span class="hljs-comment"># 复制配置文件</span></span><br><span class="line">cp /tmp/httpd.conf /etc/httpd/conf/httpd.conf</span><br><span class="line">cp /tmp/vhosts.conf /etc/httpd/conf.d/</span><br><span class="line"><span class="hljs-comment"># 启动Apache 并设置开机启动</span></span><br><span class="line">systemctl start httpd.service</span><br><span class="line">chkconfig httpd on</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># playbook</span></span><br><span class="line">---</span><br><span class="line">- host: all</span><br><span class="line">  tasks:</span><br><span class="line">   - name: <span class="hljs-string">"安装Apache"</span></span><br><span class="line">     yum: name=httpd</span><br><span class="line">   - name: <span class="hljs-string">"复制配置文件"</span></span><br><span class="line">     copy: src=/tmp/httpd.conf dest=/etc/httpd/conf/</span><br><span class="line">   - name: <span class="hljs-string">"复制文件"</span></span><br><span class="line">     copy: src=/tmp/vhosts.conf dest=/etc/httpd/conf.d/</span><br><span class="line">   - name: <span class="hljs-string">"启动Apache,并设置开机启动"</span></span><br><span class="line">     service: name=httpd state=started enabled=yes</span><br></pre></td></tr></tbody></table></figure>
-
-
-<h3 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h3><p>play的主体部分是task list 。 task list 中的各任务按次序逐个在hosts中指定的所有主机上执行，即在所有主机上完成第一个任务后在开始第二个，在运行自上而下某一个playbook时，如果中途发生错误，所有已执行任务都将回滚，因此，在更正playbook后重新执行一次即可</p>
-<p><strong>忽略错误信息</strong></p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">task:</span><br><span class="line">- name: copy file</span><br><span class="line">  copy: src=/root/file dest=/root/ || /bin/<span class="hljs-literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 或者</span></span><br><span class="line">task:</span><br><span class="line">- name: copy file</span><br><span class="line">  copy: src=/root/file dest=/root/</span><br><span class="line">  ignore_erros: True</span><br></pre></td></tr></tbody></table></figure>
-
-
-<h3 id="playbook运行方式"><a href="#playbook运行方式" class="headerlink" title="playbook运行方式"></a>playbook运行方式</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ansible-playbook <xxx.yml> [options]</span><br><span class="line">--check 只检测可能会发生的改变，但不真正执行操作</span><br><span class="line">--list-hosts 列出运行任务的主机</span><br><span class="line">--<span class="hljs-built_in">limit</span> 主机列表 只针对主机列表中的主机执行</span><br><span class="line">-v 显示过程 -vv -vvv显示更详细</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="Playbook剧本"><a href="#Playbook剧本" class="headerlink" title="Playbook剧本"></a>Playbook剧本</h3><p>ansible-playbook是ansible中的一个工具,存放在/usr/bin/ansible-playbook</p>
-<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><ul>
-<li><p>模块<br><a href="https://www.cnblogs.com/f-ck-need-u/p/7550603.html" target="_blank" rel="noopener">https://www.cnblogs.com/f-ck-need-u/p/7550603.html</a><br><a href="https://docs.ansible.com/ansible/2.6/modules/list_of_all_modules.html" target="_blank" rel="noopener">https://docs.ansible.com/ansible/2.6/modules/list_of_all_modules.html</a></p>
-</li>
-<li><p>ansible模块开发<br><a href="https://www.jianshu.com/p/f72b79b0d3f9" target="_blank" rel="noopener">https://www.jianshu.com/p/f72b79b0d3f9</a>  </p>
-</li>
-</ul>
-</body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/20d6cad/"><i class="fas fa-angle-double-right"></i>ansible总结</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:54:12.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/ansible/">ansible</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    2 分钟 读完 (大约 233 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="登陆h3c交换机"><a href="#登陆h3c交换机" class="headerlink" title="登陆h3c交换机"></a>登陆h3c交换机</h1><p>h3c交换机的模块支持度极低，网上大多都是思科交换机的模块，很多要用到H3c的都是自己写的，感觉很坑</p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h2><p>现在又一个问题就是命令行使用raw模块可以登陆交换机，并且输出执指令 返回结果，但是在ansible-playbook中不行</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"10.0.5.124"</span>  >> ./xx</span><br><span class="line">ansible -i xx all -m raw -a <span class="hljs-string">'system-view ;dis arp ;'</span></span><br></pre></td></tr></tbody></table></figure>
-<p>如上是可以的，但是如下的playbook则不行</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> first.yml << EOF</span><br><span class="line">  ---</span><br><span class="line">  - hosts: switch</span><br><span class="line"></span><br><span class="line">    tasks:</span><br><span class="line">    - name: add snmp</span><br><span class="line">      raw: <span class="hljs-string">"system-view ;"</span></span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">ansible-playbook first.yml</span><br></pre></td></tr></tbody></table></figure>
-
-<p>解决办法，既然playbook不行，那就切换成一条一条的命令行把</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> yy << EOF</span><br><span class="line">system-view ;</span><br><span class="line">display arp ;</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"10.0.5.124 ansible_ssh_user=admin ansible_ssh_pass=upyun123"</span> >> xx</span><br><span class="line"><span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> cmd;<span class="hljs-keyword">do</span> ansible -i xx -m raw -a <span class="hljs-string">"<span class="hljs-variable">$cmd</span>"</span> -u an -k ;<span class="hljs-keyword">done</span> < yy</span><br></pre></td></tr></tbody></table></figure>
-
-
-
-<h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><p>python+yaml+jinja2 自动生成华三交换机配置<br><a href="https://www.jianshu.com/p/4937de3070aa" target="_blank" rel="noopener">https://www.jianshu.com/p/4937de3070aa</a></p>
-</body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -900,7 +887,7 @@
         <div class="pagination-previous">
             <a class="is-flex-grow has-text-black-ter" href="/categories/linux/page/2/">上一页</a>
         </div>
-        <div class="pagination-next is-invisible is-hidden-mobile">
+        <div class="pagination-next">
             <a class="is-flex-grow has-text-black-ter" href="/categories/linux/page/4/">下一页</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
@@ -910,6 +897,8 @@
             <li><a class="pagination-link has-text-black-ter" href="/categories/linux/page/2/">2</a></li>
             
             <li><a class="pagination-link is-current" href="/categories/linux/page/3/">3</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/categories/linux/page/4/">4</a></li>
             
         </ul>
     </nav>
@@ -944,7 +933,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        87
+                        86
                     </p>
                 </a>
             </div>
@@ -954,7 +943,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        35
+                        25
                     </p>
                 </a>
             </div>
@@ -964,7 +953,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        11
                     </p>
                 </a>
             </div>
@@ -1038,33 +1027,17 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/code-more/">
+        <a class="level is-marginless" href="/categories/code/">
             <span class="level-start">
-                <span class="level-item">code/more</span>
+                <span class="level-item">code</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">11</span>
             </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/code-more/vue/">
-            <span class="level-start">
-                <span class="level-item">vue</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li></ul></li><li>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/docker/">
             <span class="level-start">
                 <span class="level-item">docker</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/git/">
-            <span class="level-start">
-                <span class="level-item">git</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -1075,9 +1048,25 @@
                 <span class="level-item">linux</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">30</span>
+                <span class="level-item tag">33</span>
             </span>
         </a><ul><li>
+        <a class="level is-marginless" href="/categories/linux/COMMAND/">
+            <span class="level-start">
+                <span class="level-item">COMMAND</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/Command/">
+            <span class="level-start">
+                <span class="level-item">Command</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/linux/ansible/">
             <span class="level-start">
                 <span class="level-item">ansible</span>
@@ -1094,28 +1083,12 @@
                 <span class="level-item tag">13</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/">
+        <a class="level is-marginless" href="/categories/linux/linux-network/">
             <span class="level-start">
-                <span class="level-item">linux网络管理</span>
+                <span class="level-item">linux-network</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-            <span class="level-start">
-                <span class="level-item">常用命令</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">
-            <span class="level-start">
-                <span class="level-item">故障问题</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/linux/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
@@ -1131,25 +1104,9 @@
                 <span class="level-item">脚本</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">
-            <span class="level-start">
-                <span class="level-item">负载均衡</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/nginx/">
-            <span class="level-start">
-                <span class="level-item">nginx</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/%E5%B7%A5%E5%85%B7/">
             <span class="level-start">
                 <span class="level-item">工具</span>
@@ -1179,36 +1136,12 @@
                 <span class="level-item">编程</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">30</span>
+                <span class="level-item tag">23</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">
             <span class="level-start">
                 <span class="level-item">C语言</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/Python/">
-            <span class="level-start">
-                <span class="level-item">Python</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/Rust/">
-            <span class="level-start">
-                <span class="level-item">Rust</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/SwaggerUi/">
-            <span class="level-start">
-                <span class="level-item">SwaggerUi</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -1228,30 +1161,6 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/mysql/">
-            <span class="level-start">
-                <span class="level-item">mysql</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vim/">
-            <span class="level-start">
-                <span class="level-item">vim</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vue/">
-            <span class="level-start">
-                <span class="level-item">vue</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">6</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/">
@@ -1343,7 +1252,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">37</span>
+                    <span class="level-item tag">36</span>
                 </span>
             </a>
         </li>
@@ -1507,7 +1416,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">37</span>
+                    <span class="level-item tag">36</span>
                 </span>
             </a>
         </li>

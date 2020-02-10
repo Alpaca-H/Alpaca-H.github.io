@@ -160,18 +160,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/a2d15b23/"><i class="fas fa-angle-double-right"></i>swagger-ui使用</a>
+                <a class="has-link-black-ter" href="/posts/a1c58685/"><i class="fas fa-angle-double-right"></i>vue-element-admin</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-13T03:29:18.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-13</time>
+                <time class="level-item has-text-grey" datetime="2020-01-16T06:07:13.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-16</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/SwaggerUi/">SwaggerUi</a>
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
                 </div>
                 
                 
@@ -179,7 +179,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    2 分钟 读完 (大约 244 个字)
+                    几秒 读完 (大约 74 个字)
                 </span>
                 
                 
@@ -187,16 +187,9 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h2 id="SwaggerUi使用"><a href="#SwaggerUi使用" class="headerlink" title="SwaggerUi使用"></a>SwaggerUi使用</h2><h2 id="django搭建swagger-ui"><a href="#django搭建swagger-ui" class="headerlink" title="django搭建swagger-ui"></a>django搭建swagger-ui</h2><p>django2.0之前使用django-rest-swagger<br>django2.0之后使用drf-yasg<br>这里主要记录一些使用drf-yasg安装的过程</p>
-<h3 id="Qucik-Start"><a href="#Qucik-Start" class="headerlink" title="Qucik-Start"></a>Qucik-Start</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装</span></span><br><span class="line">yum install drf-yasg</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># setting设置</span></span><br><span class="line">INSTALLED_APPS  = [</span><br><span class="line">    ... </span><br><span class="line">   <span class="hljs-string">' drf_yasg '</span>，</span><br><span class="line">    ... </span><br><span class="line">]</span><br><span class="line"><span class="hljs-comment"># urls.py设置</span></span><br><span class="line">...</span><br><span class="line"><span class="hljs-keyword">from</span> rest_framework <span class="hljs-keyword">import</span> permissions</span><br><span class="line"><span class="hljs-keyword">from</span> drf_yasg.views <span class="hljs-keyword">import</span> get_schema_view</span><br><span class="line"><span class="hljs-keyword">from</span> drf_yasg <span class="hljs-keyword">import</span> openapi</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">schema_view = get_schema_view(</span><br><span class="line">   openapi.Info(</span><br><span class="line">      title=<span class="hljs-string">"Snippets API"</span>,</span><br><span class="line">      default_version=<span class="hljs-string">'v1'</span>,</span><br><span class="line">      description=<span class="hljs-string">"Test description"</span>,</span><br><span class="line">      terms_of_service=<span class="hljs-string">"https://www.google.com/policies/terms/"</span>,</span><br><span class="line">      contact=openapi.Contact(email=<span class="hljs-string">"contact@snippets.local"</span>),</span><br><span class="line">      license=openapi.License(name=<span class="hljs-string">"BSD License"</span>),</span><br><span class="line">   ),</span><br><span class="line">   public=<span class="hljs-literal">True</span>,</span><br><span class="line">   permission_classes=(permissions.AllowAny,),</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">   url(<span class="hljs-string">r'^swagger(?P<format>\.json|\.yaml)$'</span>, schema_view.without_ui(cache_timeout=<span class="hljs-number">0</span>), name=<span class="hljs-string">'schema-json'</span>),</span><br><span class="line">   url(<span class="hljs-string">r'^swagger/$'</span>, schema_view.with_ui(<span class="hljs-string">'swagger'</span>, cache_timeout=<span class="hljs-number">0</span>), name=<span class="hljs-string">'schema-swagger-ui'</span>),</span><br><span class="line">   url(<span class="hljs-string">r'^redoc/$'</span>, schema_view.with_ui(<span class="hljs-string">'redoc'</span>, cache_timeout=<span class="hljs-number">0</span>), name=<span class="hljs-string">'schema-redoc'</span>),</span><br><span class="line">   ...</span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure>
-<p>生成地址</p>
-<ul>
-<li>A JSON view of your API specification at /swagger.json</li>
-<li>A YAML view of your API specification at /swagger.yaml</li>
-<li>A swagger-ui view of your API specification at /swagger/</li>
-<li>A ReDoc view of your API specification at /redoc/</li>
-</ul>
-<h2 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h2><p>官方网址<br><a href="https://swagger.io/tools/swagger-ui/" target="_blank" rel="noopener">https://swagger.io/tools/swagger-ui/</a><br>drf-yasg gitbook文档<br><a href="https://drf-yasg.readthedocs.io/en/stable/" target="_blank" rel="noopener">https://drf-yasg.readthedocs.io/en/stable/</a><br>drf-yasg gitbook地址<br><a href="https://github.com/axnsan12/drf-yasg" target="_blank" rel="noopener">https://github.com/axnsan12/drf-yasg</a></p>
+            <html><head></head><body><a id="more"></a>
+<h2 id="vue-element-admin框架学习"><a href="#vue-element-admin框架学习" class="headerlink" title="vue-element-admin框架学习"></a>vue-element-admin框架学习</h2><p>目录结构</p>
+<h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><p>基本模版<br><a href="https://github.com/PanJiaChen/vue-admin-template" target="_blank" rel="noopener">https://github.com/PanJiaChen/vue-admin-template</a><br>基本模版-展示地址<br><a href="https://panjiachen.github.io/vue-admin-template/#/dashboard" target="_blank" rel="noopener">https://panjiachen.github.io/vue-admin-template/#/dashboard</a><br>实例项目<br><a href="https://github.com/PanJiaChen/vue-element-admin/blob/master/README.zh-CN.md" target="_blank" rel="noopener">https://github.com/PanJiaChen/vue-element-admin/blob/master/README.zh-CN.md</a><br>实例项目-展示地址<br><a href="https://panjiachen.github.io/vue-element-admin/#/dashboard" target="_blank" rel="noopener">https://panjiachen.github.io/vue-element-admin/#/dashboard</a></p>
 </body></html>
         </div>
         
@@ -219,18 +212,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/e47927c/"><i class="fas fa-angle-double-right"></i>vim快捷键</a>
+                <a class="has-link-black-ter" href="/posts/d0806758/"><i class="fas fa-angle-double-right"></i>vue中的各类插件以及使用方法</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-09T03:08:30.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-09</time>
+                <time class="level-item has-text-grey" datetime="2020-01-16T05:50:56.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-16</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/vim/">vim</a>
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
                 </div>
                 
                 
@@ -238,7 +231,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    1 分钟 读完 (大约 140 个字)
+                    3 分钟 读完 (大约 520 个字)
                 </span>
                 
                 
@@ -246,7 +239,73 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="vim快捷键"><a href="#vim快捷键" class="headerlink" title="vim快捷键"></a>vim快捷键</h1><p>VIM 是 Linux 系统上一款文本编辑器，它是操作 Linux 的一款利器。<br>当前有很多优秀的 IDE 都支持安装 VIM 插件，原因就是使用它便捷，高效，很爽！<br>主要记录了 VIM 的一些常用使用技巧，方便随时查阅学习 。</p></body></html>
+            <html><head></head><body><p>vue中的各类插件以及使用方法</p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/vue/" rel="tag">vue</a>,&nbsp;<a class="has-link-grey -link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a>
+                </div>
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/d0806758/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/933b28f1/"><i class="fas fa-angle-double-right"></i>drf-filter</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-14T03:43:43.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-14</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    几秒 读完 (大约 21 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>Introducing drf-filter<br>how to use it </p></body></html>
         </div>
         
         
@@ -258,7 +317,7 @@
             </div>
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/e47927c/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                <a class="button is-size-7 is-light" href="/posts/933b28f1/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
                 </div>
             </div>
         </div>
@@ -280,18 +339,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/3086330/"><i class="fas fa-angle-double-right"></i>数据库总结</a>
+                <a class="has-link-black-ter" href="/posts/10ccc76d/"><i class="fas fa-angle-double-right"></i>drf-pagination</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:52:59.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                <time class="level-item has-text-grey" datetime="2020-01-13T10:02:34.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-13</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/mysql/">mysql</a>
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
                 </div>
                 
                 
@@ -299,7 +358,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    4 分钟 读完 (大约 604 个字)
+                    4 分钟 读完 (大约 535 个字)
                 </span>
                 
                 
@@ -307,40 +366,22 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h2 id="登陆数据库"><a href="#登陆数据库" class="headerlink" title="登陆数据库"></a>登陆数据库</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ssh 10.0.6.55</span><br><span class="line">mysql -uroot -p</span><br><span class="line">>123456</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="mysql-基本操作语句"><a href="#mysql-基本操作语句" class="headerlink" title="mysql 基本操作语句"></a>mysql 基本操作语句</h2><p>数据库语句操作</p>
-<figure class="highlight sql hljs"><table><tbody><tr><td class="code"><pre><span class="line">创建一个名为 tc 的数据库 <span class="hljs-keyword">create</span> <span class="hljs-keyword">database</span> tc;</span><br><span class="line">查看有哪些数据库 <span class="hljs-keyword">show</span> <span class="hljs-keyword">databases</span>; </span><br><span class="line">查看数据库的创建细节  <span class="hljs-keyword">show</span> <span class="hljs-keyword">create</span> <span class="hljs-keyword">database</span> tc;         </span><br><span class="line">创建一个使用gbk字符集的数据库 <span class="hljs-keyword">create</span> <span class="hljs-keyword">database</span> tc <span class="hljs-keyword">set</span> gck;</span><br><span class="line">修改字符集 <span class="hljs-keyword">alter</span> <span class="hljs-keyword">database</span> tc <span class="hljs-built_in">character</span> <span class="hljs-keyword">set</span> utf8;</span><br><span class="line">删除创建的某个数据库 <span class="hljs-keyword">drop</span> <span class="hljs-keyword">database</span> tc;</span><br></pre></td></tr></tbody></table></figure>
-
-<p>表结构</p>
-<figure class="highlight sql hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">use</span> tc;  <span class="hljs-comment"># 切换数据库</span></span><br><span class="line"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> employee(_id <span class="hljs-built_in">int</span>,<span class="hljs-keyword">name</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">100</span>),gender <span class="hljs-built_in">varchar</span>(<span class="hljs-number">20</span>),birthday <span class="hljs-built_in">date</span>,entry_day <span class="hljs-built_in">date</span>,salary flot(<span class="hljs-number">8</span>,<span class="hljs-number">2</span>),<span class="hljs-keyword">resume</span> <span class="hljs-built_in">text</span>);  <span class="hljs-comment"># 创建员工信息表</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">show</span> <span class="hljs-keyword">tables</span>; <span class="hljs-comment"># 查看当前数据库中的所有表</span></span><br><span class="line"><span class="hljs-keyword">show</span> <span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> employee; <span class="hljs-comment"># 查看表的创建心结</span></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> employee <span class="hljs-keyword">add</span> image <span class="hljs-built_in">blob</span>; <span class="hljs-comment"># 在员工表上添加image列</span></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> employee <span class="hljs-keyword">modify</span> job <span class="hljs-built_in">varchar</span>(<span class="hljs-number">60</span>); <span class="hljs-comment"># 修改员工表中的job列，使其长度我饿60</span></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> employee <span class="hljs-keyword">drop</span> image; 删除image列</span><br><span class="line"><span class="hljs-keyword">rename</span> <span class="hljs-keyword">table</span> employee <span class="hljs-keyword">to</span> <span class="hljs-keyword">user</span>; 表名字修改为user</span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">user</span> <span class="hljs-built_in">character</span> <span class="hljs-keyword">set</span> gbk; 修改表的字符集为utf-8</span><br></pre></td></tr></tbody></table></figure>
-
-
-<p>查看表</p>
-<figure class="highlight sql hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 创建一个学生表</span></span><br><span class="line"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> student(<span class="hljs-keyword">id</span> <span class="hljs-built_in">int</span> primary <span class="hljs-keyword">key</span> auto_increment,<span class="hljs-keyword">name</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">unique</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> ,chinese <span class="hljs-built_in">float</span>,english <span class="hljs-built_in">float</span>,math <span class="hljs-built_in">float</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 往学生表中添加一些信息</span></span><br><span class="line"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student(<span class="hljs-keyword">name</span>,chinese,english,math) <span class="hljs-keyword">values</span> (<span class="hljs-string">'wangba'</span>,<span class="hljs-number">93</span>,<span class="hljs-number">22</span>,<span class="hljs-number">77</span>)</span><br><span class="line"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student (<span class="hljs-keyword">name</span>,chinese,english,math) <span class="hljs-keyword">values</span>(<span class="hljs-string">'lisi'</span>,<span class="hljs-number">80</span>,<span class="hljs-number">90</span>,<span class="hljs-number">29</span>);</span><br><span class="line"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student (<span class="hljs-keyword">name</span>,chinese,english,math) <span class="hljs-keyword">values</span>(<span class="hljs-string">'wangwu'</span>,<span class="hljs-number">55</span>,<span class="hljs-number">99</span>,<span class="hljs-number">98</span>);</span><br><span class="line"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student (<span class="hljs-keyword">name</span>,chinese,english,math) <span class="hljs-keyword">values</span>(<span class="hljs-string">'zhaoliu'</span>,<span class="hljs-number">99</span>,<span class="hljs-number">30</span>,<span class="hljs-number">57</span>);</span><br><span class="line"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student (<span class="hljs-keyword">name</span>,chinese,english,math) <span class="hljs-keyword">values</span>(<span class="hljs-string">'zhouqi'</span>,<span class="hljs-number">78</span>,<span class="hljs-number">22</span>,<span class="hljs-number">77</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#查询所有学生信息</span></span><br><span class="line"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">user</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查询学生员工的姓名和对应的英语成绩</span></span><br><span class="line"><span class="hljs-keyword">select</span> <span class="hljs-keyword">name</span>,english <span class="hljs-keyword">from</span> student</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 过滤表中的重复数据</span></span><br><span class="line"><span class="hljs-keyword">select</span> <span class="hljs-keyword">distinct</span> english <span class="hljs-keyword">from</span> student </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 在所有学生分数上加10分的特长分</span></span><br></pre></td></tr></tbody></table></figure>
-
-
-
-<h2 id="数据库可视化-navicat"><a href="#数据库可视化-navicat" class="headerlink" title="数据库可视化 navicat"></a>数据库可视化 navicat</h2><h3 id="navicat连接远程服务器的几种方式"><a href="#navicat连接远程服务器的几种方式" class="headerlink" title="navicat连接远程服务器的几种方式"></a>navicat连接远程服务器的几种方式</h3><ol>
-<li><p>直接连接数据库</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">Connection Name : hzj <span class="hljs-comment">#随便写  主要记录的上这条连接的别名</span></span><br><span class="line">Host 10.0.6.55   <span class="hljs-comment"># 远程服务器ip</span></span><br><span class="line">Port 3306 <span class="hljs-comment"># 端口</span></span><br><span class="line">User Name root <span class="hljs-comment">#  数据库账号</span></span><br><span class="line">Passwd <span class="hljs-comment">#数据库密码</span></span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>先登陆ssh 之后在连接本地的数据库</p>
-</li>
-</ol>
-<p>先连接ssh</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">Host <span class="hljs-comment"># 远程</span></span><br><span class="line">Port 22</span><br><span class="line">User Name <span class="hljs-comment"># 连接数据库的用户名</span></span><br><span class="line">Authentication Method <span class="hljs-comment"># 验证方法</span></span><br><span class="line">Private key <span class="hljs-comment"># id_rsa</span></span><br><span class="line">Passphrase <span class="hljs-comment"># 验证短密 选择密钥后自动生成</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>再连接数据库</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">Connection Name : hzj <span class="hljs-comment">#随便写  主要记录的上这条连接的别名</span></span><br><span class="line">Host localhost   <span class="hljs-comment"># 远程服务器ip</span></span><br><span class="line">Port 3306 <span class="hljs-comment"># 端口</span></span><br><span class="line">User Name root <span class="hljs-comment">#  数据库账号</span></span><br><span class="line">Passwd <span class="hljs-comment">#数据库密码</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>出现的错误</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">2013 - Lost connection to MySQL server at <span class="hljs-string">'reading initial communication packet'</span>, system error: 0 <span class="hljs-string">"Internal error/check (Not system error)"</span></span><br></pre></td></tr></tbody></table></figure>
-<p>解决办法<br><a href="https://www.jb51.net/article/51480.htm" target="_blank" rel="noopener">https://www.jb51.net/article/51480.htm</a></p>
-</body></html>
+            <html><head></head><body><p>Introducing drf-pagination<br>how to use it </p></body></html>
         </div>
         
         
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/10ccc76d/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -784,134 +825,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/7e91b378/"><i class="fas fa-angle-double-right"></i>django内容总结</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:40:44.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    13 分钟 读完 (大约 1914 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="django内容总结"><a href="#django内容总结" class="headerlink" title="django内容总结"></a>django内容总结</h1><h2 id="在后台对某些固定字段设置颜色"><a href="#在后台对某些固定字段设置颜色" class="headerlink" title="在后台对某些固定字段设置颜色"></a>在后台对某些固定字段设置颜色</h2><figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># models.py</span></span><br><span class="line"><span class="hljs-keyword">from</span> django.urls.html <span class="hljs-keyword">import</span> format_html</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span><span class="hljs-params">(models.Model)</span>:</span></span><br><span class="line">    first_name = models.CharField(max_length=<span class="hljs-number">50</span>)</span><br><span class="line">    last_name = models.CharField(max_length=<span class="hljs-number">50</span>)</span><br><span class="line">    color_code = models.CharField(max_length=<span class="hljs-number">6</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">colored_name</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> format_html(</span><br><span class="line"></span><br><span class="line">            <span class="hljs-string">'<span style="color: #{};">{} {}</span>'</span>,</span><br><span class="line"></span><br><span class="line">            self.color_code,</span><br><span class="line"></span><br><span class="line">            self.first_name,</span><br><span class="line"></span><br><span class="line">            self.last_name,</span><br><span class="line"></span><br><span class="line">        )</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="admin-py"><a href="#admin-py" class="headerlink" title="admin.py"></a>admin.py</h3><p>class PersonAdmin(admin.ModelAdmin):<br>    list_display = (‘first_name’, ‘last_name’, ‘colored_name’)</p>
-<h2 id="DjangoAdmin"><a href="#DjangoAdmin" class="headerlink" title="DjangoAdmin"></a>DjangoAdmin</h2><blockquote>
-<p>Django自带后台管理模板是其一大特色，但作为后台管理很多地方需要我们去改进，当然也可以使用一些其他的后台模板</p>
-</blockquote>
-<ul>
-<li>推荐模板1: xadmin xadmin在几年前是为django定制的后台管理模板，但是作者已经停止维护，但是在其分支中依旧有部分人在维护。<br>  具体使用跳转到我的掘金<a href="https://juejin.im/post/5afd267d51882542714ff756" target="_blank" rel="noopener">https://juejin.im/post/5afd267d51882542714ff756</a></li>
-<li>推荐模板2： django simple-ui 在github上的星数并不高，但是是基于饿了么element-ui所写的django后台模板，我还未使用</li>
-<li>使用本身自带的admin模板</li>
-<li>使用其他兼容多语言的后台模板</li>
-</ul>
-<p>url :<a href="https://my.oschina.net/zhiyonghe/blog/1532030" target="_blank" rel="noopener">https://my.oschina.net/zhiyonghe/blog/1532030</a></p>
-<hr>
-<h3 id="自带的Admin模板"><a href="#自带的Admin模板" class="headerlink" title="自带的Admin模板"></a>自带的Admin模板</h3><blockquote>
-<p>这里介绍一下自带的admin模板。</p>
-</blockquote>
-<ol>
-<li><p>admin界面汉化<br>在setting.py文件中设置语言</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># setting.py</span></span><br><span class="line"></span><br><span class="line">LANGUAGE_CODE = <span class="hljs-string">'zh-hans'</span></span><br><span class="line">IME_ZONE = <span class="hljs-string">'Asia/Shanghai'</span></span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>Model注册<br>在Model.py中创建完类后，需要在admin.py中完成注册，才能在后台模板中显示，方法有二</p>
-</li>
-</ol>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># admin.py</span></span><br><span class="line"><span class="hljs-comment"># 方法一</span></span><br><span class="line"><span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin </span><br><span class="line"><span class="hljs-keyword">from</span> blog.models <span class="hljs-keyword">import</span> Blog</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BlogAdmin</span><span class="hljs-params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">    list_display=(<span class="hljs-string">'xx'</span>,<span class="hljs-string">'xx'</span>,<span class="hljs-string">'xx'</span>)  <span class="hljs-comment"># 要显示的字段</span></span><br><span class="line">    list_per_page = <span class="hljs-number">50</span>  <span class="hljs-comment"># 每页最多显示50条</span></span><br><span class="line">    ordering = (<span class="hljs-string">"-xxx"</span>)  <span class="hljs-comment"># 设置排序，-表示降序排序</span></span><br><span class="line">    list_editable = [<span class="hljs-string">''</span>,<span class="hljs-string">''</span>,<span class="hljs-string">''</span>] <span class="hljs-comment"># 设置可编辑字段</span></span><br><span class="line">    list_display_links = (<span class="hljs-string">''</span>,<span class="hljs-string">''</span>,) <span class="hljs-comment"># 默认情况下只能点击第一个字段进入编辑，设置多个字段可点击进入编辑</span></span><br><span class="line">    list_filter = (<span class="hljs-string">''</span>,<span class="hljs-string">''</span>,<span class="hljs-string">''</span>) <span class="hljs-comment"># 筛选器</span></span><br><span class="line">    search_fields  = (<span class="hljs-string">''</span>,<span class="hljs-string">''</span>,<span class="hljs-string">''</span>,) <span class="hljs-comment"># 搜索字段</span></span><br><span class="line">    date_hierarchy = <span class="hljs-string">'go_time'</span> <span class="hljs-comment"># 详细时间筛选</span></span><br><span class="line"></span><br><span class="line">admin.site.register(Blog,BlogAdmin)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 方法二</span></span><br><span class="line"><span class="hljs-keyword">from</span> djang.contrib <span class="hljs-keyword">import</span> admin</span><br><span class="line"><span class="hljs-keyword">from</span> blog.models <span class="hljs-keyword">import</span> Blog</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@admin.register(Blog)</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BlogAdmin</span><span class="hljs-params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">    list_display=(<span class="hljs-string">''</span>,<span class="hljs-string">''</span>,<span class="hljs-string">''</span>)</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<h2 id="Django-for-ajax"><a href="#Django-for-ajax" class="headerlink" title="Django for ajax"></a>Django for ajax</h2><p>django 前后台传递消息内容的方法有很多种,这里我们来讲一下ajax for django</p>
-<figure class="highlight hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 路由地址</span></span><br><span class="line"><span class="hljs-comment"># 项目路径下</span></span><br><span class="line">path(<span class="hljs-string">''</span>,include(<span class="hljs-string">'GraphPro.urls'</span>))</span><br><span class="line"><span class="hljs-comment"># 应用路径下</span></span><br><span class="line">path(<span class="hljs-string">'echartsdemo/'</span>,demoView.as_view(),name=<span class="hljs-string">"demo"</span>),</span><br><span class="line"><span class="hljs-comment"># 视图层</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span>  <span class="hljs-title">demoView</span><span class="hljs-params">(View)</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get</span><span class="hljs-params">(self,request)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> request.GET.get(<span class="hljs-string">'name'</span>) == <span class="hljs-string">'hzj'</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">"ssdsdsd"</span>)</span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            print(<span class="hljs-number">2</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> render(request,<span class="hljs-string">'demo.html'</span>)</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">post</span><span class="hljs-params">(self,request)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">pass</span></span><br><span class="line"><span class="hljs-comment"># 模板层</span></span><br><span class="line"><body></span><br><span class="line">    <!-- 为ECharts准备一个具备大小（宽高）的Dom --></span><br><span class="line">    <div id="main" style="width: 1000px;height:1000px;" ></div></span><br><span class="line"></span><br><span class="line">    <input type=<span class="hljs-string">"text"</span> id=<span class="hljs-string">"name"</span> value=<span class="hljs-string">"hzj"</span>></span><br><span class="line">    <span id="result"></span></span><br><span class="line">    <button class="button" id="click_func">点击</button></span><br><span class="line">    {{ data }}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <script type=<span class="hljs-string">"text/javascript"</span>></span><br><span class="line"></span><br><span class="line">         $(document).ready(function () {</span><br><span class="line">            var name = $(<span class="hljs-string">'#name'</span>).val();</span><br><span class="line">            var data = {<span class="hljs-string">"name"</span>:name};</span><br><span class="line">            $(<span class="hljs-string">"#click_func"</span>).click(function () {</span><br><span class="line">                $.get(</span><br><span class="line">                    //请求的url</span><br><span class="line">                    <span class="hljs-string">'{% url '</span>demoecharts<span class="hljs-string">' %}'</span>,</span><br><span class="line">                    data,</span><br><span class="line">                    function (ret) {</span><br><span class="line">                        console.log(ret)</span><br><span class="line">                    }</span><br><span class="line">                )</span><br><span class="line">            })</span><br><span class="line">        })</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    </script></span><br><span class="line"></body></span><br></pre></td></tr></tbody></table></figure>
-
-
-<p>进入页面直接请求后台数据</p>
-<figure class="highlight html hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-javascript">     $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{</span></span><br><span class="line"><span class="hljs-actionscript">         <span class="hljs-keyword">var</span> data = {<span class="hljs-string">"name"</span>:<span class="hljs-string">"hzj"</span>};</span></span><br><span class="line"><span class="hljs-javascript">         $.<span class="hljs-keyword">get</span>(</span></span><br><span class="line"><span class="hljs-actionscript">            <span class="hljs-comment">//请求的url</span></span></span><br><span class="line"><span class="hljs-actionscript">            <span class="hljs-string">'{% url '</span>demo<span class="hljs-string">' %}'</span>,</span></span><br><span class="line">            data,</span><br><span class="line"><span class="hljs-actionscript">            <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(ret)</span> </span>{</span></span><br><span class="line"><span class="hljs-javascript">                <span class="hljs-built_in">console</span>.log(ret)</span></span><br><span class="line">            }</span><br><span class="line">         )</span><br><span class="line">    })</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag"></<span class="hljs-name">script</span>></span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>异步加载数据</p>
-<figure class="highlight html hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-tag"><<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-javascript">        $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{</span></span><br><span class="line"><span class="hljs-actionscript">            <span class="hljs-keyword">var</span> data = {<span class="hljs-string">"name"</span>:<span class="hljs-string">"hzj"</span>};</span></span><br><span class="line"><span class="hljs-javascript">            $.<span class="hljs-keyword">get</span>(</span></span><br><span class="line"><span class="hljs-actionscript">               <span class="hljs-comment">//请求的url</span></span></span><br><span class="line"><span class="hljs-actionscript">               <span class="hljs-string">'{% url '</span>demo<span class="hljs-string">' %}'</span>,</span></span><br><span class="line">               data,</span><br><span class="line"><span class="hljs-actionscript">            ).done(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(ret)</span></span>{</span></span><br><span class="line"><span class="hljs-javascript">                <span class="hljs-built_in">console</span>.log(ret)</span></span><br><span class="line">            })</span><br><span class="line">       })</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="hljs-tag"></<span class="hljs-name">script</span>></span></span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<blockquote>
-<p>介绍Mysql在Django中的引用<br>由于Django在初始化项目后，所使用的数据库是sqlite3,但为了扩展，我们这里计划使用Mysql,配置步骤如下</p>
-</blockquote>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-number">1.</span>在服务器上安装Mysql数据库(Centos版)</span><br><span class="line"></span><br><span class="line"><span class="hljs-number">2.</span>在django的setting.py中引用</span><br></pre></td></tr></tbody></table></figure>
-
-<hr>
-<h2 id="错误类型总结"><a href="#错误类型总结" class="headerlink" title="错误类型总结"></a>错误类型总结</h2><p>由于mysql与django在配置过程中会存在很多的错误，这里总结一下</p>
-<h4 id="Mysql在Centos中权限不足的错误"><a href="#Mysql在Centos中权限不足的错误" class="headerlink" title="Mysql在Centos中权限不足的错误"></a>Mysql在Centos中权限不足的错误</h4><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)</span><br></pre></td></tr></tbody></table></figure>
-<p>原因是/var/lib/mysql的访问权限不足</p>
-<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1.改变权限 chown -R mysql:mysql /var/lib/mysql   </span><br><span class="line">2. 启动服务器 /etc/init.d/mysql start (会自动生成mysql.sock文件)  </span><br><span class="line">3.重新启动mysql服务  /etc/init.d/mysql start</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="密码类型错误"><a href="#密码类型错误" class="headerlink" title="密码类型错误"></a>密码类型错误</h4><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1045, "Access denied for user 'root'@'122.224.83.xxx</span><br></pre></td></tr></tbody></table></figure>
-<p>原因 密码错误，注意密码不能是字符串</p>
-<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="django-setting-中的配置"><a href="#django-setting-中的配置" class="headerlink" title="django setting 中的配置"></a>django setting 中的配置</h4><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">DATABASES = {</span><br><span class="line">    'default': {</span><br><span class="line"></span><br><span class="line">        'ENGINE': 'django.db.backends.mysql',</span><br><span class="line">        'NAME': 'itemids',  # 数据库名字</span><br><span class="line">        'USER': 'root',    # 数据库登录名</span><br><span class="line">        'PASSWORD': '12345x', # 数据库密码</span><br><span class="line">        'HOST': '106.14.195.xxx', 数据库IP</span><br><span class="line">        'POST': 3306, # 端口</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="引用pymysql"><a href="#引用pymysql" class="headerlink" title="引用pymysql"></a>引用pymysql</h4><p>由于MySQLdb只能使用在Python2中，在python3中已经停止了维护，所以这里我们引用pymyql的库</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">pipenv install pymysql</span><br><span class="line"><span class="hljs-comment"># 在与setting.py同级别的__init__.py中使用</span></span><br><span class="line"><span class="hljs-keyword">import</span> pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="pymysql版本不符合"><a href="#pymysql版本不符合" class="headerlink" title="pymysql版本不符合"></a>pymysql版本不符合</h4><p>报错内容:django.core.exceptions.ImproperlyConfigured: mysqlclient 1.3.3 or newer is required; you have 0.7.11<br>修改Pipenv\Lib\site-packages\django\db\backends\mysql\base.py<br>注释下面内容<br>if version < (1, 3, 3):<br>    raise ImproperlyConfigured(“mysqlclient 1.3.3 or newer is required; you have %s” % Database.<strong>version</strong>)</p>
-<p>(在Centos中，pipenv install 所生成的包 会在pipenv shell 激活环境的时候出现)</p>
-<p>由于上面注释，还会出现的报错内容为<br>File “C:\Users\Administrator\PycharmProjects\untitled1\venv\lib\site-packages\django\db\backends\mysql\operations.py”, line 146, in last_executed_query<br>将operations.py中的decode改成encode</p>
-<h4 id="mysql不能插入中文"><a href="#mysql不能插入中文" class="headerlink" title="mysql不能插入中文"></a>mysql不能插入中文</h4><p>报错内容： django.db.utils.InternalError: (1366, “Incorrect string value: ‘\xE5\xAE\x9A\xE6\x97\xB6…’ for column ‘name’ at row 1”)<br>解决方法: <a href="https://blog.csdn.net/tzh476/article/details/52644271" target="_blank" rel="noopener">https://blog.csdn.net/tzh476/article/details/52644271</a><br>删除之前的库，创建一个新的数据库，使用utf8mb64   之前默认创建的都是latin1</p>
-<h4 id="mysql-长度的问题"><a href="#mysql-长度的问题" class="headerlink" title="mysql 长度的问题"></a>mysql 长度的问题</h4><p>django.db.utils.InternalError: (1071, ‘Specified key was too long; max key length is 767 bytes’)<br><a href="https://blog.csdn.net/ljfphp/article/details/80406907" target="_blank" rel="noopener">https://blog.csdn.net/ljfphp/article/details/80406907</a><br><a href="https://www.orcode.com/question/407126_k280b8.html" target="_blank" rel="noopener">https://www.orcode.com/question/407126_k280b8.html</a></p>
-<p>解决方法1: 升级Mysql5.6–>>Mysql5.7<br>centos7 下  对mysql的操作 <a href="https://blog.csdn.net/xufengzhu/article/details/81110982" target="_blank" rel="noopener">https://blog.csdn.net/xufengzhu/article/details/81110982</a><br><a href="https://blog.51cto.com/lisea/1941616" target="_blank" rel="noopener">https://blog.51cto.com/lisea/1941616</a></p>
-<p>解决方法2 : 先使用utf8格式</p>
-<p>—-> 介绍Mysql在Django中的引用<br>由于Django在初始化项目后，所使用的数据库是sqlite3,但为了扩展，我们这里计划使用Mysql,配置步骤如下</p>
-<h2 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h2><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-number">1.</span>在服务器上安装Mysql数据库(Centos版)</span><br><span class="line"></span><br><span class="line"><span class="hljs-number">2.</span>在django的setting.py中引用</span><br></pre></td></tr></tbody></table></figure>
-
-<hr>
-<h2 id="错误类型总结-1"><a href="#错误类型总结-1" class="headerlink" title="错误类型总结"></a>错误类型总结</h2><p>由于mysql与django在配置过程中会存在很多的错误，这里总结一下</p>
-<h4 id="Mysql在Centos中权限不足的错误-1"><a href="#Mysql在Centos中权限不足的错误-1" class="headerlink" title="Mysql在Centos中权限不足的错误"></a>Mysql在Centos中权限不足的错误</h4><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)</span><br></pre></td></tr></tbody></table></figure>
-<p>原因是/var/lib/mysql的访问权限不足</p>
-<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1.改变权限 chown -R mysql:mysql /var/lib/mysql   </span><br><span class="line">2. 启动服务器 /etc/init.d/mysql start (会自动生成mysql.sock文件)  </span><br><span class="line">3.重新启动mysql服务  /etc/init.d/mysql start</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="密码类型错误-1"><a href="#密码类型错误-1" class="headerlink" title="密码类型错误"></a>密码类型错误</h4><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1045, "Access denied for user 'root'@'122.224.83.xxx</span><br></pre></td></tr></tbody></table></figure>
-<p>原因 密码错误，注意密码不能是字符串</p>
-<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="django-setting-中的配置-1"><a href="#django-setting-中的配置-1" class="headerlink" title="django setting 中的配置"></a>django setting 中的配置</h4><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">DATABASES = {</span><br><span class="line">    'default': {</span><br><span class="line"></span><br><span class="line">        'ENGINE': 'django.db.backends.mysql',</span><br><span class="line">        'NAME': 'itemids',  # 数据库名字</span><br><span class="line">        'USER': 'root',    # 数据库登录名</span><br><span class="line">        'PASSWORD': '12345x', # 数据库密码</span><br><span class="line">        'HOST': '106.14.195.xxx', 数据库IP</span><br><span class="line">        'POST': 3306, # 端口</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="引用pymysql-1"><a href="#引用pymysql-1" class="headerlink" title="引用pymysql"></a>引用pymysql</h4><p>由于MySQLdb只能使用在Python2中，在python3中已经停止了维护，所以这里我们引用pymyql的库</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">pipenv install pymysql</span><br><span class="line"><span class="hljs-comment"># 在与setting.py同级别的__init__.py中使用</span></span><br><span class="line"><span class="hljs-keyword">import</span> pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="pymysql版本不符合-1"><a href="#pymysql版本不符合-1" class="headerlink" title="pymysql版本不符合"></a>pymysql版本不符合</h4><p>报错内容:django.core.exceptions.ImproperlyConfigured: mysqlclient 1.3.3 or newer is required; you have 0.7.11<br>修改Pipenv\Lib\site-packages\django\db\backends\mysql\base.py<br>注释下面内容<br>if version < (1, 3, 3):<br>    raise ImproperlyConfigured(“mysqlclient 1.3.3 or newer is required; you have %s” % Database.<strong>version</strong>)</p>
-<p>(在Centos中，pipenv install 所生成的包 会在pipenv shell 激活环境的时候出现)</p>
-<p>由于上面注释，还会出现的报错内容为<br>File “C:\Users\Administrator\PycharmProjects\untitled1\venv\lib\site-packages\django\db\backends\mysql\operations.py”, line 146, in last_executed_query<br>将operations.py中的decode改成encode</p>
-<h4 id="mysql不能插入中文-1"><a href="#mysql不能插入中文-1" class="headerlink" title="mysql不能插入中文"></a>mysql不能插入中文</h4><p>报错内容： django.db.utils.InternalError: (1366, “Incorrect string value: ‘\xE5\xAE\x9A\xE6\x97\xB6…’ for column ‘name’ at row 1”)<br>解决方法: <a href="https://blog.csdn.net/tzh476/article/details/52644271" target="_blank" rel="noopener">https://blog.csdn.net/tzh476/article/details/52644271</a><br>删除之前的库，创建一个新的数据库，使用utf8mb64   之前默认创建的都是latin1</p>
-<h4 id="mysql-长度的问题-1"><a href="#mysql-长度的问题-1" class="headerlink" title="mysql 长度的问题"></a>mysql 长度的问题</h4><p>django.db.utils.InternalError: (1071, ‘Specified key was too long; max key length is 767 bytes’)<br><a href="https://blog.csdn.net/ljfphp/article/details/80406907" target="_blank" rel="noopener">https://blog.csdn.net/ljfphp/article/details/80406907</a><br><a href="https://www.orcode.com/question/407126_k280b8.html" target="_blank" rel="noopener">https://www.orcode.com/question/407126_k280b8.html</a></p>
-<p>解决方法1: 升级Mysql5.6–>>Mysql5.7<br>centos7 下  对mysql的操作 <a href="https://blog.csdn.net/xufengzhu/article/details/81110982" target="_blank" rel="noopener">https://blog.csdn.net/xufengzhu/article/details/81110982</a><br><a href="https://blog.51cto.com/lisea/1941616" target="_blank" rel="noopener">https://blog.51cto.com/lisea/1941616</a></p>
-<p>解决方法2 : 先使用utf8格式</p>
-</body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -963,7 +876,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        87
+                        86
                     </p>
                 </a>
             </div>
@@ -973,7 +886,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        35
+                        25
                     </p>
                 </a>
             </div>
@@ -983,7 +896,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        11
                     </p>
                 </a>
             </div>
@@ -1057,33 +970,17 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/code-more/">
+        <a class="level is-marginless" href="/categories/code/">
             <span class="level-start">
-                <span class="level-item">code/more</span>
+                <span class="level-item">code</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">11</span>
             </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/code-more/vue/">
-            <span class="level-start">
-                <span class="level-item">vue</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li></ul></li><li>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/docker/">
             <span class="level-start">
                 <span class="level-item">docker</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/git/">
-            <span class="level-start">
-                <span class="level-item">git</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -1094,9 +991,25 @@
                 <span class="level-item">linux</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">30</span>
+                <span class="level-item tag">33</span>
             </span>
         </a><ul><li>
+        <a class="level is-marginless" href="/categories/linux/COMMAND/">
+            <span class="level-start">
+                <span class="level-item">COMMAND</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/Command/">
+            <span class="level-start">
+                <span class="level-item">Command</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/linux/ansible/">
             <span class="level-start">
                 <span class="level-item">ansible</span>
@@ -1113,28 +1026,12 @@
                 <span class="level-item tag">13</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/">
+        <a class="level is-marginless" href="/categories/linux/linux-network/">
             <span class="level-start">
-                <span class="level-item">linux网络管理</span>
+                <span class="level-item">linux-network</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-            <span class="level-start">
-                <span class="level-item">常用命令</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">
-            <span class="level-start">
-                <span class="level-item">故障问题</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/linux/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
@@ -1150,25 +1047,9 @@
                 <span class="level-item">脚本</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">
-            <span class="level-start">
-                <span class="level-item">负载均衡</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/nginx/">
-            <span class="level-start">
-                <span class="level-item">nginx</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/%E5%B7%A5%E5%85%B7/">
             <span class="level-start">
                 <span class="level-item">工具</span>
@@ -1198,36 +1079,12 @@
                 <span class="level-item">编程</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">30</span>
+                <span class="level-item tag">23</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">
             <span class="level-start">
                 <span class="level-item">C语言</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/Python/">
-            <span class="level-start">
-                <span class="level-item">Python</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/Rust/">
-            <span class="level-start">
-                <span class="level-item">Rust</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/SwaggerUi/">
-            <span class="level-start">
-                <span class="level-item">SwaggerUi</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -1247,30 +1104,6 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/mysql/">
-            <span class="level-start">
-                <span class="level-item">mysql</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vim/">
-            <span class="level-start">
-                <span class="level-item">vim</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vue/">
-            <span class="level-start">
-                <span class="level-item">vue</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">6</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/">
@@ -1362,7 +1195,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">37</span>
+                    <span class="level-item tag">36</span>
                 </span>
             </a>
         </li>
@@ -1526,7 +1359,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">37</span>
+                    <span class="level-item tag">36</span>
                 </span>
             </a>
         </li>

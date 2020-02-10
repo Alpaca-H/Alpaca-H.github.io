@@ -149,91 +149,6 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/79b81c10/"><i class="fas fa-angle-double-right"></i>Python常用方法1</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-27T09:36:31.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-27</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/Python/">Python</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    5 分钟 读完 (大约 787 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="python-常用方法"><a href="#python-常用方法" class="headerlink" title="python 常用方法"></a>python 常用方法</h1><h2 id="保留小数"><a href="#保留小数" class="headerlink" title="保留小数"></a>保留小数</h2><p>使用字符串格式化</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">a = <span class="hljs-number">11.234</span></span><br><span class="line">print(<span class="hljs-string">"%.2f"</span>%a)</span><br></pre></td></tr></tbody></table></figure>
-<p>使用round内置函数</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">a = <span class="hljs-number">11.234</span></span><br><span class="line">a = round(a,<span class="hljs-number">2</span>)</span><br><span class="line">print(a)</span><br></pre></td></tr></tbody></table></figure>
-<p>使用decimal模块</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> decimal <span class="hljs-keyword">import</span> Decimal</span><br><span class="line">a = <span class="hljs-number">12.345</span></span><br><span class="line">Decimal(a).quantize(Decimal(<span class="hljs-string">"0.00"</span>))</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="列表合并"><a href="#列表合并" class="headerlink" title="列表合并"></a>列表合并</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 使用+号操作</span></span><br><span class="line">list1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]</span><br><span class="line">list2 = [<span class="hljs-string">"z"</span>,<span class="hljs-string">"xx"</span>,] </span><br><span class="line">list3 = list1+list2</span><br><span class="line"><span class="hljs-comment"># 使用extend</span></span><br><span class="line">list4.extend(list1)</span><br><span class="line"><span class="hljs-comment"># 使用切片</span></span><br><span class="line">list4[len(<span class="hljs-number">11</span>):len(<span class="hljs-number">11</span>)] = list5</span><br></pre></td></tr></tbody></table></figure>
-
-
-<h2 id="os模块"><a href="#os模块" class="headerlink" title="os模块"></a>os模块</h2><h3 id="Python获取指定文件夹下的文件名"><a href="#Python获取指定文件夹下的文件名" class="headerlink" title="Python获取指定文件夹下的文件名"></a>Python获取指定文件夹下的文件名</h3><p><font color="red">模块os.walk可以遍历文件夹下的所有文件</font></p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">os.walk(top, topdown=Ture, οnerrοr=<span class="hljs-literal">None</span>, followlinks=<span class="hljs-literal">False</span>)</span><br><span class="line"><span class="hljs-comment"># return  (dirpath dirnames filenames)</span></span><br></pre></td></tr></tbody></table></figure>
-<ul>
-<li>dirpath: string 代表目录的路径</li>
-<li>dirnames list 包含了当前dirpath路径下所有的子目录名字（不包含目录路径）</li>
-<li>filenames：list，包含了当前dirpath路径下所有的非目录子文件的名字（不包含目录路径）。<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">file_name</span><span class="hljs-params">(file_dir)</span>:</span> </span><br><span class="line">    <span class="hljs-keyword">for</span> root, dirs, files <span class="hljs-keyword">in</span> os.walk(file_dir):</span><br><span class="line">        print(root) <span class="hljs-comment">#当前目录路径</span></span><br><span class="line">        print(dirs) <span class="hljs-comment">#当前路径下所有子目录</span></span><br><span class="line">        print(files) <span class="hljs-comment">#当前路径下所有非目录子文件</span></span><br><span class="line">        <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> files:</span><br><span class="line">            <span class="hljs-comment"># os.path.splitext # 对文件名进行切割成数组</span></span><br><span class="line">            <span class="hljs-keyword">if</span> os.path.splitext(file)[<span class="hljs-number">1</span>] == <span class="hljs-string">".jpeg"</span>:</span><br><span class="line">              print(file)</span><br><span class="line">            <span class="hljs-keyword">else</span>:</span><br><span class="line">              <span class="hljs-keyword">pass</span></span><br></pre></td></tr></tbody></table></figure>
-
-</li>
-</ul>
-<p><font color="red">模块os.listdir()可以得到当前路径下的文件名，不包括子目录中的文件</font></p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"><span class="hljs-comment"># 遍历获取所有文件</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">listdir</span><span class="hljs-params">(path, list_name)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> os.listdir(path):</span><br><span class="line">        file_path = os.path.join(path, file)</span><br><span class="line">        <span class="hljs-comment"># os.path.isdir(file) #判断文件是否为文件夹</span></span><br><span class="line">        <span class="hljs-keyword">if</span> os.path.isdir(file_path):</span><br><span class="line">            listdir(file_path, list_name)</span><br><span class="line">        <span class="hljs-keyword">elif</span> os.path.splitext(file_path)[<span class="hljs-number">1</span>]==<span class="hljs-string">'.jpeg'</span>:</span><br><span class="line">            list_name.append(file_path)</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="判断文件类型"><a href="#判断文件类型" class="headerlink" title="判断文件类型"></a>判断文件类型</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">os.path.isdir(path) <span class="hljs-comment"># 是否为文件夹</span></span><br><span class="line">os.path.isfile(path) <span class="hljs-comment"># 是否为文件</span></span><br></pre></td></tr></tbody></table></figure>
-
-
-<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>mode选项<br>r 读模式，只能读 文件不存在报错，<br>w 写模式，只能写 文件不存在则创建，<br>以上存在存在则清空在打开</p>
-<p>rb 二进制读模式 只能读  文件不存在报错<br>wb 二进制写模式 只能写  文件不存在则创建，<br>以上存在则清空再打开<br>有二进制内容 写入则需要encode(“utf-8”)</p>
-<p>rb+ 二进制读模式 可读可写 文件不存在报错<br>wb+ 二进制写模式 可读可写 文件不存在则创建，<br>以上存在则清空再打开</p>
-<p>a 追加写模式，文件存在则追加写入<br>a+ 追加读写方式<br>以上存在则追加写入</p>
-<p>默认进入为文件末尾<br>f.seek(0) 设置读写位置为开头<br>f.truncate(0) 将文章字节阶段为0</p>
-<h3 id="文件头部写如文件"><a href="#文件头部写如文件" class="headerlink" title="文件头部写如文件"></a>文件头部写如文件</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">with open(path, <span class="hljs-string">"r+"</span>) as f:</span><br><span class="line">     old = f.read()</span><br><span class="line">     f.seek(0)</span><br><span class="line">     f.write(data)</span><br><span class="line">     f.write(old)</span><br></pre></td></tr></tbody></table></figure>
-<p>或者</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">with open(path,<span class="hljs-string">"a"</span>) as f:</span><br><span class="line">      f.seek(0)</span><br><span class="line">      old = f.read()</span><br><span class="line">      <span class="hljs-comment"># 全部删除</span></span><br><span class="line">      f.truncate(0)</span><br><span class="line">      f.write(<span class="hljs-string">"---"</span>)</span><br><span class="line">      f.write(<span class="hljs-string">"tags: xxx"</span>)</span><br><span class="line">      f.write(<span class="hljs-string">"---"</span>)</span><br><span class="line">      f.close()</span><br></pre></td></tr></tbody></table></figure>
-
-
-<h2 id="Python-math库"><a href="#Python-math库" class="headerlink" title="Python-math库"></a>Python-math库</h2><p>向上取整 math.ceil<br>向下取整 math.floor<br>四舍五入 round</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">import math</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#向上取整</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil---"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil(2.3) => "</span>, math.ceil(2.3)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil(2.6) => "</span>, math.ceil(2.6)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">#向下取整</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"\nmath.floor---"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.floor(2.3) => "</span>, math.floor(2.3)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.floor(2.6) => "</span>, math.floor(2.6)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">#四舍五入</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"\nround---"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"round(2.3) => "</span>, round(2.3)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"round(2.6) => "</span>, round(2.6)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">#这三个的返回结果都是浮点型</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"\n\nNOTE:every result is type of float"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil(2) => "</span>, math.ceil(2)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.floor(2) => "</span>, math.floor(2)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"round(2) => "</span>, round(2)</span><br></pre></td></tr></tbody></table></figure></body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
                 <a class="has-link-black-ter" href="/posts/1d0174bc/"><i class="fas fa-angle-double-right"></i>Python报错总结</a>
             
         </h1>
@@ -245,7 +160,7 @@
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/Python/">Python</a>
+                <a class="has-link-grey -link" href="/categories/code/">code</a>
                 </div>
                 
                 
@@ -253,7 +168,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    几秒 读完 (大约 60 个字)
+                    几秒 读完 (大约 65 个字)
                 </span>
                 
                 
@@ -261,13 +176,27 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="Python报错总结"><a href="#Python报错总结" class="headerlink" title="Python报错总结"></a>Python报错总结</h1><h2 id="Non-ASCII"><a href="#Non-ASCII" class="headerlink" title="Non-ASCII"></a>Non-ASCII</h2><p>python出现SyntaxError: Non-ASCII character ‘\xe6’ in file 打印日期.py on line 1, but no encoding declared;</p>
-<p><font color="red">解决方法</font><br>在文件头部添加如下两行注释码：</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/python</span></span><br><span class="line"><span class="hljs-comment"># -*- coding: <encoding name> -*- 例如，可添加# -*- coding: utf-8 -*-</span></span><br></pre></td></tr></tbody></table></figure>
-</body></html>
+            <html><head></head><body><p>learn python 🐍</p></body></html>
         </div>
         
         
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/code/" rel="tag">code</a>,&nbsp;<a class="has-link-grey -link" href="/tags/python/" rel="tag">python</a>
+                </div>
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/1d0174bc/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -354,7 +283,7 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/93aa081f/"><i class="fas fa-angle-double-right"></i>rust猜谜游戏</a>
+                <a class="has-link-black-ter" href="/posts/4fbe8671/"><i class="fas fa-angle-double-right"></i>Rust基础</a>
             
         </h1>
         
@@ -365,7 +294,7 @@
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/Rust/">Rust</a>
+                <a class="has-link-grey -link" href="/categories/code/">code</a>
                 </div>
                 
                 
@@ -373,7 +302,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    7 分钟 读完 (大约 1052 个字)
+                    3 分钟 读完 (大约 464 个字)
                 </span>
                 
                 
@@ -381,55 +310,27 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="rust猜谜游戏"><a href="#rust猜谜游戏" class="headerlink" title="rust猜谜游戏"></a>rust猜谜游戏</h1><p>走完了hello world的流程之后，来做一个猜数字的游戏</p>
-<h2 id="rust项目结构"><a href="#rust项目结构" class="headerlink" title="rust项目结构"></a>rust项目结构</h2><p>生成一个基本项目</p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line">cargo new guessing_name</span><br><span class="line">tree .</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line">➜  guessing_game git:(master) ✗ tree .</span><br><span class="line">.</span><br><span class="line">├── Cargo.toml</span><br><span class="line">└── src</span><br><span class="line">    └── main.rs</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="Cargo-toml文件"><a href="#Cargo-toml文件" class="headerlink" title="Cargo.toml文件"></a>Cargo.toml文件</h3><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line">➜  guessing_game git:(master) ✗ cat Cargo.toml</span><br><span class="line">[package]</span><br><span class="line">name = <span class="hljs-string">"guessing_game"</span></span><br><span class="line">version = <span class="hljs-string">"0.1.0"</span></span><br><span class="line">authors = [<span class="hljs-string">"alpaca <1097690268@qq.com>"</span>]</span><br><span class="line">edition = <span class="hljs-string">"2018"</span></span><br><span class="line"></span><br><span class="line"># See more keys and their definitions at https:<span class="hljs-comment">//doc.rust-lang.org/cargo/reference/manifest.html</span></span><br></pre></td></tr></tbody></table></figure>
-<p>这个里面存储了该项目的信息,</p>
-<ul>
-<li>name表示项目名字</li>
-<li>version 表示cargo 版本</li>
-<li>authors 表示作者信息</li>
-<li>edition 表示年份</li>
-</ul>
-<h3 id="main-rs文件"><a href="#main-rs文件" class="headerlink" title="main.rs文件"></a>main.rs文件</h3><p>这个文件就是你写的程序</p>
-<h3 id="运行该程序"><a href="#运行该程序" class="headerlink" title="运行该程序"></a>运行该程序</h3><p>运行该程序有两种方法  一种是先编译后执行</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">rustc src/main.rs</span><br></pre></td></tr></tbody></table></figure>
-<p>另外一种是直接用cargo运行</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">cargo run</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line">➜  guseeing_game git:(master) ✗ tree .</span><br><span class="line">.</span><br><span class="line">├── Cargo.lock</span><br><span class="line">├── Cargo.toml</span><br><span class="line">├── src</span><br><span class="line">│   └── main.rs</span><br><span class="line">└── target</span><br><span class="line">    └── debug</span><br><span class="line">        ├── build</span><br><span class="line">        ├── deps</span><br><span class="line">        │   ├── guseeing_game-<span class="hljs-number">0</span>ed5a31a6f15733b</span><br><span class="line">        │   ├── guseeing_game-<span class="hljs-number">0</span>ed5a31a6f15733b.d</span><br><span class="line">        │   └── guseeing_game-<span class="hljs-number">0</span>ed5a31a6f15733b.dSYM</span><br><span class="line">        │       └── Contents</span><br><span class="line">        │           ├── Info.plist</span><br><span class="line">        │           └── Resources</span><br><span class="line">        │               └── DWARF</span><br><span class="line">        │                   └── guseeing_game-<span class="hljs-number">0</span>ed5a31a6f15733b</span><br><span class="line">        ├── examples</span><br><span class="line">        ├── guseeing_game</span><br><span class="line">        ├── guseeing_game.d</span><br><span class="line">        ├── guseeing_game.dSYM -> deps/guseeing_game-<span class="hljs-number">0</span>ed5a31a6f15733b.dSYM</span><br><span class="line">        └── incremental</span><br><span class="line">            └── guseeing_game-<span class="hljs-number">1</span>u6x8rdyd2mj5</span><br><span class="line">                ├── s-fiv8l6i4ic-<span class="hljs-number">1486</span>aks-<span class="hljs-number">139</span>msrfhaunjd</span><br><span class="line">                │   ├── <span class="hljs-number">1651</span>w9kfz3huxj9a.o</span><br><span class="line">                │   ├── <span class="hljs-number">24</span>om6g1u5n10ayrw.o</span><br><span class="line">                │   ├── <span class="hljs-number">2</span>hv2ystwqwaqr9uj.o</span><br><span class="line">                │   ├── <span class="hljs-number">3701</span>sophdbnzpjeb.o</span><br><span class="line">                │   ├── <span class="hljs-number">407</span>p5s5dk77zb92h.o</span><br><span class="line">                │   ├── <span class="hljs-number">4</span>eavspy520jyuwpr.o</span><br><span class="line">                │   ├── dep-graph.bin</span><br><span class="line">                │   ├── query-cache.bin</span><br><span class="line">                │   └── work-products.bin</span><br><span class="line">                └── s-fiv8l6i4ic-<span class="hljs-number">1486</span>aks.lock</span><br></pre></td></tr></tbody></table></figure>
-
-<p><font color="red">你会发现这两种运行的结果所创建的文件结构是不同的</font></p>
-<h2 id="获取屏幕内容并输出"><a href="#获取屏幕内容并输出" class="headerlink" title="获取屏幕内容并输出"></a>获取屏幕内容并输出</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">use std::io;</span><br><span class="line"></span><br><span class="line">fn <span class="hljs-function"><span class="hljs-title">main</span></span>() {</span><br><span class="line">    println!(<span class="hljs-string">"Guess the number!"</span>);</span><br><span class="line"></span><br><span class="line">    println!(<span class="hljs-string">"Please input your guess."</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">let</span> mut guess = String::new();</span><br><span class="line"></span><br><span class="line">    io::stdin().read_line(&mut guess)</span><br><span class="line">        .expect(<span class="hljs-string">"Failed to read line"</span>);</span><br><span class="line"></span><br><span class="line">    println!(<span class="hljs-string">"You guessed: {}"</span>, guess);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-
-<h3 id="包含语句和表达式的函数体"><a href="#包含语句和表达式的函数体" class="headerlink" title="包含语句和表达式的函数体"></a>包含语句和表达式的函数体</h3><p> 函数体有一系列的语句和一个可选的结尾的表达式构成<br> rust是基于表达式的语言<br> 用分号区分语句和表达式<br> <font color="red">语句是执行一些操作但不返回值的指令</font><br> <font color="red">表达式计算并产生一个值返回</font></p>
-<p> 用let关键字创建变量并绑定一个值是一个语句 比如let y = 6;<br> 于是当我们使用如下<br> </p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">fn <span class="hljs-function"><span class="hljs-title">main</span></span>(){</span><br><span class="line">    <span class="hljs-built_in">let</span> x = (<span class="hljs-built_in">let</span> y =6);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><br> let y = 6 是一个语句并不会返回一个值来使得x绑定，所以会报错 <p></p>
-<p> let y = 6; 是一个表达式 ，返回6 函数调用是一个表达式<br> {} 是一个表达式</p>
-<h3 id="具有返回值的函数"><a href="#具有返回值的函数" class="headerlink" title="具有返回值的函数"></a>具有返回值的函数</h3><p> 函数可以向调用它的代码返回值。我们并不对返回值命名，但要在箭头（->）后声明它的类型<br> 函数的返回值等同于函数体最后一个表达式的值<br> 使用 return 关键字和指定值，可从函数中提前返回；但大部分函数隐式的返回最后的表达式。这是一个有返回值的函数的例子：<br> </p><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">five</span></span>() -> <span class="hljs-built_in">i32</span>{</span><br><span class="line">     <span class="hljs-number">5</span></span><br><span class="line"> } </span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>(){</span><br><span class="line">    <span class="hljs-keyword">let</span> x = five();</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"the value of x is {} "</span>,x )</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><br> 以上代码等同于，  {}是表达式 返回5给five()函数， let x = five();是语句，不返回值，于是let x = 5;<br> <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">fn <span class="hljs-function"><span class="hljs-title">main</span></span>(){</span><br><span class="line">    <span class="hljs-built_in">let</span> x =5 ;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
-<hr>
- <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">fn plus_one (x: i32) -> i32{</span><br><span class="line">    x + 1</span><br><span class="line">} </span><br><span class="line"></span><br><span class="line">fn <span class="hljs-function"><span class="hljs-title">main</span></span>(){</span><br><span class="line">    <span class="hljs-built_in">let</span> x = plus_one(5)</span><br><span class="line">    println!(<span class="hljs-string">"the value of x is :{}"</span>,x);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p> rust中是用// 进行注释</p>
-<h2 id="控制-逻辑操作"><a href="#控制-逻辑操作" class="headerlink" title="控制  逻辑操作"></a>控制  逻辑操作</h2><p><font color="red">if语句</font> </p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> number = <span class="hljs-number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> number < <span class="hljs-number">5</span> {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"condition was true"</span>);</span><br><span class="line">    } <span class="hljs-keyword">else</span> {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"condition was false"</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> number!=<span class="hljs-number">0</span>{</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"nuf mber was something other than zero"</span>)</span><br><span class="line">    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> number != <span class="hljs-number">2</span>{</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"the number was something other than two"</span>)</span><br><span class="line">    } <span class="hljs-keyword">else</span> {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"the number go"</span>)</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-
-<h3 id="在let中使用if"><a href="#在let中使用if" class="headerlink" title="在let中使用if"></a>在let中使用if</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">fn <span class="hljs-function"><span class="hljs-title">main</span></span>(){</span><br><span class="line">    <span class="hljs-built_in">let</span> </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p><font color="red">loop语句</font></p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">loop</span> {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"again!"</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> counter = <span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> result = <span class="hljs-keyword">loop</span> {</span><br><span class="line">        counter += <span class="hljs-number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> counter == <span class="hljs-number">10</span> {</span><br><span class="line">            <span class="hljs-keyword">break</span> counter * <span class="hljs-number">2</span>;</span><br><span class="line">        }</span><br><span class="line">    };</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"The result is {}"</span>, result);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p><font color="red">while条件循环</font></p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> number = <span class="hljs-number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span> number != <span class="hljs-number">0</span> {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}!"</span>, number);</span><br><span class="line"></span><br><span class="line">        number = number - <span class="hljs-number">1</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"LIFTOFF!!!"</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p><font color="red">for 遍历循环</font></p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> a = [<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>, <span class="hljs-number">50</span>];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> element <span class="hljs-keyword">in</span> a.iter() {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"the value is: {}"</span>, element);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-comment">// .rev()反转 1..4 4取不到</span></span><br><span class="line">    <span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> (<span class="hljs-number">1</span>..<span class="hljs-number">4</span>).rev() {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}!"</span>, number);</span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"LIFTOFF!!!"</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></body></html>
+            <html><head></head><body><p>learn Rust  🦀️</p></body></html>
         </div>
         
         
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/code/" rel="tag">code</a>,&nbsp;<a class="has-link-grey -link" href="/tags/rust/" rel="tag">rust</a>
+                </div>
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/4fbe8671/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -448,7 +349,7 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/4fbe8671/"><i class="fas fa-angle-double-right"></i>Rust基础</a>
+                <a class="has-link-black-ter" href="/posts/93aa081f/"><i class="fas fa-angle-double-right"></i>rust猜谜游戏</a>
             
         </h1>
         
@@ -459,7 +360,7 @@
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/Rust/">Rust</a>
+                <a class="has-link-grey -link" href="/categories/code/">code</a>
                 </div>
                 
                 
@@ -467,7 +368,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    3 分钟 读完 (大约 458 个字)
+                    7 分钟 读完 (大约 1058 个字)
                 </span>
                 
                 
@@ -475,38 +376,93 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h1><p>url <a href="https://www.rust-lang.org/zh-CN/tools/install" target="_blank" rel="noopener">https://www.rust-lang.org/zh-CN/tools/install</a></p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">curl --proto <span class="hljs-string">'=https'</span> --tlsv1.2 -sSf https://sh.rustup.rs | sh</span><br></pre></td></tr></tbody></table></figure>
-<p>while you input enter ，will install rust default</p>
-<p>上面这条命令会安装一些内容，比如  cargo  rustup<br>如果你想要使用他们，需要将他们添加到环境变量中</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 方法1</span></span><br><span class="line"><span class="hljs-built_in">source</span> <span class="hljs-variable">$HOME</span>/.cargo/env</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 方法2</span></span><br><span class="line"><span class="hljs-built_in">export</span>  PATH=<span class="hljs-string">"<span class="hljs-variable">$HOME</span>/.cargo/bin:<span class="hljs-variable">$PATH</span>"</span> </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 其实env里面写的就是方法2</span></span><br><span class="line"><span class="hljs-comment"># 查看是否安装完成</span></span><br><span class="line">rustc --version</span><br><span class="line">rustc 1.39.0 (4560ea788 2019-11-04)</span><br></pre></td></tr></tbody></table></figure>
-
-
-<h1 id="update"><a href="#update" class="headerlink" title="update"></a>update</h1><p>更新版本, rustup用来管理rust的版本,rust每6个礼拜会进行一次版本迭代，使用rustup update更新版本</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">rustup update</span><br></pre></td></tr></tbody></table></figure>
-
-<h1 id="cargo工具"><a href="#cargo工具" class="headerlink" title="cargo工具"></a>cargo工具</h1><p>Cargo：Rust 的构建工具和包管理器</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">cargo build <span class="hljs-comment">#构建项目</span></span><br><span class="line">cargo run <span class="hljs-comment"># 构建并运行项目</span></span><br><span class="line">cargo <span class="hljs-built_in">test</span> <span class="hljs-comment"># 测试项目</span></span><br><span class="line">cargo doc <span class="hljs-comment"># 为项目构建文档</span></span><br><span class="line">cargo publish <span class="hljs-comment"># 将库发布到cartes.io </span></span><br><span class="line">cargo new xxproject <span class="hljs-comment"># 创建xxproject项目</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># cargo  开发者社区</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="cargo-使用"><a href="#cargo-使用" class="headerlink" title="cargo 使用"></a>cargo 使用</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">cargo new helloworld <span class="hljs-comment"># 创建一个项目helloworld </span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 生成如下文件</span></span><br><span class="line">[root@dev rustttt]<span class="hljs-comment">#  tree .</span></span><br><span class="line">.</span><br><span class="line">└── helloworld</span><br><span class="line">    ├── Cargo.toml</span><br><span class="line">    └── src</span><br><span class="line">        └── main.rs</span><br></pre></td></tr></tbody></table></figure>
-<ul>
-<li>Cargo.toml中包含了编译你项目时所需要的内容清单</li>
-<li>src/main.rs 中包含了主程序</li>
-</ul>
-<p>使用cargo build 构建项目,编译完成之后，会在生成一个编译后的可执行文件，执行他们</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@dev helloworld]<span class="hljs-comment"># ./target/debug/helloworld</span></span><br><span class="line">Hello, world!</span><br></pre></td></tr></tbody></table></figure>
-
-<p>使用cargo run 构建项目并运行。</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@dev helloworld]<span class="hljs-comment"># cargo run</span></span><br><span class="line">   Compiling helloworld v0.1.0 (/root/rustttt/helloworld)</span><br><span class="line">    Finished dev [unoptimized + debuginfo] target(s) <span class="hljs-keyword">in</span> 0.51s</span><br><span class="line">     Running `target/debug/helloworld`</span><br><span class="line">Hello, world!</span><br></pre></td></tr></tbody></table></figure>
-
-<p><font color="red">具体是使用文档</font><br><font color="red"><a href="https://doc.rust-lang.org/cargo/guide/index.html" target="_blank" rel="noopener">https://doc.rust-lang.org/cargo/guide/index.html</a></font></p>
-<h2 id="编译rust文件-rustc"><a href="#编译rust文件-rustc" class="headerlink" title="编译rust文件  rustc"></a>编译rust文件  rustc</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 使用cargo build创建helloworld目录</span></span><br><span class="line">cargo build helloworld</span><br><span class="line"><span class="hljs-built_in">cd</span> helloworld/src/</span><br><span class="line"><span class="hljs-comment"># 编译文件</span></span><br><span class="line">rustc main.rs </span><br><span class="line">./main</span><br><span class="line"><span class="hljs-comment"># 输出内容</span></span><br><span class="line">hello wolrd</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><p>不下载环境，直接测试代码<br><a href="https://play.rust-lang.org" target="_blank" rel="noopener">https://play.rust-lang.org</a><br>Rust官方文档<br><a href="https://www.rust-lang.org/zh-CN/tools/install" target="_blank" rel="noopener">https://www.rust-lang.org/zh-CN/tools/install</a></p>
-</body></html>
+            <html><head></head><body><p>learn Rust  🦀️</p></body></html>
         </div>
         
         
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/code/" rel="tag">code</a>,&nbsp;<a class="has-link-grey -link" href="/tags/rust/" rel="tag">rust</a>
+                </div>
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/93aa081f/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/bb04cef6/"><i class="fas fa-angle-double-right"></i>rust基础2</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-26T04:27:09.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-26</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/code/">code</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    6 分钟 读完 (大约 862 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>learn Rust  🦀️</p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/code/" rel="tag">code</a>,&nbsp;<a class="has-link-grey -link" href="/tags/rust/" rel="tag">rust</a>
+                </div>
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/bb04cef6/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -575,7 +531,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        87
+                        86
                     </p>
                 </a>
             </div>
@@ -585,7 +541,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        35
+                        25
                     </p>
                 </a>
             </div>
@@ -595,7 +551,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        11
                     </p>
                 </a>
             </div>
@@ -669,33 +625,17 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/code-more/">
+        <a class="level is-marginless" href="/categories/code/">
             <span class="level-start">
-                <span class="level-item">code/more</span>
+                <span class="level-item">code</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">11</span>
             </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/code-more/vue/">
-            <span class="level-start">
-                <span class="level-item">vue</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li></ul></li><li>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/docker/">
             <span class="level-start">
                 <span class="level-item">docker</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/git/">
-            <span class="level-start">
-                <span class="level-item">git</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -706,9 +646,25 @@
                 <span class="level-item">linux</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">30</span>
+                <span class="level-item tag">33</span>
             </span>
         </a><ul><li>
+        <a class="level is-marginless" href="/categories/linux/COMMAND/">
+            <span class="level-start">
+                <span class="level-item">COMMAND</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/Command/">
+            <span class="level-start">
+                <span class="level-item">Command</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/linux/ansible/">
             <span class="level-start">
                 <span class="level-item">ansible</span>
@@ -725,28 +681,12 @@
                 <span class="level-item tag">13</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/">
+        <a class="level is-marginless" href="/categories/linux/linux-network/">
             <span class="level-start">
-                <span class="level-item">linux网络管理</span>
+                <span class="level-item">linux-network</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-            <span class="level-start">
-                <span class="level-item">常用命令</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">
-            <span class="level-start">
-                <span class="level-item">故障问题</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/linux/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
@@ -762,25 +702,9 @@
                 <span class="level-item">脚本</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">
-            <span class="level-start">
-                <span class="level-item">负载均衡</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/nginx/">
-            <span class="level-start">
-                <span class="level-item">nginx</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/%E5%B7%A5%E5%85%B7/">
             <span class="level-start">
                 <span class="level-item">工具</span>
@@ -810,36 +734,12 @@
                 <span class="level-item">编程</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">30</span>
+                <span class="level-item tag">23</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">
             <span class="level-start">
                 <span class="level-item">C语言</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/Python/">
-            <span class="level-start">
-                <span class="level-item">Python</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/Rust/">
-            <span class="level-start">
-                <span class="level-item">Rust</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/SwaggerUi/">
-            <span class="level-start">
-                <span class="level-item">SwaggerUi</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -859,30 +759,6 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/mysql/">
-            <span class="level-start">
-                <span class="level-item">mysql</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vim/">
-            <span class="level-start">
-                <span class="level-item">vim</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vue/">
-            <span class="level-start">
-                <span class="level-item">vue</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">6</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/">
@@ -974,7 +850,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">37</span>
+                    <span class="level-item tag">36</span>
                 </span>
             </a>
         </li>
@@ -1138,7 +1014,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">37</span>
+                    <span class="level-item tag">36</span>
                 </span>
             </a>
         </li>
