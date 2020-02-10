@@ -175,7 +175,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    4 分钟 读完 (大约 628 个字)
+                    5 分钟 读完 (大约 731 个字)
                 </span>
                 
                 
@@ -197,7 +197,7 @@
 <li>对数据卷的更新，不会影响镜像</li>
 <li>卷会一直存在 直到没有容器使用</li>
 </ul>
-<h3 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 创建数据卷连接</span></span><br><span class="line">docker run -it -v /宿主机绝对目录:/容器内目录  镜像名</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 运行时，挂载卷</span></span><br><span class="line"><span class="hljs-comment"># 无论哪一方修改文件，数据卷都会同步到另一端</span></span><br><span class="line">docker run -it -d -v /tmp/data/:/tmp/ --name test1 --privileged=<span class="hljs-literal">true</span>  centos</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 定义权限</span></span><br><span class="line">doker run -it -v /宿主机绝对目录:/容器内目录:权限 镜像名</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 只读 ro - read-only</span></span><br><span class="line">docker run -it -d -v /tmp/data/:/tmp/:ro --name test1 --privileged=<span class="hljs-literal">true</span>  centos</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看数据卷</span></span><br><span class="line">root:~<span class="hljs-comment"># docker volume ls</span></span><br><span class="line">DRIVER              VOLUME NAME</span><br><span class="line"><span class="hljs-built_in">local</span>               1c4c829dcedf5c071d6a14dea5cf9a40e5459a6d81d2a009ecef6c392156121c</span><br><span class="line"><span class="hljs-built_in">local</span>               2a8601766a8ec82c39132bc64c2c99546053cb4104bd94507f215b888e60464d</span><br><span class="line"><span class="hljs-built_in">local</span>               3fad677be0bbe16df041895a36b7ce088a57f6c75fcab163664522ddc405100d</span><br><span class="line"><span class="hljs-built_in">local</span>               3ff453f8da89ad256ee7971df11bc3297443b894584cec147c8637ce838a274b</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查看volumes详细信息</span></span><br><span class="line">docker volume inspect 1c4c829dcedf5c071d6a14dea5cf9a40e5459a6d81d2a009ecef6c392156121c</span><br><span class="line"><span class="hljs-comment"># 创建数据卷连接</span></span><br><span class="line">docker run -it -v /宿主机绝对目录:/容器内目录  镜像名</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 运行时，挂载卷</span></span><br><span class="line"><span class="hljs-comment"># 无论哪一方修改文件，数据卷都会同步到另一端</span></span><br><span class="line"><span class="hljs-comment"># --privileged 关闭selinux</span></span><br><span class="line">docker run -it -d -v /tmp/data/:/tmp/ --name test1 --privileged=<span class="hljs-literal">true</span>  centos</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 定义权限</span></span><br><span class="line">doker run -it -v /宿主机绝对目录:/容器内目录:权限 镜像名</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 只读 ro - read-only</span></span><br><span class="line">docker run -it -d -v /tmp/data/:/tmp/:ro --name test1 --privileged=<span class="hljs-literal">true</span>  centos</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="查看是否挂载成功"><a href="#查看是否挂载成功" class="headerlink" title="查看是否挂载成功"></a>查看是否挂载成功</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker inspect test1</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="http://img.noback.top/2020-02-05-13-13-45.png" alt="2020-02-05-13-13-45"></p>
@@ -318,7 +318,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        79
+                        87
                     </p>
                 </a>
             </div>
@@ -328,7 +328,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        34
+                        35
                     </p>
                 </a>
             </div>

@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>docker-swarm-wordpress - Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="learn docker 🐳🐳">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker-swarm-wordpress">
+<meta property="og:url" content="http://blog.noback.top/posts/1976fb59/index.html">
+<meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
+<meta property="og:description" content="learn docker 🐳🐳">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
+<meta property="article:published_time" content="2020-02-09T09:35:49.000Z">
+<meta property="article:modified_time" content="2020-02-09T09:35:49.000Z">
+<meta property="article:author" content="何泽君">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://image.noback.top/datadog.svg" alt="docker-swarm-wordpress" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/about-me/">about-me</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>docker-swarm-wordpress
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-09T09:35:49.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-09</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    5 分钟 读完 (大约 807 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>learn docker 🐳🐳</p>
+<a id="more"></a>
+
+
+<h1 id="docker-swarm-wordpress"><a href="#docker-swarm-wordpress" class="headerlink" title="docker-swarm-wordpress"></a>docker-swarm-wordpress</h1><p>通过docker + swarm + wordpress 建立集群</p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><p>在不指定同网络组的情况下，docker默认将所有的ip都归类到名字叫做docker0的bridge组里面，但是这样在跨机器的容器中，构建会十分麻烦，无法通过容器名来进行ip通信<br>因此，在创建的过程中需要指定网络组</p>
+<ol>
+<li>创建一个overlay的网络<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker network create -d overlay demo</span><br><span class="line"><span class="hljs-comment"># 查看是否创建成功 </span></span><br><span class="line">[root@manager55 ~]<span class="hljs-comment"># docker network ls</span></span><br><span class="line">NETWORK ID          NAME                DRIVER              SCOPE</span><br><span class="line">ee5b54750620        bridge              bridge              <span class="hljs-built_in">local</span></span><br><span class="line">mxmjjml84ldx        demo                overlay             swarm</span><br><span class="line">6ad358de8e6b        docker_gwbridge     bridge              <span class="hljs-built_in">local</span></span><br><span class="line">f127d4764edd        host                host                <span class="hljs-built_in">local</span></span><br><span class="line">ihvz4z5lfwis        ingress             overlay             swarm   <----这里</span><br><span class="line">83efd9726723        none                null                <span class="hljs-built_in">local</span></span><br></pre></td></tr></tbody></table></figure>
+一个manager 两台work都有了这个网络</li>
+<li>创建服务<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># mysql</span></span><br><span class="line">docker service create --name mysql --env MYSQL_ROOT_PASSWORD=root --env MYSQL_DATABASE=wordpress --network demo --mount <span class="hljs-built_in">type</span>=volume,<span class="hljs-built_in">source</span>=mysql-data,destination=/var/lib/mysql mysql:5.7 </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># wordpress</span></span><br><span class="line">docker service create --name wordpress -p 80:80 --env WORDPRESS_DB_PASSWORD=root --env WORDPRESS_DB_HOST=mysql --network demo wordpress</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="集群服务间通信"><a href="#集群服务间通信" class="headerlink" title="集群服务间通信"></a>集群服务间通信</h2>在一个service ,加入到overlay网络的机器都会添加一条DNS,docker基于DNS服务发现记录主机名与ip的对应关系<br>但由于docker swarm的横向扩展性，机器的ip随时都会改变，因此记录的并不是容器所在机器的ip，而是一个vip  virtual ip </li>
+</ol>
+<ol>
+<li><p>创建一个overlay的网络</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker network create -d overylay demo</span><br></pre></td></tr></tbody></table></figure></li>
+<li><p>创建一个web服务,并加入demo这个网络</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker service create --name whoami -p 8000:8000 --network demo -d jwilder/whoami</span><br></pre></td></tr></tbody></table></figure></li>
+<li><p>查看所建立的service</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@manager55 ~]<span class="hljs-comment"># docker service ls</span></span><br><span class="line">ID                  NAME                MODE                REPLICAS            IMAGE                   PORTS</span><br><span class="line">nnw1gekvbv0t        client              replicated          1/1                 busybox:latest</span><br><span class="line">3s9kfmq0eo8c        whoami              replicated          1/1                 jwilder/whoami:latest   *:8000->8000/tcp</span><br><span class="line">[root@manager55 ~]<span class="hljs-comment"># docker service ps client</span></span><br><span class="line">ID                  NAME                IMAGE               NODE                DESIRED STATE       CURRENT STATE            ERROR               PORTS</span><br><span class="line">t7xe5omklz28        client.1            busybox:latest      work196             Running             Running 15 minutes ago</span><br></pre></td></tr></tbody></table></figure>
+<p>可以发现busybox的容器是运行在work196上面的，这个时候我们去busybox ping whoami这个容器名，</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@work196 ~]<span class="hljs-comment"># docker exec bd2b98fdc7f9 ping whoami</span></span><br><span class="line">PING whoami (10.0.2.2): 56 data bytes</span><br><span class="line">64 bytes from 10.0.2.2: seq=0 ttl=64 time=0.077 ms</span><br><span class="line">64 bytes from 10.0.2.2: seq=1 ttl=64 time=0.194 ms</span><br><span class="line">64 bytes from 10.0.2.2: seq=2 ttl=64 time=0.193 ms </span><br><span class="line"><span class="hljs-comment"># 查看whoami容器的ip</span></span><br><span class="line">[root@manager55 ~]<span class="hljs-comment"># docker ecec dfcd2f4c0396 ip a</span></span><br><span class="line">docker: <span class="hljs-string">'ecec'</span> is not a docker <span class="hljs-built_in">command</span>.</span><br><span class="line">See <span class="hljs-string">'docker --help'</span></span><br><span class="line">[root@manager55 ~]<span class="hljs-comment"># docker exec  dfcd2f4c0396 ip a</span></span><br><span class="line">1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">31: eth1@if32: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1450 qdisc noqueue state UP</span><br><span class="line">    link/ether 02:42:0a:00:00:08 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 10.0.0.8/24 brd 10.0.0.255 scope global eth1</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">33: eth2@if34: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1500 qdisc noqueue state UP</span><br><span class="line">    link/ether 02:42:ac:12:00:03 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.18.0.3/16 brd 172.18.255.255 scope global eth2</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">35: eth0@if36: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1450 qdisc noqueue state UP</span><br><span class="line">    link/ether 02:42:0a:00:02:03 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 10.0.2.3/24 brd 10.0.2.255 scope global eth0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></tbody></table></figure>
+<p>在ping whoami容器时候，并没有其ping他的任何一个ip说明在这之上又做了一层vip，用来统一管理所有容器名为whoami的机器</p>
+</li>
+<li><p>扩展whoamin容器</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker service scale whami=4</span><br></pre></td></tr></tbody></table></figure>
+<p>再次使用ping的时候会发现，同样ping的是这个vip</p>
+</li>
+<li><p>查看虚拟ip下面的ip</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@work196 ~]<span class="hljs-comment"># docker exec bd2b98fdc7f9 nslookup tasks.whoami</span></span><br><span class="line">Server:         127.0.0.11</span><br><span class="line">Address:        127.0.0.11:53</span><br><span class="line"></span><br><span class="line">Non-authoritative answer:</span><br><span class="line">Name:   tasks.whoami</span><br><span class="line">Address: 10.0.2.10</span><br><span class="line">Name:   tasks.whoami</span><br><span class="line">Address: 10.0.2.3</span><br><span class="line">Name:   tasks.whoami</span><br><span class="line">Address: 10.0.2.9</span><br><span class="line">Name:   tasks.whoami</span><br><span class="line">Address: 10.0.2.8</span><br><span class="line"></span><br><span class="line">*** Can<span class="hljs-string">'t find tasks.whoami: No answer</span></span><br></pre></td></tr></tbody></table></figure>
+<p>其实这些内容就是vip下面的真正的IP<br>因此service 与service之间是通过vip进行通信的</p>
+</li>
+</ol>
+</body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/1976fb59/">docker-swarm-wordpress</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top">何泽君</a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/1976fb59/">http://blog.noback.top/posts/1976fb59/</a></li>
+            <li><strong>发布时间：</strong>2020-02-09</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/7cebdf57/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">docker-k8s</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/8f65/">
+                <span class="level-item">docker-swarm</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/posts/1976fb59/';
+        this.page.identifier = 'posts/1976fb59/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        87
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        35
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#docker-swarm-wordpress">
+        <span class="has-mr-6">1</span>
+        <span>docker-swarm-wordpress</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#实战">
+        <span class="has-mr-6">1.1</span>
+        <span>实战</span>
+        </a></li><li>
+        <a class="is-flex" href="#集群服务间通信">
+        <span class="has-mr-6">1.2</span>
+        <span>集群服务间通信</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://image.noback.top/datadog.svg" alt="docker-swarm-wordpress" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 何泽君&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

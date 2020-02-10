@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Alpaca&#39;s blog | how to win">
+<meta property="og:url" content="http://blog.noback.top/page/17/index.html">
+<meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
+<meta property="article:author" content="何泽君">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://image.noback.top/datadog.svg" alt="Alpaca&#39;s blog | how to win" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/about-me/">about-me</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/79b81c10/"><i class="fas fa-angle-double-right"></i>Python常用方法1</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-27T09:36:31.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-27</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/Python/">Python</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    5 分钟 读完 (大约 787 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="python-常用方法"><a href="#python-常用方法" class="headerlink" title="python 常用方法"></a>python 常用方法</h1><h2 id="保留小数"><a href="#保留小数" class="headerlink" title="保留小数"></a>保留小数</h2><p>使用字符串格式化</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">a = <span class="hljs-number">11.234</span></span><br><span class="line">print(<span class="hljs-string">"%.2f"</span>%a)</span><br></pre></td></tr></tbody></table></figure>
+<p>使用round内置函数</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">a = <span class="hljs-number">11.234</span></span><br><span class="line">a = round(a,<span class="hljs-number">2</span>)</span><br><span class="line">print(a)</span><br></pre></td></tr></tbody></table></figure>
+<p>使用decimal模块</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> decimal <span class="hljs-keyword">import</span> Decimal</span><br><span class="line">a = <span class="hljs-number">12.345</span></span><br><span class="line">Decimal(a).quantize(Decimal(<span class="hljs-string">"0.00"</span>))</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="列表合并"><a href="#列表合并" class="headerlink" title="列表合并"></a>列表合并</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 使用+号操作</span></span><br><span class="line">list1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]</span><br><span class="line">list2 = [<span class="hljs-string">"z"</span>,<span class="hljs-string">"xx"</span>,] </span><br><span class="line">list3 = list1+list2</span><br><span class="line"><span class="hljs-comment"># 使用extend</span></span><br><span class="line">list4.extend(list1)</span><br><span class="line"><span class="hljs-comment"># 使用切片</span></span><br><span class="line">list4[len(<span class="hljs-number">11</span>):len(<span class="hljs-number">11</span>)] = list5</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="os模块"><a href="#os模块" class="headerlink" title="os模块"></a>os模块</h2><h3 id="Python获取指定文件夹下的文件名"><a href="#Python获取指定文件夹下的文件名" class="headerlink" title="Python获取指定文件夹下的文件名"></a>Python获取指定文件夹下的文件名</h3><p><font color="red">模块os.walk可以遍历文件夹下的所有文件</font></p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">os.walk(top, topdown=Ture, οnerrοr=<span class="hljs-literal">None</span>, followlinks=<span class="hljs-literal">False</span>)</span><br><span class="line"><span class="hljs-comment"># return  (dirpath dirnames filenames)</span></span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>dirpath: string 代表目录的路径</li>
+<li>dirnames list 包含了当前dirpath路径下所有的子目录名字（不包含目录路径）</li>
+<li>filenames：list，包含了当前dirpath路径下所有的非目录子文件的名字（不包含目录路径）。<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">file_name</span><span class="hljs-params">(file_dir)</span>:</span> </span><br><span class="line">    <span class="hljs-keyword">for</span> root, dirs, files <span class="hljs-keyword">in</span> os.walk(file_dir):</span><br><span class="line">        print(root) <span class="hljs-comment">#当前目录路径</span></span><br><span class="line">        print(dirs) <span class="hljs-comment">#当前路径下所有子目录</span></span><br><span class="line">        print(files) <span class="hljs-comment">#当前路径下所有非目录子文件</span></span><br><span class="line">        <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> files:</span><br><span class="line">            <span class="hljs-comment"># os.path.splitext # 对文件名进行切割成数组</span></span><br><span class="line">            <span class="hljs-keyword">if</span> os.path.splitext(file)[<span class="hljs-number">1</span>] == <span class="hljs-string">".jpeg"</span>:</span><br><span class="line">              print(file)</span><br><span class="line">            <span class="hljs-keyword">else</span>:</span><br><span class="line">              <span class="hljs-keyword">pass</span></span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+<p><font color="red">模块os.listdir()可以得到当前路径下的文件名，不包括子目录中的文件</font></p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"><span class="hljs-comment"># 遍历获取所有文件</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">listdir</span><span class="hljs-params">(path, list_name)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> os.listdir(path):</span><br><span class="line">        file_path = os.path.join(path, file)</span><br><span class="line">        <span class="hljs-comment"># os.path.isdir(file) #判断文件是否为文件夹</span></span><br><span class="line">        <span class="hljs-keyword">if</span> os.path.isdir(file_path):</span><br><span class="line">            listdir(file_path, list_name)</span><br><span class="line">        <span class="hljs-keyword">elif</span> os.path.splitext(file_path)[<span class="hljs-number">1</span>]==<span class="hljs-string">'.jpeg'</span>:</span><br><span class="line">            list_name.append(file_path)</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="判断文件类型"><a href="#判断文件类型" class="headerlink" title="判断文件类型"></a>判断文件类型</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">os.path.isdir(path) <span class="hljs-comment"># 是否为文件夹</span></span><br><span class="line">os.path.isfile(path) <span class="hljs-comment"># 是否为文件</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>mode选项<br>r 读模式，只能读 文件不存在报错，<br>w 写模式，只能写 文件不存在则创建，<br>以上存在存在则清空在打开</p>
+<p>rb 二进制读模式 只能读  文件不存在报错<br>wb 二进制写模式 只能写  文件不存在则创建，<br>以上存在则清空再打开<br>有二进制内容 写入则需要encode(“utf-8”)</p>
+<p>rb+ 二进制读模式 可读可写 文件不存在报错<br>wb+ 二进制写模式 可读可写 文件不存在则创建，<br>以上存在则清空再打开</p>
+<p>a 追加写模式，文件存在则追加写入<br>a+ 追加读写方式<br>以上存在则追加写入</p>
+<p>默认进入为文件末尾<br>f.seek(0) 设置读写位置为开头<br>f.truncate(0) 将文章字节阶段为0</p>
+<h3 id="文件头部写如文件"><a href="#文件头部写如文件" class="headerlink" title="文件头部写如文件"></a>文件头部写如文件</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">with open(path, <span class="hljs-string">"r+"</span>) as f:</span><br><span class="line">     old = f.read()</span><br><span class="line">     f.seek(0)</span><br><span class="line">     f.write(data)</span><br><span class="line">     f.write(old)</span><br></pre></td></tr></tbody></table></figure>
+<p>或者</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">with open(path,<span class="hljs-string">"a"</span>) as f:</span><br><span class="line">      f.seek(0)</span><br><span class="line">      old = f.read()</span><br><span class="line">      <span class="hljs-comment"># 全部删除</span></span><br><span class="line">      f.truncate(0)</span><br><span class="line">      f.write(<span class="hljs-string">"---"</span>)</span><br><span class="line">      f.write(<span class="hljs-string">"tags: xxx"</span>)</span><br><span class="line">      f.write(<span class="hljs-string">"---"</span>)</span><br><span class="line">      f.close()</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="Python-math库"><a href="#Python-math库" class="headerlink" title="Python-math库"></a>Python-math库</h2><p>向上取整 math.ceil<br>向下取整 math.floor<br>四舍五入 round</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">import math</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#向上取整</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil---"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil(2.3) => "</span>, math.ceil(2.3)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil(2.6) => "</span>, math.ceil(2.6)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">#向下取整</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"\nmath.floor---"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.floor(2.3) => "</span>, math.floor(2.3)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.floor(2.6) => "</span>, math.floor(2.6)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">#四舍五入</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"\nround---"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"round(2.3) => "</span>, round(2.3)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"round(2.6) => "</span>, round(2.6)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">#这三个的返回结果都是浮点型</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"\n\nNOTE:every result is type of float"</span></span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.ceil(2) => "</span>, math.ceil(2)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"math.floor(2) => "</span>, math.floor(2)</span><br><span class="line"><span class="hljs-built_in">print</span> <span class="hljs-string">"round(2) => "</span>, round(2)</span><br></pre></td></tr></tbody></table></figure></body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/1d0174bc/"><i class="fas fa-angle-double-right"></i>Python报错总结</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-27T09:36:10.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-27</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/Python/">Python</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    几秒 读完 (大约 60 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="Python报错总结"><a href="#Python报错总结" class="headerlink" title="Python报错总结"></a>Python报错总结</h1><h2 id="Non-ASCII"><a href="#Non-ASCII" class="headerlink" title="Non-ASCII"></a>Non-ASCII</h2><p>python出现SyntaxError: Non-ASCII character ‘\xe6’ in file 打印日期.py on line 1, but no encoding declared;</p>
+<p><font color="red">解决方法</font><br>在文件头部添加如下两行注释码：</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/python</span></span><br><span class="line"><span class="hljs-comment"># -*- coding: <encoding name> -*- 例如，可添加# -*- coding: utf-8 -*-</span></span><br></pre></td></tr></tbody></table></figure>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/23ccefd3/"><i class="fas fa-angle-double-right"></i>深拷贝与浅拷贝</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-27T09:33:42.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-27</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    4 分钟 读完 (大约 598 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>数据分为</p>
+<ul>
+<li><p>基本数据类型(String, Number, Boolean, Null, Undefined，Symbol)</p>
+</li>
+<li><p>对象数据类型。</p>
+</li>
+<li><p>基本数据类型的特点: 直接存储在栈(stack)中的数据</p>
+</li>
+<li><p>引用数据类型的特点：存储的是该对象在栈中引用，真实的数据存放在堆内存里<br>引用数据类型在栈中存储了指针，该指针指向堆中该实体的起始地址。当解释器寻找引用值时，会首先检索其在栈中的地址，取得地址后从堆中获得实体。</p>
+</li>
+</ul>
+<p>[图]</p>
+<h3 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h3><p>深拷贝和浅拷贝是只针对Object和Array这样的引用数据类型的。<br>浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。但深拷贝会另外创造一个一模一样的对象，新对象跟原对象不共享内存，修改新对象不会改到原对象。<br><img src="https://user-gold-cdn.xitu.io/2018/7/29/164e6856d76ff161?imageslim" alt="图片"><br><font color="blue">是和Linux中的软硬链接有关系吗</font></p>
+<h3 id="赋值和浅拷贝的区别"><a href="#赋值和浅拷贝的区别" class="headerlink" title="赋值和浅拷贝的区别"></a>赋值和浅拷贝的区别</h3><ul>
+<li>当我们把一个对象赋值给一个新的变量时，赋的其实是该对象的在栈中的地址，而不是堆中的数据。也就是两个对象指向的是同一个存储空间，无论哪个对象发生改变，其实都是改变的存储空间的内容，因此，两个对象是联动的。</li>
+<li>浅拷贝是按位拷贝对象，它会创建一个新对象，这个对象有着原始对象属性值的一份精确拷贝。如果属性是基本类型，拷贝的就是基本类型的值；如果属性是内存地址（引用类型），拷贝的就是内存地址 ，因此如果其中一个对象改变了这个地址，就会影响到另一个对象。即默认拷贝构造函数只是对对象进行浅拷贝复制(逐个成员依次拷贝)，即只复制对象空间而不复制资源。</li>
+</ul>
+<p>浅拷贝与深拷贝</p>
+<p><a href="https://www.runoob.com/w3cnote/python-understanding-dict-copy-shallow-or-deep.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/python-understanding-dict-copy-shallow-or-deep.html</a><br><a href="https://juejin.im/post/5b5dcf8351882519790c9a2e#heading-7" target="_blank" rel="noopener">https://juejin.im/post/5b5dcf8351882519790c9a2e#heading-7</a></p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/93aa081f/"><i class="fas fa-angle-double-right"></i>rust猜谜游戏</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-26T04:27:09.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-26</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/Rust/">Rust</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    7 分钟 读完 (大约 1052 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="rust猜谜游戏"><a href="#rust猜谜游戏" class="headerlink" title="rust猜谜游戏"></a>rust猜谜游戏</h1><p>走完了hello world的流程之后，来做一个猜数字的游戏</p>
+<h2 id="rust项目结构"><a href="#rust项目结构" class="headerlink" title="rust项目结构"></a>rust项目结构</h2><p>生成一个基本项目</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line">cargo new guessing_name</span><br><span class="line">tree .</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line">➜  guessing_game git:(master) ✗ tree .</span><br><span class="line">.</span><br><span class="line">├── Cargo.toml</span><br><span class="line">└── src</span><br><span class="line">    └── main.rs</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Cargo-toml文件"><a href="#Cargo-toml文件" class="headerlink" title="Cargo.toml文件"></a>Cargo.toml文件</h3><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line">➜  guessing_game git:(master) ✗ cat Cargo.toml</span><br><span class="line">[package]</span><br><span class="line">name = <span class="hljs-string">"guessing_game"</span></span><br><span class="line">version = <span class="hljs-string">"0.1.0"</span></span><br><span class="line">authors = [<span class="hljs-string">"alpaca <1097690268@qq.com>"</span>]</span><br><span class="line">edition = <span class="hljs-string">"2018"</span></span><br><span class="line"></span><br><span class="line"># See more keys and their definitions at https:<span class="hljs-comment">//doc.rust-lang.org/cargo/reference/manifest.html</span></span><br></pre></td></tr></tbody></table></figure>
+<p>这个里面存储了该项目的信息,</p>
+<ul>
+<li>name表示项目名字</li>
+<li>version 表示cargo 版本</li>
+<li>authors 表示作者信息</li>
+<li>edition 表示年份</li>
+</ul>
+<h3 id="main-rs文件"><a href="#main-rs文件" class="headerlink" title="main.rs文件"></a>main.rs文件</h3><p>这个文件就是你写的程序</p>
+<h3 id="运行该程序"><a href="#运行该程序" class="headerlink" title="运行该程序"></a>运行该程序</h3><p>运行该程序有两种方法  一种是先编译后执行</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">rustc src/main.rs</span><br></pre></td></tr></tbody></table></figure>
+<p>另外一种是直接用cargo运行</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">cargo run</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line">➜  guseeing_game git:(master) ✗ tree .</span><br><span class="line">.</span><br><span class="line">├── Cargo.lock</span><br><span class="line">├── Cargo.toml</span><br><span class="line">├── src</span><br><span class="line">│   └── main.rs</span><br><span class="line">└── target</span><br><span class="line">    └── debug</span><br><span class="line">        ├── build</span><br><span class="line">        ├── deps</span><br><span class="line">        │   ├── guseeing_game-<span class="hljs-number">0</span>ed5a31a6f15733b</span><br><span class="line">        │   ├── guseeing_game-<span class="hljs-number">0</span>ed5a31a6f15733b.d</span><br><span class="line">        │   └── guseeing_game-<span class="hljs-number">0</span>ed5a31a6f15733b.dSYM</span><br><span class="line">        │       └── Contents</span><br><span class="line">        │           ├── Info.plist</span><br><span class="line">        │           └── Resources</span><br><span class="line">        │               └── DWARF</span><br><span class="line">        │                   └── guseeing_game-<span class="hljs-number">0</span>ed5a31a6f15733b</span><br><span class="line">        ├── examples</span><br><span class="line">        ├── guseeing_game</span><br><span class="line">        ├── guseeing_game.d</span><br><span class="line">        ├── guseeing_game.dSYM -> deps/guseeing_game-<span class="hljs-number">0</span>ed5a31a6f15733b.dSYM</span><br><span class="line">        └── incremental</span><br><span class="line">            └── guseeing_game-<span class="hljs-number">1</span>u6x8rdyd2mj5</span><br><span class="line">                ├── s-fiv8l6i4ic-<span class="hljs-number">1486</span>aks-<span class="hljs-number">139</span>msrfhaunjd</span><br><span class="line">                │   ├── <span class="hljs-number">1651</span>w9kfz3huxj9a.o</span><br><span class="line">                │   ├── <span class="hljs-number">24</span>om6g1u5n10ayrw.o</span><br><span class="line">                │   ├── <span class="hljs-number">2</span>hv2ystwqwaqr9uj.o</span><br><span class="line">                │   ├── <span class="hljs-number">3701</span>sophdbnzpjeb.o</span><br><span class="line">                │   ├── <span class="hljs-number">407</span>p5s5dk77zb92h.o</span><br><span class="line">                │   ├── <span class="hljs-number">4</span>eavspy520jyuwpr.o</span><br><span class="line">                │   ├── dep-graph.bin</span><br><span class="line">                │   ├── query-cache.bin</span><br><span class="line">                │   └── work-products.bin</span><br><span class="line">                └── s-fiv8l6i4ic-<span class="hljs-number">1486</span>aks.lock</span><br></pre></td></tr></tbody></table></figure>
+
+<p><font color="red">你会发现这两种运行的结果所创建的文件结构是不同的</font></p>
+<h2 id="获取屏幕内容并输出"><a href="#获取屏幕内容并输出" class="headerlink" title="获取屏幕内容并输出"></a>获取屏幕内容并输出</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">use std::io;</span><br><span class="line"></span><br><span class="line">fn <span class="hljs-function"><span class="hljs-title">main</span></span>() {</span><br><span class="line">    println!(<span class="hljs-string">"Guess the number!"</span>);</span><br><span class="line"></span><br><span class="line">    println!(<span class="hljs-string">"Please input your guess."</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">let</span> mut guess = String::new();</span><br><span class="line"></span><br><span class="line">    io::stdin().read_line(&mut guess)</span><br><span class="line">        .expect(<span class="hljs-string">"Failed to read line"</span>);</span><br><span class="line"></span><br><span class="line">    println!(<span class="hljs-string">"You guessed: {}"</span>, guess);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="包含语句和表达式的函数体"><a href="#包含语句和表达式的函数体" class="headerlink" title="包含语句和表达式的函数体"></a>包含语句和表达式的函数体</h3><p> 函数体有一系列的语句和一个可选的结尾的表达式构成<br> rust是基于表达式的语言<br> 用分号区分语句和表达式<br> <font color="red">语句是执行一些操作但不返回值的指令</font><br> <font color="red">表达式计算并产生一个值返回</font></p>
+<p> 用let关键字创建变量并绑定一个值是一个语句 比如let y = 6;<br> 于是当我们使用如下<br> </p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">fn <span class="hljs-function"><span class="hljs-title">main</span></span>(){</span><br><span class="line">    <span class="hljs-built_in">let</span> x = (<span class="hljs-built_in">let</span> y =6);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><br> let y = 6 是一个语句并不会返回一个值来使得x绑定，所以会报错 <p></p>
+<p> let y = 6; 是一个表达式 ，返回6 函数调用是一个表达式<br> {} 是一个表达式</p>
+<h3 id="具有返回值的函数"><a href="#具有返回值的函数" class="headerlink" title="具有返回值的函数"></a>具有返回值的函数</h3><p> 函数可以向调用它的代码返回值。我们并不对返回值命名，但要在箭头（->）后声明它的类型<br> 函数的返回值等同于函数体最后一个表达式的值<br> 使用 return 关键字和指定值，可从函数中提前返回；但大部分函数隐式的返回最后的表达式。这是一个有返回值的函数的例子：<br> </p><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">five</span></span>() -> <span class="hljs-built_in">i32</span>{</span><br><span class="line">     <span class="hljs-number">5</span></span><br><span class="line"> } </span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>(){</span><br><span class="line">    <span class="hljs-keyword">let</span> x = five();</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"the value of x is {} "</span>,x )</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><br> 以上代码等同于，  {}是表达式 返回5给five()函数， let x = five();是语句，不返回值，于是let x = 5;<br> <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">fn <span class="hljs-function"><span class="hljs-title">main</span></span>(){</span><br><span class="line">    <span class="hljs-built_in">let</span> x =5 ;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<hr>
+ <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">fn plus_one (x: i32) -> i32{</span><br><span class="line">    x + 1</span><br><span class="line">} </span><br><span class="line"></span><br><span class="line">fn <span class="hljs-function"><span class="hljs-title">main</span></span>(){</span><br><span class="line">    <span class="hljs-built_in">let</span> x = plus_one(5)</span><br><span class="line">    println!(<span class="hljs-string">"the value of x is :{}"</span>,x);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p> rust中是用// 进行注释</p>
+<h2 id="控制-逻辑操作"><a href="#控制-逻辑操作" class="headerlink" title="控制  逻辑操作"></a>控制  逻辑操作</h2><p><font color="red">if语句</font> </p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> number = <span class="hljs-number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> number < <span class="hljs-number">5</span> {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"condition was true"</span>);</span><br><span class="line">    } <span class="hljs-keyword">else</span> {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"condition was false"</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> number!=<span class="hljs-number">0</span>{</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"nuf mber was something other than zero"</span>)</span><br><span class="line">    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> number != <span class="hljs-number">2</span>{</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"the number was something other than two"</span>)</span><br><span class="line">    } <span class="hljs-keyword">else</span> {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"the number go"</span>)</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="在let中使用if"><a href="#在let中使用if" class="headerlink" title="在let中使用if"></a>在let中使用if</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">fn <span class="hljs-function"><span class="hljs-title">main</span></span>(){</span><br><span class="line">    <span class="hljs-built_in">let</span> </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><font color="red">loop语句</font></p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">loop</span> {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"again!"</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> counter = <span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> result = <span class="hljs-keyword">loop</span> {</span><br><span class="line">        counter += <span class="hljs-number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> counter == <span class="hljs-number">10</span> {</span><br><span class="line">            <span class="hljs-keyword">break</span> counter * <span class="hljs-number">2</span>;</span><br><span class="line">        }</span><br><span class="line">    };</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"The result is {}"</span>, result);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><font color="red">while条件循环</font></p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> number = <span class="hljs-number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span> number != <span class="hljs-number">0</span> {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}!"</span>, number);</span><br><span class="line"></span><br><span class="line">        number = number - <span class="hljs-number">1</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"LIFTOFF!!!"</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><font color="red">for 遍历循环</font></p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> a = [<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>, <span class="hljs-number">50</span>];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> element <span class="hljs-keyword">in</span> a.iter() {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"the value is: {}"</span>, element);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-comment">// .rev()反转 1..4 4取不到</span></span><br><span class="line">    <span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> (<span class="hljs-number">1</span>..<span class="hljs-number">4</span>).rev() {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}!"</span>, number);</span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"LIFTOFF!!!"</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/4fbe8671/"><i class="fas fa-angle-double-right"></i>Rust基础</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-26T04:27:09.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-26</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/Rust/">Rust</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    3 分钟 读完 (大约 458 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h1><p>url <a href="https://www.rust-lang.org/zh-CN/tools/install" target="_blank" rel="noopener">https://www.rust-lang.org/zh-CN/tools/install</a></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">curl --proto <span class="hljs-string">'=https'</span> --tlsv1.2 -sSf https://sh.rustup.rs | sh</span><br></pre></td></tr></tbody></table></figure>
+<p>while you input enter ，will install rust default</p>
+<p>上面这条命令会安装一些内容，比如  cargo  rustup<br>如果你想要使用他们，需要将他们添加到环境变量中</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 方法1</span></span><br><span class="line"><span class="hljs-built_in">source</span> <span class="hljs-variable">$HOME</span>/.cargo/env</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 方法2</span></span><br><span class="line"><span class="hljs-built_in">export</span>  PATH=<span class="hljs-string">"<span class="hljs-variable">$HOME</span>/.cargo/bin:<span class="hljs-variable">$PATH</span>"</span> </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 其实env里面写的就是方法2</span></span><br><span class="line"><span class="hljs-comment"># 查看是否安装完成</span></span><br><span class="line">rustc --version</span><br><span class="line">rustc 1.39.0 (4560ea788 2019-11-04)</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h1 id="update"><a href="#update" class="headerlink" title="update"></a>update</h1><p>更新版本, rustup用来管理rust的版本,rust每6个礼拜会进行一次版本迭代，使用rustup update更新版本</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">rustup update</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="cargo工具"><a href="#cargo工具" class="headerlink" title="cargo工具"></a>cargo工具</h1><p>Cargo：Rust 的构建工具和包管理器</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">cargo build <span class="hljs-comment">#构建项目</span></span><br><span class="line">cargo run <span class="hljs-comment"># 构建并运行项目</span></span><br><span class="line">cargo <span class="hljs-built_in">test</span> <span class="hljs-comment"># 测试项目</span></span><br><span class="line">cargo doc <span class="hljs-comment"># 为项目构建文档</span></span><br><span class="line">cargo publish <span class="hljs-comment"># 将库发布到cartes.io </span></span><br><span class="line">cargo new xxproject <span class="hljs-comment"># 创建xxproject项目</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># cargo  开发者社区</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="cargo-使用"><a href="#cargo-使用" class="headerlink" title="cargo 使用"></a>cargo 使用</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">cargo new helloworld <span class="hljs-comment"># 创建一个项目helloworld </span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 生成如下文件</span></span><br><span class="line">[root@dev rustttt]<span class="hljs-comment">#  tree .</span></span><br><span class="line">.</span><br><span class="line">└── helloworld</span><br><span class="line">    ├── Cargo.toml</span><br><span class="line">    └── src</span><br><span class="line">        └── main.rs</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>Cargo.toml中包含了编译你项目时所需要的内容清单</li>
+<li>src/main.rs 中包含了主程序</li>
+</ul>
+<p>使用cargo build 构建项目,编译完成之后，会在生成一个编译后的可执行文件，执行他们</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@dev helloworld]<span class="hljs-comment"># ./target/debug/helloworld</span></span><br><span class="line">Hello, world!</span><br></pre></td></tr></tbody></table></figure>
+
+<p>使用cargo run 构建项目并运行。</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@dev helloworld]<span class="hljs-comment"># cargo run</span></span><br><span class="line">   Compiling helloworld v0.1.0 (/root/rustttt/helloworld)</span><br><span class="line">    Finished dev [unoptimized + debuginfo] target(s) <span class="hljs-keyword">in</span> 0.51s</span><br><span class="line">     Running `target/debug/helloworld`</span><br><span class="line">Hello, world!</span><br></pre></td></tr></tbody></table></figure>
+
+<p><font color="red">具体是使用文档</font><br><font color="red"><a href="https://doc.rust-lang.org/cargo/guide/index.html" target="_blank" rel="noopener">https://doc.rust-lang.org/cargo/guide/index.html</a></font></p>
+<h2 id="编译rust文件-rustc"><a href="#编译rust文件-rustc" class="headerlink" title="编译rust文件  rustc"></a>编译rust文件  rustc</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 使用cargo build创建helloworld目录</span></span><br><span class="line">cargo build helloworld</span><br><span class="line"><span class="hljs-built_in">cd</span> helloworld/src/</span><br><span class="line"><span class="hljs-comment"># 编译文件</span></span><br><span class="line">rustc main.rs </span><br><span class="line">./main</span><br><span class="line"><span class="hljs-comment"># 输出内容</span></span><br><span class="line">hello wolrd</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><p>不下载环境，直接测试代码<br><a href="https://play.rust-lang.org" target="_blank" rel="noopener">https://play.rust-lang.org</a><br>Rust官方文档<br><a href="https://www.rust-lang.org/zh-CN/tools/install" target="_blank" rel="noopener">https://www.rust-lang.org/zh-CN/tools/install</a></p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous">
+            <a class="is-flex-grow has-text-black-ter" href="/page/16/">上一页</a>
+        </div>
+        <div class="pagination-next">
+            <a class="is-flex-grow has-text-black-ter" href="/page/18/">下一页</a>
+        </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link has-text-black-ter" href="/">1</a></li>
+            
+            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/16/">16</a></li>
+            
+            <li><a class="pagination-link is-current" href="/page/17/">17</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/18/">18</a></li>
+            
+        </ul>
+    </nav>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        87
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        35
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://www.ttlsa.com/linux/haproxy-study-tutorial/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">运维生存时间</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.ttlsa.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/checklist/">
+            <span class="level-start">
+                <span class="level-item">checklist</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/code-more/">
+            <span class="level-start">
+                <span class="level-item">code/more</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/code-more/vue/">
+            <span class="level-start">
+                <span class="level-item">vue</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/docker/">
+            <span class="level-start">
+                <span class="level-item">docker</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/git/">
+            <span class="level-start">
+                <span class="level-item">git</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/">
+            <span class="level-start">
+                <span class="level-item">linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">30</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/linux/ansible/">
+            <span class="level-start">
+                <span class="level-item">ansible</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/docker/">
+            <span class="level-start">
+                <span class="level-item">docker</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">13</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/">
+            <span class="level-start">
+                <span class="level-item">linux网络管理</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+            <span class="level-start">
+                <span class="level-item">常用命令</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/%E6%95%85%E9%9A%9C%E9%97%AE%E9%A2%98/">
+            <span class="level-start">
+                <span class="level-item">故障问题</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+            <span class="level-start">
+                <span class="level-item">文件系统</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/%E8%84%9A%E6%9C%AC/">
+            <span class="level-start">
+                <span class="level-item">脚本</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">
+            <span class="level-start">
+                <span class="level-item">负载均衡</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/nginx/">
+            <span class="level-start">
+                <span class="level-item">nginx</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%B7%A5%E5%85%B7/">
+            <span class="level-start">
+                <span class="level-item">工具</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%89%A9%E5%B1%95/">
+            <span class="level-start">
+                <span class="level-item">扩展</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+            <span class="level-start">
+                <span class="level-item">数据结构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/">
+            <span class="level-start">
+                <span class="level-item">编程</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">30</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">
+            <span class="level-start">
+                <span class="level-item">C语言</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/Python/">
+            <span class="level-start">
+                <span class="level-item">Python</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/Rust/">
+            <span class="level-start">
+                <span class="level-item">Rust</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/SwaggerUi/">
+            <span class="level-start">
+                <span class="level-item">SwaggerUi</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/django/">
+            <span class="level-start">
+                <span class="level-item">django</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">11</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">
+            <span class="level-start">
+                <span class="level-item">jwt</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/mysql/">
+            <span class="level-start">
+                <span class="level-item">mysql</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vim/">
+            <span class="level-start">
+                <span class="level-item">vim</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/vue/">
+            <span class="level-start">
+                <span class="level-item">vue</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/">
+            <span class="level-start">
+                <span class="level-item">网络</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/extra/">
+            <span class="level-start">
+                <span class="level-item">extra</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
+            <span class="level-start">
+                <span class="level-item">二层交换机</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
+            <span class="level-start">
+                <span class="level-item">交换机</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%83%A8%E7%BD%B2/">
+            <span class="level-start">
+                <span class="level-item">交换机部署</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/%E8%AE%B0%E4%BA%8B%E6%9C%AC/">
+            <span class="level-start">
+                <span class="level-item">记事本</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E8%AE%BE%E5%A4%87/">
+            <span class="level-start">
+                <span class="level-item">设备</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget is-hidden-mobile">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">37</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">31</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/posts/59fd12f/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="swarm与k8s的区别">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:49:28.000Z">2020-02-10</time></div>
+                    <a href="/posts/59fd12f/" class="has-link-black-ter is-size-6">swarm与k8s的区别</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/6e725c12/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="k8s常见错误">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:04:28.000Z">2020-02-10</time></div>
+                    <a href="/posts/6e725c12/" class="has-link-black-ter is-size-6">k8s常见错误</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/7cebdf57/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-k8s">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T19:55:11.000Z">2020-02-10</time></div>
+                    <a href="/posts/7cebdf57/" class="has-link-black-ter is-size-6">docker-k8s</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/1976fb59/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-swarm-wordpress">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T09:35:49.000Z">2020-02-09</time></div>
+                    <a href="/posts/1976fb59/" class="has-link-black-ter is-size-6">docker-swarm-wordpress</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/8f65/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-swarm">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:38:32.000Z">2020-02-07</time></div>
+                    <a href="/posts/8f65/" class="has-link-black-ter is-size-6">docker-swarm</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget is-hidden-mobile">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">37</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">31</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/posts/59fd12f/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="swarm与k8s的区别">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:49:28.000Z">2020-02-10</time></div>
+                    <a href="/posts/59fd12f/" class="has-link-black-ter is-size-6">swarm与k8s的区别</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/6e725c12/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="k8s常见错误">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:04:28.000Z">2020-02-10</time></div>
+                    <a href="/posts/6e725c12/" class="has-link-black-ter is-size-6">k8s常见错误</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/7cebdf57/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-k8s">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T19:55:11.000Z">2020-02-10</time></div>
+                    <a href="/posts/7cebdf57/" class="has-link-black-ter is-size-6">docker-k8s</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/1976fb59/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-swarm-wordpress">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T09:35:49.000Z">2020-02-09</time></div>
+                    <a href="/posts/1976fb59/" class="has-link-black-ter is-size-6">docker-swarm-wordpress</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/8f65/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-swarm">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:38:32.000Z">2020-02-07</time></div>
+                    <a href="/posts/8f65/" class="has-link-black-ter is-size-6">docker-swarm</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://image.noback.top/datadog.svg" alt="Alpaca&#39;s blog | how to win" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 何泽君&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
