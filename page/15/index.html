@@ -149,6 +149,288 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
+                <a class="has-link-black-ter" href="/posts/7f55f388/"><i class="fas fa-angle-double-right"></i>django错误合集</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:40:29.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    4 分钟 读完 (大约 648 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="错误类型总结"><a href="#错误类型总结" class="headerlink" title="错误类型总结"></a>错误类型总结</h1><p>由于mysql与django在配置过程中会存在很多的错误，这里总结一下</p>
+<h2 id="Mysql在Centos中权限不足的错误"><a href="#Mysql在Centos中权限不足的错误" class="headerlink" title="Mysql在Centos中权限不足的错误"></a>Mysql在Centos中权限不足的错误</h2><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)</span><br></pre></td></tr></tbody></table></figure>
+<p>原因是/var/lib/mysql的访问权限不足</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1.改变权限 chown -R mysql:mysql /var/lib/mysql   </span><br><span class="line">2. 启动服务器 /etc/init.d/mysql start (会自动生成mysql.sock文件)  </span><br><span class="line">3.重新启动mysql服务  /etc/init.d/mysql start</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="密码类型错误"><a href="#密码类型错误" class="headerlink" title="密码类型错误"></a>密码类型错误</h2><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1045, "Access denied for user 'root'@'122.224.83.xxx</span><br></pre></td></tr></tbody></table></figure>
+<p>原因 密码错误，注意密码不能是字符串</p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="django-setting-中的配置"><a href="#django-setting-中的配置" class="headerlink" title="django setting 中的配置"></a>django setting 中的配置</h2><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">DATABASES = {</span><br><span class="line">    'default': {</span><br><span class="line"></span><br><span class="line">        'ENGINE': 'django.db.backends.mysql',</span><br><span class="line">        'NAME': 'itemids',  # 数据库名字</span><br><span class="line">        'USER': 'root',    # 数据库登录名</span><br><span class="line">        'PASSWORD': '12345x', # 数据库密码</span><br><span class="line">        'HOST': '106.14.195.xxx', 数据库IP</span><br><span class="line">        'POST': 3306, # 端口</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="引用pymysql"><a href="#引用pymysql" class="headerlink" title="引用pymysql"></a>引用pymysql</h2><p>由于MySQLdb只能使用在Python2中，在python3中已经停止了维护，所以这里我们引用pymyql的库</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">pipenv install pymysql</span><br><span class="line"><span class="hljs-comment"># 在与setting.py同级别的__init__.py中使用</span></span><br><span class="line"><span class="hljs-keyword">import</span> pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="pymysql版本不符合"><a href="#pymysql版本不符合" class="headerlink" title="pymysql版本不符合"></a>pymysql版本不符合</h2><p>报错内容:django.core.exceptions.ImproperlyConfigured: mysqlclient 1.3.3 or newer is required; you have 0.7.11<br>修改Pipenv\Lib\site-packages\django\db\backends\mysql\base.py<br>注释下面内容<br>if version < (1, 3, 3):<br>    raise ImproperlyConfigured(“mysqlclient 1.3.3 or newer is required; you have %s” % Database.<strong>version</strong>)</p>
+<p>(在Centos中，pipenv install 所生成的包 会在pipenv shell 激活环境的时候出现)</p>
+<p>由于上面注释，还会出现的报错内容为<br>File “C:\Users\Administrator\PycharmProjects\untitled1\venv\lib\site-packages\django\db\backends\mysql\operations.py”, line 146, in last_executed_query<br>将operations.py中的decode改成encode</p>
+<h2 id="mysql不能插入中文"><a href="#mysql不能插入中文" class="headerlink" title="mysql不能插入中文"></a>mysql不能插入中文</h2><p>报错内容： django.db.utils.InternalError: (1366, “Incorrect string value: ‘\xE5\xAE\x9A\xE6\x97\xB6…’ for column ‘name’ at row 1”)<br>解决方法: <a href="https://blog.csdn.net/tzh476/article/details/52644271" target="_blank" rel="noopener">https://blog.csdn.net/tzh476/article/details/52644271</a><br>删除之前的库，创建一个新的数据库，使用utf8mb64   之前默认创建的都是latin1<br>不一样要删除之前的库，修改数据库的属性即可</p>
+<h2 id="mysql-长度的问题"><a href="#mysql-长度的问题" class="headerlink" title="mysql 长度的问题"></a>mysql 长度的问题</h2><p>django.db.utils.InternalError: (1071, ‘Specified key was too long; max key length is 767 bytes’)<br><a href="https://blog.csdn.net/ljfphp/article/details/80406907" target="_blank" rel="noopener">https://blog.csdn.net/ljfphp/article/details/80406907</a><br><a href="https://www.orcode.com/question/407126_k280b8.html" target="_blank" rel="noopener">https://www.orcode.com/question/407126_k280b8.html</a></p>
+<p>解决方法1: 升级Mysql5.6–>>Mysql5.7<br>centos7 下  对mysql的操作 <a href="https://blog.csdn.net/xufengzhu/article/details/81110982" target="_blank" rel="noopener">https://blog.csdn.net/xufengzhu/article/details/81110982</a><br><a href="https://blog.51cto.com/lisea/1941616" target="_blank" rel="noopener">https://blog.51cto.com/lisea/1941616</a></p>
+<p>解决方法2 : 先使用utf8格式</p>
+<h2 id="django-migrate的问题"><a href="#django-migrate的问题" class="headerlink" title="django migrate的问题"></a>django migrate的问题</h2><p>出现下面这个问题，基本上就是你的model设置错误了。有些字段类型需要固定的属性<br>如integerField字段需要default这个选项，添加完之后就Ok了</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">Please select a fix:</span><br><span class="line"> 1) Provide a one-off default now (will be <span class="hljs-built_in">set</span> on all existing rows with a null value <span class="hljs-keyword">for</span> this column)</span><br><span class="line"> 2) Quit, and <span class="hljs-built_in">let</span> me add a default <span class="hljs-keyword">in</span> models.p</span><br></pre></td></tr></tbody></table></figure></body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/9ec06885/"><i class="fas fa-angle-double-right"></i>C语言基础</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:39:56.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">C语言</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    2 分钟 读完 (大约 334 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="C语言基础"><a href="#C语言基础" class="headerlink" title="C语言基础"></a>C语言基础</h1><p>对C语言基础只是的概括</p>
+<p>目标文件 可执行文件 库 源文件</p>
+<p>源文件指的是我们所编写的文件</p>
+<figure class="highlight c hljs"><table><tbody><tr><td class="code"><pre><span class="line">vi xx.c</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string"><stdio.h></span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>{</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"hello world"</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>以上xx.c就是我们的源文件</p>
+<p><strong>在unix中</strong><br>编译c语言 cc xx.c 会在当前文件夹生成一个a.out的可执行文件  运行即可</p>
+<p>整个流程就是用户输入代码生成源码文件 通过cc编译后生成可执行文件 运行输出内容<br>cc其实是一个命令，可以用man cc 查看  也可以用cc -v查看版本信息</p>
+<p><strong>在linux中</strong><br>使用gcc编译c文件 gcc xx.c</p>
+<h2 id="第一个c语言程序"><a href="#第一个c语言程序" class="headerlink" title="第一个c语言程序"></a>第一个c语言程序</h2><!-- vim-markdown-toc -->
+<figure class="highlight c hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-meta"># <span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string"><stdio.h></span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>{</span><br><span class="line">	<span class="hljs-keyword">int</span> nums;</span><br><span class="line">	nums = <span class="hljs-number">1</span>;</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"how many dogs do you have?\n"</span>);</span><br><span class="line">	getchar();</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">}</span><br><span class="line">include是预处理器指令  main是第一个被调用的函数 func a是构造块</span><br><span class="line">stdio.h 是c编译器软件包的标准部分</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><p>整数 int</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">int nums=12;</span><br><span class="line"></span><br><span class="line">int nums;</span><br><span class="line">nums = 12; </span><br><span class="line"></span><br><span class="line">int nums = 12 , ages = 20;</span><br></pre></td></tr></tbody></table></figure>
+<p>大致的执行过程为 int nums 划分出一块内存空间名为nums<br>nums = 12 为nums赋值12的变量</p>
+<h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><p>zsh: command not found: a.out<br>mac下无法执行cc编译后的文件<br><font color="blue">因为没有确定工作路径 运行./a.out就可以了</font></p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/b3a48f7b/"><i class="fas fa-angle-double-right"></i>Python爬YouTube视频</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:39:12.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/code/">code</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    7 分钟 读完 (大约 1024 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>learn python 🐍</p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/code/" rel="tag">code</a>,&nbsp;<a class="has-link-grey -link" href="/tags/python/" rel="tag">python</a>
+                </div>
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/b3a48f7b/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/899b698f/"><i class="fas fa-angle-double-right"></i>又拍云</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T05:13:50.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E8%AE%BE%E5%A4%87/">设备</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    7 分钟 读完 (大约 1043 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="又拍云工作记录"><a href="#又拍云工作记录" class="headerlink" title="又拍云工作记录"></a>又拍云工作记录</h1><h2 id="交换机命名格式"><a href="#交换机命名格式" class="headerlink" title="交换机命名格式"></a>交换机命名格式</h2><p>三大运营商缩写 + 附近机场代码 + S01等</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">移动 CMN</span><br><span class="line">电信 CTN</span><br><span class="line">联通 CUN</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="交换机ipv6检测内容"><a href="#交换机ipv6检测内容" class="headerlink" title="交换机ipv6检测内容"></a>交换机ipv6检测内容</h2><p>原因 内网机器比如全是移动的，交换机配的移动的ip，下面配的也是移动的ip<br>这样ping的通，但是联通的服务器ip ping不同。也就是说是内网通，外网不同。<br>内网ping 网关肯定通</p>
+<p>检测：<br>用移动的交换机下面的服务器（出问题的交换机）  去mtr外网的ip，去看是哪里断掉的<br>而不是用外网的机器来mtr内网的ip，这样截止的地方会看不出来，因为不是内网的机器</p>
+<h2 id="ipv6配置"><a href="#ipv6配置" class="headerlink" title="ipv6配置"></a>ipv6配置</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">#业务vlan</span></span><br><span class="line">interface Vlan-interface1</span><br><span class="line">ipv6 address +业务vlan ip</span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line"><span class="hljs-comment">#互联vlan</span></span><br><span class="line">interface Vlan-interface200</span><br><span class="line">ipv6 address  +互联本地ip</span><br><span class="line"><span class="hljs-comment">#默认路由</span></span><br><span class="line">ipv6 route-static :: 0 + 互联对端ip</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="配置案例"><a href="#配置案例" class="headerlink" title="配置案例"></a>配置案例</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line">广东广州移动机房（自有机房NM）：2409:8C54:B000:0704::/64   互联地址 机房：FEC0::C/127， 我司 FEC0::D/127</span><br><span class="line"></span><br><span class="line">vlan 1 </span><br><span class="line">ip address 2409:8C54:B000:0704::/64 </span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line">vlan 20</span><br><span class="line">ipv6 address FEC0::D/127</span><br><span class="line">router-static</span><br><span class="line">ipv6 route-static :: 0 FEC0::C</span><br><span class="line"></span><br><span class="line">山东济南移动机房（自有节点NM）：2409:8C3C:0004:000C::/64，互联地址为：2409:8C3C:00FF:0004::000E/127、 我司 2409:8C3C:00FF:0004::0010/127</span><br><span class="line"></span><br><span class="line">vlan 1</span><br><span class="line">ip address 2409:8C3C:0004:000C::/64</span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line">vlan 20</span><br><span class="line">ipv6 address 2409:8C3C:00FF:0004::0010/127</span><br><span class="line">route-static</span><br><span class="line">ipv6 route-static :: 0 2409:8C3C:00FF:0004::000E</span><br><span class="line">vlan 1</span><br><span class="line">ipv6 address 240E:E9:B804:3:400::1/72</span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line">vlan 30 </span><br><span class="line">ipv6 address 240E:E9:B804:3:200::A3/127</span><br><span class="line">ipv6 address 240E:E9:B804:3:200::B3/127</span><br><span class="line">router-static</span><br><span class="line">ipv6 route-static :: 0 240E:E9:B804:3:200::A3</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="无法联网"><a href="#无法联网" class="headerlink" title="无法联网"></a>无法联网</h2><ol>
+<li><p>首先ping交换机ip  看是否通</p>
+</li>
+<li><p>串口线连接交换机  ping网关是否通不通  10.0.0.130</p>
+</li>
+<li><p>查看端口状态<br>dis int brief<br>聚合口是否起来 端口是否起来 pvid是否对应1000(统一是1000 除个别外可以在上联交换机上看10.0.0.130)</p>
+</li>
+<li><p>硬件问题<br>看模块是否发光  看跳线是否发光</p>
+</li>
+</ol>
+<h2 id="整理香港ntt点ip对应关系"><a href="#整理香港ntt点ip对应关系" class="headerlink" title="整理香港ntt点ip对应关系"></a>整理香港ntt点ip对应关系</h2><ol>
+<li>登陆netop服务器</li>
+<li>登陆香港ntt交换机</li>
+<li>查看vlan1 对应ip 其中157.xxx/27 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[NTT-CN-HKG-S01-Vlan-interface1]display this</span><br><span class="line"><span class="hljs-comment">#</span></span><br><span class="line">interface Vlan-interface1</span><br><span class="line"> ip address 157.119.232.1 255.255.255.224</span><br><span class="line"> ip address 10.81.0.254 255.255.255.0 sub</span><br><span class="line"> ip address 103.211.192.221 255.255.255.252 sub</span><br><span class="line"> ip address 103.251.128.1 255.255.255.224 sub</span><br><span class="line"> ip address 157.119.232.65 255.255.255.224 sub</span><br><span class="line"> ip address 192.168.1.1 255.255.255.0 sub</span><br><span class="line"> ip address 192.168.128.1 255.255.255.0 sub</span><br><span class="line"> ip address 192.168.232.1 255.255.255.224 sub</span><br><span class="line"> ipv6 address 2405:FD80:110::1/52</span><br><span class="line"><span class="hljs-comment">#</span></span><br><span class="line"><span class="hljs-built_in">return</span></span><br></pre></td></tr></tbody></table></figure>
+在netop服务器上用fping -g 157.119.231.1/27 来查看对应ip的状态</li>
+</ol>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@NETOPS machines]<span class="hljs-comment"># fping -g 157.119.232.65/27</span></span><br><span class="line">157.119.232.65 is alive</span><br><span class="line">157.119.232.66 is alive</span><br><span class="line">157.119.232.67 is alive</span><br><span class="line">157.119.232.68 is alive</span><br><span class="line">157.119.232.69 is alive</span><br><span class="line">157.119.232.70 is alive</span><br><span class="line">157.119.232.71 is alive</span><br><span class="line">157.119.232.72 is alive</span><br><span class="line">157.119.232.73 is alive</span><br><span class="line">157.119.232.74 is alive</span><br><span class="line">157.119.232.75 is alive</span><br><span class="line">157.119.232.85 is alive</span><br><span class="line">157.119.232.87 is alive</span><br><span class="line">157.119.232.86 is alive</span><br><span class="line">157.119.232.88 is alive</span><br><span class="line">157.119.232.89 is alive</span><br><span class="line">157.119.232.90 is alive</span><br><span class="line">157.119.232.91 is alive</span><br><span class="line">157.119.232.76 is unreachable</span><br><span class="line">157.119.232.77 is unreachable</span><br><span class="line">157.119.232.78 is unreachable</span><br><span class="line">157.119.232.79 is unreachable</span><br><span class="line">157.119.232.80 is unreachable</span><br><span class="line">157.119.232.81 is unreachable</span><br><span class="line">157.119.232.82 is unreachable</span><br><span class="line">157.119.232.83 is unreachable</span><br><span class="line">157.119.232.84 is unreachable</span><br><span class="line">157.119.232.92 is unreachable</span><br><span class="line">157.119.232.93 is unreachable</span><br><span class="line">157.119.232.94 is unreachable</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># fping -g 157.119.232.1/27</span></span><br><span class="line">157.119.232.1 is alive</span><br><span class="line">157.119.232.2 is alive</span><br><span class="line">157.119.232.3 is alive</span><br><span class="line">157.119.232.4 is alive</span><br><span class="line">157.119.232.5 is alive</span><br><span class="line">157.119.232.6 is alive</span><br><span class="line">157.119.232.7 is alive</span><br><span class="line">157.119.232.8 is alive</span><br><span class="line">157.119.232.9 is alive</span><br><span class="line">157.119.232.10 is alive</span><br><span class="line">157.119.232.11 is alive</span><br><span class="line">157.119.232.12 is alive</span><br><span class="line">157.119.232.13 is alive</span><br><span class="line">157.119.232.14 is alive</span><br><span class="line">157.119.232.15 is alive</span><br><span class="line">157.119.232.16 is alive</span><br><span class="line">157.119.232.17 is alive</span><br><span class="line">157.119.232.19 is alive</span><br><span class="line">157.119.232.18 is alive</span><br><span class="line">157.119.232.20 is alive</span><br><span class="line">157.119.232.21 is alive</span><br><span class="line">157.119.232.22 is alive</span><br><span class="line">157.119.232.23 is alive</span><br><span class="line">157.119.232.24 is alive</span><br><span class="line">157.119.232.25 is alive</span><br><span class="line">157.119.232.26 is alive</span><br><span class="line">157.119.232.27 is alive</span><br><span class="line">157.119.232.28 is alive</span><br><span class="line">157.119.232.29 is alive</span><br><span class="line">157.119.232.30 is alive</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>查看inventory中对应关系</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.73 /root/mingtao/inventory/machines/*</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-upapp-01:157.119.232.73</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.30 /root/mingtao/inventory/machines/*</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-cdn-v406:<span class="hljs-comment"># NTT-CN-HKG-030 ansible_ssh_host=157.119.232.30</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-openstack:<span class="hljs-comment"># NTT-CN-HKG-030 ansible_ssh_host=157.119.232.30</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-openstack:OPK-HKG-M30 ansible_ssh_host=157.119.232.30</span><br><span class="line">/root/mingtao/inventory/machines/lists-upops:NTT-CN-HKG-030 ansible_ssh_host=157.119.232.30</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.29 /root/mingtao/inventory/machines/*</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-cdn-v406:<span class="hljs-comment"># NTT-CN-HKG-029 ansible_ssh_host=157.119.232.29</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-openstack:<span class="hljs-comment"># NTT-CN-HKG-029 ansible_ssh_host=157.119.232.29</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-upapp-01:157.119.232.29</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.20 /root/mingtao/inventory/machines/*</span></span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.24 /root/mingtao/inventory/machines/*</span></span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.21 /root/mingtao/inventory/machines/*</span></span><br></pre></td></tr></tbody></table></figure>
+<p>记录机器的对应名字</p>
+<h3 id="ntt机器对应脚本"><a href="#ntt机器对应脚本" class="headerlink" title="ntt机器对应脚本"></a>ntt机器对应脚本</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#!/usr/bin/bash</span></span><br><span class="line"><span class="hljs-comment"># add ip (active and unknown)</span></span><br><span class="line">fping -g 157.119.232.65/27 > ntt_machine</span><br><span class="line">fping -g 157.119.231.1/27 >> ntt_machine</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># filter active to tmp.txt</span></span><br><span class="line">awk <span class="hljs-string">'{if($3=="alive"){print $1}}'</span> > tmp.txt ntt_machine</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Calculate the total</span></span><br><span class="line">nums=`cat tmp.txt | wc -l`</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># reset result.txt to blank</span></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"result:"</span> > result.txt</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># filter ip</span></span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> `seq 1 <span class="hljs-variable">$nums</span>`</span><br><span class="line"><span class="hljs-keyword">do</span></span><br><span class="line">        ip=`awk <span class="hljs-string">"NR==<span class="hljs-variable">$i</span>"</span> tmp.txt`</span><br><span class="line">        link=`grep -w <span class="hljs-variable">$ip</span> mingtao/inventory/machines/machines/*`</span><br><span class="line">        link=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$link</span> | awk -F<span class="hljs-string">":"</span> <span class="hljs-string">'{print $2}'</span> `</span><br><span class="line">        link=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$link</span> | awk <span class="hljs-string">'{if($1=="#"){print $2}else{print $1}}'</span>`</span><br><span class="line">        <span class="hljs-built_in">echo</span>  <span class="hljs-variable">$ip</span>   ,<span class="hljs-string">"active"</span>   ,   <span class="hljs-variable">$link</span> >> result.txt</span><br><span class="line"><span class="hljs-keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># add unknown to tmp.txt</span></span><br><span class="line">awk <span class="hljs-string">'{if($3!="alive"){print $1,$3}}'</span> >> result.txt ntt_machine</span><br><span class="line">~</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="底层设备到网络配置"><a href="#底层设备到网络配置" class="headerlink" title="底层设备到网络配置"></a>底层设备到网络配置</h3><p><img src="http://img.noback.top/2019-12-31-11-26-32.png" alt="2019-12-31-11-26-32"><br>通过该tower截图来获取网络配置需求<br>15台1U服务器<br>1台5130交换机<br>2个万兆多模模块<br>30根网线<br>16根电源线</p>
+<p>1个万兆口</p>
+<p>1-30口汇聚<br>49口接上联 走trunk</p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
                 <a class="has-link-black-ter" href="/posts/c10f304f/"><i class="fas fa-angle-double-right"></i>常见错误</a>
             
         </h1>
@@ -196,332 +478,6 @@
 <p><font color="red">解决</font><br>删除当前交换机的key  并在下次登陆的时候选择</p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><ONI-KC-R01-CR1>ssh 10.0.0.166</span><br><span class="line">Username: tt</span><br><span class="line">Press CTRL+C to abort.</span><br><span class="line">Connecting to 10.0.0.166 port 22.</span><br><span class="line">The server is not authenticated. Continue? [Y/N]:y</span><br><span class="line">Do you want to save the server public key? [Y/N]:n</span><br></pre></td></tr></tbody></table></figure>
 
-</body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/83186147/"><i class="fas fa-angle-double-right"></i>hexo博客优化</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T05:12:17.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E8%AE%BE%E5%A4%87/">设备</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    2 分钟 读完 (大约 320 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="handsome博客优化"><a href="#handsome博客优化" class="headerlink" title="handsome博客优化"></a>handsome博客优化</h1><h2 id="修改右侧栏"><a href="#修改右侧栏" class="headerlink" title="修改右侧栏"></a>修改右侧栏</h2><p>sidebar.php 此处直接去除了 热门文字 、 最新评论 、 随机文字 这三个模块（他们在一个 Tab 里）</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><section id=<span class="hljs-string">"tabs-4"</span> class=<span class="hljs-string">"widget widget_tabs wrapper-md clear"</span>></span><br><span class="line">    <h3 class=<span class="hljs-string">"widget-title m-t-none text-md"</span>><?php _me(<span class="hljs-string">"闲言碎语"</span>) ?></h3></span><br><span class="line">    <div style=<span class="hljs-string">"font-size: 13px"</span>>这里是我的个人小站：猫之三千岁，用以记录生活中的点点滴滴，我一直认为有一个安静的、温馨的小窝是一件很快乐的事情。最后欢迎您不经意间的光临~ 🐾</div></span><br><span class="line"></section></span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="部分修改网站"><a href="#部分修改网站" class="headerlink" title="部分修改网站"></a>部分修改网站</h2><p><a href="https://szyink.com/archives/229/" target="_blank" rel="noopener">https://szyink.com/archives/229/</a></p>
-<h2 id="如何获取自己的备案号"><a href="#如何获取自己的备案号" class="headerlink" title="如何获取自己的备案号"></a>如何获取自己的备案号</h2><p><a href="https://icp.chinaz.com/noback.top" target="_blank" rel="noopener">https://icp.chinaz.com/noback.top</a></p>
-<h2 id="改成CDN的内容"><a href="#改成CDN的内容" class="headerlink" title="改成CDN的内容"></a>改成CDN的内容</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">public static <span class="hljs-keyword">function</span> whenSwitchHeaderImgSrc(<span class="hljs-variable">$index</span> = 0, <span class="hljs-variable">$howToThumb</span>, <span class="hljs-variable">$attach</span>, <span class="hljs-variable">$content</span>, <span class="hljs-variable">$thumbField</span>)</span><br><span class="line">   {</span><br><span class="line">       <span class="hljs-variable">$options</span> = mget();</span><br><span class="line">       //<span class="hljs-variable">$randomNum</span> = unserialize(INDEX_IMAGE_ARRAY);</span><br><span class="line"></span><br><span class="line">       // 随机缩略图路径</span><br><span class="line">       // <span class="hljs-variable">$random</span> = <span class="hljs-string">"http://image.noback.top/"</span> . @<span class="hljs-variable">$randomNum</span>[<span class="hljs-variable">$index</span>] . <span class="hljs-string">'.jpg'</span>;//如果有文章置顶，这里可能会导致index not undefined</span><br><span class="line">       <span class="hljs-variable">$random</span> = <span class="hljs-string">'http://image.noback.top/'</span>.rand(1, 69).<span class="hljs-string">'.jpg'</span>;</span><br><span class="line">     	<span class="hljs-variable">$pattern</span> = <span class="hljs-string">'/\<img.*?src\=\"(.*?)\"[^>]*>/i'</span>;</span><br></pre></td></tr></tbody></table></figure>
-
-<p>突然又想了一个骚操作  只要把bing 4k壁纸上的<br><a href="https://bing.lylares.com/detail/cnjX2Vj0.html" target="_blank" rel="noopener">https://bing.lylares.com/detail/cnjX2Vj0.html</a></p>
-<p>后缀拿到 弄一个列表 随机一下  这样CDN流量钱都省了～</p>
-<h2 id="网站测速"><a href="#网站测速" class="headerlink" title="网站测速"></a>网站测速</h2><p><a href="https://developers.google.com/speed/pagespeed/insights/?hl=zh-cn&url=http%3A%2F%2Fnoback.top%2F" target="_blank" rel="noopener">https://developers.google.com/speed/pagespeed/insights/?hl=zh-cn&url=http%3A%2F%2Fnoback.top%2F</a></p>
-<h2 id="hexo博客优化"><a href="#hexo博客优化" class="headerlink" title="hexo博客优化"></a>hexo博客优化</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">end of the stream or a document separator is expected at line 8, column 1:</span><br><span class="line">报错内容 没有添加</span><br><span class="line">---</span><br><span class="line">title:</span><br><span class="line">tags:</span><br><span class="line">---</span><br><span class="line">等头部内容</span><br></pre></td></tr></tbody></table></figure></body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/cd35325c/"><i class="fas fa-angle-double-right"></i>软件配置</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T05:11:16.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E8%AE%BE%E5%A4%87/">设备</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    7 分钟 读完 (大约 1056 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="设备"><a href="#设备" class="headerlink" title="设备"></a>设备</h1><p>本文主要记录一些设备上的变动，包括快捷键的设置等等</p>
-<h2 id="vscode"><a href="#vscode" class="headerlink" title="vscode"></a>vscode</h2><h3 id="vscode设置代码块"><a href="#vscode设置代码块" class="headerlink" title="vscode设置代码块"></a>vscode设置代码块</h3><p>1.由于markdown不是什么编程语法，vscode不支持自动提示和补全,所以我们要现在用户设置中打开markdown的自动补全<br><font color="red">ctrl+shift+p</font>打开设置—> setting —-> 在其中添加</p>
-<figure class="highlight hljs"><table><tbody><tr><td class="code"><pre><span class="line">"[markdown]": {</span><br><span class="line">    "editor.wordWrap": "on",</span><br><span class="line">    "editor.quickSuggestions": true,</span><br><span class="line">},</span><br></pre></td></tr></tbody></table></figure>
-
-<p>2.添加补全代码块<br>ctrl+shift+p —> 输入markdown –> 打开markdown.json —> 添加内容</p>
-<figure class="highlight hljs"><table><tbody><tr><td class="code"><pre><span class="line">"Print to console": {</span><br><span class="line">		"prefix": "fcr",</span><br><span class="line">		"body": [</span><br><span class="line">			<span class="hljs-string">"<font color='red'>$1</font>"</span></span><br><span class="line">		],</span><br><span class="line">		"description": "change font-color to red sign import "</span><br><span class="line">	}</span><br></pre></td></tr></tbody></table></figure>
-<p>其中prefix 是指你代码块的简洁写法,在你输入的时候会出现代码块的提示<br>body是主体内容,也就是我们添加的代码块<br>description 是注释，你可以标注一下这代码块是用来干嘛的</p>
-<h3 id="vscode-绑定vim自定义快捷键"><a href="#vscode-绑定vim自定义快捷键" class="headerlink" title="vscode 绑定vim自定义快捷键"></a>vscode 绑定vim自定义快捷键</h3><p>在vscode中自定义vim快捷键<br>“vim.insertModeKeyBindings”: [<br>        {<br>            “before”: [“j”, “j”],<br>            “after”: [“<esc>“]<br>        }<br>]<br><a href="https://github.com/VSCodeVim/Vim/#key-remapping" target="_blank" rel="noopener">https://github.com/VSCodeVim/Vim/#key-remapping</a></esc></p>
-<h2 id="chrome"><a href="#chrome" class="headerlink" title="chrome"></a>chrome</h2><h3 id="清除特定网址的缓存"><a href="#清除特定网址的缓存" class="headerlink" title="清除特定网址的缓存"></a>清除特定网址的缓存</h3><p>打开开发者工具（F12），选择 Network——Disable cache 即可。需要清除某网站缓存时 F12 打开开发者工具就会自动清除这个网站的缓存，而不必清除所有网站的缓存了</p>
-<h2 id="ss"><a href="#ss" class="headerlink" title="ss"></a>ss</h2><h3 id="ss加强模式"><a href="#ss加强模式" class="headerlink" title="ss加强模式"></a>ss加强模式</h3><p><font color="red"> Mac电脑使用shadowsocks无法连接公司内网问题</font><br>最近换了mac但是发现无法连接mac电脑，主要原因是在mac电脑中ss无法对所有软件都支持端口转发,这时候需要用到一个软件 proxifier,在这个上面做全局的端口转发即可</p>
-<p><img src="http://img.noback.top/blog/imgproxifier%E8%BD%AF%E4%BB%B6.png" alt><br>看到socks5的监听端口为 1086</p>
-<ol>
-<li>添加代理<br><img src="http://img.noback.top/blog/img20191022152254.png" alt></li>
-<li>添加规则<br><img src="http://img.noback.top/blog/img20191022152521.png" alt></li>
-</ol>
-<h2 id="mac"><a href="#mac" class="headerlink" title="mac"></a>mac</h2><h3 id="mac连接交换机"><a href="#mac连接交换机" class="headerlink" title="mac连接交换机"></a>mac连接交换机</h3><p>由于在mac中没有像windows中xshell这样简单方便的串口连接工具，因此我们只能使用screen来连接交换机</p>
-<p>首先用串口线连接交换机，然后查看接入的串口设备，他们放在/dev下面 由于不同的串口线命名不同，但是他们应该都会带有usb字样</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ls /dev | grep -i tty.*usb</span><br><span class="line">screen /dev/tty.usbxxxxx  9600</span><br></pre></td></tr></tbody></table></figure>
-<p>这里9600为交换机的默认波特率，但你也可以在交换机更换波特率的内容</p>
-<h3 id="mac下使用ftp"><a href="#mac下使用ftp" class="headerlink" title="mac下使用ftp"></a>mac下使用ftp</h3><p>由于新的Mac系统去调了自带的telnet命令和ftp命令，所以第一步我们要安装ftp命令。<br>我的系统是10.13.6</p>
-<p>ftp的安装需要很多的软件依赖</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">brew install telnet</span><br><span class="line">brew install inetutils</span><br><span class="line">brew link --overwrite inetutils</span><br></pre></td></tr></tbody></table></figure>
-<p><font color="red">登陆-</font></p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 方式一</span></span><br><span class="line">ftp ip</span><br><span class="line"><span class="hljs-comment"># 方式二</span></span><br><span class="line">ftp </span><br><span class="line">open ip</span><br></pre></td></tr></tbody></table></figure>
-<p><a href="https://www.jianshu.com/p/10c4e46c77f1" target="_blank" rel="noopener">https://www.jianshu.com/p/10c4e46c77f1</a><br>ftp使用方法<br><a href="https://blog.csdn.net/tianlesoftware/article/details/5818990" target="_blank" rel="noopener">https://blog.csdn.net/tianlesoftware/article/details/5818990</a></p>
-<h3 id="mac下改键记录"><a href="#mac下改键记录" class="headerlink" title="mac下改键记录"></a>mac下改键记录</h3><p>使用karabiner-element修改mac按键<br>修改内容为:<br>切换输入法 由之前的caps lock改成 shift<br>之前的caps 改成了 control</p>
-<ol>
-<li>下载karabiner-element</li>
-<li>在simple modifitions 中修改映射<br>from key caps_lock<br>to_key left_control</li>
-<li>修改shift和caps<br>由于karabiner-element不支持在窗口中修改，但可以指定json形式的配置文件<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">vi /Users/alpaca/.config/karabiner/karabiner.json</span><br><span class="line">                <span class="hljs-string">"rules"</span>: [</span><br><span class="line">                    {</span><br><span class="line">                        <span class="hljs-string">"manipulators"</span>: [</span><br><span class="line">                            {</span><br><span class="line">                                <span class="hljs-string">"description"</span>: <span class="hljs-string">"Change left_shift to control+space when used alone"</span>,</span><br><span class="line">                                <span class="hljs-string">"from"</span>: {</span><br><span class="line">                                    <span class="hljs-string">"key_code"</span>: <span class="hljs-string">"left_shift"</span>,</span><br><span class="line">                                    <span class="hljs-string">"modifiers"</span>: {</span><br><span class="line">                                        <span class="hljs-string">"optional"</span>: [</span><br><span class="line">                                            <span class="hljs-string">"any"</span></span><br><span class="line">                                        ]</span><br><span class="line">                                    }</span><br><span class="line">                                },</span><br><span class="line">                                <span class="hljs-string">"to"</span>: [</span><br><span class="line">                                    {</span><br><span class="line">                                        <span class="hljs-string">"key_code"</span>: <span class="hljs-string">"left_shift"</span></span><br><span class="line">                                    }</span><br><span class="line">                                ],</span><br><span class="line">                                <span class="hljs-string">"to_if_alone"</span>: [</span><br><span class="line">                                    {</span><br><span class="line">                                        <span class="hljs-string">"key_code"</span>: <span class="hljs-string">"spacebar"</span>,</span><br><span class="line">                                        <span class="hljs-string">"modifiers"</span>: [</span><br><span class="line">                                            <span class="hljs-string">"left_control"</span></span><br><span class="line">                                        ]</span><br><span class="line">                                    }</span><br><span class="line">                                ],</span><br><span class="line">                                <span class="hljs-string">"type"</span>: <span class="hljs-string">"basic"</span></span><br><span class="line">                            }</span><br><span class="line">                        ]</span><br><span class="line">                    }</span><br><span class="line">                ]</span><br></pre></td></tr></tbody></table></figure>
-
-</li>
-</ol>
-<h3 id="mac-usr-bin-python-权限问题"><a href="#mac-usr-bin-python-权限问题" class="headerlink" title="mac /usr/bin/python 权限问题"></a>mac /usr/bin/python 权限问题</h3><p>operation not permitted<br>一般情况下我们在使用mac系统过程中下载一些文件、新建一些项目之后，这些文件都会默认是只读状态，这时我们只需要简单的一句权限设置命令就可以解决</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">sudo chmod -R 777 filename</span><br></pre></td></tr></tbody></table></figure>
-<p>/usr/bin下面的文件在mac中会出现一下的错误</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">operation not permitted</span><br></pre></td></tr></tbody></table></figure>
-<p>这是因为mac启用了SIP（System Integrity Protection），增加了rootless机制，导致即使在root权限下依然无法修改文件，在必要时候为了能够修改下面的文件，我们只能关闭该保护机制</p>
-<p>1) 重启 开机过程中按住command+R 进入保护模式<br>2) 打开终端 </p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">csrutil <span class="hljs-built_in">disable</span></span><br></pre></td></tr></tbody></table></figure>
-<p>3) 再次重启，就可以修改/usr/bin下的目录文件 </p>
-<p>4)恢复保护机制</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">csrutil <span class="hljs-built_in">enable</span></span><br></pre></td></tr></tbody></table></figure></body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/b4afac26/"><i class="fas fa-angle-double-right"></i>Vimrc配置</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T05:10:52.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E8%AE%BE%E5%A4%87/">设备</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    10 分钟 读完 (大约 1570 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="NERDtree配置"><a href="#NERDtree配置" class="headerlink" title="NERDtree配置"></a>NERDtree配置</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-string">" ---------------------文件树</span></span><br><span class="line"><span class="hljs-string">"</span> \"表示注视</span><br><span class="line"><span class="hljs-string">" 关闭NERDTree快捷键</span></span><br><span class="line"><span class="hljs-string">map <leader>t :NERDTreeToggle<CR></span></span><br><span class="line"><span class="hljs-string">"</span> 当NERDTree为剩下的唯一窗口时自动关闭</span><br><span class="line">autocmd bufenter * <span class="hljs-keyword">if</span> (winnr(<span class="hljs-string">"$"</span>) == 1 && exists(<span class="hljs-string">"b:NERDTree"</span>) && b:NERDTree.isTabTree()) | q | endif</span><br><span class="line"><span class="hljs-string">" 修改树的显示图标</span></span><br><span class="line"><span class="hljs-string">let g:NERDTreeDirArrowExpandable = '►'</span></span><br><span class="line"><span class="hljs-string">let g:NERDTreeDirArrowCollapsible = '▼'</span></span><br><span class="line"><span class="hljs-string">let NERDTreeAutoCenter=1</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">"</span> 显示行号</span><br><span class="line"><span class="hljs-built_in">let</span> NERDTreeShowLineNumbers=1</span><br><span class="line"><span class="hljs-string">" 是否显示隐藏文件</span></span><br><span class="line"><span class="hljs-string">let NERDTreeShowHidden=1</span></span><br><span class="line"><span class="hljs-string">"</span> 设置宽度</span><br><span class="line"><span class="hljs-built_in">let</span> NERDTreeWinSize=25</span><br><span class="line"><span class="hljs-string">" 在终端启动vim时，共享NERDTree</span></span><br><span class="line"><span class="hljs-string">let g:nerdtree_tabs_open_on_console_startup=1</span></span><br><span class="line"><span class="hljs-string">"</span> 忽略一下文件的显示</span><br><span class="line"><span class="hljs-built_in">let</span> NERDTreeIgnore=[<span class="hljs-string">'\.pyc'</span>,<span class="hljs-string">'\~$'</span>,<span class="hljs-string">'\.swp'</span>]</span><br><span class="line"><span class="hljs-built_in">let</span> g:NERDTreeIndicatorMapCustom = {</span><br><span class="line">    \ <span class="hljs-string">"Modified"</span>  : <span class="hljs-string">"✹"</span>,</span><br><span class="line">    \ <span class="hljs-string">"Staged"</span>    : <span class="hljs-string">"✚"</span>,</span><br><span class="line">    \ <span class="hljs-string">"Untracked"</span> : <span class="hljs-string">"✭"</span>,</span><br><span class="line">    \ <span class="hljs-string">"Renamed"</span>   : <span class="hljs-string">"➜"</span>,</span><br><span class="line">    \ <span class="hljs-string">"Unmerged"</span>  : <span class="hljs-string">"═"</span>,</span><br><span class="line">    \ <span class="hljs-string">"Deleted"</span>   : <span class="hljs-string">"✖"</span>,</span><br><span class="line">    \ <span class="hljs-string">"Dirty"</span>     : <span class="hljs-string">"✗"</span>,</span><br><span class="line">    \ <span class="hljs-string">"Clean"</span>     : <span class="hljs-string">"✔︎"</span>,</span><br><span class="line">    \ <span class="hljs-string">'Ignored'</span>   : <span class="hljs-string">'☒'</span>,</span><br><span class="line">    \ <span class="hljs-string">"Unknown"</span>   : <span class="hljs-string">"?"</span></span><br><span class="line">    \ }</span><br><span class="line"><span class="hljs-string">" 打开NERDTree的快捷键设置为F6</span></span><br><span class="line"><span class="hljs-string">map <F6> :NERDTreeToggle<CR></span></span><br></pre></td></tr></tbody></table></figure>
-
-
-<h2 id="tmux配置"><a href="#tmux配置" class="headerlink" title="tmux配置"></a>tmux配置</h2><h3 id="安装Tumx"><a href="#安装Tumx" class="headerlink" title="安装Tumx"></a>安装Tumx</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 先安装Homebrew，有则跳过</span></span><br><span class="line">ruby -e <span class="hljs-string">"<span class="hljs-variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br><span class="line"><span class="hljs-comment"># 安装tmux</span></span><br><span class="line">brew install tmux</span><br></pre></td></tr></tbody></table></figure>
-<p>tmux的配置文件在～/.tmux.conf<br>退出tmux后生成配置 source .tmux.conf</p>
-<h3 id="tmux简介"><a href="#tmux简介" class="headerlink" title="tmux简介"></a>tmux简介</h3><p>对于tmux来说,最好能了解一些概念,在tmux中,一共分为 窗口（windows)，会话(session) 以及 面板(pane)三块内容,</p>
-<h3 id="tumx-使用指南（会话篇）"><a href="#tumx-使用指南（会话篇）" class="headerlink" title="tumx 使用指南（会话篇）"></a>tumx 使用指南（会话篇）</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">tumx <span class="hljs-comment"># 新建一个无名称的会话</span></span><br><span class="line">tmux new -s demo  <span class="hljs-comment"># (-s -session) 新建一个名称为demo的会话</span></span><br><span class="line"></span><br><span class="line">tmux detach <span class="hljs-comment"># 断开当前会话，会话在后台运行</span></span><br><span class="line"></span><br><span class="line">tmux ls <span class="hljs-comment"># 查看当前会话列表</span></span><br><span class="line">tmux a <span class="hljs-comment"># 默认进入第一个会话</span></span><br><span class="line">tmux a -t demo <span class="hljs-comment"># 进入到名称为demo的会话 (-t -tmux)</span></span><br><span class="line"></span><br><span class="line">tmux <span class="hljs-built_in">kill</span>-session -t demo <span class="hljs-comment">#关闭demo会话</span></span><br><span class="line">tmux <span class="hljs-built_in">kill</span>-server <span class="hljs-comment"># 关闭服务器，即所有的会话都将关闭</span></span><br><span class="line"></span><br><span class="line">tmux ls <span class="hljs-comment"># 查看所有会话</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="tmux使用指南（窗口篇）"><a href="#tmux使用指南（窗口篇）" class="headerlink" title="tmux使用指南（窗口篇）"></a>tmux使用指南（窗口篇）</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">c-b  d <span class="hljs-comment"># 断开当前窗口，后台运行</span></span><br><span class="line">c-b  s <span class="hljs-comment"># 在当前窗口打来其他正在运行的tmux</span></span><br><span class="line">c-b  ? <span class="hljs-comment"># 显示快捷键帮助文档</span></span><br><span class="line">c-b  d <span class="hljs-comment"># 断开当前会话</span></span><br><span class="line">c-b  c+z <span class="hljs-comment"># 挂起当前会话</span></span><br><span class="line">c-b  r <span class="hljs-comment"># 强制重载当前会话</span></span><br><span class="line">c-b  s <span class="hljs-comment"># 显示会话列表用于选择并切换</span></span><br><span class="line">c-b  [ <span class="hljs-comment"># 进入复制模式 按q退出</span></span><br><span class="line">c-b  ] <span class="hljs-comment"># 粘贴复制模式中的文本</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">c-b  c <span class="hljs-comment"># 新建窗口</span></span><br><span class="line">c-b  & <span class="hljs-comment"># 关闭当前窗口 需要输入y n 确认</span></span><br><span class="line">c-b  0~9 <span class="hljs-comment"># 切换到指定窗口</span></span><br><span class="line">c-b  p <span class="hljs-comment"># 切换到指定窗口</span></span><br><span class="line">c-b  n <span class="hljs-comment"># 切换到下一个窗口</span></span><br><span class="line">c-b  w <span class="hljs-comment"># 打开窗口列表，用于切换窗口</span></span><br><span class="line">c-b  , <span class="hljs-comment"># 重命名当前窗口</span></span><br><span class="line">c-b  . <span class="hljs-comment"># 修改当前窗口编号</span></span><br><span class="line">c-b  f <span class="hljs-comment"># 快速定位到窗口</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p><strong>Tmux使用手册地址：<a href="http://louiszhai.github.io/2017/09/30/tmux/" target="_blank" rel="noopener">http://louiszhai.github.io/2017/09/30/tmux/</a></strong></p>
-<p>还需要在记录一下</p>
-<h3 id="tmux美化篇"><a href="#tmux美化篇" class="headerlink" title="tmux美化篇"></a>tmux美化篇</h3><h3 id="tumx配置篇"><a href="#tumx配置篇" class="headerlink" title="tumx配置篇"></a>tumx配置篇</h3><p>首先tmux默认将作为启动功能的前缀按键，当然我们可以自定义修改这个前缀按键，具体配置可以参照下面的配置文件</p>
-<h3 id="常用按键"><a href="#常用按键" class="headerlink" title="常用按键"></a>常用按键</h3><p>在具体配置之前我们先来了解一下tmux常用按键,这里我已经把前缀按键替换成了c-z</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 常用按键</span></span><br><span class="line">c-z ？显示快捷键帮助</span><br><span class="line">c-z c-o 调换窗口位置</span><br><span class="line">c-z space 采用上下布局或左右布局</span><br><span class="line">c-z u 纵向分割窗口</span><br><span class="line">c-z v 横向分割窗口</span><br><span class="line">c-z q 显示分割窗口的编号</span><br><span class="line">c-z hjkl 上下左右选择窗口</span><br><span class="line">c-z c 创建新窗口</span><br><span class="line">c-z 0-9 选择几号窗口</span><br><span class="line">c-z n 切换下一个窗口</span><br><span class="line">c-z p 选择前一个窗口</span><br><span class="line">c-z w 以菜单方式显示及选择窗口</span><br><span class="line">c-z t 显示时钟</span><br><span class="line">c-z x 关闭面板</span><br><span class="line">c-z d 退出当前窗口，丢到缓存 , tmux a 进入指定会话</span><br><span class="line">c-z s 以菜单形式显示和选择会话</span><br><span class="line"></span><br><span class="line">c-z $ 修改当前会话名字</span><br><span class="line"></span><br><span class="line">tmux new -s xxx 创建并指定session名字</span><br><span class="line">tmux ls 列出session</span><br><span class="line">tmux a -t xxx进入已经在的session</span><br><span class="line">tmux <span class="hljs-built_in">kill</span>-session -t session_name 删除指定session</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="具体配置"><a href="#具体配置" class="headerlink" title="具体配置"></a>具体配置</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># Tumx配置文件</span></span><br><span class="line"><span class="hljs-comment"># from hzj</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># remap prefix from 'C-b' to 'C-a'</span></span><br><span class="line"><span class="hljs-comment"># 修改前缀权限</span></span><br><span class="line">unbind C-b     <span class="hljs-comment"># 取消Ctrl-B</span></span><br><span class="line"><span class="hljs-built_in">set</span> -g prefix C-z <span class="hljs-comment">#  添加Ctrl-z</span></span><br><span class="line"><span class="hljs-built_in">bind</span>-key C-z send-prefix  绑定ctrl+z为新的前缀</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment"># split panes using | and -</span></span><br><span class="line"><span class="hljs-comment"># 使用c-u c-v分割面板</span></span><br><span class="line"><span class="hljs-built_in">bind</span> u split-window -h</span><br><span class="line"><span class="hljs-built_in">bind</span> v split-window -v</span><br><span class="line">unbind <span class="hljs-string">'"'</span></span><br><span class="line">unbind %</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 使用c-(hijk)选择面板</span></span><br><span class="line"><span class="hljs-built_in">bind</span> h select-pane -L</span><br><span class="line"><span class="hljs-built_in">bind</span> l select-pane -R</span><br><span class="line"><span class="hljs-built_in">bind</span> j select-pane -D</span><br><span class="line"><span class="hljs-built_in">bind</span> k select-pane -U</span><br><span class="line"> </span><br><span class="line"><span class="hljs-built_in">bind</span>-key e setw synchronize-panes</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment"># Set the default terminal mode to 256color mode</span></span><br><span class="line"><span class="hljs-built_in">set</span> -g default-terminal <span class="hljs-string">"screen-256color"</span></span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment"># Set scrollback buffer to 10000</span></span><br><span class="line"><span class="hljs-built_in">set</span> -g <span class="hljs-built_in">history</span>-limit 10000</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># resize pane</span></span><br><span class="line"><span class="hljs-built_in">bind</span> -r ^k resizep -U 10 <span class="hljs-comment"># upward (prefix Ctrl+k)</span></span><br><span class="line"><span class="hljs-built_in">bind</span> -r ^j resizep -D 10 <span class="hljs-comment"># downward (prefix Ctrl+j)</span></span><br><span class="line"><span class="hljs-built_in">bind</span> -r ^h resizep -L 10 <span class="hljs-comment"># to the left (prefix Ctrl+h)</span></span><br><span class="line"><span class="hljs-built_in">bind</span> -r ^l resizep -R 10 <span class="hljs-comment"># to the right (prefix Ctrl+l)</span></span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment"># app</span></span><br><span class="line"><span class="hljs-comment"># htop (prefix !)</span></span><br><span class="line"><span class="hljs-built_in">bind</span> ! splitw htop</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment"># python </span></span><br><span class="line"><span class="hljs-built_in">bind</span> / <span class="hljs-built_in">command</span>-prompt <span class="hljs-string">"splitw 'exec python3 %%'"</span></span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment"># reload config (prefix r)</span></span><br><span class="line"><span class="hljs-built_in">bind</span> r <span class="hljs-built_in">source</span> ~/.tmux.conf \; display <span class="hljs-string">"Configuration reloaded!"</span></span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">#-- statusbar --#</span></span><br><span class="line"><span class="hljs-built_in">set</span> -g status-interval 1</span><br><span class="line"><span class="hljs-built_in">set</span> -g status-keys vi</span><br><span class="line"> </span><br><span class="line">setw -g mode-keys vi</span><br><span class="line">setw -g automatic-rename off</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">#-- colorscheme --#</span></span><br><span class="line"><span class="hljs-comment">#https://github.com/daethorian/conf-tmux/blob/master/colors/zenburn.conf</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># mouse</span></span><br><span class="line"><span class="hljs-comment"># 支持鼠标</span></span><br><span class="line"><span class="hljs-built_in">set</span>-option -g mouse on </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 支持复制粘贴连续到剪切板</span></span><br><span class="line"><span class="hljs-built_in">bind</span> C-c run <span class="hljs-string">"tmux save-buffer - | reattach-to-user-namespace pbcopy"</span></span><br><span class="line"><span class="hljs-built_in">bind</span> C-v run <span class="hljs-string">"reattach-to-user-namespace pbpaste | tmux load-buffer - \; paste-buffer"</span></span><br><span class="line"><span class="hljs-built_in">bind</span>-key -T copy-mode-vi <span class="hljs-string">'y'</span> send-keys -X copy-pipe-and-cancel <span class="hljs-string">'reattach-to-user-namespace pbcopy'</span><span class="hljs-built_in">bind</span>-key -T copy-mode-vi MouseDragEnd1Pane send -X copy-pipe-and-cancel <span class="hljs-string">"pbcopy"</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">set</span> -g status-utf8 on <span class="hljs-comment"># 状态栏支持utf8</span></span><br><span class="line"><span class="hljs-built_in">set</span> -g status-interval 1 <span class="hljs-comment"># 状态栏刷新时间</span></span><br><span class="line"><span class="hljs-built_in">set</span> -g status-justify left <span class="hljs-comment"># 状态栏列表左对齐</span></span><br><span class="line">setw -g monitor-activity on <span class="hljs-comment"># 非当前窗口有内容更新时在状态栏通知</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">set</span> -g status-bg black <span class="hljs-comment"># 设置状态栏背景黑色</span></span><br><span class="line"><span class="hljs-built_in">set</span> -g status-fg yellow <span class="hljs-comment"># 设置状态栏前景黄色</span></span><br><span class="line"><span class="hljs-built_in">set</span> -g status-style <span class="hljs-string">"bg=black, fg=yellow"</span> <span class="hljs-comment"># 状态栏前景背景色</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">set</span> -g status-left <span class="hljs-string">"#[bg=#FF661D] ❐ #S "</span> <span class="hljs-comment"># 状态栏左侧内容</span></span><br><span class="line"><span class="hljs-built_in">set</span> -g status-right <span class="hljs-string">'Continuum status: #{continuum_status}'</span> <span class="hljs-comment"># 状态栏右侧内容</span></span><br><span class="line"><span class="hljs-built_in">set</span> -g status-left-length 300 <span class="hljs-comment"># 状态栏左边长度300</span></span><br><span class="line"><span class="hljs-built_in">set</span> -g status-right-length 500 <span class="hljs-comment"># 状态栏左边长度500</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">set</span> -wg window-status-format <span class="hljs-string">" #I #W "</span> <span class="hljs-comment"># 状态栏窗口名称格式</span></span><br><span class="line"><span class="hljs-built_in">set</span> -wg window-status-current-format <span class="hljs-string">" #I:#W#F "</span> <span class="hljs-comment"># 状态栏当前窗口名称格式(#I：序号，#w：窗口名称，#F：间隔符)</span></span><br><span class="line"><span class="hljs-built_in">set</span> -wg window-status-separator <span class="hljs-string">""</span> <span class="hljs-comment"># 状态栏窗口名称之间的间隔</span></span><br><span class="line"><span class="hljs-built_in">set</span> -wg window-status-current-style <span class="hljs-string">"bg=red"</span> <span class="hljs-comment"># 状态栏当前窗口名称的样式</span></span><br><span class="line"><span class="hljs-built_in">set</span> -wg window-status-last-style <span class="hljs-string">"fg=red"</span> <span class="hljs-comment"># 状态栏最后一个窗口名称的样式</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">set</span> -g message-style <span class="hljs-string">"bg=#202529, fg=#91A8BA"</span> <span class="hljs-comment"># 指定消息通知的前景、后景色</span></span><br><span class="line"><span class="hljs-built_in">set</span> -g default-terminal <span class="hljs-string">"screen-256color"</span></span><br></pre></td></tr></tbody></table></figure></body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/4d6061df/"><i class="fas fa-angle-double-right"></i>linux就该这么学</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T05:08:55.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E6%89%A9%E5%B1%95/">扩展</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    12 分钟 读完 (大约 1847 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h2 id="Linux就该这么学"><a href="#Linux就该这么学" class="headerlink" title="Linux就该这么学"></a>Linux就该这么学</h2><h3 id="yum软件仓库"><a href="#yum软件仓库" class="headerlink" title="yum软件仓库"></a>yum软件仓库</h3><blockquote>
-<p>yum简化rpm管理软件难度，yum能够根据用于的要求分析出所需软件包及其相关依赖，自动从服务器上下载软件包并安装到系统</p>
-</blockquote>
-<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">            |----->  客户机</span><br><span class="line">yum仓库 ---->| ---->  客户机</span><br><span class="line">            |----->  客户机</span><br></pre></td></tr></tbody></table></figure>
-<p>yum仓库的配置文件都必须要以.repo结尾并放在/etc/yum.repos.d/目录中</p>
-<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">[rhel-media]:yum 源的名称,可自定义</span><br><span class="line">baseurl=file://media/cdrom : 提供方式包括 FTP(ftp://..) 、HTTP(http://) 、本地(file://)</span><br><span class="line">enabled = 1 : 设置次元是否可用，1 为可用 0 为禁用</span><br><span class="line">gpgcheck = 1 : 设置此源是否校验文件，1为校验  0 为不校验</span><br><span class="line">gpgkey = file:///media/cdrom/RPM-GPG-KET-redhat-release  若为校验请指定公钥文件地址</span><br></pre></td></tr></tbody></table></figure>
-<p>YUM仓库中的RPM软件包可以由红帽官方发布，也可以是第三方组织发布</p>
-<figure class="highlight sh hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 命令</span></span><br><span class="line">yum repolist all <span class="hljs-comment"># 列出所有仓库</span></span><br><span class="line">yum list all <span class="hljs-comment"># 列出仓库中所有软件包</span></span><br><span class="line"><span class="hljs-comment"># 以上列出的是线上的还是本地的</span></span><br><span class="line">yum info 软件包名称   <span class="hljs-comment"># 查看软件包信息</span></span><br><span class="line">yum install 软件包名称  <span class="hljs-comment"># 安装软件包</span></span><br><span class="line">yum reinstall 软件包名称  <span class="hljs-comment"># 重新安装</span></span><br><span class="line">yum remove 软件包名称 <span class="hljs-comment"># 删除软件包</span></span><br><span class="line">yum update 软件包名称 <span class="hljs-comment"># 升级</span></span><br><span class="line">yum clean alla  <span class="hljs-comment"># 清楚所有仓库缓存</span></span><br><span class="line">yum check-update <span class="hljs-comment"># 检查可更新的软件包</span></span><br><span class="line">yum grouplist <span class="hljs-comment"># 查看系统已经安装的软件包组</span></span><br><span class="line">yum groupinstall 软件包组 <span class="hljs-comment"># 安装指定的软件包组</span></span><br><span class="line">yum groupremove 软件包组  <span class="hljs-comment"># 移除指定的软件包组</span></span><br><span class="line">yum groupinfo 软件包组   <span class="hljs-comment"># 查询指定的软件包信息</span></span><br></pre></td></tr></tbody></table></figure>
-
-
-<h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> 用于在终端上显示字符或变量 , 格式为 <span class="hljs-built_in">echo</span> [字符串|变量]</span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># echo $SHELL</span></span><br><span class="line">/bin/bash</span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># echo name</span></span><br><span class="line">name</span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># echo $HOSTNAME</span></span><br><span class="line">localhost.localdomain</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">data 命令用于显示/设置系统的时间或日期, 格式为: <span class="hljs-string">"data[选项][+指定的格式]"</span></span><br><span class="line">%t  制表符(表示一个TAB键)</span><br><span class="line">%H  小时(00-23)</span><br><span class="line">%I  小时(1-12)</span><br><span class="line">%M  分钟</span><br><span class="line">%S  秒</span><br><span class="line">%X  相当于%H:%M:%S</span><br><span class="line">%Z  显示时区</span><br><span class="line">%p  显示本地AM或PM</span><br><span class="line">%A  星期</span><br><span class="line">%a  星期</span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># date +%a</span></span><br><span class="line">Wed</span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># date +%A</span></span><br><span class="line">Wednesday</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">reboot 命令用于重启系统(仅root用户可以使用)</span><br><span class="line">reboot</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">wget 命令用于下载网络文件，格式为wegt[参数] 下载地址</span><br><span class="line">-b 后台下载模式</span><br><span class="line">-O 指定目录</span><br><span class="line">-t 最大尝试次数</span><br><span class="line">-c 断点续传   </span><br><span class="line"><span class="hljs-comment"># 断点续传啥意思</span></span><br><span class="line">-p 下载页面内所有资源，包括图片,视频等</span><br><span class="line">-r 递归下载</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">elinks 在终端上访问网页</span><br><span class="line">yum install elinks -y</span><br><span class="line">elinks www.baidu.com</span><br></pre></td></tr></tbody></table></figure>
-
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ifconfig 用于获取网卡配置与网络状态等信息: 格式为 ifconfig [网络设备] [参数]</span><br><span class="line"><span class="hljs-comment"># 在Centos7中，初始系统已经不在带有ifconfig命令,需要安装</span></span><br><span class="line">yum install net-tools -y </span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># ifconfig </span></span><br><span class="line">eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500</span><br><span class="line">        inet 10.0.5.30  netmask 255.255.240.0  broadcast 10.0.15.255</span><br><span class="line">        inet6 fe80::546f:27ff:fe92:5  prefixlen 64  scopeid 0x20<link></span><br><span class="line">        ether 56:6f:27:92:00:05  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 2789743  bytes 2021122197 (1.8 GiB)</span><br><span class="line">        RX errors 0  dropped 40085  overruns 0  frame 0</span><br><span class="line">        TX packets 255991  bytes 349383987 (333.1 MiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br></pre></td></tr></tbody></table></figure>
-
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">uname 命令用于查看系统内核版本等信息，格式为<span class="hljs-string">"uanme [-a]"</span></span><br><span class="line">内核名称、内核发行版本、内核版本、节点名、硬件名称、硬件平台、处理器类型、操作系统等信息</span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># uname -a</span></span><br><span class="line">Linux localhost.localdomain 3.10.0-957.el7.x86_64 <span class="hljs-comment">#1 SMP Thu Nov 8 23:39:32 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux</span></span><br><span class="line">查看详细版本</span><br><span class="line">cat /etc/redhat-release</span><br></pre></td></tr></tbody></table></figure>
-
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">uptime 查看系统的负载情况 </span><br><span class="line">系统当前时间、系统已运行时间、当前在线用户、平均负载均衡(1,5,15分钟)</span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># uptime</span></span><br><span class="line"> 11:02:21 up 23:49,  2 users,  load average: 0.00, 0.01, 0.05</span><br><span class="line"><span class="hljs-comment"># 每秒刷新一次获得当前的系统负载均衡情况</span></span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># watch -n 1 uptime</span></span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">free 命令用于显示当前系统中内存的使用情况,格式为 free[-m/-g]</span><br><span class="line">以m或g显示当前系统中内存的使用情况</span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># free</span></span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:        1995208      132640      813324        6520     1049244     1780360</span><br><span class="line">Swap:       2097148           0     2097148</span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># free -m</span></span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:           1948         129         794           6        1024        1738</span><br><span class="line">Swap:          2047           0        2047</span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># free -g</span></span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:              1           0           0           0           1           1</span><br><span class="line">Swap:             1           0           1</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">who 命令用于查看当前登录主机的用户情况,格式为: who[参数]</span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># who</span></span><br><span class="line">root     tty1         2019-08-14 11:25</span><br><span class="line">root     pts/0        2019-08-15 10:38 (10.0.3.12)</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">last命令用于查看所有系统的登入记录: 格式为 last[参数]</span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># last</span></span><br><span class="line">root     pts/1        10.0.3.12        Thu Aug 15 10:41 - 10:41  (00:00)    </span><br><span class="line">root     pts/0        10.0.3.12        Thu Aug 15 10:38   still logged <span class="hljs-keyword">in</span>   </span><br><span class="line">root     pts/0        10.0.3.12        Thu Aug 15 10:33 - 10:37  (00:04)    </span><br><span class="line">root     pts/1        10.0.3.12        Wed Aug 14 14:40 - 21:38  (06:57)    </span><br><span class="line">root     pts/0        10.0.3.12        Wed Aug 14 14:11 - 21:38  (07:26)    </span><br><span class="line">root     pts/3        10.0.3.12        Wed Aug 14 11:30 - 21:37  (10:06)    </span><br><span class="line">root     pts/2        10.0.5.175       Wed Aug 14 11:26 - 11:33  (00:06)    </span><br><span class="line">root     tty1                          Wed Aug 14 11:25   still logged <span class="hljs-keyword">in</span>   </span><br><span class="line">root     pts/1        10.0.3.12        Wed Aug 14 11:19 - 11:32  (00:12)    </span><br><span class="line">root     pts/0        10.0.3.12        Wed Aug 14 11:15 - 11:32  (00:16)    </span><br><span class="line">root     tty1                          Wed Aug 14 11:12 - 11:15  (00:02)    </span><br><span class="line">reboot   system boot  3.10.0-957.el7.x Wed Aug 14 11:12 - 11:12  (23:59)    </span><br><span class="line">wtmp begins Wed Aug 14 11:12:34 2019</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">history</span>命令用于显示历史执行过的命令,格式为： <span class="hljs-built_in">history</span> [-c]</span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># history </span></span><br><span class="line"><span class="hljs-comment"># 清除历史记录</span></span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># history -c</span></span><br><span class="line"><span class="hljs-comment"># 默认历史记录保存1000条，修改最大值</span></span><br><span class="line">vim /etc/profile  </span><br><span class="line">HISTSIZE = xxx</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">pwd</span>用于查看当前的工作路径</span><br><span class="line"><span class="hljs-built_in">pwd</span></span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">cd</span>用于切换工作路径,格式: <span class="hljs-built_in">cd</span>[目录名称]</span><br><span class="line"><span class="hljs-built_in">cd</span> - 切换到上一次目录</span><br><span class="line"><span class="hljs-built_in">cd</span> ~ 切换到家目录</span><br><span class="line"><span class="hljs-built_in">cd</span> ~username 切换到其他用户的家目录</span><br><span class="line"><span class="hljs-built_in">cd</span> .. 切换到上级目录</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">cat 命令查看纯文本文件(较短的), 格式为:cat[选项][文件]</span><br><span class="line">-n 显示行号</span><br><span class="line">-b 显示行号(不包括空行)</span><br><span class="line">-A 显示出不可见的符号</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">more 命令用于查看纯文本文件(较长的),格式为  more[选项] 文件 </span><br><span class="line">-数字  预先显示的行数(要在文件前面输入)</span><br><span class="line">-d     显示提示语与报错信息</span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># more -5 test.txt</span></span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">head 命令用于查看纯文本文档的前N行，格式为 head[选项][文件]</span><br><span class="line">查看文本前10行</span><br><span class="line">head -n 10 文件名</span><br><span class="line">正常输出，不显示最后10行</span><br><span class="line">head -n -10</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">tail 命令用于查看纯文本文档的后N行,格式为 tail [选项][文件]</span><br><span class="line">查看文本文件后20行</span><br><span class="line">tail -n 20  文件名</span><br><span class="line">不断刷新文件最后一行</span><br><span class="line">tail -n 1 -f 文件名</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">od命令用于对查看特殊格式的文件,格式为 od[选项][文件]</span><br><span class="line">-t a 默认字符</span><br><span class="line">-t c ASCII字符</span><br><span class="line">-t o 八进制</span><br><span class="line">-t d 十进制</span><br><span class="line">-t x 十六进制</span><br><span class="line">-t f 浮点数</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">tr命令用于转换文本文件中的字符,格式为  tr[原始字符][目标字符]</span><br><span class="line">将小写字符改成大写</span><br><span class="line">cat test.txt | tr [a-z][A-Z]</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">wc 命令用于统计指定文本的行数、字数、字节数, 格式为 wc[参数]  文本</span><br><span class="line">-l  只显示行数</span><br><span class="line">-w  只显示单词数</span><br><span class="line">-c  只显示字节数</span><br><span class="line">统计当前用户中的个数</span><br><span class="line">wc -l /etc/passwd</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">cut 命令通过列来提取文本字符  cut[参数] 文本</span><br><span class="line">-d 分隔符    指定分隔符,默认为Tab</span><br><span class="line">-f          指定显示的列数</span><br><span class="line">-c          单位改为字符</span><br><span class="line">获取当前系统中所有用户的名称</span><br><span class="line">cut -d: -f1 /etc/passwd</span><br><span class="line">获取root用户的默认shell解释器</span><br><span class="line">grep ^root /etc/passwd | cut -d: -f 7</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">diff 命令用于比较多个文本文件的差异,格式为diff[参数] 文件</span><br><span class="line">-b 忽略空格引起的差异</span><br><span class="line">-B 忽略空行引起的差异</span><br><span class="line">--brief 或者 -q  仅返回是否存在差异 (没有差异，则无返回)</span><br><span class="line">-c 使用上下文输出格式</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">touch 创建空白文件和修改文件时间 ,格式为 touch[选项][文件]</span><br><span class="line">对于在linux中的文件有三种时间:</span><br><span class="line">    更改时间(mtime):内容修改时间(不包括权限)</span><br><span class="line">    更改权限(ctime):更改权限和属性的时间</span><br><span class="line">    读取时间(atime):读取文件内容的时间</span><br></pre></td></tr></tbody></table></figure>
-
-<hr>
 </body></html>
         </div>
         
@@ -598,7 +554,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        86
+                        90
                     </p>
                 </a>
             </div>
@@ -608,7 +564,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        27
                     </p>
                 </a>
             </div>
@@ -618,7 +574,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        11
+                        15
                     </p>
                 </a>
             </div>
@@ -697,7 +653,7 @@
                 <span class="level-item">code</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">21</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/docker/">
@@ -713,23 +669,15 @@
                 <span class="level-item">linux</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">33</span>
+                <span class="level-item tag">34</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/linux/COMMAND/">
-            <span class="level-start">
-                <span class="level-item">COMMAND</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/linux/Command/">
             <span class="level-start">
                 <span class="level-item">Command</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/linux/ansible/">
@@ -756,6 +704,14 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/%E6%95%85%E9%9A%9C/">
+            <span class="level-start">
+                <span class="level-item">故障</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/linux/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
             <span class="level-start">
                 <span class="level-item">文件系统</span>
@@ -777,7 +733,7 @@
                 <span class="level-item">工具</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E6%89%A9%E5%B1%95/">
@@ -796,12 +752,28 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%9E%B6%E6%9E%84/">
+            <span class="level-start">
+                <span class="level-item">架构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">
+            <span class="level-start">
+                <span class="level-item">CI-CD</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/">
             <span class="level-start">
                 <span class="level-item">编程</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">23</span>
+                <span class="level-item tag">14</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">
@@ -817,7 +789,7 @@
                 <span class="level-item">django</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">12</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">
@@ -906,7 +878,7 @@
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">23</span>
                 </span>
             </a>
         </li>
@@ -948,6 +920,82 @@
         
         <article class="media">
             
+            <a href="/posts/40a08bb8/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-daily">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T09:03:34.000Z">2020-02-14</time></div>
+                    <a href="/posts/40a08bb8/" class="has-link-black-ter is-size-6">linux-daily</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/1f4442b1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hello,new-world">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T07:35:13.000Z">2020-02-14</time></div>
+                    <a href="/posts/1f4442b1/" class="has-link-black-ter is-size-6">hello,new-world</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/4115d0cd/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CI-CD实践">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T19:29:41.000Z">2020-02-14</time></div>
+                    <a href="/posts/4115d0cd/" class="has-link-black-ter is-size-6">CI-CD实践</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a> / <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/88888022/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="django实际项目中的模块设计">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T17:53:20.000Z">2020-02-14</time></div>
+                    <a href="/posts/88888022/" class="has-link-black-ter is-size-6">django实际项目中的模块设计</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/posts/59fd12f/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="swarm与k8s的区别">
@@ -958,82 +1006,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:49:28.000Z">2020-02-10</time></div>
                     <a href="/posts/59fd12f/" class="has-link-black-ter is-size-6">swarm与k8s的区别</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/6e725c12/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="k8s常见错误">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:04:28.000Z">2020-02-10</time></div>
-                    <a href="/posts/6e725c12/" class="has-link-black-ter is-size-6">k8s常见错误</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/7cebdf57/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-k8s">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T19:55:11.000Z">2020-02-10</time></div>
-                    <a href="/posts/7cebdf57/" class="has-link-black-ter is-size-6">docker-k8s</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/1976fb59/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-swarm-wordpress">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T09:35:49.000Z">2020-02-09</time></div>
-                    <a href="/posts/1976fb59/" class="has-link-black-ter is-size-6">docker-swarm-wordpress</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/8f65/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-swarm">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:38:32.000Z">2020-02-07</time></div>
-                    <a href="/posts/8f65/" class="has-link-black-ter is-size-6">docker-swarm</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
                     </p>
@@ -1070,7 +1042,7 @@
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">23</span>
                 </span>
             </a>
         </li>
@@ -1112,6 +1084,82 @@
         
         <article class="media">
             
+            <a href="/posts/40a08bb8/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-daily">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T09:03:34.000Z">2020-02-14</time></div>
+                    <a href="/posts/40a08bb8/" class="has-link-black-ter is-size-6">linux-daily</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/1f4442b1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hello,new-world">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T07:35:13.000Z">2020-02-14</time></div>
+                    <a href="/posts/1f4442b1/" class="has-link-black-ter is-size-6">hello,new-world</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/4115d0cd/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CI-CD实践">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T19:29:41.000Z">2020-02-14</time></div>
+                    <a href="/posts/4115d0cd/" class="has-link-black-ter is-size-6">CI-CD实践</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a> / <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/88888022/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="django实际项目中的模块设计">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T17:53:20.000Z">2020-02-14</time></div>
+                    <a href="/posts/88888022/" class="has-link-black-ter is-size-6">django实际项目中的模块设计</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/posts/59fd12f/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="swarm与k8s的区别">
@@ -1122,82 +1170,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:49:28.000Z">2020-02-10</time></div>
                     <a href="/posts/59fd12f/" class="has-link-black-ter is-size-6">swarm与k8s的区别</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/6e725c12/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="k8s常见错误">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:04:28.000Z">2020-02-10</time></div>
-                    <a href="/posts/6e725c12/" class="has-link-black-ter is-size-6">k8s常见错误</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/7cebdf57/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-k8s">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T19:55:11.000Z">2020-02-10</time></div>
-                    <a href="/posts/7cebdf57/" class="has-link-black-ter is-size-6">docker-k8s</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/1976fb59/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-swarm-wordpress">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T09:35:49.000Z">2020-02-09</time></div>
-                    <a href="/posts/1976fb59/" class="has-link-black-ter is-size-6">docker-swarm-wordpress</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/8f65/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-swarm">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:38:32.000Z">2020-02-07</time></div>
-                    <a href="/posts/8f65/" class="has-link-black-ter is-size-6">docker-swarm</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
                     </p>

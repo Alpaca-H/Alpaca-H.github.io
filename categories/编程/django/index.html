@@ -162,6 +162,72 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
+                <a class="has-link-black-ter" href="/posts/88888022/"><i class="fas fa-angle-double-right"></i>django实际项目中的模块设计</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-13T17:53:20.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-14</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    3 分钟 读完 (大约 464 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>learn django 🐢</p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/django/" rel="tag">django</a>
+                </div>
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/88888022/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
                 <a class="has-link-black-ter" href="/posts/4b10b818/"><i class="fas fa-angle-double-right"></i>drf-model</a>
             
         </h1>
@@ -770,134 +836,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/7e91b378/"><i class="fas fa-angle-double-right"></i>django内容总结</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:40:44.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    13 分钟 读完 (大约 1914 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="django内容总结"><a href="#django内容总结" class="headerlink" title="django内容总结"></a>django内容总结</h1><h2 id="在后台对某些固定字段设置颜色"><a href="#在后台对某些固定字段设置颜色" class="headerlink" title="在后台对某些固定字段设置颜色"></a>在后台对某些固定字段设置颜色</h2><figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># models.py</span></span><br><span class="line"><span class="hljs-keyword">from</span> django.urls.html <span class="hljs-keyword">import</span> format_html</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span><span class="hljs-params">(models.Model)</span>:</span></span><br><span class="line">    first_name = models.CharField(max_length=<span class="hljs-number">50</span>)</span><br><span class="line">    last_name = models.CharField(max_length=<span class="hljs-number">50</span>)</span><br><span class="line">    color_code = models.CharField(max_length=<span class="hljs-number">6</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">colored_name</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> format_html(</span><br><span class="line"></span><br><span class="line">            <span class="hljs-string">'<span style="color: #{};">{} {}</span>'</span>,</span><br><span class="line"></span><br><span class="line">            self.color_code,</span><br><span class="line"></span><br><span class="line">            self.first_name,</span><br><span class="line"></span><br><span class="line">            self.last_name,</span><br><span class="line"></span><br><span class="line">        )</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="admin-py"><a href="#admin-py" class="headerlink" title="admin.py"></a>admin.py</h3><p>class PersonAdmin(admin.ModelAdmin):<br>    list_display = (‘first_name’, ‘last_name’, ‘colored_name’)</p>
-<h2 id="DjangoAdmin"><a href="#DjangoAdmin" class="headerlink" title="DjangoAdmin"></a>DjangoAdmin</h2><blockquote>
-<p>Django自带后台管理模板是其一大特色，但作为后台管理很多地方需要我们去改进，当然也可以使用一些其他的后台模板</p>
-</blockquote>
-<ul>
-<li>推荐模板1: xadmin xadmin在几年前是为django定制的后台管理模板，但是作者已经停止维护，但是在其分支中依旧有部分人在维护。<br>  具体使用跳转到我的掘金<a href="https://juejin.im/post/5afd267d51882542714ff756" target="_blank" rel="noopener">https://juejin.im/post/5afd267d51882542714ff756</a></li>
-<li>推荐模板2： django simple-ui 在github上的星数并不高，但是是基于饿了么element-ui所写的django后台模板，我还未使用</li>
-<li>使用本身自带的admin模板</li>
-<li>使用其他兼容多语言的后台模板</li>
-</ul>
-<p>url :<a href="https://my.oschina.net/zhiyonghe/blog/1532030" target="_blank" rel="noopener">https://my.oschina.net/zhiyonghe/blog/1532030</a></p>
-<hr>
-<h3 id="自带的Admin模板"><a href="#自带的Admin模板" class="headerlink" title="自带的Admin模板"></a>自带的Admin模板</h3><blockquote>
-<p>这里介绍一下自带的admin模板。</p>
-</blockquote>
-<ol>
-<li><p>admin界面汉化<br>在setting.py文件中设置语言</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># setting.py</span></span><br><span class="line"></span><br><span class="line">LANGUAGE_CODE = <span class="hljs-string">'zh-hans'</span></span><br><span class="line">IME_ZONE = <span class="hljs-string">'Asia/Shanghai'</span></span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>Model注册<br>在Model.py中创建完类后，需要在admin.py中完成注册，才能在后台模板中显示，方法有二</p>
-</li>
-</ol>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># admin.py</span></span><br><span class="line"><span class="hljs-comment"># 方法一</span></span><br><span class="line"><span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin </span><br><span class="line"><span class="hljs-keyword">from</span> blog.models <span class="hljs-keyword">import</span> Blog</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BlogAdmin</span><span class="hljs-params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">    list_display=(<span class="hljs-string">'xx'</span>,<span class="hljs-string">'xx'</span>,<span class="hljs-string">'xx'</span>)  <span class="hljs-comment"># 要显示的字段</span></span><br><span class="line">    list_per_page = <span class="hljs-number">50</span>  <span class="hljs-comment"># 每页最多显示50条</span></span><br><span class="line">    ordering = (<span class="hljs-string">"-xxx"</span>)  <span class="hljs-comment"># 设置排序，-表示降序排序</span></span><br><span class="line">    list_editable = [<span class="hljs-string">''</span>,<span class="hljs-string">''</span>,<span class="hljs-string">''</span>] <span class="hljs-comment"># 设置可编辑字段</span></span><br><span class="line">    list_display_links = (<span class="hljs-string">''</span>,<span class="hljs-string">''</span>,) <span class="hljs-comment"># 默认情况下只能点击第一个字段进入编辑，设置多个字段可点击进入编辑</span></span><br><span class="line">    list_filter = (<span class="hljs-string">''</span>,<span class="hljs-string">''</span>,<span class="hljs-string">''</span>) <span class="hljs-comment"># 筛选器</span></span><br><span class="line">    search_fields  = (<span class="hljs-string">''</span>,<span class="hljs-string">''</span>,<span class="hljs-string">''</span>,) <span class="hljs-comment"># 搜索字段</span></span><br><span class="line">    date_hierarchy = <span class="hljs-string">'go_time'</span> <span class="hljs-comment"># 详细时间筛选</span></span><br><span class="line"></span><br><span class="line">admin.site.register(Blog,BlogAdmin)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 方法二</span></span><br><span class="line"><span class="hljs-keyword">from</span> djang.contrib <span class="hljs-keyword">import</span> admin</span><br><span class="line"><span class="hljs-keyword">from</span> blog.models <span class="hljs-keyword">import</span> Blog</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@admin.register(Blog)</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BlogAdmin</span><span class="hljs-params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">    list_display=(<span class="hljs-string">''</span>,<span class="hljs-string">''</span>,<span class="hljs-string">''</span>)</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<h2 id="Django-for-ajax"><a href="#Django-for-ajax" class="headerlink" title="Django for ajax"></a>Django for ajax</h2><p>django 前后台传递消息内容的方法有很多种,这里我们来讲一下ajax for django</p>
-<figure class="highlight hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 路由地址</span></span><br><span class="line"><span class="hljs-comment"># 项目路径下</span></span><br><span class="line">path(<span class="hljs-string">''</span>,include(<span class="hljs-string">'GraphPro.urls'</span>))</span><br><span class="line"><span class="hljs-comment"># 应用路径下</span></span><br><span class="line">path(<span class="hljs-string">'echartsdemo/'</span>,demoView.as_view(),name=<span class="hljs-string">"demo"</span>),</span><br><span class="line"><span class="hljs-comment"># 视图层</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span>  <span class="hljs-title">demoView</span><span class="hljs-params">(View)</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get</span><span class="hljs-params">(self,request)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> request.GET.get(<span class="hljs-string">'name'</span>) == <span class="hljs-string">'hzj'</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">"ssdsdsd"</span>)</span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            print(<span class="hljs-number">2</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> render(request,<span class="hljs-string">'demo.html'</span>)</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">post</span><span class="hljs-params">(self,request)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">pass</span></span><br><span class="line"><span class="hljs-comment"># 模板层</span></span><br><span class="line"><body></span><br><span class="line">    <!-- 为ECharts准备一个具备大小（宽高）的Dom --></span><br><span class="line">    <div id="main" style="width: 1000px;height:1000px;" ></div></span><br><span class="line"></span><br><span class="line">    <input type=<span class="hljs-string">"text"</span> id=<span class="hljs-string">"name"</span> value=<span class="hljs-string">"hzj"</span>></span><br><span class="line">    <span id="result"></span></span><br><span class="line">    <button class="button" id="click_func">点击</button></span><br><span class="line">    {{ data }}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <script type=<span class="hljs-string">"text/javascript"</span>></span><br><span class="line"></span><br><span class="line">         $(document).ready(function () {</span><br><span class="line">            var name = $(<span class="hljs-string">'#name'</span>).val();</span><br><span class="line">            var data = {<span class="hljs-string">"name"</span>:name};</span><br><span class="line">            $(<span class="hljs-string">"#click_func"</span>).click(function () {</span><br><span class="line">                $.get(</span><br><span class="line">                    //请求的url</span><br><span class="line">                    <span class="hljs-string">'{% url '</span>demoecharts<span class="hljs-string">' %}'</span>,</span><br><span class="line">                    data,</span><br><span class="line">                    function (ret) {</span><br><span class="line">                        console.log(ret)</span><br><span class="line">                    }</span><br><span class="line">                )</span><br><span class="line">            })</span><br><span class="line">        })</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    </script></span><br><span class="line"></body></span><br></pre></td></tr></tbody></table></figure>
-
-
-<p>进入页面直接请求后台数据</p>
-<figure class="highlight html hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-javascript">     $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{</span></span><br><span class="line"><span class="hljs-actionscript">         <span class="hljs-keyword">var</span> data = {<span class="hljs-string">"name"</span>:<span class="hljs-string">"hzj"</span>};</span></span><br><span class="line"><span class="hljs-javascript">         $.<span class="hljs-keyword">get</span>(</span></span><br><span class="line"><span class="hljs-actionscript">            <span class="hljs-comment">//请求的url</span></span></span><br><span class="line"><span class="hljs-actionscript">            <span class="hljs-string">'{% url '</span>demo<span class="hljs-string">' %}'</span>,</span></span><br><span class="line">            data,</span><br><span class="line"><span class="hljs-actionscript">            <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(ret)</span> </span>{</span></span><br><span class="line"><span class="hljs-javascript">                <span class="hljs-built_in">console</span>.log(ret)</span></span><br><span class="line">            }</span><br><span class="line">         )</span><br><span class="line">    })</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag"></<span class="hljs-name">script</span>></span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>异步加载数据</p>
-<figure class="highlight html hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-tag"><<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-javascript">        $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{</span></span><br><span class="line"><span class="hljs-actionscript">            <span class="hljs-keyword">var</span> data = {<span class="hljs-string">"name"</span>:<span class="hljs-string">"hzj"</span>};</span></span><br><span class="line"><span class="hljs-javascript">            $.<span class="hljs-keyword">get</span>(</span></span><br><span class="line"><span class="hljs-actionscript">               <span class="hljs-comment">//请求的url</span></span></span><br><span class="line"><span class="hljs-actionscript">               <span class="hljs-string">'{% url '</span>demo<span class="hljs-string">' %}'</span>,</span></span><br><span class="line">               data,</span><br><span class="line"><span class="hljs-actionscript">            ).done(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(ret)</span></span>{</span></span><br><span class="line"><span class="hljs-javascript">                <span class="hljs-built_in">console</span>.log(ret)</span></span><br><span class="line">            })</span><br><span class="line">       })</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="hljs-tag"></<span class="hljs-name">script</span>></span></span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<blockquote>
-<p>介绍Mysql在Django中的引用<br>由于Django在初始化项目后，所使用的数据库是sqlite3,但为了扩展，我们这里计划使用Mysql,配置步骤如下</p>
-</blockquote>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-number">1.</span>在服务器上安装Mysql数据库(Centos版)</span><br><span class="line"></span><br><span class="line"><span class="hljs-number">2.</span>在django的setting.py中引用</span><br></pre></td></tr></tbody></table></figure>
-
-<hr>
-<h2 id="错误类型总结"><a href="#错误类型总结" class="headerlink" title="错误类型总结"></a>错误类型总结</h2><p>由于mysql与django在配置过程中会存在很多的错误，这里总结一下</p>
-<h4 id="Mysql在Centos中权限不足的错误"><a href="#Mysql在Centos中权限不足的错误" class="headerlink" title="Mysql在Centos中权限不足的错误"></a>Mysql在Centos中权限不足的错误</h4><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)</span><br></pre></td></tr></tbody></table></figure>
-<p>原因是/var/lib/mysql的访问权限不足</p>
-<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1.改变权限 chown -R mysql:mysql /var/lib/mysql   </span><br><span class="line">2. 启动服务器 /etc/init.d/mysql start (会自动生成mysql.sock文件)  </span><br><span class="line">3.重新启动mysql服务  /etc/init.d/mysql start</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="密码类型错误"><a href="#密码类型错误" class="headerlink" title="密码类型错误"></a>密码类型错误</h4><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1045, "Access denied for user 'root'@'122.224.83.xxx</span><br></pre></td></tr></tbody></table></figure>
-<p>原因 密码错误，注意密码不能是字符串</p>
-<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="django-setting-中的配置"><a href="#django-setting-中的配置" class="headerlink" title="django setting 中的配置"></a>django setting 中的配置</h4><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">DATABASES = {</span><br><span class="line">    'default': {</span><br><span class="line"></span><br><span class="line">        'ENGINE': 'django.db.backends.mysql',</span><br><span class="line">        'NAME': 'itemids',  # 数据库名字</span><br><span class="line">        'USER': 'root',    # 数据库登录名</span><br><span class="line">        'PASSWORD': '12345x', # 数据库密码</span><br><span class="line">        'HOST': '106.14.195.xxx', 数据库IP</span><br><span class="line">        'POST': 3306, # 端口</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="引用pymysql"><a href="#引用pymysql" class="headerlink" title="引用pymysql"></a>引用pymysql</h4><p>由于MySQLdb只能使用在Python2中，在python3中已经停止了维护，所以这里我们引用pymyql的库</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">pipenv install pymysql</span><br><span class="line"><span class="hljs-comment"># 在与setting.py同级别的__init__.py中使用</span></span><br><span class="line"><span class="hljs-keyword">import</span> pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="pymysql版本不符合"><a href="#pymysql版本不符合" class="headerlink" title="pymysql版本不符合"></a>pymysql版本不符合</h4><p>报错内容:django.core.exceptions.ImproperlyConfigured: mysqlclient 1.3.3 or newer is required; you have 0.7.11<br>修改Pipenv\Lib\site-packages\django\db\backends\mysql\base.py<br>注释下面内容<br>if version < (1, 3, 3):<br>    raise ImproperlyConfigured(“mysqlclient 1.3.3 or newer is required; you have %s” % Database.<strong>version</strong>)</p>
-<p>(在Centos中，pipenv install 所生成的包 会在pipenv shell 激活环境的时候出现)</p>
-<p>由于上面注释，还会出现的报错内容为<br>File “C:\Users\Administrator\PycharmProjects\untitled1\venv\lib\site-packages\django\db\backends\mysql\operations.py”, line 146, in last_executed_query<br>将operations.py中的decode改成encode</p>
-<h4 id="mysql不能插入中文"><a href="#mysql不能插入中文" class="headerlink" title="mysql不能插入中文"></a>mysql不能插入中文</h4><p>报错内容： django.db.utils.InternalError: (1366, “Incorrect string value: ‘\xE5\xAE\x9A\xE6\x97\xB6…’ for column ‘name’ at row 1”)<br>解决方法: <a href="https://blog.csdn.net/tzh476/article/details/52644271" target="_blank" rel="noopener">https://blog.csdn.net/tzh476/article/details/52644271</a><br>删除之前的库，创建一个新的数据库，使用utf8mb64   之前默认创建的都是latin1</p>
-<h4 id="mysql-长度的问题"><a href="#mysql-长度的问题" class="headerlink" title="mysql 长度的问题"></a>mysql 长度的问题</h4><p>django.db.utils.InternalError: (1071, ‘Specified key was too long; max key length is 767 bytes’)<br><a href="https://blog.csdn.net/ljfphp/article/details/80406907" target="_blank" rel="noopener">https://blog.csdn.net/ljfphp/article/details/80406907</a><br><a href="https://www.orcode.com/question/407126_k280b8.html" target="_blank" rel="noopener">https://www.orcode.com/question/407126_k280b8.html</a></p>
-<p>解决方法1: 升级Mysql5.6–>>Mysql5.7<br>centos7 下  对mysql的操作 <a href="https://blog.csdn.net/xufengzhu/article/details/81110982" target="_blank" rel="noopener">https://blog.csdn.net/xufengzhu/article/details/81110982</a><br><a href="https://blog.51cto.com/lisea/1941616" target="_blank" rel="noopener">https://blog.51cto.com/lisea/1941616</a></p>
-<p>解决方法2 : 先使用utf8格式</p>
-<p>—-> 介绍Mysql在Django中的引用<br>由于Django在初始化项目后，所使用的数据库是sqlite3,但为了扩展，我们这里计划使用Mysql,配置步骤如下</p>
-<h2 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h2><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-number">1.</span>在服务器上安装Mysql数据库(Centos版)</span><br><span class="line"></span><br><span class="line"><span class="hljs-number">2.</span>在django的setting.py中引用</span><br></pre></td></tr></tbody></table></figure>
-
-<hr>
-<h2 id="错误类型总结-1"><a href="#错误类型总结-1" class="headerlink" title="错误类型总结"></a>错误类型总结</h2><p>由于mysql与django在配置过程中会存在很多的错误，这里总结一下</p>
-<h4 id="Mysql在Centos中权限不足的错误-1"><a href="#Mysql在Centos中权限不足的错误-1" class="headerlink" title="Mysql在Centos中权限不足的错误"></a>Mysql在Centos中权限不足的错误</h4><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)</span><br></pre></td></tr></tbody></table></figure>
-<p>原因是/var/lib/mysql的访问权限不足</p>
-<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1.改变权限 chown -R mysql:mysql /var/lib/mysql   </span><br><span class="line">2. 启动服务器 /etc/init.d/mysql start (会自动生成mysql.sock文件)  </span><br><span class="line">3.重新启动mysql服务  /etc/init.d/mysql start</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="密码类型错误-1"><a href="#密码类型错误-1" class="headerlink" title="密码类型错误"></a>密码类型错误</h4><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1045, "Access denied for user 'root'@'122.224.83.xxx</span><br></pre></td></tr></tbody></table></figure>
-<p>原因 密码错误，注意密码不能是字符串</p>
-<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="django-setting-中的配置-1"><a href="#django-setting-中的配置-1" class="headerlink" title="django setting 中的配置"></a>django setting 中的配置</h4><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">DATABASES = {</span><br><span class="line">    'default': {</span><br><span class="line"></span><br><span class="line">        'ENGINE': 'django.db.backends.mysql',</span><br><span class="line">        'NAME': 'itemids',  # 数据库名字</span><br><span class="line">        'USER': 'root',    # 数据库登录名</span><br><span class="line">        'PASSWORD': '12345x', # 数据库密码</span><br><span class="line">        'HOST': '106.14.195.xxx', 数据库IP</span><br><span class="line">        'POST': 3306, # 端口</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="引用pymysql-1"><a href="#引用pymysql-1" class="headerlink" title="引用pymysql"></a>引用pymysql</h4><p>由于MySQLdb只能使用在Python2中，在python3中已经停止了维护，所以这里我们引用pymyql的库</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">pipenv install pymysql</span><br><span class="line"><span class="hljs-comment"># 在与setting.py同级别的__init__.py中使用</span></span><br><span class="line"><span class="hljs-keyword">import</span> pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="pymysql版本不符合-1"><a href="#pymysql版本不符合-1" class="headerlink" title="pymysql版本不符合"></a>pymysql版本不符合</h4><p>报错内容:django.core.exceptions.ImproperlyConfigured: mysqlclient 1.3.3 or newer is required; you have 0.7.11<br>修改Pipenv\Lib\site-packages\django\db\backends\mysql\base.py<br>注释下面内容<br>if version < (1, 3, 3):<br>    raise ImproperlyConfigured(“mysqlclient 1.3.3 or newer is required; you have %s” % Database.<strong>version</strong>)</p>
-<p>(在Centos中，pipenv install 所生成的包 会在pipenv shell 激活环境的时候出现)</p>
-<p>由于上面注释，还会出现的报错内容为<br>File “C:\Users\Administrator\PycharmProjects\untitled1\venv\lib\site-packages\django\db\backends\mysql\operations.py”, line 146, in last_executed_query<br>将operations.py中的decode改成encode</p>
-<h4 id="mysql不能插入中文-1"><a href="#mysql不能插入中文-1" class="headerlink" title="mysql不能插入中文"></a>mysql不能插入中文</h4><p>报错内容： django.db.utils.InternalError: (1366, “Incorrect string value: ‘\xE5\xAE\x9A\xE6\x97\xB6…’ for column ‘name’ at row 1”)<br>解决方法: <a href="https://blog.csdn.net/tzh476/article/details/52644271" target="_blank" rel="noopener">https://blog.csdn.net/tzh476/article/details/52644271</a><br>删除之前的库，创建一个新的数据库，使用utf8mb64   之前默认创建的都是latin1</p>
-<h4 id="mysql-长度的问题-1"><a href="#mysql-长度的问题-1" class="headerlink" title="mysql 长度的问题"></a>mysql 长度的问题</h4><p>django.db.utils.InternalError: (1071, ‘Specified key was too long; max key length is 767 bytes’)<br><a href="https://blog.csdn.net/ljfphp/article/details/80406907" target="_blank" rel="noopener">https://blog.csdn.net/ljfphp/article/details/80406907</a><br><a href="https://www.orcode.com/question/407126_k280b8.html" target="_blank" rel="noopener">https://www.orcode.com/question/407126_k280b8.html</a></p>
-<p>解决方法1: 升级Mysql5.6–>>Mysql5.7<br>centos7 下  对mysql的操作 <a href="https://blog.csdn.net/xufengzhu/article/details/81110982" target="_blank" rel="noopener">https://blog.csdn.net/xufengzhu/article/details/81110982</a><br><a href="https://blog.51cto.com/lisea/1941616" target="_blank" rel="noopener">https://blog.51cto.com/lisea/1941616</a></p>
-<p>解决方法2 : 先使用utf8格式</p>
-</body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -947,7 +885,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        86
+                        90
                     </p>
                 </a>
             </div>
@@ -957,7 +895,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        27
                     </p>
                 </a>
             </div>
@@ -967,7 +905,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        11
+                        15
                     </p>
                 </a>
             </div>
@@ -1046,7 +984,7 @@
                 <span class="level-item">code</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">21</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/docker/">
@@ -1062,23 +1000,15 @@
                 <span class="level-item">linux</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">33</span>
+                <span class="level-item tag">34</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/linux/COMMAND/">
-            <span class="level-start">
-                <span class="level-item">COMMAND</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/linux/Command/">
             <span class="level-start">
                 <span class="level-item">Command</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/linux/ansible/">
@@ -1105,6 +1035,14 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/%E6%95%85%E9%9A%9C/">
+            <span class="level-start">
+                <span class="level-item">故障</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/linux/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
             <span class="level-start">
                 <span class="level-item">文件系统</span>
@@ -1126,7 +1064,7 @@
                 <span class="level-item">工具</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E6%89%A9%E5%B1%95/">
@@ -1145,12 +1083,28 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%9E%B6%E6%9E%84/">
+            <span class="level-start">
+                <span class="level-item">架构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">
+            <span class="level-start">
+                <span class="level-item">CI-CD</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/">
             <span class="level-start">
                 <span class="level-item">编程</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">23</span>
+                <span class="level-item tag">14</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">
@@ -1166,7 +1120,7 @@
                 <span class="level-item">django</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">12</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">
@@ -1255,7 +1209,7 @@
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">23</span>
                 </span>
             </a>
         </li>
@@ -1297,6 +1251,82 @@
         
         <article class="media">
             
+            <a href="/posts/40a08bb8/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-daily">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T09:03:34.000Z">2020-02-14</time></div>
+                    <a href="/posts/40a08bb8/" class="has-link-black-ter is-size-6">linux-daily</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/1f4442b1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hello,new-world">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T07:35:13.000Z">2020-02-14</time></div>
+                    <a href="/posts/1f4442b1/" class="has-link-black-ter is-size-6">hello,new-world</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/4115d0cd/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CI-CD实践">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T19:29:41.000Z">2020-02-14</time></div>
+                    <a href="/posts/4115d0cd/" class="has-link-black-ter is-size-6">CI-CD实践</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a> / <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/88888022/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="django实际项目中的模块设计">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T17:53:20.000Z">2020-02-14</time></div>
+                    <a href="/posts/88888022/" class="has-link-black-ter is-size-6">django实际项目中的模块设计</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/posts/59fd12f/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="swarm与k8s的区别">
@@ -1307,82 +1337,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:49:28.000Z">2020-02-10</time></div>
                     <a href="/posts/59fd12f/" class="has-link-black-ter is-size-6">swarm与k8s的区别</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/6e725c12/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="k8s常见错误">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:04:28.000Z">2020-02-10</time></div>
-                    <a href="/posts/6e725c12/" class="has-link-black-ter is-size-6">k8s常见错误</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/7cebdf57/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-k8s">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T19:55:11.000Z">2020-02-10</time></div>
-                    <a href="/posts/7cebdf57/" class="has-link-black-ter is-size-6">docker-k8s</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/1976fb59/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-swarm-wordpress">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T09:35:49.000Z">2020-02-09</time></div>
-                    <a href="/posts/1976fb59/" class="has-link-black-ter is-size-6">docker-swarm-wordpress</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/8f65/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-swarm">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:38:32.000Z">2020-02-07</time></div>
-                    <a href="/posts/8f65/" class="has-link-black-ter is-size-6">docker-swarm</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
                     </p>
@@ -1419,7 +1373,7 @@
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">23</span>
                 </span>
             </a>
         </li>
@@ -1461,6 +1415,82 @@
         
         <article class="media">
             
+            <a href="/posts/40a08bb8/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-daily">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T09:03:34.000Z">2020-02-14</time></div>
+                    <a href="/posts/40a08bb8/" class="has-link-black-ter is-size-6">linux-daily</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/1f4442b1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hello,new-world">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T07:35:13.000Z">2020-02-14</time></div>
+                    <a href="/posts/1f4442b1/" class="has-link-black-ter is-size-6">hello,new-world</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/4115d0cd/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CI-CD实践">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T19:29:41.000Z">2020-02-14</time></div>
+                    <a href="/posts/4115d0cd/" class="has-link-black-ter is-size-6">CI-CD实践</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a> / <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/88888022/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="django实际项目中的模块设计">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T17:53:20.000Z">2020-02-14</time></div>
+                    <a href="/posts/88888022/" class="has-link-black-ter is-size-6">django实际项目中的模块设计</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/posts/59fd12f/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="swarm与k8s的区别">
@@ -1471,82 +1501,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:49:28.000Z">2020-02-10</time></div>
                     <a href="/posts/59fd12f/" class="has-link-black-ter is-size-6">swarm与k8s的区别</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/6e725c12/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="k8s常见错误">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:04:28.000Z">2020-02-10</time></div>
-                    <a href="/posts/6e725c12/" class="has-link-black-ter is-size-6">k8s常见错误</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/7cebdf57/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-k8s">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T19:55:11.000Z">2020-02-10</time></div>
-                    <a href="/posts/7cebdf57/" class="has-link-black-ter is-size-6">docker-k8s</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/1976fb59/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-swarm-wordpress">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T09:35:49.000Z">2020-02-09</time></div>
-                    <a href="/posts/1976fb59/" class="has-link-black-ter is-size-6">docker-swarm-wordpress</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/8f65/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-swarm">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:38:32.000Z">2020-02-07</time></div>
-                    <a href="/posts/8f65/" class="has-link-black-ter is-size-6">docker-swarm</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
                     </p>

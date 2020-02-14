@@ -149,6 +149,272 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
+                <a class="has-link-black-ter" href="/posts/23ccefd3/"><i class="fas fa-angle-double-right"></i>深拷贝与浅拷贝</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-27T09:33:42.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-27</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    4 分钟 读完 (大约 598 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>数据分为</p>
+<ul>
+<li><p>基本数据类型(String, Number, Boolean, Null, Undefined，Symbol)</p>
+</li>
+<li><p>对象数据类型。</p>
+</li>
+<li><p>基本数据类型的特点: 直接存储在栈(stack)中的数据</p>
+</li>
+<li><p>引用数据类型的特点：存储的是该对象在栈中引用，真实的数据存放在堆内存里<br>引用数据类型在栈中存储了指针，该指针指向堆中该实体的起始地址。当解释器寻找引用值时，会首先检索其在栈中的地址，取得地址后从堆中获得实体。</p>
+</li>
+</ul>
+<p>[图]</p>
+<h3 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h3><p>深拷贝和浅拷贝是只针对Object和Array这样的引用数据类型的。<br>浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。但深拷贝会另外创造一个一模一样的对象，新对象跟原对象不共享内存，修改新对象不会改到原对象。<br><img src="https://user-gold-cdn.xitu.io/2018/7/29/164e6856d76ff161?imageslim" alt="图片"><br><font color="blue">是和Linux中的软硬链接有关系吗</font></p>
+<h3 id="赋值和浅拷贝的区别"><a href="#赋值和浅拷贝的区别" class="headerlink" title="赋值和浅拷贝的区别"></a>赋值和浅拷贝的区别</h3><ul>
+<li>当我们把一个对象赋值给一个新的变量时，赋的其实是该对象的在栈中的地址，而不是堆中的数据。也就是两个对象指向的是同一个存储空间，无论哪个对象发生改变，其实都是改变的存储空间的内容，因此，两个对象是联动的。</li>
+<li>浅拷贝是按位拷贝对象，它会创建一个新对象，这个对象有着原始对象属性值的一份精确拷贝。如果属性是基本类型，拷贝的就是基本类型的值；如果属性是内存地址（引用类型），拷贝的就是内存地址 ，因此如果其中一个对象改变了这个地址，就会影响到另一个对象。即默认拷贝构造函数只是对对象进行浅拷贝复制(逐个成员依次拷贝)，即只复制对象空间而不复制资源。</li>
+</ul>
+<p>浅拷贝与深拷贝</p>
+<p><a href="https://www.runoob.com/w3cnote/python-understanding-dict-copy-shallow-or-deep.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/python-understanding-dict-copy-shallow-or-deep.html</a><br><a href="https://juejin.im/post/5b5dcf8351882519790c9a2e#heading-7" target="_blank" rel="noopener">https://juejin.im/post/5b5dcf8351882519790c9a2e#heading-7</a></p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/4fbe8671/"><i class="fas fa-angle-double-right"></i>Rust基础</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-26T04:27:09.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-26</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/code/">code</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    3 分钟 读完 (大约 464 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>learn Rust  🦀️</p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/code/" rel="tag">code</a>,&nbsp;<a class="has-link-grey -link" href="/tags/rust/" rel="tag">rust</a>
+                </div>
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/4fbe8671/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/93aa081f/"><i class="fas fa-angle-double-right"></i>rust猜谜游戏</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-26T04:27:09.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-26</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/code/">code</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    7 分钟 读完 (大约 1058 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>learn Rust  🦀️</p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/code/" rel="tag">code</a>,&nbsp;<a class="has-link-grey -link" href="/tags/rust/" rel="tag">rust</a>
+                </div>
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/93aa081f/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/bb04cef6/"><i class="fas fa-angle-double-right"></i>rust基础2</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-26T04:27:09.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-26</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/code/">code</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    6 分钟 读完 (大约 862 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>learn Rust  🦀️</p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/code/" rel="tag">code</a>,&nbsp;<a class="has-link-grey -link" href="/tags/rust/" rel="tag">rust</a>
+                </div>
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/bb04cef6/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
                 <a class="has-link-black-ter" href="/posts/76ec0771/"><i class="fas fa-angle-double-right"></i>mac配置</a>
             
         </h1>
@@ -277,7 +543,7 @@ git上传忽略全局文件，并且在gitconfig中引入<figure class="highligh
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        86
+                        90
                     </p>
                 </a>
             </div>
@@ -287,7 +553,7 @@ git上传忽略全局文件，并且在gitconfig中引入<figure class="highligh
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        27
                     </p>
                 </a>
             </div>
@@ -297,7 +563,7 @@ git上传忽略全局文件，并且在gitconfig中引入<figure class="highligh
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        11
+                        15
                     </p>
                 </a>
             </div>
@@ -376,7 +642,7 @@ git上传忽略全局文件，并且在gitconfig中引入<figure class="highligh
                 <span class="level-item">code</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">21</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/docker/">
@@ -392,23 +658,15 @@ git上传忽略全局文件，并且在gitconfig中引入<figure class="highligh
                 <span class="level-item">linux</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">33</span>
+                <span class="level-item tag">34</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/linux/COMMAND/">
-            <span class="level-start">
-                <span class="level-item">COMMAND</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/linux/Command/">
             <span class="level-start">
                 <span class="level-item">Command</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/linux/ansible/">
@@ -435,6 +693,14 @@ git上传忽略全局文件，并且在gitconfig中引入<figure class="highligh
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/%E6%95%85%E9%9A%9C/">
+            <span class="level-start">
+                <span class="level-item">故障</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/linux/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
             <span class="level-start">
                 <span class="level-item">文件系统</span>
@@ -456,7 +722,7 @@ git上传忽略全局文件，并且在gitconfig中引入<figure class="highligh
                 <span class="level-item">工具</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E6%89%A9%E5%B1%95/">
@@ -475,12 +741,28 @@ git上传忽略全局文件，并且在gitconfig中引入<figure class="highligh
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%9E%B6%E6%9E%84/">
+            <span class="level-start">
+                <span class="level-item">架构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">
+            <span class="level-start">
+                <span class="level-item">CI-CD</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/">
             <span class="level-start">
                 <span class="level-item">编程</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">23</span>
+                <span class="level-item tag">14</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">
@@ -496,7 +778,7 @@ git上传忽略全局文件，并且在gitconfig中引入<figure class="highligh
                 <span class="level-item">django</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">12</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">
@@ -585,7 +867,7 @@ git上传忽略全局文件，并且在gitconfig中引入<figure class="highligh
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">23</span>
                 </span>
             </a>
         </li>
@@ -627,6 +909,82 @@ git上传忽略全局文件，并且在gitconfig中引入<figure class="highligh
         
         <article class="media">
             
+            <a href="/posts/40a08bb8/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-daily">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T09:03:34.000Z">2020-02-14</time></div>
+                    <a href="/posts/40a08bb8/" class="has-link-black-ter is-size-6">linux-daily</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/1f4442b1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hello,new-world">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T07:35:13.000Z">2020-02-14</time></div>
+                    <a href="/posts/1f4442b1/" class="has-link-black-ter is-size-6">hello,new-world</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/4115d0cd/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CI-CD实践">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T19:29:41.000Z">2020-02-14</time></div>
+                    <a href="/posts/4115d0cd/" class="has-link-black-ter is-size-6">CI-CD实践</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a> / <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/88888022/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="django实际项目中的模块设计">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T17:53:20.000Z">2020-02-14</time></div>
+                    <a href="/posts/88888022/" class="has-link-black-ter is-size-6">django实际项目中的模块设计</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/posts/59fd12f/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="swarm与k8s的区别">
@@ -637,82 +995,6 @@ git上传忽略全局文件，并且在gitconfig中引入<figure class="highligh
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:49:28.000Z">2020-02-10</time></div>
                     <a href="/posts/59fd12f/" class="has-link-black-ter is-size-6">swarm与k8s的区别</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/6e725c12/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="k8s常见错误">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:04:28.000Z">2020-02-10</time></div>
-                    <a href="/posts/6e725c12/" class="has-link-black-ter is-size-6">k8s常见错误</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/7cebdf57/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-k8s">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T19:55:11.000Z">2020-02-10</time></div>
-                    <a href="/posts/7cebdf57/" class="has-link-black-ter is-size-6">docker-k8s</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/1976fb59/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-swarm-wordpress">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T09:35:49.000Z">2020-02-09</time></div>
-                    <a href="/posts/1976fb59/" class="has-link-black-ter is-size-6">docker-swarm-wordpress</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/8f65/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-swarm">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:38:32.000Z">2020-02-07</time></div>
-                    <a href="/posts/8f65/" class="has-link-black-ter is-size-6">docker-swarm</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
                     </p>
@@ -749,7 +1031,7 @@ git上传忽略全局文件，并且在gitconfig中引入<figure class="highligh
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">23</span>
                 </span>
             </a>
         </li>
@@ -791,6 +1073,82 @@ git上传忽略全局文件，并且在gitconfig中引入<figure class="highligh
         
         <article class="media">
             
+            <a href="/posts/40a08bb8/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-daily">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T09:03:34.000Z">2020-02-14</time></div>
+                    <a href="/posts/40a08bb8/" class="has-link-black-ter is-size-6">linux-daily</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/1f4442b1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hello,new-world">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T07:35:13.000Z">2020-02-14</time></div>
+                    <a href="/posts/1f4442b1/" class="has-link-black-ter is-size-6">hello,new-world</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/4115d0cd/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CI-CD实践">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T19:29:41.000Z">2020-02-14</time></div>
+                    <a href="/posts/4115d0cd/" class="has-link-black-ter is-size-6">CI-CD实践</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a> / <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/88888022/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="django实际项目中的模块设计">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T17:53:20.000Z">2020-02-14</time></div>
+                    <a href="/posts/88888022/" class="has-link-black-ter is-size-6">django实际项目中的模块设计</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/posts/59fd12f/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="swarm与k8s的区别">
@@ -801,82 +1159,6 @@ git上传忽略全局文件，并且在gitconfig中引入<figure class="highligh
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:49:28.000Z">2020-02-10</time></div>
                     <a href="/posts/59fd12f/" class="has-link-black-ter is-size-6">swarm与k8s的区别</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/6e725c12/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="k8s常见错误">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:04:28.000Z">2020-02-10</time></div>
-                    <a href="/posts/6e725c12/" class="has-link-black-ter is-size-6">k8s常见错误</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/7cebdf57/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-k8s">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T19:55:11.000Z">2020-02-10</time></div>
-                    <a href="/posts/7cebdf57/" class="has-link-black-ter is-size-6">docker-k8s</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/1976fb59/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-swarm-wordpress">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T09:35:49.000Z">2020-02-09</time></div>
-                    <a href="/posts/1976fb59/" class="has-link-black-ter is-size-6">docker-swarm-wordpress</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/8f65/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="docker-swarm">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:38:32.000Z">2020-02-07</time></div>
-                    <a href="/posts/8f65/" class="has-link-black-ter is-size-6">docker-swarm</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
                     </p>
