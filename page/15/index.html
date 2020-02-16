@@ -1,1371 +1,617 @@
 <!DOCTYPE html>
-<html  lang="zh">
+<html lang=zh>
 <head>
-    <meta charset="utf-8">
-<title>Alpaca&#39;s blog | how to win</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-
-
-    <meta property="og:type" content="website">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Hexo</title>
+  <meta property="og:type" content="website">
 <meta property="og:title" content="Alpaca&#39;s blog | how to win">
 <meta property="og:url" content="http://blog.noback.top/page/15/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
 <meta property="article:author" content="何泽君">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
-
-
-
-
-
-
-
-<link rel="icon" href="/images/datadog.svg">
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
-
-
-    
-    
-    
-    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-    
-
-    
-    
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
-    
-
-    
-    
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
-
-
-    
-    
-    
-    
-
-<link rel="stylesheet" href="/css/back-to-top.css">
-
-
-    
-    
-
-    
-    
-    
-    
-
-    
-    
-<link rel="stylesheet" href="/css/progressbar.css">
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-
-    
-    
-    
-
-    
-    
-    
-        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-
-    
-
-
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://blog.noback.top/page/15/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Alpaca&#39;s blog | how to win" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
 <link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
 <meta name="generator" content="Hexo 4.2.0"></head>
-<body class="is-3-column">
-    <nav class="navbar navbar-main">
-    <div class="container">
-        <div class="navbar-brand is-flex-center">
-            <a class="navbar-item navbar-logo" href="/">
-            
-                <img src="http://image.noback.top/datadog.svg" alt="Alpaca&#39;s blog | how to win" height="28">
-            
-            </a>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/cofess" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">昵称</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer &amp; Designer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
         </div>
-        <div class="navbar-menu">
-            
-            <div class="navbar-start">
-                
-                <a class="navbar-item"
-                href="/">Home</a>
-                
-                <a class="navbar-item"
-                href="/about-me/">about-me</a>
-                
-                <a class="navbar-item"
-                href="/archives/">Archives</a>
-                
-                <a class="navbar-item"
-                href="/categories/">Categories</a>
-                
-                <a class="navbar-item"
-                href="/tags/">Tags</a>
-                
-            </div>
-            
-            <div class="navbar-end">
-                
-                    
-                    
-                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                    
-                
-                
-                
-                <a class="navbar-item search" title="搜索" href="javascript:;">
-                    <i class="fas fa-search"></i>
-                </a>
-                
-            </div>
-        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
     </div>
-</nav>
-    
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/7f55f388/"><i class="fas fa-angle-double-right"></i>django错误合集</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:40:29.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    4 分钟 读完 (大约 648 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="错误类型总结"><a href="#错误类型总结" class="headerlink" title="错误类型总结"></a>错误类型总结</h1><p>由于mysql与django在配置过程中会存在很多的错误，这里总结一下</p>
-<h2 id="Mysql在Centos中权限不足的错误"><a href="#Mysql在Centos中权限不足的错误" class="headerlink" title="Mysql在Centos中权限不足的错误"></a>Mysql在Centos中权限不足的错误</h2><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)</span><br></pre></td></tr></tbody></table></figure>
-<p>原因是/var/lib/mysql的访问权限不足</p>
-<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1.改变权限 chown -R mysql:mysql /var/lib/mysql   </span><br><span class="line">2. 启动服务器 /etc/init.d/mysql start (会自动生成mysql.sock文件)  </span><br><span class="line">3.重新启动mysql服务  /etc/init.d/mysql start</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="密码类型错误"><a href="#密码类型错误" class="headerlink" title="密码类型错误"></a>密码类型错误</h2><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1045, "Access denied for user 'root'@'122.224.83.xxx</span><br></pre></td></tr></tbody></table></figure>
-<p>原因 密码错误，注意密码不能是字符串</p>
-<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="django-setting-中的配置"><a href="#django-setting-中的配置" class="headerlink" title="django setting 中的配置"></a>django setting 中的配置</h2><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">DATABASES = {</span><br><span class="line">    'default': {</span><br><span class="line"></span><br><span class="line">        'ENGINE': 'django.db.backends.mysql',</span><br><span class="line">        'NAME': 'itemids',  # 数据库名字</span><br><span class="line">        'USER': 'root',    # 数据库登录名</span><br><span class="line">        'PASSWORD': '12345x', # 数据库密码</span><br><span class="line">        'HOST': '106.14.195.xxx', 数据库IP</span><br><span class="line">        'POST': 3306, # 端口</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="引用pymysql"><a href="#引用pymysql" class="headerlink" title="引用pymysql"></a>引用pymysql</h2><p>由于MySQLdb只能使用在Python2中，在python3中已经停止了维护，所以这里我们引用pymyql的库</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">pipenv install pymysql</span><br><span class="line"><span class="hljs-comment"># 在与setting.py同级别的__init__.py中使用</span></span><br><span class="line"><span class="hljs-keyword">import</span> pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="pymysql版本不符合"><a href="#pymysql版本不符合" class="headerlink" title="pymysql版本不符合"></a>pymysql版本不符合</h2><p>报错内容:django.core.exceptions.ImproperlyConfigured: mysqlclient 1.3.3 or newer is required; you have 0.7.11<br>修改Pipenv\Lib\site-packages\django\db\backends\mysql\base.py<br>注释下面内容<br>if version < (1, 3, 3):<br>    raise ImproperlyConfigured(“mysqlclient 1.3.3 or newer is required; you have %s” % Database.<strong>version</strong>)</p>
-<p>(在Centos中，pipenv install 所生成的包 会在pipenv shell 激活环境的时候出现)</p>
-<p>由于上面注释，还会出现的报错内容为<br>File “C:\Users\Administrator\PycharmProjects\untitled1\venv\lib\site-packages\django\db\backends\mysql\operations.py”, line 146, in last_executed_query<br>将operations.py中的decode改成encode</p>
-<h2 id="mysql不能插入中文"><a href="#mysql不能插入中文" class="headerlink" title="mysql不能插入中文"></a>mysql不能插入中文</h2><p>报错内容： django.db.utils.InternalError: (1366, “Incorrect string value: ‘\xE5\xAE\x9A\xE6\x97\xB6…’ for column ‘name’ at row 1”)<br>解决方法: <a href="https://blog.csdn.net/tzh476/article/details/52644271" target="_blank" rel="noopener">https://blog.csdn.net/tzh476/article/details/52644271</a><br>删除之前的库，创建一个新的数据库，使用utf8mb64   之前默认创建的都是latin1<br>不一样要删除之前的库，修改数据库的属性即可</p>
-<h2 id="mysql-长度的问题"><a href="#mysql-长度的问题" class="headerlink" title="mysql 长度的问题"></a>mysql 长度的问题</h2><p>django.db.utils.InternalError: (1071, ‘Specified key was too long; max key length is 767 bytes’)<br><a href="https://blog.csdn.net/ljfphp/article/details/80406907" target="_blank" rel="noopener">https://blog.csdn.net/ljfphp/article/details/80406907</a><br><a href="https://www.orcode.com/question/407126_k280b8.html" target="_blank" rel="noopener">https://www.orcode.com/question/407126_k280b8.html</a></p>
-<p>解决方法1: 升级Mysql5.6–>>Mysql5.7<br>centos7 下  对mysql的操作 <a href="https://blog.csdn.net/xufengzhu/article/details/81110982" target="_blank" rel="noopener">https://blog.csdn.net/xufengzhu/article/details/81110982</a><br><a href="https://blog.51cto.com/lisea/1941616" target="_blank" rel="noopener">https://blog.51cto.com/lisea/1941616</a></p>
-<p>解决方法2 : 先使用utf8格式</p>
-<h2 id="django-migrate的问题"><a href="#django-migrate的问题" class="headerlink" title="django migrate的问题"></a>django migrate的问题</h2><p>出现下面这个问题，基本上就是你的model设置错误了。有些字段类型需要固定的属性<br>如integerField字段需要default这个选项，添加完之后就Ok了</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">Please select a fix:</span><br><span class="line"> 1) Provide a one-off default now (will be <span class="hljs-built_in">set</span> on all existing rows with a null value <span class="hljs-keyword">for</span> this column)</span><br><span class="line"> 2) Quit, and <span class="hljs-built_in">let</span> me add a default <span class="hljs-keyword">in</span> models.p</span><br></pre></td></tr></tbody></table></figure></body></html>
-        </div>
-        
-        
-        
-        
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
     </div>
+  </div>
 </div>
 
 
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/9ec06885/"><i class="fas fa-angle-double-right"></i>C语言基础</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:39:56.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">C语言</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    2 分钟 读完 (大约 334 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="C语言基础"><a href="#C语言基础" class="headerlink" title="C语言基础"></a>C语言基础</h1><p>对C语言基础只是的概括</p>
-<p>目标文件 可执行文件 库 源文件</p>
-<p>源文件指的是我们所编写的文件</p>
-<figure class="highlight c hljs"><table><tbody><tr><td class="code"><pre><span class="line">vi xx.c</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string"><stdio.h></span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>{</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"hello world"</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>以上xx.c就是我们的源文件</p>
-<p><strong>在unix中</strong><br>编译c语言 cc xx.c 会在当前文件夹生成一个a.out的可执行文件  运行即可</p>
-<p>整个流程就是用户输入代码生成源码文件 通过cc编译后生成可执行文件 运行输出内容<br>cc其实是一个命令，可以用man cc 查看  也可以用cc -v查看版本信息</p>
-<p><strong>在linux中</strong><br>使用gcc编译c文件 gcc xx.c</p>
-<h2 id="第一个c语言程序"><a href="#第一个c语言程序" class="headerlink" title="第一个c语言程序"></a>第一个c语言程序</h2><!-- vim-markdown-toc -->
-<figure class="highlight c hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-meta"># <span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string"><stdio.h></span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>{</span><br><span class="line">	<span class="hljs-keyword">int</span> nums;</span><br><span class="line">	nums = <span class="hljs-number">1</span>;</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"how many dogs do you have?\n"</span>);</span><br><span class="line">	getchar();</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">}</span><br><span class="line">include是预处理器指令  main是第一个被调用的函数 func a是构造块</span><br><span class="line">stdio.h 是c编译器软件包的标准部分</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><p>整数 int</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">int nums=12;</span><br><span class="line"></span><br><span class="line">int nums;</span><br><span class="line">nums = 12; </span><br><span class="line"></span><br><span class="line">int nums = 12 , ages = 20;</span><br></pre></td></tr></tbody></table></figure>
-<p>大致的执行过程为 int nums 划分出一块内存空间名为nums<br>nums = 12 为nums赋值12的变量</p>
-<h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><p>zsh: command not found: a.out<br>mac下无法执行cc编译后的文件<br><font color="blue">因为没有确定工作路径 运行./a.out就可以了</font></p>
-</body></html>
-        </div>
-        
-        
-        
-        
-    </div>
 </div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/b3a48f7b/"><i class="fas fa-angle-double-right"></i>Python爬YouTube视频</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:39:12.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/code/">code</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    7 分钟 读完 (大约 1024 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><p>learn python 🐍</p></body></html>
-        </div>
-        
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-                <div class="level-item is-size-7 is-uppercase">
-                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/code/" rel="tag">code</a>,&nbsp;<a class="has-link-grey -link" href="/tags/python/" rel="tag">python</a>
-                </div>
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/b3a48f7b/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
     </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/899b698f/"><i class="fas fa-angle-double-right"></i>又拍云</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T05:13:50.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E8%AE%BE%E5%A4%87/">设备</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    7 分钟 读完 (大约 1043 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="又拍云工作记录"><a href="#又拍云工作记录" class="headerlink" title="又拍云工作记录"></a>又拍云工作记录</h1><h2 id="交换机命名格式"><a href="#交换机命名格式" class="headerlink" title="交换机命名格式"></a>交换机命名格式</h2><p>三大运营商缩写 + 附近机场代码 + S01等</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">移动 CMN</span><br><span class="line">电信 CTN</span><br><span class="line">联通 CUN</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="交换机ipv6检测内容"><a href="#交换机ipv6检测内容" class="headerlink" title="交换机ipv6检测内容"></a>交换机ipv6检测内容</h2><p>原因 内网机器比如全是移动的，交换机配的移动的ip，下面配的也是移动的ip<br>这样ping的通，但是联通的服务器ip ping不同。也就是说是内网通，外网不同。<br>内网ping 网关肯定通</p>
-<p>检测：<br>用移动的交换机下面的服务器（出问题的交换机）  去mtr外网的ip，去看是哪里断掉的<br>而不是用外网的机器来mtr内网的ip，这样截止的地方会看不出来，因为不是内网的机器</p>
-<h2 id="ipv6配置"><a href="#ipv6配置" class="headerlink" title="ipv6配置"></a>ipv6配置</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">#业务vlan</span></span><br><span class="line">interface Vlan-interface1</span><br><span class="line">ipv6 address +业务vlan ip</span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line"><span class="hljs-comment">#互联vlan</span></span><br><span class="line">interface Vlan-interface200</span><br><span class="line">ipv6 address  +互联本地ip</span><br><span class="line"><span class="hljs-comment">#默认路由</span></span><br><span class="line">ipv6 route-static :: 0 + 互联对端ip</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="配置案例"><a href="#配置案例" class="headerlink" title="配置案例"></a>配置案例</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line">广东广州移动机房（自有机房NM）：2409:8C54:B000:0704::/64   互联地址 机房：FEC0::C/127， 我司 FEC0::D/127</span><br><span class="line"></span><br><span class="line">vlan 1 </span><br><span class="line">ip address 2409:8C54:B000:0704::/64 </span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line">vlan 20</span><br><span class="line">ipv6 address FEC0::D/127</span><br><span class="line">router-static</span><br><span class="line">ipv6 route-static :: 0 FEC0::C</span><br><span class="line"></span><br><span class="line">山东济南移动机房（自有节点NM）：2409:8C3C:0004:000C::/64，互联地址为：2409:8C3C:00FF:0004::000E/127、 我司 2409:8C3C:00FF:0004::0010/127</span><br><span class="line"></span><br><span class="line">vlan 1</span><br><span class="line">ip address 2409:8C3C:0004:000C::/64</span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line">vlan 20</span><br><span class="line">ipv6 address 2409:8C3C:00FF:0004::0010/127</span><br><span class="line">route-static</span><br><span class="line">ipv6 route-static :: 0 2409:8C3C:00FF:0004::000E</span><br><span class="line">vlan 1</span><br><span class="line">ipv6 address 240E:E9:B804:3:400::1/72</span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line">vlan 30 </span><br><span class="line">ipv6 address 240E:E9:B804:3:200::A3/127</span><br><span class="line">ipv6 address 240E:E9:B804:3:200::B3/127</span><br><span class="line">router-static</span><br><span class="line">ipv6 route-static :: 0 240E:E9:B804:3:200::A3</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="无法联网"><a href="#无法联网" class="headerlink" title="无法联网"></a>无法联网</h2><ol>
-<li><p>首先ping交换机ip  看是否通</p>
-</li>
-<li><p>串口线连接交换机  ping网关是否通不通  10.0.0.130</p>
-</li>
-<li><p>查看端口状态<br>dis int brief<br>聚合口是否起来 端口是否起来 pvid是否对应1000(统一是1000 除个别外可以在上联交换机上看10.0.0.130)</p>
-</li>
-<li><p>硬件问题<br>看模块是否发光  看跳线是否发光</p>
-</li>
-</ol>
-<h2 id="整理香港ntt点ip对应关系"><a href="#整理香港ntt点ip对应关系" class="headerlink" title="整理香港ntt点ip对应关系"></a>整理香港ntt点ip对应关系</h2><ol>
-<li>登陆netop服务器</li>
-<li>登陆香港ntt交换机</li>
-<li>查看vlan1 对应ip 其中157.xxx/27 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[NTT-CN-HKG-S01-Vlan-interface1]display this</span><br><span class="line"><span class="hljs-comment">#</span></span><br><span class="line">interface Vlan-interface1</span><br><span class="line"> ip address 157.119.232.1 255.255.255.224</span><br><span class="line"> ip address 10.81.0.254 255.255.255.0 sub</span><br><span class="line"> ip address 103.211.192.221 255.255.255.252 sub</span><br><span class="line"> ip address 103.251.128.1 255.255.255.224 sub</span><br><span class="line"> ip address 157.119.232.65 255.255.255.224 sub</span><br><span class="line"> ip address 192.168.1.1 255.255.255.0 sub</span><br><span class="line"> ip address 192.168.128.1 255.255.255.0 sub</span><br><span class="line"> ip address 192.168.232.1 255.255.255.224 sub</span><br><span class="line"> ipv6 address 2405:FD80:110::1/52</span><br><span class="line"><span class="hljs-comment">#</span></span><br><span class="line"><span class="hljs-built_in">return</span></span><br></pre></td></tr></tbody></table></figure>
-在netop服务器上用fping -g 157.119.231.1/27 来查看对应ip的状态</li>
-</ol>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@NETOPS machines]<span class="hljs-comment"># fping -g 157.119.232.65/27</span></span><br><span class="line">157.119.232.65 is alive</span><br><span class="line">157.119.232.66 is alive</span><br><span class="line">157.119.232.67 is alive</span><br><span class="line">157.119.232.68 is alive</span><br><span class="line">157.119.232.69 is alive</span><br><span class="line">157.119.232.70 is alive</span><br><span class="line">157.119.232.71 is alive</span><br><span class="line">157.119.232.72 is alive</span><br><span class="line">157.119.232.73 is alive</span><br><span class="line">157.119.232.74 is alive</span><br><span class="line">157.119.232.75 is alive</span><br><span class="line">157.119.232.85 is alive</span><br><span class="line">157.119.232.87 is alive</span><br><span class="line">157.119.232.86 is alive</span><br><span class="line">157.119.232.88 is alive</span><br><span class="line">157.119.232.89 is alive</span><br><span class="line">157.119.232.90 is alive</span><br><span class="line">157.119.232.91 is alive</span><br><span class="line">157.119.232.76 is unreachable</span><br><span class="line">157.119.232.77 is unreachable</span><br><span class="line">157.119.232.78 is unreachable</span><br><span class="line">157.119.232.79 is unreachable</span><br><span class="line">157.119.232.80 is unreachable</span><br><span class="line">157.119.232.81 is unreachable</span><br><span class="line">157.119.232.82 is unreachable</span><br><span class="line">157.119.232.83 is unreachable</span><br><span class="line">157.119.232.84 is unreachable</span><br><span class="line">157.119.232.92 is unreachable</span><br><span class="line">157.119.232.93 is unreachable</span><br><span class="line">157.119.232.94 is unreachable</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># fping -g 157.119.232.1/27</span></span><br><span class="line">157.119.232.1 is alive</span><br><span class="line">157.119.232.2 is alive</span><br><span class="line">157.119.232.3 is alive</span><br><span class="line">157.119.232.4 is alive</span><br><span class="line">157.119.232.5 is alive</span><br><span class="line">157.119.232.6 is alive</span><br><span class="line">157.119.232.7 is alive</span><br><span class="line">157.119.232.8 is alive</span><br><span class="line">157.119.232.9 is alive</span><br><span class="line">157.119.232.10 is alive</span><br><span class="line">157.119.232.11 is alive</span><br><span class="line">157.119.232.12 is alive</span><br><span class="line">157.119.232.13 is alive</span><br><span class="line">157.119.232.14 is alive</span><br><span class="line">157.119.232.15 is alive</span><br><span class="line">157.119.232.16 is alive</span><br><span class="line">157.119.232.17 is alive</span><br><span class="line">157.119.232.19 is alive</span><br><span class="line">157.119.232.18 is alive</span><br><span class="line">157.119.232.20 is alive</span><br><span class="line">157.119.232.21 is alive</span><br><span class="line">157.119.232.22 is alive</span><br><span class="line">157.119.232.23 is alive</span><br><span class="line">157.119.232.24 is alive</span><br><span class="line">157.119.232.25 is alive</span><br><span class="line">157.119.232.26 is alive</span><br><span class="line">157.119.232.27 is alive</span><br><span class="line">157.119.232.28 is alive</span><br><span class="line">157.119.232.29 is alive</span><br><span class="line">157.119.232.30 is alive</span><br></pre></td></tr></tbody></table></figure>
-
-
-<p>查看inventory中对应关系</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.73 /root/mingtao/inventory/machines/*</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-upapp-01:157.119.232.73</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.30 /root/mingtao/inventory/machines/*</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-cdn-v406:<span class="hljs-comment"># NTT-CN-HKG-030 ansible_ssh_host=157.119.232.30</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-openstack:<span class="hljs-comment"># NTT-CN-HKG-030 ansible_ssh_host=157.119.232.30</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-openstack:OPK-HKG-M30 ansible_ssh_host=157.119.232.30</span><br><span class="line">/root/mingtao/inventory/machines/lists-upops:NTT-CN-HKG-030 ansible_ssh_host=157.119.232.30</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.29 /root/mingtao/inventory/machines/*</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-cdn-v406:<span class="hljs-comment"># NTT-CN-HKG-029 ansible_ssh_host=157.119.232.29</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-openstack:<span class="hljs-comment"># NTT-CN-HKG-029 ansible_ssh_host=157.119.232.29</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-upapp-01:157.119.232.29</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.20 /root/mingtao/inventory/machines/*</span></span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.24 /root/mingtao/inventory/machines/*</span></span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.21 /root/mingtao/inventory/machines/*</span></span><br></pre></td></tr></tbody></table></figure>
-<p>记录机器的对应名字</p>
-<h3 id="ntt机器对应脚本"><a href="#ntt机器对应脚本" class="headerlink" title="ntt机器对应脚本"></a>ntt机器对应脚本</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#!/usr/bin/bash</span></span><br><span class="line"><span class="hljs-comment"># add ip (active and unknown)</span></span><br><span class="line">fping -g 157.119.232.65/27 > ntt_machine</span><br><span class="line">fping -g 157.119.231.1/27 >> ntt_machine</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># filter active to tmp.txt</span></span><br><span class="line">awk <span class="hljs-string">'{if($3=="alive"){print $1}}'</span> > tmp.txt ntt_machine</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Calculate the total</span></span><br><span class="line">nums=`cat tmp.txt | wc -l`</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># reset result.txt to blank</span></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"result:"</span> > result.txt</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># filter ip</span></span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> `seq 1 <span class="hljs-variable">$nums</span>`</span><br><span class="line"><span class="hljs-keyword">do</span></span><br><span class="line">        ip=`awk <span class="hljs-string">"NR==<span class="hljs-variable">$i</span>"</span> tmp.txt`</span><br><span class="line">        link=`grep -w <span class="hljs-variable">$ip</span> mingtao/inventory/machines/machines/*`</span><br><span class="line">        link=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$link</span> | awk -F<span class="hljs-string">":"</span> <span class="hljs-string">'{print $2}'</span> `</span><br><span class="line">        link=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$link</span> | awk <span class="hljs-string">'{if($1=="#"){print $2}else{print $1}}'</span>`</span><br><span class="line">        <span class="hljs-built_in">echo</span>  <span class="hljs-variable">$ip</span>   ,<span class="hljs-string">"active"</span>   ,   <span class="hljs-variable">$link</span> >> result.txt</span><br><span class="line"><span class="hljs-keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># add unknown to tmp.txt</span></span><br><span class="line">awk <span class="hljs-string">'{if($3!="alive"){print $1,$3}}'</span> >> result.txt ntt_machine</span><br><span class="line">~</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="底层设备到网络配置"><a href="#底层设备到网络配置" class="headerlink" title="底层设备到网络配置"></a>底层设备到网络配置</h3><p><img src="http://img.noback.top/2019-12-31-11-26-32.png" alt="2019-12-31-11-26-32"><br>通过该tower截图来获取网络配置需求<br>15台1U服务器<br>1台5130交换机<br>2个万兆多模模块<br>30根网线<br>16根电源线</p>
-<p>1个万兆口</p>
-<p>1-30口汇聚<br>49口接上联 走trunk</p>
-</body></html>
-        </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
         
         
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
         
         
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
             
-                <a class="has-link-black-ter" href="/posts/c10f304f/"><i class="fas fa-angle-double-right"></i>常见错误</a>
+            <i class="icon icon-archives-fill"></i>
             
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T05:13:35.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E8%AE%BE%E5%A4%87/">设备</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    4 分钟 读完 (大约 576 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="linux错误"><a href="#linux错误" class="headerlink" title="linux错误"></a>linux错误</h1><h2 id="yum不支持python3"><a href="#yum不支持python3" class="headerlink" title="yum不支持python3"></a>yum不支持python3</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@gogogo alpaca]<span class="hljs-comment"># yum</span></span><br><span class="line">  File <span class="hljs-string">"/bin/yum"</span>, line 30</span><br><span class="line">    except KeyboardInterrupt, e:</span><br><span class="line">                            ^</span><br><span class="line">SyntaxError: invalid syntax</span><br><span class="line">  File <span class="hljs-string">"/usr/libexec/urlgrabber-ext-down"</span>, line 28</span><br><span class="line">    except OSError, e:</span><br></pre></td></tr></tbody></table></figure>
-<p><strong>解决办法</strong></p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">sed -i <span class="hljs-string">'s:bin/python:bin/python2.7:'</span> /usr/bin/yum</span><br><span class="line">sed -i <span class="hljs-string">'s:bin/python:bin/python2.7:'</span> /usr/libexec/urlgrabber-ext-down</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="可以通外网，但是无法ping百度"><a href="#可以通外网，但是无法ping百度" class="headerlink" title="可以通外网，但是无法ping百度"></a>可以通外网，但是无法ping百度</h2><p>包括无法使用yum wget 等下载工具<br>或者报错 cannot find a valid baseurl for repo:base/7/x86_64 的解决方法</p>
-<p><strong>解决办法</strong><br>原因 - > DNS的问题</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> nameserver 114.114.114.114 > /etc/reslov.conf</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="linux中如何恢复到后台进程"><a href="#linux中如何恢复到后台进程" class="headerlink" title="linux中如何恢复到后台进程"></a>linux中如何恢复到后台进程</h2><p>linux 下我们如果想一个任务或者程序进行调度<br>bg 将一个后台暂停的命令，变成继续执行<br>fg 将后台的命令调至前台继续运行<br>jobs 查看当前在后台运行的命令<br>c-z 将前台命令放到后台运行 并且暂停<br>nohup command & 在后台不断运行command命令</p>
-<h2 id="ssh配置的问题"><a href="#ssh配置的问题" class="headerlink" title="ssh配置的问题"></a>ssh配置的问题</h2><p><font color="blue">这个问题主要是存在于交换机ssh登陆交换机的过程</font><br>ssh配置过程中，配置了密码登陆，但是出现下面的错误</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><ONI-KC-R01-CR1>ssh 10.0.0.166</span><br><span class="line">The server<span class="hljs-string">'s host key does not match the local cached key. Either the server administrator has changed the host key, or you connected to another server pretending to be this server. Please remove the local cached key, before logging in!</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>主要问题是一开始用ssh登陆交换机的时候，选择了保存key</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><ONI-KC-R01-CR1>ssh 10.0.0.166</span><br><span class="line">Username: tt</span><br><span class="line">Press CTRL+C to abort.</span><br><span class="line">Connecting to 10.0.0.166 port 22.</span><br><span class="line">The server is not authenticated. Continue? [Y/N]:y</span><br><span class="line">Do you want to save the server public key? [Y/N]:y</span><br></pre></td></tr></tbody></table></figure>
-<p>这样导致的问题就是在当前交换机上会保存一个登陆另一个交换机的key</p>
-<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">#</span><br><span class="line">public-key peer 10.0.0.166</span><br><span class="line"> public-key-code begin</span><br><span class="line">   30819F300D06092A864886F70D010101050003818D0030818902818100DF3E1240D158E197</span><br><span class="line">   CE0712173C8591883F88CC925B1C0CFC63C779E9F531C3B7E409BBB2CCED954C09A339BE78</span><br><span class="line">   46B1497E4771EDD7E88D2E380C50F37A6EC9254E6B27EC7AFFE6DCDFC1EA230D16C4DC9BB8</span><br><span class="line">   B831A2F0CB578B736566052E830A582836AA9BFFE0821CE7CB43F74077D38B20437479F260</span><br><span class="line">   A5D0550CA7D3D0747F0203010001</span><br><span class="line"> public-key-code end</span><br><span class="line"> peer-public-key end</span><br><span class="line">#</span><br></pre></td></tr></tbody></table></figure>
-<p>于是当你下次选择使用ssh+密码登陆交换机的时候就会发现错误</p>
-<p><font color="red">解决</font><br>删除当前交换机的key  并在下次登陆的时候选择</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><ONI-KC-R01-CR1>ssh 10.0.0.166</span><br><span class="line">Username: tt</span><br><span class="line">Press CTRL+C to abort.</span><br><span class="line">Connecting to 10.0.0.166 port 22.</span><br><span class="line">The server is not authenticated. Continue? [Y/N]:y</span><br><span class="line">Do you want to save the server public key? [Y/N]:n</span><br></pre></td></tr></tbody></table></figure>
-
-</body></html>
-        </div>
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
         
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
         
         
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-    
-<div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/page/14/">上一页</a>
-        </div>
-        <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/page/16/">下一页</a>
-        </div>
-        <ul class="pagination-list is-hidden-mobile">
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
             
-            <li><a class="pagination-link has-text-black-ter" href="/">1</a></li>
+            <i class="icon icon-tags"></i>
             
-            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/14/">14</a></li>
+            <i class="icon icon-project"></i>
             
-            <li><a class="pagination-link is-current" href="/page/15/">15</a></li>
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/16/">16</a></li>
+            <i class="icon icon-book-fill"></i>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/17/">17</a></li>
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/18/">18</a></li>
+            <i class="icon icon-friendship"></i>
             
-        </ul>
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
     </nav>
-</div>
-</div>
-                
+  </div>
+</header>
 
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
     
-        
-<div class="card widget">
-    <div class="card-content">
-        <nav class="level" style="margin-bottom:1rem">
-            <div class="level-item has-text-centered">
-                <div>
-                    
-                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
-                    
-                    
-                    
-                    
-                </div>
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
             </div>
-        </nav>
-        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
-            <div class="level-item has-text-centered is-marginless">
-                <a href="/archives/">
-                    <p class="heading">
-                        文章
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        90
-                    </p>
-                </a>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <a href="/categories/">
-                    <p class="heading">
-                        分类
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        27
-                    </p>
-                </a>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <a href="/tags/">
-                    <p class="heading">
-                        标签
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        15
-                    </p>
-                </a>
-            </div>
-        </nav>
-        <div class="level">
-            <a class="level-item button is-link is-rounded" href="/" target="_blank">
-                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
         </div>
-        
-        
     </div>
 </div>
 
     
-        
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/checklist/">checklist</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">34</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/Command/">Command</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/ansible/">ansible</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/docker/">docker</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/linux-network/">linux-network</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%95%85%E9%9A%9C/">故障</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">文件系统</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95/">扩展</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">C语言</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">jwt</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/extra/">extra</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">二层交换机</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%83%A8%E7%BD%B2/">交换机部署</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E4%BA%8B%E6%9C%AC/">记事本</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E5%A4%87/">设备</a><span class="category-list-count">6</span></li></ul>
+    </div>
+  </div>
+
 
     
-        
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI-CD/" rel="tag">CI-CD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codee/" rel="tag">codee</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily/" rel="tag">daily</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rust/" rel="tag">rust</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" rel="tag">负载均衡</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
 
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            链接
-        </h3>
-        <ul class="menu-list">
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/CI-CD/" style="font-size: 13px;">CI-CD</a> <a href="/tags/code/" style="font-size: 14px;">code</a> <a href="/tags/codee/" style="font-size: 13.17px;">codee</a> <a href="/tags/daily/" style="font-size: 13px;">daily</a> <a href="/tags/django/" style="font-size: 13px;">django</a> <a href="/tags/git/" style="font-size: 13px;">git</a> <a href="/tags/linux/" style="font-size: 13.67px;">linux</a> <a href="/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.17px;">nginx</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/rust/" style="font-size: 13.5px;">rust</a> <a href="/tags/vim/" style="font-size: 13px;">vim</a> <a href="/tags/vue/" style="font-size: 13.83px;">vue</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a> <a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" style="font-size: 13.17px;">负载均衡</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">36</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">31</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
         
-            <li>
-                <a class="level is-mobile" href="https://hexo.io" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">Hexo</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">hexo.io</span>
-                    </span>
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/linux/">linux</a>
+              </p>
+              <p class="item-title">
+                <a href="/posts/40a08bb8/" class="title">linux-daily</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-14T09:03:34.000Z" itemprop="datePublished">2020-02-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+              </p>
+              <p class="item-title">
+                <a href="/posts/1f4442b1/" class="title">hello,new-world</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-14T07:35:13.000Z" itemprop="datePublished">2020-02-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a>
+              </p>
+              <p class="item-title">
+                <a href="/posts/4115d0cd/" class="title">CI-CD实践</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-13T19:29:41.000Z" itemprop="datePublished">2020-02-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+              </p>
+              <p class="item-title">
+                <a href="/posts/88888022/" class="title">django实际项目中的模块设计</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-13T17:53:20.000Z" itemprop="datePublished">2020-02-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/linux/">linux</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/linux/docker/">docker</a>
+              </p>
+              <p class="item-title">
+                <a href="/posts/59fd12f/" class="title">swarm与k8s的区别</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-10T06:49:28.000Z" itemprop="datePublished">2020-02-10</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  <main class="main" role="main">
+  
+  <div class="content article-list">
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/7f55f388/">django错误合集</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/7f55f388/" class="article-date">
+	  <time datetime="2019-12-29T12:40:29.000Z" itemprop="datePublished">12月 29</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>►<a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+  </span>
+
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/7f55f388/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/9ec06885/">C语言基础</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/9ec06885/" class="article-date">
+	  <time datetime="2019-12-29T12:39:56.000Z" itemprop="datePublished">12月 29</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>►<a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">C语言</a>
+  </span>
+
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/9ec06885/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/b3a48f7b/">Python爬YouTube视频</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <html><head></head><body><p>learn python 🐍</p></body></html>
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/b3a48f7b/" class="article-date">
+	  <time datetime="2019-12-29T12:39:12.000Z" itemprop="datePublished">12月 29</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/code/">code</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/code/" rel="tag">code</a>, <a class="article-tag-link" href="/tags/python/" rel="tag">python</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/b3a48f7b/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/899b698f/">又拍云</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/899b698f/" class="article-date">
+	  <time datetime="2019-12-29T05:13:50.000Z" itemprop="datePublished">12月 29</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E8%AE%BE%E5%A4%87/">设备</a>
+  </span>
+
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/899b698f/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/c10f304f/">常见错误</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/c10f304f/" class="article-date">
+	  <time datetime="2019-12-29T05:13:35.000Z" itemprop="datePublished">12月 29</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E8%AE%BE%E5%A4%87/">设备</a>
+  </span>
+
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/c10f304f/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
+</article>
+
+    
+  </div>
+
+  
+    
+    <nav class="bar bar-footer clearfix" data-stick-bottom>
+        <div class="bar-inner">
+        <ul class="pager pull-left">
+            
+            <li class="prev">
+                <a href="/page/14/">
+                    <i class="icon icon-angle-left"></i>
+                    上一页
                 </a>
             </li>
-        
-            <li>
-                <a class="level is-mobile" href="http://www.ttlsa.com/linux/haproxy-study-tutorial/" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">运维生存时间</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">www.ttlsa.com</span>
-                    </span>
+            
+            
+            <li class="next">
+                <a href="/page/16/">
+                    下一页
+                    <i class="icon icon-angle-right"></i>
                 </a>
             </li>
-        
+            
         </ul>
+        <div class="total-article bar-right">Page 15 of 18</div>
         </div>
-    </div>
-</div>
-
-
+    </nav>
     
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/checklist/">
-            <span class="level-start">
-                <span class="level-item">checklist</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/code/">
-            <span class="level-start">
-                <span class="level-item">code</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">21</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/docker/">
-            <span class="level-start">
-                <span class="level-item">docker</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/">
-            <span class="level-start">
-                <span class="level-item">linux</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">34</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/linux/Command/">
-            <span class="level-start">
-                <span class="level-item">Command</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/ansible/">
-            <span class="level-start">
-                <span class="level-item">ansible</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/docker/">
-            <span class="level-start">
-                <span class="level-item">docker</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">13</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/linux-network/">
-            <span class="level-start">
-                <span class="level-item">linux-network</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/%E6%95%85%E9%9A%9C/">
-            <span class="level-start">
-                <span class="level-item">故障</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
-            <span class="level-start">
-                <span class="level-item">文件系统</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux/%E8%84%9A%E6%9C%AC/">
-            <span class="level-start">
-                <span class="level-item">脚本</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/%E5%B7%A5%E5%85%B7/">
-            <span class="level-start">
-                <span class="level-item">工具</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%89%A9%E5%B1%95/">
-            <span class="level-start">
-                <span class="level-item">扩展</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-            <span class="level-start">
-                <span class="level-item">数据结构</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%9E%B6%E6%9E%84/">
-            <span class="level-start">
-                <span class="level-item">架构</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">
-            <span class="level-start">
-                <span class="level-item">CI-CD</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/">
-            <span class="level-start">
-                <span class="level-item">编程</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">14</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">
-            <span class="level-start">
-                <span class="level-item">C语言</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/django/">
-            <span class="level-start">
-                <span class="level-item">django</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">12</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">
-            <span class="level-start">
-                <span class="level-item">jwt</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/">
-            <span class="level-start">
-                <span class="level-item">网络</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/extra/">
-            <span class="level-start">
-                <span class="level-item">extra</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
-            <span class="level-start">
-                <span class="level-item">二层交换机</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
-            <span class="level-start">
-                <span class="level-item">交换机</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%83%A8%E7%BD%B2/">
-            <span class="level-start">
-                <span class="level-item">交换机部署</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/%E8%AE%B0%E4%BA%8B%E6%9C%AC/">
-            <span class="level-start">
-                <span class="level-item">记事本</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E8%AE%BE%E5%A4%87/">
-            <span class="level-start">
-                <span class="level-item">设备</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">6</span>
-            </span>
-        </a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-    
-    
-        <div class="column-right-shadow is-hidden-widescreen ">
-        
-            <div class="card widget is-hidden-mobile">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/02/">
-                <span class="level-start">
-                    <span class="level-item">二月 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">23</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/01/">
-                <span class="level-start">
-                    <span class="level-item">一月 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">36</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/12/">
-                <span class="level-start">
-                    <span class="level-item">十二月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">31</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
+ 
+</main>
 
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
         
-            
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
         
-        <article class="media">
-            
-            <a href="/posts/40a08bb8/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-daily">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T09:03:34.000Z">2020-02-14</time></div>
-                    <a href="/posts/40a08bb8/" class="has-link-black-ter is-size-6">linux-daily</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
         
-        <article class="media">
-            
-            <a href="/posts/1f4442b1/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hello,new-world">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T07:35:13.000Z">2020-02-14</time></div>
-                    <a href="/posts/1f4442b1/" class="has-link-black-ter is-size-6">hello,new-world</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
-                    </p>
-                </div>
-            </div>
-        </article>
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
         
-        <article class="media">
-            
-            <a href="/posts/4115d0cd/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CI-CD实践">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T19:29:41.000Z">2020-02-14</time></div>
-                    <a href="/posts/4115d0cd/" class="has-link-black-ter is-size-6">CI-CD实践</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a> / <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a>
-                    </p>
-                </div>
-            </div>
-        </article>
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
         
-        <article class="media">
-            
-            <a href="/posts/88888022/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="django实际项目中的模块设计">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T17:53:20.000Z">2020-02-14</time></div>
-                    <a href="/posts/88888022/" class="has-link-black-ter is-size-6">django实际项目中的模块设计</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/59fd12f/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="swarm与k8s的区别">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:49:28.000Z">2020-02-10</time></div>
-                    <a href="/posts/59fd12f/" class="has-link-black-ter is-size-6">swarm与k8s的区别</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
+    </ul>
 
-        
-        </div>
-    
-</div>
-
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        <div class="card widget is-hidden-mobile">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/02/">
-                <span class="level-start">
-                    <span class="level-item">二月 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">23</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/01/">
-                <span class="level-start">
-                    <span class="level-item">一月 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">36</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/12/">
-                <span class="level-start">
-                    <span class="level-item">十二月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">31</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/posts/40a08bb8/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-daily">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T09:03:34.000Z">2020-02-14</time></div>
-                    <a href="/posts/40a08bb8/" class="has-link-black-ter is-size-6">linux-daily</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/1f4442b1/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hello,new-world">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T07:35:13.000Z">2020-02-14</time></div>
-                    <a href="/posts/1f4442b1/" class="has-link-black-ter is-size-6">hello,new-world</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/4115d0cd/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CI-CD实践">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T19:29:41.000Z">2020-02-14</time></div>
-                    <a href="/posts/4115d0cd/" class="has-link-black-ter is-size-6">CI-CD实践</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a> / <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/88888022/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="django实际项目中的模块设计">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T17:53:20.000Z">2020-02-14</time></div>
-                    <a href="/posts/88888022/" class="has-link-black-ter is-size-6">django实际项目中的模块设计</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/posts/59fd12f/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="swarm与k8s的区别">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:49:28.000Z">2020-02-10</time></div>
-                    <a href="/posts/59fd12f/" class="has-link-black-ter is-size-6">swarm与k8s的区别</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-
-    
-    
-</div>
-
-            </div>
-        </div>
-    </section>
-    <footer class="footer">
-    <div class="container">
-        <div class="level">
-            <div class="level-start has-text-centered-mobile">
-                <a class="footer-logo is-block has-mb-6" href="/">
-                
-                    <img src="http://image.noback.top/datadog.svg" alt="Alpaca&#39;s blog | how to win" height="28">
-                
-                </a>
-                <p class="is-size-7">
-                &copy; 2020 何泽君&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
-                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
-                
-                <br>
-                <span id="busuanzi_container_site_uv">
-                共<span id="busuanzi_value_site_uv">0</span>个访客
-                </span>
-                
-                </p>
-            </div>
-            <div class="level-end">
-            
-                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
-                
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-                        
-                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
-                        
-                        <i class="fab fa-github"></i>&nbsp;
-                        
-                    </a>
-                </p>
-                
-                </div>
-            
-            </div>
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
         </div>
     </div>
 </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("zh-CN");</script>
-
-
-    
-    
-    
-    <script src="/js/animation.js"></script>
-    
-
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
-    <script src="/js/gallery.js" defer></script>
-    
-
-    
-    
-
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
-            my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        });
-    });
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 </script>
 
+<script src="/js/plugin.min.js"></script>
 
-    
-    
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    MathJax.Hub.Config({
-        'HTML-CSS': {
-            matchFontHeight: false
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
         },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
-});
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
 </script>
 
-    
-    
-
-<a id="back-to-top" title="回到顶端" href="javascript:;">
-    <i class="fas fa-chevron-up"></i>
-</a>
-<script src="/js/back-to-top.js" defer></script>
+<script src="/js/insight.js"></script>
 
 
-    
-    
-
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
-    <script src="/js/clipboard.js" defer></script>
-    
-
-    
-    
-    
-
-    
 
 
-<script src="/js/main.js" defer></script>
 
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
-            },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-<script src="/js/insight.js" defer></script>
-<link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css">
-    
+
+   
+
+
+
+
+
+
+
+
+
 </body>
 </html>
