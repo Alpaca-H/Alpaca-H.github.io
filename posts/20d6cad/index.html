@@ -18,12 +18,12 @@
   
   
   <title>ansible总结 | Hexo</title>
-  <meta name="description" content="登陆h3c交换机h3c交换机的模块支持度极低，网上大多都是思科交换机的模块，很多要用到H3c的都是自己写的，感觉很坑 问题:现在又一个问题就是命令行使用raw模块可以登陆交换机，并且输出执指令 返回结果，但是在ansible-playbook中不行 echo &quot;10.0.5.124&quot;  &gt;&gt; .&#x2F;xxansible -i xx all -m raw -a &#39;system-view ;dis arp">
+  <meta name="description" content="登陆h3c交换机h3c交换机的模块支持度极低，网上大多都是思科交换机的模块，很多要用到H3c的都是自己写的，感觉很坑 问题:现在又一个问题就是命令行使用raw模块可以登陆交换机，并且输出执指令 返回结果，但是在ansible-playbook中不行 echo &quot;10.0.5.124&quot;  &gt;&gt; .&#x2F;xxansible -i xx all -m raw -a &#39;system-view ;d">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ansible总结">
 <meta property="og:url" content="http://blog.noback.top/posts/20d6cad/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
-<meta property="og:description" content="登陆h3c交换机h3c交换机的模块支持度极低，网上大多都是思科交换机的模块，很多要用到H3c的都是自己写的，感觉很坑 问题:现在又一个问题就是命令行使用raw模块可以登陆交换机，并且输出执指令 返回结果，但是在ansible-playbook中不行 echo &quot;10.0.5.124&quot;  &gt;&gt; .&#x2F;xxansible -i xx all -m raw -a &#39;system-view ;dis arp">
+<meta property="og:description" content="登陆h3c交换机h3c交换机的模块支持度极低，网上大多都是思科交换机的模块，很多要用到H3c的都是自己写的，感觉很坑 问题:现在又一个问题就是命令行使用raw模块可以登陆交换机，并且输出执指令 返回结果，但是在ansible-playbook中不行 echo &quot;10.0.5.124&quot;  &gt;&gt; .&#x2F;xxansible -i xx all -m raw -a &#39;system-view ;d">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-12-29T12:54:12.000Z">
 <meta property="article:modified_time" content="2019-12-29T12:54:12.000Z">
@@ -382,19 +382,19 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <html><head></head><body><h1 id="登陆h3c交换机"><a href="#登陆h3c交换机" class="headerlink" title="登陆h3c交换机"></a>登陆h3c交换机</h1><p>h3c交换机的模块支持度极低，网上大多都是思科交换机的模块，很多要用到H3c的都是自己写的，感觉很坑</p>
+        <h1 id="登陆h3c交换机"><a href="#登陆h3c交换机" class="headerlink" title="登陆h3c交换机"></a>登陆h3c交换机</h1><p>h3c交换机的模块支持度极低，网上大多都是思科交换机的模块，很多要用到H3c的都是自己写的，感觉很坑</p>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h2><p>现在又一个问题就是命令行使用raw模块可以登陆交换机，并且输出执指令 返回结果，但是在ansible-playbook中不行</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"10.0.5.124"</span>  >> ./xx</span><br><span class="line">ansible -i xx all -m raw -a <span class="hljs-string">'system-view ;dis arp ;'</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"10.0.5.124"</span>  &gt;&gt; ./xx</span><br><span class="line">ansible -i xx all -m raw -a <span class="string">'system-view ;dis arp ;'</span></span><br></pre></td></tr></table></figure>
 <p>如上是可以的，但是如下的playbook则不行</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> first.yml << EOF</span><br><span class="line">  ---</span><br><span class="line">  - hosts: switch</span><br><span class="line"></span><br><span class="line">    tasks:</span><br><span class="line">    - name: add snmp</span><br><span class="line">      raw: <span class="hljs-string">"system-view ;"</span></span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">ansible-playbook first.yml</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> first.yml &lt;&lt; EOF</span><br><span class="line">  ---</span><br><span class="line">  - hosts: switch</span><br><span class="line"></span><br><span class="line">    tasks:</span><br><span class="line">    - name: add snmp</span><br><span class="line">      raw: <span class="string">"system-view ;"</span></span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">ansible-playbook first.yml</span><br></pre></td></tr></table></figure>
 
 <p>解决办法，既然playbook不行，那就切换成一条一条的命令行把</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> yy << EOF</span><br><span class="line">system-view ;</span><br><span class="line">display arp ;</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"10.0.5.124 ansible_ssh_user=admin ansible_ssh_pass=upyun123"</span> >> xx</span><br><span class="line"><span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> cmd;<span class="hljs-keyword">do</span> ansible -i xx -m raw -a <span class="hljs-string">"<span class="hljs-variable">$cmd</span>"</span> -u an -k ;<span class="hljs-keyword">done</span> < yy</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> yy &lt;&lt; EOF</span><br><span class="line">system-view ;</span><br><span class="line">display arp ;</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"10.0.5.124 ansible_ssh_user=admin ansible_ssh_pass=upyun123"</span> &gt;&gt; xx</span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> cmd;<span class="keyword">do</span> ansible -i xx -m raw -a <span class="string">"<span class="variable">$cmd</span>"</span> -u an -k ;<span class="keyword">done</span> &lt; yy</span><br></pre></td></tr></table></figure>
 
 
 
 <h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><p>python+yaml+jinja2 自动生成华三交换机配置<br><a href="https://www.jianshu.com/p/4937de3070aa" target="_blank" rel="noopener">https://www.jianshu.com/p/4937de3070aa</a></p>
-</body></html>
+
       
     </div>
     <div class="article-footer">

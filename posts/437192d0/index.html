@@ -382,20 +382,20 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <html><head></head><body><h2 id="drf"><a href="#drf" class="headerlink" title="drf"></a>drf</h2><p>如何使用django-rest-framework</p>
+        <h2 id="drf"><a href="#drf" class="headerlink" title="drf"></a>drf</h2><p>如何使用django-rest-framework</p>
 <p>1.首先下载</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">pip3 install django-rest-framework</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip3 install django-rest-framework</span><br></pre></td></tr></table></figure>
 <p>2.应用<br>在setting中添加</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">INSTALLED_APPS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="hljs-string">'rest_framework'</span>,</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">INSTALLED_APPS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">'rest_framework'</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>3.在drf中使用登陆登出的功能</p>
-<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    ...</span><br><span class="line">    url(<span class="hljs-string">r'^api-auth/'</span>, include(<span class="hljs-string">'rest_framework.urls'</span>))</span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    ...</span><br><span class="line">    url(<span class="string">r'^api-auth/'</span>, include(<span class="string">'rest_framework.urls'</span>))</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
 
 <hr>
 <h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><p>创建model 与 django类似<br>创建serializer 序列化model数据，以json的形式展示  （serializer modelserialzier）<br>创建view  与django类似</p>
 <p>使用httpie查看</p>
 <p>pip install httpie<br>http <a href="http://localhost:8000/snippets/" target="_blank" rel="noopener">http://localhost:8000/snippets/</a></p>
-</body></html>
+
       
     </div>
     <div class="article-footer">

@@ -388,39 +388,39 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <html><head></head><body><h1 id="linux故障问题及解决方案"><a href="#linux故障问题及解决方案" class="headerlink" title="linux故障问题及解决方案"></a>linux故障问题及解决方案</h1><p>linux系统使用过程中 会遇到很多的故障和报错，与之对应的是一些快速的解决方案<br>这里记录一下</p>
+        <h1 id="linux故障问题及解决方案"><a href="#linux故障问题及解决方案" class="headerlink" title="linux故障问题及解决方案"></a>linux故障问题及解决方案</h1><p>linux系统使用过程中 会遇到很多的故障和报错，与之对应的是一些快速的解决方案<br>这里记录一下</p>
 <a id="more"></a>
 
 <h2 id="忘记root密码，无法登陆服务器"><a href="#忘记root密码，无法登陆服务器" class="headerlink" title="忘记root密码，无法登陆服务器"></a>忘记root密码，无法登陆服务器</h2><hr>
-<p><font color="blue">centos7 解决方案</font></p>
+<p><font color='blue'>centos7 解决方案</font></p>
 <ul>
 <li>重启服务器</li>
 <li>进入启动界面后选择e进入编辑引导</li>
-<li>修改内容,在尾部添加rd.break<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">linux16 /vmlinuz-3.10.0-123.el7.x86_64 root=UUID=449d53d1-84c2-40c0-b05e-d1900591d71b ro rd.lvm.lv=vg_kvm7usb/swap crashkernel=auto </span><br><span class="line">vconsole.keymap=us crashkernel=auto vconsole.font=latarcyrheb-sun16 rd.lvm.lv=vg_kvm7usb/root rhgb quiet LANG=en_US.UTF-8  rd.break</span><br></pre></td></tr></tbody></table></figure></li>
+<li>修改内容,在尾部添加rd.break<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">linux16 /vmlinuz-3.10.0-123.el7.x86_64 root=UUID=449d53d1-84c2-40c0-b05e-d1900591d71b ro rd.lvm.lv=vg_kvm7usb/swap crashkernel=auto </span><br><span class="line">vconsole.keymap=us crashkernel=auto vconsole.font=latarcyrheb-sun16 rd.lvm.lv=vg_kvm7usb/root rhgb quiet LANG=en_US.UTF-8  rd.break</span><br></pre></td></tr></table></figure></li>
 <li>ctrl+x 以当前设定开机<br>开机后的互动式命令环境，並不是正常开机的系統，正常开机系統挂载在 /sysboo 且挂载成只读，必須重新挂载成可写入，才能修改密碼</li>
-<li>重新挂在 /sysroot 并改成可读可写<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">mount –o remount,rw /sysroot</span><br></pre></td></tr></tbody></table></figure></li>
-<li>chroot 工作目录到/sysroot<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">chroot /sysroot</span><br></pre></td></tr></tbody></table></figure></li>
-<li>设定新的root 密码<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">passwd root</span><br><span class="line">upyun1</span><br><span class="line">upyun1</span><br></pre></td></tr></tbody></table></figure>
+<li>重新挂在 /sysroot 并改成可读可写<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount –o remount,rw /sysroot</span><br></pre></td></tr></table></figure></li>
+<li>chroot 工作目录到/sysroot<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chroot /sysroot</span><br></pre></td></tr></table></figure></li>
+<li>设定新的root 密码<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">passwd root</span><br><span class="line">upyun1</span><br><span class="line">upyun1</span><br></pre></td></tr></table></figure>
 在此情況下，SELinux 並沒有启动，对所有文件的更改，可能会造成文档的context 不正确，为确保开机时重新设定SELinux context，必須在根目录下添加隐藏文件.autorelabel。</li>
-<li>避开selinux<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">touch /.autorelabel</span><br></pre></td></tr></tbody></table></figure></li>
-<li>重启<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></tbody></table></figure>
+<li>避开selinux<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">touch /.autorelabel</span><br></pre></td></tr></table></figure></li>
+<li>重启<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<p><font color="blue">centos7 解决方案二</font></p>
+<p><font color='blue'>centos7 解决方案二</font></p>
 <ul>
 <li>重启服务器</li>
 <li>按e编辑引导</li>
-<li>修改re 为 rw 添加 init=/bin/bash <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">linux16 /vmlinuz-3.10.0-123.el7.x86_64 root=UUID=449d53d1-84c2-40c0-b05e-d1900591d71b rw rd.lvm.lv=vg_kvm7usb/swap crashkernel=auto </span><br><span class="line">vconsole.keymap=us crashkernel=auto vconsole.font=latarcyrheb-sun16 rd.lvm.lv=vg_kvm7usb/root rhgb quiet LANG=en_US.UTF-8  init=/bin/bash</span><br></pre></td></tr></tbody></table></figure></li>
+<li>修改re 为 rw 添加 init=/bin/bash <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">linux16 /vmlinuz-3.10.0-123.el7.x86_64 root=UUID=449d53d1-84c2-40c0-b05e-d1900591d71b rw rd.lvm.lv=vg_kvm7usb/swap crashkernel=auto </span><br><span class="line">vconsole.keymap=us crashkernel=auto vconsole.font=latarcyrheb-sun16 rd.lvm.lv=vg_kvm7usb/root rhgb quiet LANG=en_US.UTF-8  init=/bin/bash</span><br></pre></td></tr></table></figure></li>
 <li>ctrl+x 以当前设定开机</li>
-<li>重置密码<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">passwd root</span><br><span class="line">upyun1</span><br><span class="line">upyun1</span><br></pre></td></tr></tbody></table></figure></li>
-<li>避开selinux<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">touch /.autorelabel</span><br></pre></td></tr></tbody></table></figure></li>
-<li>重启<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">exec</span> /sbin/init</span><br></pre></td></tr></tbody></table></figure>
+<li>重置密码<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">passwd root</span><br><span class="line">upyun1</span><br><span class="line">upyun1</span><br></pre></td></tr></table></figure></li>
+<li>避开selinux<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">touch /.autorelabel</span><br></pre></td></tr></table></figure></li>
+<li>重启<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">exec</span> /sbin/init</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <hr>
-</body></html>
+
       
     </div>
     <div class="article-footer">

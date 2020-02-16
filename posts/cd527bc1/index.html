@@ -382,14 +382,14 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <html><head></head><body><h1 id="linux文件系统2"><a href="#linux文件系统2" class="headerlink" title="linux文件系统2"></a>linux文件系统2</h1><p>linux中有许多常用的文件，各自有各自主要的作用 ，怕忘记，这里做些笔记</p>
+        <h1 id="linux文件系统2"><a href="#linux文件系统2" class="headerlink" title="linux文件系统2"></a>linux文件系统2</h1><p>linux中有许多常用的文件，各自有各自主要的作用 ，怕忘记，这里做些笔记</p>
 <a id="more"></a>
 
-<h2 id="etc-hosts文件"><a href="#etc-hosts文件" class="headerlink" title="/etc/hosts文件"></a>/etc/hosts文件</h2><p>hosts —— the static table lookup for host name（主机名查询静态表）。<br>hosts文件是Linux系统上一个负责ip地址与域名快速解析的文件，以ascii格式保存在/etc/目录下。hosts文件包含了ip地址与主机名之间的映射，还包括主机的别名。在没有域名解析服务器的情况下，系统上的所有网络程序都通过查询该文件来解析对应于某个主机名的ip地址，否则就需要使用dns服务程序来解决。通过可以将常用的域名和ip地址映射加入到hosts文件中，实现快速方便的访问。<br>优先级 ： dns缓存 > hosts > dns服务</p>
-<p>—> 配置</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4</span><br><span class="line">::1         localhost localhost.localdomain localhost6 localhost6.localdomain6</span><br><span class="line">10.0.5.91 lvs-master</span><br><span class="line">10.0.5.93 lvs-slave</span><br><span class="line">10.0.5.92 lvs-web1</span><br><span class="line"><span class="hljs-comment">#10.0.5.90 lvs-web2</span></span><br><span class="line">10.0.5.90 www.baidu.com</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># ip地址 主机名/域名 主机别名</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="etc-hosts文件"><a href="#etc-hosts文件" class="headerlink" title="/etc/hosts文件"></a>/etc/hosts文件</h2><p>hosts —— the static table lookup for host name（主机名查询静态表）。<br>hosts文件是Linux系统上一个负责ip地址与域名快速解析的文件，以ascii格式保存在/etc/目录下。hosts文件包含了ip地址与主机名之间的映射，还包括主机的别名。在没有域名解析服务器的情况下，系统上的所有网络程序都通过查询该文件来解析对应于某个主机名的ip地址，否则就需要使用dns服务程序来解决。通过可以将常用的域名和ip地址映射加入到hosts文件中，实现快速方便的访问。<br>优先级 ： dns缓存 &gt; hosts &gt; dns服务</p>
+<p>—&gt; 配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4</span><br><span class="line">::1         localhost localhost.localdomain localhost6 localhost6.localdomain6</span><br><span class="line">10.0.5.91 lvs-master</span><br><span class="line">10.0.5.93 lvs-slave</span><br><span class="line">10.0.5.92 lvs-web1</span><br><span class="line"><span class="comment">#10.0.5.90 lvs-web2</span></span><br><span class="line">10.0.5.90 www.baidu.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># ip地址 主机名/域名 主机别名</span></span><br></pre></td></tr></table></figure>
 <p>相当于本地的域名解析，当你ping <a href="http://www.baidu.com的时候，会默认去ping" target="_blank" rel="noopener">www.baidu.com的时候，会默认去ping</a> 10.0.5.90</p>
-</body></html>
+
       
     </div>
     <div class="article-footer">

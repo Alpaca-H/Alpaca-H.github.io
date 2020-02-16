@@ -387,7 +387,7 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <html><head></head><body><p>二层交换机知识</p>
+        <p>二层交换机知识</p>
 <a id="more"></a>
 
 <h2 id="图片笔记"><a href="#图片笔记" class="headerlink" title="图片笔记"></a>图片笔记</h2><p><img src="http://img.noback.top/2020-01-12-19-13-26.png" alt="2020-01-12-19-13-26"><br><img src="http://img.noback.top/2020-01-12-19-14-23.png" alt="2020-01-12-19-14-23"></p>
@@ -426,19 +426,19 @@
 2、如果是untag则剥离VLAN信息，再发送，如果是tag则比较端口的PVID和将要发送报文的VLAN信息，如果两者相等则剥离VLAN信息，再发送，否则报文将携带原有的VLAN标记进行转发</code></pre></li>
 </ul>
 <h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><p>经过实验，我们可以知道一些配置在某些情况下是相同的<br>比如上联的信息是这样的</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">interface Ten-GigabitEthernet1/0/9</span><br><span class="line"> port link-mode bridge</span><br><span class="line"> description CCM@UPYUN-KC-ALS-06</span><br><span class="line"> port link-type trunk</span><br><span class="line"> undo port trunk permit vlan 1</span><br><span class="line"> port trunk permit vlan 1000</span><br><span class="line"> port trunk pvid vlan 1000</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">interface Ten-GigabitEthernet1/0/9</span><br><span class="line"> port link-mode bridge</span><br><span class="line"> description CCM@UPYUN-KC-ALS-06</span><br><span class="line"> port link-type trunk</span><br><span class="line"> undo port trunk permit vlan 1</span><br><span class="line"> port trunk permit vlan 1000</span><br><span class="line"> port trunk pvid vlan 1000</span><br></pre></td></tr></table></figure>
 
 <p>从上面的内容可以知道，只允许标签为1000的数据进入</p>
 <p>可以这样配置</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">vlan 1000</span><br><span class="line">ip address 10.0.5.124 20</span><br><span class="line">ip router-static 0.0.0.0 0 10.0.0.130</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vlan 1000</span><br><span class="line">ip address 10.0.5.124 20</span><br><span class="line">ip router-static 0.0.0.0 0 10.0.0.130</span><br></pre></td></tr></table></figure>
 <p>也可以这样配置</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">int bridge 1000</span><br><span class="line">int g1/0/5</span><br><span class="line">port link-aggretion group 1000</span><br><span class="line">int g 1/0/6</span><br><span class="line">port link-aggretion group 1000</span><br><span class="line">int bridge 1000</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[10.0.5.125-Bridge-Aggregation1000]dis this</span><br><span class="line"><span class="hljs-comment">#</span></span><br><span class="line">interface Bridge-Aggregation1000</span><br><span class="line"> port link-type trunk</span><br><span class="line"> undo port trunk permit vlan 1</span><br><span class="line"> port trunk permit vlan 1000</span><br><span class="line"> port trunk pvid vlan 1000</span><br><span class="line"><span class="hljs-comment">#</span></span><br><span class="line"><span class="hljs-built_in">return</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int bridge 1000</span><br><span class="line">int g1/0/5</span><br><span class="line">port link-aggretion group 1000</span><br><span class="line">int g 1/0/6</span><br><span class="line">port link-aggretion group 1000</span><br><span class="line">int bridge 1000</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[10.0.5.125-Bridge-Aggregation1000]dis this</span><br><span class="line"><span class="comment">#</span></span><br><span class="line">interface Bridge-Aggregation1000</span><br><span class="line"> port link-type trunk</span><br><span class="line"> undo port trunk permit vlan 1</span><br><span class="line"> port trunk permit vlan 1000</span><br><span class="line"> port trunk pvid vlan 1000</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="built_in">return</span></span><br></pre></td></tr></table></figure>
 
 <p>trunk在对端相同vlan-id的时候同样会剥离vlan的id信息</p>
 <h2 id="级连、堆叠、集群"><a href="#级连、堆叠、集群" class="headerlink" title="级连、堆叠、集群"></a>级连、堆叠、集群</h2><p>级连<br><a href="https://baike.baidu.com/item/%E7%BA%A7%E8%BF%9E" target="_blank" rel="noopener">https://baike.baidu.com/item/%E7%BA%A7%E8%BF%9E</a></p>
 <h2 id="什么是pvid"><a href="#什么是pvid" class="headerlink" title="什么是pvid"></a>什么是pvid</h2><p>PVID英文为Port-base VLAN ID，是表示网络通信中基于端口的VLAN ID，一个端口可以属于多个VLAN，但是只能有一个PVID，收到一个不带tag头的数据包时，会打上PVID所表示的VLAN号，视同该VLAN的数据包处理<br>一个物理端口只能拥有一个PVID，当一个物理端口拥有了一个PVID的时候，必定会拥有和PVID相等的VID，而且在这个VID上，这个物理端口必定是Untagged Port。<br>PVID的作用只是在交换机从外部接受到可以接受Untagged 数据帧的时候给数据帧添加TAG标记用的，在交换机内部转发数据的时候PVID不起任何作用<br><a href="https://baike.baidu.com/item/PVID" target="_blank" rel="noopener">https://baike.baidu.com/item/PVID</a></p>
 <h2 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h2><p>交换机三种端口模式Access、Hybrid和Trunk的理解<br><a href="http://www.word666.com/zhishi/62797.html" target="_blank" rel="noopener">http://www.word666.com/zhishi/62797.html</a></p>
-</body></html>
+
       
     </div>
     <div class="article-footer">

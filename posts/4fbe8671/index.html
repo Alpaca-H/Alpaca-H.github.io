@@ -389,37 +389,37 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <html><head></head><body><p>learn Rust  🦀️</p>
+        <p>learn Rust  🦀️</p>
 <a id="more"></a>
 <h1 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h1><p>url <a href="https://www.rust-lang.org/zh-CN/tools/install" target="_blank" rel="noopener">https://www.rust-lang.org/zh-CN/tools/install</a></p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">curl --proto <span class="hljs-string">'=https'</span> --tlsv1.2 -sSf https://sh.rustup.rs | sh</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl --proto <span class="string">'=https'</span> --tlsv1.2 -sSf https://sh.rustup.rs | sh</span><br></pre></td></tr></table></figure>
 <p>while you input enter ，will install rust default</p>
 <p>上面这条命令会安装一些内容，比如  cargo  rustup<br>如果你想要使用他们，需要将他们添加到环境变量中</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 方法1</span></span><br><span class="line"><span class="hljs-built_in">source</span> <span class="hljs-variable">$HOME</span>/.cargo/env</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 方法2</span></span><br><span class="line"><span class="hljs-built_in">export</span>  PATH=<span class="hljs-string">"<span class="hljs-variable">$HOME</span>/.cargo/bin:<span class="hljs-variable">$PATH</span>"</span> </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 其实env里面写的就是方法2</span></span><br><span class="line"><span class="hljs-comment"># 查看是否安装完成</span></span><br><span class="line">rustc --version</span><br><span class="line">rustc 1.39.0 (4560ea788 2019-11-04)</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 方法1</span></span><br><span class="line"><span class="built_in">source</span> <span class="variable">$HOME</span>/.cargo/env</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法2</span></span><br><span class="line"><span class="built_in">export</span>  PATH=<span class="string">"<span class="variable">$HOME</span>/.cargo/bin:<span class="variable">$PATH</span>"</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 其实env里面写的就是方法2</span></span><br><span class="line"><span class="comment"># 查看是否安装完成</span></span><br><span class="line">rustc --version</span><br><span class="line">rustc 1.39.0 (4560ea788 2019-11-04)</span><br></pre></td></tr></table></figure>
 
 
 <h1 id="update"><a href="#update" class="headerlink" title="update"></a>update</h1><p>更新版本, rustup用来管理rust的版本,rust每6个礼拜会进行一次版本迭代，使用rustup update更新版本</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">rustup update</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rustup update</span><br></pre></td></tr></table></figure>
 
 <h1 id="cargo工具"><a href="#cargo工具" class="headerlink" title="cargo工具"></a>cargo工具</h1><p>Cargo：Rust 的构建工具和包管理器</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">cargo build <span class="hljs-comment">#构建项目</span></span><br><span class="line">cargo run <span class="hljs-comment"># 构建并运行项目</span></span><br><span class="line">cargo <span class="hljs-built_in">test</span> <span class="hljs-comment"># 测试项目</span></span><br><span class="line">cargo doc <span class="hljs-comment"># 为项目构建文档</span></span><br><span class="line">cargo publish <span class="hljs-comment"># 将库发布到cartes.io </span></span><br><span class="line">cargo new xxproject <span class="hljs-comment"># 创建xxproject项目</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># cargo  开发者社区</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cargo build <span class="comment">#构建项目</span></span><br><span class="line">cargo run <span class="comment"># 构建并运行项目</span></span><br><span class="line">cargo <span class="built_in">test</span> <span class="comment"># 测试项目</span></span><br><span class="line">cargo doc <span class="comment"># 为项目构建文档</span></span><br><span class="line">cargo publish <span class="comment"># 将库发布到cartes.io </span></span><br><span class="line">cargo new xxproject <span class="comment"># 创建xxproject项目</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># cargo  开发者社区</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="cargo-使用"><a href="#cargo-使用" class="headerlink" title="cargo 使用"></a>cargo 使用</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">cargo new helloworld <span class="hljs-comment"># 创建一个项目helloworld </span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 生成如下文件</span></span><br><span class="line">[root@dev rustttt]<span class="hljs-comment">#  tree .</span></span><br><span class="line">.</span><br><span class="line">└── helloworld</span><br><span class="line">    ├── Cargo.toml</span><br><span class="line">    └── src</span><br><span class="line">        └── main.rs</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="cargo-使用"><a href="#cargo-使用" class="headerlink" title="cargo 使用"></a>cargo 使用</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cargo new helloworld <span class="comment"># 创建一个项目helloworld </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成如下文件</span></span><br><span class="line">[root@dev rustttt]<span class="comment">#  tree .</span></span><br><span class="line">.</span><br><span class="line">└── helloworld</span><br><span class="line">    ├── Cargo.toml</span><br><span class="line">    └── src</span><br><span class="line">        └── main.rs</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Cargo.toml中包含了编译你项目时所需要的内容清单</li>
 <li>src/main.rs 中包含了主程序</li>
 </ul>
 <p>使用cargo build 构建项目,编译完成之后，会在生成一个编译后的可执行文件，执行他们</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@dev helloworld]<span class="hljs-comment"># ./target/debug/helloworld</span></span><br><span class="line">Hello, world!</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@dev helloworld]<span class="comment"># ./target/debug/helloworld</span></span><br><span class="line">Hello, world!</span><br></pre></td></tr></table></figure>
 
 <p>使用cargo run 构建项目并运行。</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@dev helloworld]<span class="hljs-comment"># cargo run</span></span><br><span class="line">   Compiling helloworld v0.1.0 (/root/rustttt/helloworld)</span><br><span class="line">    Finished dev [unoptimized + debuginfo] target(s) <span class="hljs-keyword">in</span> 0.51s</span><br><span class="line">     Running `target/debug/helloworld`</span><br><span class="line">Hello, world!</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@dev helloworld]<span class="comment"># cargo run</span></span><br><span class="line">   Compiling helloworld v0.1.0 (/root/rustttt/helloworld)</span><br><span class="line">    Finished dev [unoptimized + debuginfo] target(s) <span class="keyword">in</span> 0.51s</span><br><span class="line">     Running `target/debug/helloworld`</span><br><span class="line">Hello, world!</span><br></pre></td></tr></table></figure>
 
-<p><font color="red">具体是使用文档</font><br><font color="red"><a href="https://doc.rust-lang.org/cargo/guide/index.html" target="_blank" rel="noopener">https://doc.rust-lang.org/cargo/guide/index.html</a></font></p>
-<h2 id="编译rust文件-rustc"><a href="#编译rust文件-rustc" class="headerlink" title="编译rust文件  rustc"></a>编译rust文件  rustc</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 使用cargo build创建helloworld目录</span></span><br><span class="line">cargo build helloworld</span><br><span class="line"><span class="hljs-built_in">cd</span> helloworld/src/</span><br><span class="line"><span class="hljs-comment"># 编译文件</span></span><br><span class="line">rustc main.rs </span><br><span class="line">./main</span><br><span class="line"><span class="hljs-comment"># 输出内容</span></span><br><span class="line">hello wolrd</span><br></pre></td></tr></tbody></table></figure>
+<p><font color='red'>具体是使用文档</font><br><font color='red'><a href="https://doc.rust-lang.org/cargo/guide/index.html" target="_blank" rel="noopener">https://doc.rust-lang.org/cargo/guide/index.html</a></font></p>
+<h2 id="编译rust文件-rustc"><a href="#编译rust文件-rustc" class="headerlink" title="编译rust文件  rustc"></a>编译rust文件  rustc</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用cargo build创建helloworld目录</span></span><br><span class="line">cargo build helloworld</span><br><span class="line"><span class="built_in">cd</span> helloworld/src/</span><br><span class="line"><span class="comment"># 编译文件</span></span><br><span class="line">rustc main.rs </span><br><span class="line">./main</span><br><span class="line"><span class="comment"># 输出内容</span></span><br><span class="line">hello wolrd</span><br></pre></td></tr></table></figure>
 
 <h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><p>不下载环境，直接测试代码<br><a href="https://play.rust-lang.org" target="_blank" rel="noopener">https://play.rust-lang.org</a><br>Rust官方文档<br><a href="https://www.rust-lang.org/zh-CN/tools/install" target="_blank" rel="noopener">https://www.rust-lang.org/zh-CN/tools/install</a></p>
-</body></html>
+
       
     </div>
     <div class="article-footer">
@@ -475,12 +475,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/posts/23ccefd3/" title="深拷贝与浅拷贝"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/posts/bb04cef6/" title="rust基础2"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/posts/93aa081f/" title="rust猜谜游戏"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/posts/76ec0771/" title="mac配置"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
