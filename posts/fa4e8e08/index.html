@@ -177,7 +177,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    几秒 读完 (大约 34 个字)
+                    几秒 读完 (大约 96 个字)
                 </span>
                 
                 
@@ -194,7 +194,9 @@
 <a id="more"></a>
 
 
-<h1 id="linux实用命令"><a href="#linux实用命令" class="headerlink" title="linux实用命令"></a>linux实用命令</h1><h2 id="查找包含某字符串的文件及位置"><a href="#查找包含某字符串的文件及位置" class="headerlink" title="查找包含某字符串的文件及位置"></a>查找包含某字符串的文件及位置</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">find . | xargs grep -ri <span class="hljs-string">"要查找的字符串</span></span><br></pre></td></tr></tbody></table></figure></body></html>
+<h1 id="linux实用命令"><a href="#linux实用命令" class="headerlink" title="linux实用命令"></a>linux实用命令</h1><h2 id="查找包含某字符串的文件及位置"><a href="#查找包含某字符串的文件及位置" class="headerlink" title="查找包含某字符串的文件及位置"></a>查找包含某字符串的文件及位置</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">find . | xargs grep -ri <span class="hljs-string">"要查找的字符串</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="压缩打包与解压缩打包"><a href="#压缩打包与解压缩打包" class="headerlink" title="压缩打包与解压缩打包"></a>压缩打包与解压缩打包</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 压缩</span></span><br><span class="line">tar -jcv -f filename.tar.bz2 filename</span><br><span class="line">tar -cxv -f filename.tar filename</span><br><span class="line"><span class="hljs-comment"># 查询压缩包中的内容</span></span><br><span class="line">tar -jtv -f filename.tar.bz2 </span><br><span class="line"><span class="hljs-comment"># 解压</span></span><br><span class="line">tar -cxv -f filename.tar .</span><br><span class="line">tar -jxv -f filename.tar.bz2 -C 预解压缩的目录</span><br></pre></td></tr></tbody></table></figure></body></html>
         </div>
         
             <ul class="post-copyright">
@@ -228,6 +230,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/af2754a4/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">linux周期性任务</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -300,7 +309,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        92
+                        95
                     </p>
                 </a>
             </div>
@@ -350,6 +359,10 @@
         <a class="is-flex" href="#查找包含某字符串的文件及位置">
         <span class="has-mr-6">1.1</span>
         <span>查找包含某字符串的文件及位置</span>
+        </a></li><li>
+        <a class="is-flex" href="#压缩打包与解压缩打包">
+        <span class="has-mr-6">1.2</span>
+        <span>压缩打包与解压缩打包</span>
         </a></li></ul></li></ul>
         </div>
     </div>
