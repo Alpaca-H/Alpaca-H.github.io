@@ -1,397 +1,201 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html  lang="zh">
 <head>
-  <meta charset="utf-8">
-  
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="Cache-Control" content="no-transform" />
-  <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="format-detection" content="telephone=no,email=no,adress=no">
-  <!-- Color theme for statusbar -->
-  <meta name="theme-color" content="#000000" />
-  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
-  <meta http-equiv="window-target" content="_top" />
-  
-  
-  <title>docker-DokcerFile | Hexo</title>
-  <meta name="description" content="learn docker 🐳">
+    <meta charset="utf-8">
+<title>docker-DokcerFile - Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="learn docker 🐳">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker-DokcerFile">
 <meta property="og:url" content="http://blog.noback.top/posts/8d3c2c27/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
 <meta property="og:description" content="learn docker 🐳">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://img.noback.top/2020-02-06-20-53-20.png">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
 <meta property="article:published_time" content="2020-02-05T05:56:09.000Z">
 <meta property="article:modified_time" content="2020-02-05T05:56:09.000Z">
 <meta property="article:author" content="何泽君">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://img.noback.top/2020-02-06-20-53-20.png">
-  <!-- Canonical links -->
-  <link rel="canonical" href="http://blog.noback.top/posts/8d3c2c27/index.html">
-  
-    <link rel="alternate" href="/atom.xml" title="Alpaca&#39;s blog | how to win" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png" type="image/x-icon">
-  
-  
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
 <link rel="stylesheet" href="/css/style.css">
-
-  
-  
-  
-  
 <meta name="generator" content="Hexo 4.2.0"></head>
-
-
-<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
-  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-  <div class="slimContent">
-    <div class="navbar-header">
-      
-      
-      <div class="profile-block text-center">
-        <a id="avatar" href="https://github.com/cofess" target="_blank">
-          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
-        </a>
-        <h2 id="name" class="hidden-xs hidden-sm">昵称</h2>
-        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer &amp; Designer</h3>
-        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
-      </div>
-      
-      <div class="search" id="search-form-wrap">
-
-    <form class="search-form sidebar-form">
-        <div class="input-group">
-            <input type="text" class="search-form-input form-control" placeholder="搜索" />
-            <span class="input-group-btn">
-                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
-            </span>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://image.noback.top/datadog.svg" alt="docker-DokcerFile" height="28">
+            
+            </a>
         </div>
-    </form>
-    <div class="ins-search">
-  <div class="ins-search-mask"></div>
-  <div class="ins-search-container">
-    <div class="ins-input-wrapper">
-      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
-      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-    </div>
-    <div class="ins-section-wrapper">
-      <div class="ins-section-container"></div>
-    </div>
-  </div>
-</div>
-
-
-</div>
-      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav ">
-        
-        
-        <li class="menu-item menu-item-home">
-          <a href="/.">
+        <div class="navbar-menu">
             
-            <i class="icon icon-home-fill"></i>
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/about-me/">about-me</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+            </div>
             
-            <span class="menu-title">首页</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            
-            <i class="icon icon-archives-fill"></i>
-            
-            <span class="menu-title">归档</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            
-            <i class="icon icon-tags"></i>
-            
-            <span class="menu-title">标签</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-repository">
-          <a href="/repository">
-            
-            <i class="icon icon-project"></i>
-            
-            <span class="menu-title">项目</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-books">
-          <a href="/books">
-            
-            <i class="icon icon-book-fill"></i>
-            
-            <span class="menu-title">书单</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-links">
-          <a href="/links">
-            
-            <i class="icon icon-friendship"></i>
-            
-            <span class="menu-title">友链</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about">
-            
-            <i class="icon icon-cup-fill"></i>
-            
-            <span class="menu-title">关于</span>
-          </a>
-        </li>
-        
-      </ul>
-      
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
-        
-        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
-
-    </nav>
-  </div>
-</header>
-
-  
-    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
-    
-      <div class="widget">
-    <h3 class="widget-title">公告</h3>
-    <div class="widget-body">
-        <div id="board">
-            <div class="content">
-                <p>欢迎交流与分享经验!</p>
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
             </div>
         </div>
     </div>
-</div>
-
+</nav>
     
-      
-  <div class="widget">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/checklist/">checklist</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">34</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/Command/">Command</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/ansible/">ansible</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/docker/">docker</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/linux-network/">linux-network</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%95%85%E9%9A%9C/">故障</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">文件系统</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95/">扩展</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">C语言</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">jwt</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/extra/">extra</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">二层交换机</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%83%A8%E7%BD%B2/">交换机部署</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E4%BA%8B%E6%9C%AC/">记事本</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E5%A4%87/">设备</a><span class="category-list-count">6</span></li></ul>
-    </div>
-  </div>
-
-
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
-      
-  <div class="widget">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI-CD/" rel="tag">CI-CD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codee/" rel="tag">codee</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily/" rel="tag">daily</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rust/" rel="tag">rust</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" rel="tag">负载均衡</a><span class="tag-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget-body tagcloud">
-      <a href="/tags/CI-CD/" style="font-size: 13px;">CI-CD</a> <a href="/tags/code/" style="font-size: 14px;">code</a> <a href="/tags/codee/" style="font-size: 13.17px;">codee</a> <a href="/tags/daily/" style="font-size: 13px;">daily</a> <a href="/tags/django/" style="font-size: 13px;">django</a> <a href="/tags/git/" style="font-size: 13px;">git</a> <a href="/tags/linux/" style="font-size: 13.67px;">linux</a> <a href="/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.17px;">nginx</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/rust/" style="font-size: 13.5px;">rust</a> <a href="/tags/vim/" style="font-size: 13px;">vim</a> <a href="/tags/vue/" style="font-size: 13.83px;">vue</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a> <a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" style="font-size: 13.17px;">负载均衡</a>
-    </div>
-  </div>
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">36</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">31</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget-body">
-      <ul class="recent-post-list list-unstyled no-thumbnail">
-        
-          <li>
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/linux/">linux</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/40a08bb8/" class="title">linux-daily</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-14T09:03:34.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
+                <i class="fas fa-angle-double-right"></i>docker-DokcerFile
             
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/1f4442b1/" class="title">hello,new-world</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-14T07:35:13.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-05T05:56:09.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-05</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    12 分钟 读完 (大约 1763 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
             </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/4115d0cd/" class="title">CI-CD实践</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-13T19:29:41.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/88888022/" class="title">django实际项目中的模块设计</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-13T17:53:20.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/linux/">linux</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/linux/docker/">docker</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/59fd12f/" class="title">swarm与k8s的区别</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-10T06:49:28.000Z" itemprop="datePublished">2020-02-10</time>
-              </p>
-            </div>
-          </li>
-          
-      </ul>
-    </div>
-  </div>
-  
-
-    
-  </div>
-</aside>
-
-  
-  
-<main class="main" role="main">
-  <div class="content">
-  <article id="post-blog_back_new/docker/4.docker-file" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-    
-    <div class="article-header">
-      
+        </div>
         
-  
-    <h1 class="article-title" itemprop="name">
-      docker-DokcerFile
-    </h1>
-  
-
-      
-      <div class="article-meta">
-        <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/posts/8d3c2c27/" class="article-date">
-	  <time datetime="2020-02-05T05:56:09.000Z" itemprop="datePublished">2020-02-05</time>
-	</a>
-</span>
-        
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/linux/">linux</a>►<a class="article-category-link" href="/categories/linux/docker/">docker</a>
-  </span>
-
-        
-
-        
-
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/8d3c2c27/#comments" class="article-comment-link">评论</a></span>
-        
-      </div>
-    </div>
-    <div class="article-entry marked-body" itemprop="articleBody">
-      
-        <p>learn docker 🐳</p>
+        <div class="content">
+            <html><head></head><body><p>learn docker 🐳</p>
 <a id="more"></a>
 
 
 <h1 id="DokcerFile"><a href="#DokcerFile" class="headerlink" title="DokcerFile"></a>DokcerFile</h1><p>dockerfile构建三步骤<br>dockerfile,docker build ,docker run</p>
 <p>dockerfiley有很多具体的实例可以在docker hub上看到 ，比如</p>
 <ul>
-<li>centos<br><a href="https://hub.docker.com/_/centos" target="_blank" rel="noopener">https://hub.docker.com/_/centos</a><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM scratch</span><br><span class="line">ADD centos-7-x86_64-docker.tar.xz /</span><br><span class="line"></span><br><span class="line">LABEL org.label-schema.schema-version=<span class="string">"1.0"</span> \</span><br><span class="line">    org.label-schema.name=<span class="string">"CentOS Base Image"</span> \</span><br><span class="line">    org.label-schema.vendor=<span class="string">"CentOS"</span> \</span><br><span class="line">    org.label-schema.license=<span class="string">"GPLv2"</span> \</span><br><span class="line">    org.label-schema.build-date=<span class="string">"20191001"</span></span><br><span class="line"></span><br><span class="line">CMD [<span class="string">"/bin/bash"</span>] <span class="comment"># 在进入容器后第一步执行的命令</span></span><br></pre></td></tr></table></figure></li>
+<li>centos<br><a href="https://hub.docker.com/_/centos" target="_blank" rel="noopener">https://hub.docker.com/_/centos</a><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">FROM scratch</span><br><span class="line">ADD centos-7-x86_64-docker.tar.xz /</span><br><span class="line"></span><br><span class="line">LABEL org.label-schema.schema-version=<span class="hljs-string">"1.0"</span> \</span><br><span class="line">    org.label-schema.name=<span class="hljs-string">"CentOS Base Image"</span> \</span><br><span class="line">    org.label-schema.vendor=<span class="hljs-string">"CentOS"</span> \</span><br><span class="line">    org.label-schema.license=<span class="hljs-string">"GPLv2"</span> \</span><br><span class="line">    org.label-schema.build-date=<span class="hljs-string">"20191001"</span></span><br><span class="line"></span><br><span class="line">CMD [<span class="hljs-string">"/bin/bash"</span>] <span class="hljs-comment"># 在进入容器后第一步执行的命令</span></span><br></pre></td></tr></tbody></table></figure></li>
 <li>tomcat镜像<br><a href="https://github.com/docker-library/tomcat/blob/807a2b4f219d70f5ba6f4773d4ee4ee155850b0d/8.5/jdk11/openjdk/Dockerfile" target="_blank" rel="noopener">https://github.com/docker-library/tomcat/blob/807a2b4f219d70f5ba6f4773d4ee4ee155850b0d/8.5/jdk11/openjdk/Dockerfile</a></li>
 </ul>
 <h2 id="dockerfile编写规则"><a href="#dockerfile编写规则" class="headerlink" title="dockerfile编写规则"></a>dockerfile编写规则</h2><ol>
@@ -416,234 +220,458 @@
 <li>WORKDIR<br>登陆之后的工作目录</li>
 <li>ENV<br>用来构建镜像过程中设置环境变量</li>
 <li>ADD<br>拷贝并解压到镜像中</li>
-<li>COPY<br>拷贝文件到镜像中，写法:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">COPY src dest</span><br><span class="line">COPY [<span class="string">"src"</span>,<span class="string">"dest"</span>]</span><br></pre></td></tr></table></figure></li>
-<li>VOLUME<br>容器数据卷,用于数据保存和持久化工作,写法:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">VOLUME [<span class="string">"/data/"</span>,<span class="string">"/data1/"</span>,]</span><br></pre></td></tr></table></figure></li>
-<li>CMD<br>dockerfile中可以有多个CMD命令,但只有最后一个生效，且CMD会被docker run之后的CMD替换掉，比如我们在启动一个镜像的时候会执行docker run -it centos /bin/bash<br>指定一个容器要运行时，启动的命令,写法:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># shell 格式</span></span><br><span class="line">CMD &lt;命令&gt;</span><br><span class="line"><span class="comment"># exec 格式</span></span><br><span class="line">CMD [<span class="string">"可执行文件"</span>,<span class="string">"参数1"</span>,<span class="string">"参数2"</span>]</span><br><span class="line"><span class="comment"># 参数列表格式</span></span><br><span class="line">CMN [<span class="string">'参数1'</span>,<span class="string">'参数2'</span>]</span><br></pre></td></tr></table></figure></li>
+<li>COPY<br>拷贝文件到镜像中，写法:<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">COPY src dest</span><br><span class="line">COPY [<span class="hljs-string">"src"</span>,<span class="hljs-string">"dest"</span>]</span><br></pre></td></tr></tbody></table></figure></li>
+<li>VOLUME<br>容器数据卷,用于数据保存和持久化工作,写法:<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">VOLUME [<span class="hljs-string">"/data/"</span>,<span class="hljs-string">"/data1/"</span>,]</span><br></pre></td></tr></tbody></table></figure></li>
+<li>CMD<br>dockerfile中可以有多个CMD命令,但只有最后一个生效，且CMD会被docker run之后的CMD替换掉，比如我们在启动一个镜像的时候会执行docker run -it centos /bin/bash<br>指定一个容器要运行时，启动的命令,写法:<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># shell 格式</span></span><br><span class="line">CMD <命令></span><br><span class="line"><span class="hljs-comment"># exec 格式</span></span><br><span class="line">CMD [<span class="hljs-string">"可执行文件"</span>,<span class="hljs-string">"参数1"</span>,<span class="hljs-string">"参数2"</span>]</span><br><span class="line"><span class="hljs-comment"># 参数列表格式</span></span><br><span class="line">CMN [<span class="hljs-string">'参数1'</span>,<span class="hljs-string">'参数2'</span>]</span><br></pre></td></tr></tbody></table></figure></li>
 <li>ENTRYPOINT<br>指定一个容器启动时候要运行的命令，不会被替换</li>
 <li>ONBUILD<br>当构建一个被继承的Dockerfile时运行命令,父镜像在被子继承后，父镜像的onbuild被触发</li>
 </ul>
 <h3 id="ADD和COPY-以及远程文件的添加"><a href="#ADD和COPY-以及远程文件的添加" class="headerlink" title="ADD和COPY 以及远程文件的添加"></a>ADD和COPY 以及远程文件的添加</h3><p>ADD不但可以复制还可以解压</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ADD xx.tar.gz /</span><br><span class="line">COPY xx /tmp/data1/</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ADD xx.tar.gz /</span><br><span class="line">COPY xx /tmp/data1/</span><br></pre></td></tr></tbody></table></figure>
 
-<p><font color='red'>添加远程文件/目录 使用RUN curl | RUN wget </font></p>
+<p><font color="red">添加远程文件/目录 使用RUN curl | RUN wget </font></p>
 <h3 id="WORKDIR"><a href="#WORKDIR" class="headerlink" title="WORKDIR"></a>WORKDIR</h3><p>WORKDIR表示工作目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">WORKDIR /<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">WORKDIR /<span class="hljs-built_in">test</span></span><br></pre></td></tr></tbody></table></figure>
 <p>如果没有test工作目录，则会自动创建</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">WORKDIR /<span class="built_in">test</span></span><br><span class="line">WORKDIR demo1</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">WORKDIR /<span class="hljs-built_in">test</span></span><br><span class="line">WORKDIR demo1</span><br></pre></td></tr></tbody></table></figure>
 <p>以上会生成的工作目录是/test/demo1</p>
-<p><font color='red'>尽量使用绝对目录</font></p>
+<p><font color="red">尽量使用绝对目录</font></p>
 <h3 id="CMD与ENTRYPOINT"><a href="#CMD与ENTRYPOINT" class="headerlink" title="CMD与ENTRYPOINT"></a>CMD与ENTRYPOINT</h3><p>在tomcat的官方镜像包中，dockerfile里面的最后有这么一句CMD</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">CMD [<span class="string">"catalina.sh"</span>,<span class="string">"run"</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">CMD [<span class="hljs-string">"catalina.sh"</span>,<span class="hljs-string">"run"</span>]</span><br></pre></td></tr></tbody></table></figure>
 <p>意思就是说在dokcer run没有加CMD的情况下启动时，会去运行CMD [“catalina.sh”,”run”] 这一串内容。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">06-Feb-2020 05:29:22.623 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 389 ms</span><br><span class="line">06-Feb-2020 05:29:22.639 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]</span><br><span class="line">06-Feb-2020 05:29:22.639 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat&#x2F;8.5.50</span><br><span class="line">06-Feb-2020 05:29:22.647 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [&quot;http-nio-8080&quot;]</span><br><span class="line">06-Feb-2020 05:29:22.653 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [&quot;ajp-nio-8009&quot;]</span><br><span class="line">06-Feb-2020 05:29:22.655 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 32 ms</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">06-Feb-2020 05:29:22.623 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 389 ms</span><br><span class="line">06-Feb-2020 05:29:22.639 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]</span><br><span class="line">06-Feb-2020 05:29:22.639 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.50</span><br><span class="line">06-Feb-2020 05:29:22.647 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]</span><br><span class="line">06-Feb-2020 05:29:22.653 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]</span><br><span class="line">06-Feb-2020 05:29:22.655 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 32 ms</span><br></pre></td></tr></tbody></table></figure>
 <p>但如果我们在后面加了如 /bin/bash</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:/tmp<span class="comment"># docker run -it -P tomcat /bin/bash</span></span><br><span class="line">root@2ee3ee482178:/usr/<span class="built_in">local</span>/tomcat<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:/tmp<span class="hljs-comment"># docker run -it -P tomcat /bin/bash</span></span><br><span class="line">root@2ee3ee482178:/usr/<span class="hljs-built_in">local</span>/tomcat<span class="hljs-comment">#</span></span><br></pre></td></tr></tbody></table></figure>
 <p>他就不回去运行这个catalina.sh这个程序</p>
-<p><font color='red'>ENTRYPOINT可以将参数累加</font></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM centos</span><br><span class="line">RUN yum install curl -y</span><br><span class="line">ENTRYPOINT  [<span class="string">"curl"</span>,<span class="string">"-s"</span>,<span class="string">"https://ip.cn/"</span>]</span><br><span class="line"></span><br><span class="line">docker run -it centos   -&gt;  [<span class="string">"curl"</span>,<span class="string">"-s"</span>,<span class="string">"https://ip.cn/"</span>]  </span><br><span class="line">docker run -it centos -i  -&gt; [<span class="string">"curl"</span>,<span class="string">"-s"</span>,<span class="string">"-i"</span>,<span class="string">"https://ip.cn/"</span>]</span><br></pre></td></tr></table></figure>
+<p><font color="red">ENTRYPOINT可以将参数累加</font></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">FROM centos</span><br><span class="line">RUN yum install curl -y</span><br><span class="line">ENTRYPOINT  [<span class="hljs-string">"curl"</span>,<span class="hljs-string">"-s"</span>,<span class="hljs-string">"https://ip.cn/"</span>]</span><br><span class="line"></span><br><span class="line">docker run -it centos   ->  [<span class="hljs-string">"curl"</span>,<span class="hljs-string">"-s"</span>,<span class="hljs-string">"https://ip.cn/"</span>]  </span><br><span class="line">docker run -it centos -i  -> [<span class="hljs-string">"curl"</span>,<span class="hljs-string">"-s"</span>,<span class="hljs-string">"-i"</span>,<span class="hljs-string">"https://ip.cn/"</span>]</span><br></pre></td></tr></tbody></table></figure>
 
-<p><font color='red'>两种风格的编写格式</font><br><img src="http://img.noback.top/2020-02-06-20-53-20.png" alt="2020-02-06-20-53-20"></p>
+<p><font color="red">两种风格的编写格式</font><br><img src="http://img.noback.top/2020-02-06-20-53-20.png" alt="2020-02-06-20-53-20"></p>
 <h3 id="ONBUILD使用"><a href="#ONBUILD使用" class="headerlink" title="ONBUILD使用"></a>ONBUILD使用</h3><p>ONBUILD就是在继承父容器之后，如果子容器运行了，就会在父容器中运行ONBUILD后面的命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM centos</span><br><span class="line">RUN yum install -y curl</span><br><span class="line">ENTRYPOINT [<span class="string">"curl"</span>,<span class="string">"-s"</span>,<span class="string">"https://ip.cn/"</span>] </span><br><span class="line">ONBUILD RUN <span class="built_in">echo</span> <span class="string">"son is run "</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">FROM centos</span><br><span class="line">RUN yum install -y curl</span><br><span class="line">ENTRYPOINT [<span class="hljs-string">"curl"</span>,<span class="hljs-string">"-s"</span>,<span class="hljs-string">"https://ip.cn/"</span>] </span><br><span class="line">ONBUILD RUN <span class="hljs-built_in">echo</span> <span class="hljs-string">"son is run "</span></span><br></pre></td></tr></tbody></table></figure>
 <p>父容器为m1 子容器为m2,这里的继承就是说以父容器镜像为基本模版创建的子镜像后生成的子容器</p>
-<h2 id="编写实例"><a href="#编写实例" class="headerlink" title="编写实例"></a>编写实例</h2><h3 id="一个挂载文件的dockerfile"><a href="#一个挂载文件的dockerfile" class="headerlink" title="一个挂载文件的dockerfile"></a>一个挂载文件的dockerfile</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM centos</span><br><span class="line">VOLUME [<span class="string">"data1/"</span>,<span class="string">"data2/"</span>]  <span class="comment"># 这种定义方式无法像命令一样指定本地的文件</span></span><br><span class="line">CMD <span class="built_in">echo</span> <span class="string">"VOLUME TEST!"</span></span><br><span class="line">CMD /bin/bash</span><br></pre></td></tr></table></figure>
+<h2 id="编写实例"><a href="#编写实例" class="headerlink" title="编写实例"></a>编写实例</h2><h3 id="一个挂载文件的dockerfile"><a href="#一个挂载文件的dockerfile" class="headerlink" title="一个挂载文件的dockerfile"></a>一个挂载文件的dockerfile</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">FROM centos</span><br><span class="line">VOLUME [<span class="hljs-string">"data1/"</span>,<span class="hljs-string">"data2/"</span>]  <span class="hljs-comment"># 这种定义方式无法像命令一样指定本地的文件</span></span><br><span class="line">CMD <span class="hljs-built_in">echo</span> <span class="hljs-string">"VOLUME TEST!"</span></span><br><span class="line">CMD /bin/bash</span><br></pre></td></tr></tbody></table></figure>
 <p>根据编写的dockerfile构建自定义镜像</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker build -f /tmp/dockerfile -t hzj/centos .</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker build -f /tmp/dockerfile -t hzj/centos .</span><br></pre></td></tr></tbody></table></figure>
 <p>使用Inspect查看挂载的文件路径</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker inspect hzj/centos</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker inspect hzj/centos</span><br></pre></td></tr></tbody></table></figure>
 <p>出现挂载的路径</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;Mounts&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;Type&quot;: &quot;volume&quot;,</span><br><span class="line">                &quot;Name&quot;: &quot;2a8601766a8ec82c39132bc64c2c99546053cb4104bd94507f215b888e60464d&quot;,</span><br><span class="line">                &quot;Source&quot;: &quot;&#x2F;var&#x2F;lib&#x2F;docker&#x2F;volumes&#x2F;2a8601766a8ec82c39132bc64c2c99546053cb4104bd94507f215b888e60464d&#x2F;_data&quot;,</span><br><span class="line">                &quot;Destination&quot;: &quot;&#x2F;data2&quot;,</span><br><span class="line">                &quot;Driver&quot;: &quot;local&quot;,</span><br><span class="line">                &quot;Mode&quot;: &quot;&quot;,</span><br><span class="line">                &quot;RW&quot;: true,</span><br><span class="line">                &quot;Propagation&quot;: &quot;&quot;</span><br><span class="line">            &#125;,</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">"Mounts": [</span><br><span class="line">            {</span><br><span class="line">                "Type": "volume",</span><br><span class="line">                "Name": "2a8601766a8ec82c39132bc64c2c99546053cb4104bd94507f215b888e60464d",</span><br><span class="line">                "Source": "/var/lib/docker/volumes/2a8601766a8ec82c39132bc64c2c99546053cb4104bd94507f215b888e60464d/_data",</span><br><span class="line">                "Destination": "/data2",</span><br><span class="line">                "Driver": "local",</span><br><span class="line">                "Mode": "",</span><br><span class="line">                "RW": true,</span><br><span class="line">                "Propagation": ""</span><br><span class="line">            },</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="用dockerfile创建一个centos镜像"><a href="#用dockerfile创建一个centos镜像" class="headerlink" title="用dockerfile创建一个centos镜像"></a>用dockerfile创建一个centos镜像</h3><p>初始centos镜像只有最基本的kernel内容，并没有其他的软件，比如vim，比如ifconfig等。使用dockerfile创建一个centos系统</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM centos <span class="comment"># 基于centos，网上写东西 再生成镜像  镜像的分层原理</span></span><br><span class="line">MAINTAINER hzj&lt;a1097690268@gmail.com&gt; <span class="comment"># 作者信息</span></span><br><span class="line"></span><br><span class="line">ENV workdir /usr/<span class="built_in">local</span> <span class="comment"># 申明环境变量</span></span><br><span class="line">WORKDIR <span class="variable">$workdir</span> <span class="comment"># 设置登陆后的工作环境</span></span><br><span class="line"></span><br><span class="line">RUN yum -y install vim</span><br><span class="line">RUN yum -y install net-tools</span><br><span class="line"></span><br><span class="line">EXPOSE 80 <span class="comment"># 暴露端口</span></span><br><span class="line"></span><br><span class="line">CMD <span class="built_in">echo</span> <span class="variable">$workdir</span></span><br><span class="line">CMD <span class="built_in">echo</span> <span class="string">"success"</span></span><br><span class="line">CMD /bin/bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">FROM centos <span class="hljs-comment"># 基于centos，网上写东西 再生成镜像  镜像的分层原理</span></span><br><span class="line">MAINTAINER hzj<a1097690268@gmail.com> <span class="hljs-comment"># 作者信息</span></span><br><span class="line"></span><br><span class="line">ENV workdir /usr/<span class="hljs-built_in">local</span> <span class="hljs-comment"># 申明环境变量</span></span><br><span class="line">WORKDIR <span class="hljs-variable">$workdir</span> <span class="hljs-comment"># 设置登陆后的工作环境</span></span><br><span class="line"></span><br><span class="line">RUN yum -y install vim</span><br><span class="line">RUN yum -y install net-tools</span><br><span class="line"></span><br><span class="line">EXPOSE 80 <span class="hljs-comment"># 暴露端口</span></span><br><span class="line"></span><br><span class="line">CMD <span class="hljs-built_in">echo</span> <span class="hljs-variable">$workdir</span></span><br><span class="line">CMD <span class="hljs-built_in">echo</span> <span class="hljs-string">"success"</span></span><br><span class="line">CMD /bin/bash</span><br></pre></td></tr></tbody></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker  build  -f dockerfile -t hzj/centos:v3 .</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker  build  -f dockerfile -t hzj/centos:v3 .</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="docker开启mysql镜像"><a href="#docker开启mysql镜像" class="headerlink" title="docker开启mysql镜像"></a>docker开启mysql镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull mysql</span><br><span class="line">docker run -p 12345:3306 --name mysql \</span><br><span class="line">-v /conf/mysql/conf:/etc/mysql/conf.d \</span><br><span class="line">-v /conf/mysql/logs:/logs \ </span><br><span class="line">-v /conf/mysql/data:/var/lib/mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWD=123456 \ <span class="comment">#初始化密码</span></span><br><span class="line">-d mysql:5.6</span><br></pre></td></tr></table></figure>
+<h3 id="docker开启mysql镜像"><a href="#docker开启mysql镜像" class="headerlink" title="docker开启mysql镜像"></a>docker开启mysql镜像</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker pull mysql</span><br><span class="line">docker run -p 12345:3306 --name mysql \</span><br><span class="line">-v /conf/mysql/conf:/etc/mysql/conf.d \</span><br><span class="line">-v /conf/mysql/logs:/logs \ </span><br><span class="line">-v /conf/mysql/data:/var/lib/mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWD=123456 \ <span class="hljs-comment">#初始化密码</span></span><br><span class="line">-d mysql:5.6</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="docker开启redis镜像"><a href="#docker开启redis镜像" class="headerlink" title="docker开启redis镜像"></a>docker开启redis镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull redis</span><br><span class="line">docker run -p 6379:6379 \</span><br><span class="line">-v /hzj/myredis/data:/data \</span><br><span class="line">-v /hzj/myredis/conf/redis.conf:/usr/<span class="built_in">local</span>/etc/redis/redis.conf \ </span><br><span class="line">-d redis:3.2 redis-server /usr/<span class="built_in">local</span>/etc/redis/redis.conf \</span><br><span class="line">--appendonly yes</span><br></pre></td></tr></table></figure>
+<h3 id="docker开启redis镜像"><a href="#docker开启redis镜像" class="headerlink" title="docker开启redis镜像"></a>docker开启redis镜像</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker pull redis</span><br><span class="line">docker run -p 6379:6379 \</span><br><span class="line">-v /hzj/myredis/data:/data \</span><br><span class="line">-v /hzj/myredis/conf/redis.conf:/usr/<span class="hljs-built_in">local</span>/etc/redis/redis.conf \ </span><br><span class="line">-d redis:3.2 redis-server /usr/<span class="hljs-built_in">local</span>/etc/redis/redis.conf \</span><br><span class="line">--appendonly yes</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="docker安装stress压力测试软件"><a href="#docker安装stress压力测试软件" class="headerlink" title="docker安装stress压力测试软件"></a>docker安装stress压力测试软件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM ubuntu</span><br><span class="line">RUN apt-get update &amp;&amp; apt-get install stress -y</span><br><span class="line">ENTRYPOINT [<span class="string">"/usr/bin/stress"</span>]</span><br><span class="line"><span class="comment"># ENTRYPOINT ["/bin/bash","-c","stress"]</span></span><br><span class="line">CMD []</span><br></pre></td></tr></table></figure>
+<h3 id="docker安装stress压力测试软件"><a href="#docker安装stress压力测试软件" class="headerlink" title="docker安装stress压力测试软件"></a>docker安装stress压力测试软件</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">FROM ubuntu</span><br><span class="line">RUN apt-get update && apt-get install stress -y</span><br><span class="line">ENTRYPOINT [<span class="hljs-string">"/usr/bin/stress"</span>]</span><br><span class="line"><span class="hljs-comment"># ENTRYPOINT ["/bin/bash","-c","stress"]</span></span><br><span class="line">CMD []</span><br></pre></td></tr></tbody></table></figure>
 <p>生成镜像</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dokcer build -f dockerfile -t new/ubuntu-stress .</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">dokcer build -f dockerfile -t new/ubuntu-stress .</span><br></pre></td></tr></tbody></table></figure>
 <p>利用镜像运行容器</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 不加参数 /usr/bin/stress</span></span><br><span class="line">root:~<span class="comment"># docker  run -it   new/ubuntu-stress</span></span><br><span class="line"><span class="string">'stress'</span> imposes certain types of compute stress on your system</span><br><span class="line"></span><br><span class="line">Usage: stress [OPTION [ARG]] ...</span><br><span class="line"> -?, --<span class="built_in">help</span>         show this <span class="built_in">help</span> statement</span><br><span class="line">     --version      show version statement</span><br><span class="line"> -v, --verbose      be verbose</span><br><span class="line"> -q, --quiet        be quiet</span><br><span class="line"> -n, --dry-run      show what would have been <span class="keyword">done</span></span><br><span class="line"> -t, --timeout N    timeout after N seconds</span><br><span class="line">     --backoff N    <span class="built_in">wait</span> factor of N microseconds before work starts</span><br><span class="line"> -c, --cpu N        spawn N workers spinning on sqrt()</span><br><span class="line"> -i, --io N         spawn N workers spinning on sync()</span><br><span class="line"> -m, --vm N         spawn N workers spinning on malloc()/free()</span><br><span class="line">     --vm-bytes B   malloc B bytes per vm worker (default is 256MB)</span><br><span class="line">     --vm-stride B  touch a byte every B bytes (default is 4096)</span><br><span class="line">     --vm-hang N    sleep N secs before free (default none, 0 is inf)</span><br><span class="line">     --vm-keep      redirty memory instead of freeing and reallocating</span><br><span class="line"> -d, --hdd N        spawn N workers spinning on write()/unlink()</span><br><span class="line">     --hdd-bytes B  write B bytes per hdd worker (default is 1GB)</span><br><span class="line"></span><br><span class="line">Example: stress --cpu 8 --io 4 --vm 2 --vm-bytes 128M --timeout 10s</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加参数 /usr/bin/stress -m 1</span></span><br><span class="line">root:~<span class="comment"># docker  run -it   new/ubuntu-stress -m 1</span></span><br><span class="line">stress: info: [1] dispatching hogs: 0 cpu, 0 io, 1 vm, 0 hdd</span><br><span class="line">^Cstress: FAIL: [1] (415) &lt;-- worker 6 got signal 2</span><br><span class="line">stress: WARN: [1] (417) now reaping child worker processes</span><br><span class="line">stress: FAIL: [1] (421) <span class="built_in">kill</span> error: No such process</span><br><span class="line">stress: FAIL: [1] (451) failed run completed <span class="keyword">in</span> 2s</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 不加参数 /usr/bin/stress</span></span><br><span class="line">root:~<span class="hljs-comment"># docker  run -it   new/ubuntu-stress</span></span><br><span class="line"><span class="hljs-string">'stress'</span> imposes certain types of compute stress on your system</span><br><span class="line"></span><br><span class="line">Usage: stress [OPTION [ARG]] ...</span><br><span class="line"> -?, --<span class="hljs-built_in">help</span>         show this <span class="hljs-built_in">help</span> statement</span><br><span class="line">     --version      show version statement</span><br><span class="line"> -v, --verbose      be verbose</span><br><span class="line"> -q, --quiet        be quiet</span><br><span class="line"> -n, --dry-run      show what would have been <span class="hljs-keyword">done</span></span><br><span class="line"> -t, --timeout N    timeout after N seconds</span><br><span class="line">     --backoff N    <span class="hljs-built_in">wait</span> factor of N microseconds before work starts</span><br><span class="line"> -c, --cpu N        spawn N workers spinning on sqrt()</span><br><span class="line"> -i, --io N         spawn N workers spinning on sync()</span><br><span class="line"> -m, --vm N         spawn N workers spinning on malloc()/free()</span><br><span class="line">     --vm-bytes B   malloc B bytes per vm worker (default is 256MB)</span><br><span class="line">     --vm-stride B  touch a byte every B bytes (default is 4096)</span><br><span class="line">     --vm-hang N    sleep N secs before free (default none, 0 is inf)</span><br><span class="line">     --vm-keep      redirty memory instead of freeing and reallocating</span><br><span class="line"> -d, --hdd N        spawn N workers spinning on write()/unlink()</span><br><span class="line">     --hdd-bytes B  write B bytes per hdd worker (default is 1GB)</span><br><span class="line"></span><br><span class="line">Example: stress --cpu 8 --io 4 --vm 2 --vm-bytes 128M --timeout 10s</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 加参数 /usr/bin/stress -m 1</span></span><br><span class="line">root:~<span class="hljs-comment"># docker  run -it   new/ubuntu-stress -m 1</span></span><br><span class="line">stress: info: [1] dispatching hogs: 0 cpu, 0 io, 1 vm, 0 hdd</span><br><span class="line">^Cstress: FAIL: [1] (415) <-- worker 6 got signal 2</span><br><span class="line">stress: WARN: [1] (417) now reaping child worker processes</span><br><span class="line">stress: FAIL: [1] (421) <span class="hljs-built_in">kill</span> error: No such process</span><br><span class="line">stress: FAIL: [1] (451) failed run completed <span class="hljs-keyword">in</span> 2s</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h2><p>docker官方提供的一个dockerfile编写的规范<br><a href="https://docs.docker.com/engine/reference/builder/" target="_blank" rel="noopener">https://docs.docker.com/engine/reference/builder/</a><br>docker镜像发布到docker-hub上面<br><a href="https://coding.imooc.com/lesson/189.html#mid=11620" target="_blank" rel="noopener">https://coding.imooc.com/lesson/189.html#mid=11620</a></p>
-
-      
+</body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/8d3c2c27/">docker-DokcerFile</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top">何泽君</a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/8d3c2c27/">http://blog.noback.top/posts/8d3c2c27/</a></li>
+            <li><strong>发布时间：</strong>2020-02-05</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        
+        
     </div>
-    <div class="article-footer">
-      <blockquote class="mt-2x">
-  <ul class="post-copyright list-unstyled">
-    
-    <li class="post-copyright-link hidden-xs">
-      <strong>本文链接：</strong>
-      <a href="http://blog.noback.top/posts/8d3c2c27/" title="docker-DokcerFile" target="_blank" rel="external">http://blog.noback.top/posts/8d3c2c27/</a>
-    </li>
-    
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-</blockquote>
-
-
-<div class="panel panel-default panel-badger">
-  <div class="panel-body">
-    <figure class="media">
-      <div class="media-left">
-        <a href="https://github.com/cofess" target="_blank" class="img-burn thumb-sm visible-lg">
-          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
-        </a>
-      </div>
-      <div class="media-body">
-        <h3 class="media-heading"><a href="https://github.com/cofess" target="_blank"><span class="text-dark">昵称</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
-        <div>个人简介。</div>
-      </div>
-    </figure>
-  </div>
 </div>
 
 
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/d99f9929/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">docker视频</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/5f4d14d2/">
+                <span class="level-item">docker容器数据卷</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
     </div>
-  </article>
-  
-    
-  <section id="comments">
-  	
-      <div id="vcomments"></div>
-    
-  </section>
-
-
-  
 </div>
 
-  <nav class="bar bar-footer clearfix" data-stick-bottom>
-  <div class="bar-inner">
-  
-  <ul class="pager pull-left">
-    
-    <li class="prev">
-      <a href="/posts/d99f9929/" title="docker视频"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
-    
-    <li class="next">
-      <a href="/posts/5f4d14d2/" title="docker容器数据卷"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
-    </li>
-    
-    
-  </ul>
-  
-  
-  
-  <div class="bar-right">
-    
-  </div>
-  </div>
-</nav>
-  
 
 
-</main>
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/posts/8d3c2c27/';
+        this.page.identifier = 'posts/8d3c2c27/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
 
-  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
-	
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
-        
-        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
 
-    <div class="copyright">
-    	
-        <div class="publishby">
-        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        90
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        27
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        15
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#DokcerFile">
+        <span class="has-mr-6">1</span>
+        <span>DokcerFile</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#dockerfile编写规则">
+        <span class="has-mr-6">1.1</span>
+        <span>dockerfile编写规则</span>
+        </a></li><li>
+        <a class="is-flex" href="#dockerfile执行顺序">
+        <span class="has-mr-6">1.2</span>
+        <span>dockerfile执行顺序</span>
+        </a></li><li>
+        <a class="is-flex" href="#docker编写关键字">
+        <span class="has-mr-6">1.3</span>
+        <span>docker编写关键字</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#ADD和COPY-以及远程文件的添加">
+        <span class="has-mr-6">1.3.1</span>
+        <span>ADD和COPY 以及远程文件的添加</span>
+        </a></li><li>
+        <a class="is-flex" href="#WORKDIR">
+        <span class="has-mr-6">1.3.2</span>
+        <span>WORKDIR</span>
+        </a></li><li>
+        <a class="is-flex" href="#CMD与ENTRYPOINT">
+        <span class="has-mr-6">1.3.3</span>
+        <span>CMD与ENTRYPOINT</span>
+        </a></li><li>
+        <a class="is-flex" href="#ONBUILD使用">
+        <span class="has-mr-6">1.3.4</span>
+        <span>ONBUILD使用</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#编写实例">
+        <span class="has-mr-6">1.4</span>
+        <span>编写实例</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#一个挂载文件的dockerfile">
+        <span class="has-mr-6">1.4.1</span>
+        <span>一个挂载文件的dockerfile</span>
+        </a></li><li>
+        <a class="is-flex" href="#用dockerfile创建一个centos镜像">
+        <span class="has-mr-6">1.4.2</span>
+        <span>用dockerfile创建一个centos镜像</span>
+        </a></li><li>
+        <a class="is-flex" href="#docker开启mysql镜像">
+        <span class="has-mr-6">1.4.3</span>
+        <span>docker开启mysql镜像</span>
+        </a></li><li>
+        <a class="is-flex" href="#docker开启redis镜像">
+        <span class="has-mr-6">1.4.4</span>
+        <span>docker开启redis镜像</span>
+        </a></li><li>
+        <a class="is-flex" href="#docker安装stress压力测试软件">
+        <span class="has-mr-6">1.4.5</span>
+        <span>docker安装stress压力测试软件</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#网址">
+        <span class="has-mr-6">1.5</span>
+        <span>网址</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://image.noback.top/datadog.svg" alt="docker-DokcerFile" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 何泽君&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
         </div>
     </div>
 </footer>
-  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-<script>
-window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
-</script>
 
-<script src="/js/plugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
 
 
-<script src="/js/application.js"></script>
-
-
-    <script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(未命名)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-
-<script src="/js/insight.js"></script>
-
-
-
-
-
-
-   
-
-
-
-
-   
     
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/valine"></script>
-  <script type="text/javascript">
-  var GUEST = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link';
-  meta = meta.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#vcomments',
-    verify: false,
-    notify: false,
-    appId: '',
-    appKey: '',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: meta,
-    pageSize: '10' || 10,
-    visitor: false
-  });
-  </script>
+    
+    
+    <script src="/js/animation.js"></script>
+    
 
-     
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
 
 
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
 
 
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
 
 
+<script src="/js/main.js" defer></script>
 
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
 </body>
 </html>

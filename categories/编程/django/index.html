@@ -1,606 +1,1702 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html  lang="zh">
 <head>
-  <meta charset="utf-8">
-  
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="Cache-Control" content="no-transform" />
-  <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="format-detection" content="telephone=no,email=no,adress=no">
-  <!-- Color theme for statusbar -->
-  <meta name="theme-color" content="#000000" />
-  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
-  <meta http-equiv="window-target" content="_top" />
-  
-  
-  <title>分类: django | Hexo</title>
-  <meta property="og:type" content="website">
+    <meta charset="utf-8">
+<title>分类: django - Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta property="og:type" content="website">
 <meta property="og:title" content="Alpaca&#39;s blog | how to win">
 <meta property="og:url" content="http://blog.noback.top/categories/%E7%BC%96%E7%A8%8B/django/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
 <meta property="article:author" content="何泽君">
 <meta name="twitter:card" content="summary">
-  <!-- Canonical links -->
-  <link rel="canonical" href="http://blog.noback.top/categories/%E7%BC%96%E7%A8%8B/django/index.html">
-  
-    <link rel="alternate" href="/atom.xml" title="Alpaca&#39;s blog | how to win" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png" type="image/x-icon">
-  
-  
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
 <link rel="stylesheet" href="/css/style.css">
-
-  
-  
-  
-  
 <meta name="generator" content="Hexo 4.2.0"></head>
-
-
-<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
-  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-  <div class="slimContent">
-    <div class="navbar-header">
-      
-      
-      <div class="profile-block text-center">
-        <a id="avatar" href="https://github.com/cofess" target="_blank">
-          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
-        </a>
-        <h2 id="name" class="hidden-xs hidden-sm">昵称</h2>
-        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer &amp; Designer</h3>
-        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
-      </div>
-      
-      <div class="search" id="search-form-wrap">
-
-    <form class="search-form sidebar-form">
-        <div class="input-group">
-            <input type="text" class="search-form-input form-control" placeholder="搜索" />
-            <span class="input-group-btn">
-                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
-            </span>
-        </div>
-    </form>
-    <div class="ins-search">
-  <div class="ins-search-mask"></div>
-  <div class="ins-search-container">
-    <div class="ins-input-wrapper">
-      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
-      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-    </div>
-    <div class="ins-section-wrapper">
-      <div class="ins-section-container"></div>
-    </div>
-  </div>
-</div>
-
-
-</div>
-      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav ">
-        
-        
-        <li class="menu-item menu-item-home">
-          <a href="/.">
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
             
-            <i class="icon icon-home-fill"></i>
+                <img src="http://image.noback.top/datadog.svg" alt="Alpaca&#39;s blog | how to win" height="28">
             
-            <span class="menu-title">首页</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            
-            <i class="icon icon-archives-fill"></i>
-            
-            <span class="menu-title">归档</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            
-            <i class="icon icon-tags"></i>
-            
-            <span class="menu-title">标签</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-repository">
-          <a href="/repository">
-            
-            <i class="icon icon-project"></i>
-            
-            <span class="menu-title">项目</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-books">
-          <a href="/books">
-            
-            <i class="icon icon-book-fill"></i>
-            
-            <span class="menu-title">书单</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-links">
-          <a href="/links">
-            
-            <i class="icon icon-friendship"></i>
-            
-            <span class="menu-title">友链</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about">
-            
-            <i class="icon icon-cup-fill"></i>
-            
-            <span class="menu-title">关于</span>
-          </a>
-        </li>
-        
-      </ul>
-      
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
-        
-        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
-
-    </nav>
-  </div>
-</header>
-
-  
-    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
-    
-      <div class="widget">
-    <h3 class="widget-title">公告</h3>
-    <div class="widget-body">
-        <div id="board">
-            <div class="content">
-                <p>欢迎交流与分享经验!</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/checklist/">checklist</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">34</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/Command/">Command</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/ansible/">ansible</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/docker/">docker</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/linux-network/">linux-network</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%95%85%E9%9A%9C/">故障</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">文件系统</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95/">扩展</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">C语言</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">jwt</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/extra/">extra</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">二层交换机</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%83%A8%E7%BD%B2/">交换机部署</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E4%BA%8B%E6%9C%AC/">记事本</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E5%A4%87/">设备</a><span class="category-list-count">6</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI-CD/" rel="tag">CI-CD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codee/" rel="tag">codee</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily/" rel="tag">daily</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rust/" rel="tag">rust</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" rel="tag">负载均衡</a><span class="tag-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget-body tagcloud">
-      <a href="/tags/CI-CD/" style="font-size: 13px;">CI-CD</a> <a href="/tags/code/" style="font-size: 14px;">code</a> <a href="/tags/codee/" style="font-size: 13.17px;">codee</a> <a href="/tags/daily/" style="font-size: 13px;">daily</a> <a href="/tags/django/" style="font-size: 13px;">django</a> <a href="/tags/git/" style="font-size: 13px;">git</a> <a href="/tags/linux/" style="font-size: 13.67px;">linux</a> <a href="/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.17px;">nginx</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/rust/" style="font-size: 13.5px;">rust</a> <a href="/tags/vim/" style="font-size: 13px;">vim</a> <a href="/tags/vue/" style="font-size: 13.83px;">vue</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a> <a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" style="font-size: 13.17px;">负载均衡</a>
-    </div>
-  </div>
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">36</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">31</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget-body">
-      <ul class="recent-post-list list-unstyled no-thumbnail">
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/linux/">linux</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/40a08bb8/" class="title">linux-daily</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-14T09:03:34.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/1f4442b1/" class="title">hello,new-world</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-14T07:35:13.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/4115d0cd/" class="title">CI-CD实践</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-13T19:29:41.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/88888022/" class="title">django实际项目中的模块设计</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-13T17:53:20.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/linux/">linux</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/linux/docker/">docker</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/59fd12f/" class="title">swarm与k8s的区别</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-10T06:49:28.000Z" itemprop="datePublished">2020-02-10</time>
-              </p>
-            </div>
-          </li>
-          
-      </ul>
-    </div>
-  </div>
-  
-
-    
-  </div>
-</aside>
-
-  
-  <main class="main" role="main">
-  <article class="content article article-categories article-type-list" itemscope="">
-    <header class="article-header">
-      <h1 itemprop="name" class="hidden-xs">分类: django</h1>
-      <p class="hidden-xs">共 10 篇文章</p>
-      <nav role="navigation" id="nav-main" class="okayNav">
-        <ul>
-          <li><a href="/categories">All</a></li>
-          
-          <li><a href="/categories/工具/">工具</a></li>
-          
-          <li><a href="/categories/code/">code</a></li>
-          
-          <li><a href="/categories/编程/">编程</a></li>
-          
-          <li><a href="/categories/linux/">linux</a></li>
-          
-          <li><a href="/categories/编程/django/">django</a></li>
-          
-          <li><a href="/categories/编程/C语言/">C语言</a></li>
-          
-          <li><a href="/categories/checklist/">checklist</a></li>
-          
-          <li><a href="/categories/linux/docker/">docker</a></li>
-          
-          <li><a href="/categories/linux/ansible/">ansible</a></li>
-          
-          <li><a href="/categories/架构/">架构</a></li>
-          
-          <li><a href="/categories/docker/">docker</a></li>
-          
-          <li><a href="/categories/扩展/">扩展</a></li>
-          
-          <li><a href="/categories/数据结构/">数据结构</a></li>
-          
-          <li><a href="/categories/记事本/">记事本</a></li>
-          
-          <li><a href="/categories/架构/CI-CD/">CI-CD</a></li>
-          
-          <li><a href="/categories/网络/">网络</a></li>
-          
-          <li><a href="/categories/网络/extra/">extra</a></li>
-          
-          <li><a href="/categories/linux/脚本/">脚本</a></li>
-          
-          <li><a href="/categories/linux/文件系统/">文件系统</a></li>
-          
-          <li><a href="/categories/linux/linux-network/">linux-network</a></li>
-          
-          <li><a href="/categories/linux/故障/">故障</a></li>
-          
-          <li><a href="/categories/linux/Command/">Command</a></li>
-          
-          <li><a href="/categories/网络/交换机部署/">交换机部署</a></li>
-          
-          <li><a href="/categories/网络/二层交换机/">二层交换机</a></li>
-          
-          <li><a href="/categories/网络/交换机/">交换机</a></li>
-          
-          <li><a href="/categories/编程/jwt/">jwt</a></li>
-          
-          <li><a href="/categories/设备/">设备</a></li>
-          
-        </ul>
-      </nav>
-    </header>
-    <!-- /header -->
-    <div class="article-body">
-      <div class="panel panel-default b-no">
-    <div class="panel-heading" role="tab">
-        <h4 class="panel-title">
-            <a data-toggle="collapse" href="#collapsedjango" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              django
             </a>
-            <small class="text-muted">(Total 10 articles)</small>
-        </h4>
-    </div>
-    <div id="collapsedjango" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingdjango">
-        <div class="panel-body">
-            <div class="collection">
-              
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
                 
-<a href="/posts/88888022/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2020-02-13T17:53:20.000Z" itemprop="datePublished">2020-02-14</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> django实际项目中的模块设计
-</a>
-
-
-              
+                <a class="navbar-item"
+                href="/">Home</a>
                 
-<a href="/posts/4b10b818/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2020-01-21T02:17:43.000Z" itemprop="datePublished">2020-01-21</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> drf-model
-</a>
-
-
-              
+                <a class="navbar-item"
+                href="/about-me/">about-me</a>
                 
-<a href="/posts/933b28f1/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2020-01-14T03:43:43.000Z" itemprop="datePublished">2020-01-14</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> drf-filter
-</a>
-
-
-              
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
                 
-<a href="/posts/10ccc76d/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2020-01-13T10:02:34.000Z" itemprop="datePublished">2020-01-13</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> drf-pagination
-</a>
-
-
-              
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
                 
-<a href="/posts/8d17cdf0/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2019-12-29T12:48:40.000Z" itemprop="datePublished">2019-12-29</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> jwt
-</a>
-
-
-              
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
                 
-<a href="/posts/437192d0/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2019-12-29T12:48:11.000Z" itemprop="datePublished">2019-12-29</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> drf-note
-</a>
-
-
-              
+            </div>
+            
+            <div class="navbar-end">
                 
-<a href="/posts/23293bb2/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2019-12-29T12:47:38.000Z" itemprop="datePublished">2019-12-29</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> drf框架解析
-</a>
-
-
-              
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
                 
-<a href="/posts/f736b80/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2019-12-29T12:47:21.000Z" itemprop="datePublished">2019-12-29</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> django 用户
-</a>
-
-
-              
                 
-<a href="/posts/7068483c/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2019-12-29T12:42:23.000Z" itemprop="datePublished">2019-12-29</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> DRF框架
-</a>
-
-
-              
                 
-<a href="/posts/65abc8f/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2019-12-29T12:41:01.000Z" itemprop="datePublished">2019-12-29</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> django字段总结
-</a>
-
-
-              
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
             </div>
         </div>
     </div>
-</div>
-    </div>
-  </article>
-  
+</nav>
     
-    <nav class="bar bar-footer clearfix" data-stick-bottom>
-        <div class="bar-inner">
-        <ul class="pager pull-left">
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/categories">分类</a></li>
             
-            <li class="prev disabled">
-                <a href="javascript:;">
-                    <i class="icon icon-angle-left"></i>
-                    上一页
-                </a>
-            </li>
+            <li><a href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></li>
             
+            <li class="is-active"><a href="#" aria-current="page">django</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-            <li class="next">
-                <a href="/categories/%E7%BC%96%E7%A8%8B/django/page/2/">
-                    下一页
-                    <i class="icon icon-angle-right"></i>
-                </a>
-            </li>
+                <a class="has-link-black-ter" href="/posts/88888022/"><i class="fas fa-angle-double-right"></i>django实际项目中的模块设计</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-13T17:53:20.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-14</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    3 分钟 读完 (大约 464 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>learn django 🐢</p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/django/" rel="tag">django</a>
+                </div>
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/88888022/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/4b10b818/"><i class="fas fa-angle-double-right"></i>drf-model</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-21T02:17:43.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-21</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    1 分钟 读完 (大约 202 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>drf-model</p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/4b10b818/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/933b28f1/"><i class="fas fa-angle-double-right"></i>drf-filter</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-14T03:43:43.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-14</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    几秒 读完 (大约 21 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>Introducing drf-filter<br>how to use it </p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/933b28f1/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/10ccc76d/"><i class="fas fa-angle-double-right"></i>drf-pagination</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-13T10:02:34.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-13</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    4 分钟 读完 (大约 535 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>Introducing drf-pagination<br>how to use it </p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/10ccc76d/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/8d17cdf0/"><i class="fas fa-angle-double-right"></i>jwt</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:48:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    2 分钟 读完 (大约 347 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>Introducing drf<br>how to use it </p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/8d17cdf0/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/437192d0/"><i class="fas fa-angle-double-right"></i>drf-note</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:48:11.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    几秒 读完 (大约 102 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h2 id="drf"><a href="#drf" class="headerlink" title="drf"></a>drf</h2><p>如何使用django-rest-framework</p>
+<p>1.首先下载</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">pip3 install django-rest-framework</span><br></pre></td></tr></tbody></table></figure>
+<p>2.应用<br>在setting中添加</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">INSTALLED_APPS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="hljs-string">'rest_framework'</span>,</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
+<p>3.在drf中使用登陆登出的功能</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    ...</span><br><span class="line">    url(<span class="hljs-string">r'^api-auth/'</span>, include(<span class="hljs-string">'rest_framework.urls'</span>))</span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure>
+
+
+<hr>
+<h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><p>创建model 与 django类似<br>创建serializer 序列化model数据，以json的形式展示  （serializer modelserialzier）<br>创建view  与django类似</p>
+<p>使用httpie查看</p>
+<p>pip install httpie<br>http <a href="http://localhost:8000/snippets/" target="_blank" rel="noopener">http://localhost:8000/snippets/</a></p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/23293bb2/"><i class="fas fa-angle-double-right"></i>drf框架解析</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:47:38.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    2 分钟 读完 (大约 340 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="drf框架解析1"><a href="#drf框架解析1" class="headerlink" title="drf框架解析1"></a>drf框架解析1</h1><p>在drf的view视图中，我们经常会用到viewset视图集的内容。<br>引用的方法有很多种</p>
+<ol>
+<li>直接引用 我们可以使用ModelViewSet</li>
+<li>根据不同的需求添加不同的mixins <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 列出列表</span></span><br><span class="line">class SwitchViewSet(viewsets.GenericViewSet,</span><br><span class="line">                    mixins.ListModelMixin):</span><br><span class="line">    serializer_class = SwitchSerializer</span><br><span class="line">    queryset = SwitchModel.objects.all()</span><br></pre></td></tr></tbody></table></figure>
+其中mixins有很多种</li>
+</ol>
+<ul>
+<li>ListModelMixin</li>
+<li>UpdateModelMixin</li>
+<li>CreateModelMixin</li>
+<li>RetrieveModelMixin</li>
+<li>DestroyModelMixin<br>这些mixins本身就已经提供了最基础的功能，如果我们需要添加附加的需求，可以重写这些方法<h2 id="mixins中的内容"><a href="#mixins中的内容" class="headerlink" title="mixins中的内容"></a>mixins中的内容</h2></li>
+</ul>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SwitchViewSet</span><span class="hljs-params">(viewsets.GenericViewSet,</span></span></span><br><span class="line"><span class="hljs-class"><span class="hljs-params">                    mixins.ListModelMixin)</span>:</span></span><br><span class="line">    <span class="hljs-comment"># 获取序列化工具</span></span><br><span class="line">    serializer_class = SwitchSerializer</span><br><span class="line">    <span class="hljs-comment"># 获取集合</span></span><br><span class="line">    queryset = SwitchModel.objects.all()</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="ListModelMixin"><a href="#ListModelMixin" class="headerlink" title="ListModelMixin"></a>ListModelMixin</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListModelMixin</span>:</span></span><br><span class="line">    <span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">    List a queryset.</span></span><br><span class="line"><span class="hljs-string">    """</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">list</span><span class="hljs-params">(self, request, *args, **kwargs)</span>:</span></span><br><span class="line">        queryset = self.filter_queryset(self.get_queryset())</span><br><span class="line"></span><br><span class="line">        page = self.paginate_queryset(queryset)</span><br><span class="line">        <span class="hljs-keyword">if</span> page <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:</span><br><span class="line">            serializer = self.get_serializer(page, many=<span class="hljs-literal">True</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> self.get_paginated_response(serializer.data)</span><br><span class="line"></span><br><span class="line">        serializer = self.get_serializer(queryset, many=<span class="hljs-literal">True</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> Response(serializer.data)</span><br></pre></td></tr></tbody></table></figure>
+<p>ListModelMixin 也就是get请求返回当前模型所有列表,filter_queryset达成过滤  get_queryset获取集合<br>第二段判断是否有做分类功能<br>第三段返回serializer</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">filter_queryset</span><span class="hljs-params">(self, queryset)</span>:</span></span><br><span class="line">       <span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">       Given a queryset, filter it with whichever filter backend is in use.</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">       You are unlikely to want to override this method, although you may need</span></span><br><span class="line"><span class="hljs-string">       to call it either from a list view, or from a custom `get_object`</span></span><br><span class="line"><span class="hljs-string">       method if you want to apply the configured filtering backend to the</span></span><br><span class="line"><span class="hljs-string">       default queryset.</span></span><br><span class="line"><span class="hljs-string">       """</span></span><br><span class="line">       <span class="hljs-keyword">for</span> backend <span class="hljs-keyword">in</span> list(self.filter_backends):</span><br><span class="line">           queryset = backend().filter_queryset(self.request, queryset, self)</span><br><span class="line">       <span class="hljs-keyword">return</span> queryset</span><br></pre></td></tr></tbody></table></figure></body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/f736b80/"><i class="fas fa-angle-double-right"></i>django 用户</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:47:21.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    9 分钟 读完 (大约 1304 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="django用户"><a href="#django用户" class="headerlink" title="django用户"></a>django用户</h1><p>django为开发者提供了三种不同的用户形式，一种是自带的用户模型(User),另外两种是可以自定义的用户模型，分别是(AbstractUser)(AbstractBaseUser),他们的继承关系分别是 User 继承子AbstractUser 继承自AbstractBaseUser</p>
+<h2 id="django自带的用户模型"><a href="#django自带的用户模型" class="headerlink" title="django自带的用户模型"></a>django自带的用户模型</h2><p>使用django自带的用户模型(快速实现)，该模型提供了一些开发过程中会经常使用到的参数，比如用户级别，名字，邮箱，密码等等。我们可以在$\color{red}{from django.contrib.auth.models import User}$中查看User的使用</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span><span class="hljs-params">(AbstractUser)</span>:</span></span><br><span class="line">    <span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">    Users within the Django authentication system are represented by this</span></span><br><span class="line"><span class="hljs-string">    model.</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">    Username and password are required. Other fields are optional.</span></span><br><span class="line"><span class="hljs-string">    """</span></span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Meta</span><span class="hljs-params">(AbstractUser.Meta)</span>:</span></span><br><span class="line">        swappable = <span class="hljs-string">'AUTH_USER_MODEL'</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="自定义User-Model"><a href="#自定义User-Model" class="headerlink" title="自定义User Model"></a>自定义User Model</h2><p>自定义Usermodel需要注意的是，$\color{red}{需要在setting.py中添加AUTH_USER_MODEL}$ ，由于django寻找用户的方式是在setting.py中寻找这个标示，所以在我们自定义的时候需要添加这个内容</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/setting.py</span></span><br><span class="line"><span class="hljs-keyword">from</span> app.model <span class="hljs-keyword">import</span> .</span><br><span class="line">AUTH_USER_MODEL=<span class="hljs-string">"app.modelname"</span></span><br></pre></td></tr></tbody></table></figure>
+<p>其他需要注意的地方，请看文章底部注意栏</p>
+<h3 id="方法一：扩展AbstractUser"><a href="#方法一：扩展AbstractUser" class="headerlink" title="方法一：扩展AbstractUser"></a>方法一：扩展AbstractUser</h3><p>如果你觉得django自带的用户不能满足你所需要的字段，需要额外添加字段的话，你可以使用AbstractUser</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/app/models.py</span></span><br><span class="line"><span class="hljs-keyword">from</span> django.contrib.auth.models <span class="hljs-keyword">import</span> AbstractUser</span><br><span class="line"><span class="hljs-keyword">from</span> django.db <span class="hljs-keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NewUser</span><span class="hljs-params">(AbstractUser)</span>:</span></span><br><span class="line">    new_field = models.CharField(max_length=<span class="hljs-number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># pro/setting.py</span></span><br><span class="line">AUTH_USER_MODEL=<span class="hljs-string">"app.modelname"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="方法二：扩展AbstractBaseUser"><a href="#方法二：扩展AbstractBaseUser" class="headerlink" title="方法二：扩展AbstractBaseUser"></a>方法二：扩展AbstractBaseUser</h2><p>AbstractBaseUser中只含有3个field: password, last_login和is_active. 如果你对django user model默认的first_name, last_name不满意, 或者只想保留默认的密码储存方式, 则可以选择这一方式</p>
+<p>自定义形式如AbstarctUser一样</p>
+<p>使用AbstractBaseUser时，虽然他提供了User最核心的实现，比如password，但是我们依旧需要添加一些必须定义的关键字段和方法</p>
+<p>USERNAME_FIELD，用户名称字段，必须设置，且 uniqe=True</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserProfile</span><span class="hljs-params">(AbstractBaseUser)</span>:</span></span><br><span class="line">    author = models.CharField(max_length=<span class="hljs-number">40</span>,unique=<span class="hljs-literal">True</span>)</span><br><span class="line"></span><br><span class="line">    USERNAME_FIELD = <span class="hljs-string">'author'</span></span><br></pre></td></tr></tbody></table></figure>
+<p>REQUIRED_FIELDS，当通过createsuperuser管理命令创建一个用户时，用于提示一个字段名称列表,不能包含USERNAME_FIELD以及password字段</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/models.py</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserProfile</span><span class="hljs-params">(AbstractBaseUser)</span></span></span><br><span class="line">    date_of_birth = models.DateField()</span><br><span class="line">    height = models.FloatField()</span><br><span class="line"></span><br><span class="line">    REQUIRED_FIELDS=[<span class="hljs-string">'date_of_birth'</span>,<span class="hljs-string">'height'</span>]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>is_active   必须定义。 一个布尔属性，标识用户是否是 “active” 的。AbstractBaseUser默认为 Ture</p>
+<p>get_full_name()<br>必须定义。 long格式的用户标识。</p>
+<p>get_short_name()<br>必须定义。 short格式的用户标识。</p>
+<p>可用方法<br>get_username()<br>返回 USERNAME_FIELD 的值。</p>
+<p>is_anonymous()<br>一直返回 False。用来区分 AnonymousUser。</p>
+<p>is_authenticated()<br>一直返回 Ture。用来告诉用户已被认证。</p>
+<p>set_password(raw_password)<br>设置密码。按照给定的原始字符串设置用户的密码，taking care of the password hashing。 不保存 AbstractBaseUser 对象。如果没有给定密码，密码就会被设置成不使用，同用set_unusable_password()。</p>
+<p>check_password(raw_password)<br>检查密码是否正确。 给定的密码正确返回 True。</p>
+<p>set_unusable_password()<br>设置user无密码。 不同于密码为空，如果使用 check_password()，则不会返回True。不保存AbstractBaseUser 对象。</p>
+<p>has_usable_password()<br>如果设置了set_unusable_password()，返回False。</p>
+<p>get_session_auth_hash()<br>返回密码字段的HMAC。 Used for Session invalidation on password change.</p>
+<h2 id="⚠️注意"><a href="#⚠️注意" class="headerlink" title="⚠️注意"></a>⚠️注意</h2><p>1.在创建任何迁移或者第一次运行 manager.py migrate 前设置 AUTH_USER_MODEL。设置AUTH_USER_MODEL对你的数据库结构有很大的影响。它改变了一些会使用到的表格，并且会影响到一些外键和多对多关系的构造。在你有表格被创建后更改此设置是不被 makemigrations 支持的，并且会导致你需要手动修改数据库结构，从旧用户表中导出数据，可能重新应用一些迁移。<br>2.由于Django的可交换模型的动态依赖特性的局限，你必须确保 AUTH_USER_MODEL 引用的模型在所属app中第一个迁移文件中被创建（通常命名为 0001_initial），否则你会碰到错误(The easiest way to construct a compliant custom User model is to inherit fromAbstractBaseUser. AbstractBaseUser provides the core implementation of a Usermodel, including hashed passwords and tokenized password resets. You must then provide some key implementation details:)</p>
+<h2 id="引用User"><a href="#引用User" class="headerlink" title="引用User"></a>引用User</h2><p>如果你选择了自定义用户类型，那么当你在view.py中尝试使用外键引用他的时候，你会出现错误，你应该使用$\color{red}{django.contrib.auth.get_user_model来引用模型}</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_user_model</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    <span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">    Return the User model that is active in this project.</span></span><br><span class="line"><span class="hljs-string">    """</span></span><br><span class="line">    <span class="hljs-keyword">try</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> django_apps.get_model(settings.AUTH_USER_MODEL, require_ready=<span class="hljs-literal">False</span>)</span><br><span class="line">    <span class="hljs-keyword">except</span> ValueError:</span><br><span class="line">        <span class="hljs-keyword">raise</span> ImproperlyConfigured(<span class="hljs-string">"AUTH_USER_MODEL must be of the form 'app_label.model_name'"</span>)</span><br><span class="line">    <span class="hljs-keyword">except</span> LookupError:</span><br><span class="line">        <span class="hljs-keyword">raise</span> ImproperlyConfigured(</span><br><span class="line">            <span class="hljs-string">"AUTH_USER_MODEL refers to model '%s' that has not been installed"</span> % settings.AUTH_USER_MODEL</span><br></pre></td></tr></tbody></table></figure>
+<p>同样的，他会根据setting中的AUTH_USER_MODEL来识别当前用户</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> django.contrib.auth <span class="hljs-keyword">import</span> get_user_model</span><br><span class="line"></span><br><span class="line">User = get_user_model</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>指定用户</strong></p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># pro/app/models.py</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserProfile</span><span class="hljs-params">(models.Model)</span>:</span></span><br><span class="line">    author = models.ForeignKey(setting.AUTH_USER_MODEL)</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p><a href="https://www.cnblogs.com/huchong/p/9804635.html#_label0" target="_blank" rel="noopener">https://www.cnblogs.com/huchong/p/9804635.html#_label0</a><br><a href="https://blog.csdn.net/qq_37049050/article/details/79211059" target="_blank" rel="noopener">https://blog.csdn.net/qq_37049050/article/details/79211059</a></p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/7068483c/"><i class="fas fa-angle-double-right"></i>DRF框架</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:42:23.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    15 分钟 读完 (大约 2186 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h2 id="rust风格"><a href="#rust风格" class="headerlink" title="rust风格"></a>rust风格</h2><p>Representational State Transfer  表现层状态转化（ 资源定位及资源操作）<br>表象层面说就是通过get,post,put,delete方式来实现前后台通信的一种轻量级,跨平台,跨语言架构设计风格的web服务</p>
+<p>http不仅仅是传输协议，更是一种应用协议。REST，即Representational State Transfer的缩写。意为是”表现层状态转化”。RESTful表示一种风格，理解REST前需要理解资源，何谓资源，广义的资源是指可以操作的所有对象。可能是一个系统资源，如txt、jgp、xml …，亦可以是诸如自己定义的虚拟集合的抽象，如books、usrs、times。RESTfutl代表一种简洁、方便、快捷、高效、透明的架构，这取决于你怎样组合。具有如下特点：</p>
+<p>1、规范化接口访问方式。这些http操作方法包括GET/POST/PUT/DELETE/OPTIONS等，每个操作方法都代表一个相同意义的操作，它向所有人透明地表明操作方式。比如GET只能读取/拉数据，当然你也可以是添加数据，但建议不要这么做，不然这样就失去了REST的意义。<br>GET 读取<br>POST 添加<br>PUT 修改<br>DELETE 删除<br>2、资源标识唯一。通过URI表示一个资源名称，形式/resource/patch。如/users，表示用户的组合，或用户群。当然还可以继续标识某个具体的一个用户，/users/11，表示id为11的用户。当然，你也可以又用一组/usrgroup/11的URI代表操作用户组，不过不建议这么做，因为这样从字面上重复了/users/11资源表示的内容。一个资源URI总是包含第一条实现的方法：<br>GET /users/11<br>POST /users/11<br>PUT /users/11<br>DELETE /users/11<br>当然，仅有这些还不足以包括资源操作的所有需求，所以还可以包含请求参数，如GET /users?type=list&page=1。<br>3、状态的转化。这就是REST的真实含义，指它允许资源URI具有不同的表现形式。同一个URI，根据不同请求方式，执行的动作不同；还可以根据请求的Header Accept的不同返回不同的结果，如text/html、text/css、text/xml等等。也可以理解为body不同。如查询快递一般，可以上次查询，物品还在仓库，而过一段时间已经在路上了。它表示的是一个互动过程。<br>4、所有信息都包含在当前请求中。请求的方式包含在 Request Header的Method中，还可以包含Accept、Accept-Encoding、Accept-Language，使用Authentication、Cookie等信息表明身份。同样，服务端通过发送Content-Length、Content-Type响应执行情况。最重要的是，需要返回Status Code通知执行状态，如200 201 400 404 500等http code。REST认为，所有信息都能通过请求一次性发送，而不必再采用方式保存状态，请求的信息本身已经说明了请求的意义。<br>5、无状态性。这是REST最重要的特性之一，这个状态指的是客户端与服务端无需为每次保存请求状态，客户端请求不必考虑当前状态，不必考虑上下文。具体上说，就是不必使用session等工具跟踪、保存请求的特殊性。比如，无论是谁，从哪里发送，几时发送，对同一个URI资源发送请求的结果都是一样的。据传，这样的设计是为当一台服务器宕机时，另一台服务器可以无差别地响应对方的请求。客户端请求只认URI，而不需理后台的设计。<br>实际上，在如今执行的RESTful设计当中，完全能执行这个要求的很少，最彻底的云服务，大部份为RESTful-like的风格。<br>6、可实现请求缓存。通过缓存减少请求次数，在HTTP响应里利用Cache-Control、Expires、Last-Modified三个头字段，可以让浏览器缓存资源一段时间。</p>
+<h2 id="drf的视图集"><a href="#drf的视图集" class="headerlink" title="drf的视图集"></a>drf的视图集</h2><p>ViewSet类只是一种类型的基于类的视图，即不提供任何方法的处理程序，例如.get()或.post()，而是提供操作，如.list()和.create()。<br><a href="http://www.sinodocs.cn/api-guide/viewsets.html" target="_blank" rel="noopener">http://www.sinodocs.cn/api-guide/viewsets.html</a></p>
+<h3 id="drf字段更新"><a href="#drf字段更新" class="headerlink" title="drf字段更新"></a>drf字段更新</h3><p>默认只有list和create 对应的方法就是get 和post<br>partial = True 局部更新</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestViewSet</span><span class="hljs-params">(viewsets.ModelViewSet)</span>:</span></span><br><span class="line">    serializer_class = TestSerializer</span><br><span class="line">    queryset = test_Model.objects.all()</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta"> @action(methods=['patch'], detail=False)</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update_field</span><span class="hljs-params">(self, request, *args, **kwargs)</span>:</span></span><br><span class="line">        request.data[<span class="hljs-string">"text"</span>] = <span class="hljs-string">"更新dsdsd"</span></span><br><span class="line">        instance = test_Model.objects.get(id=request.data[<span class="hljs-string">'id'</span>])</span><br><span class="line">        <span class="hljs-comment"># instance = self.get_object() 会报错</span></span><br><span class="line">        <span class="hljs-comment"># https://docs.djangoproject.com/en/2.2/ref/class-based-views/mixins-single-object/#django.views.generic.detail.SingleObjectMixin.get_object</span></span><br><span class="line">        <span class="hljs-comment"># 默认使用id查找</span></span><br><span class="line">        serializer = self.get_serializer(instance,data=request.data,partial=<span class="hljs-literal">True</span>)</span><br><span class="line">        serializer.is_valid()</span><br><span class="line">        serializer.save()</span><br><span class="line">        <span class="hljs-keyword">return</span> Response(serializer.data,status=status.HTTP_200_OK)</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">    @action(methods=['delete'],detail=False)</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">delete_field</span><span class="hljs-params">(self,request,*args,**kwargs)</span>:</span></span><br><span class="line">        instance = test_Model.objects.get(id=request.data[<span class="hljs-string">'id'</span>])</span><br><span class="line">        <span class="hljs-keyword">if</span> instance:</span><br><span class="line">            self.perform_destroy(instance)</span><br><span class="line">            <span class="hljs-keyword">return</span> Response({<span class="hljs-string">"flag"</span>:<span class="hljs-string">"删除成功"</span>},status=status.HTTP_200_OK)</span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span>  Response(status=status.HTTP_400_BAD_REQUEST)</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="基本的视图集"><a href="#基本的视图集" class="headerlink" title="基本的视图集"></a>基本的视图集</h3><p>使用viewsets.ModelViewSet + DefaultRouter<br>其中base-name表示基础url  lookup表示查询参数(只根据主键查找)<br>获取局部地址 <a href="http://localhost:8080/{base-name}/{lookup}" target="_blank" rel="noopener">http://localhost:8080/{base-name}/{lookup}</a></p>
+<h2 id="drf路由集"><a href="#drf路由集" class="headerlink" title="drf路由集"></a>drf路由集</h2><p>为了更加便捷的开发项目,drf设计了路由集的内容，免去了路由配置中的麻烦，当然他也同时兼容django的路由设计<br><a href="https://www.django-rest-framework.org/api-guide/routers/" target="_blank" rel="noopener">https://www.django-rest-framework.org/api-guide/routers/</a></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> rest_framework <span class="hljs-keyword">import</span> routers</span><br><span class="line"></span><br><span class="line">router = DefaultRouter(trailing_slash=<span class="hljs-literal">False</span>) <span class="hljs-comment"># 是否以斜杠/结尾</span></span><br><span class="line"><span class="hljs-comment"># 声明注册路由</span></span><br><span class="line"><span class="hljs-comment"># 同path('switch/',views.per_switch.as_view()),</span></span><br><span class="line">router.register(prefix=<span class="hljs-string">'users'</span>, viewset=UserViewSet,basename=<span class="hljs-string">"another_name"</span>)</span><br><span class="line">router.register(<span class="hljs-string">'accounts'</span>, AccountViewSet)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 添加规则，django主动扫描urlpatterns变量获取路由</span></span><br><span class="line">urlpatterns = router.urls</span><br></pre></td></tr></tbody></table></figure>
+<p>以上 </p>
+<ul>
+<li>prefix定义前缀</li>
+<li>viewset定义视图</li>
+<li>basename定义前缀别名</li>
+</ul>
+<p>形成url格式(本地) —><br><a href="http://localhost:8080/user/" target="_blank" rel="noopener">http://localhost:8080/user/</a><br><a href="http://localhost:8000/accounts/" target="_blank" rel="noopener">http://localhost:8000/accounts/</a></p>
+<h3 id="兼容使用"><a href="#兼容使用" class="headerlink" title="兼容使用"></a>兼容使用</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">framework rest_framework.routers <span class="hljs-keyword">import</span> DefaultRouter</span><br><span class="line"></span><br><span class="line">router = DefaultRouter()</span><br><span class="line">router.register(<span class="hljs-string">'test'</span>,viewset=TestViewSet,base_name=<span class="hljs-string">"test"</span>)</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="hljs-string">'switch/'</span>,views.switch_list.as_view()),</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 变量累加</span></span><br><span class="line">urlpatterns += router.urls</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="路由集url"><a href="#路由集url" class="headerlink" title="路由集url"></a>路由集url</h3><p>django的路由集是真滴变态，当你使用带值参数去查找列表中的特定内容时候，他所表现的url是<br>^users/{pk}/set_password/$<br>注意 pk在中间 set_password是你方法的名字<br>如果你需要修改这些内容，可以在@action中指定<br>url_path = set_password<br>url_name = change_password</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SwitchViewSet</span><span class="hljs-params">(viewsets.GenericViewSet,</span></span></span><br><span class="line"><span class="hljs-class"><span class="hljs-params">                    mixins.ListModelMixin)</span>:</span></span><br><span class="line">    serializer_class = SwitchSerializer</span><br><span class="line">    queryset = SwitchModel.objects.all()</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment"># get</span></span><br><span class="line"><span class="hljs-meta">    @action(detail=True,url_path="xx")</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">list_peer</span><span class="hljs-params">(self, request, pk)</span>:</span></span><br><span class="line">        queryset = SwitchModel.objects.get(name=pk)</span><br><span class="line">        print(queryset)</span><br><span class="line">        <span class="hljs-comment"># page = self.paginate_queryset(queryset)</span></span><br><span class="line">        <span class="hljs-comment"># if page is not None:</span></span><br><span class="line">        <span class="hljs-comment">#    serializer = self.get_serializer(page, many=True)</span></span><br><span class="line">        <span class="hljs-comment">#    return self.get_paginated_response(serializer.data)</span></span><br><span class="line"></span><br><span class="line">        serializer = self.get_serializer(queryset)</span><br><span class="line">        <span class="hljs-keyword">return</span> Response(serializer.data)</span><br></pre></td></tr></tbody></table></figure>
+<p>如上一个列表查询的地址是  <a href="http://localhost:8080/{pk}/xx" target="_blank" rel="noopener">http://localhost:8080/{pk}/xx</a></p>
+<h2 id="drf过滤"><a href="#drf过滤" class="headerlink" title="drf过滤"></a>drf过滤</h2><h3 id="drf通用过滤"><a href="#drf通用过滤" class="headerlink" title="drf通用过滤"></a>drf通用过滤</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># setting.py</span></span><br><span class="line"><span class="hljs-comment"># 全局设置过滤器</span></span><br><span class="line">REST_FRAMEWORK = {</span><br><span class="line">    <span class="hljs-string">'DEFAULT_FILTER_BACKENDS'</span>: [<span class="hljs-string">'django_filters.rest_framework.DjangoFilterBackend'</span>]</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment"># views.py</span></span><br><span class="line"><span class="hljs-comment"># 单视图设置过滤器</span></span><br><span class="line">  filter_backends = [django_filters.rest_framework.DjangoFilterBackend]</span><br></pre></td></tr></tbody></table></figure>
+<p><a href="https://www.django-rest-framework.org/api-guide/filtering/" target="_blank" rel="noopener">https://www.django-rest-framework.org/api-guide/filtering/</a></p>
+<h2 id="drf分页"><a href="#drf分页" class="headerlink" title="drf分页"></a>drf分页</h2><p><a href="https://www.django-rest-framework.org/api-guide/pagination/" target="_blank" rel="noopener">https://www.django-rest-framework.org/api-guide/pagination/</a></p>
+<h2 id="drf过滤器"><a href="#drf过滤器" class="headerlink" title="drf过滤器"></a>drf过滤器</h2><p><a href="https://www.django-rest-framework.org/api-guide/serializers/" target="_blank" rel="noopener">https://www.django-rest-framework.org/api-guide/serializers/</a></p>
+<h2 id="drf解析器与渲染器"><a href="#drf解析器与渲染器" class="headerlink" title="drf解析器与渲染器"></a>drf解析器与渲染器</h2><p>视图的有效解析器集始终定义为类列表。当 request.data被访问时，REST框架将检查Content-Type传入请求上的标头，并确定使用哪个解析器来解析请求内容。<br>如果您未设置内容类型，则大多数客户端将默认使用’application/x-www-form-urlencoded’例如，如果要json使用jQuery和.ajax（）方法发送编码数据，则应确保包括该contentType: ‘application/json’设置。</p>
+<h3 id="设置解析器"><a href="#设置解析器" class="headerlink" title="设置解析器"></a>设置解析器</h3><p>仅允许json的内容</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># setting.py</span></span><br><span class="line"><span class="hljs-comment"># 全局设置解析</span></span><br><span class="line">REST_FRAMEWORK = {</span><br><span class="line">    <span class="hljs-string">'DEFAULT_PARSER_CLASSES'</span>: [</span><br><span class="line">        <span class="hljs-string">'rest_framework.parsers.JSONParser'</span>,</span><br><span class="line">    ]</span><br><span class="line">} </span><br><span class="line"><span class="hljs-comment"># 单视图设置解析</span></span><br><span class="line">class modelview():</span><br><span class="line">    parser_classes = [JSONParser]</span><br></pre></td></tr></tbody></table></figure>
+<p>其他各类解析<br><a href="https://www.django-rest-framework.org/api-guide/parsers/" target="_blank" rel="noopener">https://www.django-rest-framework.org/api-guide/parsers/</a></p>
+<h2 id="渲染器"><a href="#渲染器" class="headerlink" title="渲染器"></a>渲染器</h2><p>既然有收的解析器，那也有发出数据的渲染器，<br>REST框架包括许多内置的Renderer类，使您可以返回各种媒体类型的响应。还支持定义自己的自定义渲染器，这使您可以灵活地设计自己的媒体类型。</p>
+<h3 id="设置渲染器"><a href="#设置渲染器" class="headerlink" title="设置渲染器"></a>设置渲染器</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># setting.py</span></span><br><span class="line"><span class="hljs-comment"># 全局设置解析</span></span><br><span class="line">REST_FRAMEWORK = {</span><br><span class="line">    <span class="hljs-string">'DEFAULT_RENDERER_CLASSES'</span>: [</span><br><span class="line">        <span class="hljs-string">'rest_framework.renderers.JSONRenderer'</span>,</span><br><span class="line">        <span class="hljs-string">'rest_framework.renderers.BrowsableAPIRenderer'</span>,</span><br><span class="line">    ]</span><br><span class="line">} </span><br><span class="line"><span class="hljs-comment"># 单视图设置解析</span></span><br><span class="line">class modelview()</span><br><span class="line">    renderer_classes = [JSONRenderer]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>其他渲染器<br><a href="https://www.django-rest-framework.org/api-guide/renderers/" target="_blank" rel="noopener">https://www.django-rest-framework.org/api-guide/renderers/</a></p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/65abc8f/"><i class="fas fa-angle-double-right"></i>django字段总结</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:41:01.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    5 分钟 读完 (大约 763 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="django字段的设计"><a href="#django字段的设计" class="headerlink" title="django字段的设计"></a>django字段的设计</h1><p><a href="https://docs.djangoproject.com/zh-hans/2.2/ref/models/fields/#module-django.db.models.fields" target="_blank" rel="noopener">https://docs.djangoproject.com/zh-hans/2.2/ref/models/fields/#module-django.db.models.fields</a><br>orm的设计模式<br>在django的应用过程中，往往要设计model的设计，在model设计过程中要使用各种各样的关键词，这些关键词 关联到了数据库中每条记录的配置</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 引用</span></span><br><span class="line"><span class="hljs-keyword">from</span> django.db <span class="hljs-keyword">import</span> models</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="通用字段"><a href="#通用字段" class="headerlink" title="通用字段"></a>通用字段</h2><h3 id="null字段"><a href="#null字段" class="headerlink" title="null字段"></a>null字段</h3><p>如果设置为 True， 当该字段为空时，Django 会将数据库中该字段设置为NULL，默认为 False。<br>即数据库置空 如果null=true blank=true 则数据库内容为空白字符串</p>
+<h3 id="blank"><a href="#blank" class="headerlink" title="blank"></a>blank</h3><p>Field.blank<br>默认blank = False ,如果设置为True，则允许该字段为空。<br>与null不同的是,null存粹与数据库有相关，而blank与验证相关。如果blank=true,则表单验证将允许输入空值,如果blank=False 则不允许输入空值</p>
+<hr>
+<h3 id="choices"><a href="#choices" class="headerlink" title="choices"></a>choices</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TaskSwitchModel</span><span class="hljs-params">(models.Model)</span>:</span></span><br><span class="line">    ActionType = models.CharField(choices=[</span><br><span class="line">        (<span class="hljs-string">'snmp'</span>,<span class="hljs-string">'_(snmp)'</span>),</span><br><span class="line">        (<span class="hljs-string">"vlan"</span>,<span class="hljs-string">"_vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"sysname"</span>,<span class="hljs-string">"_sysname"</span>),</span><br><span class="line">        (<span class="hljs-string">"copyright-info"</span>,<span class="hljs-string">"_copyright-info"</span>),</span><br><span class="line">        (<span class="hljs-string">"int-vlan"</span>,<span class="hljs-string">"_int-vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"int"</span>,<span class="hljs-string">"_int"</span>)],max_length=<span class="hljs-number">100</span>,default=<span class="hljs-string">""</span>)</span><br><span class="line">    test = models.CharField(max_length=<span class="hljs-number">1</span>, choices=[(<span class="hljs-string">'A'</span>, (<span class="hljs-string">'Author'</span>)), (<span class="hljs-string">'E'</span>, (<span class="hljs-string">'Editor'</span>))]),</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TaskSwitchModel</span><span class="hljs-params">(model.ModelForm)</span>:</span></span><br><span class="line">    choices=(</span><br><span class="line">        (<span class="hljs-string">'snmp'</span>,<span class="hljs-string">'_(snmp)'</span>),</span><br><span class="line">        (<span class="hljs-string">"vlan"</span>,<span class="hljs-string">"_vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"sysname"</span>,<span class="hljs-string">"_sysname"</span>),</span><br><span class="line">        (<span class="hljs-string">"copyright-info"</span>,<span class="hljs-string">"_copyright-info"</span>),</span><br><span class="line">        (<span class="hljs-string">"int-vlan"</span>,<span class="hljs-string">"_int-vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"int"</span>,<span class="hljs-string">"_int"</span>)</span><br><span class="line">    )</span><br><span class="line">    ActionType = model.CharField(choices=choices,max_length=<span class="hljs-number">100</span>,default=<span class="hljs-string">""</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Field.choices<br>每个元组中的第一个元素是要在模型上设置的实际值，第二个元素是人类可读的名称.</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">select_choices =[</span><br><span class="line">    (<span class="hljs-string">'A'</span>,<span class="hljs-string">'A_'</span>),</span><br><span class="line">    (<span class="hljs-string">'B'</span>,<span class="hljs-string">'B_'</span>),</span><br><span class="line">    (<span class="hljs-string">'C'</span>,<span class="hljs-string">'C_'</span>),</span><br><span class="line">    (<span class="hljs-string">'D'</span>,<span class="hljs-string">'D_'</span>),</span><br><span class="line">]</span><br><span class="line">choices字段迭代</span><br><span class="line">每个元组的第一个元素是要应用于组的名称。第二个元素是一个可迭代的<span class="hljs-number">2</span>代元组</span><br><span class="line">select2_select1_choices=[</span><br><span class="line">    (<span class="hljs-string">'A'</span>,(</span><br><span class="line">        (<span class="hljs-string">'A_/'</span>,<span class="hljs-string">'A_movie'</span>),</span><br><span class="line">        (<span class="hljs-string">'A_+'</span>,<span class="hljs-string">'A_video'</span>),</span><br><span class="line">        (<span class="hljs-string">'A_-'</span>,<span class="hljs-string">'A_City'</span>),</span><br><span class="line">        )</span><br><span class="line">    ),</span><br><span class="line">    (<span class="hljs-string">'Video'</span>, (</span><br><span class="line">            (<span class="hljs-string">'vhs'</span>, <span class="hljs-string">'VHS Tape'</span>),</span><br><span class="line">            (<span class="hljs-string">'dvd'</span>, <span class="hljs-string">'DVD'</span>),</span><br><span class="line">        )</span><br><span class="line">    ),</span><br><span class="line">    (<span class="hljs-string">'unknown'</span>, <span class="hljs-string">'Unknown'</span>),</span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="db-column"><a href="#db-column" class="headerlink" title="db_column"></a>db_column</h3><p>设置数据库列的名称    age = models.CharFiled(db_column=”年龄”)</p>
+<h3 id="db-index"><a href="#db-index" class="headerlink" title="db_index"></a>db_index</h3><p>age = models.CharFiled(db_index=true)<br>如果设置为True，则创建数据库索引</p>
+<h3 id="default"><a href="#default" class="headerlink" title="default"></a>default</h3><p>可以是值也可以是可调用的对象，每次实例化模型的时候 会调用这个对象或值</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 1</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">contact_defult</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> {<span class="hljs-string">"email"</span>:<span class="hljs-string">"1097690268@qq.com"</span>}</span><br><span class="line"></span><br><span class="line">contact_info = JSONField(<span class="hljs-string">"ContactInfo"</span>, default=contact_default)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 2</span></span><br><span class="line">member_name = CharFiled(default=<span class="hljs-string">"小明"</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="editable"><a href="#editable" class="headerlink" title="editable"></a>editable</h3><p>可编辑字段<br>如果为False，则该字段将不会显示在管理员或其他任何人中 ModelForm。在模型验证期间也将跳过它们。默认值为True。</p>
+<hr>
+<h3 id="unique"><a href="#unique" class="headerlink" title="unique"></a>unique</h3><p>name = CharFiled(unique=true)<br>如上则会保证该字段的值为表中唯一，也就是不会出现同名的人<br>如果存在了unique 则不再需要db_index 因为unique默认存在索引</p>
+<h2 id="primary-key"><a href="#primary-key" class="headerlink" title="primary_key"></a>primary_key</h2><p>如果设置为True，则初始设置为该模型的主键。<br>如果您未primary_key=True在模型中指定任何字段，则Django会自动添加一个AutoField来保留主键，因此primary_key=True暗示null=False和 unique=True。一个对象只允许使用一个主键。<br>主键字段是只读的。如果更改现有对象上的主键的值然后保存，则将在旧对象的旁边创建一个新对象。</p>
+<h2 id="自定义的字段"><a href="#自定义的字段" class="headerlink" title="自定义的字段"></a>自定义的字段</h2><p><a href="https://docs.djangoproject.com/zh-hans/2.2/howto/custom-model-fields/" target="_blank" rel="noopener">https://docs.djangoproject.com/zh-hans/2.2/howto/custom-model-fields/</a></p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/categories/%E7%BC%96%E7%A8%8B/django/page/0/">上一页</a>
+        </div>
+        <div class="pagination-next">
+            <a class="is-flex-grow has-text-black-ter" href="/categories/%E7%BC%96%E7%A8%8B/django/page/2/">下一页</a>
+        </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link is-current" href="/categories/%E7%BC%96%E7%A8%8B/django/">1</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/categories/%E7%BC%96%E7%A8%8B/django/page/2/">2</a></li>
             
         </ul>
-        <div class="total-article bar-right">Page 1 of 2</div>
-        </div>
     </nav>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
- 
-</main>
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        90
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        27
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        15
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
 
-  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
-	
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+    
         
-        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
-        
-        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
 
-    <div class="copyright">
-    	
-        <div class="publishby">
-        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://www.ttlsa.com/linux/haproxy-study-tutorial/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">运维生存时间</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.ttlsa.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/checklist/">
+            <span class="level-start">
+                <span class="level-item">checklist</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/code/">
+            <span class="level-start">
+                <span class="level-item">code</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">21</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/docker/">
+            <span class="level-start">
+                <span class="level-item">docker</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/">
+            <span class="level-start">
+                <span class="level-item">linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">34</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/linux/Command/">
+            <span class="level-start">
+                <span class="level-item">Command</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/ansible/">
+            <span class="level-start">
+                <span class="level-item">ansible</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/docker/">
+            <span class="level-start">
+                <span class="level-item">docker</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">13</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/linux-network/">
+            <span class="level-start">
+                <span class="level-item">linux-network</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/%E6%95%85%E9%9A%9C/">
+            <span class="level-start">
+                <span class="level-item">故障</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+            <span class="level-start">
+                <span class="level-item">文件系统</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/%E8%84%9A%E6%9C%AC/">
+            <span class="level-start">
+                <span class="level-item">脚本</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/%E5%B7%A5%E5%85%B7/">
+            <span class="level-start">
+                <span class="level-item">工具</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%89%A9%E5%B1%95/">
+            <span class="level-start">
+                <span class="level-item">扩展</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+            <span class="level-start">
+                <span class="level-item">数据结构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%9E%B6%E6%9E%84/">
+            <span class="level-start">
+                <span class="level-item">架构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">
+            <span class="level-start">
+                <span class="level-item">CI-CD</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/">
+            <span class="level-start">
+                <span class="level-item">编程</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">14</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">
+            <span class="level-start">
+                <span class="level-item">C语言</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/django/">
+            <span class="level-start">
+                <span class="level-item">django</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">12</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">
+            <span class="level-start">
+                <span class="level-item">jwt</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/">
+            <span class="level-start">
+                <span class="level-item">网络</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/extra/">
+            <span class="level-start">
+                <span class="level-item">extra</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
+            <span class="level-start">
+                <span class="level-item">二层交换机</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
+            <span class="level-start">
+                <span class="level-item">交换机</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%83%A8%E7%BD%B2/">
+            <span class="level-start">
+                <span class="level-item">交换机部署</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/%E8%AE%B0%E4%BA%8B%E6%9C%AC/">
+            <span class="level-start">
+                <span class="level-item">记事本</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E8%AE%BE%E5%A4%87/">
+            <span class="level-start">
+                <span class="level-item">设备</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget is-hidden-mobile">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">23</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">36</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">31</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/posts/40a08bb8/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-daily">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T09:03:34.000Z">2020-02-14</time></div>
+                    <a href="/posts/40a08bb8/" class="has-link-black-ter is-size-6">linux-daily</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/1f4442b1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hello,new-world">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T07:35:13.000Z">2020-02-14</time></div>
+                    <a href="/posts/1f4442b1/" class="has-link-black-ter is-size-6">hello,new-world</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/4115d0cd/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CI-CD实践">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T19:29:41.000Z">2020-02-14</time></div>
+                    <a href="/posts/4115d0cd/" class="has-link-black-ter is-size-6">CI-CD实践</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a> / <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/88888022/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="django实际项目中的模块设计">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T17:53:20.000Z">2020-02-14</time></div>
+                    <a href="/posts/88888022/" class="has-link-black-ter is-size-6">django实际项目中的模块设计</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/59fd12f/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="swarm与k8s的区别">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:49:28.000Z">2020-02-10</time></div>
+                    <a href="/posts/59fd12f/" class="has-link-black-ter is-size-6">swarm与k8s的区别</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget is-hidden-mobile">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">23</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">36</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">31</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/posts/40a08bb8/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux-daily">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T09:03:34.000Z">2020-02-14</time></div>
+                    <a href="/posts/40a08bb8/" class="has-link-black-ter is-size-6">linux-daily</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/1f4442b1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hello,new-world">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-14T07:35:13.000Z">2020-02-14</time></div>
+                    <a href="/posts/1f4442b1/" class="has-link-black-ter is-size-6">hello,new-world</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/4115d0cd/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CI-CD实践">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T19:29:41.000Z">2020-02-14</time></div>
+                    <a href="/posts/4115d0cd/" class="has-link-black-ter is-size-6">CI-CD实践</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a> / <a class="has-link-grey -link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/88888022/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="django实际项目中的模块设计">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-13T17:53:20.000Z">2020-02-14</time></div>
+                    <a href="/posts/88888022/" class="has-link-black-ter is-size-6">django实际项目中的模块设计</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/posts/59fd12f/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="swarm与k8s的区别">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-10T06:49:28.000Z">2020-02-10</time></div>
+                    <a href="/posts/59fd12f/" class="has-link-black-ter is-size-6">swarm与k8s的区别</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a> / <a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://image.noback.top/datadog.svg" alt="Alpaca&#39;s blog | how to win" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 何泽君&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
         </div>
     </div>
 </footer>
-  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
 <script>
-window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
 </script>
 
-<script src="/js/plugin.min.js"></script>
 
-
-<script src="/js/application.js"></script>
-
-
-    <script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(未命名)',
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
         },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
 </script>
 
-<script src="/js/insight.js"></script>
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
 
 
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
 
 
+<script src="/js/main.js" defer></script>
 
-
-
-
-
-
-
-
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
 </body>
 </html>

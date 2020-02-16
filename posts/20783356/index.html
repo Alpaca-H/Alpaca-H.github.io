@@ -1,635 +1,639 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html  lang="zh">
 <head>
-  <meta charset="utf-8">
-  
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="Cache-Control" content="no-transform" />
-  <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="format-detection" content="telephone=no,email=no,adress=no">
-  <!-- Color theme for statusbar -->
-  <meta name="theme-color" content="#000000" />
-  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
-  <meta http-equiv="window-target" content="_top" />
-  
-  
-  <title>docker网络 | Hexo</title>
-  <meta name="description" content="learn docker 🐳">
+    <meta charset="utf-8">
+<title>docker网络 - Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="learn docker 🐳">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker网络">
 <meta property="og:url" content="http://blog.noback.top/posts/20783356/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
 <meta property="og:description" content="learn docker 🐳">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://img.noback.top/2020-02-06-22-12-35.png">
-<meta property="og:image" content="http://img.noback.top/2020-02-06-22-21-07.png">
-<meta property="og:image" content="http://img.noback.top/2020-02-06-23-14-30.png">
-<meta property="og:image" content="http://img.noback.top/2020-02-07-00-01-42.png">
-<meta property="og:image" content="http://img.noback.top/2020-02-07-00-03-58.png">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
 <meta property="article:published_time" content="2020-02-06T14:11:37.000Z">
 <meta property="article:modified_time" content="2020-02-06T14:11:37.000Z">
 <meta property="article:author" content="何泽君">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://img.noback.top/2020-02-06-22-12-35.png">
-  <!-- Canonical links -->
-  <link rel="canonical" href="http://blog.noback.top/posts/20783356/index.html">
-  
-    <link rel="alternate" href="/atom.xml" title="Alpaca&#39;s blog | how to win" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png" type="image/x-icon">
-  
-  
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
 <link rel="stylesheet" href="/css/style.css">
-
-  
-  
-  
-  
 <meta name="generator" content="Hexo 4.2.0"></head>
-
-
-<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
-  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-  <div class="slimContent">
-    <div class="navbar-header">
-      
-      
-      <div class="profile-block text-center">
-        <a id="avatar" href="https://github.com/cofess" target="_blank">
-          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
-        </a>
-        <h2 id="name" class="hidden-xs hidden-sm">昵称</h2>
-        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer &amp; Designer</h3>
-        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
-      </div>
-      
-      <div class="search" id="search-form-wrap">
-
-    <form class="search-form sidebar-form">
-        <div class="input-group">
-            <input type="text" class="search-form-input form-control" placeholder="搜索" />
-            <span class="input-group-btn">
-                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
-            </span>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://image.noback.top/datadog.svg" alt="docker网络" height="28">
+            
+            </a>
         </div>
-    </form>
-    <div class="ins-search">
-  <div class="ins-search-mask"></div>
-  <div class="ins-search-container">
-    <div class="ins-input-wrapper">
-      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
-      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-    </div>
-    <div class="ins-section-wrapper">
-      <div class="ins-section-container"></div>
-    </div>
-  </div>
-</div>
-
-
-</div>
-      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav ">
-        
-        
-        <li class="menu-item menu-item-home">
-          <a href="/.">
+        <div class="navbar-menu">
             
-            <i class="icon icon-home-fill"></i>
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/about-me/">about-me</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+            </div>
             
-            <span class="menu-title">首页</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            
-            <i class="icon icon-archives-fill"></i>
-            
-            <span class="menu-title">归档</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            
-            <i class="icon icon-tags"></i>
-            
-            <span class="menu-title">标签</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-repository">
-          <a href="/repository">
-            
-            <i class="icon icon-project"></i>
-            
-            <span class="menu-title">项目</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-books">
-          <a href="/books">
-            
-            <i class="icon icon-book-fill"></i>
-            
-            <span class="menu-title">书单</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-links">
-          <a href="/links">
-            
-            <i class="icon icon-friendship"></i>
-            
-            <span class="menu-title">友链</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about">
-            
-            <i class="icon icon-cup-fill"></i>
-            
-            <span class="menu-title">关于</span>
-          </a>
-        </li>
-        
-      </ul>
-      
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
-        
-        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
-
-    </nav>
-  </div>
-</header>
-
-  
-    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
-    
-      <div class="widget">
-    <h3 class="widget-title">公告</h3>
-    <div class="widget-body">
-        <div id="board">
-            <div class="content">
-                <p>欢迎交流与分享经验!</p>
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
             </div>
         </div>
     </div>
-</div>
-
+</nav>
     
-      
-  <div class="widget">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/checklist/">checklist</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">34</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/Command/">Command</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/ansible/">ansible</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/docker/">docker</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/linux-network/">linux-network</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%95%85%E9%9A%9C/">故障</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">文件系统</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95/">扩展</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">C语言</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">jwt</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/extra/">extra</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">二层交换机</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%83%A8%E7%BD%B2/">交换机部署</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E4%BA%8B%E6%9C%AC/">记事本</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E5%A4%87/">设备</a><span class="category-list-count">6</span></li></ul>
-    </div>
-  </div>
-
-
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
-      
-  <div class="widget">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI-CD/" rel="tag">CI-CD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codee/" rel="tag">codee</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily/" rel="tag">daily</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rust/" rel="tag">rust</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" rel="tag">负载均衡</a><span class="tag-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget-body tagcloud">
-      <a href="/tags/CI-CD/" style="font-size: 13px;">CI-CD</a> <a href="/tags/code/" style="font-size: 14px;">code</a> <a href="/tags/codee/" style="font-size: 13.17px;">codee</a> <a href="/tags/daily/" style="font-size: 13px;">daily</a> <a href="/tags/django/" style="font-size: 13px;">django</a> <a href="/tags/git/" style="font-size: 13px;">git</a> <a href="/tags/linux/" style="font-size: 13.67px;">linux</a> <a href="/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.17px;">nginx</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/rust/" style="font-size: 13.5px;">rust</a> <a href="/tags/vim/" style="font-size: 13px;">vim</a> <a href="/tags/vue/" style="font-size: 13.83px;">vue</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a> <a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" style="font-size: 13.17px;">负载均衡</a>
-    </div>
-  </div>
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">36</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">31</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget-body">
-      <ul class="recent-post-list list-unstyled no-thumbnail">
-        
-          <li>
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/linux/">linux</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/40a08bb8/" class="title">linux-daily</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-14T09:03:34.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
+                <i class="fas fa-angle-double-right"></i>docker网络
             
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/1f4442b1/" class="title">hello,new-world</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-14T07:35:13.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-06T14:11:37.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-06</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/docker/">docker</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    20 分钟 读完 (大约 2960 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
             </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/4115d0cd/" class="title">CI-CD实践</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-13T19:29:41.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/88888022/" class="title">django实际项目中的模块设计</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-13T17:53:20.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/linux/">linux</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/linux/docker/">docker</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/59fd12f/" class="title">swarm与k8s的区别</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-10T06:49:28.000Z" itemprop="datePublished">2020-02-10</time>
-              </p>
-            </div>
-          </li>
-          
-      </ul>
-    </div>
-  </div>
-  
-
-    
-  </div>
-</aside>
-
-  
-  
-<main class="main" role="main">
-  <div class="content">
-  <article id="post-blog_back_new/docker/6.docker网络" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-    
-    <div class="article-header">
-      
+        </div>
         
-  
-    <h1 class="article-title" itemprop="name">
-      docker网络
-    </h1>
-  
-
-      
-      <div class="article-meta">
-        <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/posts/20783356/" class="article-date">
-	  <time datetime="2020-02-06T14:11:37.000Z" itemprop="datePublished">2020-02-06</time>
-	</a>
-</span>
-        
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/linux/">linux</a>►<a class="article-category-link" href="/categories/linux/docker/">docker</a>
-  </span>
-
-        
-
-        
-
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/20783356/#comments" class="article-comment-link">评论</a></span>
-        
-      </div>
-    </div>
-    <div class="article-entry marked-body" itemprop="articleBody">
-      
-        <p>learn docker 🐳</p>
+        <div class="content">
+            <html><head></head><body><p>learn docker 🐳</p>
 <a id="more"></a>
 
 <h1 id="docker网络"><a href="#docker网络" class="headerlink" title="docker网络"></a>docker网络</h1><p>docker网络的几种模式<br><img src="http://img.noback.top/2020-02-06-22-12-35.png" alt="2020-02-06-22-12-35"></p>
-<p><font color='red'>网路地址转换NAT</font><br>内网转外网<br><img src="http://img.noback.top/2020-02-06-22-21-07.png" alt="2020-02-06-22-21-07"></p>
-<h2 id="linux的网络命名空间namesapce"><a href="#linux的网络命名空间namesapce" class="headerlink" title="linux的网络命名空间namesapce"></a>linux的网络命名空间namesapce</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:~<span class="comment"># sudo ip a | tail -6</span></span><br><span class="line">8: docker0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc noqueue state DOWN group default</span><br><span class="line">    link/ether 02:42:4f:aa:73:10 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.1/16 scope global docker0                  &lt;-------------看这里</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fe80::42:4fff:feaa:7310/64 scope link    </span><br><span class="line">       valid_lft forever preferred_lft forever </span><br><span class="line">root:~<span class="comment"># docker run -it -d  --name b1 busybox  /bin/sh -c "while true; do sleep 3600;done"</span></span><br><span class="line">890e3e47feea65be2d11122e01739247d41cf45e9ff8a2b88157482ee02a3b6f</span><br><span class="line">root:~<span class="comment"># docker run -it -d  --name b2 busybox  /bin/sh -c "while true; do sleep 3600;done"</span></span><br><span class="line">db45d33d512104ec2d799bd45ba47095ffb5c1c8253ede8becb808c47b902f7b</span><br><span class="line">root:~<span class="comment"># dokcer exec -it b1 /bin/sh</span></span><br><span class="line">/ <span class="comment"># ls</span></span><br><span class="line">bin   dev   etc   home  proc  root  sys   tmp   usr   var</span><br><span class="line">/ <span class="comment"># ip a</span></span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">167: eth0@if168: &lt;BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN&gt; mtu 1500 qdisc noqueue</span><br><span class="line">    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0         &lt;-------------看这里</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">root:~<span class="comment"># docker exec -it b2 /bin/sh</span></span><br><span class="line">/ <span class="comment"># ip a</span></span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">169: eth0@if170: &lt;BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN&gt; mtu 1500 qdisc noqueue</span><br><span class="line">    link/ether 02:42:ac:11:00:03 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.3/16 brd 172.17.255.255 scope global eth0           &lt;-------------看这里</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
-<p><font color='red'>可以发现实体机专门给docker机器独立了一个内网ip给docker，并且docker容器之间是可以相互ping同的</font></p>
+<p><font color="red">网路地址转换NAT</font><br>内网转外网<br><img src="http://img.noback.top/2020-02-06-22-21-07.png" alt="2020-02-06-22-21-07"></p>
+<h2 id="linux的网络命名空间namesapce"><a href="#linux的网络命名空间namesapce" class="headerlink" title="linux的网络命名空间namesapce"></a>linux的网络命名空间namesapce</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># sudo ip a | tail -6</span></span><br><span class="line">8: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default</span><br><span class="line">    link/ether 02:42:4f:aa:73:10 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.1/16 scope global docker0                  <-------------看这里</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fe80::42:4fff:feaa:7310/64 scope link    </span><br><span class="line">       valid_lft forever preferred_lft forever </span><br><span class="line">root:~<span class="hljs-comment"># docker run -it -d  --name b1 busybox  /bin/sh -c "while true; do sleep 3600;done"</span></span><br><span class="line">890e3e47feea65be2d11122e01739247d41cf45e9ff8a2b88157482ee02a3b6f</span><br><span class="line">root:~<span class="hljs-comment"># docker run -it -d  --name b2 busybox  /bin/sh -c "while true; do sleep 3600;done"</span></span><br><span class="line">db45d33d512104ec2d799bd45ba47095ffb5c1c8253ede8becb808c47b902f7b</span><br><span class="line">root:~<span class="hljs-comment"># dokcer exec -it b1 /bin/sh</span></span><br><span class="line">/ <span class="hljs-comment"># ls</span></span><br><span class="line">bin   dev   etc   home  proc  root  sys   tmp   usr   var</span><br><span class="line">/ <span class="hljs-comment"># ip a</span></span><br><span class="line">1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">167: eth0@if168: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1500 qdisc noqueue</span><br><span class="line">    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0         <-------------看这里</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">root:~<span class="hljs-comment"># docker exec -it b2 /bin/sh</span></span><br><span class="line">/ <span class="hljs-comment"># ip a</span></span><br><span class="line">1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">169: eth0@if170: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1500 qdisc noqueue</span><br><span class="line">    link/ether 02:42:ac:11:00:03 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.3/16 brd 172.17.255.255 scope global eth0           <-------------看这里</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></tbody></table></figure>
+<p><font color="red">可以发现实体机专门给docker机器独立了一个内网ip给docker，并且docker容器之间是可以相互ping同的</font></p>
 <h3 id="network-namespace管理工具"><a href="#network-namespace管理工具" class="headerlink" title="network namespace管理工具"></a>network namespace管理工具</h3><p><a href="https://www.cnblogs.com/bakari/p/10443484.html" target="_blank" rel="noopener">https://www.cnblogs.com/bakari/p/10443484.html</a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:~<span class="comment"># sudo ip netns help</span></span><br><span class="line">Usage: ip netns list</span><br><span class="line">       ip netns add NAME</span><br><span class="line">       ip netns <span class="built_in">set</span> NAME NETNSID</span><br><span class="line">       ip [-all] netns delete [NAME]</span><br><span class="line">       ip netns identify [PID]</span><br><span class="line">       ip netns pids NAME</span><br><span class="line">       ip [-all] netns <span class="built_in">exec</span> [NAME] cmd ...</span><br><span class="line">       ip netns monitor</span><br><span class="line">       ip netns list-id</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># sudo ip netns help</span></span><br><span class="line">Usage: ip netns list</span><br><span class="line">       ip netns add NAME</span><br><span class="line">       ip netns <span class="hljs-built_in">set</span> NAME NETNSID</span><br><span class="line">       ip [-all] netns delete [NAME]</span><br><span class="line">       ip netns identify [PID]</span><br><span class="line">       ip netns pids NAME</span><br><span class="line">       ip [-all] netns <span class="hljs-built_in">exec</span> [NAME] cmd ...</span><br><span class="line">       ip netns monitor</span><br><span class="line">       ip netns list-id</span><br></pre></td></tr></tbody></table></figure>
 <p>在docker中，我们安装了两个容器 b1 与 b2 同样的我们也可以用这个管理工具创建两个空间b1 b2 然后进入查看ip</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:~<span class="comment"># sudo ip netns add b1</span></span><br><span class="line">root:~<span class="comment"># sudo ip netns add b2</span></span><br><span class="line">root:~<span class="comment"># sudo ip netns exec b1 ip a</span></span><br><span class="line">1: lo: &lt;LOOPBACK&gt; mtu 65536 qdisc noop state DOWN group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">root:~<span class="comment"># sudo ip netns exec b2 ip a</span></span><br><span class="line">1: lo: &lt;LOOPBACK&gt; mtu 65536 qdisc noop state DOWN group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># sudo ip netns add b1</span></span><br><span class="line">root:~<span class="hljs-comment"># sudo ip netns add b2</span></span><br><span class="line">root:~<span class="hljs-comment"># sudo ip netns exec b1 ip a</span></span><br><span class="line">1: lo: <LOOPBACK> mtu 65536 qdisc noop state DOWN group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">root:~<span class="hljs-comment"># sudo ip netns exec b2 ip a</span></span><br><span class="line">1: lo: <LOOPBACK> mtu 65536 qdisc noop state DOWN group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br></pre></td></tr></tbody></table></figure>
 <p>可以看到在b1 b2两个空间中都有一张网卡，使用link将它开启</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:~<span class="comment"># sudo ip netns exec b1 ip link set dev lo up</span></span><br><span class="line">root:~<span class="comment"># sudo ip netns exec b2 ip link set dev lo up</span></span><br><span class="line">root:~<span class="comment"># sudo ip netns exec b1 ip a</span></span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">root:~<span class="comment"># sudo ip netns exec b2 ip a</span></span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># sudo ip netns exec b1 ip link set dev lo up</span></span><br><span class="line">root:~<span class="hljs-comment"># sudo ip netns exec b2 ip link set dev lo up</span></span><br><span class="line">root:~<span class="hljs-comment"># sudo ip netns exec b1 ip a</span></span><br><span class="line">1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">root:~<span class="hljs-comment"># sudo ip netns exec b2 ip a</span></span><br><span class="line">1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></tbody></table></figure>
 <p>现在只有本地的回环口,添加一队veth</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:~<span class="comment"># sudo ip link add veth-test1 type veth peer name veth-test2</span></span><br><span class="line">root:~<span class="comment"># sudo ip link</span></span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">7: enp1s0f1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000</span><br><span class="line">    link/ether 00:1b:21:bf:0d:9e brd ff:ff:ff:ff:ff:ff</span><br><span class="line">8: docker0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP mode DEFAULT group default</span><br><span class="line">    link/ether 02:42:4f:aa:73:10 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">168: veth5b2efd9@if167: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP mode DEFAULT group default</span><br><span class="line">    link/ether c6:64:94:8a:43:0a brd ff:ff:ff:ff:ff:ff link-netnsid 0</span><br><span class="line">170: veth6d83aa9@if169: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP mode DEFAULT group default</span><br><span class="line">    link/ether 36:a5:3e:2a:69:f7 brd ff:ff:ff:ff:ff:ff link-netnsid 1</span><br><span class="line">171: veth-test2@veth-test1: &lt;BROADCAST,MULTICAST,M-DOWN&gt; mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000</span><br><span class="line">    link/ether 56:0d:bc:10:fa:c0 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">172: veth-test1@veth-test2: &lt;BROADCAST,MULTICAST,M-DOWN&gt; mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000</span><br><span class="line">    link/ether be:37:b1:1c:09:55 brd ff:ff:ff:ff:ff:ff</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># sudo ip link add veth-test1 type veth peer name veth-test2</span></span><br><span class="line">root:~<span class="hljs-comment"># sudo ip link</span></span><br><span class="line">1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">7: enp1s0f1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000</span><br><span class="line">    link/ether 00:1b:21:bf:0d:9e brd ff:ff:ff:ff:ff:ff</span><br><span class="line">8: docker0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default</span><br><span class="line">    link/ether 02:42:4f:aa:73:10 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">168: veth5b2efd9@if167: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master docker0 state UP mode DEFAULT group default</span><br><span class="line">    link/ether c6:64:94:8a:43:0a brd ff:ff:ff:ff:ff:ff link-netnsid 0</span><br><span class="line">170: veth6d83aa9@if169: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master docker0 state UP mode DEFAULT group default</span><br><span class="line">    link/ether 36:a5:3e:2a:69:f7 brd ff:ff:ff:ff:ff:ff link-netnsid 1</span><br><span class="line">171: veth-test2@veth-test1: <BROADCAST,MULTICAST,M-DOWN> mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000</span><br><span class="line">    link/ether 56:0d:bc:10:fa:c0 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">172: veth-test1@veth-test2: <BROADCAST,MULTICAST,M-DOWN> mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000</span><br><span class="line">    link/ether be:37:b1:1c:09:55 brd ff:ff:ff:ff:ff:ff</span><br></pre></td></tr></tbody></table></figure>
 <p>添加到建立的namespace中去</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:~<span class="comment"># sudo ip link set veth-test1 netns b1</span></span><br><span class="line">root:~<span class="comment"># sudo ip link set veth-test2 netns b2</span></span><br><span class="line">root:~<span class="comment"># sudo ip netns exec b1 ip link</span></span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">172: veth-test1@if171: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000</span><br><span class="line">    link/ether be:37:b1:1c:09:55 brd ff:ff:ff:ff:ff:ff link-netnsid 1</span><br><span class="line">root:~<span class="comment"># sudo ip netns exec b2 ip link</span></span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">171: veth-test2@if172: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000</span><br><span class="line">    link/ether 56:0d:bc:10:fa:c0 brd ff:ff:ff:ff:ff:ff link-netnsid 0</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># sudo ip link set veth-test1 netns b1</span></span><br><span class="line">root:~<span class="hljs-comment"># sudo ip link set veth-test2 netns b2</span></span><br><span class="line">root:~<span class="hljs-comment"># sudo ip netns exec b1 ip link</span></span><br><span class="line">1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">172: veth-test1@if171: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000</span><br><span class="line">    link/ether be:37:b1:1c:09:55 brd ff:ff:ff:ff:ff:ff link-netnsid 1</span><br><span class="line">root:~<span class="hljs-comment"># sudo ip netns exec b2 ip link</span></span><br><span class="line">1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">171: veth-test2@if172: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000</span><br><span class="line">    link/ether 56:0d:bc:10:fa:c0 brd ff:ff:ff:ff:ff:ff link-netnsid 0</span><br></pre></td></tr></tbody></table></figure>
 <p>分配ip</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:~<span class="comment"># sudo ip netns exec b1 ip addr add 192.168.20.1/24 dev veth-test1</span></span><br><span class="line">root:~<span class="comment"># sudo ip netns exec b2 ip addr add 192.168.20.2/24 dev veth-test2</span></span><br><span class="line">root:~<span class="comment"># sudo ip netns exec b1 ip link set dev veth-test1 up</span></span><br><span class="line">root:~<span class="comment"># sudo ip netns exec b2 ip link set dev veth-test2 up</span></span><br><span class="line">root:~<span class="comment"># sudo ip netns exec b1 ip a</span></span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">172: veth-test1@if171: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default qlen 1000</span><br><span class="line">    link/ether be:37:b1:1c:09:55 brd ff:ff:ff:ff:ff:ff link-netnsid 1</span><br><span class="line">    inet 192.168.20.1/24 scope global veth-test1</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fe80::bc37:b1ff:fe1c:955/64 scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">root:~<span class="comment"># sudo ip netns exec b2 ip a</span></span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">171: veth-test2@if172: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default qlen 1000</span><br><span class="line">    link/ether 56:0d:bc:10:fa:c0 brd ff:ff:ff:ff:ff:ff link-netnsid 0</span><br><span class="line">    inet 192.168.20.2/24 scope global veth-test2</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fe80::540d:bcff:fe10:fac0/64 scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># sudo ip netns exec b1 ip addr add 192.168.20.1/24 dev veth-test1</span></span><br><span class="line">root:~<span class="hljs-comment"># sudo ip netns exec b2 ip addr add 192.168.20.2/24 dev veth-test2</span></span><br><span class="line">root:~<span class="hljs-comment"># sudo ip netns exec b1 ip link set dev veth-test1 up</span></span><br><span class="line">root:~<span class="hljs-comment"># sudo ip netns exec b2 ip link set dev veth-test2 up</span></span><br><span class="line">root:~<span class="hljs-comment"># sudo ip netns exec b1 ip a</span></span><br><span class="line">1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">172: veth-test1@if171: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000</span><br><span class="line">    link/ether be:37:b1:1c:09:55 brd ff:ff:ff:ff:ff:ff link-netnsid 1</span><br><span class="line">    inet 192.168.20.1/24 scope global veth-test1</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fe80::bc37:b1ff:fe1c:955/64 scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">root:~<span class="hljs-comment"># sudo ip netns exec b2 ip a</span></span><br><span class="line">1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">171: veth-test2@if172: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000</span><br><span class="line">    link/ether 56:0d:bc:10:fa:c0 brd ff:ff:ff:ff:ff:ff link-netnsid 0</span><br><span class="line">    inet 192.168.20.2/24 scope global veth-test2</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fe80::540d:bcff:fe10:fac0/64 scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></tbody></table></figure>
 <p>测试是否连通</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:~<span class="comment"># sudo ip netns exec b2 ping 192.168.20.1</span></span><br><span class="line">PING 192.168.20.1 (192.168.20.1) 56(84) bytes of data.</span><br><span class="line">64 bytes from 192.168.20.1: icmp_seq=1 ttl=64 time=0.045 ms</span><br><span class="line">64 bytes from 192.168.20.1: icmp_seq=2 ttl=64 time=0.035 ms</span><br><span class="line">64 bytes from 192.168.20.1: icmp_seq=3 ttl=64 time=0.045 ms</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># sudo ip netns exec b2 ping 192.168.20.1</span></span><br><span class="line">PING 192.168.20.1 (192.168.20.1) 56(84) bytes of data.</span><br><span class="line">64 bytes from 192.168.20.1: icmp_seq=1 ttl=64 time=0.045 ms</span><br><span class="line">64 bytes from 192.168.20.1: icmp_seq=2 ttl=64 time=0.035 ms</span><br><span class="line">64 bytes from 192.168.20.1: icmp_seq=3 ttl=64 time=0.045 ms</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="http://img.noback.top/2020-02-06-23-14-30.png" alt="2020-02-06-23-14-30"></p>
-<h2 id="docker网络管理工具"><a href="#docker网络管理工具" class="headerlink" title="docker网络管理工具"></a>docker网络管理工具</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看dokcer状态</span></span><br><span class="line">root:~<span class="comment"># docker network ls</span></span><br><span class="line">NETWORK ID          NAME                DRIVER              SCOPE</span><br><span class="line">dcb97917d7b9        bridge              bridge              <span class="built_in">local</span>  <span class="comment"># 网桥连接</span></span><br><span class="line">fd363f5c42dc        host                host                <span class="built_in">local</span></span><br><span class="line">2e0f440a1b7b        none                null                <span class="built_in">local</span></span><br></pre></td></tr></table></figure>
+<h2 id="docker网络管理工具"><a href="#docker网络管理工具" class="headerlink" title="docker网络管理工具"></a>docker网络管理工具</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看dokcer状态</span></span><br><span class="line">root:~<span class="hljs-comment"># docker network ls</span></span><br><span class="line">NETWORK ID          NAME                DRIVER              SCOPE</span><br><span class="line">dcb97917d7b9        bridge              bridge              <span class="hljs-built_in">local</span>  <span class="hljs-comment"># 网桥连接</span></span><br><span class="line">fd363f5c42dc        host                host                <span class="hljs-built_in">local</span></span><br><span class="line">2e0f440a1b7b        none                null                <span class="hljs-built_in">local</span></span><br></pre></td></tr></tbody></table></figure>
 
 <p>安装bridge-utils，这个是一种网桥状态查看工具</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install bridge-utils -y</span><br><span class="line"></span><br><span class="line">root:~<span class="comment"># sudo brctl</span></span><br><span class="line">Usage: brctl [commands]</span><br><span class="line">commands:</span><br><span class="line">        addbr           &lt;bridge&gt;                add bridge</span><br><span class="line">        delbr           &lt;bridge&gt;                delete bridge</span><br><span class="line">        addif           &lt;bridge&gt; &lt;device&gt;       add interface to bridge</span><br><span class="line">        delif           &lt;bridge&gt; &lt;device&gt;       delete interface from bridge</span><br><span class="line">        hairpin         &lt;bridge&gt; &lt;port&gt; &#123;on|off&#125;        turn hairpin on/off</span><br><span class="line">        setageing       &lt;bridge&gt; &lt;time&gt;         <span class="built_in">set</span> ageing time</span><br><span class="line">        setbridgeprio   &lt;bridge&gt; &lt;prio&gt;         <span class="built_in">set</span> bridge priority</span><br><span class="line">        setfd           &lt;bridge&gt; &lt;time&gt;         <span class="built_in">set</span> bridge forward delay</span><br><span class="line">        sethello        &lt;bridge&gt; &lt;time&gt;         <span class="built_in">set</span> hello time</span><br><span class="line">        setmaxage       &lt;bridge&gt; &lt;time&gt;         <span class="built_in">set</span> max message age</span><br><span class="line">        setpathcost     &lt;bridge&gt; &lt;port&gt; &lt;cost&gt;  <span class="built_in">set</span> path cost</span><br><span class="line">        setportprio     &lt;bridge&gt; &lt;port&gt; &lt;prio&gt;  <span class="built_in">set</span> port priority</span><br><span class="line">        show            [ &lt;bridge&gt; ]            show a list of bridges</span><br><span class="line">        showmacs        &lt;bridge&gt;                show a list of mac addrs</span><br><span class="line">        showstp         &lt;bridge&gt;                show bridge stp info</span><br><span class="line">        stp             &lt;bridge&gt; &#123;on|off&#125;       turn stp on/off</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">yum install bridge-utils -y</span><br><span class="line"></span><br><span class="line">root:~<span class="hljs-comment"># sudo brctl</span></span><br><span class="line">Usage: brctl [commands]</span><br><span class="line">commands:</span><br><span class="line">        addbr           <bridge>                add bridge</span><br><span class="line">        delbr           <bridge>                delete bridge</span><br><span class="line">        addif           <bridge> <device>       add interface to bridge</span><br><span class="line">        delif           <bridge> <device>       delete interface from bridge</span><br><span class="line">        hairpin         <bridge> <port> {on|off}        turn hairpin on/off</span><br><span class="line">        setageing       <bridge> <time>         <span class="hljs-built_in">set</span> ageing time</span><br><span class="line">        setbridgeprio   <bridge> <prio>         <span class="hljs-built_in">set</span> bridge priority</span><br><span class="line">        setfd           <bridge> <time>         <span class="hljs-built_in">set</span> bridge forward delay</span><br><span class="line">        sethello        <bridge> <time>         <span class="hljs-built_in">set</span> hello time</span><br><span class="line">        setmaxage       <bridge> <time>         <span class="hljs-built_in">set</span> max message age</span><br><span class="line">        setpathcost     <bridge> <port> <cost>  <span class="hljs-built_in">set</span> path cost</span><br><span class="line">        setportprio     <bridge> <port> <prio>  <span class="hljs-built_in">set</span> port priority</span><br><span class="line">        show            [ <bridge> ]            show a list of bridges</span><br><span class="line">        showmacs        <bridge>                show a list of mac addrs</span><br><span class="line">        showstp         <bridge>                show bridge stp info</span><br><span class="line">        stp             <bridge> {on|off}       turn stp on/off</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="容器与容器之间如何互联"><a href="#容器与容器之间如何互联" class="headerlink" title="容器与容器之间如何互联"></a>容器与容器之间如何互联</h2><p>之前做的network namespace是通过veth来形成对，达到两个namespace的空间进行ip通信，在docker中则是使用docker0(bridge)进行ip通信的 </p>
 <p>开启两个docker容器</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:~<span class="comment"># docker run -it -d  --name b1 busybox  /bin/sh -c "while true; do sleep 3600;done"</span></span><br><span class="line">890e3e47feea65be2d11122e01739247d41cf45e9ff8a2b88157482ee02a3b6f</span><br><span class="line">root:~<span class="comment"># docker run -it -d  --name b2 busybox  /bin/sh -c "while true; do sleep 3600;done"</span></span><br><span class="line">db45d33d512104ec2d799bd45ba47095ffb5c1c8253ede8becb808c47b902f7b</span><br><span class="line">root:~<span class="comment"># docker ps</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES</span><br><span class="line">db45d33d5121        busybox             <span class="string">"/bin/sh -c 'while t…"</span>   About an hour ago   Up About an hour                        b2</span><br><span class="line">890e3e47feea        busybox             <span class="string">"/bin/sh -c 'while t…"</span>   About an hour ago   Up About an hour                        b1</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># docker run -it -d  --name b1 busybox  /bin/sh -c "while true; do sleep 3600;done"</span></span><br><span class="line">890e3e47feea65be2d11122e01739247d41cf45e9ff8a2b88157482ee02a3b6f</span><br><span class="line">root:~<span class="hljs-comment"># docker run -it -d  --name b2 busybox  /bin/sh -c "while true; do sleep 3600;done"</span></span><br><span class="line">db45d33d512104ec2d799bd45ba47095ffb5c1c8253ede8becb808c47b902f7b</span><br><span class="line">root:~<span class="hljs-comment"># docker ps</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES</span><br><span class="line">db45d33d5121        busybox             <span class="hljs-string">"/bin/sh -c 'while t…"</span>   About an hour ago   Up About an hour                        b2</span><br><span class="line">890e3e47feea        busybox             <span class="hljs-string">"/bin/sh -c 'while t…"</span>   About an hour ago   Up About an hour                        b1</span><br></pre></td></tr></tbody></table></figure>
 <p>查看本机网卡状态</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:~<span class="comment"># sudo ip link | tail -6</span></span><br><span class="line">8: docker0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP mode DEFAULT group default</span><br><span class="line">    link/ether 02:42:4f:aa:73:10 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">168: veth5b2efd9@if167: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP mode DEFAULT group default</span><br><span class="line">    link/ether c6:64:94:8a:43:0a brd ff:ff:ff:ff:ff:ff link-netnsid 0</span><br><span class="line">170: veth6d83aa9@if169: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP mode DEFAULT group default</span><br><span class="line">    link/ether 36:a5:3e:2a:69:f7 brd ff:ff:ff:ff:ff:ff link-netnsid 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># sudo ip link | tail -6</span></span><br><span class="line">8: docker0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default</span><br><span class="line">    link/ether 02:42:4f:aa:73:10 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">168: veth5b2efd9@if167: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master docker0 state UP mode DEFAULT group default</span><br><span class="line">    link/ether c6:64:94:8a:43:0a brd ff:ff:ff:ff:ff:ff link-netnsid 0</span><br><span class="line">170: veth6d83aa9@if169: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master docker0 state UP mode DEFAULT group default</span><br><span class="line">    link/ether 36:a5:3e:2a:69:f7 brd ff:ff:ff:ff:ff:ff link-netnsid 1</span><br></pre></td></tr></tbody></table></figure>
 <p>查看网桥状态</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:~<span class="comment"># sudo brctl show</span></span><br><span class="line">bridge name     bridge id               STP enabled     interfaces</span><br><span class="line">docker0         8000.02424faa7310       no              veth5b2efd9</span><br><span class="line">                                                        veth6d83aa9</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># sudo brctl show</span></span><br><span class="line">bridge name     bridge id               STP enabled     interfaces</span><br><span class="line">docker0         8000.02424faa7310       no              veth5b2efd9</span><br><span class="line">                                                        veth6d83aa9</span><br></pre></td></tr></tbody></table></figure>
 <p>我们会法相两个interface正好对应网卡中的dev,其实这是容器连接外部host主机的两个接口<br>查看两个容器内部的接口</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:~<span class="comment"># docker exec -it b1 ip a</span></span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">167: eth0@if168: &lt;BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN&gt; mtu 1500 qdisc noqueue</span><br><span class="line">    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">root:~<span class="comment"># docker exec -it b2 ip a</span></span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">169: eth0@if170: &lt;BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN&gt; mtu 1500 qdisc noqueue</span><br><span class="line">    link/ether 02:42:ac:11:00:03 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.3/16 brd 172.17.255.255 scope global eth0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># docker exec -it b1 ip a</span></span><br><span class="line">1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">167: eth0@if168: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1500 qdisc noqueue</span><br><span class="line">    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">root:~<span class="hljs-comment"># docker exec -it b2 ip a</span></span><br><span class="line">1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">169: eth0@if170: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1500 qdisc noqueue</span><br><span class="line">    link/ether 02:42:ac:11:00:03 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.3/16 brd 172.17.255.255 scope global eth0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></tbody></table></figure>
 <p>内部通过eth0连接docker0 </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker network inspect bridge</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker network inspect bridge</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="http://img.noback.top/2020-02-07-00-01-42.png" alt="2020-02-07-00-01-42"></p>
 <h2 id="容器与外界互联"><a href="#容器与外界互联" class="headerlink" title="容器与外界互联"></a>容器与外界互联</h2><p>主要是做nat内外网地址转发<br><img src="http://img.noback.top/2020-02-07-00-03-58.png" alt="2020-02-07-00-03-58"></p>
 <h2 id="docker容器之间的link"><a href="#docker容器之间的link" class="headerlink" title="docker容器之间的link"></a>docker容器之间的link</h2><p>可以直接通过ping name的形式ping ip<br>创建一个容器</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:~<span class="comment"># docker run -it -d  --name b1 busybox  /bin/sh -c "while true; do sleep 3600;done"</span></span><br><span class="line">890e3e47feea65be2d11122e01739247d41cf45e9ff8a2b88157482ee02a3b6f</span><br><span class="line">root:~<span class="comment"># docker ps</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES</span><br><span class="line">db45d33d5121        busybox             <span class="string">"/bin/sh -c 'while t…"</span>   About an hour ago   Up About an hour                        b2</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># docker run -it -d  --name b1 busybox  /bin/sh -c "while true; do sleep 3600;done"</span></span><br><span class="line">890e3e47feea65be2d11122e01739247d41cf45e9ff8a2b88157482ee02a3b6f</span><br><span class="line">root:~<span class="hljs-comment"># docker ps</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES</span><br><span class="line">db45d33d5121        busybox             <span class="hljs-string">"/bin/sh -c 'while t…"</span>   About an hour ago   Up About an hour                        b2</span><br></pre></td></tr></tbody></table></figure>
 <p>创建第二个容器，在创建的过程中，通过–link连接到b1</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:~<span class="comment"># docker run -it --link b1 busybox</span></span><br><span class="line">/ <span class="comment"># ping b1</span></span><br><span class="line">PING b1 (172.17.0.2): 56 data bytes</span><br><span class="line">64 bytes from 172.17.0.2: seq=0 ttl=64 time=0.248 ms</span><br><span class="line">64 bytes from 172.17.0.2: seq=1 ttl=64 time=0.102 ms</span><br></pre></td></tr></table></figure>
-<p><font color='red'>link只是单向的连接，并不是双向连接</font></p>
-<p><font color='blue'>有一个例外，由于docker0的bridge是系统默认已经创建好的，上面的容器是没有link的，但是我们创建了自己的bridge  new-bridge，上面的容器默认是已经互相link的</font></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># docker run -it --link b1 busybox</span></span><br><span class="line">/ <span class="hljs-comment"># ping b1</span></span><br><span class="line">PING b1 (172.17.0.2): 56 data bytes</span><br><span class="line">64 bytes from 172.17.0.2: seq=0 ttl=64 time=0.248 ms</span><br><span class="line">64 bytes from 172.17.0.2: seq=1 ttl=64 time=0.102 ms</span><br></pre></td></tr></tbody></table></figure>
+<p><font color="red">link只是单向的连接，并不是双向连接</font></p>
+<p><font color="blue">有一个例外，由于docker0的bridge是系统默认已经创建好的，上面的容器是没有link的，但是我们创建了自己的bridge  new-bridge，上面的容器默认是已经互相link的</font></p>
 <h2 id="自建docker网络桥接"><a href="#自建docker网络桥接" class="headerlink" title="自建docker网络桥接"></a>自建docker网络桥接</h2><p>docker默认有三种形式的连接</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:~<span class="comment"># docker network ls</span></span><br><span class="line">NETWORK ID          NAME                DRIVER              SCOPE</span><br><span class="line">dcb97917d7b9        bridge              bridge              <span class="built_in">local</span>   &lt;----叫做docker0</span><br><span class="line">fd363f5c42dc        host                host                <span class="built_in">local</span></span><br><span class="line">2e0f440a1b7b        none                null                <span class="built_in">local</span> </span><br><span class="line">root:~<span class="comment"># sudo brctl show</span></span><br><span class="line">bridge name     bridge id               STP enabled     interfaces</span><br><span class="line">docker0         8000.02424faa7310       no              veth5b2efd9</span><br><span class="line">                                                        veth74e040d</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># docker network ls</span></span><br><span class="line">NETWORK ID          NAME                DRIVER              SCOPE</span><br><span class="line">dcb97917d7b9        bridge              bridge              <span class="hljs-built_in">local</span>   <----叫做docker0</span><br><span class="line">fd363f5c42dc        host                host                <span class="hljs-built_in">local</span></span><br><span class="line">2e0f440a1b7b        none                null                <span class="hljs-built_in">local</span> </span><br><span class="line">root:~<span class="hljs-comment"># sudo brctl show</span></span><br><span class="line">bridge name     bridge id               STP enabled     interfaces</span><br><span class="line">docker0         8000.02424faa7310       no              veth5b2efd9</span><br><span class="line">                                                        veth74e040d</span><br></pre></td></tr></tbody></table></figure>
 <p>其中容器之间使用bridge进行连接的，但我们也可以自己创建</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:~<span class="comment"># docker network create -d bridge new-bridge</span></span><br><span class="line">a52b83252b814bbe2299142fb25551e6734b311fce3d749d12b7d1b2defd0d41</span><br><span class="line">root:~<span class="comment"># docker network ls</span></span><br><span class="line">NETWORK ID          NAME                DRIVER              SCOPE</span><br><span class="line">dcb97917d7b9        bridge              bridge              <span class="built_in">local</span>   &lt;----叫做docker0</span><br><span class="line">fd363f5c42dc        host                host                <span class="built_in">local</span></span><br><span class="line">a52b83252b81        new-bridge          bridge              <span class="built_in">local</span>   &lt;----叫做br-a52b83252b81</span><br><span class="line">2e0f440a1b7b        none                null                <span class="built_in">local</span> </span><br><span class="line">root:~<span class="comment"># sudo brctl show</span></span><br><span class="line">bridge name     bridge id               STP enabled     interfaces</span><br><span class="line">br-a52b83252b81         8000.02429efea748       no</span><br><span class="line">docker0         8000.02424faa7310       no              veth5b2efd9</span><br><span class="line">                                                        veth74e040d</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># docker network create -d bridge new-bridge</span></span><br><span class="line">a52b83252b814bbe2299142fb25551e6734b311fce3d749d12b7d1b2defd0d41</span><br><span class="line">root:~<span class="hljs-comment"># docker network ls</span></span><br><span class="line">NETWORK ID          NAME                DRIVER              SCOPE</span><br><span class="line">dcb97917d7b9        bridge              bridge              <span class="hljs-built_in">local</span>   <----叫做docker0</span><br><span class="line">fd363f5c42dc        host                host                <span class="hljs-built_in">local</span></span><br><span class="line">a52b83252b81        new-bridge          bridge              <span class="hljs-built_in">local</span>   <----叫做br-a52b83252b81</span><br><span class="line">2e0f440a1b7b        none                null                <span class="hljs-built_in">local</span> </span><br><span class="line">root:~<span class="hljs-comment"># sudo brctl show</span></span><br><span class="line">bridge name     bridge id               STP enabled     interfaces</span><br><span class="line">br-a52b83252b81         8000.02429efea748       no</span><br><span class="line">docker0         8000.02424faa7310       no              veth5b2efd9</span><br><span class="line">                                                        veth74e040d</span><br></pre></td></tr></tbody></table></figure>
 <p>创建新容器的时候指定bridge</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:~<span class="comment"># docker run -it -d  --name b4 --network new-bridge  busybox  /bin/sh -c "while true; do sleep 3600;done"</span></span><br><span class="line">a60bdef872f7c16305b32920d60e4d973bcd5329a912eaff32b476debf3e6aaa</span><br><span class="line">root:~<span class="comment"># sudo brctl show</span></span><br><span class="line">bridge name     bridge id               STP enabled     interfaces</span><br><span class="line">br-a52b83252b81         8000.02429efea748       no              veth8b0f5f0</span><br><span class="line">docker0         8000.02424faa7310       no              veth5b2efd9</span><br><span class="line">                                                        veth74e040d</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># docker run -it -d  --name b4 --network new-bridge  busybox  /bin/sh -c "while true; do sleep 3600;done"</span></span><br><span class="line">a60bdef872f7c16305b32920d60e4d973bcd5329a912eaff32b476debf3e6aaa</span><br><span class="line">root:~<span class="hljs-comment"># sudo brctl show</span></span><br><span class="line">bridge name     bridge id               STP enabled     interfaces</span><br><span class="line">br-a52b83252b81         8000.02429efea748       no              veth8b0f5f0</span><br><span class="line">docker0         8000.02424faa7310       no              veth5b2efd9</span><br><span class="line">                                                        veth74e040d</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="修改旧容器到指定bridge"><a href="#修改旧容器到指定bridge" class="headerlink" title="修改旧容器到指定bridge"></a>修改旧容器到指定bridge</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker network connect new-bridge b1</span><br><span class="line">docker network connect new-bridge b2</span><br></pre></td></tr></table></figure>
+<h3 id="修改旧容器到指定bridge"><a href="#修改旧容器到指定bridge" class="headerlink" title="修改旧容器到指定bridge"></a>修改旧容器到指定bridge</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker network connect new-bridge b1</span><br><span class="line">docker network connect new-bridge b2</span><br></pre></td></tr></tbody></table></figure>
 <p>这时候其实是我们又给容器新添了一张网卡</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:~<span class="comment"># docker exec b2 ip a</span></span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">179: eth0@if180: &lt;BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN&gt; mtu 1500 qdisc noqueue</span><br><span class="line">    link/ether 02:42:ac:11:00:03 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.3/16 brd 172.17.255.255 scope global eth0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">190: eth1@if191: &lt;BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN&gt; mtu 1500 qdisc noqueue</span><br><span class="line">    link/ether 02:42:ac:12:00:04 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.18.0.4/16 brd 172.18.255.255 scope global eth1</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># docker exec b2 ip a</span></span><br><span class="line">1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">179: eth0@if180: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1500 qdisc noqueue</span><br><span class="line">    link/ether 02:42:ac:11:00:03 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.3/16 brd 172.17.255.255 scope global eth0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">190: eth1@if191: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1500 qdisc noqueue</span><br><span class="line">    link/ether 02:42:ac:12:00:04 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.18.0.4/16 brd 172.18.255.255 scope global eth1</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></tbody></table></figure>
 <p>查看bridge</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root:~<span class="comment"># sudo brctl show</span></span><br><span class="line">bridge name     bridge id               STP enabled     interfaces</span><br><span class="line">br-a52b83252b81         8000.02429efea748       no              veth1ce8b2f</span><br><span class="line">                                                        veth7001337</span><br><span class="line">                                                        veth8b0f5f0</span><br><span class="line">docker0         8000.02424faa7310       no              veth5b2efd9</span><br><span class="line">                                                        veth74e040d</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">root:~<span class="hljs-comment"># sudo brctl show</span></span><br><span class="line">bridge name     bridge id               STP enabled     interfaces</span><br><span class="line">br-a52b83252b81         8000.02429efea748       no              veth1ce8b2f</span><br><span class="line">                                                        veth7001337</span><br><span class="line">                                                        veth8b0f5f0</span><br><span class="line">docker0         8000.02424faa7310       no              veth5b2efd9</span><br><span class="line">                                                        veth74e040d</span><br></pre></td></tr></tbody></table></figure>
 <p>查看bridge详情</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># docker0的网卡</span></span><br><span class="line">docker network inspect bridge</span><br><span class="line"><span class="string">"Containers"</span>: &#123;</span><br><span class="line">            <span class="string">"890e3e47feea65be2d11122e01739247d41cf45e9ff8a2b88157482ee02a3b6f"</span>: &#123;</span><br><span class="line">                <span class="string">"Name"</span>: <span class="string">"b1"</span>,</span><br><span class="line">                <span class="string">"EndpointID"</span>: <span class="string">"13c791d9040e3cb9521e53ef0e56b6f87b9564d9ad3e6af4ee38bd2d8fdc53b5"</span>,</span><br><span class="line">                <span class="string">"MacAddress"</span>: <span class="string">"02:42:ac:11:00:02"</span>,</span><br><span class="line">                <span class="string">"IPv4Address"</span>: <span class="string">"172.17.0.2/16"</span>,</span><br><span class="line">                <span class="string">"IPv6Address"</span>: <span class="string">""</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">"db45d33d512104ec2d799bd45ba47095ffb5c1c8253ede8becb808c47b902f7b"</span>: &#123;</span><br><span class="line">                <span class="string">"Name"</span>: <span class="string">"b2"</span>,</span><br><span class="line">                <span class="string">"EndpointID"</span>: <span class="string">"d155a2a32b4db93753084739ee81710c83c397c8fdf7aa2d799ccad123fa71c9"</span>,</span><br><span class="line">                <span class="string">"MacAddress"</span>: <span class="string">"02:42:ac:11:00:03"</span>,</span><br><span class="line">                <span class="string">"IPv4Address"</span>: <span class="string">"172.17.0.3/16"</span>,</span><br><span class="line">                <span class="string">"IPv6Address"</span>: <span class="string">""</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line"><span class="comment"># new-bridge的网卡</span></span><br><span class="line">docker network inspect new-bridge</span><br><span class="line"> <span class="string">"Containers"</span>: &#123;</span><br><span class="line">            <span class="string">"890e3e47feea65be2d11122e01739247d41cf45e9ff8a2b88157482ee02a3b6f"</span>: &#123;</span><br><span class="line">                <span class="string">"Name"</span>: <span class="string">"b1"</span>,</span><br><span class="line">                <span class="string">"EndpointID"</span>: <span class="string">"8cd4ff8ff0b032fb72cdfaa3b02b16b9e564c75f2d8844e5cad680b02e76387a"</span>,</span><br><span class="line">                <span class="string">"MacAddress"</span>: <span class="string">"02:42:ac:12:00:03"</span>,</span><br><span class="line">                <span class="string">"IPv4Address"</span>: <span class="string">"172.18.0.3/16"</span>,</span><br><span class="line">                <span class="string">"IPv6Address"</span>: <span class="string">""</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">"a60bdef872f7c16305b32920d60e4d973bcd5329a912eaff32b476debf3e6aaa"</span>: &#123;</span><br><span class="line">                <span class="string">"Name"</span>: <span class="string">"b4"</span>,</span><br><span class="line">                <span class="string">"EndpointID"</span>: <span class="string">"e41fb0b3e878af1596e80f2752fcc1dff2ac68a00d53163aded9aea31ead893d"</span>,</span><br><span class="line">                <span class="string">"MacAddress"</span>: <span class="string">"02:42:ac:12:00:02"</span>,</span><br><span class="line">                <span class="string">"IPv4Address"</span>: <span class="string">"172.18.0.2/16"</span>,</span><br><span class="line">                <span class="string">"IPv6Address"</span>: <span class="string">""</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">"db45d33d512104ec2d799bd45ba47095ffb5c1c8253ede8becb808c47b902f7b"</span>: &#123;</span><br><span class="line">                <span class="string">"Name"</span>: <span class="string">"b2"</span>,</span><br><span class="line">                <span class="string">"EndpointID"</span>: <span class="string">"e77bf7b9ae54e3f652fa4e053c683f85ec3c4308c50ca8225d8722ddbae2e474"</span>,</span><br><span class="line">                <span class="string">"MacAddress"</span>: <span class="string">"02:42:ac:12:00:04"</span>,</span><br><span class="line">                <span class="string">"IPv4Address"</span>: <span class="string">"172.18.0.4/16"</span>,</span><br><span class="line">                <span class="string">"IPv6Address"</span>: <span class="string">""</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># docker0的网卡</span></span><br><span class="line">docker network inspect bridge</span><br><span class="line"><span class="hljs-string">"Containers"</span>: {</span><br><span class="line">            <span class="hljs-string">"890e3e47feea65be2d11122e01739247d41cf45e9ff8a2b88157482ee02a3b6f"</span>: {</span><br><span class="line">                <span class="hljs-string">"Name"</span>: <span class="hljs-string">"b1"</span>,</span><br><span class="line">                <span class="hljs-string">"EndpointID"</span>: <span class="hljs-string">"13c791d9040e3cb9521e53ef0e56b6f87b9564d9ad3e6af4ee38bd2d8fdc53b5"</span>,</span><br><span class="line">                <span class="hljs-string">"MacAddress"</span>: <span class="hljs-string">"02:42:ac:11:00:02"</span>,</span><br><span class="line">                <span class="hljs-string">"IPv4Address"</span>: <span class="hljs-string">"172.17.0.2/16"</span>,</span><br><span class="line">                <span class="hljs-string">"IPv6Address"</span>: <span class="hljs-string">""</span></span><br><span class="line">            },</span><br><span class="line">            <span class="hljs-string">"db45d33d512104ec2d799bd45ba47095ffb5c1c8253ede8becb808c47b902f7b"</span>: {</span><br><span class="line">                <span class="hljs-string">"Name"</span>: <span class="hljs-string">"b2"</span>,</span><br><span class="line">                <span class="hljs-string">"EndpointID"</span>: <span class="hljs-string">"d155a2a32b4db93753084739ee81710c83c397c8fdf7aa2d799ccad123fa71c9"</span>,</span><br><span class="line">                <span class="hljs-string">"MacAddress"</span>: <span class="hljs-string">"02:42:ac:11:00:03"</span>,</span><br><span class="line">                <span class="hljs-string">"IPv4Address"</span>: <span class="hljs-string">"172.17.0.3/16"</span>,</span><br><span class="line">                <span class="hljs-string">"IPv6Address"</span>: <span class="hljs-string">""</span></span><br><span class="line">            }</span><br><span class="line">        },</span><br><span class="line"><span class="hljs-comment"># new-bridge的网卡</span></span><br><span class="line">docker network inspect new-bridge</span><br><span class="line"> <span class="hljs-string">"Containers"</span>: {</span><br><span class="line">            <span class="hljs-string">"890e3e47feea65be2d11122e01739247d41cf45e9ff8a2b88157482ee02a3b6f"</span>: {</span><br><span class="line">                <span class="hljs-string">"Name"</span>: <span class="hljs-string">"b1"</span>,</span><br><span class="line">                <span class="hljs-string">"EndpointID"</span>: <span class="hljs-string">"8cd4ff8ff0b032fb72cdfaa3b02b16b9e564c75f2d8844e5cad680b02e76387a"</span>,</span><br><span class="line">                <span class="hljs-string">"MacAddress"</span>: <span class="hljs-string">"02:42:ac:12:00:03"</span>,</span><br><span class="line">                <span class="hljs-string">"IPv4Address"</span>: <span class="hljs-string">"172.18.0.3/16"</span>,</span><br><span class="line">                <span class="hljs-string">"IPv6Address"</span>: <span class="hljs-string">""</span></span><br><span class="line">            },</span><br><span class="line">            <span class="hljs-string">"a60bdef872f7c16305b32920d60e4d973bcd5329a912eaff32b476debf3e6aaa"</span>: {</span><br><span class="line">                <span class="hljs-string">"Name"</span>: <span class="hljs-string">"b4"</span>,</span><br><span class="line">                <span class="hljs-string">"EndpointID"</span>: <span class="hljs-string">"e41fb0b3e878af1596e80f2752fcc1dff2ac68a00d53163aded9aea31ead893d"</span>,</span><br><span class="line">                <span class="hljs-string">"MacAddress"</span>: <span class="hljs-string">"02:42:ac:12:00:02"</span>,</span><br><span class="line">                <span class="hljs-string">"IPv4Address"</span>: <span class="hljs-string">"172.18.0.2/16"</span>,</span><br><span class="line">                <span class="hljs-string">"IPv6Address"</span>: <span class="hljs-string">""</span></span><br><span class="line">            },</span><br><span class="line">            <span class="hljs-string">"db45d33d512104ec2d799bd45ba47095ffb5c1c8253ede8becb808c47b902f7b"</span>: {</span><br><span class="line">                <span class="hljs-string">"Name"</span>: <span class="hljs-string">"b2"</span>,</span><br><span class="line">                <span class="hljs-string">"EndpointID"</span>: <span class="hljs-string">"e77bf7b9ae54e3f652fa4e053c683f85ec3c4308c50ca8225d8722ddbae2e474"</span>,</span><br><span class="line">                <span class="hljs-string">"MacAddress"</span>: <span class="hljs-string">"02:42:ac:12:00:04"</span>,</span><br><span class="line">                <span class="hljs-string">"IPv4Address"</span>: <span class="hljs-string">"172.18.0.4/16"</span>,</span><br><span class="line">                <span class="hljs-string">"IPv6Address"</span>: <span class="hljs-string">""</span></span><br><span class="line">            }</span><br><span class="line">        },</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="none与host"><a href="#none与host" class="headerlink" title="none与host"></a>none与host</h2><p>创建一个只有本地回环的容器</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -it -d --name b5 --network none busybox /bin/sh </span><br><span class="line">root:~<span class="comment"># docker exec b5 ip a</span></span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker run -it -d --name b5 --network none busybox /bin/sh </span><br><span class="line">root:~<span class="hljs-comment"># docker exec b5 ip a</span></span><br><span class="line">1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></tbody></table></figure>
 
-<p><font color='red'>创建一台网卡配置与主机相同容器</font></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -it -d --name b6 --network host busybox /bin/sh</span><br><span class="line">root:~<span class="comment"># docker exec b6 ip a</span></span><br><span class="line">root:~<span class="comment"># docker exec b6 ip a</span></span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">2: enp3s0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc mq qlen 1000</span><br><span class="line">    link/ether 00:8c:fa:59:e9:ac brd ff:ff:ff:ff:ff:ff</span><br><span class="line">3: enp4s0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc mq qlen 1000</span><br><span class="line">    link/ether 00:8c:fa:59:e9:ad brd ff:ff:ff:ff:ff:ff</span><br><span class="line">4: enp9s0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc mq qlen 1000</span><br><span class="line">    link/ether 00:8c:fa:59:e9:ae brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 10.0.5.233/20 brd 10.0.15.255 scope global enp9s0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fe80::748:8e4c:c635:1963/64 scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">5: enp10s0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc mq qlen 1000</span><br><span class="line">    link/ether 00:8c:fa:59:e9:af brd ff:ff:ff:ff:ff:ff</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><font color="red">创建一台网卡配置与主机相同容器</font></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">docker run -it -d --name b6 --network host busybox /bin/sh</span><br><span class="line">root:~<span class="hljs-comment"># docker exec b6 ip a</span></span><br><span class="line">root:~<span class="hljs-comment"># docker exec b6 ip a</span></span><br><span class="line">1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">2: enp3s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq qlen 1000</span><br><span class="line">    link/ether 00:8c:fa:59:e9:ac brd ff:ff:ff:ff:ff:ff</span><br><span class="line">3: enp4s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq qlen 1000</span><br><span class="line">    link/ether 00:8c:fa:59:e9:ad brd ff:ff:ff:ff:ff:ff</span><br><span class="line">4: enp9s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq qlen 1000</span><br><span class="line">    link/ether 00:8c:fa:59:e9:ae brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 10.0.5.233/20 brd 10.0.15.255 scope global enp9s0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fe80::748:8e4c:c635:1963/64 scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">5: enp10s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq qlen 1000</span><br><span class="line">    link/ether 00:8c:fa:59:e9:af brd ff:ff:ff:ff:ff:ff</span><br><span class="line">...</span><br></pre></td></tr></tbody></table></figure>
 
 
-
-      
+</body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/20783356/">docker网络</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top">何泽君</a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/20783356/">http://blog.noback.top/posts/20783356/</a></li>
+            <li><strong>发布时间：</strong>2020-02-06</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        
+        
     </div>
-    <div class="article-footer">
-      <blockquote class="mt-2x">
-  <ul class="post-copyright list-unstyled">
-    
-    <li class="post-copyright-link hidden-xs">
-      <strong>本文链接：</strong>
-      <a href="http://blog.noback.top/posts/20783356/" title="docker网络" target="_blank" rel="external">http://blog.noback.top/posts/20783356/</a>
-    </li>
-    
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-</blockquote>
-
-
-<div class="panel panel-default panel-badger">
-  <div class="panel-body">
-    <figure class="media">
-      <div class="media-left">
-        <a href="https://github.com/cofess" target="_blank" class="img-burn thumb-sm visible-lg">
-          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
-        </a>
-      </div>
-      <div class="media-body">
-        <h3 class="media-heading"><a href="https://github.com/cofess" target="_blank"><span class="text-dark">昵称</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
-        <div>个人简介。</div>
-      </div>
-    </figure>
-  </div>
 </div>
 
 
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/f633fc00/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">wireshark网络抓包工具</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/8aa524f6/">
+                <span class="level-item">docker容器的资源限制</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
     </div>
-  </article>
-  
-    
-  <section id="comments">
-  	
-      <div id="vcomments"></div>
-    
-  </section>
-
-
-  
 </div>
 
-  <nav class="bar bar-footer clearfix" data-stick-bottom>
-  <div class="bar-inner">
-  
-  <ul class="pager pull-left">
-    
-    <li class="prev">
-      <a href="/posts/f633fc00/" title="wireshark网络抓包工具"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
-    
-    <li class="next">
-      <a href="/posts/8aa524f6/" title="docker容器的资源限制"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
-    </li>
-    
-    
-  </ul>
-  
-  
-  
-  <div class="bar-right">
-    
-  </div>
-  </div>
-</nav>
-  
 
 
-</main>
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/posts/20783356/';
+        this.page.identifier = 'posts/20783356/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
 
-  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
-	
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
-        
-        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
 
-    <div class="copyright">
-    	
-        <div class="publishby">
-        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        90
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        27
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        15
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#docker网络">
+        <span class="has-mr-6">1</span>
+        <span>docker网络</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#linux的网络命名空间namesapce">
+        <span class="has-mr-6">1.1</span>
+        <span>linux的网络命名空间namesapce</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#network-namespace管理工具">
+        <span class="has-mr-6">1.1.1</span>
+        <span>network namespace管理工具</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#docker网络管理工具">
+        <span class="has-mr-6">1.2</span>
+        <span>docker网络管理工具</span>
+        </a></li><li>
+        <a class="is-flex" href="#容器与容器之间如何互联">
+        <span class="has-mr-6">1.3</span>
+        <span>容器与容器之间如何互联</span>
+        </a></li><li>
+        <a class="is-flex" href="#容器与外界互联">
+        <span class="has-mr-6">1.4</span>
+        <span>容器与外界互联</span>
+        </a></li><li>
+        <a class="is-flex" href="#docker容器之间的link">
+        <span class="has-mr-6">1.5</span>
+        <span>docker容器之间的link</span>
+        </a></li><li>
+        <a class="is-flex" href="#自建docker网络桥接">
+        <span class="has-mr-6">1.6</span>
+        <span>自建docker网络桥接</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#修改旧容器到指定bridge">
+        <span class="has-mr-6">1.6.1</span>
+        <span>修改旧容器到指定bridge</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#none与host">
+        <span class="has-mr-6">1.7</span>
+        <span>none与host</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://image.noback.top/datadog.svg" alt="docker网络" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 何泽君&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
         </div>
     </div>
 </footer>
-  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-<script>
-window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
-</script>
 
-<script src="/js/plugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
 
 
-<script src="/js/application.js"></script>
-
-
-    <script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(未命名)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-
-<script src="/js/insight.js"></script>
-
-
-
-
-
-
-   
-
-
-
-
-   
     
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/valine"></script>
-  <script type="text/javascript">
-  var GUEST = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link';
-  meta = meta.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#vcomments',
-    verify: false,
-    notify: false,
-    appId: '',
-    appKey: '',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: meta,
-    pageSize: '10' || 10,
-    visitor: false
-  });
-  </script>
+    
+    
+    <script src="/js/animation.js"></script>
+    
 
-     
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
 
 
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
 
 
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
 
 
+<script src="/js/main.js" defer></script>
 
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
 </body>
 </html>

@@ -1,585 +1,603 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html  lang="zh">
 <head>
-  <meta charset="utf-8">
-  
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="Cache-Control" content="no-transform" />
-  <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="format-detection" content="telephone=no,email=no,adress=no">
-  <!-- Color theme for statusbar -->
-  <meta name="theme-color" content="#000000" />
-  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
-  <meta http-equiv="window-target" content="_top" />
-  
-  
-  <title>django字段总结 | Hexo</title>
-  <meta name="description" content="django字段的设计https:&#x2F;&#x2F;docs.djangoproject.com&#x2F;zh-hans&#x2F;2.2&#x2F;ref&#x2F;models&#x2F;fields&#x2F;#module-django.db.models.fieldsorm的设计模式在django的应用过程中，往往要设计model的设计，在model设计过程中要使用各种各样的关键词，这些关键词 关联到了数据库中每条记录的配置 # 引用from django.">
+    <meta charset="utf-8">
+<title>django字段总结 - Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="django字段的设计https:&#x2F;&#x2F;docs.djangoproject.com&#x2F;zh-hans&#x2F;2.2&#x2F;ref&#x2F;models&#x2F;fields&#x2F;#module-django.db.models.fieldsorm的设计模式在django的应用过程中，往往要设计model的设计，在model设计过程中要使用各种各样的关键词，这些关键词 关联到了数据库中每条记录的配置 # 引用from django.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="django字段总结">
 <meta property="og:url" content="http://blog.noback.top/posts/65abc8f/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
 <meta property="og:description" content="django字段的设计https:&#x2F;&#x2F;docs.djangoproject.com&#x2F;zh-hans&#x2F;2.2&#x2F;ref&#x2F;models&#x2F;fields&#x2F;#module-django.db.models.fieldsorm的设计模式在django的应用过程中，往往要设计model的设计，在model设计过程中要使用各种各样的关键词，这些关键词 关联到了数据库中每条记录的配置 # 引用from django.">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
 <meta property="article:published_time" content="2019-12-29T12:41:01.000Z">
 <meta property="article:modified_time" content="2019-12-29T12:41:01.000Z">
 <meta property="article:author" content="何泽君">
 <meta name="twitter:card" content="summary">
-  <!-- Canonical links -->
-  <link rel="canonical" href="http://blog.noback.top/posts/65abc8f/index.html">
-  
-    <link rel="alternate" href="/atom.xml" title="Alpaca&#39;s blog | how to win" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png" type="image/x-icon">
-  
-  
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
 <link rel="stylesheet" href="/css/style.css">
-
-  
-  
-  
-  
 <meta name="generator" content="Hexo 4.2.0"></head>
-
-
-<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
-  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-  <div class="slimContent">
-    <div class="navbar-header">
-      
-      
-      <div class="profile-block text-center">
-        <a id="avatar" href="https://github.com/cofess" target="_blank">
-          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
-        </a>
-        <h2 id="name" class="hidden-xs hidden-sm">昵称</h2>
-        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer &amp; Designer</h3>
-        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
-      </div>
-      
-      <div class="search" id="search-form-wrap">
-
-    <form class="search-form sidebar-form">
-        <div class="input-group">
-            <input type="text" class="search-form-input form-control" placeholder="搜索" />
-            <span class="input-group-btn">
-                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
-            </span>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://image.noback.top/datadog.svg" alt="django字段总结" height="28">
+            
+            </a>
         </div>
-    </form>
-    <div class="ins-search">
-  <div class="ins-search-mask"></div>
-  <div class="ins-search-container">
-    <div class="ins-input-wrapper">
-      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
-      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-    </div>
-    <div class="ins-section-wrapper">
-      <div class="ins-section-container"></div>
-    </div>
-  </div>
-</div>
-
-
-</div>
-      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav ">
-        
-        
-        <li class="menu-item menu-item-home">
-          <a href="/.">
+        <div class="navbar-menu">
             
-            <i class="icon icon-home-fill"></i>
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/about-me/">about-me</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+            </div>
             
-            <span class="menu-title">首页</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            
-            <i class="icon icon-archives-fill"></i>
-            
-            <span class="menu-title">归档</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            
-            <i class="icon icon-tags"></i>
-            
-            <span class="menu-title">标签</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-repository">
-          <a href="/repository">
-            
-            <i class="icon icon-project"></i>
-            
-            <span class="menu-title">项目</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-books">
-          <a href="/books">
-            
-            <i class="icon icon-book-fill"></i>
-            
-            <span class="menu-title">书单</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-links">
-          <a href="/links">
-            
-            <i class="icon icon-friendship"></i>
-            
-            <span class="menu-title">友链</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about">
-            
-            <i class="icon icon-cup-fill"></i>
-            
-            <span class="menu-title">关于</span>
-          </a>
-        </li>
-        
-      </ul>
-      
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
-        
-        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
-
-    </nav>
-  </div>
-</header>
-
-  
-    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
-    
-      <div class="widget">
-    <h3 class="widget-title">公告</h3>
-    <div class="widget-body">
-        <div id="board">
-            <div class="content">
-                <p>欢迎交流与分享经验!</p>
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
             </div>
         </div>
     </div>
-</div>
-
+</nav>
     
-      
-  <div class="widget">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/checklist/">checklist</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">34</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/Command/">Command</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/ansible/">ansible</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/docker/">docker</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/linux-network/">linux-network</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%95%85%E9%9A%9C/">故障</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">文件系统</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95/">扩展</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">C语言</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">jwt</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/extra/">extra</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">二层交换机</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%83%A8%E7%BD%B2/">交换机部署</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E4%BA%8B%E6%9C%AC/">记事本</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E5%A4%87/">设备</a><span class="category-list-count">6</span></li></ul>
-    </div>
-  </div>
-
-
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
-      
-  <div class="widget">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI-CD/" rel="tag">CI-CD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codee/" rel="tag">codee</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily/" rel="tag">daily</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rust/" rel="tag">rust</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" rel="tag">负载均衡</a><span class="tag-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget-body tagcloud">
-      <a href="/tags/CI-CD/" style="font-size: 13px;">CI-CD</a> <a href="/tags/code/" style="font-size: 14px;">code</a> <a href="/tags/codee/" style="font-size: 13.17px;">codee</a> <a href="/tags/daily/" style="font-size: 13px;">daily</a> <a href="/tags/django/" style="font-size: 13px;">django</a> <a href="/tags/git/" style="font-size: 13px;">git</a> <a href="/tags/linux/" style="font-size: 13.67px;">linux</a> <a href="/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.17px;">nginx</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/rust/" style="font-size: 13.5px;">rust</a> <a href="/tags/vim/" style="font-size: 13px;">vim</a> <a href="/tags/vue/" style="font-size: 13.83px;">vue</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a> <a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" style="font-size: 13.17px;">负载均衡</a>
-    </div>
-  </div>
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">36</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">31</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget-body">
-      <ul class="recent-post-list list-unstyled no-thumbnail">
-        
-          <li>
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/linux/">linux</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/40a08bb8/" class="title">linux-daily</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-14T09:03:34.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
+                <i class="fas fa-angle-double-right"></i>django字段总结
             
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/1f4442b1/" class="title">hello,new-world</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-14T07:35:13.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:41:01.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    5 分钟 读完 (大约 763 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
             </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/4115d0cd/" class="title">CI-CD实践</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-13T19:29:41.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/88888022/" class="title">django实际项目中的模块设计</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-13T17:53:20.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/linux/">linux</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/linux/docker/">docker</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/59fd12f/" class="title">swarm与k8s的区别</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-10T06:49:28.000Z" itemprop="datePublished">2020-02-10</time>
-              </p>
-            </div>
-          </li>
-          
-      </ul>
-    </div>
-  </div>
-  
-
-    
-  </div>
-</aside>
-
-  
-  
-<main class="main" role="main">
-  <div class="content">
-  <article id="post-blog_back_new/django/django字段总结" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-    
-    <div class="article-header">
-      
+        </div>
         
-  
-    <h1 class="article-title" itemprop="name">
-      django字段总结
-    </h1>
-  
-
-      
-      <div class="article-meta">
-        <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/posts/65abc8f/" class="article-date">
-	  <time datetime="2019-12-29T12:41:01.000Z" itemprop="datePublished">2019-12-29</time>
-	</a>
-</span>
-        
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>►<a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
-  </span>
-
-        
-
-        
-
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/65abc8f/#comments" class="article-comment-link">评论</a></span>
-        
-      </div>
-    </div>
-    <div class="article-entry marked-body" itemprop="articleBody">
-      
-        <h1 id="django字段的设计"><a href="#django字段的设计" class="headerlink" title="django字段的设计"></a>django字段的设计</h1><p><a href="https://docs.djangoproject.com/zh-hans/2.2/ref/models/fields/#module-django.db.models.fields" target="_blank" rel="noopener">https://docs.djangoproject.com/zh-hans/2.2/ref/models/fields/#module-django.db.models.fields</a><br>orm的设计模式<br>在django的应用过程中，往往要设计model的设计，在model设计过程中要使用各种各样的关键词，这些关键词 关联到了数据库中每条记录的配置</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 引用</span></span><br><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br></pre></td></tr></table></figure>
+        <div class="content">
+            <html><head></head><body><h1 id="django字段的设计"><a href="#django字段的设计" class="headerlink" title="django字段的设计"></a>django字段的设计</h1><p><a href="https://docs.djangoproject.com/zh-hans/2.2/ref/models/fields/#module-django.db.models.fields" target="_blank" rel="noopener">https://docs.djangoproject.com/zh-hans/2.2/ref/models/fields/#module-django.db.models.fields</a><br>orm的设计模式<br>在django的应用过程中，往往要设计model的设计，在model设计过程中要使用各种各样的关键词，这些关键词 关联到了数据库中每条记录的配置</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 引用</span></span><br><span class="line"><span class="hljs-keyword">from</span> django.db <span class="hljs-keyword">import</span> models</span><br></pre></td></tr></tbody></table></figure>
 
 
 <h2 id="通用字段"><a href="#通用字段" class="headerlink" title="通用字段"></a>通用字段</h2><h3 id="null字段"><a href="#null字段" class="headerlink" title="null字段"></a>null字段</h3><p>如果设置为 True， 当该字段为空时，Django 会将数据库中该字段设置为NULL，默认为 False。<br>即数据库置空 如果null=true blank=true 则数据库内容为空白字符串</p>
 <h3 id="blank"><a href="#blank" class="headerlink" title="blank"></a>blank</h3><p>Field.blank<br>默认blank = False ,如果设置为True，则允许该字段为空。<br>与null不同的是,null存粹与数据库有相关，而blank与验证相关。如果blank=true,则表单验证将允许输入空值,如果blank=False 则不允许输入空值</p>
 <hr>
-<h3 id="choices"><a href="#choices" class="headerlink" title="choices"></a>choices</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TaskSwitchModel</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    ActionType = models.CharField(choices=[</span><br><span class="line">        (<span class="string">'snmp'</span>,<span class="string">'_(snmp)'</span>),</span><br><span class="line">        (<span class="string">"vlan"</span>,<span class="string">"_vlan"</span>),</span><br><span class="line">        (<span class="string">"sysname"</span>,<span class="string">"_sysname"</span>),</span><br><span class="line">        (<span class="string">"copyright-info"</span>,<span class="string">"_copyright-info"</span>),</span><br><span class="line">        (<span class="string">"int-vlan"</span>,<span class="string">"_int-vlan"</span>),</span><br><span class="line">        (<span class="string">"int"</span>,<span class="string">"_int"</span>)],max_length=<span class="number">100</span>,default=<span class="string">""</span>)</span><br><span class="line">    test = models.CharField(max_length=<span class="number">1</span>, choices=[(<span class="string">'A'</span>, (<span class="string">'Author'</span>)), (<span class="string">'E'</span>, (<span class="string">'Editor'</span>))]),</span><br></pre></td></tr></table></figure>
+<h3 id="choices"><a href="#choices" class="headerlink" title="choices"></a>choices</h3><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TaskSwitchModel</span><span class="hljs-params">(models.Model)</span>:</span></span><br><span class="line">    ActionType = models.CharField(choices=[</span><br><span class="line">        (<span class="hljs-string">'snmp'</span>,<span class="hljs-string">'_(snmp)'</span>),</span><br><span class="line">        (<span class="hljs-string">"vlan"</span>,<span class="hljs-string">"_vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"sysname"</span>,<span class="hljs-string">"_sysname"</span>),</span><br><span class="line">        (<span class="hljs-string">"copyright-info"</span>,<span class="hljs-string">"_copyright-info"</span>),</span><br><span class="line">        (<span class="hljs-string">"int-vlan"</span>,<span class="hljs-string">"_int-vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"int"</span>,<span class="hljs-string">"_int"</span>)],max_length=<span class="hljs-number">100</span>,default=<span class="hljs-string">""</span>)</span><br><span class="line">    test = models.CharField(max_length=<span class="hljs-number">1</span>, choices=[(<span class="hljs-string">'A'</span>, (<span class="hljs-string">'Author'</span>)), (<span class="hljs-string">'E'</span>, (<span class="hljs-string">'Editor'</span>))]),</span><br></pre></td></tr></tbody></table></figure>
 
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TaskSwitchModel</span><span class="params">(model.ModelForm)</span>:</span></span><br><span class="line">    choices=(</span><br><span class="line">        (<span class="string">'snmp'</span>,<span class="string">'_(snmp)'</span>),</span><br><span class="line">        (<span class="string">"vlan"</span>,<span class="string">"_vlan"</span>),</span><br><span class="line">        (<span class="string">"sysname"</span>,<span class="string">"_sysname"</span>),</span><br><span class="line">        (<span class="string">"copyright-info"</span>,<span class="string">"_copyright-info"</span>),</span><br><span class="line">        (<span class="string">"int-vlan"</span>,<span class="string">"_int-vlan"</span>),</span><br><span class="line">        (<span class="string">"int"</span>,<span class="string">"_int"</span>)</span><br><span class="line">    )</span><br><span class="line">    ActionType = model.CharField(choices=choices,max_length=<span class="number">100</span>,default=<span class="string">""</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TaskSwitchModel</span><span class="hljs-params">(model.ModelForm)</span>:</span></span><br><span class="line">    choices=(</span><br><span class="line">        (<span class="hljs-string">'snmp'</span>,<span class="hljs-string">'_(snmp)'</span>),</span><br><span class="line">        (<span class="hljs-string">"vlan"</span>,<span class="hljs-string">"_vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"sysname"</span>,<span class="hljs-string">"_sysname"</span>),</span><br><span class="line">        (<span class="hljs-string">"copyright-info"</span>,<span class="hljs-string">"_copyright-info"</span>),</span><br><span class="line">        (<span class="hljs-string">"int-vlan"</span>,<span class="hljs-string">"_int-vlan"</span>),</span><br><span class="line">        (<span class="hljs-string">"int"</span>,<span class="hljs-string">"_int"</span>)</span><br><span class="line">    )</span><br><span class="line">    ActionType = model.CharField(choices=choices,max_length=<span class="hljs-number">100</span>,default=<span class="hljs-string">""</span>)</span><br></pre></td></tr></tbody></table></figure>
 
 <p>Field.choices<br>每个元组中的第一个元素是要在模型上设置的实际值，第二个元素是人类可读的名称.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">select_choices =[</span><br><span class="line">    (<span class="string">'A'</span>,<span class="string">'A_'</span>),</span><br><span class="line">    (<span class="string">'B'</span>,<span class="string">'B_'</span>),</span><br><span class="line">    (<span class="string">'C'</span>,<span class="string">'C_'</span>),</span><br><span class="line">    (<span class="string">'D'</span>,<span class="string">'D_'</span>),</span><br><span class="line">]</span><br><span class="line">choices字段迭代</span><br><span class="line">每个元组的第一个元素是要应用于组的名称。第二个元素是一个可迭代的<span class="number">2</span>代元组</span><br><span class="line">select2_select1_choices=[</span><br><span class="line">    (<span class="string">'A'</span>,(</span><br><span class="line">        (<span class="string">'A_/'</span>,<span class="string">'A_movie'</span>),</span><br><span class="line">        (<span class="string">'A_+'</span>,<span class="string">'A_video'</span>),</span><br><span class="line">        (<span class="string">'A_-'</span>,<span class="string">'A_City'</span>),</span><br><span class="line">        )</span><br><span class="line">    ),</span><br><span class="line">    (<span class="string">'Video'</span>, (</span><br><span class="line">            (<span class="string">'vhs'</span>, <span class="string">'VHS Tape'</span>),</span><br><span class="line">            (<span class="string">'dvd'</span>, <span class="string">'DVD'</span>),</span><br><span class="line">        )</span><br><span class="line">    ),</span><br><span class="line">    (<span class="string">'unknown'</span>, <span class="string">'Unknown'</span>),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">select_choices =[</span><br><span class="line">    (<span class="hljs-string">'A'</span>,<span class="hljs-string">'A_'</span>),</span><br><span class="line">    (<span class="hljs-string">'B'</span>,<span class="hljs-string">'B_'</span>),</span><br><span class="line">    (<span class="hljs-string">'C'</span>,<span class="hljs-string">'C_'</span>),</span><br><span class="line">    (<span class="hljs-string">'D'</span>,<span class="hljs-string">'D_'</span>),</span><br><span class="line">]</span><br><span class="line">choices字段迭代</span><br><span class="line">每个元组的第一个元素是要应用于组的名称。第二个元素是一个可迭代的<span class="hljs-number">2</span>代元组</span><br><span class="line">select2_select1_choices=[</span><br><span class="line">    (<span class="hljs-string">'A'</span>,(</span><br><span class="line">        (<span class="hljs-string">'A_/'</span>,<span class="hljs-string">'A_movie'</span>),</span><br><span class="line">        (<span class="hljs-string">'A_+'</span>,<span class="hljs-string">'A_video'</span>),</span><br><span class="line">        (<span class="hljs-string">'A_-'</span>,<span class="hljs-string">'A_City'</span>),</span><br><span class="line">        )</span><br><span class="line">    ),</span><br><span class="line">    (<span class="hljs-string">'Video'</span>, (</span><br><span class="line">            (<span class="hljs-string">'vhs'</span>, <span class="hljs-string">'VHS Tape'</span>),</span><br><span class="line">            (<span class="hljs-string">'dvd'</span>, <span class="hljs-string">'DVD'</span>),</span><br><span class="line">        )</span><br><span class="line">    ),</span><br><span class="line">    (<span class="hljs-string">'unknown'</span>, <span class="hljs-string">'Unknown'</span>),</span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="db-column"><a href="#db-column" class="headerlink" title="db_column"></a>db_column</h3><p>设置数据库列的名称    age = models.CharFiled(db_column=”年龄”)</p>
 <h3 id="db-index"><a href="#db-index" class="headerlink" title="db_index"></a>db_index</h3><p>age = models.CharFiled(db_index=true)<br>如果设置为True，则创建数据库索引</p>
 <h3 id="default"><a href="#default" class="headerlink" title="default"></a>default</h3><p>可以是值也可以是可调用的对象，每次实例化模型的时候 会调用这个对象或值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">contact_defult</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">"email"</span>:<span class="string">"1097690268@qq.com"</span>&#125;</span><br><span class="line"></span><br><span class="line">contact_info = JSONField(<span class="string">"ContactInfo"</span>, default=contact_default)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2</span></span><br><span class="line">member_name = CharFiled(default=<span class="string">"小明"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 1</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">contact_defult</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> {<span class="hljs-string">"email"</span>:<span class="hljs-string">"1097690268@qq.com"</span>}</span><br><span class="line"></span><br><span class="line">contact_info = JSONField(<span class="hljs-string">"ContactInfo"</span>, default=contact_default)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 2</span></span><br><span class="line">member_name = CharFiled(default=<span class="hljs-string">"小明"</span>)</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="editable"><a href="#editable" class="headerlink" title="editable"></a>editable</h3><p>可编辑字段<br>如果为False，则该字段将不会显示在管理员或其他任何人中 ModelForm。在模型验证期间也将跳过它们。默认值为True。</p>
 <hr>
 <h3 id="unique"><a href="#unique" class="headerlink" title="unique"></a>unique</h3><p>name = CharFiled(unique=true)<br>如上则会保证该字段的值为表中唯一，也就是不会出现同名的人<br>如果存在了unique 则不再需要db_index 因为unique默认存在索引</p>
 <h2 id="primary-key"><a href="#primary-key" class="headerlink" title="primary_key"></a>primary_key</h2><p>如果设置为True，则初始设置为该模型的主键。<br>如果您未primary_key=True在模型中指定任何字段，则Django会自动添加一个AutoField来保留主键，因此primary_key=True暗示null=False和 unique=True。一个对象只允许使用一个主键。<br>主键字段是只读的。如果更改现有对象上的主键的值然后保存，则将在旧对象的旁边创建一个新对象。</p>
 <h2 id="自定义的字段"><a href="#自定义的字段" class="headerlink" title="自定义的字段"></a>自定义的字段</h2><p><a href="https://docs.djangoproject.com/zh-hans/2.2/howto/custom-model-fields/" target="_blank" rel="noopener">https://docs.djangoproject.com/zh-hans/2.2/howto/custom-model-fields/</a></p>
-
-      
+</body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/65abc8f/">django字段总结</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top">何泽君</a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/65abc8f/">http://blog.noback.top/posts/65abc8f/</a></li>
+            <li><strong>发布时间：</strong>2019-12-29</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        
+        
     </div>
-    <div class="article-footer">
-      <blockquote class="mt-2x">
-  <ul class="post-copyright list-unstyled">
-    
-    <li class="post-copyright-link hidden-xs">
-      <strong>本文链接：</strong>
-      <a href="http://blog.noback.top/posts/65abc8f/" title="django字段总结" target="_blank" rel="external">http://blog.noback.top/posts/65abc8f/</a>
-    </li>
-    
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-</blockquote>
-
-
-<div class="panel panel-default panel-badger">
-  <div class="panel-body">
-    <figure class="media">
-      <div class="media-left">
-        <a href="https://github.com/cofess" target="_blank" class="img-burn thumb-sm visible-lg">
-          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
-        </a>
-      </div>
-      <div class="media-body">
-        <h3 class="media-heading"><a href="https://github.com/cofess" target="_blank"><span class="text-dark">昵称</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
-        <div>个人简介。</div>
-      </div>
-    </figure>
-  </div>
 </div>
 
 
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/7068483c/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">DRF框架</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/7e91b378/">
+                <span class="level-item">django内容总结</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
     </div>
-  </article>
-  
-    
-  <section id="comments">
-  	
-      <div id="vcomments"></div>
-    
-  </section>
-
-
-  
 </div>
 
-  <nav class="bar bar-footer clearfix" data-stick-bottom>
-  <div class="bar-inner">
-  
-  <ul class="pager pull-left">
-    
-    <li class="prev">
-      <a href="/posts/7068483c/" title="DRF框架"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
-    
-    <li class="next">
-      <a href="/posts/7e91b378/" title="django内容总结"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
-    </li>
-    
-    
-  </ul>
-  
-  
-  
-  <div class="bar-right">
-    
-  </div>
-  </div>
-</nav>
-  
 
 
-</main>
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/posts/65abc8f/';
+        this.page.identifier = 'posts/65abc8f/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
 
-  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
-	
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
-        
-        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
 
-    <div class="copyright">
-    	
-        <div class="publishby">
-        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        90
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        27
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        15
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#django字段的设计">
+        <span class="has-mr-6">1</span>
+        <span>django字段的设计</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#通用字段">
+        <span class="has-mr-6">1.1</span>
+        <span>通用字段</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#null字段">
+        <span class="has-mr-6">1.1.1</span>
+        <span>null字段</span>
+        </a></li><li>
+        <a class="is-flex" href="#blank">
+        <span class="has-mr-6">1.1.2</span>
+        <span>blank</span>
+        </a></li><li>
+        <a class="is-flex" href="#choices">
+        <span class="has-mr-6">1.1.3</span>
+        <span>choices</span>
+        </a></li><li>
+        <a class="is-flex" href="#db-column">
+        <span class="has-mr-6">1.1.4</span>
+        <span>db_column</span>
+        </a></li><li>
+        <a class="is-flex" href="#db-index">
+        <span class="has-mr-6">1.1.5</span>
+        <span>db_index</span>
+        </a></li><li>
+        <a class="is-flex" href="#default">
+        <span class="has-mr-6">1.1.6</span>
+        <span>default</span>
+        </a></li><li>
+        <a class="is-flex" href="#editable">
+        <span class="has-mr-6">1.1.7</span>
+        <span>editable</span>
+        </a></li><li>
+        <a class="is-flex" href="#unique">
+        <span class="has-mr-6">1.1.8</span>
+        <span>unique</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#primary-key">
+        <span class="has-mr-6">1.2</span>
+        <span>primary_key</span>
+        </a></li><li>
+        <a class="is-flex" href="#自定义的字段">
+        <span class="has-mr-6">1.3</span>
+        <span>自定义的字段</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://image.noback.top/datadog.svg" alt="django字段总结" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 何泽君&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
         </div>
     </div>
 </footer>
-  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-<script>
-window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
-</script>
 
-<script src="/js/plugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
 
 
-<script src="/js/application.js"></script>
-
-
-    <script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(未命名)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-
-<script src="/js/insight.js"></script>
-
-
-
-
-
-
-   
-
-
-
-
-   
     
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/valine"></script>
-  <script type="text/javascript">
-  var GUEST = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link';
-  meta = meta.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#vcomments',
-    verify: false,
-    notify: false,
-    appId: '',
-    appKey: '',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: meta,
-    pageSize: '10' || 10,
-    visitor: false
-  });
-  </script>
+    
+    
+    <script src="/js/animation.js"></script>
+    
 
-     
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
 
 
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
 
 
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
 
 
+<script src="/js/main.js" defer></script>
 
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
 </body>
 </html>

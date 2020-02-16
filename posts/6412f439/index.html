@@ -1,600 +1,580 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html  lang="zh">
 <head>
-  <meta charset="utf-8">
-  
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="Cache-Control" content="no-transform" />
-  <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="format-detection" content="telephone=no,email=no,adress=no">
-  <!-- Color theme for statusbar -->
-  <meta name="theme-color" content="#000000" />
-  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
-  <meta http-equiv="window-target" content="_top" />
-  
-  
-  <title>vuejs基础2 | Hexo</title>
-  <meta name="description" content="vuejs基础2">
+    <meta charset="utf-8">
+<title>vuejs基础2 - Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="vuejs基础2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vuejs基础2">
 <meta property="og:url" content="http://blog.noback.top/posts/6412f439/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
 <meta property="og:description" content="vuejs基础2">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cn.vuejs.org/images/lifecycle.png">
-<meta property="og:image" content="http://img.noback.top/blog/imgvue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
 <meta property="article:published_time" content="2020-01-22T03:32:11.000Z">
 <meta property="article:modified_time" content="2020-01-22T03:32:11.000Z">
 <meta property="article:author" content="何泽君">
 <meta property="article:tag" content="code">
 <meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cn.vuejs.org/images/lifecycle.png">
-  <!-- Canonical links -->
-  <link rel="canonical" href="http://blog.noback.top/posts/6412f439/index.html">
-  
-    <link rel="alternate" href="/atom.xml" title="Alpaca&#39;s blog | how to win" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png" type="image/x-icon">
-  
-  
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
 <link rel="stylesheet" href="/css/style.css">
-
-  
-  
-  
-  
 <meta name="generator" content="Hexo 4.2.0"></head>
-
-
-<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
-  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-  <div class="slimContent">
-    <div class="navbar-header">
-      
-      
-      <div class="profile-block text-center">
-        <a id="avatar" href="https://github.com/cofess" target="_blank">
-          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
-        </a>
-        <h2 id="name" class="hidden-xs hidden-sm">昵称</h2>
-        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer &amp; Designer</h3>
-        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
-      </div>
-      
-      <div class="search" id="search-form-wrap">
-
-    <form class="search-form sidebar-form">
-        <div class="input-group">
-            <input type="text" class="search-form-input form-control" placeholder="搜索" />
-            <span class="input-group-btn">
-                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
-            </span>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://image.noback.top/datadog.svg" alt="vuejs基础2" height="28">
+            
+            </a>
         </div>
-    </form>
-    <div class="ins-search">
-  <div class="ins-search-mask"></div>
-  <div class="ins-search-container">
-    <div class="ins-input-wrapper">
-      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
-      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-    </div>
-    <div class="ins-section-wrapper">
-      <div class="ins-section-container"></div>
-    </div>
-  </div>
-</div>
-
-
-</div>
-      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav ">
-        
-        
-        <li class="menu-item menu-item-home">
-          <a href="/.">
+        <div class="navbar-menu">
             
-            <i class="icon icon-home-fill"></i>
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/about-me/">about-me</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+            </div>
             
-            <span class="menu-title">首页</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            
-            <i class="icon icon-archives-fill"></i>
-            
-            <span class="menu-title">归档</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            
-            <i class="icon icon-tags"></i>
-            
-            <span class="menu-title">标签</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-repository">
-          <a href="/repository">
-            
-            <i class="icon icon-project"></i>
-            
-            <span class="menu-title">项目</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-books">
-          <a href="/books">
-            
-            <i class="icon icon-book-fill"></i>
-            
-            <span class="menu-title">书单</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-links">
-          <a href="/links">
-            
-            <i class="icon icon-friendship"></i>
-            
-            <span class="menu-title">友链</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about">
-            
-            <i class="icon icon-cup-fill"></i>
-            
-            <span class="menu-title">关于</span>
-          </a>
-        </li>
-        
-      </ul>
-      
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
-        
-        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
-
-    </nav>
-  </div>
-</header>
-
-  
-    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
-    
-      <div class="widget">
-    <h3 class="widget-title">公告</h3>
-    <div class="widget-body">
-        <div id="board">
-            <div class="content">
-                <p>欢迎交流与分享经验!</p>
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
             </div>
         </div>
     </div>
-</div>
-
+</nav>
     
-      
-  <div class="widget">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/checklist/">checklist</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">34</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/Command/">Command</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/ansible/">ansible</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/docker/">docker</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/linux-network/">linux-network</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%95%85%E9%9A%9C/">故障</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">文件系统</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E8%84%9A%E6%9C%AC/">脚本</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95/">扩展</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">C语言</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/jwt/">jwt</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/extra/">extra</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">二层交换机</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%83%A8%E7%BD%B2/">交换机部署</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E4%BA%8B%E6%9C%AC/">记事本</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E5%A4%87/">设备</a><span class="category-list-count">6</span></li></ul>
-    </div>
-  </div>
-
-
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
-      
-  <div class="widget">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI-CD/" rel="tag">CI-CD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codee/" rel="tag">codee</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily/" rel="tag">daily</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rust/" rel="tag">rust</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" rel="tag">负载均衡</a><span class="tag-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget-body tagcloud">
-      <a href="/tags/CI-CD/" style="font-size: 13px;">CI-CD</a> <a href="/tags/code/" style="font-size: 14px;">code</a> <a href="/tags/codee/" style="font-size: 13.17px;">codee</a> <a href="/tags/daily/" style="font-size: 13px;">daily</a> <a href="/tags/django/" style="font-size: 13px;">django</a> <a href="/tags/git/" style="font-size: 13px;">git</a> <a href="/tags/linux/" style="font-size: 13.67px;">linux</a> <a href="/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13.17px;">nginx</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/rust/" style="font-size: 13.5px;">rust</a> <a href="/tags/vim/" style="font-size: 13px;">vim</a> <a href="/tags/vue/" style="font-size: 13.83px;">vue</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a> <a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" style="font-size: 13.17px;">负载均衡</a>
-    </div>
-  </div>
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">36</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">31</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget-body">
-      <ul class="recent-post-list list-unstyled no-thumbnail">
-        
-          <li>
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/linux/">linux</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/40a08bb8/" class="title">linux-daily</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-14T09:03:34.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
+                <i class="fas fa-angle-double-right"></i>vuejs基础2
             
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/1f4442b1/" class="title">hello,new-world</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-14T07:35:13.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-22T03:32:11.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-22</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/code/">code</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    13 分钟 读完 (大约 2011 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
             </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/%E6%9E%B6%E6%9E%84/CI-CD/">CI-CD</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/4115d0cd/" class="title">CI-CD实践</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-13T19:29:41.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B/django/">django</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/88888022/" class="title">django实际项目中的模块设计</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-13T17:53:20.000Z" itemprop="datePublished">2020-02-14</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/linux/">linux</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/linux/docker/">docker</a>
-              </p>
-              <p class="item-title">
-                <a href="/posts/59fd12f/" class="title">swarm与k8s的区别</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-02-10T06:49:28.000Z" itemprop="datePublished">2020-02-10</time>
-              </p>
-            </div>
-          </li>
-          
-      </ul>
-    </div>
-  </div>
-  
-
-    
-  </div>
-</aside>
-
-  
-  
-<main class="main" role="main">
-  <div class="content">
-  <article id="post-blog_back_new/vue/vue.js总结" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-    
-    <div class="article-header">
-      
+        </div>
         
-  
-    <h1 class="article-title" itemprop="name">
-      vuejs基础2
-    </h1>
-  
-
-      
-      <div class="article-meta">
-        <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/posts/6412f439/" class="article-date">
-	  <time datetime="2020-01-22T03:32:11.000Z" itemprop="datePublished">2020-01-22</time>
-	</a>
-</span>
-        
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/code/">code</a>
-  </span>
-
-        
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/code/" rel="tag">code</a>, <a class="article-tag-link" href="/tags/vue/" rel="tag">vue</a>
-  </span>
-
-
-        
-
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/6412f439/#comments" class="article-comment-link">评论</a></span>
-        
-      </div>
-    </div>
-    <div class="article-entry marked-body" itemprop="articleBody">
-      
-        <p>vuejs基础2</p>
+        <div class="content">
+            <html><head></head><body><p>vuejs基础2</p>
 <a id="more"></a>
 <p><a href="https://cn.vuejs.org" target="_blank" rel="noopener">https://cn.vuejs.org</a><br>线上:<a href="https://jsfiddle.net/chrisvfritz/50wL7mdz/" target="_blank" rel="noopener">https://jsfiddle.net/chrisvfritz/50wL7mdz/</a></p>
 <h2 id="添加环境"><a href="#添加环境" class="headerlink" title="添加环境"></a>添加环境</h2><p>通过引入的方式引入vue</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 开发环境版本，包含了有帮助的命令行警告 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> </span><br><span class="line"><span class="comment">&lt;!--生产环境版本，优化了尺寸和速度 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"><!-- 开发环境版本，包含了有帮助的命令行警告 --></span></span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>></span><span class="hljs-tag"></<span class="hljs-name">script</span>></span> </span><br><span class="line"><span class="hljs-comment"><!--生产环境版本，优化了尺寸和速度 --></span></span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/vue"</span>></span><span class="hljs-tag"></<span class="hljs-name">script</span>></span></span><br></pre></td></tr></tbody></table></figure>
 
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">id="app" --- &gt; //el:#app</span><br><span class="line">v-bind:title = "message"  --- &gt; //绑定标签属性(指令)</span><br><span class="line">&#123;&#123;message&#125;&#125; ---- &gt; data:&#123;  message:"hello vue!"&#125;</span><br><span class="line">var app2  = new Vue(&#123;</span><br><span class="line">&#125;)  ---&gt; //申明vue的对象</span><br><span class="line">//v-if=true  ----&gt; //条件判断</span><br><span class="line">//v-if:"seen"   new Vue(&#123; el:'#app',data:&#123; seen:true&#125;   &#125;)</span><br><span class="line">//条件循环</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-4"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"todo in todos"</span>&gt;</span></span><br><span class="line">      &#123;&#123; todo.text &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">var app4 = new Vue(&#123;</span><br><span class="line">    el:"#app-4",</span><br><span class="line">    data:&#123;</span><br><span class="line">        todo:[</span><br><span class="line">            &#123;text:'xxx'&#125;,</span><br><span class="line">            &#123;text:'xxx'&#125;,</span><br><span class="line">            &#123;text:'xxx'&#125;,</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line">app4.todo.push(&#123;text:'yyy'&#125;) //添加内容</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//  v-on:click = "funcname"  自定义点击方法</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-5"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"reverseMessage"</span>&gt;</span>反转消息<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">var app5 = new Vue(&#123;</span><br><span class="line">    el:"#app-5",</span><br><span class="line">    data:&#123;</span><br><span class="line">        message: 'hello,vue.js!'</span><br><span class="line">    &#125;</span><br><span class="line">    methods:&#123;</span><br><span class="line">        reverseMessage:function () &#123;</span><br><span class="line">            this.message = this.message.split('').reveser().join('')</span><br><span class="line">        &#125;     </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">// 表单双向绑定</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app6"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"message"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">new app6 = new Vue(&#123;</span><br><span class="line">    el:"#app6",</span><br><span class="line">    data:&#123;</span><br><span class="line">        message: "hello world"</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight html hljs"><table><tbody><tr><td class="code"><pre><span class="line">id="app" --- > //el:#app</span><br><span class="line">v-bind:title = "message"  --- > //绑定标签属性(指令)</span><br><span class="line">{{message}} ---- > data:{  message:"hello vue!"}</span><br><span class="line">var app2  = new Vue({</span><br><span class="line">})  ---> //申明vue的对象</span><br><span class="line">//v-if=true  ----> //条件判断</span><br><span class="line">//v-if:"seen"   new Vue({ el:'#app',data:{ seen:true}   })</span><br><span class="line">//条件循环</span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app-4"</span>></span></span><br><span class="line">  <span class="hljs-tag"><<span class="hljs-name">ol</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"todo in todos"</span>></span></span><br><span class="line">      {{ todo.text }}</span><br><span class="line">    <span class="hljs-tag"></<span class="hljs-name">li</span>></span></span><br><span class="line">  <span class="hljs-tag"></<span class="hljs-name">ol</span>></span></span><br><span class="line"><span class="hljs-tag"></<span class="hljs-name">div</span>></span></span><br><span class="line"></span><br><span class="line">var app4 = new Vue({</span><br><span class="line">    el:"#app-4",</span><br><span class="line">    data:{</span><br><span class="line">        todo:[</span><br><span class="line">            {text:'xxx'},</span><br><span class="line">            {text:'xxx'},</span><br><span class="line">            {text:'xxx'},</span><br><span class="line">        ]</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">})</span><br><span class="line">app4.todo.push({text:'yyy'}) //添加内容</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//  v-on:click = "funcname"  自定义点击方法</span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app-5"</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">p</span>></span>{{message}}<span class="hljs-tag"></<span class="hljs-name">p</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"reverseMessage"</span>></span>反转消息<span class="hljs-tag"></<span class="hljs-name">button</span>></span></span><br><span class="line"><span class="hljs-tag"></<span class="hljs-name">div</span>></span></span><br><span class="line"></span><br><span class="line">var app5 = new Vue({</span><br><span class="line">    el:"#app-5",</span><br><span class="line">    data:{</span><br><span class="line">        message: 'hello,vue.js!'</span><br><span class="line">    }</span><br><span class="line">    methods:{</span><br><span class="line">        reverseMessage:function () {</span><br><span class="line">            this.message = this.message.split('').reveser().join('')</span><br><span class="line">        }     </span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">})</span><br><span class="line">// 表单双向绑定</span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app6"</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">p</span>></span>{{message}}<span class="hljs-tag"></<span class="hljs-name">p</span>></span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">"message"</span>></span></span><br><span class="line"><span class="hljs-tag"></<span class="hljs-name">div</span>></span></span><br><span class="line"></span><br><span class="line">new app6 = new Vue({</span><br><span class="line">    el:"#app6",</span><br><span class="line">    data:{</span><br><span class="line">        message: "hello world"</span><br><span class="line">    }</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="vue的生命周期"><a href="#vue的生命周期" class="headerlink" title="vue的生命周期"></a>vue的生命周期</h2><p>每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM等，但为了让开发者能更好的控制vue的整个流程，以及在特定时候添加特定功能，这时候我们必须要了解的是vue的生命周期<br><img src="https://cn.vuejs.org/images/lifecycle.png" alt=""></p>
+<h2 id="vue的生命周期"><a href="#vue的生命周期" class="headerlink" title="vue的生命周期"></a>vue的生命周期</h2><p>每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM等，但为了让开发者能更好的控制vue的整个流程，以及在特定时候添加特定功能，这时候我们必须要了解的是vue的生命周期<br><img src="https://cn.vuejs.org/images/lifecycle.png" alt></p>
 <p>先了解一下dom的解析流程<br>浏览器渲染引擎工作流程都差不多，大致分为5步，创建DOM树——创建StyleRules——创建Render树——布局Layout——绘制Painting<br>1.用HTML分析器，分析分析HTML元素，构建一颗DOM树(标记化和树构建)<br>2.用CSS分析器，分析CSS文件和元素上的inline样式，生成页面的样式表。<br>3.将DOM树和样式表，关联起来，构建一颗Render树(这一过程又称为Attachment)。每个DOM节点都有attach方法，接受样式信息，返回一个render对象(又名renderer)。这些render对象最终会被构建成一颗Render树。<br>4.有了Render树，浏览器开始布局，为每个Render树上的节点确定一个在显示屏上出现的精确坐标。<br>5.Render树和节点显示坐标都有了，就调用每个节点paint方法，把它们绘制出来。 </p>
 <p>DOM树的构建是文档加载完成开始的？构建DOM数是一个渐进过程，为达到更好用户体验，渲染引擎会尽快将内容显示在屏幕上。它不必等到整个HTML文档解析完毕之后才开始构建render数和布局。</p>
 <p>Render树是DOM树和CSSOM树构建完毕才开始构建的吗？这三个过程在实际进行的时候又不是完全独立，而是会有交叉。会造成一边加载，一遍解析，一遍渲染的工作现象。</p>
-<p><font color='red'>JS操作真实DOM的代价！用我们传统的开发模式，原生JS或JQ操作DOM时，浏览器会从构建DOM树开始从头到尾执行一遍流程。在一次操作中，我需要更新10个DOM节点，浏览器收到第一个DOM请求后并不知道还有9次更新操作，因此会马上执行流程，最终执行10次。例如，第一次计算完，紧接着下一个DOM更新请求，这个节点的坐标值就变了，前一次计算为无用功。计算DOM节点坐标值等都是白白浪费的性能。即使计算机硬件一直在迭代更新，操作DOM的代价仍旧是昂贵的，频繁操作还是会出现页面卡顿，影响用户体验。为什么需要虚拟DOM，它有什么好处?Web界面由DOM树(树的意思是数据结构)来构建，当其中一部分发生变化时，其实就是对应某个DOM节点发生了变化，虚拟DOM就是为了解决浏览器性能问题而被设计出来的。如前，若一次操作中有10次更新DOM的动作，虚拟DOM不会立即操作DOM，而是将这10次更新的diff内容保存到本地一个JS对象中，最终将这个JS对象一次性attch到DOM树上，再进行后续操作，避免大量无谓的计算量。所以，用JS对象模拟DOM节点的好处是，页面的更新可以先全部反映在JS对象(虚拟DOM)上，操作内存中的JS对象的速度显然要更快，等更新完成后，再将最终的JS对象映射成真实的DOM，交由浏览器去绘制。<br></font></p>
+<p><font color="red">JS操作真实DOM的代价！用我们传统的开发模式，原生JS或JQ操作DOM时，浏览器会从构建DOM树开始从头到尾执行一遍流程。在一次操作中，我需要更新10个DOM节点，浏览器收到第一个DOM请求后并不知道还有9次更新操作，因此会马上执行流程，最终执行10次。例如，第一次计算完，紧接着下一个DOM更新请求，这个节点的坐标值就变了，前一次计算为无用功。计算DOM节点坐标值等都是白白浪费的性能。即使计算机硬件一直在迭代更新，操作DOM的代价仍旧是昂贵的，频繁操作还是会出现页面卡顿，影响用户体验。为什么需要虚拟DOM，它有什么好处?Web界面由DOM树(树的意思是数据结构)来构建，当其中一部分发生变化时，其实就是对应某个DOM节点发生了变化，虚拟DOM就是为了解决浏览器性能问题而被设计出来的。如前，若一次操作中有10次更新DOM的动作，虚拟DOM不会立即操作DOM，而是将这10次更新的diff内容保存到本地一个JS对象中，最终将这个JS对象一次性attch到DOM树上，再进行后续操作，避免大量无谓的计算量。所以，用JS对象模拟DOM节点的好处是，页面的更新可以先全部反映在JS对象(虚拟DOM)上，操作内存中的JS对象的速度显然要更快，等更新完成后，再将最终的JS对象映射成真实的DOM，交由浏览器去绘制。<br></font></p>
 <p><a href="https://www.jianshu.com/p/af0b398602bc" target="_blank" rel="noopener">https://www.jianshu.com/p/af0b398602bc</a></p>
 <p>首先我们先来了解一下生命周期的几个阶段<br>1.beforeCreate<br>2.created</p>
 <p>3.beforeMount<br>4.mount</p>
 <p>5.beforeUpdate<br>6.update</p>
 <p>7.beforeDestroy<br>8.destroyed</p>
 <p>这个生命周期的过程分为三个阶段，初始化   运行中 销毁。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- // index.html --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app1"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span>   </span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"message"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./vuetest.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"><!-- // index.html --></span></span><br><span class="line"><span class="hljs-meta"><!DOCTYPE <span class="hljs-meta-keyword">html</span>></span></span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>></span></span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">head</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=, initial-scale=1.0"</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"X-UA-Compatible"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"ie=edge"</span>></span></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">title</span>></span>Document<span class="hljs-tag"></<span class="hljs-name">title</span>></span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>></span><span class="hljs-tag"></<span class="hljs-name">script</span>></span> </span><br><span class="line"><span class="hljs-tag"></<span class="hljs-name">head</span>></span></span><br><span class="line"><span class="hljs-tag"><<span class="hljs-name">body</span>></span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app1"</span>></span></span><br><span class="line">        <span class="hljs-tag"><<span class="hljs-name">p</span>></span>{{message}}<span class="hljs-tag"></<span class="hljs-name">p</span>></span>   </span><br><span class="line">        <span class="hljs-tag"><<span class="hljs-name">input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">"message"</span>></span></span><br><span class="line">    <span class="hljs-tag"></<span class="hljs-name">div</span>></span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag"><<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./vuetest.js"</span>></span><span class="hljs-tag"></<span class="hljs-name">script</span>></span></span><br><span class="line"><span class="hljs-tag"></<span class="hljs-name">body</span>></span></span><br><span class="line"><span class="hljs-tag"></<span class="hljs-name">html</span>></span></span><br></pre></td></tr></tbody></table></figure>
 
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//vuetest.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el:<span class="string">"#app1"</span>,</span><br><span class="line">    data:&#123;</span><br><span class="line">        message:<span class="string">"helloworld"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    beforeCreate() &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"----------------------------"</span>)</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"xxx我是beforeCreate"</span>)</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.message+<span class="string">"    ,beforeCreate阶段输出了这条信息"</span>)</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"结束了，我输出了message的信息吗"</span>)  </span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    created() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"----------------------------"</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"我是create"</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.message+<span class="string">"    ,created阶段输出了这条信息"</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"结束了，我输出了message的信息吗"</span>)  </span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//在created阶段已经能够拿到具体的数据，也可以更改数据，且不会触发update函数</span></span><br><span class="line">    <span class="comment">//但是如果有两个created函数，则后一个重叠前一个</span></span><br><span class="line">    created()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"----------------------------"</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"我是created2代"</span>)</span><br><span class="line">        <span class="keyword">this</span>.message = <span class="keyword">this</span>.message + <span class="string">"!!!!!!!"</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.message)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"over"</span>)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//虚拟dom创建完成,已经存在数据以及识别到了el(即虚拟dom)</span></span><br><span class="line">    <span class="comment">//可以修改数据，但是已经是最后一次机会了，且不会触发update函数</span></span><br><span class="line">    beforeMount() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"----------------------------"</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"我是beforeMount"</span>)</span><br><span class="line">        <span class="keyword">this</span>.message = <span class="keyword">this</span>.message + <span class="string">"~~~"</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.message)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"over"</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这里再次修改数据的话，会触发update函数</span></span><br><span class="line">    mounted() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"--------------------"</span>)  </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Mounted"</span>)</span><br><span class="line">        <span class="comment">//console.log(this.message+"我触发了update函数，所有渲染的内容也变了"))</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"over"</span>)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//循环阶段必须触发才能进入，触发条件如修改数据，但是在Created和beforeMount两个阶段</span></span><br><span class="line">    <span class="comment">//是不会触发beforeupdate这个阶段的</span></span><br><span class="line">    <span class="comment">//不可以更改数据，否则死循环</span></span><br><span class="line">    beforeUpdate() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"--------------------"</span>)  </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'beforeUpdate:重新渲染之前触发'</span>) </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'然后vue的虚拟dom机制会重新构建虚拟dom与上一次的虚拟dom树利用diff算法进行对比之后重新渲染'</span>)    </span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//这里不能更改数据，否则会陷入死循环</span></span><br><span class="line">    updated() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"--------------------"</span>)  </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'updated:数据已经更改完成，dom也重新render完成'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    beforeDestroy() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'beforeDestory:销毁前执行（$destroy方法被调用的时候就会执行）,一般在这里善后:清除计时器、清除非指令绑定的事件等等...'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    destroyed() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'destroyed:组件的数据绑定、监听...都去掉了,只剩下dom空壳，这里也可以善后'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>输出内容<br><img src="http://img.noback.top/blog/imgvue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt=""></p>
-<p>这个生命周期的如图<br>1.首先创建一个vue实例  new Vue() ,这时候他只是一个空的壳子，无法访问到数据和真实的dom。—-&gt; beforeCreate。     创建完实例之后就会执行 beforeCreate,在 beforeCreate中一般不执行任何的操作</p>
+<figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">//vuetest.js</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">new</span> Vue({</span><br><span class="line">    el:<span class="hljs-string">"#app1"</span>,</span><br><span class="line">    data:{</span><br><span class="line">        message:<span class="hljs-string">"helloworld"</span></span><br><span class="line">    },</span><br><span class="line">    beforeCreate() {</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"----------------------------"</span>)</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"xxx我是beforeCreate"</span>)</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.message+<span class="hljs-string">"    ,beforeCreate阶段输出了这条信息"</span>)</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"结束了，我输出了message的信息吗"</span>)  </span><br><span class="line">    },</span><br><span class="line"></span><br><span class="line">    created() {</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"----------------------------"</span>)</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"我是create"</span>)</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.message+<span class="hljs-string">"    ,created阶段输出了这条信息"</span>)</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"结束了，我输出了message的信息吗"</span>)  </span><br><span class="line">    },</span><br><span class="line">    <span class="hljs-comment">//在created阶段已经能够拿到具体的数据，也可以更改数据，且不会触发update函数</span></span><br><span class="line">    <span class="hljs-comment">//但是如果有两个created函数，则后一个重叠前一个</span></span><br><span class="line">    created(){</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"----------------------------"</span>)</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"我是created2代"</span>)</span><br><span class="line">        <span class="hljs-keyword">this</span>.message = <span class="hljs-keyword">this</span>.message + <span class="hljs-string">"!!!!!!!"</span></span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.message)</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"over"</span>)</span><br><span class="line">    },</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">//虚拟dom创建完成,已经存在数据以及识别到了el(即虚拟dom)</span></span><br><span class="line">    <span class="hljs-comment">//可以修改数据，但是已经是最后一次机会了，且不会触发update函数</span></span><br><span class="line">    beforeMount() {</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"----------------------------"</span>)</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"我是beforeMount"</span>)</span><br><span class="line">        <span class="hljs-keyword">this</span>.message = <span class="hljs-keyword">this</span>.message + <span class="hljs-string">"~~~"</span></span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.message)</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"over"</span>)</span><br><span class="line">    },</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 这里再次修改数据的话，会触发update函数</span></span><br><span class="line">    mounted() {</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"--------------------"</span>)  </span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Mounted"</span>)</span><br><span class="line">        <span class="hljs-comment">//console.log(this.message+"我触发了update函数，所有渲染的内容也变了"))</span></span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"over"</span>)</span><br><span class="line">    },</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">//循环阶段必须触发才能进入，触发条件如修改数据，但是在Created和beforeMount两个阶段</span></span><br><span class="line">    <span class="hljs-comment">//是不会触发beforeupdate这个阶段的</span></span><br><span class="line">    <span class="hljs-comment">//不可以更改数据，否则死循环</span></span><br><span class="line">    beforeUpdate() {</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"--------------------"</span>)  </span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'beforeUpdate:重新渲染之前触发'</span>) </span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'然后vue的虚拟dom机制会重新构建虚拟dom与上一次的虚拟dom树利用diff算法进行对比之后重新渲染'</span>)    </span><br><span class="line">    },</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">//这里不能更改数据，否则会陷入死循环</span></span><br><span class="line">    updated() {</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"--------------------"</span>)  </span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'updated:数据已经更改完成，dom也重新render完成'</span>)</span><br><span class="line">    },</span><br><span class="line"></span><br><span class="line">    beforeDestroy() {</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'beforeDestory:销毁前执行（$destroy方法被调用的时候就会执行）,一般在这里善后:清除计时器、清除非指令绑定的事件等等...'</span>)</span><br><span class="line">    },</span><br><span class="line"></span><br><span class="line">    destroyed() {</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'destroyed:组件的数据绑定、监听...都去掉了,只剩下dom空壳，这里也可以善后'</span>)</span><br><span class="line">    },</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+<p>输出内容<br><img src="http://img.noback.top/blog/imgvue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt></p>
+<p>这个生命周期的如图<br>1.首先创建一个vue实例  new Vue() ,这时候他只是一个空的壳子，无法访问到数据和真实的dom。—-> beforeCreate。     创建完实例之后就会执行 beforeCreate,在 beforeCreate中一般不执行任何的操作</p>
 <p>2.之后执行 created函数，这个时候已经加载了数据，但是没有创建虚拟dom</p>
 <p>3.之后执行 beforeMount函数，这个时候会创建一个虚拟的dom ，同时也加载了数据，你也可以选择修改数据，而且在此之前修改的数据都不会触发update</p>
 <p>4.之后执行mounted函数，这个时候如果你修改了数据则会触发update函数</p>
 <p>5.update函数需要被触发</p>
 <p>6.destroyed 销毁</p>
-
-      
+</body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/6412f439/">vuejs基础2</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top">何泽君</a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/6412f439/">http://blog.noback.top/posts/6412f439/</a></li>
+            <li><strong>发布时间：</strong>2020-01-22</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/code/" rel="tag">code</a>,&nbsp;<a class="has-link-grey -link" href="/tags/vue/" rel="tag">vue</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
-    <div class="article-footer">
-      <blockquote class="mt-2x">
-  <ul class="post-copyright list-unstyled">
-    
-    <li class="post-copyright-link hidden-xs">
-      <strong>本文链接：</strong>
-      <a href="http://blog.noback.top/posts/6412f439/" title="vuejs基础2" target="_blank" rel="external">http://blog.noback.top/posts/6412f439/</a>
-    </li>
-    
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-</blockquote>
-
-
-<div class="panel panel-default panel-badger">
-  <div class="panel-body">
-    <figure class="media">
-      <div class="media-left">
-        <a href="https://github.com/cofess" target="_blank" class="img-burn thumb-sm visible-lg">
-          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
-        </a>
-      </div>
-      <div class="media-body">
-        <h3 class="media-heading"><a href="https://github.com/cofess" target="_blank"><span class="text-dark">昵称</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
-        <div>个人简介。</div>
-      </div>
-    </figure>
-  </div>
 </div>
 
 
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/f2caabf2/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">20200128</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/1fd63f28/">
+                <span class="level-item">vue组件基础</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
     </div>
-  </article>
-  
-    
-  <section id="comments">
-  	
-      <div id="vcomments"></div>
-    
-  </section>
-
-
-  
 </div>
 
-  <nav class="bar bar-footer clearfix" data-stick-bottom>
-  <div class="bar-inner">
-  
-  <ul class="pager pull-left">
-    
-    <li class="prev">
-      <a href="/posts/f2caabf2/" title="20200128"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
-    
-    <li class="next">
-      <a href="/posts/1fd63f28/" title="vue组件基础"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
-    </li>
-    
-    
-  </ul>
-  
-  
-  
-  <div class="bar-right">
-    
-  </div>
-  </div>
-</nav>
-  
 
 
-</main>
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/posts/6412f439/';
+        this.page.identifier = 'posts/6412f439/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
 
-  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
-	
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
-        
-        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
 
-    <div class="copyright">
-    	
-        <div class="publishby">
-        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        90
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        27
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        15
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#添加环境">
+        <span class="has-mr-6">1</span>
+        <span>添加环境</span>
+        </a></li><li>
+        <a class="is-flex" href="#vue的生命周期">
+        <span class="has-mr-6">2</span>
+        <span>vue的生命周期</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://image.noback.top/datadog.svg" alt="vuejs基础2" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 何泽君&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
         </div>
     </div>
 </footer>
-  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-<script>
-window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
-</script>
 
-<script src="/js/plugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
 
 
-<script src="/js/application.js"></script>
-
-
-    <script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(未命名)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-
-<script src="/js/insight.js"></script>
-
-
-
-
-
-
-   
-
-
-
-
-   
     
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/valine"></script>
-  <script type="text/javascript">
-  var GUEST = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link';
-  meta = meta.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#vcomments',
-    verify: false,
-    notify: false,
-    appId: '',
-    appKey: '',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: meta,
-    pageSize: '10' || 10,
-    visitor: false
-  });
-  </script>
+    
+    
+    <script src="/js/animation.js"></script>
+    
 
-     
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
 
 
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
 
 
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
 
 
+<script src="/js/main.js" defer></script>
 
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
 </body>
 </html>
