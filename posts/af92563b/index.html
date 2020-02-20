@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>rust作用域规则 - Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="learn rust 🦀️">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rust作用域规则">
+<meta property="og:url" content="http://blog.noback.top/posts/af92563b/index.html">
+<meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
+<meta property="og:description" content="learn rust 🦀️">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
+<meta property="article:published_time" content="2020-02-18T13:47:23.000Z">
+<meta property="article:modified_time" content="2020-02-18T13:47:23.000Z">
+<meta property="article:author" content="何泽君">
+<meta property="article:tag" content="rust">
+<meta property="article:tag" content="编程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="is-3-column" background="http://img.noback.top/background.jpg">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://image.noback.top/datadog.svg" alt="rust作用域规则" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/rust/">rust🦀️</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-10-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>rust作用域规则
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-18T13:47:23.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-18</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    17 分钟 读完 (大约 2588 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>learn rust 🦀️</p>
+<a id="more"></a>
+
+<h1 id="rust作用域规则"><a href="#rust作用域规则" class="headerlink" title="rust作用域规则"></a>rust作用域规则</h1><p>作用域在所有权（ownership）、借用（borrow）和生命周期（lifetime）中起着重要 作用。也就是说，作用域告诉编译器什么时候借用是合法的、什么时候资源可以释放、以及 变量何时被创建或销毁。</p>
+<h2 id="防止内存泄露"><a href="#防止内存泄露" class="headerlink" title="防止内存泄露"></a>防止内存泄露</h2><p>Rust 的变量不只是在栈中保存数据：它们也占有资源，比如 Box<t> 占有 堆（heap）中的内存。Rust 强制实行 RAII（Resource Acquisition Is Initiallization，资源获取即初始化），所以任何对象在离开作用域时，它的析构 函数（destructor）就被调用，然后它占有的资源就被释放。<br>这种行为避免了资源泄漏（resource leak），所以你再也不用手动释放内存或者担心 内存泄漏（memory leak）！下面是个快速入门示例：</t></p>
+<p>Rust上的值一般是在栈上分配的，而box可以将数据装箱放到堆上内存存储,</p>
+<p>当变量离开自己的作用域的时候，调用析构函数释放内存</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// raii.rs</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">create_box</span></span>() {</span><br><span class="line">    <span class="hljs-comment">// 在堆上分配一个整型数据</span></span><br><span class="line">    <span class="hljs-keyword">let</span> _box1 = <span class="hljs-built_in">Box</span>::new(<span class="hljs-number">3i32</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// `_box1` 在这里被销毁，内存得到释放</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-comment">// 在堆上分配一个整型数据    </span></span><br><span class="line">    <span class="hljs-keyword">let</span> _box2 = <span class="hljs-built_in">Box</span>::new(<span class="hljs-number">5i32</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 嵌套作用域：</span></span><br><span class="line">    {</span><br><span class="line">        <span class="hljs-comment">// 在堆上分配一个整型数据</span></span><br><span class="line">        <span class="hljs-keyword">let</span> _box3 = <span class="hljs-built_in">Box</span>::new(<span class="hljs-number">4i32</span>);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// `_box3` 在这里被销毁，内存得到释放        </span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 创建一大堆 box（只是因为好玩）。</span></span><br><span class="line">    <span class="hljs-comment">// 完全不需要手动释放内存！</span></span><br><span class="line">    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-number">0u32</span>..<span class="hljs-number">1_000</span> {</span><br><span class="line">        create_box();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// `_box2` 在这里被销毁，内存得到释放    </span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>使用vlagrind对内存错误进行仔细检查</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line">$ rustc raii.rs && valgrind ./raii</span><br><span class="line">==<span class="hljs-number">26873</span>== Memcheck, a memory error detector</span><br><span class="line">==<span class="hljs-number">26873</span>== Copyright (C) <span class="hljs-number">2002</span>-<span class="hljs-number">2013</span>, and GNU GPL<span class="hljs-symbol">'d</span>, by Julian Seward et al.</span><br><span class="line">==<span class="hljs-number">26873</span>== Using Valgrind-<span class="hljs-number">3.9</span>.<span class="hljs-number">0</span> and LibVEX; rerun with -h <span class="hljs-keyword">for</span> copyright info</span><br><span class="line">==<span class="hljs-number">26873</span>== Command: ./raii</span><br><span class="line">==<span class="hljs-number">26873</span>==</span><br><span class="line">==<span class="hljs-number">26873</span>==</span><br><span class="line">==<span class="hljs-number">26873</span>== HEAP SUMMARY:</span><br><span class="line">==<span class="hljs-number">26873</span>==     <span class="hljs-keyword">in</span> <span class="hljs-keyword">use</span> at exit: <span class="hljs-number">0</span> bytes <span class="hljs-keyword">in</span> <span class="hljs-number">0</span> blocks</span><br><span class="line">==<span class="hljs-number">26873</span>==   total heap usage: <span class="hljs-number">1</span>,<span class="hljs-number">013</span> allocs, <span class="hljs-number">1</span>,<span class="hljs-number">013</span> frees, <span class="hljs-number">8</span>,<span class="hljs-number">696</span> bytes allocated</span><br><span class="line">==<span class="hljs-number">26873</span>==</span><br><span class="line">==<span class="hljs-number">26873</span>== All heap blocks were freed -- no leaks are possible</span><br><span class="line">==<span class="hljs-number">26873</span>==</span><br><span class="line">==<span class="hljs-number">26873</span>== For counts of detected and suppressed errors, rerun with: -v</span><br><span class="line">==<span class="hljs-number">26873</span>== ERROR SUMMARY: <span class="hljs-number">0</span> errors from <span class="hljs-number">0</span> contexts (suppressed: <span class="hljs-number">2</span> from <span class="hljs-number">2</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="防止资源重复—-所有权"><a href="#防止资源重复—-所有权" class="headerlink" title="防止资源重复—-所有权"></a>防止资源重复—-所有权</h2><p>因为变量要负责释放它们拥有的资源，所以资源只能拥有一个所有者。这也防止了 资源的重复释放。注意并非所有变量都拥有资源（例如引用）。</p>
+<p>在了解所有权之间，要先了解rust中的两种数据类型</p>
+<ul>
+<li>基本数据类型： 如：bool（布尔），char（字符）,integer（整数）,floating（浮点）,arrays（数组），tuples(元组)，slice(切片),字符串（str），函数指针(functions)</li>
+<li>非基本数据类型 也就是引用类型<br>引用类型数据，内存存放在堆上面<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> s1 = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello"</span>);</span><br></pre></td></tr></tbody></table></figure>
+<img src="http://img.noback.top/2019-12-28-23-30-18.png" alt="2019-12-28-23-30-18"><br>引用类型在存储到堆中时，会指定三个部分 分别时指针，长度和容量，并且指针指向堆上存放内存的内存地址,长度表示 String 的内容当前使用了多少字节的内存。容量是 String 从操作系统总共获取了多少字节的内存。<br>长度是已经使用的，容量是总共可用的</li>
+</ul>
+<p>对所有权有两种动作状态  moved 和 copy</p>
+<h3 id="资源的复制"><a href="#资源的复制" class="headerlink" title="资源的复制"></a>资源的复制</h3><p>当将a赋值给b的时候，首先rust会对原来a的元数据进行复制，并将复制的数据赋值给b，并把a的所有权状态 设置为“已复制（ copied ）”状态。</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span> </span>(){</span><br><span class="line">    <span class="hljs-keyword">let</span> s1 = <span class="hljs-string">"hello"</span>;</span><br><span class="line">    <span class="hljs-keyword">let</span> s2 = s1;</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{},{}"</span>,s1,s2);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 只发生了copied  且 x的状态是已复制</span></span><br><span class="line"><span class="hljs-comment">// 会返回2个hello</span></span><br></pre></td></tr></tbody></table></figure>
+<p>![2019-12-28-23-32-47](<a href="http://img.noback.top/2019-12-28-23-32-47.png" target="_blank" rel="noopener">http://img.noback.top/2019-12-28-23-32-47.png</a><br>复制行为中，拷贝了一整份内容，包括指针长度和容量，于是他们共用同一个内存，而不是分别指向相等的两个内存</p>
+<p><font color="red">二次释放的问题</font><br>当变量离开作用域的使用,Rust自动调用drop函数并清理变量的堆内存，于是当出现复制行为的时候，他们执行的内存地址是相同的，当s1离开后，s2执行的内存地址无。当s1离开后，s2执行的内存地址无，这个叫做二次释放的错误，也是之前提到过的内存安全性 bug 之一。两次释放（相同）内存会导致内存污染，它可能会导致潜在的安全漏洞。</p>
+<h3 id="资源的移动"><a href="#资源的移动" class="headerlink" title="资源的移动"></a>资源的移动</h3><p>当将a赋值给b的时候，rust会把原来对a的原数据的所有权移动给b，并把a的所有权状态 设置为“已移动（ moved ）”状态。<br>资源的移动: 在通过值来传递函数参数（foo(x)）的时候，资源 的所有权（ownership）会发生转移。在移动资源后，原来的所有者不能再被使用，这可避免悬挂指针的产生</p>
+<p><img src="http://img.noback.top/2019-12-28-23-43-58.png" alt="2019-12-28-23-43-58"><br>如果将原变量指针移向另外一个变量指针，原变量指针失效。当你再次调用s1变量时，由于指针的失去，没有指向存储数据的内存地址，报错无效引用</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> s1 = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello"</span>); <span class="hljs-comment">// 这个是引用类型。数据在堆上面</span></span><br><span class="line">    <span class="hljs-keyword">let</span> s2 = s1;</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Hello, world!{}"</span>,s2);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,s1)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// input</span></span><br><span class="line">error[E0382]: borrow of moved value: `x`</span><br><span class="line"> --> src/main.rs:<span class="hljs-number">5</span>:<span class="hljs-number">19</span></span><br><span class="line">  |</span><br><span class="line"><span class="hljs-number">2</span> |     <span class="hljs-keyword">let</span> x = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello"</span>);</span><br><span class="line">  |         - move occurs because `x` has type `std::string::String`, which does not implement the `Copy` trait</span><br><span class="line"><span class="hljs-number">3</span> |     <span class="hljs-keyword">let</span> y = x;</span><br><span class="line">  |             - value moved here</span><br><span class="line"><span class="hljs-number">4</span> |     <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Hello, world!{}"</span>,y);</span><br><span class="line"><span class="hljs-number">5</span> |     <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,x)</span><br><span class="line">  |                   ^ value borrowed here after <span class="hljs-keyword">move</span></span><br><span class="line"></span><br><span class="line">error: aborting due to previous error</span><br><span class="line"></span><br><span class="line">For more information about this error, <span class="hljs-keyword">try</span> `rustc --explain E0382`.</span><br><span class="line">error: could not compile `xx`.</span><br><span class="line"></span><br><span class="line">To learn more, run the command again with --verbose.</span><br><span class="line"><span class="hljs-comment">// 指针报错</span></span><br><span class="line">指针状态已经更新成了moved</span><br></pre></td></tr></tbody></table></figure>
+<p>再来看一个</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 此函数取得堆分配的内存的所有权</span></span><br><span class="line"><span class="hljs-comment">// Box<i32> 内存在堆上 引用类型</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">destroy_box</span></span>(c: <span class="hljs-built_in">Box</span><<span class="hljs-built_in">i32</span>>) {</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Destroying a box that contains {}"</span>, c);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// `c` 被销毁且内存得到释放</span></span><br><span class="line">}</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-comment">// 栈分配的整型</span></span><br><span class="line">    <span class="hljs-keyword">let</span> x = <span class="hljs-number">5u32</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 将 `x` *复制*到 `y`——不存在资源移动</span></span><br><span class="line">    <span class="hljs-keyword">let</span> y = x;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 两个值各自都可以使用</span></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"x is {}, and y is {}"</span>, x, y);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// `a` 是一个指向堆分配的整数的指针</span></span><br><span class="line">    <span class="hljs-keyword">let</span> a = <span class="hljs-built_in">Box</span>::new(<span class="hljs-number">5i32</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"a contains: {}"</span>, a);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// *移动* `a` 到 `b`</span></span><br><span class="line">    <span class="hljs-keyword">let</span> b = a;</span><br><span class="line">    <span class="hljs-comment">// 把 `a` 的指针地址（而非数据）复制到 `b`。现在两者都指向</span></span><br><span class="line">    <span class="hljs-comment">// 同一个堆分配的数据，但是现在是 `b` 拥有它。</span></span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment">// 报错！`a` 不能访问数据，因为它不再拥有那部分堆上的内存。</span></span><br><span class="line">    <span class="hljs-comment">//println!("a contains: {}", a);</span></span><br><span class="line">    <span class="hljs-comment">// 试一试 ^ 去掉此行注释</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 此函数从 `b` 中取得堆分配的内存的所有权</span></span><br><span class="line">    destroy_box(b);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 此时堆内存已经被释放，这个操作会导致解引用已释放的内存，而这是编译器禁止的。</span></span><br><span class="line">    <span class="hljs-comment">// 报错！和前面出错的原因一样。</span></span><br><span class="line">    <span class="hljs-comment">//println!("b contains: {}", b);</span></span><br><span class="line">    <span class="hljs-comment">// 试一试 ^ 去掉此行注释</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="资源的克隆"><a href="#资源的克隆" class="headerlink" title="资源的克隆"></a>资源的克隆</h3><p>对于基础类型来说，变量的数据交互形式是复制<br>对于引用类型来说，变量的数据交互形式无法复制，只能移动。但是如果我们需要使用到复制堆上的数据，可以使用clone的通用函数<br>如果我们想要保留原来的引用类型变量，又要使用其值，可以使用clone</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> x = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hello"</span>); <span class="hljs-comment">// 这个是引用类型。数据在堆上面</span></span><br><span class="line">    <span class="hljs-keyword">let</span> y = x.clone();</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Hello, world!{}"</span>,y);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,x)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="可变性"><a href="#可变性" class="headerlink" title="可变性"></a>可变性</h2><p>当所有权转移时，数据的可变性可能发生改变</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> immutable_box = <span class="hljs-built_in">Box</span>::new(<span class="hljs-number">5u32</span>);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"immutable_box contains {}"</span>, immutable_box);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 不可变，报错</span></span><br><span class="line">    <span class="hljs-comment">//*immutable_box = 4;</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// *移动* box，改变所有权（和可变性）</span></span><br><span class="line">    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> mutable_box = immutable_box;</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"mutable_box contains {}"</span>, mutable_box);</span><br><span class="line">    <span class="hljs-comment">// 修改 box 的内容</span></span><br><span class="line">    *mutable_box = <span class="hljs-number">4</span>;</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"mutable_box now contains {}"</span>, mutable_box);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="借用"><a href="#借用" class="headerlink" title="借用"></a>借用</h2><p>多数情况下，我们更希望能访问数据，同时不取得其所有权。为实现这点，Rust 使用 了借用（borrowing）机制。对象可以通过引用（&T）来传递，从而取代通过 值（T）来传递。</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 此函数取得一个 box 的所有权并销毁它</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">eat_box_i32</span></span>(boxed_i32: <span class="hljs-built_in">Box</span><<span class="hljs-built_in">i32</span>>) {</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Destroying box that contains {}"</span>, boxed_i32);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 此函数借用了一个 i32 类型</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">borrow_i32</span></span>(borrowed_i32: &<span class="hljs-built_in">i32</span>) {</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"This int is: {}"</span>, borrowed_i32);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-comment">// 创建一个装箱的 i32 类型，以及一个存在栈中的 i32 类型。</span></span><br><span class="line">    <span class="hljs-keyword">let</span> boxed_i32 = <span class="hljs-built_in">Box</span>::new(<span class="hljs-number">5_i32</span>);</span><br><span class="line">    <span class="hljs-keyword">let</span> stacked_i32 = <span class="hljs-number">6_i32</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 借用了 box 的内容，但没有取得所有权，所以 box 的内容之后可以再次借用。</span></span><br><span class="line">    <span class="hljs-comment">// 译注：请注意函数自身就是一个作用域，因此下面两个函数运行完成以后，</span></span><br><span class="line">    <span class="hljs-comment">// 在函数中临时创建的引用也就不复存在了。</span></span><br><span class="line">    borrow_i32(&boxed_i32);</span><br><span class="line">    borrow_i32(&stacked_i32);</span><br><span class="line"></span><br><span class="line">    {</span><br><span class="line">        <span class="hljs-comment">// 取得一个对 box 中数据的引用</span></span><br><span class="line">        <span class="hljs-keyword">let</span> _ref_to_i32: &<span class="hljs-built_in">i32</span> = &boxed_i32;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 报错！</span></span><br><span class="line">        <span class="hljs-comment">// 当 `boxed_i32` 里面的值之后在作用域中被借用时，不能将其销毁。</span></span><br><span class="line">        eat_box_i32(boxed_i32);</span><br><span class="line">        <span class="hljs-comment">// 改正 ^ 注释掉此行</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 在 `_ref_to_i32` 里面的值被销毁后，尝试借用 `_ref_to_i32`</span></span><br><span class="line">        <span class="hljs-comment">//（译注：如果此处不借用，则在上一行的代码中，eat_box_i32(boxed_i32)可以将 `boxed_i32` 销毁。）</span></span><br><span class="line">        borrow_i32(_ref_to_i32);</span><br><span class="line">        <span class="hljs-comment">// `_ref_to_i32` 离开作用域且不再被借用。</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// `boxed_i32` 现在可以将所有权交给 `eat_i32` 并被销毁。</span></span><br><span class="line">    <span class="hljs-comment">//（译注：能够销毁是因为已经不存在对 `boxed_i32` 的引用）</span></span><br><span class="line">    eat_box_i32(boxed_i32);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="冻结"><a href="#冻结" class="headerlink" title="冻结"></a>冻结</h2><p>当数据被不可变地借用时，它还会冻结（freeze）。已冻结的数据无法通过原始 对象来修改，直到对这些数据的所有引用离开作用域为止</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> _mutable_integer = <span class="hljs-number">7i32</span>;</span><br><span class="line"></span><br><span class="line">    {</span><br><span class="line">        <span class="hljs-comment">// 借用 `_mutable_integer`</span></span><br><span class="line">        <span class="hljs-keyword">let</span> large_integer = &_mutable_integer;</span><br><span class="line">        <span class="hljs-comment">// 报错！`_mutable_integer` 在本作用域被冻结</span></span><br><span class="line">        _mutable_integer = <span class="hljs-number">50</span>;</span><br><span class="line">        <span class="hljs-comment">// 改正 ^ 注释掉此行</span></span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Immutably borrowed {}"</span>, large_integer);</span><br><span class="line">        <span class="hljs-comment">// `large_integer` 离开作用域</span></span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-comment">// 正常运行！`_mutable_integer` 在这作用域没有冻结</span></span><br><span class="line">    _mutable_integer = <span class="hljs-number">3</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/af92563b/">rust作用域规则</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top">何泽君</a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/af92563b/">http://blog.noback.top/posts/af92563b/</a></li>
+            <li><strong>发布时间：</strong>2020-02-18</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/rust/" rel="tag">rust</a>,&nbsp;<a class="has-link-grey -link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/a81913b8/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">rust常见集合</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/30cab582/">
+                <span class="level-item">标准库类型</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/posts/af92563b/';
+        this.page.identifier = 'posts/af92563b/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        hzj
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        108
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        26
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        18
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky"   style="max-height: 900px; overflow: auto;" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#rust作用域规则">
+        <span class="has-mr-6">1</span>
+        <span>rust作用域规则</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#防止内存泄露">
+        <span class="has-mr-6">1.1</span>
+        <span>防止内存泄露</span>
+        </a></li><li>
+        <a class="is-flex" href="#防止资源重复—-所有权">
+        <span class="has-mr-6">1.2</span>
+        <span>防止资源重复—-所有权</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#资源的复制">
+        <span class="has-mr-6">1.2.1</span>
+        <span>资源的复制</span>
+        </a></li><li>
+        <a class="is-flex" href="#资源的移动">
+        <span class="has-mr-6">1.2.2</span>
+        <span>资源的移动</span>
+        </a></li><li>
+        <a class="is-flex" href="#资源的克隆">
+        <span class="has-mr-6">1.2.3</span>
+        <span>资源的克隆</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#可变性">
+        <span class="has-mr-6">1.3</span>
+        <span>可变性</span>
+        </a></li><li>
+        <a class="is-flex" href="#借用">
+        <span class="has-mr-6">1.4</span>
+        <span>借用</span>
+        </a></li><li>
+        <a class="is-flex" href="#冻结">
+        <span class="has-mr-6">1.5</span>
+        <span>冻结</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+
+                
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://image.noback.top/datadog.svg" alt="rust作用域规则" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 何泽君&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

@@ -177,7 +177,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    3 分钟 读完 (大约 464 个字)
+                    5 分钟 读完 (大约 745 个字)
                 </span>
                 
                 
@@ -192,17 +192,28 @@
         <div class="content">
             <html><head></head><body><p>learn Rust  🦀️</p>
 <a id="more"></a>
-<h1 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h1><p>url <a href="https://www.rust-lang.org/zh-CN/tools/install" target="_blank" rel="noopener">https://www.rust-lang.org/zh-CN/tools/install</a></p>
+
+
+<h1 id="rust基础"><a href="#rust基础" class="headerlink" title="rust基础"></a>rust基础</h1><h2 id="什么是rust语言"><a href="#什么是rust语言" class="headerlink" title="什么是rust语言"></a>什么是rust语言</h2><p>Rust 是一种静态和强类型的系统编程语言。 静态 意味着，所有类型在编译时都是已知的，强类型 意味着，这些类型的设计使得编写不正确的程序变得更加困难。 一个成功的汇编语言意味着你比牛仔语言(像 C 语言)更好地保证正确性。 系统 意味着通过完全控制内存，生成最佳机器码。 所以可以接受的硬件就很多啦: 操作系统，设备驱动程序和甚至可能没有操作系统的嵌入式系统。 然而，Rust 也能编写普通的应用程序代码，实际上来说，Rust 也是一种非常愉快的语言。</p>
+<p>Rust 幕后统一原则是:</p>
+<ul>
+<li>严格执行数据的 安全借用</li>
+<li>在数据上，用函数，方法和闭包来操作</li>
+<li>用元组，结构和枚举来聚合数据</li>
+<li>模式匹配来选择和解构数据</li>
+<li>trait 来定义 数据的 行为</li>
+</ul>
+<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><p>url <a href="https://www.rust-lang.org/zh-CN/tools/install" target="_blank" rel="noopener">https://www.rust-lang.org/zh-CN/tools/install</a></p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">curl --proto <span class="hljs-string">'=https'</span> --tlsv1.2 -sSf https://sh.rustup.rs | sh</span><br></pre></td></tr></tbody></table></figure>
 <p>while you input enter ，will install rust default</p>
 <p>上面这条命令会安装一些内容，比如  cargo  rustup<br>如果你想要使用他们，需要将他们添加到环境变量中</p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 方法1</span></span><br><span class="line"><span class="hljs-built_in">source</span> <span class="hljs-variable">$HOME</span>/.cargo/env</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 方法2</span></span><br><span class="line"><span class="hljs-built_in">export</span>  PATH=<span class="hljs-string">"<span class="hljs-variable">$HOME</span>/.cargo/bin:<span class="hljs-variable">$PATH</span>"</span> </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 其实env里面写的就是方法2</span></span><br><span class="line"><span class="hljs-comment"># 查看是否安装完成</span></span><br><span class="line">rustc --version</span><br><span class="line">rustc 1.39.0 (4560ea788 2019-11-04)</span><br></pre></td></tr></tbody></table></figure>
 
 
-<h1 id="update"><a href="#update" class="headerlink" title="update"></a>update</h1><p>更新版本, rustup用来管理rust的版本,rust每6个礼拜会进行一次版本迭代，使用rustup update更新版本</p>
+<h2 id="update"><a href="#update" class="headerlink" title="update"></a>update</h2><p>更新版本, rustup用来管理rust的版本,rust每6个礼拜会进行一次版本迭代，使用rustup update更新版本</p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">rustup update</span><br></pre></td></tr></tbody></table></figure>
 
-<h1 id="cargo工具"><a href="#cargo工具" class="headerlink" title="cargo工具"></a>cargo工具</h1><p>Cargo：Rust 的构建工具和包管理器</p>
+<h2 id="cargo工具"><a href="#cargo工具" class="headerlink" title="cargo工具"></a>cargo工具</h2><p>Cargo：Rust 的构建工具和包管理器</p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">cargo build <span class="hljs-comment">#构建项目</span></span><br><span class="line">cargo run <span class="hljs-comment"># 构建并运行项目</span></span><br><span class="line">cargo <span class="hljs-built_in">test</span> <span class="hljs-comment"># 测试项目</span></span><br><span class="line">cargo doc <span class="hljs-comment"># 为项目构建文档</span></span><br><span class="line">cargo publish <span class="hljs-comment"># 将库发布到cartes.io </span></span><br><span class="line">cargo new xxproject <span class="hljs-comment"># 创建xxproject项目</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># cargo  开发者社区</span></span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="cargo-使用"><a href="#cargo-使用" class="headerlink" title="cargo 使用"></a>cargo 使用</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">cargo new helloworld <span class="hljs-comment"># 创建一个项目helloworld </span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 生成如下文件</span></span><br><span class="line">[root@dev rustttt]<span class="hljs-comment">#  tree .</span></span><br><span class="line">.</span><br><span class="line">└── helloworld</span><br><span class="line">    ├── Cargo.toml</span><br><span class="line">    └── src</span><br><span class="line">        └── main.rs</span><br></pre></td></tr></tbody></table></figure>
@@ -264,8 +275,8 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/posts/bb04cef6/">
-                <span class="level-item">rust基础2</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/93aa081f/">
+                <span class="level-item">rust猜谜游戏</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -333,7 +344,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        95
+                        108
                     </p>
                 </a>
             </div>
@@ -343,7 +354,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        27
+                        26
                     </p>
                 </a>
             </div>
@@ -353,7 +364,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        16
+                        18
                     </p>
                 </a>
             </div>
@@ -376,28 +387,36 @@
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#Install">
+        <a class="is-flex" href="#rust基础">
         <span class="has-mr-6">1</span>
+        <span>rust基础</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#什么是rust语言">
+        <span class="has-mr-6">1.1</span>
+        <span>什么是rust语言</span>
+        </a></li><li>
+        <a class="is-flex" href="#Install">
+        <span class="has-mr-6">1.2</span>
         <span>Install</span>
         </a></li><li>
         <a class="is-flex" href="#update">
-        <span class="has-mr-6">2</span>
+        <span class="has-mr-6">1.3</span>
         <span>update</span>
         </a></li><li>
         <a class="is-flex" href="#cargo工具">
-        <span class="has-mr-6">3</span>
+        <span class="has-mr-6">1.4</span>
         <span>cargo工具</span>
-        </a><ul class="menu-list"><li>
+        </a></li><li>
         <a class="is-flex" href="#cargo-使用">
-        <span class="has-mr-6">3.1</span>
+        <span class="has-mr-6">1.5</span>
         <span>cargo 使用</span>
         </a></li><li>
         <a class="is-flex" href="#编译rust文件-rustc">
-        <span class="has-mr-6">3.2</span>
+        <span class="has-mr-6">1.6</span>
         <span>编译rust文件  rustc</span>
         </a></li><li>
         <a class="is-flex" href="#other">
-        <span class="has-mr-6">3.3</span>
+        <span class="has-mr-6">1.7</span>
         <span>other</span>
         </a></li></ul></li></ul>
         </div>

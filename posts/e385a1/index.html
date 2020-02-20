@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>rust基础 - Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="learn rust 🦀️">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rust基础">
+<meta property="og:url" content="http://blog.noback.top/posts/e385a1/index.html">
+<meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
+<meta property="og:description" content="learn rust 🦀️">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
+<meta property="article:published_time" content="2020-02-19T01:11:27.000Z">
+<meta property="article:modified_time" content="2020-02-19T01:11:27.000Z">
+<meta property="article:author" content="何泽君">
+<meta property="article:tag" content="rust">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="is-3-column" background="http://img.noback.top/background.jpg">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://image.noback.top/datadog.svg" alt="rust基础" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/rust/">rust🦀️</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-10-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>rust基础
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-19T01:11:27.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-19</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    8 分钟 读完 (大约 1229 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>learn rust 🦀️</p>
+<a id="more"></a>
+
+
+<h1 id="rust基础"><a href="#rust基础" class="headerlink" title="rust基础"></a>rust基础</h1><h2 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h2><p>任何一门语言的开始都用”hello,world”来作为开始的标记</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() { </span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"hello,world"</span>) <span class="hljs-comment">//输出完毕后 额外添加一次回车</span></span><br><span class="line">    <span class="hljs-built_in">print!</span>(<span class="hljs-string">"hello.world"</span>) <span class="hljs-comment">// 无回车 </span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>如果你有任何的语法错误，rust会给足一定的智能提示来纠正这些错误</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">error[E0423]: expected <span class="hljs-keyword">function</span>, found macro `<span class="hljs-built_in">print</span>`</span><br><span class="line"> --> src/main.rs:3:5</span><br><span class="line">  |</span><br><span class="line">3 |     <span class="hljs-built_in">print</span>(<span class="hljs-string">"hello,world"</span>);</span><br><span class="line">  |     ^^^^^ <span class="hljs-built_in">help</span>: use `!` to invoke the macro: `<span class="hljs-built_in">print</span>!`</span><br><span class="line"></span><br><span class="line">error: aborting due to previous error</span><br><span class="line"></span><br><span class="line">For more information about this error, try `rustc --explain E0423`.</span><br><span class="line">error: could not compile `untitled`.</span><br><span class="line"></span><br><span class="line">To learn more, run the <span class="hljs-built_in">command</span> again with --verbose.</span><br></pre></td></tr></tbody></table></figure>
+<p><font color="red">rust希望你能够在print后面添加！</font></p>
+<h2 id="变量与打印"><a href="#变量与打印" class="headerlink" title="变量与打印"></a>变量与打印</h2><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> number  = <span class="hljs-number">1</span>; <span class="hljs-comment">// 不可变</span></span><br><span class="line">    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> number2 = <span class="hljs-number">2</span>; <span class="hljs-comment">//可变</span></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,number2+<span class="hljs-number">1</span>);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,number);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>他也支持格式化输出，与python类似<a href="https://doc.rust-lang.org/std/fmt/index.html" target="_blank" rel="noopener">fmt格式化</a></p>
+<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> number = <span class="hljs-string">"hello world"</span>;</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,number);</span><br><span class="line">    <span class="hljs-built_in">assert_eq!</span>(number,<span class="hljs-string">"xsxs"</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">hello world</span><br><span class="line">thread <span class="hljs-string">'main'</span> panicked at <span class="hljs-string">'assertion failed: `(left == right)`</span></span><br><span class="line"><span class="hljs-string">  left: `"hello world"`,</span></span><br><span class="line"><span class="hljs-string"> right: `"xsxs"`'</span>, src/main.rs:5:5</span><br><span class="line">note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace.</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="循环与条件"><a href="#循环与条件" class="headerlink" title="循环与条件"></a>循环与条件</h2><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..<span class="hljs-number">5</span> {</span><br><span class="line">        <span class="hljs-keyword">if</span> i % <span class="hljs-number">2</span> == <span class="hljs-number">0</span> {</span><br><span class="line">            <span class="hljs-built_in">println!</span>(<span class="hljs-string">"even {}"</span>, i);</span><br><span class="line">        } <span class="hljs-keyword">else</span> {</span><br><span class="line">            <span class="hljs-built_in">println!</span>(<span class="hljs-string">"odd {}"</span>, i);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>其中这里只包括0-4 不包括5</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..<span class="hljs-number">5</span>{</span><br><span class="line">        <span class="hljs-keyword">let</span> res = <span class="hljs-keyword">if</span> i % <span class="hljs-number">2</span> == <span class="hljs-number">0</span> { <span class="hljs-built_in">println!</span>(<span class="hljs-string">"is {}"</span>,i) } <span class="hljs-keyword">else</span> { <span class="hljs-built_in">println!</span>(<span class="hljs-string">"not {}"</span>,i )};</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><font color="red">累加0-100</font></p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> number = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..<span class="hljs-number">101</span> {</span><br><span class="line">        number += i;</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,number);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h2><p>为了保持数据的一致，需要一些类型转换的工具</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> sum = <span class="hljs-number">0.0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..<span class="hljs-number">5</span> {</span><br><span class="line">        sum += i <span class="hljs-keyword">as</span> <span class="hljs-built_in">f64</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"sum is {}"</span>, sum);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="引用与解引用"><a href="#引用与解引用" class="headerlink" title="引用与解引用"></a>引用与解引用</h2><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">by_ref</span></span>(x: &<span class="hljs-built_in">i32</span>) -> <span class="hljs-built_in">i32</span>{</span><br><span class="line">    *x + <span class="hljs-number">1</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> i = <span class="hljs-number">10</span>;</span><br><span class="line">    <span class="hljs-keyword">let</span> res1 = by_ref(&i);</span><br><span class="line">    <span class="hljs-keyword">let</span> res2 = by_ref(&<span class="hljs-number">41</span>);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{} {}"</span>, res1,res2);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="调用包"><a href="#调用包" class="headerlink" title="调用包"></a>调用包</h2><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">use</span> std::<span class="hljs-built_in">f64</span>::consts;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> number :<span class="hljs-built_in">f64</span> = consts::PI;</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,number);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="数组与切片"><a href="#数组与切片" class="headerlink" title="数组与切片"></a>数组与切片</h2><p>数组</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> arr = [<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>];</span><br><span class="line">    <span class="hljs-keyword">let</span> first = arr[<span class="hljs-number">0</span>];</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"first {}"</span>, first);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..<span class="hljs-number">4</span> {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"[{}] = {}"</span>, i,arr[i]);</span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"length {}"</span>, arr.len());</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>切片<br>切片(Slice)是一种没有所有权的数据类型。 切片引用连续的内存分配而不是整个集合。 它允许安全，高效地访问数组而无需复制。 切片不是直接创建的，而是从现有变量创建的。 切片由长度组成，并且可以是可变的或不可变的。 切片的行为与数组相同。//原文出自【易百教程】，商业转载请联系作者获得授权，非商业请保留原文链接：<a href="https://www.yiibai.com/rust/rust-slices.html" target="_blank" rel="noopener">https://www.yiibai.com/rust/rust-slices.html</a></p>
+<p>使用切片</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> words = <span class="hljs-string">"hello wolrd"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 获取字符串长度</span></span><br><span class="line">    <span class="hljs-keyword">let</span> words_numbers = words.len();</span><br><span class="line">    <span class="hljs-comment">// 获取所有字符串</span></span><br><span class="line">    <span class="hljs-keyword">let</span> words1 = &words[<span class="hljs-number">0</span>..];</span><br><span class="line">    <span class="hljs-comment">// 字符串切片</span></span><br><span class="line">    <span class="hljs-keyword">let</span> words2 = &words[<span class="hljs-number">0</span>..<span class="hljs-number">2</span>];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"words is '{}'\nwords_numbers is '{}' \nwords1 is '{}'\n"</span>,words,words_numbers, words1);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"words2 is '{}'"</span>,words2);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 累加和</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> arr = [<span class="hljs-number">10</span>,<span class="hljs-number">20</span>,<span class="hljs-number">30</span>,<span class="hljs-number">40</span>];</span><br><span class="line">    <span class="hljs-keyword">let</span> res = sum_numbers(&arr[<span class="hljs-number">0</span>..]);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,res)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 获取一个数组切片 类型为i32，返回一个i32</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">sum_numbers</span></span>(arr: &[<span class="hljs-built_in">i32</span>]) -> <span class="hljs-built_in">i32</span>{</span><br><span class="line">    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> res = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..arr.len(){</span><br><span class="line">        res += arr[i];</span><br><span class="line">    }</span><br><span class="line">    res</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><font color="red">切片的get方法</font></p>
+<p>get方法返回一个option值</p>
+<ul>
+<li>如果给定位置，则返回对该位置处元素的引用或None超出范围。</li>
+<li>如果给定范围，则返回对应于该范围的子切片，或者None超出范围。</li>
+</ul>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> ints = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];</span><br><span class="line">    <span class="hljs-keyword">let</span> slice = &ints;</span><br><span class="line">    <span class="hljs-keyword">let</span> first = slice.get(<span class="hljs-number">0</span>);</span><br><span class="line">    <span class="hljs-keyword">let</span> last = slice.get(<span class="hljs-number">5</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"first {:?}"</span>, first);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"last {:?}"</span>, last);</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment">// first Some(1)</span></span><br><span class="line"><span class="hljs-comment">// last None</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h2><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> v = <span class="hljs-built_in">Vec</span>::new();</span><br><span class="line">    v.push(<span class="hljs-number">10</span>);</span><br><span class="line">    v.push(<span class="hljs-number">20</span>);</span><br><span class="line">    v.push(<span class="hljs-number">30</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> first = v[<span class="hljs-number">0</span>];  <span class="hljs-comment">// 同样，超出范围也会 panic</span></span><br><span class="line">    <span class="hljs-keyword">let</span> maybe_first = v.get(<span class="hljs-number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"v is {:?}"</span>, v);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"first is {}"</span>, first);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"maybe_first is {:?}"</span>, maybe_first);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> iter = <span class="hljs-number">0</span>..<span class="hljs-number">3</span>;</span><br><span class="line">    <span class="hljs-built_in">assert_eq!</span>(iter.next(), <span class="hljs-literal">Some</span>(<span class="hljs-number">0</span>));</span><br><span class="line">    <span class="hljs-built_in">assert_eq!</span>(iter.next(), <span class="hljs-literal">Some</span>(<span class="hljs-number">1</span>));</span><br><span class="line">    <span class="hljs-built_in">assert_eq!</span>(iter.next(), <span class="hljs-literal">Some</span>(<span class="hljs-number">2</span>));</span><br><span class="line">    <span class="hljs-built_in">assert_eq!</span>(iter.next(), <span class="hljs-literal">None</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>迭代器很容易定义。 下面是一个”对象”，它使用next方法返回一个Option。只要这个值不是None，我们就一直next下去:<br>使用迭代进行循环</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> arr = [<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>];</span><br><span class="line">    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> arr.iter() {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, i);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 切片将隐式转换为迭代器...</span></span><br><span class="line">    <span class="hljs-keyword">let</span> slice = &arr;</span><br><span class="line">    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> slice {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, i);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>使用迭代进行数字累加</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> sum: <span class="hljs-built_in">i32</span>  = (<span class="hljs-number">0</span>..<span class="hljs-number">5</span>).sum();</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"sum was {}"</span>, sum);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> sum: <span class="hljs-built_in">i64</span> = [<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>].iter().sum();</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"sum was {}"</span>, sum);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><a href="https://doc.rust-lang.org/std/primitive.slice.html" target="_blank" rel="noopener">更多切片方法</a></p>
+<h2 id="Option值"><a href="#Option值" class="headerlink" title="Option值"></a>Option值</h2><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> ints = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];</span><br><span class="line">    <span class="hljs-keyword">let</span> slice = &ints;</span><br><span class="line">    <span class="hljs-keyword">let</span> first = slice.get(<span class="hljs-number">0</span>);</span><br><span class="line">    <span class="hljs-keyword">let</span> last = slice.get(<span class="hljs-number">5</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"first {:?}"</span>, first);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"last {:?}"</span>, last);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"some is { }"</span>,first.unwrap());</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> first = <span class="hljs-keyword">if</span> first.is_some(){</span><br><span class="line">        *first.unwrap()</span><br><span class="line">    } <span class="hljs-keyword">else</span> {</span><br><span class="line">        -<span class="hljs-number">1</span></span><br><span class="line">    };</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,first);</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment">// first Some(1)</span></span><br><span class="line"><span class="hljs-comment">// last None </span></span><br><span class="line"><span class="hljs-comment">// some is 1</span></span><br><span class="line"><span class="hljs-comment">// 1</span></span><br></pre></td></tr></tbody></table></figure>
+<p><font color="red">注意* - Some内部的精确类型是&i32，这是一个引用。 我们需要解引用回到一个i32的值.</font></p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">dump</span></span>(s: &<span class="hljs-built_in">str</span>) {</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"str '{}'"</span>, s);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> text = <span class="hljs-string">"hello dolly"</span>;  <span class="hljs-comment">// string 切片 这里已经是切片</span></span><br><span class="line">    <span class="hljs-keyword">let</span> s = text.to_string();  <span class="hljs-comment">// 这里不是切片  &s 是引用</span></span><br><span class="line"></span><br><span class="line">    dump(text);</span><br><span class="line">    dump(&s);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="获取命令行参数"><a href="#获取命令行参数" class="headerlink" title="获取命令行参数"></a>获取命令行参数</h2><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">for</span> arg <span class="hljs-keyword">in</span> std::env::args() {</span><br><span class="line">        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"'{}'"</span>, arg);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> args: <span class="hljs-built_in">Vec</span><<span class="hljs-built_in">String</span>> = std::env::args().skip(<span class="hljs-number">1</span>).collect();</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="匹配"><a href="#匹配" class="headerlink" title="匹配"></a>匹配</h2><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">match</span> multilingual.find(<span class="hljs-string">'п'</span>) {</span><br><span class="line">      <span class="hljs-literal">Some</span>(idx) => {</span><br><span class="line">          <span class="hljs-keyword">let</span> hi = &multilingual[idx..];</span><br><span class="line">          <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Russian hi {}"</span>, hi);</span><br><span class="line">      },</span><br><span class="line">      <span class="hljs-literal">None</span> => <span class="hljs-built_in">println!</span>(<span class="hljs-string">"couldn't find the greeting, Товарищ"</span>)</span><br><span class="line">  };</span><br></pre></td></tr></tbody></table></figure>
+<p>只匹配一次</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-literal">Some</span>(idx) = multilingual.find(<span class="hljs-string">'п'</span>) {</span><br><span class="line">       <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Russian hi {}"</span>, &multilingual[idx..]);</span><br><span class="line">   }</span><br></pre></td></tr></tbody></table></figure>
+<p>类似于switch用法</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> text = <span class="hljs-keyword">match</span> n {</span><br><span class="line">       <span class="hljs-number">0</span> => <span class="hljs-string">"zero"</span>,</span><br><span class="line">       <span class="hljs-number">1</span> => <span class="hljs-string">"one"</span>,</span><br><span class="line">       <span class="hljs-number">2</span> => <span class="hljs-string">"two"</span>,</span><br><span class="line">       _ => <span class="hljs-string">"many"</span>,</span><br><span class="line">   };</span><br></pre></td></tr></tbody></table></figure>
+<p>定义匹配范围</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> text = <span class="hljs-keyword">match</span> n {</span><br><span class="line">       <span class="hljs-number">0</span>...<span class="hljs-number">3</span> => <span class="hljs-string">"small"</span>,</span><br><span class="line">       <span class="hljs-number">4</span>...<span class="hljs-number">6</span> => <span class="hljs-string">"medium"</span>,</span><br><span class="line">       _ => <span class="hljs-string">"large"</span>,</span><br><span class="line">    };</span><br></pre></td></tr></tbody></table></figure></body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/e385a1/">rust基础</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top">何泽君</a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/e385a1/">http://blog.noback.top/posts/e385a1/</a></li>
+            <li><strong>发布时间：</strong>2020-02-19</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/rust/" rel="tag">rust</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/bbe17d1/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">rust 结构 枚举 引用</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/2e99e72c/">
+                <span class="level-item">rust智能指针</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/posts/e385a1/';
+        this.page.identifier = 'posts/e385a1/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        hzj
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        108
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        26
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        18
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky"   style="max-height: 900px; overflow: auto;" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#rust基础">
+        <span class="has-mr-6">1</span>
+        <span>rust基础</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#hello-world">
+        <span class="has-mr-6">1.1</span>
+        <span>hello world</span>
+        </a></li><li>
+        <a class="is-flex" href="#变量与打印">
+        <span class="has-mr-6">1.2</span>
+        <span>变量与打印</span>
+        </a></li><li>
+        <a class="is-flex" href="#断言">
+        <span class="has-mr-6">1.3</span>
+        <span>断言</span>
+        </a></li><li>
+        <a class="is-flex" href="#循环与条件">
+        <span class="has-mr-6">1.4</span>
+        <span>循环与条件</span>
+        </a></li><li>
+        <a class="is-flex" href="#数据类型转换">
+        <span class="has-mr-6">1.5</span>
+        <span>数据类型转换</span>
+        </a></li><li>
+        <a class="is-flex" href="#引用与解引用">
+        <span class="has-mr-6">1.6</span>
+        <span>引用与解引用</span>
+        </a></li><li>
+        <a class="is-flex" href="#调用包">
+        <span class="has-mr-6">1.7</span>
+        <span>调用包</span>
+        </a></li><li>
+        <a class="is-flex" href="#数组与切片">
+        <span class="has-mr-6">1.8</span>
+        <span>数组与切片</span>
+        </a></li><li>
+        <a class="is-flex" href="#向量">
+        <span class="has-mr-6">1.9</span>
+        <span>向量</span>
+        </a></li><li>
+        <a class="is-flex" href="#迭代器">
+        <span class="has-mr-6">1.10</span>
+        <span>迭代器</span>
+        </a></li><li>
+        <a class="is-flex" href="#Option值">
+        <span class="has-mr-6">1.11</span>
+        <span>Option值</span>
+        </a></li><li>
+        <a class="is-flex" href="#字符串">
+        <span class="has-mr-6">1.12</span>
+        <span>字符串</span>
+        </a></li><li>
+        <a class="is-flex" href="#获取命令行参数">
+        <span class="has-mr-6">1.13</span>
+        <span>获取命令行参数</span>
+        </a></li><li>
+        <a class="is-flex" href="#匹配">
+        <span class="has-mr-6">1.14</span>
+        <span>匹配</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+
+                
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://image.noback.top/datadog.svg" alt="rust基础" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 何泽君&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>rust 结构 枚举 引用 - Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="learn rust 🦀️">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rust 结构 枚举 引用">
+<meta property="og:url" content="http://blog.noback.top/posts/bbe17d1/index.html">
+<meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
+<meta property="og:description" content="learn rust 🦀️">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
+<meta property="article:published_time" content="2020-02-19T03:39:40.000Z">
+<meta property="article:modified_time" content="2020-02-19T03:39:40.000Z">
+<meta property="article:author" content="何泽君">
+<meta property="article:tag" content="rust">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="is-3-column" background="http://img.noback.top/background.jpg">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://image.noback.top/datadog.svg" alt="rust 结构 枚举 引用" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/rust/">rust🦀️</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-10-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>rust 结构 枚举 引用
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-19T03:39:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-19</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    14 分钟 读完 (大约 2104 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>learn rust 🦀️</p>
+<a id="more"></a>
+
+
+<h1 id="rust"><a href="#rust" class="headerlink" title="rust"></a>rust</h1><h2 id="rust引用"><a href="#rust引用" class="headerlink" title="rust引用"></a>rust引用</h2><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span> </span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> name1 = <span class="hljs-string">"hzj"</span>; <span class="hljs-comment">//切片, 不在堆上  -> 与&name2类似</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> name2 = <span class="hljs-string">"hzj"</span>.to_string() ;<span class="hljs-comment">//String 类型 在堆上</span></span><br><span class="line">    <span class="hljs-keyword">let</span> name3 = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hzj"</span>); <span class="hljs-comment">// String类型 在堆上</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> name4 = &name2; <span class="hljs-comment">// 引用类型</span></span><br><span class="line">    <span class="hljs-keyword">let</span> name5 = name1; <span class="hljs-comment">// 复制切片</span></span><br><span class="line">    <span class="hljs-keyword">let</span> name6 = name2; <span class="hljs-comment">// 复制String类型</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,name2)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>会显示name2被moved了 。<br>我们不会看到像数字这样的”原始”类型不能复制，因为它们只是数值; 他们被允许复制，因为他们复制成本堪称便宜。 但，String是已经分配了包含”Hello dolly”的内存，而要复制这内容，将涉及分配更多内存还要复制字符{char}。Rust 才不会静悄悄地做这样的事情。</p>
+<p><font color="red">隐式移动</font></p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">dump</span></span>(s: <span class="hljs-built_in">String</span>) {</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, s);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> s1 = <span class="hljs-string">"hello dolly"</span>.to_string();</span><br><span class="line">    dump(s1);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"s1 {}"</span>, s1); <span class="hljs-comment">// <---error: 'value used here after move'</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// tuple1.rs</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">add_mul</span></span>(x: <span class="hljs-built_in">f64</span>, y: <span class="hljs-built_in">f64</span>) -> (<span class="hljs-built_in">f64</span>,<span class="hljs-built_in">f64</span>) {</span><br><span class="line">    (x + y, x * y)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> t = add_mul(<span class="hljs-number">2.0</span>,<span class="hljs-number">10.0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 可以 调试打印</span></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"t {:?}"</span>, t);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 可以 给出值'索引'</span></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"add {} mul {}"</span>, t.<span class="hljs-number">0</span>,t.<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 可以 _提取_ 值</span></span><br><span class="line">    <span class="hljs-keyword">let</span> (add,mul) = t;</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"add {} mul {}"</span>, add,mul);</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment">// t (12, 20)</span></span><br><span class="line"><span class="hljs-comment">// add 12 mul 20</span></span><br><span class="line"><span class="hljs-comment">// add 12 mul 20</span></span><br></pre></td></tr></tbody></table></figure>
+<p>元组能包含 不同 类型，这也是它与数组的主要区别。</p>
+<h2 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h2><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// struct1.rs</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span></span> {</span><br><span class="line">    first_name: <span class="hljs-built_in">String</span>,</span><br><span class="line">    last_name: <span class="hljs-built_in">String</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> p = Person {</span><br><span class="line">        first_name: <span class="hljs-string">"John"</span>.to_string(),</span><br><span class="line">        last_name: <span class="hljs-string">"Smith"</span>.to_string()</span><br><span class="line">    };</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"person {} {}"</span>, p.first_name,p.last_name);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>结构体中的关联函数</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span></span> {</span><br><span class="line">    first_name: <span class="hljs-built_in">String</span>,</span><br><span class="line">    last_name: <span class="hljs-built_in">String</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">impl</span> Person {</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">new</span></span>(first: &<span class="hljs-built_in">str</span>, name: &<span class="hljs-built_in">str</span>) -> Person {</span><br><span class="line">        Person {</span><br><span class="line">            first_name: first.to_string(),</span><br><span class="line">            last_name: name.to_string()</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> p = Person::new(<span class="hljs-string">"John"</span>,<span class="hljs-string">"Smith"</span>);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"person {} {}"</span>, p.first_name,p.last_name);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="结构体与引用"><a href="#结构体与引用" class="headerlink" title="结构体与引用"></a>结构体与引用</h3><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span></span>{</span><br><span class="line">    name: <span class="hljs-built_in">String</span>,</span><br><span class="line">    age: <span class="hljs-built_in">i32</span>,</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> p = Person::new(<span class="hljs-string">"hhh"</span>,<span class="hljs-number">12</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{} {}"</span>,p.name,p.age);</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">impl</span> Person{</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">new</span></span>(name: &<span class="hljs-built_in">str</span>,age: <span class="hljs-built_in">i32</span>) -> Person {</span><br><span class="line">        Person {</span><br><span class="line">            name: name.to_string(),</span><br><span class="line">            age: age,</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>rust是不是动态语言，在变量的类型上会有严格的要求，以上代码，我们确定了一个Person的结构体，其中name变量是String类型，在编译的过程中，rust回去找Person的方法体，<br>Person方法体要求加入一个name变量的切片或者说引用类型， 但是结构体内的是String类型std::string::String，于是会要求转换转换 name.to_string()</p>
+<p>因此，在不考虑其他元素的情况下，你的代码还可以这样写</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span></span>{</span><br><span class="line">    name: <span class="hljs-built_in">String</span>,</span><br><span class="line">    age: <span class="hljs-built_in">i32</span>,</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> p = Person::new(<span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hhh"</span>),<span class="hljs-number">12</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{} {}"</span>,p.name,p.age);</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">impl</span> Person{</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">new</span></span>(name: <span class="hljs-built_in">String</span>,age: <span class="hljs-built_in">i32</span>) -> Person {</span><br><span class="line">        Person {</span><br><span class="line">            name: name,</span><br><span class="line">            age: age,</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>或者这样写</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span></span>{</span><br><span class="line">    name: <span class="hljs-built_in">String</span>,</span><br><span class="line">    age: <span class="hljs-built_in">i32</span>,</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> p = Person::new(&<span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hhh"</span>),<span class="hljs-number">12</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{} {}"</span>,p.name,p.age);</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">impl</span> Person{</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">new</span></span>(name: &<span class="hljs-built_in">str</span>,age: <span class="hljs-built_in">i32</span>) -> Person {</span><br><span class="line">        Person {</span><br><span class="line">            name: name.to_string(),</span><br><span class="line">            age: age,</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="结构体的自我调用"><a href="#结构体的自我调用" class="headerlink" title="结构体的自我调用"></a>结构体的自我调用</h3><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span></span>{</span><br><span class="line">    name: <span class="hljs-built_in">String</span>,</span><br><span class="line">    age: <span class="hljs-built_in">i32</span>,</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> p = Person::new(&<span class="hljs-built_in">String</span>::from(<span class="hljs-string">"hhh"</span>),<span class="hljs-number">12</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{} {}"</span>,p.name,p.age);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,p.full_info());</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">impl</span> Person{</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">new</span></span>(name: &<span class="hljs-built_in">str</span>,age: <span class="hljs-built_in">i32</span>) -> Person {</span><br><span class="line">        Person {</span><br><span class="line">            name: name.to_string(),</span><br><span class="line">            age: age,</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">full_info</span></span>(&<span class="hljs-keyword">self</span>) -> <span class="hljs-built_in">String</span>{</span><br><span class="line">        <span class="hljs-built_in">format!</span>(<span class="hljs-string">"my name is {}, my age is {}"</span>,<span class="hljs-keyword">self</span>.name,<span class="hljs-keyword">self</span>.age)</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><font color="red">明确使用该self，并作为引用传递。 (你可以把&self想成self: &Person简写。 )  </font></p>
+<p><font color="red">还有，关键字Self(自身：注意首大写)指的是结构类型 - 你可以在脑海中用Person替换掉Self:</font></p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// struct4.rs</span></span><br><span class="line"><span class="hljs-keyword">use</span> std::fmt;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#[derive(Debug)]</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span></span> {</span><br><span class="line">    first_name: <span class="hljs-built_in">String</span>,</span><br><span class="line">    last_name: <span class="hljs-built_in">String</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">impl</span> Person {</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">new</span></span>(first: &<span class="hljs-built_in">str</span>, name: &<span class="hljs-built_in">str</span>) -> Person {</span><br><span class="line">        Person {</span><br><span class="line">            first_name: first.to_string(),</span><br><span class="line">            last_name: name.to_string()</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">full_name</span></span>(&<span class="hljs-keyword">self</span>) -> <span class="hljs-built_in">String</span> {</span><br><span class="line">        <span class="hljs-built_in">format!</span>(<span class="hljs-string">"{} {}"</span>,<span class="hljs-keyword">self</span>.first_name, <span class="hljs-keyword">self</span>.last_name)</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">set_first_name</span></span>(&<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>, name: &<span class="hljs-built_in">str</span>) {</span><br><span class="line">        <span class="hljs-keyword">self</span>.first_name = name.to_string();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">to_tuple</span></span>(<span class="hljs-keyword">self</span>) -> (<span class="hljs-built_in">String</span>,<span class="hljs-built_in">String</span>) {</span><br><span class="line">        (<span class="hljs-keyword">self</span>.first_name, <span class="hljs-keyword">self</span>.last_name)</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> p = Person::new(<span class="hljs-string">"John"</span>,<span class="hljs-string">"Smith"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, p);</span><br><span class="line"></span><br><span class="line">    p.set_first_name(<span class="hljs-string">"Jane"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, p);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, p.to_tuple());</span><br><span class="line">    <span class="hljs-comment">// p has now moved.</span></span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment">// Person { first_name: "John", last_name: "Smith" }</span></span><br><span class="line"><span class="hljs-comment">// Person { first_name: "Jane", last_name: "Smith" }</span></span><br><span class="line"><span class="hljs-comment">// ("Jane", "Smith")</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<ul>
+<li>没有self相关参数: 您可以将函数与结构关联，如new“构造函数”。</li>
+<li>&self参数: 可以使用结构体的值，但不能改变它们。</li>
+<li>&mut self参数: 可以修改这些值。</li>
+<li>self参数: 将消耗值，因它移动了</li>
+</ul>
+<h2 id="恐怖的生命周期"><a href="#恐怖的生命周期" class="headerlink" title="恐怖的生命周期"></a>恐怖的生命周期</h2><p>如果不知道一个‘引用’的生命周期，是不允许你存储它。 所有引用{&}都是从某个值那里借用{borrowed}的，而且所有的值都是有生命周期{lifetimes}的。引用的生命周期不能长于该值的生命周期。Rust 不能允许这种 引用可能突然失效 的情况</p>
+<p>现在我们在一个结构体里面引用一个字符串的切片</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">A</span></span> {</span><br><span class="line">    s: &<span class="hljs-built_in">str</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> a = A { s: <span class="hljs-string">"hello dammit"</span> };</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, a);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>会出现如下错误，报错内容就是超出了生命周期  </p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line">error[E0106]: missing lifetime specifier</span><br><span class="line"> --> src/main.rs:<span class="hljs-number">2</span>:<span class="hljs-number">8</span></span><br><span class="line">  |</span><br><span class="line"><span class="hljs-number">2</span> |     s: &<span class="hljs-built_in">str</span></span><br><span class="line">  |        ^ expected lifetime parameter</span><br><span class="line"></span><br><span class="line">error: aborting due to previous error</span><br></pre></td></tr></tbody></table></figure>
+<p>字符串切片是从 字符串常量 借用的，像”hello”或是String值。 字符串常量在整个程序期间都存在，也称为”静态{static}”生命周期<br>但是在结构体中，我们尝试借用字符串常量的内容，紧接着s 编程了借用值，rust为了内存的安全，给他添加了生命周期，在离开结构体的生命周期时，就结束了生命</p>
+<p>既然这样，为了保证一些变量的生命周期相同，rust为他们提供了一些生命周期标示,如下</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// life2.rs</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#[derive(Debug)]</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">A</span></span> {</span><br><span class="line">    s: &<span class="hljs-symbol">'static</span> <span class="hljs-built_in">str</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> a = A { s: <span class="hljs-string">"hello dammit"</span> };</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, a);</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment">// A { s: "hello dammit" }</span></span><br></pre></td></tr></tbody></table></figure>
+<p><font color="red">不过嘛，我们也可以指定引用{&}的生命周期，与结构本身 至少一样长 。</font></p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#[derive(Debug)]</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">A</span></span> <<span class="hljs-symbol">'a</span>> { <span class="hljs-comment">// 注意写法</span></span><br><span class="line">    s: &<span class="hljs-symbol">'a</span> <span class="hljs-built_in">str</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> s = <span class="hljs-string">"I'm a little string"</span>.to_string(); <span class="hljs-comment">// string</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// let s = "I 'm a little string " // &str </span></span><br><span class="line">    <span class="hljs-keyword">let</span> a = A { s: &s }; <span class="hljs-comment">// <== 结构</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, a);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// A {s: I'm a little string}</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="特点、接口-Traits"><a href="#特点、接口-Traits" class="headerlink" title="特点、接口{Traits}"></a>特点、接口{Traits}</h2><p>Traits 的 中文意思名字有好几个，但，本质是: 定义结构的一系列行为/方法。下文我们把它称之为接口</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Show</span></span> {</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">show</span></span>(&<span class="hljs-keyword">self</span>) -> <span class="hljs-built_in">String</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">impl</span> Show <span class="hljs-keyword">for</span> <span class="hljs-built_in">i32</span> {</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">show</span></span>(&<span class="hljs-keyword">self</span>) -> <span class="hljs-built_in">String</span> {</span><br><span class="line">        <span class="hljs-built_in">format!</span>(<span class="hljs-string">"four-byte signed {}"</span>, <span class="hljs-keyword">self</span>)</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">impl</span> Show <span class="hljs-keyword">for</span> <span class="hljs-built_in">f64</span> {</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">show</span></span>(&<span class="hljs-keyword">self</span>) -> <span class="hljs-built_in">String</span> {</span><br><span class="line">        <span class="hljs-built_in">format!</span>(<span class="hljs-string">"eight-byte float {}"</span>, <span class="hljs-keyword">self</span>)</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> answer = <span class="hljs-number">42</span>;</span><br><span class="line">    <span class="hljs-keyword">let</span> maybe_pi = <span class="hljs-number">3.14</span>;</span><br><span class="line">    <span class="hljs-keyword">let</span> s1 = answer.show();</span><br><span class="line">    <span class="hljs-keyword">let</span> s2 = maybe_pi.show();</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"show {}"</span>, s1);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"show {}"</span>, s2);</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment">// show four-byte signed 42</span></span><br><span class="line"><span class="hljs-comment">// show eight-byte float 3.14</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="使用接口体现一个迭代器"><a href="#使用接口体现一个迭代器" class="headerlink" title="使用接口体现一个迭代器"></a>使用接口体现一个迭代器</h2><p>是许仙我们要有</p>
+<p>官方提供的迭代器就是一个接口的实现<br><a href="https://doc.rust-lang.org/std/iter/index.html#implementing-iterator" target="_blank" rel="noopener">https://doc.rust-lang.org/std/iter/index.html#implementing-iterator</a></p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// First, the struct:</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/// An iterator which counts from one to five</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Counter</span></span> {</span><br><span class="line">    count: <span class="hljs-built_in">usize</span>,</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Iterator</span></span> {</span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">Item</span></span>;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">next</span></span>(&<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) -> <span class="hljs-built_in">Option</span><Self::Item>;</span><br><span class="line">    ...</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// we want our count to start at one, so let's add a new() method to help.</span></span><br><span class="line"><span class="hljs-comment">// This isn't strictly necessary, but is convenient. Note that we start</span></span><br><span class="line"><span class="hljs-comment">// `count` at zero, we'll see why in `next()`'s implementation below.</span></span><br><span class="line"><span class="hljs-keyword">impl</span> Counter {</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">new</span></span>() -> Counter {</span><br><span class="line">        Counter { count: <span class="hljs-number">0</span> }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// Then, we implement `Iterator` for our `Counter`:</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">impl</span> <span class="hljs-built_in">Iterator</span> <span class="hljs-keyword">for</span> Counter {</span><br><span class="line">    <span class="hljs-comment">// we will be counting with usize</span></span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">Item</span></span> = <span class="hljs-built_in">usize</span>; </span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// next() is the only required method</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">next</span></span>(&<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) -> <span class="hljs-built_in">Option</span><Self::Item> {</span><br><span class="line">        <span class="hljs-comment">// Increment our count. This is why we started at zero.</span></span><br><span class="line">        <span class="hljs-keyword">self</span>.count += <span class="hljs-number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// Check to see if we've finished counting or not.</span></span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">self</span>.count < <span class="hljs-number">6</span> {</span><br><span class="line">            <span class="hljs-literal">Some</span>(<span class="hljs-keyword">self</span>.count)</span><br><span class="line">        } <span class="hljs-keyword">else</span> {</span><br><span class="line">            <span class="hljs-literal">None</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// And now we can use it!</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> counter = Counter::new();</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">assert_eq!</span>(counter.next(), <span class="hljs-literal">Some</span>(<span class="hljs-number">1</span>));</span><br><span class="line"><span class="hljs-built_in">assert_eq!</span>(counter.next(), <span class="hljs-literal">Some</span>(<span class="hljs-number">2</span>));</span><br><span class="line"><span class="hljs-built_in">assert_eq!</span>(counter.next(), <span class="hljs-literal">Some</span>(<span class="hljs-number">3</span>));</span><br><span class="line"><span class="hljs-built_in">assert_eq!</span>(counter.next(), <span class="hljs-literal">Some</span>(<span class="hljs-number">4</span>));</span><br><span class="line"><span class="hljs-built_in">assert_eq!</span>(counter.next(), <span class="hljs-literal">Some</span>(<span class="hljs-number">5</span>));</span><br><span class="line"><span class="hljs-built_in">assert_eq!</span>(counter.next(), <span class="hljs-literal">None</span>); </span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Direction</span></span> {</span><br><span class="line">    Up,</span><br><span class="line">    Down,</span><br><span class="line">    Left,</span><br><span class="line">    Right</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment">//定义方法</span></span><br><span class="line"><span class="hljs-keyword">impl</span> Direction {</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">as_str</span></span>(&<span class="hljs-keyword">self</span>) -> &<span class="hljs-symbol">'static</span> <span class="hljs-built_in">str</span> {</span><br><span class="line">        <span class="hljs-keyword">match</span> *<span class="hljs-keyword">self</span> { <span class="hljs-comment">// *self 有 Direction 类型</span></span><br><span class="line">            Direction::Up => <span class="hljs-string">"Up"</span>,</span><br><span class="line">            Direction::Down => <span class="hljs-string">"Down"</span>,</span><br><span class="line">            Direction::Left => <span class="hljs-string">"Left"</span>,</span><br><span class="line">            Direction::Right => <span class="hljs-string">"Right"</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">     <span class="hljs-keyword">let</span> start = Direction::Left;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>我们需要一个函数，来抛出实现了Debug的任何值。 以下是对泛型函数的第一次尝试，我们可以在其中传递一个 任何 值类型的引用。T是一个类型参数，需要在函数名称后面声明:</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">dump</span></span><T> (value: &T) {</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"value is {:?}"</span>,value);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> n = <span class="hljs-number">42</span>;</span><br><span class="line">    dump(&n);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>T是一个类型参数，需要在泛型后面指定，但是对于rust来说，他并不认识这个类型参数，他会报错</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">error[E0277]: `T` doesn<span class="hljs-string">'t implement `std::fmt::Debug`</span></span><br><span class="line"><span class="hljs-string">  --> src/main.rs:63:30</span></span><br><span class="line"><span class="hljs-string">   |</span></span><br><span class="line"><span class="hljs-string">62 | fn dump<T> (value: &T) {</span></span><br><span class="line"><span class="hljs-string">   |         - help: consider restricting this bound: `T: std::fmt::Debug`</span></span><br><span class="line"><span class="hljs-string">63 |     println!("value is {:?}",value);</span></span><br><span class="line"><span class="hljs-string">   |                              ^^^^^ `T` cannot be formatted using `{:?}` because it doesn'</span>t implement `std::fmt::Debug`</span><br><span class="line">   |</span><br><span class="line">   = <span class="hljs-built_in">help</span>: the trait `std::fmt::Debug` is not implemented <span class="hljs-keyword">for</span> `T`</span><br><span class="line">   = note: required because of the requirements on the impl of `std::fmt::Debug` <span class="hljs-keyword">for</span> `&T`</span><br><span class="line">   = note: required by `std::fmt::Debug::fmt`</span><br></pre></td></tr></tbody></table></figure>
+<p>这时候我们要调用rust的debug模式</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">dump</span></span><T> (value: &T)</span><br><span class="line">    <span class="hljs-keyword">where</span> T : std::fmt::<span class="hljs-built_in">Debug</span>{</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"value is {:?}"</span>,value);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> n = <span class="hljs-number">42</span>;</span><br><span class="line">    dump(&n);</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment">// value is 42</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Option泛型"><a href="#Option泛型" class="headerlink" title="Option泛型"></a>Option泛型</h3><p>一个Option枚举，返回None 或者 Some 并且包含一个值</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Option</span></span><T> {</span><br><span class="line">    <span class="hljs-literal">None</span>,</span><br><span class="line">    <span class="hljs-literal">Some</span>(T),</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>其中Some(T) 是一个引用类型，查看他可以解引用</p>
+</body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/bbe17d1/">rust 结构 枚举 引用</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top">何泽君</a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/bbe17d1/">http://blog.noback.top/posts/bbe17d1/</a></li>
+            <li><strong>发布时间：</strong>2020-02-19</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/rust/" rel="tag">rust</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/e385a1/">
+                <span class="level-item">rust基础</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/posts/bbe17d1/';
+        this.page.identifier = 'posts/bbe17d1/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        hzj
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        108
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        26
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        18
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky"   style="max-height: 900px; overflow: auto;" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#rust">
+        <span class="has-mr-6">1</span>
+        <span>rust</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#rust引用">
+        <span class="has-mr-6">1.1</span>
+        <span>rust引用</span>
+        </a></li><li>
+        <a class="is-flex" href="#元组">
+        <span class="has-mr-6">1.2</span>
+        <span>元组</span>
+        </a></li><li>
+        <a class="is-flex" href="#结构体">
+        <span class="has-mr-6">1.3</span>
+        <span>结构体</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#结构体与引用">
+        <span class="has-mr-6">1.3.1</span>
+        <span>结构体与引用</span>
+        </a></li><li>
+        <a class="is-flex" href="#结构体的自我调用">
+        <span class="has-mr-6">1.3.2</span>
+        <span>结构体的自我调用</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#恐怖的生命周期">
+        <span class="has-mr-6">1.4</span>
+        <span>恐怖的生命周期</span>
+        </a></li><li>
+        <a class="is-flex" href="#特点、接口-Traits">
+        <span class="has-mr-6">1.5</span>
+        <span>特点、接口{Traits}</span>
+        </a></li><li>
+        <a class="is-flex" href="#使用接口体现一个迭代器">
+        <span class="has-mr-6">1.6</span>
+        <span>使用接口体现一个迭代器</span>
+        </a></li><li>
+        <a class="is-flex" href="#枚举">
+        <span class="has-mr-6">1.7</span>
+        <span>枚举</span>
+        </a></li><li>
+        <a class="is-flex" href="#泛型">
+        <span class="has-mr-6">1.8</span>
+        <span>泛型</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Option泛型">
+        <span class="has-mr-6">1.8.1</span>
+        <span>Option泛型</span>
+        </a></li></ul></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+
+                
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://image.noback.top/datadog.svg" alt="rust 结构 枚举 引用" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 何泽君&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

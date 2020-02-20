@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>rust常见规范 - Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="learn rust 🦀️">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rust常见规范">
+<meta property="og:url" content="http://blog.noback.top/posts/d4e04a97/index.html">
+<meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
+<meta property="og:description" content="learn rust 🦀️">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
+<meta property="article:published_time" content="2020-02-17T14:08:34.000Z">
+<meta property="article:modified_time" content="2020-02-17T14:08:34.000Z">
+<meta property="article:author" content="何泽君">
+<meta property="article:tag" content="rust">
+<meta property="article:tag" content="编程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="is-3-column" background="http://img.noback.top/background.jpg">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://image.noback.top/datadog.svg" alt="rust常见规范" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/rust/">rust🦀️</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-10-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>rust常见规范
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-17T14:08:34.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-17</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    10 分钟 读完 (大约 1435 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>learn rust 🦀️</p>
+<a id="more"></a>
+
+
+
+<h1 id="rust常见规范"><a href="#rust常见规范" class="headerlink" title="rust常见规范"></a>rust常见规范</h1><h2 id="悬挂指针的问题"><a href="#悬挂指针的问题" class="headerlink" title="悬挂指针的问题"></a>悬挂指针的问题</h2><p>悬挂指针的问题指的是原指针消失，但你原指针所指向的另一个变量b依旧还存在，但是这个变量的内存地址无法获得</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> r;</span><br><span class="line">    <span class="hljs-keyword">let</span> q;</span><br><span class="line">    {</span><br><span class="line">    ¦   <span class="hljs-keyword">let</span> x = <span class="hljs-number">5</span>;</span><br><span class="line">    ¦   r = &x;</span><br><span class="line">    ¦   q = x;</span><br><span class="line">    ¦   <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,&x);</span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,q);</span><br><span class="line">    <span class="hljs-comment">//println!("{}",r);</span></span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Hello, world!"</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>如图，变量x离开作用域后就会消失， 他使用了两种赋值的方法，一种是r=&x是引用<br><img src="http://img.noback.top/2019-12-29-09-38-03.png" alt="2019-12-29-09-38-03"><br>这张图能够很好的解释什么是引用 原s1 指向于内存地址，也就是 let s1 = “hello”<br>当我们使用引用的时候 s = &s1  rust会创建一个s的对象，并创建一条指向某一对象的引用，再由引用对象指向数据所在内存地址，在以上的代码中，r=&x会创建一条指向r对象的引用以及rr对象<br>当作用域结束之后。x所指向的 5这个内存地址消失，则指向r再指向5这个内存地址也消失，最后失败</p>
+<p>而q=x是赋值的行为<br><img src="http://img.noback.top/2019-12-28-23-32-47.png" alt="2019-12-28-23-32-47"><br>rust会创建一个q并同x一起执行内存地址，离开作用域后，x的指针消失，但q的指针还存在</p>
+<h2 id="rust中的生命周期问题"><a href="#rust中的生命周期问题" class="headerlink" title="rust中的生命周期问题"></a>rust中的生命周期问题</h2><p>标定生命周期</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line">&<span class="hljs-built_in">i32</span>        <span class="hljs-comment">// 引用</span></span><br><span class="line">&<span class="hljs-symbol">'a</span> <span class="hljs-built_in">i32</span>     <span class="hljs-comment">// 带有显式生命周期的引用</span></span><br><span class="line">&<span class="hljs-symbol">'a</span> <span class="hljs-keyword">mut</span> <span class="hljs-built_in">i32</span> <span class="hljs-comment">// 带有显式生命周期的可变引用</span></span><br></pre></td></tr></tbody></table></figure>
+<p>例子一</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> string1 = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"abcd"</span>);</span><br><span class="line">    <span class="hljs-keyword">let</span> string2 = <span class="hljs-string">"xyz"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> result = longest(string1.as_str(), string2);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"The longest string is {}"</span>, result);</span><br><span class="line">}</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">longest</span></span>(x: &<span class="hljs-built_in">str</span>, y: &<span class="hljs-built_in">str</span>) -> &<span class="hljs-built_in">str</span> {</span><br><span class="line">    <span class="hljs-keyword">if</span> x.len() > y.len() {</span><br><span class="line">    ¦   x</span><br><span class="line">    } <span class="hljs-keyword">else</span> {</span><br><span class="line">    ¦   y</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>出现报错</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line">error[E0106]: missing lifetime specifier</span><br><span class="line"> --> src/main.rs:<span class="hljs-number">9</span>:<span class="hljs-number">33</span></span><br><span class="line">  |</span><br><span class="line"><span class="hljs-number">9</span> | <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">longest</span></span>(x: &<span class="hljs-built_in">str</span>, y: &<span class="hljs-built_in">str</span>) -> &<span class="hljs-built_in">str</span> {</span><br><span class="line">  |                                 ^ expected lifetime parameter</span><br><span class="line">  |</span><br><span class="line">  = help: this function<span class="hljs-symbol">'s</span> <span class="hljs-keyword">return</span> <span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">contains</span></span> a borrowed value, but the signature does not say whether it is borrowed from `x` or `y`</span><br><span class="line"></span><br><span class="line">error: aborting due to previous error</span><br></pre></td></tr></tbody></table></figure>
+
+<p><font color="red">出现报错的主要原因是，当longest执行以后，会返回一个参数，这个参数是x或者y中的其中一个，但是当离开这个作用域的时候，引用消失，rust无法判断result指向的变量是x还是y  最后报错</font></p>
+<p><font color="blue">那如果我们值返回一个参数x呢</font></p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> x = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"xxx"</span>);</span><br><span class="line">    <span class="hljs-keyword">let</span> y = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"yyy"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> res = return_str(&x,&y);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,res);</span><br><span class="line">}</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">return_str</span></span>(x: &<span class="hljs-built_in">str</span>,y: &<span class="hljs-built_in">str</span>) -> &<span class="hljs-built_in">str</span>{</span><br><span class="line">    x</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>还是报同样的错误，无法判断x和y。</p>
+<p>统一生命周期以后</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> string1 = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"abcd"</span>);</span><br><span class="line">    <span class="hljs-keyword">let</span> string2 = <span class="hljs-string">"xyz"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> result = longest(string1.as_str(), string2);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"The longest string is {}"</span>, result);</span><br><span class="line">}</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">longest</span></span><<span class="hljs-symbol">'a</span>>(x: &<span class="hljs-symbol">'a</span> <span class="hljs-built_in">str</span>, y: &<span class="hljs-symbol">'a</span> <span class="hljs-built_in">str</span>) -> &<span class="hljs-symbol">'a</span> <span class="hljs-built_in">str</span> {</span><br><span class="line">    <span class="hljs-keyword">if</span> x.len() > y.len() {</span><br><span class="line">    ¦   x</span><br><span class="line">    } <span class="hljs-keyword">else</span> {</span><br><span class="line">    ¦   y</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>编译通过</p>
+<p>再来看一个例子</p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> string1 = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"abcd"</span>);</span><br><span class="line">    <span class="hljs-keyword">let</span> string2 = <span class="hljs-string">"xyz"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> result = longest(string1.as_str(), string2);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"The longest string is {}"</span>, result);</span><br><span class="line">}</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">longest</span></span>(x: &<span class="hljs-built_in">str</span>, y: &<span class="hljs-built_in">str</span>) -> &<span class="hljs-built_in">str</span> {</span><br><span class="line">    <span class="hljs-keyword">let</span> abc = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"new world"</span>);</span><br><span class="line">    abc;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>在这里longest返回的一个参数是&str，这个返回的内容就是变量abc，但是变量abc离开作用域的时候，引用就消失了<br>而result则读取不到数据，就会报错，在这里longest返回的结果就是一个悬垂引用，为了保证他们的生命周期相同，必须添加生命周期标识别</p>
+<h3 id="生命周期进阶"><a href="#生命周期进阶" class="headerlink" title="生命周期进阶"></a>生命周期进阶</h3><p>了解到上面几个内容后，我们再来看一下  rust在函数返回的同时，到底是怎么回事，我们来传入一个返回一个参数看看</p>
+<figure class="highlight rust hljs"><figcaption><span> buffers</span></figcaption><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> x = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"xxx"</span>);</span><br><span class="line">    <span class="hljs-keyword">let</span> y = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"yyy"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> res = return_str(&x);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,res);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">return_str</span></span>(x: &<span class="hljs-built_in">str</span>) -> &<span class="hljs-built_in">str</span>{</span><br><span class="line">    <span class="hljs-keyword">let</span> res = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"str"</span>);</span><br><span class="line">    &res;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>报错</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">error[E0308]: mismatched types</span><br><span class="line">  --> src/main.rs:11:27</span><br><span class="line">   |</span><br><span class="line">11 | fn return_str(x: &str) -> &str{</span><br><span class="line">   |    ----------             ^^^^ expected `&str`, found `()`</span><br><span class="line">   |    |</span><br><span class="line">   |    implicitly returns `()` as its body has no tail or `<span class="hljs-built_in">return</span>` expression</span><br><span class="line"></span><br><span class="line">error: aborting due to previous error</span><br><span class="line"></span><br><span class="line">For more information about this error, try `rustc --explain E0308`.</span><br><span class="line">error: could not compile `desc_test2`.</span><br><span class="line"></span><br><span class="line">To learn more, run the <span class="hljs-built_in">command</span> again with --verbose.</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这里提醒，本身要返回一个str的引用型内容，但是找到的确实空值，也就是说指向的内存地址被删除了，因为离开了作用域，res的生命周期结束了</p>
+<p><font color="blue">再来返回x</font></p>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> x = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"xxx"</span>);</span><br><span class="line">    <span class="hljs-keyword">let</span> y = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"yyy"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> res = return_str(&x);</span><br><span class="line">    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>,res);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">return_str</span></span>(x: &<span class="hljs-built_in">str</span>) -> &<span class="hljs-built_in">str</span>{</span><br><span class="line">    <span class="hljs-keyword">let</span> res = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"str"</span>);</span><br><span class="line">    x</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这里面返回的是x 而这个x指向的是在main函数中的内容，他的生命周期在main函数结束的时候，也就是程序终止的时候才会结束，因此不会报错</p>
+<h3 id="在结构体中声明生命周期的定义"><a href="#在结构体中声明生命周期的定义" class="headerlink" title="在结构体中声明生命周期的定义"></a>在结构体中声明生命周期的定义</h3><figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ImportantExcerpt</span></span><<span class="hljs-symbol">'a</span>> {</span><br><span class="line">    part: &<span class="hljs-symbol">'a</span> <span class="hljs-built_in">str</span>,</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> novel = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">"Call me Ishmael. Some years ago..."</span>);</span><br><span class="line">    <span class="hljs-keyword">let</span> first_sentence = novel.split(<span class="hljs-string">'.'</span>)</span><br><span class="line">        .next()</span><br><span class="line">        .expect(<span class="hljs-string">"Could not find a '.'"</span>);</span><br><span class="line">    <span class="hljs-keyword">let</span> i = ImportantExcerpt { part: first_sentence }; <span class="hljs-comment">//离开这里的struct作用域后消失连接</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="生命周期的省略"><a href="#生命周期的省略" class="headerlink" title="生命周期的省略"></a>生命周期的省略</h3><ul>
+<li>第一个规则是，作为引用的每个参数都有自己的生存期参数。只有一个参数的函数有一个生存期参数: fn foo’a (x: & ‘a i32) ; 有两个参数的函数有两个独立的生存期参数: fn foo’a，’b (x: & ‘a i32，y: & ‘b i32) ; 等等。</li>
+<li>第二个规则是，如果只有一个输入生存期参数，那么生存期将分配给所有输出生存期参数: fn foo’a (x: & ‘a i32)-> & ‘a i32。</li>
+<li>第三个规则是, 如果有多个输入寿命参数，但其中一个是 & self 或 & mut self，因为这是一种方法，自身的寿命分配给所有的输出寿命参数。 第三条规则使方法更易于读写，因为需要的符号更少</li>
+</ul>
+</body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/d4e04a97/">rust常见规范</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top">何泽君</a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/d4e04a97/">http://blog.noback.top/posts/d4e04a97/</a></li>
+            <li><strong>发布时间：</strong>2020-02-17</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/rust/" rel="tag">rust</a>,&nbsp;<a class="has-link-grey -link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/d95b1b33/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">rust闭包</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/af2754a4/">
+                <span class="level-item">linux用户权限</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/posts/d4e04a97/';
+        this.page.identifier = 'posts/d4e04a97/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        hzj
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        108
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        26
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        18
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky"   style="max-height: 900px; overflow: auto;" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#rust常见规范">
+        <span class="has-mr-6">1</span>
+        <span>rust常见规范</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#悬挂指针的问题">
+        <span class="has-mr-6">1.1</span>
+        <span>悬挂指针的问题</span>
+        </a></li><li>
+        <a class="is-flex" href="#rust中的生命周期问题">
+        <span class="has-mr-6">1.2</span>
+        <span>rust中的生命周期问题</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#生命周期进阶">
+        <span class="has-mr-6">1.2.1</span>
+        <span>生命周期进阶</span>
+        </a></li><li>
+        <a class="is-flex" href="#在结构体中声明生命周期的定义">
+        <span class="has-mr-6">1.2.2</span>
+        <span>在结构体中声明生命周期的定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#生命周期的省略">
+        <span class="has-mr-6">1.2.3</span>
+        <span>生命周期的省略</span>
+        </a></li></ul></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+
+                
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://image.noback.top/datadog.svg" alt="rust常见规范" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 何泽君&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
