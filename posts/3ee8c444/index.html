@@ -175,7 +175,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    19 分钟 读完 (大约 2856 个字)
+                    19 分钟 读完 (大约 2866 个字)
                 </span>
                 
                 
@@ -218,7 +218,8 @@
 <li>仓库(Repository)<br>存放镜像的地方，类似于代码仓库github  gitee等等</li>
 </ul>
 <p><img src="http://img.noback.top/2020-02-06-19-51-47.png" alt="2020-02-06-19-51-47"></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># centos7老版本安装</span></span><br><span class="line">yum install docker -y </span><br><span class="line"><span class="hljs-comment"># 查看版本</span></span><br><span class="line">docker --version</span><br><span class="line">Docker version 19.03.1, build 74b1e89</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><font color="red">这个方法已经不实用了</font></p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-comment"># centos7老版本安装</span></span><br><span class="line">yum install docker -y </span><br><span class="line"><span class="hljs-comment"># 查看版本</span></span><br><span class="line">docker --version</span><br><span class="line">Docker version 19.03.1, build 74b1e89</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="安装docker-ce-社区版本"><a href="#安装docker-ce-社区版本" class="headerlink" title="安装docker-ce 社区版本"></a>安装docker-ce 社区版本</h2><p>docker 具有社区版和企业版，在企业版中会提供一起额外的收费服务<br><a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/centos/</a></p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># centos7安装docker-ce</span></span><br><span class="line"><span class="hljs-comment"># 卸载旧版本docker</span></span><br><span class="line">sudo yum remove docker \</span><br><span class="line">                  docker-client \</span><br><span class="line">                  docker-client-latest \</span><br><span class="line">                  docker-common \</span><br><span class="line">                  docker-latest \</span><br><span class="line">                  docker-latest-logrotate \</span><br><span class="line">                  docker-logrotate \</span><br><span class="line">                  docker-engine</span><br><span class="line"><span class="hljs-comment"># 设置存储库</span></span><br><span class="line">sudo yum install -y yum-utils \</span><br><span class="line">  device-mapper-persistent-data \</span><br><span class="line">  lvm2</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 添加下载源</span></span><br><span class="line"><span class="hljs-comment"># 国外源</span></span><br><span class="line">sudo yum-config-manager  --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line"><span class="hljs-comment"># 阿里源</span></span><br><span class="line">sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 安装docker社区版本</span></span><br><span class="line">sudo yum install docker-ce docker-ce-cli containerd.io</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 启动docker</span></span><br><span class="line">sudo systemctl start docker</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 测试</span></span><br><span class="line">docker run hello-world</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查看版本</span></span><br><span class="line">docker version</span><br></pre></td></tr></tbody></table></figure>
@@ -379,7 +380,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        108
+                        114
                     </p>
                 </a>
             </div>
@@ -389,7 +390,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        26
+                        28
                     </p>
                 </a>
             </div>
@@ -399,7 +400,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        18
+                        19
                     </p>
                 </a>
             </div>

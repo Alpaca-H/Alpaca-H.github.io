@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>rpm 与 yum - Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="learn linux 🐧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rpm 与 yum">
+<meta property="og:url" content="http://blog.noback.top/posts/fa23aabb/index.html">
+<meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
+<meta property="og:description" content="learn linux 🐧">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
+<meta property="article:published_time" content="2020-02-24T13:59:43.000Z">
+<meta property="article:modified_time" content="2020-02-24T13:59:43.000Z">
+<meta property="article:author" content="何泽君">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="is-3-column" background="http://img.noback.top/background.jpg">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://image.noback.top/datadog.svg" alt="rpm 与 yum" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/rust/">rust🦀️</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-10-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>rpm 与 yum
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-24T13:59:43.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-24</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    15 分钟 读完 (大约 2300 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>learn linux 🐧</p>
+<a id="more"></a>
+
+<h1 id="rpm-与-yum"><a href="#rpm-与-yum" class="headerlink" title="rpm 与 yum"></a>rpm 与 yum</h1><h2 id="rpm"><a href="#rpm" class="headerlink" title="rpm"></a>rpm</h2><p>RPM是RedHat Package Manager（RedHat软件包管理工具）类似Windows里面的“添加/删除程序”。rpm 执行安装包二进制包（Binary）以及源代码包（Source）两种。二进制包可以直接安装在计算机中，而源代码包将会由RPM自动编译、安装。源代码包经常以src.rpm作为后缀名。RPM 现在是 Linux Standard Base (LSB) 中采用的包管理系统。</p>
+<p><font color="red">rpm更多的用来做查询 检验，在小部分上做安装，大部分上使用yum安装</font></p>
+<h3 id="RPM工作原理"><a href="#RPM工作原理" class="headerlink" title="RPM工作原理"></a>RPM工作原理</h3><p>他最大的特点就是将你要安装的软件先编译过， 并且打包成为 RPM 机制的包装文件，通过包装好的软件里头默认的数据库记录， 记录这个软件要安装的时候必须具备的相依属性软件，当安装在你的 Linux 主机时， RPM 会先依照软件里头的数据查询 Linux 主机的相依属性软件是否满足， 若满足则予以安装，若不满足则不予安装。<br>优点:</p>
+<ul>
+<li>由于已经编译完成并且打包完毕，所以软件传输与安装上很方便 （不需要再重新编译）；</li>
+<li>由于软件的信息都已经记录在 Linux 主机的数据库上，很方便查询、升级与安装</li>
+</ul>
+<h3 id="rpm-安装路径"><a href="#rpm-安装路径" class="headerlink" title="rpm 安装路径"></a>rpm 安装路径</h3><p>一般来说，RPM 类型的文件在安装的时候，会先去读取文件内记载的设置参数内容，然后将该数据用来比对 Linux 系统的环境，以找出是否有属性相依的软件尚未安装的问题。例如 Openssh 这个连线软件需要通过 Openssl 这个加密软件的帮忙，所以得先安装 openssl 才能装 openssh 的意思。那你的环境如果没有 openssl ， 你就无法安装 openssh。<br>若环境检查合格了，那么 RPM 文件就开始被安装到你的 Linux 系统上。安装完毕后，该软件相关的信息就会被写入 /var/lib/rpm/ 目录下的数据库文件中了。 上面这个目录内的数据很重要喔！因为未来如果我们有任何软件升级的需求，版本之间的比较就是来自于这个数据库， 而如果你想要查询系统已经安装的软件，也是从这里查询的！同时，目前的 RPM 也提供数码签章信息， 这些数码签章也是在这个目录内记录的呢！所以说，这个目录得要注意不要被删除了</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ll /var/lib/rpm/</span><br><span class="line"></span><br><span class="line">[root@ops rpm]<span class="hljs-comment"># ll</span></span><br><span class="line">total 35212</span><br><span class="line">-rw-r--r--. 1 root root  1638400 Feb 24 15:46 Basenames</span><br><span class="line">-rw-r--r--. 1 root root     8192 Feb 24 15:45 Conflictname</span><br><span class="line">-rw-r--r--  1 root root   286720 Feb 24 20:27 __db.001</span><br><span class="line">-rw-r--r--  1 root root    90112 Feb 24 20:27 __db.002</span><br><span class="line">-rw-r--r--  1 root root  1318912 Feb 24 20:27 __db.003</span><br><span class="line">-rw-r--r--. 1 root root   598016 Feb 24 15:46 Dirnames</span><br><span class="line">-rw-r--r--. 1 root root     8192 Feb 24 15:46 Group</span><br><span class="line">-rw-r--r--. 1 root root    12288 Feb 24 15:46 Installtid</span><br><span class="line">-rw-r--r--. 1 root root    28672 Feb 24 15:46 Name</span><br><span class="line">-rw-r--r--. 1 root root    16384 Feb 24 15:46 Obsoletename</span><br><span class="line">-rw-r--r--. 1 root root 29913088 Feb 24 15:46 Packages</span><br><span class="line">-rw-r--r--. 1 root root  2019328 Feb 24 15:46 Providename</span><br><span class="line">-rw-r--r--. 1 root root   155648 Feb 24 15:46 Requirename</span><br><span class="line">-rw-r--r--. 1 root root    40960 Feb 24 15:46 Sha1header</span><br><span class="line">-rw-r--r--. 1 root root    24576 Feb 24 15:46 Sigmd5</span><br><span class="line">-rw-r--r--. 1 root root     8192 Feb 10 16:46 Triggername</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="RPM的指令"><a href="#RPM的指令" class="headerlink" title="RPM的指令"></a>RPM的指令</h3><p>RPM的指令太多，使用时又经常是组合的形式存在。</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">rpm -ivh xxx.rpm <span class="hljs-comment">#安装并 显示进度  --install--verbose--hash</span></span><br><span class="line">rpm -ivh xxx.rpm yyy.rpm <span class="hljs-comment"># 同时安装多个</span></span><br><span class="line">rpm -Uvh xxx.rpm <span class="hljs-comment">#升级软件包并 显示进度  --Update--verbose-hash</span></span><br><span class="line">rpm -qpl xxx.rpm <span class="hljs-comment">#列出RPM软件包内的文件信息</span></span><br><span class="line">rpm -qpi xxx.rpm <span class="hljs-comment">#列出RPM软件包的描述信息</span></span><br><span class="line">rpm -qf xxx.rpm <span class="hljs-comment">#查找指定文件属于哪个RPM软件包</span></span><br><span class="line">rpm -Va xxx.rpm <span class="hljs-comment">#检验所有的RPM软件包，查找丢失的文件</span></span><br><span class="line">rpm -e xxx.rpm <span class="hljs-comment">#删除包</span></span><br><span class="line">rpm -e --nodeps xxx.rpm <span class="hljs-comment">#忽略依赖的检查来删除,但最好不要这么做，因为忽略依赖，会变得很杂乱</span></span><br><span class="line">rpm --import RPM-GPG-KEY(签名文件) <span class="hljs-comment">#导入签名</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="rpm验证与数码签章-Verify-signature"><a href="#rpm验证与数码签章-Verify-signature" class="headerlink" title="rpm验证与数码签章(Verify/signature)"></a>rpm验证与数码签章(Verify/signature)</h3><h4 id="rpm验证"><a href="#rpm验证" class="headerlink" title="rpm验证"></a>rpm验证</h4><p>使用 /var/lib/rpm 下面的数据库内容来比对目前 Linux 系统的环境下的所有软件文件,如果存在改动则会列出来</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">rpm -Va <span class="hljs-comment"># 检验所有已安装的软件</span></span><br><span class="line">rpm -V + 已安装的软件名称 <span class="hljs-comment"># 定向检验某个软件</span></span><br><span class="line">rpm -Vp + 某个 RPM 文件的文件名  <span class="hljs-comment"># 列出该软件内可能被更动过的文件</span></span><br><span class="line">rpm -Vf <span class="hljs-comment"># 列出某个文件是否被更动过</span></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"><font color=<span class="hljs-string">'red'</span>>如果和确认文件更新的情况</font></span><br><span class="line"></span><br><span class="line">举例</span><br><span class="line">```bash</span><br><span class="line">[root@ops rpm]<span class="hljs-comment"># rpm -Vf /etc/logrotate.conf</span></span><br><span class="line">S.5....T.  c /etc/logrotate.conf</span><br></pre></td></tr></tbody></table></figure>
+
+<p>c就是配置文件的意思(configuration)</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">SM5DLUGTP c filename</span><br><span class="line">S ：（file Size differs） 文件的容量大小是否被改变</span><br><span class="line">M ：（Mode differs） 文件的类型或文件的属性 （rwx） 是否被改变？如是否可执行等参数已被改变</span><br><span class="line">5 ：（MD5 sum differs） MD5 这一种指纹码的内容已经不同</span><br><span class="line">D ：（Device major/minor number mis-match） 设备的主/次代码已经改变</span><br><span class="line">L ：（readLink（2） path mis-match） Link 路径已被改变</span><br><span class="line">U ：（User ownership differs） 文件的所属人已被改变</span><br><span class="line">G ：（Group ownership differs） 文件的所属群组已被改变</span><br><span class="line">T ：（mTime differs） 文件的创建时间已被改变</span><br><span class="line">P ：（caPabilities differ） 功能已经被改变</span><br></pre></td></tr></tbody></table></figure>
+<p>另外c还有其他的几种文件类型</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">c ：配置文件 （config file）</span><br><span class="line">d ：文件数据文件 （documentation）</span><br><span class="line">g ：鬼文件～通常是该文件不被某个软件所包含，较少发生！（ghost file）</span><br><span class="line">l ：授权文件 （license file）</span><br><span class="line">r ：读我文件 （<span class="hljs-built_in">read</span> me）</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h2><p>既然看了rpm,那么与他紧密相关的yum也值得一看, yum 是通过分析 RPM 的标头数据后， 根据各软件的相关性制作出属性相依时的解决方案，然后可以自动处理软件的相依属性问题，以解决软件安装或移除与升级的问题。</p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">yum search nginx <span class="hljs-comment"># 搜寻某个软件名称或者是描述 （description） 的重要关键字；</span></span><br><span class="line">yum list nginx  <span class="hljs-comment"># 列出目前 yum 所管理的所有的软件名称与版本，有点类似 rpm -qa；</span></span><br><span class="line">yum info jq <span class="hljs-comment"># 查看包信息</span></span><br><span class="line">yum list update <span class="hljs-comment"># 列出目前服务器上可供本机进行升级的软件有哪些？</span></span><br><span class="line">yum install jq --installroot=/some/path <span class="hljs-comment">#将该软件安装在 /some/path 而不使用默认路径</span></span><br><span class="line">yum remove jq <span class="hljs-comment"># 删除</span></span><br><span class="line">yum clean all <span class="hljs-comment"># 经所有软件库数据删掉，清除缓存</span></span><br><span class="line">yum repolist all <span class="hljs-comment"># 显示所有仓库</span></span><br><span class="line">yum-config-manager --<span class="hljs-built_in">enable</span> repository... <span class="hljs-comment"># 打开仓库</span></span><br><span class="line">yum-config-manager --<span class="hljs-built_in">disable</span> repository... <span class="hljs-comment"># 关闭仓库</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="yum的配置文件"><a href="#yum的配置文件" class="headerlink" title="yum的配置文件"></a>yum的配置文件</h3><p>在你的linux生成后，系统会默认给你几个 CentOS 的映射站台，但是这些CentOS 的映射站台可能会选错，或者说速度会很慢，那么我们就要修改我们的yum配置文件</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">vim /etc/yum.repos.d/CentOS-Base.repo</span><br><span class="line">[base]</span><br><span class="line"><span class="hljs-comment"># 代表软件库的名字！中括号一定要存在，里面的名称则可以随意取。但是不能有两个相同的软件库名称， 否则 yum 会不晓得该到哪里去找软件库相关软件清单文件。</span></span><br><span class="line">name=CentOS-<span class="hljs-variable">$releasever</span> - Base</span><br><span class="line"><span class="hljs-comment"># 只是说明一下这个软件库的意义而已，重要性不高！</span></span><br><span class="line">mirrorlist=http://mirrorlist.centos.org/?release=<span class="hljs-variable">$releasever</span>&arch=<span class="hljs-variable">$basearch</span>&repo=os&infra=<span class="hljs-variable">$infra</span></span><br><span class="line"><span class="hljs-comment"># 列出这个软件库可以使用的映射站台，如果不想使用，可以注解到这行；</span></span><br><span class="line">baseurl=http://mirror.centos.org/centos/<span class="hljs-variable">$releasever</span>/os/<span class="hljs-variable">$basearch</span>/</span><br><span class="line"><span class="hljs-comment"># 这个最重要，因为后面接的就是软件库的实际网址！ mirrorlist 是由 yum 程序自行去捉映射站台， baseurl 则是指定固定的一个软件库网址！我们刚刚找到的网址放到这里来啦！</span></span><br><span class="line">gpgcheck=1</span><br><span class="line"><span class="hljs-comment"># 指定是否需要查阅 RPM 文件内的数码签章</span></span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</span><br><span class="line"><span class="hljs-comment"># 就是数码签章的公钥档所在位置！使用默认值即可</span></span><br></pre></td></tr></tbody></table></figure>
+<p>更新成阿里云的repo</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[base]</span><br><span class="line">name=CentOS-<span class="hljs-variable">$releasever</span> - Base - mirrors.aliyun.com</span><br><span class="line">failovermethod=priority</span><br><span class="line">baseurl=http://mirrors.aliyun.com/centos/<span class="hljs-variable">$releasever</span>/os/<span class="hljs-variable">$basearch</span>/</span><br><span class="line">        http://mirrors.aliyuncs.com/centos/<span class="hljs-variable">$releasever</span>/os/<span class="hljs-variable">$basearch</span>/</span><br><span class="line">        http://mirrors.cloud.aliyuncs.com/centos/<span class="hljs-variable">$releasever</span>/os/<span class="hljs-variable">$basearch</span>/</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="安装mysql实例"><a href="#安装mysql实例" class="headerlink" title="安装mysql实例"></a>安装mysql实例</h2><ol>
+<li>添加yum源，为了下载的速度，我们添加一个阿里源<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql-connectors-community-el7/mysql-community-release-el7-5.noarch.rpm</span><br></pre></td></tr></tbody></table></figure></li>
+<li>安装镜像源<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">rpm -ivh mysql-community-release-el7-5.noarch.rpm</span><br></pre></td></tr></tbody></table></figure>
+安装后/etc/yum.repos.d/目录下多了两个文件<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@work196 yum.repos.d]<span class="hljs-comment"># ll  grep 'mysql' --color</span></span><br><span class="line">-rw-r--r--. 1 root root 1060 Jan 29  2014 mysql-community-source.repo</span><br><span class="line">-rw-r--r--. 1 root root 1209 Jan 29  2014 mysql-community.repo</span><br></pre></td></tr></tbody></table></figure></li>
+<li>清理yum缓存，重新建立缓存<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">yum clean all</span><br><span class="line">yum makecache</span><br></pre></td></tr></tbody></table></figure></li>
+<li>关闭8.0镜像,开启5.7镜像<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">yum-config-manager --<span class="hljs-built_in">disable</span> mysql80-community</span><br><span class="line">yum-config-manager --<span class="hljs-built_in">enable</span> mysql57-community</span><br></pre></td></tr></tbody></table></figure></li>
+<li>下载安装<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">yum install mysql-community-server</span><br></pre></td></tr></tbody></table></figure></li>
+<li>启动<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">systemctl start mysqld</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+</body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/fa23aabb/">rpm 与 yum</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top">何泽君</a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/fa23aabb/">http://blog.noback.top/posts/fa23aabb/</a></li>
+            <li><strong>发布时间：</strong>2020-02-24</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/linux/" rel="tag">linux</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/b99fc7e4/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">mysql安装</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/2db76fd/">
+                <span class="level-item">mysql错误</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/posts/fa23aabb/';
+        this.page.identifier = 'posts/fa23aabb/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        hzj
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        114
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        28
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        19
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky"   style="max-height: 900px; overflow: auto;" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#rpm-与-yum">
+        <span class="has-mr-6">1</span>
+        <span>rpm 与 yum</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#rpm">
+        <span class="has-mr-6">1.1</span>
+        <span>rpm</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#RPM工作原理">
+        <span class="has-mr-6">1.1.1</span>
+        <span>RPM工作原理</span>
+        </a></li><li>
+        <a class="is-flex" href="#rpm-安装路径">
+        <span class="has-mr-6">1.1.2</span>
+        <span>rpm 安装路径</span>
+        </a></li><li>
+        <a class="is-flex" href="#RPM的指令">
+        <span class="has-mr-6">1.1.3</span>
+        <span>RPM的指令</span>
+        </a></li><li>
+        <a class="is-flex" href="#rpm验证与数码签章-Verify-signature">
+        <span class="has-mr-6">1.1.4</span>
+        <span>rpm验证与数码签章(Verify/signature)</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#yum">
+        <span class="has-mr-6">1.2</span>
+        <span>yum</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#常用命令">
+        <span class="has-mr-6">1.2.1</span>
+        <span>常用命令</span>
+        </a></li><li>
+        <a class="is-flex" href="#yum的配置文件">
+        <span class="has-mr-6">1.2.2</span>
+        <span>yum的配置文件</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#安装mysql实例">
+        <span class="has-mr-6">1.3</span>
+        <span>安装mysql实例</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+
+                
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://image.noback.top/datadog.svg" alt="rpm 与 yum" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 何泽君&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

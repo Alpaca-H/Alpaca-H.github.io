@@ -288,85 +288,6 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/3086330/"><i class="fas fa-angle-double-right"></i>数据库总结</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:52:59.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/code/">code</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    4 分钟 读完 (大约 604 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h2 id="登陆数据库"><a href="#登陆数据库" class="headerlink" title="登陆数据库"></a>登陆数据库</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ssh 10.0.6.55</span><br><span class="line">mysql -uroot -p</span><br><span class="line">>123456</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="mysql-基本操作语句"><a href="#mysql-基本操作语句" class="headerlink" title="mysql 基本操作语句"></a>mysql 基本操作语句</h2><p>数据库语句操作</p>
-<figure class="highlight sql hljs"><table><tbody><tr><td class="code"><pre><span class="line">创建一个名为 tc 的数据库 <span class="hljs-keyword">create</span> <span class="hljs-keyword">database</span> tc;</span><br><span class="line">查看有哪些数据库 <span class="hljs-keyword">show</span> <span class="hljs-keyword">databases</span>; </span><br><span class="line">查看数据库的创建细节  <span class="hljs-keyword">show</span> <span class="hljs-keyword">create</span> <span class="hljs-keyword">database</span> tc;         </span><br><span class="line">创建一个使用gbk字符集的数据库 <span class="hljs-keyword">create</span> <span class="hljs-keyword">database</span> tc <span class="hljs-keyword">set</span> gck;</span><br><span class="line">修改字符集 <span class="hljs-keyword">alter</span> <span class="hljs-keyword">database</span> tc <span class="hljs-built_in">character</span> <span class="hljs-keyword">set</span> utf8;</span><br><span class="line">删除创建的某个数据库 <span class="hljs-keyword">drop</span> <span class="hljs-keyword">database</span> tc;</span><br></pre></td></tr></tbody></table></figure>
-
-<p>表结构</p>
-<figure class="highlight sql hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">use</span> tc;  <span class="hljs-comment"># 切换数据库</span></span><br><span class="line"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> employee(_id <span class="hljs-built_in">int</span>,<span class="hljs-keyword">name</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">100</span>),gender <span class="hljs-built_in">varchar</span>(<span class="hljs-number">20</span>),birthday <span class="hljs-built_in">date</span>,entry_day <span class="hljs-built_in">date</span>,salary flot(<span class="hljs-number">8</span>,<span class="hljs-number">2</span>),<span class="hljs-keyword">resume</span> <span class="hljs-built_in">text</span>);  <span class="hljs-comment"># 创建员工信息表</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">show</span> <span class="hljs-keyword">tables</span>; <span class="hljs-comment"># 查看当前数据库中的所有表</span></span><br><span class="line"><span class="hljs-keyword">show</span> <span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> employee; <span class="hljs-comment"># 查看表的创建心结</span></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> employee <span class="hljs-keyword">add</span> image <span class="hljs-built_in">blob</span>; <span class="hljs-comment"># 在员工表上添加image列</span></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> employee <span class="hljs-keyword">modify</span> job <span class="hljs-built_in">varchar</span>(<span class="hljs-number">60</span>); <span class="hljs-comment"># 修改员工表中的job列，使其长度我饿60</span></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> employee <span class="hljs-keyword">drop</span> image; 删除image列</span><br><span class="line"><span class="hljs-keyword">rename</span> <span class="hljs-keyword">table</span> employee <span class="hljs-keyword">to</span> <span class="hljs-keyword">user</span>; 表名字修改为user</span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">user</span> <span class="hljs-built_in">character</span> <span class="hljs-keyword">set</span> gbk; 修改表的字符集为utf-8</span><br></pre></td></tr></tbody></table></figure>
-
-
-<p>查看表</p>
-<figure class="highlight sql hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 创建一个学生表</span></span><br><span class="line"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> student(<span class="hljs-keyword">id</span> <span class="hljs-built_in">int</span> primary <span class="hljs-keyword">key</span> auto_increment,<span class="hljs-keyword">name</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">unique</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> ,chinese <span class="hljs-built_in">float</span>,english <span class="hljs-built_in">float</span>,math <span class="hljs-built_in">float</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 往学生表中添加一些信息</span></span><br><span class="line"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student(<span class="hljs-keyword">name</span>,chinese,english,math) <span class="hljs-keyword">values</span> (<span class="hljs-string">'wangba'</span>,<span class="hljs-number">93</span>,<span class="hljs-number">22</span>,<span class="hljs-number">77</span>)</span><br><span class="line"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student (<span class="hljs-keyword">name</span>,chinese,english,math) <span class="hljs-keyword">values</span>(<span class="hljs-string">'lisi'</span>,<span class="hljs-number">80</span>,<span class="hljs-number">90</span>,<span class="hljs-number">29</span>);</span><br><span class="line"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student (<span class="hljs-keyword">name</span>,chinese,english,math) <span class="hljs-keyword">values</span>(<span class="hljs-string">'wangwu'</span>,<span class="hljs-number">55</span>,<span class="hljs-number">99</span>,<span class="hljs-number">98</span>);</span><br><span class="line"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student (<span class="hljs-keyword">name</span>,chinese,english,math) <span class="hljs-keyword">values</span>(<span class="hljs-string">'zhaoliu'</span>,<span class="hljs-number">99</span>,<span class="hljs-number">30</span>,<span class="hljs-number">57</span>);</span><br><span class="line"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student (<span class="hljs-keyword">name</span>,chinese,english,math) <span class="hljs-keyword">values</span>(<span class="hljs-string">'zhouqi'</span>,<span class="hljs-number">78</span>,<span class="hljs-number">22</span>,<span class="hljs-number">77</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#查询所有学生信息</span></span><br><span class="line"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">user</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查询学生员工的姓名和对应的英语成绩</span></span><br><span class="line"><span class="hljs-keyword">select</span> <span class="hljs-keyword">name</span>,english <span class="hljs-keyword">from</span> student</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 过滤表中的重复数据</span></span><br><span class="line"><span class="hljs-keyword">select</span> <span class="hljs-keyword">distinct</span> english <span class="hljs-keyword">from</span> student </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 在所有学生分数上加10分的特长分</span></span><br></pre></td></tr></tbody></table></figure>
-
-
-
-<h2 id="数据库可视化-navicat"><a href="#数据库可视化-navicat" class="headerlink" title="数据库可视化 navicat"></a>数据库可视化 navicat</h2><h3 id="navicat连接远程服务器的几种方式"><a href="#navicat连接远程服务器的几种方式" class="headerlink" title="navicat连接远程服务器的几种方式"></a>navicat连接远程服务器的几种方式</h3><ol>
-<li><p>直接连接数据库</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">Connection Name : hzj <span class="hljs-comment">#随便写  主要记录的上这条连接的别名</span></span><br><span class="line">Host 10.0.6.55   <span class="hljs-comment"># 远程服务器ip</span></span><br><span class="line">Port 3306 <span class="hljs-comment"># 端口</span></span><br><span class="line">User Name root <span class="hljs-comment">#  数据库账号</span></span><br><span class="line">Passwd <span class="hljs-comment">#数据库密码</span></span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>先登陆ssh 之后在连接本地的数据库</p>
-</li>
-</ol>
-<p>先连接ssh</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">Host <span class="hljs-comment"># 远程</span></span><br><span class="line">Port 22</span><br><span class="line">User Name <span class="hljs-comment"># 连接数据库的用户名</span></span><br><span class="line">Authentication Method <span class="hljs-comment"># 验证方法</span></span><br><span class="line">Private key <span class="hljs-comment"># id_rsa</span></span><br><span class="line">Passphrase <span class="hljs-comment"># 验证短密 选择密钥后自动生成</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>再连接数据库</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">Connection Name : hzj <span class="hljs-comment">#随便写  主要记录的上这条连接的别名</span></span><br><span class="line">Host localhost   <span class="hljs-comment"># 远程服务器ip</span></span><br><span class="line">Port 3306 <span class="hljs-comment"># 端口</span></span><br><span class="line">User Name root <span class="hljs-comment">#  数据库账号</span></span><br><span class="line">Passwd <span class="hljs-comment">#数据库密码</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>出现的错误</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">2013 - Lost connection to MySQL server at <span class="hljs-string">'reading initial communication packet'</span>, system error: 0 <span class="hljs-string">"Internal error/check (Not system error)"</span></span><br></pre></td></tr></tbody></table></figure>
-<p>解决办法<br><a href="https://www.jb51.net/article/51480.htm" target="_blank" rel="noopener">https://www.jb51.net/article/51480.htm</a></p>
-</body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
                 <a class="has-link-black-ter" href="/posts/b3a48f7b/"><i class="fas fa-angle-double-right"></i>Python爬YouTube视频</a>
             
         </h1>
@@ -763,7 +684,7 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/4fbe8671/"><i class="fas fa-angle-double-right"></i>Rust-start</a>
+                <a class="has-link-black-ter" href="/posts/4fbe8671/"><i class="fas fa-angle-double-right"></i>rust的简介与安装</a>
             
         </h1>
         
@@ -782,7 +703,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    5 分钟 读完 (大约 745 个字)
+                    5 分钟 读完 (大约 749 个字)
                 </span>
                 
                 
@@ -808,6 +729,72 @@
             <div class="level-start">
                 <div class="level-item">
                 <a class="button is-size-7 is-light" href="/posts/4fbe8671/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/posts/93aa081f/"><i class="fas fa-angle-double-right"></i>rust猜谜游戏</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-26T04:27:09.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-26</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/code/">code</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    7 分钟 读完 (大约 1058 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>learn Rust  🦀️</p></body></html>
+        </div>
+        
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/code/" rel="tag">code</a>,&nbsp;<a class="has-link-grey -link" href="/tags/rust/" rel="tag">rust</a>
+                </div>
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/93aa081f/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
                 </div>
             </div>
         </div>
@@ -885,7 +872,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        108
+                        114
                     </p>
                 </a>
             </div>
@@ -895,7 +882,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        26
+                        28
                     </p>
                 </a>
             </div>
@@ -905,7 +892,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        18
+                        19
                     </p>
                 </a>
             </div>
@@ -973,7 +960,7 @@
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">42</span>
+                    <span class="level-item tag">48</span>
                 </span>
             </a>
         </li>
@@ -1059,7 +1046,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/docker/">
                         <span class="tag">docker</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1073,14 +1060,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/linux/">
                         <span class="tag">linux</span>
-                        <span class="tag is-grey">13</span>
+                        <span class="tag is-grey">14</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/mysql/">
                         <span class="tag">mysql</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -1108,7 +1095,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/vim/">
                         <span class="tag">vim</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1130,6 +1117,13 @@
                     <a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/">
                         <span class="tag">编程</span>
                         <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%B0%E4%BA%8B%E6%9C%AC/">
+                        <span class="tag">记事本</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1183,7 +1177,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        108
+                        114
                     </p>
                 </a>
             </div>
@@ -1193,7 +1187,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        26
+                        28
                     </p>
                 </a>
             </div>
@@ -1203,7 +1197,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        18
+                        19
                     </p>
                 </a>
             </div>
@@ -1271,7 +1265,7 @@
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">42</span>
+                    <span class="level-item tag">48</span>
                 </span>
             </a>
         </li>
@@ -1357,7 +1351,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/docker/">
                         <span class="tag">docker</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1371,14 +1365,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/linux/">
                         <span class="tag">linux</span>
-                        <span class="tag is-grey">13</span>
+                        <span class="tag is-grey">14</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/mysql/">
                         <span class="tag">mysql</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -1406,7 +1400,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/vim/">
                         <span class="tag">vim</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1428,6 +1422,13 @@
                     <a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/">
                         <span class="tag">编程</span>
                         <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%B0%E4%BA%8B%E6%9C%AC/">
+                        <span class="tag">记事本</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
