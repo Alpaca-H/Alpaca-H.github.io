@@ -160,531 +160,7 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/a2d15b23/"><i class="fas fa-angle-double-right"></i>swagger-ui使用</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-13T03:29:18.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-13</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/code/">code</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    2 分钟 读完 (大约 317 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><a id="more"></a>
-<h1 id="SwaggerUi使用"><a href="#SwaggerUi使用" class="headerlink" title="SwaggerUi使用"></a>SwaggerUi使用</h1><h2 id="django搭建swagger-ui"><a href="#django搭建swagger-ui" class="headerlink" title="django搭建swagger-ui"></a>django搭建swagger-ui</h2><p>django2.0之前使用django-rest-swagger<br>django2.0之后使用drf-yasg<br>这里主要记录一些使用drf-yasg安装的过程</p>
-<h2 id="Qucik-Start"><a href="#Qucik-Start" class="headerlink" title="Qucik-Start"></a>Qucik-Start</h2><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 安装</span></span><br><span class="line">yum install drf-yasg</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># setting设置</span></span><br><span class="line">INSTALLED_APPS  = [</span><br><span class="line">    ... </span><br><span class="line">   <span class="hljs-string">' drf_yasg '</span>，</span><br><span class="line">    ... </span><br><span class="line">]</span><br><span class="line"><span class="hljs-comment"># urls.py设置</span></span><br><span class="line">...</span><br><span class="line"><span class="hljs-keyword">from</span> rest_framework <span class="hljs-keyword">import</span> permissions</span><br><span class="line"><span class="hljs-keyword">from</span> drf_yasg.views <span class="hljs-keyword">import</span> get_schema_view</span><br><span class="line"><span class="hljs-keyword">from</span> drf_yasg <span class="hljs-keyword">import</span> openapi</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">schema_view = get_schema_view(</span><br><span class="line">   openapi.Info(</span><br><span class="line">      title=<span class="hljs-string">"Snippets API"</span>,</span><br><span class="line">      default_version=<span class="hljs-string">'v1'</span>,</span><br><span class="line">      description=<span class="hljs-string">"Test description"</span>,</span><br><span class="line">      terms_of_service=<span class="hljs-string">"https://www.google.com/policies/terms/"</span>,</span><br><span class="line">      contact=openapi.Contact(email=<span class="hljs-string">"contact@snippets.local"</span>),</span><br><span class="line">      license=openapi.License(name=<span class="hljs-string">"BSD License"</span>),</span><br><span class="line">   ),</span><br><span class="line">   public=<span class="hljs-literal">True</span>,</span><br><span class="line">   permission_classes=(permissions.AllowAny,),</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">   url(<span class="hljs-string">r'^swagger(?P<format>\.json|\.yaml)$'</span>, schema_view.without_ui(cache_timeout=<span class="hljs-number">0</span>), name=<span class="hljs-string">'schema-json'</span>),</span><br><span class="line">   url(<span class="hljs-string">r'^swagger/$'</span>, schema_view.with_ui(<span class="hljs-string">'swagger'</span>, cache_timeout=<span class="hljs-number">0</span>), name=<span class="hljs-string">'schema-swagger-ui'</span>),</span><br><span class="line">   url(<span class="hljs-string">r'^redoc/$'</span>, schema_view.with_ui(<span class="hljs-string">'redoc'</span>, cache_timeout=<span class="hljs-number">0</span>), name=<span class="hljs-string">'schema-redoc'</span>),</span><br><span class="line">   ...</span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure>
-<p>生成地址</p>
-<ul>
-<li>A JSON view of your API specification at /swagger.json</li>
-<li>A YAML view of your API specification at /swagger.yaml</li>
-<li>A swagger-ui view of your API specification at /swagger/</li>
-<li>A ReDoc view of your API specification at /redoc/</li>
-</ul>
-<h2 id="自定义其他验证请求方法"><a href="#自定义其他验证请求方法" class="headerlink" title="自定义其他验证请求方法"></a>自定义其他验证请求方法</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># setting.py</span></span><br><span class="line">SWAGGER_SETTINGS = {</span><br><span class="line">    <span class="hljs-string">'SECURITY_DEFINITIONS'</span>: {</span><br><span class="line">        <span class="hljs-comment"># 默认验证</span></span><br><span class="line">        <span class="hljs-string">'basic'</span>: {</span><br><span class="line">            <span class="hljs-string">'type'</span>: <span class="hljs-string">'basic'</span></span><br><span class="line">        },</span><br><span class="line">        <span class="hljs-comment"># 在header中以Authorization验证TOKEN</span></span><br><span class="line">        <span class="hljs-string">'Bearer'</span>: {</span><br><span class="line">            <span class="hljs-string">'type'</span>: <span class="hljs-string">'apiKey'</span>,</span><br><span class="line">            <span class="hljs-string">'name'</span>: <span class="hljs-string">'Authorization'</span>,</span><br><span class="line">            <span class="hljs-string">'in'</span>: <span class="hljs-string">'header'</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>以密码的形式输出，则为basic<br>另外在UI界面输入,需要加入Bearer标识<br><img src="http://img.noback.top/2020-02-12-15-55-50.png" alt="2020-02-12-15-55-50"></p>
-<h2 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h2><p>官方网址<br><a href="https://swagger.io/tools/swagger-ui/" target="_blank" rel="noopener">https://swagger.io/tools/swagger-ui/</a><br>drf-yasg gitbook文档<br><a href="https://drf-yasg.readthedocs.io/en/stable/" target="_blank" rel="noopener">https://drf-yasg.readthedocs.io/en/stable/</a><br>drf-yasg gitbook地址<br><a href="https://github.com/axnsan12/drf-yasg" target="_blank" rel="noopener">https://github.com/axnsan12/drf-yasg</a></p>
-</body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/e47927c/"><i class="fas fa-angle-double-right"></i>vim快捷键</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-09T03:08:30.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-09</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/code/">code</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    1 分钟 读完 (大约 140 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="vim快捷键"><a href="#vim快捷键" class="headerlink" title="vim快捷键"></a>vim快捷键</h1><p>VIM 是 Linux 系统上一款文本编辑器，它是操作 Linux 的一款利器。<br>当前有很多优秀的 IDE 都支持安装 VIM 插件，原因就是使用它便捷，高效，很爽！<br>主要记录了 VIM 的一些常用使用技巧，方便随时查阅学习 。</p></body></html>
-        </div>
-        
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-                <div class="level-item is-size-7 is-uppercase">
-                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/code/" rel="tag">code</a>,&nbsp;<a class="has-link-grey -link" href="/tags/vim/" rel="tag">vim</a>
-                </div>
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/e47927c/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/b3a48f7b/"><i class="fas fa-angle-double-right"></i>Python爬YouTube视频</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:39:12.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/code/">code</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    7 分钟 读完 (大约 1024 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><p>learn python 🐍</p></body></html>
-        </div>
-        
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-                <div class="level-item is-size-7 is-uppercase">
-                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/code/" rel="tag">code</a>,&nbsp;<a class="has-link-grey -link" href="/tags/python/" rel="tag">python</a>
-                </div>
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/b3a48f7b/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/a02a083e/"><i class="fas fa-angle-double-right"></i>rust结构体</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T03:17:50.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/code/">code</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    3 分钟 读完 (大约 420 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><p>learn Rust  🦀️</p></body></html>
-        </div>
-        
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-                <div class="level-item is-size-7 is-uppercase">
-                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/code/" rel="tag">code</a>,&nbsp;<a class="has-link-grey -link" href="/tags/rust/" rel="tag">rust</a>
-                </div>
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/a02a083e/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/27cd4fcb/"><i class="fas fa-angle-double-right"></i>Rust概念-所有权</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-28T13:56:19.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-28</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/code/">code</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    10 分钟 读完 (大约 1555 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><p>learn Rust  🦀</p></body></html>
-        </div>
-        
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-                <div class="level-item is-size-7 is-uppercase">
-                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/code/" rel="tag">code</a>,&nbsp;<a class="has-link-grey -link" href="/tags/rust/" rel="tag">rust</a>
-                </div>
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/27cd4fcb/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/27cd4fcb/"><i class="fas fa-angle-double-right"></i>Rust概念-所有权</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-28T13:56:19.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-28</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/code/">code</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    10 分钟 读完 (大约 1555 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><p>learn Rust  🦀</p></body></html>
-        </div>
-        
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-                <div class="level-item is-size-7 is-uppercase">
-                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/code/" rel="tag">code</a>,&nbsp;<a class="has-link-grey -link" href="/tags/rust/" rel="tag">rust</a>
-                </div>
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/27cd4fcb/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/79b81c10/"><i class="fas fa-angle-double-right"></i>Python常用方法1</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-27T09:36:31.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-27</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/code/">code</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    5 分钟 读完 (大约 792 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><p>learn python 🐍</p></body></html>
-        </div>
-        
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-                <div class="level-item is-size-7 is-uppercase">
-                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/code/" rel="tag">code</a>,&nbsp;<a class="has-link-grey -link" href="/tags/python/" rel="tag">python</a>
-                </div>
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/79b81c10/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/1d0174bc/"><i class="fas fa-angle-double-right"></i>Python报错总结</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-27T09:36:10.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-27</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/code/">code</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    几秒 读完 (大约 65 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><p>learn python 🐍</p></body></html>
-        </div>
-        
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-                <div class="level-item is-size-7 is-uppercase">
-                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/code/" rel="tag">code</a>,&nbsp;<a class="has-link-grey -link" href="/tags/python/" rel="tag">python</a>
-                </div>
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/1d0174bc/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/4fbe8671/"><i class="fas fa-angle-double-right"></i>rust的简介与安装</a>
+                <a class="has-link-black-ter" href="/posts/bb04cef6/"><i class="fas fa-angle-double-right"></i>rust基础2</a>
             
         </h1>
         
@@ -703,7 +179,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    5 分钟 读完 (大约 749 个字)
+                    6 分钟 读完 (大约 862 个字)
                 </span>
                 
                 
@@ -728,73 +204,7 @@
             </div>
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/4fbe8671/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/93aa081f/"><i class="fas fa-angle-double-right"></i>rust猜谜游戏</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-26T04:27:09.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-26</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/code/">code</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    7 分钟 读完 (大约 1058 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><p>learn Rust  🦀️</p></body></html>
-        </div>
-        
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-                <div class="level-item is-size-7 is-uppercase">
-                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/code/" rel="tag">code</a>,&nbsp;<a class="has-link-grey -link" href="/tags/rust/" rel="tag">rust</a>
-                </div>
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/93aa081f/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                <a class="button is-size-7 is-light" href="/posts/bb04cef6/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
                 </div>
             </div>
         </div>
@@ -818,7 +228,7 @@
         <div class="pagination-previous">
             <a class="is-flex-grow has-text-black-ter" href="/categories/code/">上一页</a>
         </div>
-        <div class="pagination-next">
+        <div class="pagination-next is-invisible is-hidden-mobile">
             <a class="is-flex-grow has-text-black-ter" href="/categories/code/page/3/">下一页</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
@@ -826,8 +236,6 @@
             <li><a class="pagination-link has-text-black-ter" href="/categories/code/">1</a></li>
             
             <li><a class="pagination-link is-current" href="/categories/code/page/2/">2</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/categories/code/page/3/">3</a></li>
             
         </ul>
     </nav>
@@ -872,7 +280,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        114
+                        107
                     </p>
                 </a>
             </div>
@@ -882,7 +290,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        27
                     </p>
                 </a>
             </div>
@@ -892,7 +300,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        19
+                        22
                     </p>
                 </a>
             </div>
@@ -955,6 +363,17 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/02/">
                 <span class="level-start">
                     <span class="level-item">二月 2020</span>
@@ -971,7 +390,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">34</span>
+                    <span class="level-item tag">25</span>
                 </span>
             </a>
         </li>
@@ -982,7 +401,7 @@
                     <span class="level-item">十二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">32</span>
+                    <span class="level-item tag">31</span>
                 </span>
             </a>
         </li>
@@ -1016,16 +435,23 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/code/">
-                        <span class="tag">code</span>
-                        <span class="tag is-grey">19</span>
+                    <a class="tags has-addons" href="/tags/ansible/">
+                        <span class="tag">ansible</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/codee/">
-                        <span class="tag">codee</span>
-                        <span class="tag is-grey">2</span>
+                    <a class="tags has-addons" href="/tags/code/">
+                        <span class="tag">code</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/command/">
+                        <span class="tag">command</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1060,7 +486,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/linux/">
                         <span class="tag">linux</span>
-                        <span class="tag is-grey">14</span>
+                        <span class="tag is-grey">16</span>
                     </a>
                 </div>
                 
@@ -1081,7 +507,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/python/">
                         <span class="tag">python</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -1102,7 +528,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/vue/">
                         <span class="tag">vue</span>
-                        <span class="tag is-grey">11</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
+                        <span class="tag">交换机</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1117,6 +550,13 @@
                     <a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/">
                         <span class="tag">编程</span>
                         <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BD%91%E7%BB%9C/">
+                        <span class="tag">网络</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1177,7 +617,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        114
+                        107
                     </p>
                 </a>
             </div>
@@ -1187,7 +627,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        27
                     </p>
                 </a>
             </div>
@@ -1197,7 +637,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        19
+                        22
                     </p>
                 </a>
             </div>
@@ -1260,6 +700,17 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/02/">
                 <span class="level-start">
                     <span class="level-item">二月 2020</span>
@@ -1276,7 +727,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">34</span>
+                    <span class="level-item tag">25</span>
                 </span>
             </a>
         </li>
@@ -1287,7 +738,7 @@
                     <span class="level-item">十二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">32</span>
+                    <span class="level-item tag">31</span>
                 </span>
             </a>
         </li>
@@ -1321,16 +772,23 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/code/">
-                        <span class="tag">code</span>
-                        <span class="tag is-grey">19</span>
+                    <a class="tags has-addons" href="/tags/ansible/">
+                        <span class="tag">ansible</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/codee/">
-                        <span class="tag">codee</span>
-                        <span class="tag is-grey">2</span>
+                    <a class="tags has-addons" href="/tags/code/">
+                        <span class="tag">code</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/command/">
+                        <span class="tag">command</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1365,7 +823,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/linux/">
                         <span class="tag">linux</span>
-                        <span class="tag is-grey">14</span>
+                        <span class="tag is-grey">16</span>
                     </a>
                 </div>
                 
@@ -1386,7 +844,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/python/">
                         <span class="tag">python</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -1407,7 +865,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/vue/">
                         <span class="tag">vue</span>
-                        <span class="tag is-grey">11</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
+                        <span class="tag">交换机</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1422,6 +887,13 @@
                     <a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/">
                         <span class="tag">编程</span>
                         <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BD%91%E7%BB%9C/">
+                        <span class="tag">网络</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 

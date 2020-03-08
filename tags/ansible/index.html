@@ -2,14 +2,14 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>分类: ansible - Alpaca&#39;s blog | how to win</title>
+<title>标签: ansible - Alpaca&#39;s blog | how to win</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="Alpaca&#39;s blog | how to win">
-<meta property="og:url" content="http://blog.noback.top/categories/linux/ansible/index.html">
+<meta property="og:url" content="http://blog.noback.top/tags/ansible/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.noback.top/images/og_image.png">
@@ -147,10 +147,7 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/categories">分类</a></li>
-            
-            <li><a href="/categories/linux/">linux</a></li>
-            
+            <li><a href="/tags">标签</a></li>
             <li class="is-active"><a href="#" aria-current="page">ansible</a></li>
         </ul>
         </nav>
@@ -173,7 +170,7 @@
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/ansible/">ansible</a>
+                <a class="has-link-grey -link" href="/categories/ansible/">ansible</a>
                 </div>
                 
                 
@@ -195,12 +192,9 @@
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ansible 192.168.20.1 -m ping -k</span><br><span class="line">ansible 192.168.20.1,192.168.20.2 -m ping -k</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>在配置文件中指定  默认文件夹/etc/ansible/hosts</p>
-</li>
-</ol>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[name1]</span><br><span class="line">192.168.20.1</span><br><span class="line">[name2]</span><br><span class="line">192.168.20.2</span><br><span class="line">ansible name1 -m ping -k <span class="hljs-comment"># 指定分组</span></span><br><span class="line">ansible all -m ping -k <span class="hljs-comment"># 指定所有</span></span><br></pre></td></tr></tbody></table></figure>
-
 <p><img src="http://img.noback.top/blog/img/20190902/ansible2.png" alt><br>由于ansible是通过ssh访问被执行端主机的，因此没有ssh的权限是无法完成任务的，即使这里的命令是ping，但依旧要走ssh的流程<br>这里的ping并不是linux下的ping ,而是ansible工具下面的ping模块</p>
-<ol start="3">
+</li>
 <li><p>不使用默认文件下，自定义文件夹</p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"192.168.20.1"</span>  >> xx</span><br><span class="line">ansible -i xx all -m ping -k</span><br></pre></td></tr></tbody></table></figure>
 </li>
@@ -345,7 +339,7 @@
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/linux/">linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/linux/ansible/">ansible</a>
+                <a class="has-link-grey -link" href="/categories/ansible/">ansible</a>
                 </div>
                 
                 
@@ -430,7 +424,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        114
+                        107
                     </p>
                 </a>
             </div>
@@ -440,7 +434,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        27
                     </p>
                 </a>
             </div>
@@ -450,7 +444,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        19
+                        22
                     </p>
                 </a>
             </div>
@@ -513,6 +507,17 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/02/">
                 <span class="level-start">
                     <span class="level-item">二月 2020</span>
@@ -529,7 +534,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">34</span>
+                    <span class="level-item tag">25</span>
                 </span>
             </a>
         </li>
@@ -540,7 +545,7 @@
                     <span class="level-item">十二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">32</span>
+                    <span class="level-item tag">31</span>
                 </span>
             </a>
         </li>
@@ -574,16 +579,23 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/code/">
-                        <span class="tag">code</span>
-                        <span class="tag is-grey">19</span>
+                    <a class="tags has-addons" href="/tags/ansible/">
+                        <span class="tag">ansible</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/codee/">
-                        <span class="tag">codee</span>
-                        <span class="tag is-grey">2</span>
+                    <a class="tags has-addons" href="/tags/code/">
+                        <span class="tag">code</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/command/">
+                        <span class="tag">command</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -618,7 +630,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/linux/">
                         <span class="tag">linux</span>
-                        <span class="tag is-grey">14</span>
+                        <span class="tag is-grey">16</span>
                     </a>
                 </div>
                 
@@ -639,7 +651,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/python/">
                         <span class="tag">python</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -660,7 +672,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/vue/">
                         <span class="tag">vue</span>
-                        <span class="tag is-grey">11</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
+                        <span class="tag">交换机</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -675,6 +694,13 @@
                     <a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/">
                         <span class="tag">编程</span>
                         <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BD%91%E7%BB%9C/">
+                        <span class="tag">网络</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -735,7 +761,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        114
+                        107
                     </p>
                 </a>
             </div>
@@ -745,7 +771,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        27
                     </p>
                 </a>
             </div>
@@ -755,7 +781,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        19
+                        22
                     </p>
                 </a>
             </div>
@@ -818,6 +844,17 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/02/">
                 <span class="level-start">
                     <span class="level-item">二月 2020</span>
@@ -834,7 +871,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">34</span>
+                    <span class="level-item tag">25</span>
                 </span>
             </a>
         </li>
@@ -845,7 +882,7 @@
                     <span class="level-item">十二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">32</span>
+                    <span class="level-item tag">31</span>
                 </span>
             </a>
         </li>
@@ -879,16 +916,23 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/code/">
-                        <span class="tag">code</span>
-                        <span class="tag is-grey">19</span>
+                    <a class="tags has-addons" href="/tags/ansible/">
+                        <span class="tag">ansible</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/codee/">
-                        <span class="tag">codee</span>
-                        <span class="tag is-grey">2</span>
+                    <a class="tags has-addons" href="/tags/code/">
+                        <span class="tag">code</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/command/">
+                        <span class="tag">command</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -923,7 +967,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/linux/">
                         <span class="tag">linux</span>
-                        <span class="tag is-grey">14</span>
+                        <span class="tag is-grey">16</span>
                     </a>
                 </div>
                 
@@ -944,7 +988,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/python/">
                         <span class="tag">python</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -965,7 +1009,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/vue/">
                         <span class="tag">vue</span>
-                        <span class="tag is-grey">11</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
+                        <span class="tag">交换机</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -980,6 +1031,13 @@
                     <a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/">
                         <span class="tag">编程</span>
                         <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BD%91%E7%BB%9C/">
+                        <span class="tag">网络</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 

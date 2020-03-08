@@ -2,24 +2,24 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>项目注意点 - Alpaca&#39;s blog | how to win</title>
+<title>linux_command ss - Alpaca&#39;s blog | how to win</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="vue项目注意点">
+    <meta name="description" content="learn linux command">
 <meta property="og:type" content="article">
-<meta property="og:title" content="项目注意点">
-<meta property="og:url" content="http://blog.noback.top/posts/6cd97811/index.html">
+<meta property="og:title" content="linux_command ss">
+<meta property="og:url" content="http://blog.noback.top/posts/d331dcdd/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
-<meta property="og:description" content="vue项目注意点">
+<meta property="og:description" content="learn linux command">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.noback.top/images/og_image.png">
-<meta property="article:published_time" content="2020-01-19T05:37:44.000Z">
-<meta property="article:modified_time" content="2020-01-19T05:37:44.000Z">
+<meta property="article:published_time" content="2020-03-06T08:38:01.000Z">
+<meta property="article:modified_time" content="2020-03-06T08:38:01.000Z">
 <meta property="article:author" content="何泽君">
-<meta property="article:tag" content="vue">
-<meta property="article:tag" content="codee">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="command">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
 
@@ -99,7 +99,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="http://image.noback.top/datadog.svg" alt="项目注意点" height="28">
+                <img src="http://image.noback.top/datadog.svg" alt="linux_command ss" height="28">
             
             </a>
         </div>
@@ -158,18 +158,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>项目注意点
+                <i class="fas fa-angle-double-right"></i>linux_command ss
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-19T05:37:44.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-19</time>
+                <time class="level-item has-text-grey" datetime="2020-03-06T08:38:01.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-03-06</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/code/">code</a>
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                 </div>
                 
                 
@@ -177,7 +177,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    几秒 读完 (大约 46 个字)
+                    5 分钟 读完 (大约 808 个字)
                 </span>
                 
                 
@@ -190,20 +190,40 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><p>vue项目注意点</p>
+            <html><head></head><body><p>learn linux command</p>
 <a id="more"></a>
 
 
-<h2 id="项目注意点"><a href="#项目注意点" class="headerlink" title="项目注意点"></a>项目注意点</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><template></span><br><span class="line"></template></span><br><span class="line"><script></span><br><span class="line"><span class="hljs-built_in">export</span> default {</span><br><span class="line">}</span><br><span class="line"></script></span><br><span class="line"><style scoped></span><br><span class="line"></style></span><br></pre></td></tr></tbody></table></figure>
-<p>scoped 关键字用在样式标签中，主要是表示该样式是只使用于当前的vue组件</p>
-</body></html>
+<h1 id="linux-command-ss"><a href="#linux-command-ss" class="headerlink" title="linux_command ss"></a>linux_command ss</h1><p>ss是Socket Statistics的缩写。顾名思义，ss命令可以用来获取socket统计信息，它可以显示和netstat类似的内容。但ss的优势在于它能够显示更多更详细的有关TCP和连接状态的信息，而且比netstat更快速更高效。</p>
+<p>查看网络连接你可以是使用netstat 或者 cat /proc/net/tcp<br>但是当你在连接数上万的服务器上使用netstat时候，会出现明显的卡顿</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">➜  ~ netstat</span><br><span class="line">Active Internet connections</span><br><span class="line">Proto Recv-Q Send-Q  Local Address          Foreign Address        (state)</span><br><span class="line">tcp4       0      0  10.0.28.62.63485       117.18.232.200.https   ESTABLISHED</span><br><span class="line">tcp4       0      0  10.0.28.62.63467       210.22.248.181.https   ESTABLISHED</span><br><span class="line">tcp4       0      0  10.0.28.62.63459       121.51.176.86.https    ESTABLISHED</span><br><span class="line">tcp4       0      0  10.0.28.62.63458       121.51.176.86.https    FIN_WAIT_2</span><br><span class="line">tcp4       0      0  10.0.28.62.63456       121.51.176.86.https    FIN_WAIT_2</span><br><span class="line">tcp4       0      0  10.0.28.62.63451       121.51.176.86.https    FIN_WAIT_2</span><br><span class="line">tcp4       0    517  10.0.28.62.63449       121.51.176.86.https    FIN_WAIT_1</span><br><span class="line">tcp4       0      0  10.0.28.62.63443       121.51.176.86.https    FIN_WAIT_1</span><br><span class="line"></span><br><span class="line">tcp4       0     31  10.0.28.62.63429       52.114.158.91.https    FIN_WAIT_1</span><br><span class="line">tcp4       0      0  10.0.28.62.63424       10.0.28.58.ssh         ESTABLISHED</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">tcp4       0      0  10.0.28.62.63422       hkg12s13-in-f5.1.https ESTABLISHED</span><br><span class="line"></span><br><span class="line">tcp4       0      0  10.0.28.62.63379       13.107.18.11.https     ESTABLISHED</span><br><span class="line">tcp4       0      0  10.0.28.62.63378       13.107.18.11.https     ESTABLISHED</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@hzj-machine ~]<span class="hljs-comment"># cat /proc/net/tcp</span></span><br><span class="line">  sl  local_address rem_address   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode</span><br><span class="line">   0: 0100007F:0019 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 22560 1 ffff8840c72e0000 100 0 0 10 0</span><br><span class="line">   1: 00000000:0016 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 21768 1 ffff8840c1b18000 100 0 0 10 0</span><br><span class="line">   2: 3A1C000A:0016 3E1C000A:F7C0 01 00000000:00000000 02:000A38D8 00000000     0        0 119773 4 ffff8840c72e3640 20 4 27 10 -1</span><br><span class="line">   3: 3A1C000A:0016 3E1C000A:F2F2 01 00000000:00000000 02:0002DF3E 00000000     0        0 117281 2 ffff8840c72e64c0 20 4 31 10 25</span><br><span class="line">   4: 3A1C000A:0016 3E1C000A:F0A9 01 00000000:00000000 02:0008BF3E 00000000     0        0 70042 2 ffff8840c72e2e80 20 4 31 2 2</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>但是ss相对于这两种来说在速度上加快了很多,它利用到了TCP协议栈中tcp_diag。tcp_diag是一个用于分析统计的模块，可以获得Linux 内核中第一手的信息，这就确保了ss的快捷高效.当谈如果系统中没有tcp_diag,ss也可以正常运行。速度相对于有tcp_diag较慢</p>
+<h2 id="Use"><a href="#Use" class="headerlink" title="Use"></a>Use</h2><h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ss [参数]</span><br><span class="line">ss [参数] [过滤]</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">  -h, --<span class="hljs-built_in">help</span> 帮助信息</span><br><span class="line">-V, --version 程序版本信息</span><br><span class="line">-n, --numeric 不解析服务名称</span><br><span class="line">-r, --resolve        解析主机名</span><br><span class="line">-a, --all 显示所有套接字（sockets）</span><br><span class="line">-l, --listening 显示监听状态的套接字（sockets）</span><br><span class="line">-o, --options        显示计时器信息</span><br><span class="line">-e, --extended       显示详细的套接字（sockets）信息</span><br><span class="line">-m, --memory         显示套接字（socket）的内存使用情况</span><br><span class="line">-p, --processes 显示使用套接字（socket）的进程</span><br><span class="line">-i, --info 显示 TCP内部信息</span><br><span class="line">-s, --summary 显示套接字（socket）使用概况</span><br><span class="line">-4, --ipv4           仅显示IPv4的套接字（sockets）</span><br><span class="line">-6, --ipv6           仅显示IPv6的套接字（sockets）</span><br><span class="line">-0, --packet         显示 PACKET 套接字（socket）</span><br><span class="line">-t, --tcp 仅显示 TCP套接字（sockets）</span><br><span class="line">-u, --udp 仅显示 UCP套接字（sockets）</span><br><span class="line">-d, --dccp 仅显示 DCCP套接字（sockets）</span><br><span class="line">-w, --raw 仅显示 RAW套接字（sockets）</span><br><span class="line">-x, --unix 仅显示 Unix套接字（sockets）</span><br><span class="line">-f, --family=FAMILY  显示 FAMILY类型的套接字（sockets），FAMILY可选，支持  unix, inet, inet6, link, netlink</span><br><span class="line">-A, --query=QUERY, --socket=QUERY</span><br><span class="line">      QUERY := {all|inet|tcp|udp|raw|unix|packet|netlink}[,QUERY]</span><br><span class="line">-D, --diag=FILE     将原始TCP套接字（sockets）信息转储到文件</span><br><span class="line"> -F, --filter=FILE   从文件中都去过滤器信息</span><br><span class="line">       FILTER := [ state TCP-STATE ] [ EXPRESSION ]</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="显示所有的TCP连接-或者-UDP连接"><a href="#显示所有的TCP连接-或者-UDP连接" class="headerlink" title="显示所有的TCP连接 或者 UDP连接"></a>显示所有的TCP连接 或者 UDP连接</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">## 显示tcp</span></span><br><span class="line">ss -t -a</span><br><span class="line"><span class="hljs-comment">## 显示udp</span></span><br><span class="line">ss -u -a</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="显示所有套接字（sockets）的大致情况"><a href="#显示所有套接字（sockets）的大致情况" class="headerlink" title="显示所有套接字（sockets）的大致情况"></a>显示所有套接字（sockets）的大致情况</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ss -s</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="列出所有打开的网络连接端口"><a href="#列出所有打开的网络连接端口" class="headerlink" title="列出所有打开的网络连接端口"></a>列出所有打开的网络连接端口</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ss -l</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="显示进行使用的socket"><a href="#显示进行使用的socket" class="headerlink" title="显示进行使用的socket"></a>显示进行使用的socket</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ss -pl</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="找出打开套接字-端口应用程序"><a href="#找出打开套接字-端口应用程序" class="headerlink" title="找出打开套接字/端口应用程序"></a>找出打开套接字/端口应用程序</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ss -pl | grep 3306</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="显示所有状态为etablished的SMTP连接"><a href="#显示所有状态为etablished的SMTP连接" class="headerlink" title="显示所有状态为etablished的SMTP连接"></a>显示所有状态为etablished的SMTP连接</h3></body></html>
         </div>
         
             <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/6cd97811/">项目注意点</a></li>
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/d331dcdd/">linux_command ss</a></li>
             <li><strong>本文作者：</strong><a href="http://blog.noback.top">何泽君</a></li>
-            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/6cd97811/">http://blog.noback.top/posts/6cd97811/</a></li>
-            <li><strong>发布时间：</strong>2020-01-19</li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/d331dcdd/">http://blog.noback.top/posts/d331dcdd/</a></li>
+            <li><strong>发布时间：</strong>2020-03-06</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
@@ -214,7 +234,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/codee/" rel="tag">codee</a>,&nbsp;<a class="has-link-grey -link" href="/tags/vue/" rel="tag">vue</a>
+                    <a class="has-link-grey -link" href="/tags/command/" rel="tag">command</a>,&nbsp;<a class="has-link-grey -link" href="/tags/linux/" rel="tag">linux</a>
                 </div>
             </div>
         </div>
@@ -231,17 +251,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/4dba38f8/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">电商后台管理系统(vue)-login模块</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/posts/f538ba9d/">
-                <span class="level-item">电商后台管理系统(vue)-搭建基本环境</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/443b0db9/">
+                <span class="level-item">centos有线网卡配置802.1x上网</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -257,8 +270,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'http://blog.noback.top/posts/6cd97811/';
-        this.page.identifier = 'posts/6cd97811/';
+        this.page.url = 'http://blog.noback.top/posts/d331dcdd/';
+        this.page.identifier = 'posts/d331dcdd/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -309,7 +322,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        114
+                        107
                     </p>
                 </a>
             </div>
@@ -319,7 +332,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        27
                     </p>
                 </a>
             </div>
@@ -329,7 +342,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        19
+                        22
                     </p>
                 </a>
             </div>
@@ -352,10 +365,46 @@
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#项目注意点">
+        <a class="is-flex" href="#linux-command-ss">
         <span class="has-mr-6">1</span>
-        <span>项目注意点</span>
-        </a></li></ul>
+        <span>linux_command ss</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Use">
+        <span class="has-mr-6">1.1</span>
+        <span>Use</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#命令格式">
+        <span class="has-mr-6">1.1.1</span>
+        <span>命令格式</span>
+        </a></li><li>
+        <a class="is-flex" href="#参数">
+        <span class="has-mr-6">1.1.2</span>
+        <span>参数</span>
+        </a></li><li>
+        <a class="is-flex" href="#显示所有的TCP连接-或者-UDP连接">
+        <span class="has-mr-6">1.1.3</span>
+        <span>显示所有的TCP连接 或者 UDP连接</span>
+        </a></li><li>
+        <a class="is-flex" href="#显示所有套接字（sockets）的大致情况">
+        <span class="has-mr-6">1.1.4</span>
+        <span>显示所有套接字（sockets）的大致情况</span>
+        </a></li><li>
+        <a class="is-flex" href="#列出所有打开的网络连接端口">
+        <span class="has-mr-6">1.1.5</span>
+        <span>列出所有打开的网络连接端口</span>
+        </a></li><li>
+        <a class="is-flex" href="#显示进行使用的socket">
+        <span class="has-mr-6">1.1.6</span>
+        <span>显示进行使用的socket</span>
+        </a></li><li>
+        <a class="is-flex" href="#找出打开套接字-端口应用程序">
+        <span class="has-mr-6">1.1.7</span>
+        <span>找出打开套接字/端口应用程序</span>
+        </a></li><li>
+        <a class="is-flex" href="#显示所有状态为etablished的SMTP连接">
+        <span class="has-mr-6">1.1.8</span>
+        <span>显示所有状态为etablished的SMTP连接</span>
+        </a></li></ul></li></ul></li></ul>
         </div>
     </div>
 </div>
@@ -381,7 +430,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="http://image.noback.top/datadog.svg" alt="项目注意点" height="28">
+                    <img src="http://image.noback.top/datadog.svg" alt="linux_command ss" height="28">
                 
                 </a>
                 <p class="is-size-7">

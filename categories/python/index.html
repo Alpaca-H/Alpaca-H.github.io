@@ -2,14 +2,14 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>分类: C语言 - Alpaca&#39;s blog | how to win</title>
+<title>分类: python - Alpaca&#39;s blog | how to win</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="Alpaca&#39;s blog | how to win">
-<meta property="og:url" content="http://blog.noback.top/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/index.html">
+<meta property="og:url" content="http://blog.noback.top/categories/python/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.noback.top/images/og_image.png">
@@ -149,9 +149,7 @@
         <ul>
             <li><a href="/categories">分类</a></li>
             
-            <li><a href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">C语言</a></li>
+            <li class="is-active"><a href="#" aria-current="page">python</a></li>
         </ul>
         </nav>
     </div>
@@ -162,18 +160,18 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/9ec06885/"><i class="fas fa-angle-double-right"></i>C语言基础</a>
+                <a class="has-link-black-ter" href="/posts/98b77d55/"><i class="fas fa-angle-double-right"></i>python 基础</a>
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:39:56.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                <time class="level-item has-text-grey" datetime="2020-01-04T07:39:26.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-04</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">C语言</a>
+                <a class="has-link-grey -link" href="/categories/python/">python</a>
                 </div>
                 
                 
@@ -181,7 +179,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    2 分钟 读完 (大约 334 个字)
+                    5 分钟 读完 (大约 800 个字)
                 </span>
                 
                 
@@ -189,25 +187,27 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h1 id="C语言基础"><a href="#C语言基础" class="headerlink" title="C语言基础"></a>C语言基础</h1><p>对C语言基础只是的概括</p>
-<p>目标文件 可执行文件 库 源文件</p>
-<p>源文件指的是我们所编写的文件</p>
-<figure class="highlight c hljs"><table><tbody><tr><td class="code"><pre><span class="line">vi xx.c</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string"><stdio.h></span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>{</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"hello world"</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>以上xx.c就是我们的源文件</p>
-<p><strong>在unix中</strong><br>编译c语言 cc xx.c 会在当前文件夹生成一个a.out的可执行文件  运行即可</p>
-<p>整个流程就是用户输入代码生成源码文件 通过cc编译后生成可执行文件 运行输出内容<br>cc其实是一个命令，可以用man cc 查看  也可以用cc -v查看版本信息</p>
-<p><strong>在linux中</strong><br>使用gcc编译c文件 gcc xx.c</p>
-<h2 id="第一个c语言程序"><a href="#第一个c语言程序" class="headerlink" title="第一个c语言程序"></a>第一个c语言程序</h2><!-- vim-markdown-toc -->
-<figure class="highlight c hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-meta"># <span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string"><stdio.h></span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>{</span><br><span class="line">	<span class="hljs-keyword">int</span> nums;</span><br><span class="line">	nums = <span class="hljs-number">1</span>;</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"how many dogs do you have?\n"</span>);</span><br><span class="line">	getchar();</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">}</span><br><span class="line">include是预处理器指令  main是第一个被调用的函数 func a是构造块</span><br><span class="line">stdio.h 是c编译器软件包的标准部分</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><p>整数 int</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">int nums=12;</span><br><span class="line"></span><br><span class="line">int nums;</span><br><span class="line">nums = 12; </span><br><span class="line"></span><br><span class="line">int nums = 12 , ages = 20;</span><br></pre></td></tr></tbody></table></figure>
-<p>大致的执行过程为 int nums 划分出一块内存空间名为nums<br>nums = 12 为nums赋值12的变量</p>
-<h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><p>zsh: command not found: a.out<br>mac下无法执行cc编译后的文件<br><font color="blue">因为没有确定工作路径 运行./a.out就可以了</font></p>
-</body></html>
+            <html><head></head><body><p>learn python 🐍</p></body></html>
         </div>
         
         
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/python/" rel="tag">python</a>
+                </div>
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/posts/98b77d55/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -261,7 +261,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        114
+                        107
                     </p>
                 </a>
             </div>
@@ -271,7 +271,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        27
                     </p>
                 </a>
             </div>
@@ -281,7 +281,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        19
+                        22
                     </p>
                 </a>
             </div>
@@ -344,6 +344,17 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/02/">
                 <span class="level-start">
                     <span class="level-item">二月 2020</span>
@@ -360,7 +371,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">34</span>
+                    <span class="level-item tag">25</span>
                 </span>
             </a>
         </li>
@@ -371,7 +382,7 @@
                     <span class="level-item">十二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">32</span>
+                    <span class="level-item tag">31</span>
                 </span>
             </a>
         </li>
@@ -405,16 +416,23 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/code/">
-                        <span class="tag">code</span>
-                        <span class="tag is-grey">19</span>
+                    <a class="tags has-addons" href="/tags/ansible/">
+                        <span class="tag">ansible</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/codee/">
-                        <span class="tag">codee</span>
-                        <span class="tag is-grey">2</span>
+                    <a class="tags has-addons" href="/tags/code/">
+                        <span class="tag">code</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/command/">
+                        <span class="tag">command</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -449,7 +467,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/linux/">
                         <span class="tag">linux</span>
-                        <span class="tag is-grey">14</span>
+                        <span class="tag is-grey">16</span>
                     </a>
                 </div>
                 
@@ -470,7 +488,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/python/">
                         <span class="tag">python</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -491,7 +509,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/vue/">
                         <span class="tag">vue</span>
-                        <span class="tag is-grey">11</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
+                        <span class="tag">交换机</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -506,6 +531,13 @@
                     <a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/">
                         <span class="tag">编程</span>
                         <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BD%91%E7%BB%9C/">
+                        <span class="tag">网络</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -566,7 +598,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        114
+                        107
                     </p>
                 </a>
             </div>
@@ -576,7 +608,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        27
                     </p>
                 </a>
             </div>
@@ -586,7 +618,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        19
+                        22
                     </p>
                 </a>
             </div>
@@ -649,6 +681,17 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/02/">
                 <span class="level-start">
                     <span class="level-item">二月 2020</span>
@@ -665,7 +708,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">34</span>
+                    <span class="level-item tag">25</span>
                 </span>
             </a>
         </li>
@@ -676,7 +719,7 @@
                     <span class="level-item">十二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">32</span>
+                    <span class="level-item tag">31</span>
                 </span>
             </a>
         </li>
@@ -710,16 +753,23 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/code/">
-                        <span class="tag">code</span>
-                        <span class="tag is-grey">19</span>
+                    <a class="tags has-addons" href="/tags/ansible/">
+                        <span class="tag">ansible</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/codee/">
-                        <span class="tag">codee</span>
-                        <span class="tag is-grey">2</span>
+                    <a class="tags has-addons" href="/tags/code/">
+                        <span class="tag">code</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/command/">
+                        <span class="tag">command</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -754,7 +804,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/linux/">
                         <span class="tag">linux</span>
-                        <span class="tag is-grey">14</span>
+                        <span class="tag is-grey">16</span>
                     </a>
                 </div>
                 
@@ -775,7 +825,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/python/">
                         <span class="tag">python</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -796,7 +846,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/vue/">
                         <span class="tag">vue</span>
-                        <span class="tag is-grey">11</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
+                        <span class="tag">交换机</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -811,6 +868,13 @@
                     <a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/">
                         <span class="tag">编程</span>
                         <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BD%91%E7%BB%9C/">
+                        <span class="tag">网络</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
