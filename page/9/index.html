@@ -149,6 +149,121 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
+                <a class="has-link-black-ter" href="/posts/9891ebc8/"><i class="fas fa-angle-double-right"></i>git基础</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-29T12:50:50.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    12 分钟 读完 (大约 1748 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><p>工作区(我们当前的文件夹)<br>暂存区(add 提交之后文件所存在的位置)<br>仓库(commit 之后将暂存区提交到的地方)</p>
+<p>首先是init初始化我们的工作区，这时候当前存在.git文件的就是我们的工作区，当前路径为我们的根目录<br>在工作区创建一个新的文件test.txt，<br>git add 之后文件上传到暂存区，我们可以用git status 会记录当前暂存区的操作<br>git diff可以比较工作区和暂存区的差异，当然这里是没有任何差异的，因为他们是同样的两份文件<br>修改test.txt 之后再去git diff 你会发现他们之间存在着差异，因为这个时候他们已经不是同样两份文件了<br>假如你再次 使用Git add . 再用git diff 时又没有差异了</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># ubuntu</span></span><br><span class="line">sudo apt-get install git</span><br><span class="line"><span class="hljs-comment"># centos </span></span><br><span class="line">yum install git -y</span><br><span class="line"><span class="hljs-comment"># mac </span></span><br><span class="line">brew install git</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="全局声明用户"><a href="#全局声明用户" class="headerlink" title="全局声明用户"></a>全局声明用户</h2><p>git config –global user.name “your name”<br>git config –global user.email “<a href="mailto:xxx@xxx.com">xxx@xxx.com</a>“</p>
+<h2 id="声明仓库-必须"><a href="#声明仓库-必须" class="headerlink" title="声明仓库  必须"></a>声明仓库  必须</h2><p>mkdir test<br>cd test<br>git init </p>
+<p>会生成一个.git的仓库管理文件,如果你使用了zsh的主题，你会发现多了一个master 这是你当前的分支，也仅仅只有这个分支</p>
+<p>git add . —> 将文件放到暂存区<br>git commit —> 将文件提交到当前分支 master</p>
+<p><strong>声明仓库内容  不一定</strong><br>既然是作为开源共享的项目或者说是线上多平台交互的私库，那一定需要一个专门解释这个仓库是做什么的文件—> README.md<br>git add README.md</p>
+<h2 id="提交并提供信息"><a href="#提交并提供信息" class="headerlink" title="提交并提供信息"></a>提交并提供信息</h2><p>将文件提交到仓库</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">git commit -m <span class="hljs-string">"your message"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">git add xxx.txt</span><br><span class="line">git add . <span class="hljs-comment">#添加当前文件夹所有文件 </span></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">## 查看状态</span></span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line"><span class="hljs-comment"># 添加文件后的状态</span></span><br><span class="line"> alpaca@hzj  ~/hzj/tu   master ●  git add README.md</span><br><span class="line"> alpaca@hzj  ~/hzj/tu   master ✚  git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="hljs-string">"git reset HEAD <file>..."</span> to unstage)</span><br><span class="line"></span><br><span class="line">        modified:   README.md</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 提交 commit 后的状态</span></span><br><span class="line"> alpaca@hzj  ~/hzj/tu   master ✚  git commit -m <span class="hljs-string">"update some file"</span></span><br><span class="line">[master ff070f9] update some file</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br><span class="line"> alpaca@hzj  ~/hzj/tu   master </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 状态</span></span><br><span class="line">  alpaca@hzj  ~/hzj/tu   master  git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h2><p>当你每一次使用commit 将文件提交到当前分支的时候，记录下每一个步骤<br>查看使用</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看日志</span></span><br><span class="line">git <span class="hljs-built_in">log</span></span><br><span class="line"></span><br><span class="line">commit bb3c0e3a1e850af0c70d3ce3a22995eaae177e82 (HEAD -> master)</span><br><span class="line">Author: alpaca <1097690268@qq.com></span><br><span class="line">Date:   Thu Nov 21 11:46:24 2019 +0800</span><br><span class="line"></span><br><span class="line">    update</span><br><span class="line"></span><br><span class="line">commit ff070f92dee18935752e5a98b2310d275e1191b6</span><br><span class="line">Author: alpaca <1097690268@qq.com></span><br><span class="line">Date:   Thu Nov 21 11:42:58 2019 +0800</span><br><span class="line"></span><br><span class="line">    update some file</span><br><span class="line"></span><br><span class="line">commit 230660d585a95b90e3c6176ad21664c1b10f746a</span><br><span class="line">Author: alpaca <1097690268@qq.com></span><br><span class="line">Date:   Thu Nov 21 10:37:04 2019 +0800</span><br><span class="line"></span><br><span class="line">    update some markdown file</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 仅查看版本号</span></span><br><span class="line">git <span class="hljs-built_in">log</span> --pretty=oneline</span><br><span class="line"><span class="hljs-comment"># 指定版本号 如果你装了zsh 按tab就会出来commit_id</span></span><br><span class="line">git <span class="hljs-built_in">log</span> commit_id</span><br></pre></td></tr></tbody></table></figure>
+<p>由随机码(版本号) + 作者 + 日期 + commit_message 组成</p>
+<h2 id="回退操作"><a href="#回退操作" class="headerlink" title="回退操作"></a>回退操作</h2><p>版本回退，首先我们要知道一个事情 git log 只会记录下commit的过程，也就是上传到当前分支的过程，因此回退操作他并不会记录，但是他会重载之前的log状态，也就是当你一共提交了3次内容，你回退到了第三次提交前的版本。那么你的第三次提交log并不会被记录</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 回退add操作  checkout -- file  暂存区 --> 工作区</span></span><br><span class="line">git checkout -- file</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 回退connit操作上  仓库 ---> 暂存区</span></span><br><span class="line">git reset --hard commit_id </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查看回退日志</span></span><br><span class="line">git reflog</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="提交远程仓库"><a href="#提交远程仓库" class="headerlink" title="提交远程仓库"></a>提交远程仓库</h2><p>之前的操作都是本地的，包括最后一步git commit 也只是提交到了本地的仓库。为了更好的保存内容，我们已经引入云仓库或者说托管我们的项目</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 添加远程仓库地址</span></span><br><span class="line">git remote add origin https://gitee.com/Alpaca-H/how-to-learn-git.git </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 提交当前分支到远程仓库</span></span><br><span class="line">git push  origin master</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 建议第一次使用push -u</span></span><br><span class="line"><span class="hljs-comment"># Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来 在以后的推送或者拉取时就可以简化命令。</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="从远程仓库下载"><a href="#从远程仓库下载" class="headerlink" title="从远程仓库下载"></a>从远程仓库下载</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">git <span class="hljs-built_in">clone</span> https://gitee.com/Alpaca-H/how-to-learn-git.git</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>第一次提交的存在的问题</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"> ! [rejected]        master -> master (fetch first)</span><br><span class="line">error: failed to push some refs to <span class="hljs-string">'https://gitee.com/Alpaca-H/how-to-learn-git.git'</span></span><br><span class="line">hint: Updates were rejected because the remote contains work that you <span class="hljs-keyword">do</span></span><br><span class="line">hint: not have locally. This is usually caused by another repository pushing</span><br><span class="line">hint: to the same ref. You may want to first integrate the remote changes</span><br><span class="line">hint: (e.g., <span class="hljs-string">'git pull ...'</span>) before pushing again.</span><br><span class="line">hint: See the <span class="hljs-string">'Note about fast-forwards'</span> <span class="hljs-keyword">in</span> <span class="hljs-string">'git push --help'</span> <span class="hljs-keyword">for</span> details.</span><br></pre></td></tr></tbody></table></figure>
+<p>如果你是在 码云上创建的项目，它本身就存在两个README文件，也就是说仓库中本身就存在文件了，这时候你删掉这两个也没用，(github上好像没这个问题)<br>我们需要同步远程仓库，也就是拉取下来并用–allow-unrelated-histories 合并</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">git pull origin master --allow-unrelated-histories   </span><br><span class="line">git commit -m <span class="hljs-string">"xxx"</span> <span class="hljs-comment">#重新提交</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="从远程仓库下载-–-指定分支"><a href="#从远程仓库下载-–-指定分支" class="headerlink" title="从远程仓库下载 – 指定分支"></a>从远程仓库下载 – 指定分支</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">git <span class="hljs-built_in">clone</span> -b hzj_branch https://gitee.com/Alpaca-H/how-to-learn-git.git</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 创建分支  </span></span><br><span class="line">git branch hzj</span><br><span class="line"><span class="hljs-comment"># 切换分支</span></span><br><span class="line">git checkout hzj</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 创建并切换分支</span></span><br><span class="line">git checkout -b hzj</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查看当前分支</span></span><br><span class="line">git branch</span><br></pre></td></tr></tbody></table></figure>
+
+<p>记住上面的只是分支管理，他只是在你的本地有了分支，在你没有push之前所有的一切都是本地操作</p>
+<h2 id="分支管理2"><a href="#分支管理2" class="headerlink" title="分支管理2"></a>分支管理2</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 切换到新的分支 </span></span><br><span class="line">git swicth -c dev</span><br><span class="line"><span class="hljs-comment"># 切换到已有分支</span></span><br><span class="line">git swicth dev</span><br></pre></td></tr></tbody></table></figure>
+
+
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 添加文件</span></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"我是hzj分支"</span> > README2.md</span><br><span class="line">git add README2.md</span><br><span class="line">git commit -m <span class="hljs-string">"update hzj"</span></span><br><span class="line">git push -u origin  hzj <span class="hljs-comment"># 提交到hzj的分支</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><p>进入master</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">git  merge hzj <span class="hljs-comment"># 合并在本地仓库的文件</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">git branch -d hzj</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="强制覆盖本地代码"><a href="#强制覆盖本地代码" class="headerlink" title="强制覆盖本地代码"></a>强制覆盖本地代码</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">$ git fetch --all</span><br><span class="line">$ git reset --hard origin/master </span><br><span class="line">$ git pull</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="git-关于Git每次进入都需要输入用户名和密码的问题解决"><a href="#git-关于Git每次进入都需要输入用户名和密码的问题解决" class="headerlink" title="git 关于Git每次进入都需要输入用户名和密码的问题解决"></a>git 关于Git每次进入都需要输入用户名和密码的问题解决</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">cd</span> your-project</span><br><span class="line">git config --global credential.helper store </span><br><span class="line">git pull</span><br></pre></td></tr></tbody></table></figure>
+<p>输过一遍以后就不用再输入了</p>
+<h2 id="分支同步主干"><a href="#分支同步主干" class="headerlink" title="分支同步主干"></a>分支同步主干</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 切换到master分支</span></span><br><span class="line">git checkout master </span><br><span class="line"><span class="hljs-comment"># 下拉master</span></span><br><span class="line">git pull origin master</span><br><span class="line"><span class="hljs-comment"># 切换分支</span></span><br><span class="line">git checkout hzj</span><br><span class="line"><span class="hljs-comment"># 同步分支</span></span><br><span class="line">git merge  master</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="主干同步分支-慎用"><a href="#主干同步分支-慎用" class="headerlink" title="主干同步分支(慎用)"></a>主干同步分支(慎用)</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 切换到主分支</span></span><br><span class="line">git checkout master</span><br><span class="line"><span class="hljs-comment"># 同步分支</span></span><br><span class="line">git merge hzj</span><br><span class="line"><span class="hljs-comment"># 提交</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="inventory操作"><a href="#inventory操作" class="headerlink" title="inventory操作"></a>inventory操作</h2><ol>
+<li>拉取项目<br>git clone <a href="https://gitlab.s.upyun.com/infrastructure/inventory.git" target="_blank" rel="noopener">https://gitlab.s.upyun.com/infrastructure/inventory.git</a></li>
+<li>查看当前分支<br>git branch</li>
+<li>切换分支<br>git checkout hzj</li>
+<li>修改内容<br>…</li>
+<li>上传<br>git commit -am “update”<br>git push<br>到web端创建合并请求</li>
+<li>更新<br>首先切换到master，<br>拉取最新git pull<br>切换次分支 git checkout hzj<br>合并更新分支到hzj分支 git merge origin hzj</li>
+</ol>
+<p>发消息给有master权限的人，交由master来合并</p>
+</body></html>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
                 <a class="has-link-black-ter" href="/posts/8d17cdf0/"><i class="fas fa-angle-double-right"></i>jwt</a>
             
         </h1>
@@ -835,91 +950,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/899b698f/"><i class="fas fa-angle-double-right"></i>又拍云</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T05:13:50.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E8%AE%BE%E5%A4%87/">设备</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    7 分钟 读完 (大约 1043 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <html><head></head><body><h1 id="又拍云工作记录"><a href="#又拍云工作记录" class="headerlink" title="又拍云工作记录"></a>又拍云工作记录</h1><h2 id="交换机命名格式"><a href="#交换机命名格式" class="headerlink" title="交换机命名格式"></a>交换机命名格式</h2><p>三大运营商缩写 + 附近机场代码 + S01等</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">移动 CMN</span><br><span class="line">电信 CTN</span><br><span class="line">联通 CUN</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="交换机ipv6检测内容"><a href="#交换机ipv6检测内容" class="headerlink" title="交换机ipv6检测内容"></a>交换机ipv6检测内容</h2><p>原因 内网机器比如全是移动的，交换机配的移动的ip，下面配的也是移动的ip<br>这样ping的通，但是联通的服务器ip ping不同。也就是说是内网通，外网不同。<br>内网ping 网关肯定通</p>
-<p>检测：<br>用移动的交换机下面的服务器（出问题的交换机）  去mtr外网的ip，去看是哪里断掉的<br>而不是用外网的机器来mtr内网的ip，这样截止的地方会看不出来，因为不是内网的机器</p>
-<h2 id="ipv6配置"><a href="#ipv6配置" class="headerlink" title="ipv6配置"></a>ipv6配置</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment">#业务vlan</span></span><br><span class="line">interface Vlan-interface1</span><br><span class="line">ipv6 address +业务vlan ip</span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line"><span class="hljs-comment">#互联vlan</span></span><br><span class="line">interface Vlan-interface200</span><br><span class="line">ipv6 address  +互联本地ip</span><br><span class="line"><span class="hljs-comment">#默认路由</span></span><br><span class="line">ipv6 route-static :: 0 + 互联对端ip</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="配置案例"><a href="#配置案例" class="headerlink" title="配置案例"></a>配置案例</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line">广东广州移动机房（自有机房NM）：2409:8C54:B000:0704::/64   互联地址 机房：FEC0::C/127， 我司 FEC0::D/127</span><br><span class="line"></span><br><span class="line">vlan 1 </span><br><span class="line">ip address 2409:8C54:B000:0704::/64 </span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line">vlan 20</span><br><span class="line">ipv6 address FEC0::D/127</span><br><span class="line">router-static</span><br><span class="line">ipv6 route-static :: 0 FEC0::C</span><br><span class="line"></span><br><span class="line">山东济南移动机房（自有节点NM）：2409:8C3C:0004:000C::/64，互联地址为：2409:8C3C:00FF:0004::000E/127、 我司 2409:8C3C:00FF:0004::0010/127</span><br><span class="line"></span><br><span class="line">vlan 1</span><br><span class="line">ip address 2409:8C3C:0004:000C::/64</span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line">vlan 20</span><br><span class="line">ipv6 address 2409:8C3C:00FF:0004::0010/127</span><br><span class="line">route-static</span><br><span class="line">ipv6 route-static :: 0 2409:8C3C:00FF:0004::000E</span><br><span class="line">vlan 1</span><br><span class="line">ipv6 address 240E:E9:B804:3:400::1/72</span><br><span class="line">undo ipv6 nd ra halt</span><br><span class="line">vlan 30 </span><br><span class="line">ipv6 address 240E:E9:B804:3:200::A3/127</span><br><span class="line">ipv6 address 240E:E9:B804:3:200::B3/127</span><br><span class="line">router-static</span><br><span class="line">ipv6 route-static :: 0 240E:E9:B804:3:200::A3</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="无法联网"><a href="#无法联网" class="headerlink" title="无法联网"></a>无法联网</h2><ol>
-<li><p>首先ping交换机ip  看是否通</p>
-</li>
-<li><p>串口线连接交换机  ping网关是否通不通  10.0.0.130</p>
-</li>
-<li><p>查看端口状态<br>dis int brief<br>聚合口是否起来 端口是否起来 pvid是否对应1000(统一是1000 除个别外可以在上联交换机上看10.0.0.130)</p>
-</li>
-<li><p>硬件问题<br>看模块是否发光  看跳线是否发光</p>
-</li>
-</ol>
-<h2 id="整理香港ntt点ip对应关系"><a href="#整理香港ntt点ip对应关系" class="headerlink" title="整理香港ntt点ip对应关系"></a>整理香港ntt点ip对应关系</h2><ol>
-<li>登陆netop服务器</li>
-<li>登陆香港ntt交换机</li>
-<li>查看vlan1 对应ip 其中157.xxx/27 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[NTT-CN-HKG-S01-Vlan-interface1]display this</span><br><span class="line"><span class="hljs-comment">#</span></span><br><span class="line">interface Vlan-interface1</span><br><span class="line"> ip address 157.119.232.1 255.255.255.224</span><br><span class="line"> ip address 10.81.0.254 255.255.255.0 sub</span><br><span class="line"> ip address 103.211.192.221 255.255.255.252 sub</span><br><span class="line"> ip address 103.251.128.1 255.255.255.224 sub</span><br><span class="line"> ip address 157.119.232.65 255.255.255.224 sub</span><br><span class="line"> ip address 192.168.1.1 255.255.255.0 sub</span><br><span class="line"> ip address 192.168.128.1 255.255.255.0 sub</span><br><span class="line"> ip address 192.168.232.1 255.255.255.224 sub</span><br><span class="line"> ipv6 address 2405:FD80:110::1/52</span><br><span class="line"><span class="hljs-comment">#</span></span><br><span class="line"><span class="hljs-built_in">return</span></span><br></pre></td></tr></tbody></table></figure>
-在netop服务器上用fping -g 157.119.231.1/27 来查看对应ip的状态</li>
-</ol>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@NETOPS machines]<span class="hljs-comment"># fping -g 157.119.232.65/27</span></span><br><span class="line">157.119.232.65 is alive</span><br><span class="line">157.119.232.66 is alive</span><br><span class="line">157.119.232.67 is alive</span><br><span class="line">157.119.232.68 is alive</span><br><span class="line">157.119.232.69 is alive</span><br><span class="line">157.119.232.70 is alive</span><br><span class="line">157.119.232.71 is alive</span><br><span class="line">157.119.232.72 is alive</span><br><span class="line">157.119.232.73 is alive</span><br><span class="line">157.119.232.74 is alive</span><br><span class="line">157.119.232.75 is alive</span><br><span class="line">157.119.232.85 is alive</span><br><span class="line">157.119.232.87 is alive</span><br><span class="line">157.119.232.86 is alive</span><br><span class="line">157.119.232.88 is alive</span><br><span class="line">157.119.232.89 is alive</span><br><span class="line">157.119.232.90 is alive</span><br><span class="line">157.119.232.91 is alive</span><br><span class="line">157.119.232.76 is unreachable</span><br><span class="line">157.119.232.77 is unreachable</span><br><span class="line">157.119.232.78 is unreachable</span><br><span class="line">157.119.232.79 is unreachable</span><br><span class="line">157.119.232.80 is unreachable</span><br><span class="line">157.119.232.81 is unreachable</span><br><span class="line">157.119.232.82 is unreachable</span><br><span class="line">157.119.232.83 is unreachable</span><br><span class="line">157.119.232.84 is unreachable</span><br><span class="line">157.119.232.92 is unreachable</span><br><span class="line">157.119.232.93 is unreachable</span><br><span class="line">157.119.232.94 is unreachable</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># fping -g 157.119.232.1/27</span></span><br><span class="line">157.119.232.1 is alive</span><br><span class="line">157.119.232.2 is alive</span><br><span class="line">157.119.232.3 is alive</span><br><span class="line">157.119.232.4 is alive</span><br><span class="line">157.119.232.5 is alive</span><br><span class="line">157.119.232.6 is alive</span><br><span class="line">157.119.232.7 is alive</span><br><span class="line">157.119.232.8 is alive</span><br><span class="line">157.119.232.9 is alive</span><br><span class="line">157.119.232.10 is alive</span><br><span class="line">157.119.232.11 is alive</span><br><span class="line">157.119.232.12 is alive</span><br><span class="line">157.119.232.13 is alive</span><br><span class="line">157.119.232.14 is alive</span><br><span class="line">157.119.232.15 is alive</span><br><span class="line">157.119.232.16 is alive</span><br><span class="line">157.119.232.17 is alive</span><br><span class="line">157.119.232.19 is alive</span><br><span class="line">157.119.232.18 is alive</span><br><span class="line">157.119.232.20 is alive</span><br><span class="line">157.119.232.21 is alive</span><br><span class="line">157.119.232.22 is alive</span><br><span class="line">157.119.232.23 is alive</span><br><span class="line">157.119.232.24 is alive</span><br><span class="line">157.119.232.25 is alive</span><br><span class="line">157.119.232.26 is alive</span><br><span class="line">157.119.232.27 is alive</span><br><span class="line">157.119.232.28 is alive</span><br><span class="line">157.119.232.29 is alive</span><br><span class="line">157.119.232.30 is alive</span><br></pre></td></tr></tbody></table></figure>
-
-
-<p>查看inventory中对应关系</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.73 /root/mingtao/inventory/machines/*</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-upapp-01:157.119.232.73</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.30 /root/mingtao/inventory/machines/*</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-cdn-v406:<span class="hljs-comment"># NTT-CN-HKG-030 ansible_ssh_host=157.119.232.30</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-openstack:<span class="hljs-comment"># NTT-CN-HKG-030 ansible_ssh_host=157.119.232.30</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-openstack:OPK-HKG-M30 ansible_ssh_host=157.119.232.30</span><br><span class="line">/root/mingtao/inventory/machines/lists-upops:NTT-CN-HKG-030 ansible_ssh_host=157.119.232.30</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.29 /root/mingtao/inventory/machines/*</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-cdn-v406:<span class="hljs-comment"># NTT-CN-HKG-029 ansible_ssh_host=157.119.232.29</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-openstack:<span class="hljs-comment"># NTT-CN-HKG-029 ansible_ssh_host=157.119.232.29</span></span><br><span class="line">/root/mingtao/inventory/machines/lists-upapp-01:157.119.232.29</span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.20 /root/mingtao/inventory/machines/*</span></span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.24 /root/mingtao/inventory/machines/*</span></span><br><span class="line">[root@NETOPS machines]<span class="hljs-comment"># grep 157.119.232.21 /root/mingtao/inventory/machines/*</span></span><br></pre></td></tr></tbody></table></figure>
-<p>记录机器的对应名字</p>
-<h3 id="ntt机器对应脚本"><a href="#ntt机器对应脚本" class="headerlink" title="ntt机器对应脚本"></a>ntt机器对应脚本</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#!/usr/bin/bash</span></span><br><span class="line"><span class="hljs-comment"># add ip (active and unknown)</span></span><br><span class="line">fping -g 157.119.232.65/27 > ntt_machine</span><br><span class="line">fping -g 157.119.231.1/27 >> ntt_machine</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># filter active to tmp.txt</span></span><br><span class="line">awk <span class="hljs-string">'{if($3=="alive"){print $1}}'</span> > tmp.txt ntt_machine</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Calculate the total</span></span><br><span class="line">nums=`cat tmp.txt | wc -l`</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># reset result.txt to blank</span></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"result:"</span> > result.txt</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># filter ip</span></span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> `seq 1 <span class="hljs-variable">$nums</span>`</span><br><span class="line"><span class="hljs-keyword">do</span></span><br><span class="line">        ip=`awk <span class="hljs-string">"NR==<span class="hljs-variable">$i</span>"</span> tmp.txt`</span><br><span class="line">        link=`grep -w <span class="hljs-variable">$ip</span> mingtao/inventory/machines/machines/*`</span><br><span class="line">        link=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$link</span> | awk -F<span class="hljs-string">":"</span> <span class="hljs-string">'{print $2}'</span> `</span><br><span class="line">        link=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$link</span> | awk <span class="hljs-string">'{if($1=="#"){print $2}else{print $1}}'</span>`</span><br><span class="line">        <span class="hljs-built_in">echo</span>  <span class="hljs-variable">$ip</span>   ,<span class="hljs-string">"active"</span>   ,   <span class="hljs-variable">$link</span> >> result.txt</span><br><span class="line"><span class="hljs-keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># add unknown to tmp.txt</span></span><br><span class="line">awk <span class="hljs-string">'{if($3!="alive"){print $1,$3}}'</span> >> result.txt ntt_machine</span><br><span class="line">~</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="底层设备到网络配置"><a href="#底层设备到网络配置" class="headerlink" title="底层设备到网络配置"></a>底层设备到网络配置</h3><p><img src="http://img.noback.top/2019-12-31-11-26-32.png" alt="2019-12-31-11-26-32"><br>通过该tower截图来获取网络配置需求<br>15台1U服务器<br>1台5130交换机<br>2个万兆多模模块<br>30根网线<br>16根电源线</p>
-<p>1个万兆口</p>
-<p>1-30口汇聚<br>49口接上联 走trunk</p>
-</body></html>
-        </div>
-        
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -987,7 +1017,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        107
+                        108
                     </p>
                 </a>
             </div>
@@ -997,7 +1027,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        27
+                        28
                     </p>
                 </a>
             </div>
@@ -1007,7 +1037,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        22
+                        23
                     </p>
                 </a>
             </div>
@@ -1075,7 +1105,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1180,6 +1210,13 @@
                     <a class="tags has-addons" href="/tags/docker/">
                         <span class="tag">docker</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/fastapi/">
+                        <span class="tag">fastapi</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1324,7 +1361,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        107
+                        108
                     </p>
                 </a>
             </div>
@@ -1334,7 +1371,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        27
+                        28
                     </p>
                 </a>
             </div>
@@ -1344,7 +1381,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        22
+                        23
                     </p>
                 </a>
             </div>
@@ -1412,7 +1449,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1517,6 +1554,13 @@
                     <a class="tags has-addons" href="/tags/docker/">
                         <span class="tag">docker</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/fastapi/">
+                        <span class="tag">fastapi</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>fastapi基础 - Alpaca&#39;s blog | how to win</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="learn fastapi ⚡️">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fastapi基础">
+<meta property="og:url" content="http://blog.noback.top/posts/e2882394/index.html">
+<meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
+<meta property="og:description" content="learn fastapi ⚡️">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.noback.top/images/og_image.png">
+<meta property="article:published_time" content="2020-03-08T11:37:17.000Z">
+<meta property="article:modified_time" content="2020-03-08T11:37:17.000Z">
+<meta property="article:author" content="何泽君">
+<meta property="article:tag" content="fastapi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.noback.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/datadog.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="is-3-column" background="http://img.noback.top/background.jpg">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://image.noback.top/datadog.svg" alt="fastapi基础" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/rust/">rust🦀️</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="AlphaLxy GitHub" href="https://github.com/Alpaca-H/o">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-10-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>fastapi基础
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-08T11:37:17.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-03-08</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/fastapi/">fastapi</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    13 分钟 读完 (大约 2005 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><p>learn fastapi ⚡️</p>
+<a id="more"></a>
+<h1 id="使用fastapi框架"><a href="#使用fastapi框架" class="headerlink" title="使用fastapi框架"></a>使用fastapi框架</h1><h2 id="start"><a href="#start" class="headerlink" title="start"></a>start</h2><figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 引入包</span></span><br><span class="line"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI</span><br><span class="line"><span class="hljs-keyword">from</span> pydantic <span class="hljs-keyword">import</span> BaseModel</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">itemmodel</span><span class="hljs-params">(BaseModel)</span>:</span></span><br><span class="line">    name: str</span><br><span class="line">    price: float</span><br><span class="line">    is_offer: bool = <span class="hljs-literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 定义根目录 方法为get 返回helloworld</span></span><br><span class="line"><span class="hljs-meta">@app.get("/")</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_first</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> {</span><br><span class="line">        <span class="hljs-string">"hello"</span>: <span class="hljs-string">"world"</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 定义耳机目录以及输入参数</span></span><br><span class="line"><span class="hljs-comment"># 定义方法，请求参数类型</span></span><br><span class="line"><span class="hljs-meta">@app.get("/items/{item_id}")</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_second</span><span class="hljs-params">(item_id: int, itemmodel: itemmodel)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> {</span><br><span class="line">        <span class="hljs-string">"item_id"</span>: item_id,</span><br><span class="line">        <span class="hljs-string">"item"</span>: itemmodel.name</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 请求put</span></span><br><span class="line"><span class="hljs-meta">@app.put("/items/{item_id}")</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update_item</span><span class="hljs-params">(item_id: int, itemmodel: itemmodel)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> {</span><br><span class="line">        <span class="hljs-string">"item_name"</span>: itemmodel.name,</span><br><span class="line">        <span class="hljs-string">"item_id"</span>: item_id</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+<p>运行项目<br>这里我所创建的py文件是server.py,所以启动方式是这样的 –reload的作用是，当代码变更的时候,服务器会重新开启</p>
+<figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line">uvicorn server:app --reload</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="http://img.noback.top/2020-03-08-00-46-06.png" alt="2020-03-08-00-46-06"></p>
+<p><font color="red">交互式api文档,fastapi具有良好的api文档，自带swagger接口文档</font></p>
+<p>访问地址 <a href="http://127.0.0.1:8000/docs" target="_blank" rel="noopener">http://127.0.0.1:8000/docs</a><br>自定义api文档地址  <a href="http://127.0.0.1:8000/redoc" target="_blank" rel="noopener">http://127.0.0.1:8000/redoc</a><br>你可以在更开放的端口上看到他  <a href="http://127.0.0.1:8000/openapi.json" target="_blank" rel="noopener">http://127.0.0.1:8000/openapi.json</a></p>
+<h2 id="study"><a href="#study" class="headerlink" title="study"></a>study</h2><p>几种常用的http请求</p>
+<ul>
+<li>get 请求</li>
+<li>put 更新</li>
+<li>delete 删除</li>
+<li>post 添加<br>增删改查</li>
+</ul>
+<h3 id="fastapi路径参数"><a href="#fastapi路径参数" class="headerlink" title="fastapi路径参数"></a>fastapi路径参数</h3><figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@app.get("/")</span></span><br><span class="line"><span class="hljs-comment"># 使用异步请求</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">root</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> {</span><br><span class="line">        <span class="hljs-string">"message"</span>:<span class="hljs-string">"hello world"</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 路径参数</span></span><br><span class="line"><span class="hljs-meta">@app.get('/items/{item_id}')</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_single_item</span><span class="hljs-params">(item_id)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> {</span><br><span class="line">        <span class="hljs-string">"item_id"</span> : item_id </span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 路径参数+ 参数类型限制</span></span><br><span class="line"><span class="hljs-meta">@app.get('/items/{item_str}')</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_str_item</span><span class="hljs-params">(item_str:str)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> {</span><br><span class="line">        <span class="hljs-string">"item_str"</span>: item_str</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 参数类型限制表示，你在url中输入的内容是string类型的，他会自动帮你转换其他类型的，比如说这里的 string - > int </span></span><br><span class="line"><span class="hljs-meta">@app.get('/items/{item_number}')</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_number_item</span><span class="hljs-params">(item_number:int)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> {</span><br><span class="line">        <span class="hljs-string">"item_number"</span>: item_number</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="路径参数的顺序"><a href="#路径参数的顺序" class="headerlink" title="路径参数的顺序"></a>路径参数的顺序</h4><p>fastapi的路径参数如果仅仅只有上面的内容，那么设计是不合理的，比如当你创建如下两个路径</p>
+<figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@app.get("/users/me")</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_user_me</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> {<span class="hljs-string">"user_id"</span>: <span class="hljs-string">"the current user"</span>}</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@app.get("/users/{user_id}")</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_user</span><span class="hljs-params">(user_id: str)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> {<span class="hljs-string">"user_id"</span>: user_id}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>他的url二级地址都是users 三级地址输入的内容都是str类型的。于是他就无法判断我们输入的me究竟指向哪一个api<br><font color="red">因此，一般有实例的api需要放在最前面</font></p>
+<h3 id="枚举-预定义值"><a href="#枚举-预定义值" class="headerlink" title="枚举 预定义值"></a>枚举 预定义值</h3><figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI</span><br><span class="line"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PeopleModel</span><span class="hljs-params">(str,Enum)</span>:</span></span><br><span class="line">    name = <span class="hljs-string">'hzj'</span>,</span><br><span class="line">    age = <span class="hljs-number">12</span>,</span><br><span class="line">    text = <span class="hljs-string">'like PeopleModel'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@app.get('/items/{model_name}')</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_people</span><span class="hljs-params">(model_name: PeopleModel)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">if</span> model_name == PeopleModel.name:</span><br><span class="line">        <span class="hljs-keyword">return</span> {<span class="hljs-string">"model_name"</span>:model_name,<span class="hljs-string">"input_message"</span>:<span class="hljs-string">'show PeopleModel.name'</span>}</span><br><span class="line">    <span class="hljs-keyword">if</span> model_name == PeopleModel.age:</span><br><span class="line">        <span class="hljs-keyword">return</span> {<span class="hljs-string">"model_name"</span>:model_name,<span class="hljs-string">"input_message"</span>:<span class="hljs-string">'show PeopleModel.age'</span>}</span><br><span class="line">    <span class="hljs-keyword">if</span> model_name == PeopleModel.like:</span><br><span class="line">        <span class="hljs-keyword">return</span> {<span class="hljs-string">"model_name"</span>:model_name,<span class="hljs-string">"input_message"</span>:<span class="hljs-string">'show PeopleModel.like'</span>}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="查询参数"><a href="#查询参数" class="headerlink" title="查询参数"></a>查询参数</h3><p>和路径参数不同的是，我们可以在方法中输入请求方法中没有出现过的参数，这些参数会被解释成查询参数</p>
+<figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line">fake_items_db = [{<span class="hljs-string">"item_name"</span>: <span class="hljs-string">"Foo"</span>}, {<span class="hljs-string">"item_name"</span>: <span class="hljs-string">"Bar"</span>}, {<span class="hljs-string">"item_name"</span>: <span class="hljs-string">"Baz"</span>}]</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 请求形式 http://127.0.0.1:8000/items/?skip=0&limit=1</span></span><br><span class="line"><span class="hljs-comment"># or http://127.0.0.1:8000/items/</span></span><br><span class="line"><span class="hljs-meta">@app.get('/items/')</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_item</span><span class="hljs-params">(skip: int = <span class="hljs-number">1</span>,limit: int = <span class="hljs-number">2</span>)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> fake_items_db[skip:skip+limit]</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 请求形式 http://127.0.0.1:8000/items/1/2</span></span><br><span class="line"><span class="hljs-meta">@app.get('/items/{skip}/{limit}')</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_item</span><span class="hljs-params">(skip: int ,limit: int)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> fake_items_db[skip:skip+limit]</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h3><figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line">fake_items_db = [{<span class="hljs-string">"item_name"</span>: <span class="hljs-string">"Foo"</span>}, {<span class="hljs-string">"item_name"</span>: <span class="hljs-string">"Bar"</span>}, {<span class="hljs-string">"item_name"</span>: <span class="hljs-string">"Baz"</span>}]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查询参数</span></span><br><span class="line"><span class="hljs-comment"># 请求形式 http://127.0.0.1:8000/items/?skip=0&limit=1</span></span><br><span class="line"><span class="hljs-comment"># or http://127.0.0.1:8000/items/</span></span><br><span class="line"><span class="hljs-meta">@app.get('/items/')</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_item</span><span class="hljs-params">(skip: int = <span class="hljs-number">1</span>,limit: int = <span class="hljs-number">2</span>)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> fake_items_db[skip:skip+limit]</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 可选参数</span></span><br><span class="line"><span class="hljs-comment"># 请求地址: http://127.0.0.1:8000/items/1</span></span><br><span class="line"><span class="hljs-meta">@app.get('/items/{skip}')</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_item2</span><span class="hljs-params">(skip: int = <span class="hljs-number">1</span> ,limit: int = None)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">if</span> limit <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> fake_items_db[skip:skip+limit] </span><br><span class="line">    <span class="hljs-keyword">elif</span> limit <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> fake_items_db[skip]</span><br><span class="line">    <span class="hljs-keyword">else</span>:</span><br><span class="line">        <span class="hljs-keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 路径参数</span></span><br><span class="line"><span class="hljs-comment"># 请求形式 http://127.0.0.1:8000/items/1/2</span></span><br><span class="line"><span class="hljs-meta">@app.get('/items/{skip}/{limit}')</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_item</span><span class="hljs-params">(skip: int ,limit: int)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> fake_items_db[skip:skip+limit]</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="查询参数和字符串验证"><a href="#查询参数和字符串验证" class="headerlink" title="查询参数和字符串验证"></a>查询参数和字符串验证</h3><p>如下有这么一个程序，输入名字查询结果</p>
+<figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line">name_server = [</span><br><span class="line">    {<span class="hljs-string">"name"</span>:<span class="hljs-string">"hzj"</span>},</span><br><span class="line">    {<span class="hljs-string">"name"</span>:<span class="hljs-string">"xxx"</span>},</span><br><span class="line">    {<span class="hljs-string">"name"</span>:<span class="hljs-string">"yyy"</span>},</span><br><span class="line">    {<span class="hljs-string">"name"</span>:<span class="hljs-string">"qqq"</span>},</span><br><span class="line">    {<span class="hljs-string">"name"</span>:<span class="hljs-string">"fff"</span>},</span><br><span class="line">]</span><br><span class="line"><span class="hljs-meta">@app.get('/user/')</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_user</span><span class="hljs-params">(name: str)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">for</span> name_s <span class="hljs-keyword">in</span> name_server:</span><br><span class="line">        <span class="hljs-keyword">if</span> name <span class="hljs-keyword">in</span> name_s.values():</span><br><span class="line">            <span class="hljs-keyword">return</span> name_s</span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> {<span class="hljs-string">"msg"</span>:<span class="hljs-string">"不存在你要查询的内容"</span>}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># url  http://127.0.0.1:8000/user/?name=hzj</span></span><br><span class="line"><span class="hljs-comment"># res {name: "hzj"}</span></span><br></pre></td></tr></tbody></table></figure>
+<p>但是现在我们要把name这个查询参数做字符上的限制</p>
+<figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI</span><br><span class="line"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> Query</span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line">name_server = [</span><br><span class="line">    {<span class="hljs-string">"name"</span>:<span class="hljs-string">"hzj"</span>},</span><br><span class="line">    {<span class="hljs-string">"name"</span>:<span class="hljs-string">"xxx"</span>},</span><br><span class="line">    {<span class="hljs-string">"name"</span>:<span class="hljs-string">"yyy"</span>},</span><br><span class="line">    {<span class="hljs-string">"name"</span>:<span class="hljs-string">"qqq"</span>},</span><br><span class="line">    {<span class="hljs-string">"name"</span>:<span class="hljs-string">"fff"</span>},</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@app.get('/user/')</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_user</span><span class="hljs-params">(name: str = Query<span class="hljs-params">(None,max_length=<span class="hljs-number">3</span>,min_length=<span class="hljs-number">1</span>,)</span>)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">for</span> name_s <span class="hljs-keyword">in</span> name_server:</span><br><span class="line">        <span class="hljs-keyword">if</span> name <span class="hljs-keyword">in</span> name_s.values():</span><br><span class="line">            <span class="hljs-keyword">return</span> name_s</span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> {<span class="hljs-string">"msg"</span>:<span class="hljs-string">"不存在你要查询的内容"</span>}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">## 其中None为查询参数name 的默认值</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="查询参数和数值验证"><a href="#查询参数和数值验证" class="headerlink" title="查询参数和数值验证"></a>查询参数和数值验证</h3><p>在之前的使用的查询参数中，我们定义方法中为出现的内容即使查询参数，但一定情况下，我们需要固定一些查询参数，但是又不期望他们是以路径参数的形式出现<br>这时候我们就要用path来固定查询参数的出现与否</p>
+<figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI, Path, Query</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@app.get("/items/{item_id}")</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_items</span><span class="hljs-params">(</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    item_id: int = Path<span class="hljs-params">(None, title=<span class="hljs-string">"The ID of the item to get"</span>)</span>,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    q: str = Query<span class="hljs-params">(None, alias=<span class="hljs-string">"item-query"</span>)</span>,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">)</span>:</span></span><br><span class="line">    results = {<span class="hljs-string">"item_id"</span>: item_id}</span><br><span class="line">    <span class="hljs-keyword">if</span> q:</span><br><span class="line">        results.update({<span class="hljs-string">"q"</span>: q})</span><br><span class="line">    <span class="hljs-keyword">return</span> results</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@app.get("/users/{name}/")</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span><span class="hljs-params">(</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    name: str,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    <span class="hljs-comment"># age: int = Path(None,title="you must add it"),</span></span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    age: int = Path<span class="hljs-params">(None)</span>,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> {<span class="hljs-string">"name"</span>:name}</span><br></pre></td></tr></tbody></table></figure>
+<p>在这里，我们定义了一个name的路径参数，一个age的查询参数，但是在查询过程中，如果我们仅仅使用路径参数去匹配内容，是不会返回任何我们想要的结果的</p>
+<p><img src="http://img.noback.top/2020-03-08-14-20-52.png" alt="2020-03-08-14-20-52"><br>在上一个接口中我们可以看到，  Query是可选的查询参数，而Path是必须的查询参数</p>
+<figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># ## 这个表示是可选参数q</span></span><br><span class="line"><span class="hljs-comment"># from fastapi import FastAPI, Path, Query</span></span><br><span class="line"><span class="hljs-comment"># app = FastAPI()</span></span><br><span class="line"><span class="hljs-comment"># @app.get("/items/{item_id}")</span></span><br><span class="line"><span class="hljs-comment"># async def read_items(</span></span><br><span class="line"><span class="hljs-comment">#     item_id: int = Path(..., title="The ID of the item to get"),</span></span><br><span class="line"><span class="hljs-comment">#     q: str = Query(None, alias="item-query"),</span></span><br><span class="line"><span class="hljs-comment"># ):</span></span><br><span class="line"><span class="hljs-comment">#     results = {"item_id": item_id}</span></span><br><span class="line"><span class="hljs-comment">#     if q:</span></span><br><span class="line"><span class="hljs-comment">#         results.update({"q": q})  ## 添加</span></span><br><span class="line"><span class="hljs-comment">#     return results</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">##  这样他无法判断你输出的内容 ,所以如果你要定义一个必须的查询参数q 这样的写法是错误的</span></span><br><span class="line"><span class="hljs-comment">## xxxxxxxxxxx</span></span><br><span class="line"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI, Path, Query</span><br><span class="line">app = FastAPI()</span><br><span class="line"><span class="hljs-meta">@app.get("/items/{item_id}")</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_items</span><span class="hljs-params">(</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    item_id: int = Path<span class="hljs-params">(..., title=<span class="hljs-string">"The ID of the item to get"</span>)</span>,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    q: str = Path<span class="hljs-params">(None, alias=<span class="hljs-string">"item-query"</span>)</span>,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">)</span>:</span>   </span><br><span class="line">    res = {<span class="hljs-string">"item_id"</span>:item_id}</span><br><span class="line">    res.update({<span class="hljs-string">"q"</span>:q})</span><br><span class="line">    <span class="hljs-keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">## 这样他才能判断你输入的内容</span></span><br><span class="line"><span class="hljs-comment">## 但这样做的前提是q 是一个查询参数，且有default = None</span></span><br><span class="line"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI, Path, Query</span><br><span class="line">app = FastAPI()</span><br><span class="line"><span class="hljs-meta">@app.get("/items/{item_id}")</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_items</span><span class="hljs-params">(</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">  q: str ,item_id: int = Path<span class="hljs-params">(..., title=<span class="hljs-string">"The ID of the item to get"</span>)</span>,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">)</span>:</span>   </span><br><span class="line">    res = {<span class="hljs-string">"item_id"</span>:item_id}</span><br><span class="line">    res.update({<span class="hljs-string">"q"</span>:q})</span><br><span class="line">    <span class="hljs-keyword">return</span> res</span><br></pre></td></tr></tbody></table></figure>
+<p>另外一种写法</p>
+<figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI, Path</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"><span class="hljs-meta">@app.get("/items/{item_id}")</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_items</span><span class="hljs-params">(</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    *, item_id: int = Path<span class="hljs-params">(..., title=<span class="hljs-string">"The ID of the item to get"</span>)</span>, q: str</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">)</span>:</span></span><br><span class="line">    results = {<span class="hljs-string">"item_id"</span>: item_id}</span><br><span class="line">    <span class="hljs-keyword">if</span> q:</span><br><span class="line">        results.update({<span class="hljs-string">"q"</span>: q})</span><br><span class="line">    <span class="hljs-keyword">return</span> results</span><br></pre></td></tr></tbody></table></figure>
+
+<p><font color="red">数值验证</font></p>
+<figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI, Path, Query</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@app.get("/items/{item_id}")</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_items</span><span class="hljs-params">(</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    *,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    item_id: int = Path<span class="hljs-params">(..., title=<span class="hljs-string">"The ID of the item to get"</span>, ge=<span class="hljs-number">0</span>, le=<span class="hljs-number">1000</span>)</span>,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    q: str,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    size: float = Query<span class="hljs-params">(..., gt=<span class="hljs-number">0</span>, lt=<span class="hljs-number">10.5</span>)</span></span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">)</span>:</span></span><br><span class="line">    results = {<span class="hljs-string">"item_id"</span>: item_id}</span><br><span class="line">    <span class="hljs-keyword">if</span> q:</span><br><span class="line">        results.update({<span class="hljs-string">"q"</span>: q})</span><br><span class="line">    <span class="hljs-keyword">return</span> results</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="模型类"><a href="#模型类" class="headerlink" title="模型类"></a>模型类</h3><p>类比django中的django-model 在fastapi中我们还缺少model类，于是我们借用了Pydatic中的模型类，来完成模型的实现</p>
+<figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line">  <span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI, Path</span><br><span class="line"><span class="hljs-keyword">from</span> pydantic <span class="hljs-keyword">import</span> BaseModel</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Item</span><span class="hljs-params">(BaseModel)</span>:</span></span><br><span class="line">    name: str</span><br><span class="line">    description: str = <span class="hljs-literal">None</span></span><br><span class="line">    price: float</span><br><span class="line">    tax: float = <span class="hljs-literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@app.put("/items/{item_id}")</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update_item</span><span class="hljs-params">(</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    *,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    item_id: int = Path<span class="hljs-params">(..., title=<span class="hljs-string">"The ID of the item to get"</span>, ge=<span class="hljs-number">0</span>, le=<span class="hljs-number">1000</span>)</span>,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    q: str = None,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    item: Item = None,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">)</span>:</span></span><br><span class="line">    results = {<span class="hljs-string">"item_id"</span>: item_id}</span><br><span class="line">    <span class="hljs-keyword">if</span> q:</span><br><span class="line">        results.update({<span class="hljs-string">"q"</span>: q})</span><br><span class="line">    <span class="hljs-keyword">if</span> item:</span><br><span class="line">        results.update({<span class="hljs-string">"item"</span>: item})</span><br><span class="line">    <span class="hljs-keyword">return</span> results</span><br></pre></td></tr></tbody></table></figure>
+<p>return values<br><img src="http://img.noback.top/2020-03-08-15-13-05.png" alt="2020-03-08-15-13-05"></p>
+<figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI</span><br><span class="line"><span class="hljs-keyword">from</span> pydantic <span class="hljs-keyword">import</span> BaseModel</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 创建模型类</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span><span class="hljs-params">(BaseModel)</span>:</span></span><br><span class="line">    name: str = <span class="hljs-string">'hzj'</span> <span class="hljs-comment"># 默认值,你开心</span></span><br><span class="line">    age: int = <span class="hljs-literal">None</span></span><br><span class="line">    like: str = <span class="hljs-string">"to do list"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span><span class="hljs-params">(BaseModel)</span>:</span></span><br><span class="line">    username: str</span><br><span class="line">    full_name: str = <span class="hljs-literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@app.get('/')</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">root</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> {<span class="hljs-string">"hello"</span>:<span class="hljs-string">"hello world"</span>}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 更新用户</span></span><br><span class="line"><span class="hljs-comment"># 传入参数为{user-id}</span></span><br><span class="line"><span class="hljs-meta">@app.put('/user/{user_id}')</span></span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update_user_items</span><span class="hljs-params">(</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    user_id: int,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    S_item: Student,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    user: User,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">)</span>:</span></span><br><span class="line">    res = {<span class="hljs-string">"user_id"</span>:user_id}</span><br><span class="line">    <span class="hljs-keyword">if</span> S_item <span class="hljs-keyword">or</span> user:</span><br><span class="line">        res.update({<span class="hljs-string">"S_item"</span>:S_item,<span class="hljs-string">"user"</span>:user})</span><br><span class="line">    <span class="hljs-keyword">elif</span> user:</span><br><span class="line">        res.update({<span class="hljs-string">"user"</span>:user})</span><br><span class="line">    <span class="hljs-keyword">elif</span> S_item:</span><br><span class="line">        res.update({<span class="hljs-string">"S_item"</span>:S_item})</span><br><span class="line">    <span class="hljs-keyword">else</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> {<span class="hljs-string">"status"</span>:<span class="hljs-number">404</span>}</span><br><span class="line">    <span class="hljs-keyword">return</span> res</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="规定模型类中的字段"><a href="#规定模型类中的字段" class="headerlink" title="规定模型类中的字段"></a>规定模型类中的字段</h4><p>pass</p>
+<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><h2 id="暂定"><a href="#暂定" class="headerlink" title="暂定"></a>暂定</h2><h2 id="静态资源"><a href="#静态资源" class="headerlink" title="静态资源"></a>静态资源</h2><p>安装aiofiles库文件</p>
+<figure class="highlight py hljs"><table><tbody><tr><td class="code"><pre><span class="line">pip install aiofiles</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 挂在静态文件到程序中</span></span><br><span class="line"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI</span><br><span class="line"><span class="hljs-keyword">from</span> fastapi.staticfiles <span class="hljs-keyword">import</span> StaticFiles</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line">app.mount(<span class="hljs-string">"/static"</span>, StaticFiles(directory=<span class="hljs-string">"static"</span>), name=<span class="hljs-string">"static"</span>)</span><br></pre></td></tr></tbody></table></figure></body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/e2882394/">fastapi基础</a></li>
+            <li><strong>本文作者：</strong><a href="http://blog.noback.top">何泽君</a></li>
+            <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/e2882394/">http://blog.noback.top/posts/e2882394/</a></li>
+            <li><strong>发布时间：</strong>2020-03-08</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/fastapi/" rel="tag">fastapi</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/d331dcdd/">
+                <span class="level-item">linux_command ss</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://blog.noback.top/posts/e2882394/';
+        this.page.identifier = 'posts/e2882394/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'alphalxy-blog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="http://image.noback.top/dataheader.jpeg" alt="">
+                    
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        hzj
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        108
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        28
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        23
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky"   style="max-height: 900px; overflow: auto;" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#使用fastapi框架">
+        <span class="has-mr-6">1</span>
+        <span>使用fastapi框架</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#start">
+        <span class="has-mr-6">1.1</span>
+        <span>start</span>
+        </a></li><li>
+        <a class="is-flex" href="#study">
+        <span class="has-mr-6">1.2</span>
+        <span>study</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#fastapi路径参数">
+        <span class="has-mr-6">1.2.1</span>
+        <span>fastapi路径参数</span>
+        </a></li><li>
+        <a class="is-flex" href="#枚举-预定义值">
+        <span class="has-mr-6">1.2.2</span>
+        <span>枚举 预定义值</span>
+        </a></li><li>
+        <a class="is-flex" href="#查询参数">
+        <span class="has-mr-6">1.2.3</span>
+        <span>查询参数</span>
+        </a></li><li>
+        <a class="is-flex" href="#可选参数">
+        <span class="has-mr-6">1.2.4</span>
+        <span>可选参数</span>
+        </a></li><li>
+        <a class="is-flex" href="#查询参数和字符串验证">
+        <span class="has-mr-6">1.2.5</span>
+        <span>查询参数和字符串验证</span>
+        </a></li><li>
+        <a class="is-flex" href="#查询参数和数值验证">
+        <span class="has-mr-6">1.2.6</span>
+        <span>查询参数和数值验证</span>
+        </a></li><li>
+        <a class="is-flex" href="#模型类">
+        <span class="has-mr-6">1.2.7</span>
+        <span>模型类</span>
+        </a></li><li>
+        <a class="is-flex" href="#cookie">
+        <span class="has-mr-6">1.2.8</span>
+        <span>cookie</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#暂定">
+        <span class="has-mr-6">1.3</span>
+        <span>暂定</span>
+        </a></li><li>
+        <a class="is-flex" href="#静态资源">
+        <span class="has-mr-6">1.4</span>
+        <span>静态资源</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+
+                
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://image.noback.top/datadog.svg" alt="fastapi基础" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 何泽君&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="AlphaLxy GitHub" href="https://www.github.com/AlphaLxy">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

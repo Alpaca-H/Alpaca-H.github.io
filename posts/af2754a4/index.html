@@ -2,14 +2,14 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>linux目录配置 - Alpaca&#39;s blog | how to win</title>
+<title>linux磁盘管理2 - Alpaca&#39;s blog | how to win</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
     <meta name="description" content="learn linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux目录配置">
+<meta property="og:title" content="linux磁盘管理2">
 <meta property="og:url" content="http://blog.noback.top/posts/af2754a4/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
 <meta property="og:description" content="learn linux">
@@ -98,7 +98,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="http://image.noback.top/datadog.svg" alt="linux目录配置" height="28">
+                <img src="http://image.noback.top/datadog.svg" alt="linux磁盘管理2" height="28">
             
             </a>
         </div>
@@ -157,7 +157,7 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>linux目录配置
+                <i class="fas fa-angle-double-right"></i>linux磁盘管理2
             
         </h1>
         
@@ -176,7 +176,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    7 分钟 读完 (大约 1086 个字)
+                    3 分钟 读完 (大约 488 个字)
                 </span>
                 
                 
@@ -191,23 +191,33 @@
         <div class="content">
             <html><head></head><body><p>learn linux</p>
 <a id="more"></a>
-<h1 id="linux目录配置"><a href="#linux目录配置" class="headerlink" title="linux目录配置"></a>linux目录配置</h1><p>依据 – > FHS – > filesystem hierarchy standard</p>
-<h2 id="什么是FHS"><a href="#什么是FHS" class="headerlink" title="什么是FHS"></a>什么是FHS</h2><p>使用者可以了解到已安装软件通常放置于那个目录下， 所以他们希望独立的软件开发商、操作系统制作者、以及想要维护系统的使用者，都能够遵循FHS的标准。 也就是说，FHS的重点在于规范每个特定的目录下应该要放置什么样子的数据而已。 这样做好处非常多，因为Linux操作系统就能够在既有的面貌下（目录架构不变）发展出开发者想要的独特风格。+</p>
-<p>第一层三类文件分别是<br>/ root 根目录，与开机系统有关<br>/usr 与软件安装/执行有关<br>/var 与系统运行过程有关</p>
-<p>在根目录下面,FHS定义必须存在的目录<br>/bin<br>    在bin目录下面放置了一些基操的指令文件 在/bin下面的指令可以被root与一般帐号所使用，主要有：cat, chmod, chown, date, mv, mkdir, cp, bash等等常用的指令，在单人模式下也可以被操作</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@<span class="hljs-built_in">test</span>-ceph bin]<span class="hljs-comment"># ls -al | grep chmod</span></span><br><span class="line">-rwxr-xr-x.   1 root root      58656 10月 31 2018 chmod</span><br></pre></td></tr></tbody></table></figure>
-<p>/boot<br>    开机时会用到的文件包括Linux核心文件以及开机菜单与开机所需配置文件等等 kernel文件常用vmlinuz命名<br>/dev<br>    硬件设备存放点，以文件形式存在<br>/etc<br>    主要配置文件存放点<br>/lib<br>    开机时用到的函数库， /lib/modules/下面存放一些核心模块<br>/media<br>    可移除设备，不常用<br>/mnt<br>    挂载设备<br>/opt<br>    第三方协力软件放置的目录 不常用<br>/run</p>
-<p>/sbin<br>    存放指令<br>/srv<br>/tmp<br>    这是让一般使用者或者是正在执行的程序暂时放置文件的地方。<br>/usr<br>/var<br>    建议存在的目录<br>/home<br>    这是系统默认的使用者主文件夹（home directory）<br>/lib*<br>    存放与/lib不同格式的二进制函数库<br>/root<br>    系统管理员（root）的主文件夹</p>
-<p>特殊目录</p>
-<p>/lost+found<br>    这个目录是使用标准的ext2/ext3/ext4文件系统格式才会产生的一个目录，目的在于当文件系统发生错误时， 将一些遗失的片段放置到这个目录下 xfs系统没有<br>/proc<br>    这个目录本身是一个“虚拟文件系统（virtual filesystem）”喔！他放置的数据都是在内存当中， 例如系统核心、行程信息（process）、周边设备的状态及网络状态等等。因为这个目录下的数据都是在内存当中， 所以本身不占任何硬盘空间啊！<br>/sys<br>    这个目录其实跟/proc非常类似，也是一个虚拟的文件系统，主要也是记录核心与系统硬件信息较相关的信息。 包括目前已载入的核心模块与核心侦测到的硬件设备信息等等。这个目录同样不占硬盘容量</p>
-<h2 id="usr"><a href="#usr" class="headerlink" title="/usr"></a>/usr</h2><p>在/usr中存放的是安装和执行的软件<br>/usr/bin/  所有一般用户能够使用的指令都放在这里 并且/bin 软连接到/usr/bin<br>/usr/lib/  同/lib一样  软连接<br>/usr/local 系统管理员在本机自行安装自己下载的软件（非distribution默认提供者），建议安装到此目录， 这样会比较便于管理<br>/usr/sbin 非系统正常运行所需要的系统指令。最常见的就是某些网络服务器软件的服务指令（daemon）啰！不过基本功能与 /sbin 也差不多， 因此目前 /sbin 就是链接到此目录中的。</p>
-<p>/usr/src 源代码存放点</p>
-<h2 id="var"><a href="#var" class="headerlink" title="/var"></a>/var</h2><p>在/var中存放的是运行过程中的文件<br>/var/cache 暂存盘<br>/var/lib  程序本身执行的过程中，需要使用到的数据文件放置的目录。在此目录下各自的软件应该要有各自的目录。 举例来说，MySQL的数据库放置到/var/lib/mysql/而rpm的数据库则放到/var/lib/rpm去！<br>/var/log  登陆文件放置的目录</p>
+
+<h1 id="linux磁盘和文件系统"><a href="#linux磁盘和文件系统" class="headerlink" title="linux磁盘和文件系统"></a>linux磁盘和文件系统</h1><p>swap 有什么用</p>
+<h2 id="内存交换空间-swap"><a href="#内存交换空间-swap" class="headerlink" title="内存交换空间(swap)"></a>内存交换空间(swap)</h2><p>为了防止某个程序过度或者说在某一个非常短的时间内用掉了额你大部分的内存，那你的系统恐怕会有损坏的情况。于是linux在安装的时候就被规定需要划分两个扇区<br>1.根目录<br>2.swap 内存交换空间</p>
+<p><font color="blue">swap是如何工作的</font><br>首先在内存足够的情况下,系统不会去调用swap中的内存，但是一旦内存不足时，就会把内存中暂时不实用的程序与数据放到swap中，此时主机的磁盘灯就会开始闪</p>
+<h2 id="创建内存交换空间-swap"><a href="#创建内存交换空间-swap" class="headerlink" title="创建内存交换空间(swap)"></a>创建内存交换空间(swap)</h2><ol>
+<li>使用实体分区创建swap</li>
+<li>使用虚拟内存创建swap</li>
+</ol>
+<h3 id="使用实体分区创建swap"><a href="#使用实体分区创建swap" class="headerlink" title="使用实体分区创建swap"></a>使用实体分区创建swap</h3><p>首先我们需要在磁盘中划分出一块分区作为swap</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">fdisk /dev/sde</span><br><span class="line"></span><br><span class="line">设备 Boot      Start         End      Blocks   Id  System</span><br><span class="line">/dev/sde1            2048     1026047      512000   83  Linux</span><br></pre></td></tr></tbody></table></figure>
+<p>其次我们需要对这个分区进行格式化 生成我们需要的文件系统mkswap</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@<span class="hljs-built_in">test</span>-ceph ~]<span class="hljs-comment"># mkswap /dev/sde1</span></span><br><span class="line">正在设置交换空间版本 1，大小 = 16380 KiB</span><br><span class="line">无标签，UUID=e9b11822-d90f-4fb4-9884-e2c3ae3c9dc6</span><br><span class="line">[root@<span class="hljs-built_in">test</span>-ceph ~]<span class="hljs-comment"># blkid /dev/sde1</span></span><br><span class="line">/dev/sde1: UUID=<span class="hljs-string">"e9b11822-d90f-4fb4-9884-e2c3ae3c9dc6"</span> TYPE=<span class="hljs-string">"swap"</span></span><br></pre></td></tr></tbody></table></figure>
+<p>检测,首先我们可以用free来查看下当前swap的使用情况</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@<span class="hljs-built_in">test</span>-ceph ~]<span class="hljs-comment"># free</span></span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:       16202644      317340    15316776       17188      568528    15557328</span><br><span class="line">Swap:       8191996           0     8191996</span><br></pre></td></tr></tbody></table></figure>
+<p>used 是0 ,他的总量是8191996,接下来我们挂载这个新建的swap,这里不是使用mount 而是用swapon与swapoff</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">swap /dev/sde1</span><br><span class="line">[root@<span class="hljs-built_in">test</span>-ceph ~]<span class="hljs-comment"># free</span></span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:       16202644      316220    15317572       17188      568852    15558420</span><br><span class="line">Swap:       8208376           0     8208376</span><br></pre></td></tr></tbody></table></figure>
+<p>free的量已经上升了<br>查看交换分区由哪些构成</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[root@<span class="hljs-built_in">test</span>-ceph ~]<span class="hljs-comment"># swapon -s</span></span><br><span class="line">文件名                          类型            大小    已用    权限</span><br><span class="line">/dev/dm-1                               partition       8191996 0       -2</span><br><span class="line">/dev/sde1                               partition       16380   0       -3</span><br></pre></td></tr></tbody></table></figure>
+<p>设置开机自动挂载</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">UUID=<span class="hljs-string">"e9b11822-d90f-4fb4-9884-e2c3ae3c9dc6"</span> swap swap defaults 0 0</span><br></pre></td></tr></tbody></table></figure>
+
+
 </body></html>
         </div>
         
             <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/af2754a4/">linux目录配置</a></li>
+            <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/af2754a4/">linux磁盘管理2</a></li>
             <li><strong>本文作者：</strong><a href="http://blog.noback.top">何泽君</a></li>
             <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/af2754a4/">http://blog.noback.top/posts/af2754a4/</a></li>
             <li><strong>发布时间：</strong>2020-02-16</li>
@@ -241,7 +251,7 @@
         <div class="level-start">
             <a class="level level-item has-link-grey  article-nav-prev" href="/posts/af2754a4/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">linux文件权限</span>
+                <span class="level-item">linux周期性任务</span>
             </a>
         </div>
         
@@ -316,7 +326,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        107
+                        108
                     </p>
                 </a>
             </div>
@@ -326,7 +336,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        27
+                        28
                     </p>
                 </a>
             </div>
@@ -336,7 +346,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        22
+                        23
                     </p>
                 </a>
             </div>
@@ -359,22 +369,22 @@
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#linux目录配置">
+        <a class="is-flex" href="#linux磁盘和文件系统">
         <span class="has-mr-6">1</span>
-        <span>linux目录配置</span>
+        <span>linux磁盘和文件系统</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#什么是FHS">
+        <a class="is-flex" href="#内存交换空间-swap">
         <span class="has-mr-6">1.1</span>
-        <span>什么是FHS</span>
+        <span>内存交换空间(swap)</span>
         </a></li><li>
-        <a class="is-flex" href="#usr">
+        <a class="is-flex" href="#创建内存交换空间-swap">
         <span class="has-mr-6">1.2</span>
-        <span>/usr</span>
-        </a></li><li>
-        <a class="is-flex" href="#var">
-        <span class="has-mr-6">1.3</span>
-        <span>/var</span>
-        </a></li></ul></li></ul>
+        <span>创建内存交换空间(swap)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#使用实体分区创建swap">
+        <span class="has-mr-6">1.2.1</span>
+        <span>使用实体分区创建swap</span>
+        </a></li></ul></li></ul></li></ul>
         </div>
     </div>
 </div>
@@ -400,7 +410,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="http://image.noback.top/datadog.svg" alt="linux目录配置" height="28">
+                    <img src="http://image.noback.top/datadog.svg" alt="linux磁盘管理2" height="28">
                 
                 </a>
                 <p class="is-size-7">
