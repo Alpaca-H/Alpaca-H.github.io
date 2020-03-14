@@ -35,7 +35,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/solarized-dark.css">
 
 
     
@@ -216,7 +216,8 @@
 <h3 id="使用unwarp和expect"><a href="#使用unwarp和expect" class="headerlink" title="使用unwarp和expect"></a>使用unwarp和expect</h3><p>match 能够胜任它的工作，不过它可能有点冗长并且不总是能很好的表明其意图。Result<T, E> 类型定义了很多辅助方法来处理各种情况。其中之一叫做 unwrap，它的实现就类似于示例 9-4 中的 match 语句。如果 Result 值是成员 Ok，unwrap 会返回 Ok 中的值。如果 Result 是成员 Err，unwrap 会为我们调用 panic!。这里是一个实践 unwrap 的例子：</p>
 <figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">use</span> std::fs::File;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> f = File::open(<span class="hljs-string">"hello.txt"</span>).unwrap();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>expect可以修改panic!的错误信息</p>
-<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">use</span> std::fs::File;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> f = File::open(<span class="hljs-string">"hello.txt"</span>).expect(<span class="hljs-string">"Failed to open hello.txt"</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></body></html>
+<figure class="highlight rust hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">use</span> std::fs::File;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {</span><br><span class="line">    <span class="hljs-keyword">let</span> f = File::open(<span class="hljs-string">"hello.txt"</span>).expect(<span class="hljs-string">"Failed to open hello.txt"</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</body></html>
         </div>
         
             <ul class="post-copyright">
@@ -252,16 +253,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/75d1ed92/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/a81913b8/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">match控制流运算符</span>
+                <span class="level-item">rust常见集合</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/posts/a81913b8/">
-                <span class="level-item">rust常见集合</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/af92563b/">
+                <span class="level-item">rust作用域规则</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -329,7 +330,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        108
+                        114
                     </p>
                 </a>
             </div>
@@ -339,7 +340,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        30
                     </p>
                 </a>
             </div>
@@ -349,7 +350,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        23
+                        26
                     </p>
                 </a>
             </div>

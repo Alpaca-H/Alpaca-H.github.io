@@ -34,7 +34,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/solarized-dark.css">
 
 
     
@@ -176,7 +176,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    20 分钟 读完 (大约 2949 个字)
+                    20 分钟 读完 (大约 2993 个字)
                 </span>
                 
                 
@@ -244,7 +244,9 @@
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">location [ = | ~ | ~* | ^~ ]  uri {</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>= 用于不需要正则表达式的uri 要求严格匹配，如果匹配成功，就往下搜索并处理请求<br>~ 用于需要正则表达式的uri 区分大小写<br><del>* 用于需要正则表达式的uri 不区分大小写<br>^</del> 用于不需要正则表达式的uri，要求Nginx服务器找到标识uri和请求字符串匹配度最高的location后，立即使用此location处理请求，而不在使用location块中的正则uri和请求字符串做匹配</p>
 <h2 id="配置实例"><a href="#配置实例" class="headerlink" title="配置实例"></a>配置实例</h2><p><img src="https://img2018.cnblogs.com/blog/1381066/201906/1381066-20190627141117429-435885754.png" alt></p>
-</body></html>
+<h2 id="nginx错误"><a href="#nginx错误" class="headerlink" title="nginx错误"></a>nginx错误</h2><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">nginx <span class="hljs-built_in">bind</span>() to 0.0.0.0:**** failed (13: Permission denied)</span><br></pre></td></tr></tbody></table></figure>
+<p>这是因为防火墙没有关闭或者selinux没有关闭</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">systemct  stop firewalld</span><br><span class="line">setenforce 0</span><br><span class="line">sed -<span class="hljs-keyword">in</span> -r <span class="hljs-string">'/^.*=Enforce/s#Enforce#disabled#g'</span> /etc/selinux/config</span><br></pre></td></tr></tbody></table></figure></body></html>
         </div>
         
             <ul class="post-copyright">
@@ -357,7 +359,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        108
+                        114
                     </p>
                 </a>
             </div>
@@ -367,7 +369,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        30
                     </p>
                 </a>
             </div>
@@ -377,7 +379,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        23
+                        26
                     </p>
                 </a>
             </div>
@@ -427,6 +429,10 @@
         <a class="is-flex" href="#配置实例">
         <span class="has-mr-6">1.5</span>
         <span>配置实例</span>
+        </a></li><li>
+        <a class="is-flex" href="#nginx错误">
+        <span class="has-mr-6">1.6</span>
+        <span>nginx错误</span>
         </a></li></ul></li></ul>
         </div>
     </div>

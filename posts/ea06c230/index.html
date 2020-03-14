@@ -7,16 +7,16 @@
 
 
 
-    <meta name="description" content="主机清单 inventoryansible中添加主机清单的几种形式  直接在命令行中指定ip,-k登陆时指定密码 ansible 192.168.20.1 -m ping -kansible 192.168.20.1,192.168.20.2 -m ping -k  在配置文件中指定  默认文件夹&#x2F;etc&#x2F;ansible&#x2F;hosts [name1]192.168.20.1[name2]192.16">
+    <meta name="description" content="learn ansible把之前的笔记拿出来再补充一些内容">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ansible基础">
 <meta property="og:url" content="http://blog.noback.top/posts/ea06c230/index.html">
 <meta property="og:site_name" content="Alpaca&#39;s blog | how to win">
-<meta property="og:description" content="主机清单 inventoryansible中添加主机清单的几种形式  直接在命令行中指定ip,-k登陆时指定密码 ansible 192.168.20.1 -m ping -kansible 192.168.20.1,192.168.20.2 -m ping -k  在配置文件中指定  默认文件夹&#x2F;etc&#x2F;ansible&#x2F;hosts [name1]192.168.20.1[name2]192.16">
+<meta property="og:description" content="learn ansible把之前的笔记拿出来再补充一些内容">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.noback.top/images/og_image.png">
-<meta property="article:published_time" content="2019-12-29T12:54:37.000Z">
-<meta property="article:modified_time" content="2019-12-29T12:54:37.000Z">
+<meta property="article:published_time" content="2020-03-08T11:46:58.000Z">
+<meta property="article:modified_time" content="2020-03-08T11:46:58.000Z">
 <meta property="article:author" content="何泽君">
 <meta property="article:tag" content="ansible">
 <meta name="twitter:card" content="summary">
@@ -34,7 +34,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/solarized-dark.css">
 
 
     
@@ -163,7 +163,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-29T12:54:37.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-29</time>
+                <time class="level-item has-text-grey" datetime="2020-03-08T11:46:58.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-03-08</time>
                 
                 
                 <div class="level-item">
@@ -176,7 +176,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    22 分钟 读完 (大约 3288 个字)
+                    18 分钟 读完 (大约 2653 个字)
                 </span>
                 
                 
@@ -189,15 +189,30 @@
         </div>
         
         <div class="content">
-            <html><head></head><body><h2 id="主机清单-inventory"><a href="#主机清单-inventory" class="headerlink" title="主机清单 inventory"></a>主机清单 inventory</h2><p>ansible中添加主机清单的几种形式</p>
-<ol>
-<li><p>直接在命令行中指定ip,-k登陆时指定密码</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ansible 192.168.20.1 -m ping -k</span><br><span class="line">ansible 192.168.20.1,192.168.20.2 -m ping -k</span><br></pre></td></tr></tbody></table></figure>
+            <html><head></head><body><p>learn ansible<br>把之前的笔记拿出来再补充一些内容 </p>
+<a id="more"></a>
+<h1 id="ansible"><a href="#ansible" class="headerlink" title="ansible"></a>ansible</h1><blockquote>
+<p>什么是ansible<br>Ansilbe是一个部署一群远程主机的工具,自动化运维必须掌握的基础</p>
+</blockquote>
+<p>在ansible中 有几个比较重要的关键词</p>
+<ul>
+<li>主机清单<br>主机清单主要用于存放ansible管理的一些机器，ansible采用了多种方法对这些机器进行整理分类<br>当你安装完成ansible之后，主机清单的默认文件夹在/etc/ansible/hosts中</li>
+</ul>
+<h2 id="start"><a href="#start" class="headerlink" title="start"></a>start</h2><ol>
+<li><p>直接在命令行中指定ip,-m 指定模块</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ansible 192.168.20.1 -m ping </span><br><span class="line">ansible 192.168.20.1,192.168.20.2 -m ping</span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p>在配置文件中指定  默认文件夹/etc/ansible/hosts</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[name1]</span><br><span class="line">192.168.20.1</span><br><span class="line">[name2]</span><br><span class="line">192.168.20.2</span><br><span class="line">ansible name1 -m ping -k <span class="hljs-comment"># 指定分组</span></span><br><span class="line">ansible all -m ping -k <span class="hljs-comment"># 指定所有</span></span><br></pre></td></tr></tbody></table></figure>
-<p><img src="http://img.noback.top/blog/img/20190902/ansible2.png" alt><br>由于ansible是通过ssh访问被执行端主机的，因此没有ssh的权限是无法完成任务的，即使这里的命令是ping，但依旧要走ssh的流程<br>这里的ping并不是linux下的ping ,而是ansible工具下面的ping模块</p>
+<li><p>使用文件ping </p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">[name1]</span><br><span class="line">192.168.20.1</span><br><span class="line">[name2]</span><br><span class="line">192.168.20.2</span><br><span class="line">ansible name1 -m ping  <span class="hljs-comment"># 指定分组</span></span><br><span class="line">ansible all -m ping <span class="hljs-comment"># 指定所有</span></span><br></pre></td></tr></tbody></table></figure>
+<font color="red">
+由于ansible是通过ssh访问被执行端主机的，因此没有ssh的权限是无法完成任务的，即使这里的命令是ping，但依旧要走ssh的流程
+这里的ping并不是linux下的ping ,而是ansible工具下面的ping模块
+</font>
+
+
 </li>
+</ol>
+<ol start="3">
 <li><p>不使用默认文件下，自定义文件夹</p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"192.168.20.1"</span>  >> xx</span><br><span class="line">ansible -i xx all -m ping -k</span><br></pre></td></tr></tbody></table></figure>
 </li>
@@ -207,41 +222,42 @@
 </li>
 </ol>
 <hr>
-<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><ol>
-<li>local_tmp是本地的执行指令</li>
-<li>remote_tmp是远程的执行指令<br>当用户使用ansible控制被控端执行指令的时候，他会先将内容放在local_tmp文件中，然后上传到被控端并生成remote_tmp上执行。执行完成之后会删除这两个tmp文件</li>
-<li>library = /usr/share/my_modules/ 库存放地址</li>
-<li>forks = 5 默认并发数</li>
-<li>sudo_user = root 默认sudo 用户</li>
-<li>ask_sudo_pass = True  每次执行ansible是否询问ssh密码</li>
-<li>ask_pass = True</li>
-<li>remote_port = 22</li>
-<li>host_key_checking = False 检查对应服务器的host_key —–>建议取消注释</li>
-<li>log_path=/var/log/ansible.log 日志文件 </li>
-</ol>
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h4 id="ansible-doc-说明文档"><a href="#ansible-doc-说明文档" class="headerlink" title="ansible-doc 说明文档"></a>ansible-doc 说明文档</h4><p>ansible-doc [options] [module..]<br>-a 显示所有模块的文档 参数尽量放在单引号里面<br>-l –list 列出可用模块<br>-s –snippet xxx 显示xxx模块的playbook片段</p>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>安装完成ansible后，在/etc/ansible 下面会有如下几个文件</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">total 24</span><br><span class="line">-rw-r--r--. 1 root root 19179 Jan 30  2018 ansible.cfg</span><br><span class="line">-rw-r--r--. 1 root root  1016 Jan 30  2018 hosts</span><br><span class="line">drwxr-xr-x. 2 root root     6 Jan 30  2018 roles</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="etc-ansible-hosts-主机清单"><a href="#etc-ansible-hosts-主机清单" class="headerlink" title="/etc/ansible/hosts 主机清单"></a>/etc/ansible/hosts 主机清单</h3><p>后面解释</p>
+<h3 id="etc-ansible-ansible-cfg-配置文件"><a href="#etc-ansible-ansible-cfg-配置文件" class="headerlink" title="/etc/ansible/ansible.cfg 配置文件"></a>/etc/ansible/ansible.cfg 配置文件</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">local_tmp是本地的执行指令</span><br><span class="line"></span><br><span class="line">remote_tmp是远程的执行指令</span><br><span class="line"></span><br><span class="line">当用户使用ansible控制被控端执行指令的时候，他会先将内容放在local_tmp文件中，然后上传到被控端并生成remote_tmp上执行。执行完成之后会删除这两个tmp文件</span><br><span class="line"></span><br><span class="line">library = /usr/share/my_modules/ 库存放地址</span><br><span class="line"></span><br><span class="line">forks = 5 默认并发数</span><br><span class="line"></span><br><span class="line">sudo_user = root 默认sudo 用户</span><br><span class="line"></span><br><span class="line">ask_sudo_pass = True  每次执行ansible是否询问ssh密码</span><br><span class="line"></span><br><span class="line">ask_pass = True</span><br><span class="line"></span><br><span class="line">remote_port = 22</span><br><span class="line"></span><br><span class="line">host_key_checking = False 检查对应服务器的host_key ----->建议取消注释</span><br><span class="line"></span><br><span class="line">log_path=/var/<span class="hljs-built_in">log</span>/ansible.log 日志文件</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="etc-ansible-roles"><a href="#etc-ansible-roles" class="headerlink" title="/etc/ansible/roles"></a>/etc/ansible/roles</h3><p>存放ansible-playbook的地方</p>
+<h2 id="主机清单"><a href="#主机清单" class="headerlink" title="主机清单"></a>主机清单</h2><p>同上所讲，主机清单可以使用ansible自带的，也可以使用自己创建，在命令行中使用-i指定<br>主机清单写法</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 单台机器</span></span><br><span class="line">mail.example.com</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 声明端口</span></span><br><span class="line">mail.example1.com:5506</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 分组</span></span><br><span class="line">[webservers]</span><br><span class="line">foo.example.com</span><br><span class="line">bar.example.com</span><br><span class="line"></span><br><span class="line">[dbservers]</span><br><span class="line">one.example.com</span><br><span class="line">two.example.com</span><br><span class="line">three.example.com</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 声明端口</span></span><br><span class="line">mail.example2.com ansible_ssh_port=2206</span><br><span class="line"><span class="hljs-comment"># 声明用户 密码 连接方式 指定秘药 别名 </span></span><br><span class="line">mail.example3.com ansible_ssh_user=root ansible_ssh_pass=passwd ansible_connection=ssh ansible_ssh_private_key_file=<span class="hljs-string">"~/.ssh/id_rsa"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="ansible-doc-说明文档"><a href="#ansible-doc-说明文档" class="headerlink" title="ansible-doc 说明文档"></a>ansible-doc 说明文档</h3><p>ansible-doc [options] [module..]<br>-a 显示所有模块的文档 参数尽量放在单引号里面<br>-l –list 列出可用模块<br>-s –snippet xxx 显示xxx模块的playbook片段</p>
 <p>role扩展模块<br>ansible-galaxy专门有一个网站提供不同用户上传的”角色”<br>地址:<a href="https://galaxy.ansible.com/" target="_blank" rel="noopener">https://galaxy.ansible.com/</a></p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 列出所有已安装的galaxy</span></span><br><span class="line">ansible-galaxy list</span><br><span class="line"><span class="hljs-comment"># 安装galaxy</span></span><br><span class="line">ansible-galaxy install xxx</span><br><span class="line"><span class="hljs-comment"># 删除galaxy</span></span><br><span class="line">ansible-galaxy remove xxx</span><br></pre></td></tr></tbody></table></figure>
 <p>role默认安装路径为/etc/ansible/roles/下</p>
-<h4 id="ansible"><a href="#ansible" class="headerlink" title="ansible"></a>ansible</h4><p>列出指定组别的host列表<br>ansible appsevr –list-hosts<br>列出所有列表的host<br>ansible all –list-hosts<br>ansible all –list<br>支持通配符匹配host<br>ansible *serv –list<br>多IP批量执行<br>ansible 192.168.0.1,192.168.0.2 -m ping<br>多组别批量执行(逻辑或关系,合并，A和B所有)<br>ansible websevr:appsevr -m ping<br>(逻辑与关系,区分,在A中,也在B中)<br>ansible “websevr:&appsevr” -m ping<br>(逻辑非,在A中不在B中,此处必须要用单引号)<br>ansible ‘websevr:!appsevr’ -m ping </p>
-<p>ansible <host-pattern> [-m module_name] [-a args]<br>–version 显示版本<br>-m module 指定模板,默认为command<br>-v 详细过程 -vv -vvv更详细<br>–list –list-hosts 显示主机列表，<br>-k –ask-pass 提示输入ssh连接密码，默认为key验证<br>-K –ask-become-pass 提示输入sudo时的口令<br>-C –check 检查，并不执行<br>-T –timeout=TIMEOUT 执行命令的超时时间,默认为10s<br>-u –user=REMOTE_USER 执行远程执行的用户<br>-b –become 代替旧版的sudo切换 (默认为ansible.cfg里面设置的用户,一般为root)<br>-a 指定参数</host-pattern></p>
-<h4 id="ansible-m命令模块"><a href="#ansible-m命令模块" class="headerlink" title="ansible -m命令模块"></a>ansible -m命令模块</h4><h5 id="command"><a href="#command" class="headerlink" title="command"></a>command</h5><p>在command中,我们可以创建文件，但是对于文件的操作,有一个专门的file模块</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 创建一个文件</span></span><br><span class="line">ansible -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'mkdir \data'</span></span><br><span class="line"><span class="hljs-comment"># 查看文件是否创建成功</span></span><br><span class="line">ansible -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'ls -al \data'</span></span><br><span class="line"><span class="hljs-comment"># 查看command帮助</span></span><br><span class="line">ansible-doc <span class="hljs-built_in">command</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="ansible命令执行流程"><a href="#ansible命令执行流程" class="headerlink" title="ansible命令执行流程"></a>ansible命令执行流程</h3><ol>
+<li>加载自己的配置文件 默认为/etc/ansible/ansible.cfg</li>
+<li>加载自己对应的模块文件,如command</li>
+<li>通过ansible将模块或命令生成对应的临时py文件,并将文件传输至远程服务器的对应执行用户$HOME/.ansible/tmp/ansible-tmp-数字/xxx.py文件</li>
+<li>增加文件的执行权限</li>
+<li>执行并返回结果</li>
+<li>删除临时py文件,sleep 0退出<br>执行状态:<br>绿色 执行成功并且不需要做改变的操作<br>黄色 执行成功但是对目标主机做了修改<br>红色 执行失败<br>(颜色内容在/etc/ansible.cfg里面修改)</li>
+</ol>
+<h3 id="ssh秘钥认证"><a href="#ssh秘钥认证" class="headerlink" title="ssh秘钥认证"></a>ssh秘钥认证</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line">ssh-keygen rsa</span><br><span class="line">ssh-copy-id root@host_ip</span><br></pre></td></tr></tbody></table></figure>
 
-<h5 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h5><p>如果-a 后带的参数中出现 $ < > | ;  & 等字符，command是不支持的，需要用到shell 模块</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 输出主机名字</span></span><br><span class="line">ansible 192.168.1.3 -m shell -a <span class="hljs-string">'echo $HOSTNAME'</span></span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="ansible命令执行流程"><a href="#ansible命令执行流程" class="headerlink" title="ansible命令执行流程"></a>ansible命令执行流程</h2><p>1.加载自己的配置文件 默认为/etc/ansible/ansible.cfg<br>2.加载自己对应的模块文件,如command<br>3.通过ansible将模块或命令生成对应的临时py文件,并将文件传输至远程服务器的对应执行用户$HOME/.ansible/tmp/ansible-tmp-数字/xxx.py文件<br>4.增加文件的执行权限<br>5.执行并返回结果<br>6.删除临时py文件,sleep 0退出<br>执行状态:<br>绿色 执行成功并且不需要做改变的操作<br>黄色 执行成功但是对目标主机做了修改<br>红色 执行失败<br>(颜色内容在/etc/ansible.cfg里面修改)</p>
-<p><strong>生成ssh</strong><br>ssh-keygen<br><strong>复制ssh密钥到其他主机</strong><br>ssh-copy-id 主机ip</p>
-<hr>
+
+<h3 id="ansible命令"><a href="#ansible命令" class="headerlink" title="ansible命令"></a>ansible命令</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"> 列出指定组别的host列表</span><br><span class="line">ansible appsevr --list-hosts</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">列出所有列表的host</span><br><span class="line">ansible all --list-hosts</span><br><span class="line">ansible all --list</span><br><span class="line">支持通配符匹配host</span><br><span class="line">ansible *serv --list</span><br><span class="line">多IP批量执行</span><br><span class="line">ansible 192.168.0.1,192.168.0.2 -m ping</span><br><span class="line">多组别批量执行(逻辑或关系,合并，A和B所有)</span><br><span class="line">ansible websevr:appsevr -m ping      </span><br><span class="line">(逻辑与关系,区分,在A中,也在B中)</span><br><span class="line">ansible <span class="hljs-string">"websevr:&appsevr"</span> -m ping</span><br><span class="line">(逻辑非,在A中不在B中,此处必须要用单引号)</span><br><span class="line">ansible <span class="hljs-string">'websevr:!appsevr'</span> -m ping </span><br><span class="line"></span><br><span class="line">ansible <host-pattern> [-m module_name] [-a args]</span><br><span class="line">--version 显示版本</span><br><span class="line">-m module 指定模板,默认为<span class="hljs-built_in">command</span></span><br><span class="line">-v 详细过程 -vv -vvv更详细</span><br><span class="line">--list --list-hosts 显示主机列表，</span><br><span class="line">-k --ask-pass 提示输入ssh连接密码，默认为key验证</span><br><span class="line">-K --ask-become-pass 提示输入sudo时的口令</span><br><span class="line">-C --check 检查，并不执行</span><br><span class="line">-T --timeout=TIMEOUT 执行命令的超时时间,默认为10s</span><br><span class="line">-u --user=REMOTE_USER 执行远程执行的用户</span><br><span class="line">-b --become 代替旧版的sudo切换 (默认为ansible.cfg里面设置的用户,一般为root)</span><br><span class="line">-a 指定参数</span><br></pre></td></tr></tbody></table></figure>
+
+
+
 <h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>由于Ansible的模块过多，将近有1378个模块数量,但是每个模块的介绍以及使用方法都存放在/usr/bin/ansible-doc当中</p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 查看当前ansible模块数量</span></span><br><span class="line">ansible-doc -l | wc -l</span><br><span class="line"><span class="hljs-comment"># ansible-doc的使用方法</span></span><br><span class="line">ansible-doc [options] [module..]</span><br><span class="line">-a 显示所有模块的文档 参数尽量放在单引号里面</span><br><span class="line">-l --list 列出可用模块</span><br><span class="line">-s --snippet xxx 显示xxx模块的playbook片段</span><br><span class="line"><span class="hljs-comment"># 使用-m指定模块，默认为command</span></span><br><span class="line">ansible -m <span class="hljs-built_in">command</span></span><br></pre></td></tr></tbody></table></figure>
 
-
-<h3 id="command-1"><a href="#command-1" class="headerlink" title="command"></a>command</h3><p>在command中,我们可以创建文件，但是对于文件的操作,有一个专门的file模块</p>
+<h3 id="command"><a href="#command" class="headerlink" title="command"></a>command</h3><p>在command中,我们可以创建文件，但是对于文件的操作,有一个专门的file模块</p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 创建一个文件</span></span><br><span class="line">ansible -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'mkdir \data'</span></span><br><span class="line"><span class="hljs-comment"># 查看文件是否创建成功</span></span><br><span class="line">ansible -m <span class="hljs-built_in">command</span> -a <span class="hljs-string">'ls -al \data'</span></span><br><span class="line"><span class="hljs-comment"># 查看command帮助</span></span><br><span class="line">ansible-doc <span class="hljs-built_in">command</span></span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="shell-1"><a href="#shell-1" class="headerlink" title="shell"></a>shell</h3><p>如果-a 后带的参数中出现 $ < > | ;  & 等字符，command是不支持的，需要用到shell 模块</p>
+<h3 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h3><p>如果-a 后带的参数中出现 $ < > | ;  & 等字符，command是不支持的，需要用到shell 模块</p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 输出主机名字</span></span><br><span class="line">ansible 192.168.1.3 -m shell -a <span class="hljs-string">'echo $HOSTNAME'</span></span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="script"><a href="#script" class="headerlink" title="script"></a>script</h3><p>既然ansible可以对多台主机进行批量的操作，那往往我们会遇到一个场景，即需要我们在多台主机上执行一个脚本，这个场景下我们有两个方法:<br>1.将脚本文件复制到多台主机上后,调用ansible使用<br>2.使用script模块，仅在控制端存在脚本文件即可</p>
@@ -255,7 +271,7 @@
 <h3 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h3><p>ansible支持从被控端抓取文件到控制端,抓取后的格式为\example.com\dest<br>src表示抓取路径<br>dest表示存放路径</p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 复制所有主机的日志到控制端</span></span><br><span class="line">ansible ho -m fetch -a <span class="hljs-string">'src=/var/log/messages dest=/root/data'</span></span><br></pre></td></tr></tbody></table></figure>
 <p>但是fetch仅支持单个文件的抓取，当我们想要抓取多个日志文件时，可以先进行打包</p>
-<h3 id="file"><a href="#file" class="headerlink" title="file"></a>file</h3><p>设置文件的属性</p>
+<h3 id="file"><a href="#file" class="headerlink" title="file"></a>file</h3><p>创建文件</p>
 <figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 创建文件</span></span><br><span class="line">ansible ho -m file -a <span class="hljs-string">'name=/data/f3 state=touch'</span></span><br><span class="line"><span class="hljs-comment"># 删除文件</span></span><br><span class="line">ansible ho -m file -a <span class="hljs-string">'name=/data/f3 state=absent'</span></span><br><span class="line"><span class="hljs-comment"># 创建文件夹</span></span><br><span class="line">ansible ho -m file -a <span class="hljs-string">'name=/data/f3 state=directory'</span></span><br><span class="line"><span class="hljs-comment"># 删除文件夹</span></span><br><span class="line">ansible ho -m file -a <span class="hljs-string">'name=/data/f3 state=absent'</span></span><br><span class="line"><span class="hljs-comment"># 创建软连接</span></span><br><span class="line">ansible ho -m file -a <span class="hljs-string">'src=/root/test name=/data/fq state=link'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 但是需要注意的是如果你创建了文件f3 当你创建文件夹f3的时候会出现错误</span></span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="hostname"><a href="#hostname" class="headerlink" title="hostname"></a>hostname</h3><p>修改主机名</p>
@@ -269,40 +285,13 @@
 
 <h3 id="User"><a href="#User" class="headerlink" title="User"></a>User</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ansible ho -m user -a <span class="hljs-string">'name=user comment="test user" uid=2048 home=/app/user group=root'</span></span><br><span class="line">ansible ho -m user -a <span class="hljs-string">'name=sysuser system=yes home=/app/syseser1'</span></span><br><span class="line">ansible ho -m user -a <span class="hljs-string">'name=user state=absent remove=yes'</span> 删除用户以及家目录等数据</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="playbook的编写"><a href="#playbook的编写" class="headerlink" title="playbook的编写"></a>playbook的编写</h2><p>随着工作的增加,单条ansible命令(adhoc)已经不能满足我们的需求.于是我们可以把多条ansible命令写入playbook中,让系统根据playbook中的顺序依次执行ansible。我们把它叫做剧本</p>
-<h3 id="Playbook的编写方式"><a href="#Playbook的编写方式" class="headerlink" title="Playbook的编写方式"></a>Playbook的编写方式</h3><p>Playbook的编写格式采用的是yaml语言<br>url: <a href="http://www.ruanyifeng.com/blog/2016/07/yaml.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/07/yaml.html</a><br>url2: <a href="https://www.jianshu.com/p/97222440cd08" target="_blank" rel="noopener">https://www.jianshu.com/p/97222440cd08</a><br>urs3: <a href="https://yaml.org/" target="_blank" rel="noopener">https://yaml.org/</a>  多种语言实现yaml</p>
-<p>简单的介绍一下yaml语言的使用</p>
-<figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">1. 在单一档案中,可以用连续的连字符(---)区分多个档案。另外，还有选择性的连续三个点号(...)用来表示档案结尾</span><br><span class="line">2. 次行开始正常写Playbook的内容，一般建议写明该playbook的功能</span><br><span class="line">3. 使用#号注释代码</span><br><span class="line">4. 缩进统一用tab</span><br><span class="line">5. 一个完整的代码块功能最少的元素需要包括name:task</span><br><span class="line">6. 一个name只能包括一个task</span><br><span class="line">7. yaml文件扩展名通常为yml或者yaml</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="setup"><a href="#setup" class="headerlink" title="setup"></a>setup</h3><p>获取ansible信息，ansible执行完成后,会将结果接到ansible_facts 这个变量当中去，而setup可以输出这个变量</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">➜  /tmp ansible -i hosts all -m setup</span><br><span class="line">[WARNING]: Unable to parse the plugin filter file /etc/ansible/plugin_filters.yml as module_blacklist is not a list. Skipping.</span><br><span class="line"></span><br><span class="line">10.0.28.58 | SUCCESS => {</span><br><span class="line">    <span class="hljs-string">"ansible_facts"</span>: {</span><br><span class="line">        <span class="hljs-string">"ansible_all_ipv4_addresses"</span>: [</span><br><span class="line">            <span class="hljs-string">"10.0.28.58"</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="hljs-string">"ansible_all_ipv6_addresses"</span>: [</span><br><span class="line">            <span class="hljs-string">"fe80::b116:4b55:85a6:c563"</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="hljs-string">"ansible_apparmor"</span>: {</span><br><span class="line">            <span class="hljs-string">"status"</span>: <span class="hljs-string">"disabled"</span></span><br><span class="line">        },</span><br><span class="line">        <span class="hljs-string">"ansible_architecture"</span>: <span class="hljs-string">"x86_64"</span>,</span><br><span class="line">        <span class="hljs-string">"ansible_bios_date"</span>: <span class="hljs-string">"05/14/2015"</span>,</span><br><span class="line">        <span class="hljs-string">"ansible_bios_version"</span>: <span class="hljs-string">"0504"</span>,</span><br><span class="line">        <span class="hljs-string">"ansible_cmdline"</span>: {</span><br><span class="line">            <span class="hljs-string">"BOOT_IMAGE"</span>: <span class="hljs-string">"/vmlinuz-3.10.0-1062.12.1.el7.x86_64"</span>,</span><br><span class="line">            <span class="hljs-string">"LANG"</span>: <span class="hljs-string">"zh_CN.UTF-8"</span>,</span><br><span class="line">            <span class="hljs-string">"crashkernel"</span>: <span class="hljs-string">"auto"</span>,</span><br><span class="line">            <span class="hljs-string">"quiet"</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">            <span class="hljs-string">"rd.lvm.lv"</span>: <span class="hljs-string">"centos/swap"</span>,</span><br><span class="line">            <span class="hljs-string">"rhgb"</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">            <span class="hljs-string">"ro"</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">            <span class="hljs-string">"root"</span>: <span class="hljs-string">"/dev/mapper/centos-root"</span></span><br><span class="line">        },</span><br></pre></td></tr></tbody></table></figure>
+<p>setup模块返回的是ansible中的一些信息，包括修改后更换的结果，使用filter可以来过滤出我们需要的信息</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">➜  /tmp ansible all -m setup -a <span class="hljs-string">'filter=ansible_hostname'</span></span><br><span class="line"></span><br><span class="line">10.0.28.58 | SUCCESS => {</span><br><span class="line">    <span class="hljs-string">"ansible_facts"</span>: {</span><br><span class="line">        <span class="hljs-string">"ansible_hostname"</span>: <span class="hljs-string">"node"</span></span><br><span class="line">    },</span><br><span class="line">    <span class="hljs-string">"changed"</span>: <span class="hljs-literal">false</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>并且支持通配符匹配<br>比如我们要过滤出所有包含hostname的字段</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ansible all -m setup -a <span class="hljs-string">'filter=*address*'</span></span><br><span class="line">10.0.28.58 | SUCCESS => {</span><br><span class="line">    <span class="hljs-string">"ansible_facts"</span>: {</span><br><span class="line">        <span class="hljs-string">"ansible_all_ipv4_addresses"</span>: [</span><br><span class="line">            <span class="hljs-string">"10.0.28.58"</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="hljs-string">"ansible_all_ipv6_addresses"</span>: [</span><br><span class="line">            <span class="hljs-string">"fe80::b116:4b55:85a6:c563"</span></span><br><span class="line">        ]</span><br><span class="line">    },</span><br><span class="line">    <span class="hljs-string">"changed"</span>: <span class="hljs-literal">false</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-<p>playbook例子</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">---</span><br><span class="line">- hosts: webservers</span><br><span class="line">  vars:</span><br><span class="line">    http_port: 80</span><br><span class="line">    max_clients: 200</span><br><span class="line">  remote_user: root</span><br><span class="line">  tasks:</span><br><span class="line">  - name: ensure apache is at the latest version</span><br><span class="line">    yum: pkg=httpd state=latest</span><br><span class="line">  - name: write the apache config file</span><br><span class="line">    template: src=/srv/httpd.j2 dest=/etc/httpd.conf</span><br><span class="line">    notify:</span><br><span class="line">    - restart apache</span><br><span class="line">  - name: ensure apache is running</span><br><span class="line">    service: name=httpd state=started</span><br><span class="line">  handlers:</span><br><span class="line">    - name: restart apache</span><br><span class="line">      service: name=httpd state=restarted</span><br></pre></td></tr></tbody></table></figure>
-
-<p><strong>playbook核心元素</strong></p>
-<ul>
-<li>Hosts 执行的远程主机列表</li>
-<li>Tasks 任务集</li>
-<li>Varniables 内置变量或自定义变量在playbook中调用</li>
-<li>Templates 模板,可替换模板文件中的变量并实现一些简单逻辑的文件</li>
-<li>Handlers 和 notity 结合使用,由特定条件触发的操作，满足条件方才执行,否则不执行</li>
-<li>tags 标签  指定某条任务执行,用于选择运行playbook中的部分代码。ansible具有幂等性,因此会自动跳过没有变化的部分，即便如此，有些代码为测试其确实没有发生变化的时间<br>依然会很长。因此可以使用tags跳过一些代码片段。<br>ansible-playbook -t tagsname useradd.yml</li>
-</ul>
-<p>adhoc 和 playbook 对比</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># adhoc 改变主机名字</span></span><br><span class="line">ansible ho -m hostname -a <span class="hljs-string">'name=xxx'</span></span><br><span class="line"><span class="hljs-comment"># playboot 修改主机名字</span></span><br><span class="line">---</span><br><span class="line">- host: ho</span><br><span class="line">  remote_user: root</span><br><span class="line">  </span><br><span class="line">  tasks:</span><br><span class="line">  - name: hello</span><br><span class="line">    hostname: name=node</span><br></pre></td></tr></tbody></table></figure>
-<p>多条adhoc 和playbook对比</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># adhoc </span></span><br><span class="line">ansible ho -m file -a <span class="hljs-string">'name=/data/newfile state=touch'</span>  <span class="hljs-comment"># 创建文件</span></span><br><span class="line">ansible ho -m user -a <span class="hljs-string">'name=test2 system=yes shell=/sbin/nologin'</span> <span class="hljs-comment"># 创建用户</span></span><br><span class="line">ansible ho -m yum -a <span class="hljs-string">'name=httpd'</span> <span class="hljs-comment"># 安装httpd</span></span><br><span class="line">ansible ho -m copy -a <span class="hljs-string">'src=/var/www/html/index.html dest=/var/www/html'</span> <span class="hljs-comment"># 复制文件</span></span><br><span class="line">ansible ho -m service -a <span class="hljs-string">'name=httpd state=started enabled=yes'</span> <span class="hljs-comment"># 启动服务</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># playbook</span></span><br><span class="line">- hosts: ho</span><br><span class="line">  remote_user: root</span><br><span class="line">  </span><br><span class="line">  tasks:</span><br><span class="line">  - name: create file</span><br><span class="line">    file: name=/data/newfile state=touch</span><br><span class="line">  - name: create user</span><br><span class="line">    file: name=test2 system=yes shell=/sbin/nologin</span><br><span class="line">  - name: install httpd</span><br><span class="line">    yum: name=httpd</span><br><span class="line">  - name: copy file</span><br><span class="line">    copy: src=/var/www/html/index.html dest=/var/www/html</span><br><span class="line">  - name: start service</span><br><span class="line">    service: name=httpd state=started enabled=yes</span><br></pre></td></tr></tbody></table></figure>
-
-<p>shell脚本与playbook对比</p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># shell脚本</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#!/bin/bash</span></span><br><span class="line"><span class="hljs-comment"># 安装Apache</span></span><br><span class="line">yum install --quiet -y httpd</span><br><span class="line"><span class="hljs-comment"># 复制配置文件</span></span><br><span class="line">cp /tmp/httpd.conf /etc/httpd/conf/httpd.conf</span><br><span class="line">cp /tmp/vhosts.conf /etc/httpd/conf.d/</span><br><span class="line"><span class="hljs-comment"># 启动Apache 并设置开机启动</span></span><br><span class="line">systemctl start httpd.service</span><br><span class="line">chkconfig httpd on</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># playbook</span></span><br><span class="line">---</span><br><span class="line">- host: all</span><br><span class="line">  tasks:</span><br><span class="line">   - name: <span class="hljs-string">"安装Apache"</span></span><br><span class="line">     yum: name=httpd</span><br><span class="line">   - name: <span class="hljs-string">"复制配置文件"</span></span><br><span class="line">     copy: src=/tmp/httpd.conf dest=/etc/httpd/conf/</span><br><span class="line">   - name: <span class="hljs-string">"复制文件"</span></span><br><span class="line">     copy: src=/tmp/vhosts.conf dest=/etc/httpd/conf.d/</span><br><span class="line">   - name: <span class="hljs-string">"启动Apache,并设置开机启动"</span></span><br><span class="line">     service: name=httpd state=started enabled=yes</span><br></pre></td></tr></tbody></table></figure>
-
-
-<h3 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h3><p>play的主体部分是task list 。 task list 中的各任务按次序逐个在hosts中指定的所有主机上执行，即在所有主机上完成第一个任务后在开始第二个，在运行自上而下某一个playbook时，如果中途发生错误，所有已执行任务都将回滚，因此，在更正playbook后重新执行一次即可</p>
-<p><strong>忽略错误信息</strong></p>
-<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">task:</span><br><span class="line">- name: copy file</span><br><span class="line">  copy: src=/root/file dest=/root/ || /bin/<span class="hljs-literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 或者</span></span><br><span class="line">task:</span><br><span class="line">- name: copy file</span><br><span class="line">  copy: src=/root/file dest=/root/</span><br><span class="line">  ignore_erros: True</span><br></pre></td></tr></tbody></table></figure>
-
-
-<h3 id="playbook运行方式"><a href="#playbook运行方式" class="headerlink" title="playbook运行方式"></a>playbook运行方式</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ansible-playbook <xxx.yml> [options]</span><br><span class="line">--check 只检测可能会发生的改变，但不真正执行操作</span><br><span class="line">--list-hosts 列出运行任务的主机</span><br><span class="line">--<span class="hljs-built_in">limit</span> 主机列表 只针对主机列表中的主机执行</span><br><span class="line">-v 显示过程 -vv -vvv显示更详细</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="Playbook剧本"><a href="#Playbook剧本" class="headerlink" title="Playbook剧本"></a>Playbook剧本</h3><p>ansible-playbook是ansible中的一个工具,存放在/usr/bin/ansible-playbook</p>
 <h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><ul>
 <li><p>模块<br><a href="https://www.cnblogs.com/f-ck-need-u/p/7550603.html" target="_blank" rel="noopener">https://www.cnblogs.com/f-ck-need-u/p/7550603.html</a><br><a href="https://docs.ansible.com/ansible/2.6/modules/list_of_all_modules.html" target="_blank" rel="noopener">https://docs.ansible.com/ansible/2.6/modules/list_of_all_modules.html</a></p>
 </li>
@@ -316,7 +305,7 @@
             <li><strong>本文标题：</strong><a href="http://blog.noback.top/posts/ea06c230/">ansible基础</a></li>
             <li><strong>本文作者：</strong><a href="http://blog.noback.top">何泽君</a></li>
             <li><strong>本文链接：</strong><a href="http://blog.noback.top/posts/ea06c230/">http://blog.noback.top/posts/ea06c230/</a></li>
-            <li><strong>发布时间：</strong>2019-12-29</li>
+            <li><strong>发布时间：</strong>2020-03-08</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
@@ -345,16 +334,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/4982550/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/ddd9d579/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">httpd服务</span>
+                <span class="level-item">ansible安装</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/posts/20d6cad/">
-                <span class="level-item">ansible总结</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/e2882394/">
+                <span class="level-item">fastapi基础</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -422,7 +411,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        108
+                        114
                     </p>
                 </a>
             </div>
@@ -432,7 +421,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        30
                     </p>
                 </a>
             </div>
@@ -442,7 +431,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        23
+                        26
                     </p>
                 </a>
             </div>
@@ -464,32 +453,64 @@
             <h3 class="menu-label">
                 目录
             </h3>
-            <ul class="menu-list"><ul class="menu-list"><li>
-        <a class="is-flex" href="#主机清单-inventory">
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#ansible">
+        <span class="has-mr-6">1</span>
+        <span>ansible</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#start">
         <span class="has-mr-6">1.1</span>
-        <span>主机清单 inventory</span>
+        <span>start</span>
         </a></li><li>
         <a class="is-flex" href="#配置文件">
         <span class="has-mr-6">1.2</span>
         <span>配置文件</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#etc-ansible-hosts-主机清单">
+        <span class="has-mr-6">1.2.1</span>
+        <span>/etc/ansible/hosts 主机清单</span>
+        </a></li><li>
+        <a class="is-flex" href="#etc-ansible-ansible-cfg-配置文件">
+        <span class="has-mr-6">1.2.2</span>
+        <span>/etc/ansible/ansible.cfg 配置文件</span>
+        </a></li><li>
+        <a class="is-flex" href="#etc-ansible-roles">
+        <span class="has-mr-6">1.2.3</span>
+        <span>/etc/ansible/roles</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#主机清单">
+        <span class="has-mr-6">1.3</span>
+        <span>主机清单</span>
         </a></li><li>
         <a class="is-flex" href="#命令">
-        <span class="has-mr-6">1.3</span>
+        <span class="has-mr-6">1.4</span>
         <span>命令</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#ansible-doc-说明文档">
+        <span class="has-mr-6">1.4.1</span>
+        <span>ansible-doc 说明文档</span>
         </a></li><li>
         <a class="is-flex" href="#ansible命令执行流程">
-        <span class="has-mr-6">1.4</span>
+        <span class="has-mr-6">1.4.2</span>
         <span>ansible命令执行流程</span>
         </a></li><li>
+        <a class="is-flex" href="#ssh秘钥认证">
+        <span class="has-mr-6">1.4.3</span>
+        <span>ssh秘钥认证</span>
+        </a></li><li>
+        <a class="is-flex" href="#ansible命令">
+        <span class="has-mr-6">1.4.4</span>
+        <span>ansible命令</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#模块">
         <span class="has-mr-6">1.5</span>
         <span>模块</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#command-1">
+        <a class="is-flex" href="#command">
         <span class="has-mr-6">1.5.1</span>
         <span>command</span>
         </a></li><li>
-        <a class="is-flex" href="#shell-1">
+        <a class="is-flex" href="#shell">
         <span class="has-mr-6">1.5.2</span>
         <span>shell</span>
         </a></li><li>
@@ -528,27 +549,11 @@
         <a class="is-flex" href="#User">
         <span class="has-mr-6">1.5.11</span>
         <span>User</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#playbook的编写">
-        <span class="has-mr-6">1.6</span>
-        <span>playbook的编写</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#Playbook的编写方式">
-        <span class="has-mr-6">1.6.1</span>
-        <span>Playbook的编写方式</span>
         </a></li><li>
-        <a class="is-flex" href="#执行流程">
-        <span class="has-mr-6">1.6.2</span>
-        <span>执行流程</span>
-        </a></li><li>
-        <a class="is-flex" href="#playbook运行方式">
-        <span class="has-mr-6">1.6.3</span>
-        <span>playbook运行方式</span>
-        </a></li><li>
-        <a class="is-flex" href="#Playbook剧本">
-        <span class="has-mr-6">1.6.4</span>
-        <span>Playbook剧本</span>
-        </a></li></ul></li></ul><li>
+        <a class="is-flex" href="#setup">
+        <span class="has-mr-6">1.5.12</span>
+        <span>setup</span>
+        </a></li></ul></li></ul></li><li>
         <a class="is-flex" href="#其他">
         <span class="has-mr-6">2</span>
         <span>其他</span>

@@ -35,7 +35,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/androidstudio.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/solarized-dark.css">
 
 
     
@@ -177,7 +177,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    5 分钟 读完 (大约 808 个字)
+                    8 分钟 读完 (大约 1156 个字)
                 </span>
                 
                 
@@ -215,8 +215,22 @@
 
 <h3 id="找出打开套接字-端口应用程序"><a href="#找出打开套接字-端口应用程序" class="headerlink" title="找出打开套接字/端口应用程序"></a>找出打开套接字/端口应用程序</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ss -pl | grep 3306</span><br></pre></td></tr></tbody></table></figure>
 
+<h3 id="匹配本地地址与远端地址"><a href="#匹配本地地址与远端地址" class="headerlink" title="匹配本地地址与远端地址"></a>匹配本地地址与远端地址</h3><p>之前匹配端口以及端口状态用的dport 和sport<br>这里使用匹配地址 src dst</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ss src 192.168.0.1</span><br><span class="line">ss src 192.168.0.1:http</span><br><span class="line">ss src 192.168.0.1:20</span><br><span class="line"></span><br><span class="line">ss dst 192.168.0.1</span><br><span class="line">ss dst 192.168.0.1:http</span><br><span class="line">ss dst 192.168.0.1:20</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="显示所有状态为etablished的SMTP连接"><a href="#显示所有状态为etablished的SMTP连接" class="headerlink" title="显示所有状态为etablished的SMTP连接"></a>显示所有状态为etablished的SMTP连接</h3></body></html>
+<h3 id="显示所有状态为etablished的SMTP连接"><a href="#显示所有状态为etablished的SMTP连接" class="headerlink" title="显示所有状态为etablished的SMTP连接"></a>显示所有状态为etablished的SMTP连接</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ss -o state established dport = :smtp or sport =:smtp</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="显示所有状态为etablished的HTTP连接"><a href="#显示所有状态为etablished的HTTP连接" class="headerlink" title="显示所有状态为etablished的HTTP连接"></a>显示所有状态为etablished的HTTP连接</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ss -o state established dport = :http or sport =: http</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="列举出处于-FIN-WAIT-1状态的源端口为-80或者-443，目标网络为-193-233-7-24所有-tcp套接字"><a href="#列举出处于-FIN-WAIT-1状态的源端口为-80或者-443，目标网络为-193-233-7-24所有-tcp套接字" class="headerlink" title="列举出处于 FIN-WAIT-1状态的源端口为 80或者 443，目标网络为 193.233.7/24所有 tcp套接字"></a>列举出处于 FIN-WAIT-1状态的源端口为 80或者 443，目标网络为 193.233.7/24所有 tcp套接字</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ss -o state fin-wait-1 <span class="hljs-string">'( sport = :http or sport = :https )'</span> dst 193.233.7/24</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="ss-和-netstat-效率对比"><a href="#ss-和-netstat-效率对比" class="headerlink" title="ss 和 netstat 效率对比"></a>ss 和 netstat 效率对比</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">time netstat -at</span><br><span class="line">time ss </span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># time ss   </span></span><br><span class="line">real    0m0.903s</span><br><span class="line">user    0m0.849s</span><br><span class="line">sys     0m0.053s</span><br><span class="line">[root@localhost ~]<span class="hljs-comment"># time netstat -at</span></span><br><span class="line">real    0m1.529s</span><br><span class="line">user    0m0.001s</span><br><span class="line">sys     0m0.001s</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="筛选端口"><a href="#筛选端口" class="headerlink" title="筛选端口"></a>筛选端口</h3><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 过滤只显示所有ssh连接的开启状态的接口</span></span><br><span class="line"> ss -o state established  dport = :ssh or sport = :ssh </span><br><span class="line">             <span class="hljs-comment"># Display all established ssh connections.</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 过滤 80 443 8100端口的内容</span></span><br><span class="line">state = established</span><br><span class="line">ss2 -4itn state <span class="hljs-variable">$state</span> dport = :80 or sport = :80 or dport = :443 or sport = :433 or sport = :8100 or dport = :8100</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="端口过滤"><a href="#端口过滤" class="headerlink" title="端口过滤"></a>端口过滤</h3><p>将本地或者远程端口和一个数比较</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 形式</span></span><br><span class="line"><span class="hljs-comment"># ss dport OP PORT </span></span><br><span class="line"><span class="hljs-comment"># ss sport OP PORT</span></span><br><span class="line">ss dport =: http  <span class="hljs-comment"># 等于http</span></span><br><span class="line">ss dport \> :1024 <span class="hljs-comment"># 端口号大于1024</span></span><br><span class="line">ss dport \< :3100 <span class="hljs-comment"># 端口号小鱼3100</span></span><br><span class="line">ss dport != :22 <span class="hljs-comment"># 端口号不等于22</span></span><br><span class="line">ss dport eq :22 <span class="hljs-comment"># 端口号等于22</span></span><br></pre></td></tr></tbody></table></figure>
+<p>OP 可以是这些</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line"><= or le : 小于或等于端口号</span><br><span class="line">>= or ge : 大于或等于端口号</span><br><span class="line">== or eq : 等于端口号</span><br><span class="line">!= or ne : 不等于端口号</span><br><span class="line">< or gt : 小于端口号</span><br><span class="line">> or lt : 大于端口号</span><br></pre></td></tr></tbody></table></figure></body></html>
         </div>
         
             <ul class="post-copyright">
@@ -329,7 +343,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        108
+                        114
                     </p>
                 </a>
             </div>
@@ -339,7 +353,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        30
                     </p>
                 </a>
             </div>
@@ -349,7 +363,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        23
+                        26
                     </p>
                 </a>
             </div>
@@ -408,9 +422,33 @@
         <span class="has-mr-6">1.1.7</span>
         <span>找出打开套接字/端口应用程序</span>
         </a></li><li>
-        <a class="is-flex" href="#显示所有状态为etablished的SMTP连接">
+        <a class="is-flex" href="#匹配本地地址与远端地址">
         <span class="has-mr-6">1.1.8</span>
+        <span>匹配本地地址与远端地址</span>
+        </a></li><li>
+        <a class="is-flex" href="#显示所有状态为etablished的SMTP连接">
+        <span class="has-mr-6">1.1.9</span>
         <span>显示所有状态为etablished的SMTP连接</span>
+        </a></li><li>
+        <a class="is-flex" href="#显示所有状态为etablished的HTTP连接">
+        <span class="has-mr-6">1.1.10</span>
+        <span>显示所有状态为etablished的HTTP连接</span>
+        </a></li><li>
+        <a class="is-flex" href="#列举出处于-FIN-WAIT-1状态的源端口为-80或者-443，目标网络为-193-233-7-24所有-tcp套接字">
+        <span class="has-mr-6">1.1.11</span>
+        <span>列举出处于 FIN-WAIT-1状态的源端口为 80或者 443，目标网络为 193.233.7/24所有 tcp套接字</span>
+        </a></li><li>
+        <a class="is-flex" href="#ss-和-netstat-效率对比">
+        <span class="has-mr-6">1.1.12</span>
+        <span>ss 和 netstat 效率对比</span>
+        </a></li><li>
+        <a class="is-flex" href="#筛选端口">
+        <span class="has-mr-6">1.1.13</span>
+        <span>筛选端口</span>
+        </a></li><li>
+        <a class="is-flex" href="#端口过滤">
+        <span class="has-mr-6">1.1.14</span>
+        <span>端口过滤</span>
         </a></li></ul></li></ul></li></ul>
         </div>
     </div>
